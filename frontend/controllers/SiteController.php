@@ -1046,10 +1046,10 @@ foreach($arraddresses as $id => $key3) {
 
 		if ($getstatus == 1) {
 
-		$this->layout = "newdashboard";
+			$this->layout = "dashboard";
 		} else {
 
-		$this->layout = "beforeprofilecomplete";  // common
+			$this->layout = "dashboard";  // common
 		}
 
 
