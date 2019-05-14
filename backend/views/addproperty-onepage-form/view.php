@@ -1,0 +1,77 @@
+<?php
+
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm */
+?>
+<div class="addproperty-onepage-form-view">
+ 
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'company_employee_id',
+            'property_for',
+            'city',
+            'locality:ntext',
+            'town_name',
+            'sector_name',
+            'address:ntext',
+            'longitude',
+            'latitude',
+            'builder_name',
+            'project_name',
+            'property_type_id',
+            'Owner_name',
+            'primary_contact_no',
+            'secondary_contact_no',
+            'landline_no',
+            'email_id:email',
+            'property_on_floor',
+            'unit_block',
+            'unit_number',
+            'buildup_area',
+            'buildup_unit',
+            'carpet_area',
+            'carpet_unit',
+            'owner_address',
+            'total_no_of_floors',
+            'passenger_lift',
+            'service_lift',
+            'ceiling_height',
+            'backup_power:ntext',
+            'building_security:ntext',
+            'maintenance_agency:ntext',
+            'floor_plate_area',
+            'type_of_space:ntext',
+            'visitor_parking',
+            'covered_parking',
+            'asking_lease_rate',
+            'rate_negotiable:ntext',
+            'maintenance_charge',
+            'security_deposit',
+            'security_negotiable:ntext',
+            'lock_in_period',
+            'lock_in_negotiable:ntext',
+            'lease_period_restriction:ntext',
+            'max_period_lease',
+            'open_rentfree_period:ntext',
+            'max_rentfree_period',
+            'Asking_property_price',
+            'price_negotiable:ntext',
+            'property_with_saledeed:ntext',
+            'property_power_attorney:ntext',
+            'pan_card',
+            'adhar_card',
+            'property_tax_id',
+            'completion_in_percentage',
+            'property_status:ntext',
+            'followup_date_time',
+            'followup_comment:ntext',
+            'isactive',
+            'created_date',
+        ],
+    ]) ?>
+
+</div>

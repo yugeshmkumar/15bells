@@ -1,0 +1,16 @@
+Looking for git in: git
+Using git 2.19.1 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /var/www/html/15bells
+> git status -z -u
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git symbolic-ref --short HEAD
+> git rev-parse staging
+> git rev-parse --symbolic-full-name staging@{u}
+> git rev-list --left-right staging...refs/remotes/origin/staging
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git check-ignore -z --stdin
+> git add -A -- .

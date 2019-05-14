@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="31" viewBox="0 0 28 31">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#C4984F" d="M1 30.37h15.764V5.45H1z"/>
+        <path stroke="#FFF" stroke-width=".192" d="M1 30.37h15.764V5.448H1z"/>
+        <path fill="#C4984F" d="M17.39 30.37h10.026V16.315H17.39z"/>
+        <path stroke="#FFF" stroke-width=".115" d="M17.39 30.37h10.026V16.314H17.39z"/>
+        <path fill="#FFF" d="M2.99 10.822h3.074V7.75H2.99zM7.25 10.822h3.074V7.75H7.25zM11.476 10.822h3.073V7.75h-3.073zM2.99 15.362h3.074v-3.073H2.99zM7.25 15.362h3.074v-3.073H7.25zM11.476 15.362h3.073v-3.073h-3.073zM2.99 19.97h3.074v-3.072H2.99zM7.25 19.97h3.074v-3.072H7.25zM11.476 19.97h3.073v-3.072h-3.073z"/>
+        <path fill="#C4984F" d="M5.753 5.005h6.47V1h-6.47z"/>
+        <path stroke="#FFF" stroke-width=".157" d="M5.753 5.005h6.47V1h-6.47z"/>
+        <path fill="#FFF" d="M8.734 4.317h.509V1.688h-.51z"/>
+        <path fill="#FFF" d="M7.674 3.257h2.629v-.509H7.674zM7.213 30.585h3.339v-6.306h-3.34zM18.365 18.67h8.075v-.527h-8.075zM18.365 20.071h8.075v-.526h-8.075zM18.365 21.473h8.075v-.527h-8.075z"/>
+    </g>
+</svg>
