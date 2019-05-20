@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\RequestDocumentShow;
 use common\models\Payments;
+use common\models\Invoice;
 use common\models\RequestDocumentShowSearch;
 use yii\web\Controller;
 use frontend\models\UserForm;
@@ -173,7 +174,31 @@ class DocumentshowController extends Controller {
              $model->payment_status = 'paid';
              $model->created_date = $date;
              if($model->save(false)){
-                 return 1;
+
+                $Invoice = new Invoice;
+              //  $Invoice->invoiceID = 'documentshow';
+                $Invoice->propertyid = $finduser->property_id;
+                $Invoice->user_id = $finduser->user_id;
+                $Invoice->payment_id = $model->id;
+                $Invoice->finyearid = 1;
+                $Invoice->amount = $kamount_payable;
+                $Invoice->isActive = 1;
+                $Invoice->createdAt = $date;
+                if($Invoice->save(false)){
+
+                    $payments = \Yii::$app->db->createCommand("SELECT LPAD(invoiceitemid,7,'0') as generateid from invoice_items where invoiceitemid='$Invoice->invoiceitemid'")->queryOne();
+                    $generateid =  $payments['generateid'];
+
+
+                    $saveinvoiceid = \common\models\Invoice::find()->where(['invoiceitemid' => $Invoice->invoiceitemid])->one();
+                   
+                    $saveinvoiceid->invoiceID = $generateid;
+                    $saveinvoiceid->save(false);
+                    return 1;
+                }
+
+                
+                 
              }else{
                  return 2;
              }
