@@ -44,17 +44,17 @@ $config = [
             'useFileTransport' => false,
            'transport' => [
             'class' => 'Swift_SmtpTransport',
-            // 'host' => 'smtp.gmail.com',
-            // 'username' => 'info@15bells.com',
-            // 'password' => '931h7u51KR123@',
-            // 'port' => '465',
-            // 'encryption' => 'ssl',
-            // 'streamOptions' => [ 'ssl' =>
-            //     [ 'allow_self_signed' => true,
-            //         'verify_peer' => false,
-            //         'verify_peer_name' => false,
-            //     ],
-            // ]
+            'host' => 'smtp.gmail.com',
+            'username' => 'info@15bells.com',
+            'password' => 'tjyfenrddebwvqgy',
+            'port' => '465',
+            'encryption' => 'ssl',
+            'streamOptions' => [ 'ssl' =>
+                [ 'allow_self_signed' => true,
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]
         ],
     ]
         ],
