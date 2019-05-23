@@ -104,22 +104,22 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 
 		<div class="row text-center">
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="125"></p>
-				<p class="transac_typ">Instant Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Interested in a commercial Property and want it right away? Get your property deal with a real-time & secured platform for property buyers & sellers. 
-				<br> <a href="#" class="read_more">Read more..</a></p>
+				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
+				<p class="transac_typ text-center">Instant Auction</p>
+				<p class="transaction_text hidden-xs hidden-sm">Interested in a commercial Property and want it right away? Get your property deal with a real-time & secured platform for property buyers & sellers. </p>
+				<p> <a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a></p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="182" class="img_trans forward_auc"></p>
-				<p class="transac_typ">Forward Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Intrested in a property where there are multiple Buyers? 15 Bells offers a forward auction where a single seller offers his property for sale.
-				<br> <a href="#" class="read_more">Read more..</a>				</p>
+				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
+				<p class="transac_typ text-center">Forward Auction</p>
+				<p class="transaction_text hidden-xs hidden-sm">Intrested in a property where there are multiple Buyers? 15 Bells offers a forward auction where a single seller offers his property for sale.</p>
+				<p> <a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a>				</p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="150" class="img_trans reverse_auc"></p>
-				<p class="transac_typ">Reverse Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">With 15 bells state of art technology, Reverse Auction is the best option for leasing a commercial property between a single buyer or organization and suppliers.
-				<br> <a href="#" class="read_more">Read more..</a></p>
+				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
+				<p class="transac_typ text-center">Reverse Auction</p>
+				<p class="transaction_text hidden-xs hidden-sm">With 15 bells state of art technology, Reverse Auction is the best option for leasing a commercial property between a single buyer or organization and suppliers.</p> 
+				<p class=""><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a></p>
 			</div>
 		</div>
 	</div>
@@ -128,16 +128,16 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 <div class="container-fluid no_pad step_banner">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 no_pad">
-				<h3 class="trans_head_b">Buy or Sell Properties,<br>In just simple steps</h3>
+			<div class="col-md-12 no_pad">
+				<h3 class="trans_head_b">Buy or Sell Properties,In just simple steps</h3>
 			</div>
-			<div class="col-md-6 text-center buy_sell">
+			<div class="col-md-12 text-center buy_sell">
 				
 				<ul class="nav nav-tabs steps_tab">
-				  <li class="active"><a data-toggle="tab" class="step_link border_right" href="#buy_t">Buy</a></li>
-				  <li><a data-toggle="tab" class="step_link border_left border_right" href="#sell_l">Sell</a></li>
-				  <li><a data-toggle="tab" class="step_link border_left border_right" href="#lease_in">Lease in</a></li>
-				  <li><a data-toggle="tab" class="step_link border_left" href="#lease_out">Lease Out</a></li>
+				  <li class="active col-md-3 no_pad"><a data-toggle="tab" class="step_link border_right" href="#buy_t">Buy</a></li>
+				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#sell_l">Sell</a></li>
+				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#lease_in">Lease in</a></li>
+				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left" href="#lease_out">Lease Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -145,143 +145,117 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 
 			<div class="tab-content property_sell">
 			  <div id="buy_t" class="tab-pane fade in active">
-				<div class="row text-center pad_step">
-					<div class="col-md-5">
+				<div class="row pad_step">
+					<div class="col-md-5 text-center">
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/buy.jpg';  ?>" class="img-responsive">
 					</div>
-					<div class="col-md-7">
-					<div id="carousel-buy" class="carousel slide" data-ride="carousel">
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">01</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Look for a Perfect Location  </h4>
-								<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>
-								
+					<div class="col-md-7 text-left">
+					<div class="accordion_container text-left">
+						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location <span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">02</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Set up your Expectation</h4>
-								<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">03</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Discover a commercial  property you would love to Buy</h4>
-								<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">04</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Schedule your site visit online or offline</h4>
-								<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">05</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property Documentations verified:</h4>
-								<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">06</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property ready for the transaction:</h4>
-								<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">07</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Enter to our Real-Time Virtual Bidding Room: </h4>
-								<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
 							</div>
 						</div>
+						
 					</div>
 				</div>
-				 <div class="controls pull-left">
-							<a class="left left_icn" href="#carousel-buy"
-								data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_b.svg';  ?>">Previous</a>
-								<a class="right right_icn" href="#carousel-buy"
-									data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_b.svg';  ?>"></a>
-						</div>
-					</div>
-				</div>
-					
-			  </div>
+		</div>
+				
 			  <div id="sell_l" class="tab-pane fade">
 				<div class="row text-center pad_step">
 					<div class="col-md-5">
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sell.jpg';  ?>" class="img-responsive">
 					</div>
-					<div class="col-md-7">
-					<div id="carousel-sell" class="carousel slide" data-ride="carousel">
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">01</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Know your Location</h4>
-								<p class="step_txt">When you are posting your property, let your buyers know the location of your property. We offer you a faster and easier way to mark the exact property location.     </p>
-								
+					<div class="col-md-7 text-left">
+					<div class="accordion_container text-left">
+						<div class="accordion_head step_bells"><span class="step_mark">1</span>Know your Location <span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">02</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Post your Property</h4>
-								<p class="step_txt">15 Bells offers the best commercial property to rent, sell and lease. It’s simple, select your property type from office space, warehouse or retail shops for the right match. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">03</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property Details out here along with documentation</h4>
-								<p class="step_txt">Verifying a property has never been so easier - we help you authenticate your documents with complete transparency.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">04</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Wait and watch for the right customer</h4>
-								<p class="step_txt">Once your property is out with 15 Bells, Get in connect with the potential buyers seeking for your property.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">05</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Manage your Properties and clients</h4>
-								<p class="step_txt">You get a customized dashboard to schedule a visit, put up your expectations, negotiate on the budget or verifying any documents - with 15 Bells Dedicated Account Manager by your side. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">06</span><span class="step_line"></span><span class="step_count">07</span>
-								<h4 class="step_hed">Prepare your Property for the auction</h4>
-								<p class="step_txt">When selling your property 15 bells offers their “Auction Model” where you can Bid and WIn for the property just within 15 Hours.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">07</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Enter to our Real-Time Virtual Bidding Room: </h4>
-								<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
 							</div>
 						</div>
-					</div>
-				</div>
-				 <div class="controls pull-left">
-							<a class="left left_icn" href="#carousel-sell"
-								data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_b.svg';  ?>">Previous</a>
-								<a class="right right_icn" href="#carousel-sell"
-									data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_b.svg';  ?>"></a>
-						</div>
+						
 					</div>
 				</div>
 			  </div>
@@ -290,68 +264,55 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					<div class="col-md-5">
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessee.jpg';  ?>" class="img-responsive">
 					</div>
-					<div class="col-md-7">
-					<div id="carousel-lessee" class="carousel slide" data-ride="carousel">
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">01</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Look for a Perfect Location  </h4>
-								<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>
-								
+					<div class="col-md-7 text-left">
+					<div class="accordion_container text-left">
+						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location  <span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">02</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Set up your Expectation</h4>
-								<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">03</span><span class="step_line"></span><span class="step_count">07</span>
-								<h4 class="step_hed">Discover a commercial  property you would love to Buy</h4>
-								<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease.  </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">04</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Schedule your site visit online or offline</h4>
-								<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">05</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property Documentations verified:</h4>
-								<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">06</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property ready for the transaction:</h4>
-								<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">07</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Enter to our Real-Time Virtual Bidding Room: </h4>
-								<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
 							</div>
 						</div>
-					</div>
-				</div>
-				 <div class="controls pull-left">
-							<a class="left left_icn" href="#carousel-lessee"
-								data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_b.svg';  ?>">Previous</a>
-								<a class="right right_icn" href="#carousel-lessee"
-									data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_b.svg';  ?>"></a>
-						</div>
+						
 					</div>
 				</div>
 			  </div>
@@ -361,68 +322,55 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					<div class="col-md-5">
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessor.jpg';  ?>" class="img-responsive">
 					</div>
-					<div class="col-md-7">
-					<div id="carousel-lessor" class="carousel slide" data-ride="carousel">
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">01</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Know your Location</h4>
-								<p class="step_txt">When you are posting your property, let your buyers know the location of your property. We offer you a faster and easier way to mark the exact property location.     </p>
-								
+					<div class="col-md-7 text-left">
+					<div class="accordion_container text-left">
+						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location <span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">02</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Post your Property</h4>
-								<p class="step_txt">15 Bells offers the best commercial property to rent, sell and lease. It’s simple, select your property type from office space, warehouse or retail shops for the right match. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">03</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Get your Property Details out here along with documentation</h4>
-								<p class="step_txt">Verifying a property has never been so easier - we help you authenticate your documents with complete transparency.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">04</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Wait and watch for the right customer</h4>
-								<p class="step_txt">Once your property is out with 15 Bells, Get in connect with the potential buyers seeking for your property.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">05</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Manage your Properties and clients</h4>
-								<p class="step_txt">You get a customized dashboard to schedule a visit, put up your expectations, negotiate on the budget or verifying any documents - with 15 Bells Dedicated Account Manager by your side. </p>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">06</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Prepare your Property for the auction</h4>
-								<p class="step_txt">When selling your property 15 bells offers their “Auction Model” where you can Bid and WIn for the property just within 15 Hours.  </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
 							</div>
 						</div>
-						<div class="item">
-							<div class="row text-left">
-								<h4 class="steps_process"><span class="step_count step_no">07</span><span class="step_line"></span><span class="step_count">07</span></h4>
-								<h4 class="step_hed">Enter to our Real-Time Virtual Bidding Room: </h4>
-								<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
+						
+						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
+						<div class="accordion_body" style="display: none;">
+							<div class="col-md-12 no_pad text-left">
+							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
 							</div>
 						</div>
-					</div>
-				</div>
-				 <div class="controls pull-left">
-							<a class="left left_icn" href="#carousel-lessor"
-								data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_b.svg';  ?>">Previous</a>
-								<a class="right right_icn" href="#carousel-lessor"
-									data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_b.svg';  ?>"></a>
-						</div>
+						
 					</div>
 				</div>
 			  </div>
@@ -435,8 +383,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		<h1 class="trans_head">Browse Properties by <br>Categories</h1>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-4">
-				</div>
+				
 				<div class="col-md-8 no_pad">
 					<ul class="prop_cat nav nav-pills">
 						<li class="active"><a data-toggle="pill" href="#home" class="categ_selec">Commercial Office</a></li>
@@ -445,29 +392,15 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<li><a data-toggle="pill" href="#menu3" class="categ_selec">Hotels</a></li>
 					</ul>
 				</div>
+				<div class="col-md-4">
+				</div>
 			</div>
 		
 
 				<div class="tab-content">
 				
 				  <div id="home" class="tab-pane fade in active">
-						  <div class="col-md-4 pad_off">
-							<h3 class="office_hed">Commercial <br> Office</h3>
-							<div class="row cat_name">
-								<div class="col-md-6">
-									<p class="offic_hed offic_c">Office Space</p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Co-Working</p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">IT/ITES/SEZ Park</p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Business Center</p>
-								</div>
-							</div>
-						</div>
+						
 						<div class="col-md-8">
 						<div id="myCarousel" class="carousel fdi-Carousel slide">
 						 <!-- Carousel items -->
@@ -510,23 +443,26 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_w.svg';  ?>"></a>
 					</div>
 				</div>
-				  </div>
-				  <div id="menu1" class="tab-pane fade">
-						<div class="col-md-4 pad_off">
-							<h3 class="office_hed">Commercial <br> Retail</h3>
+				<div class="col-md-4 pad_off">
+							<h3 class="office_hed">Commercial Office</h3>
 							<div class="row cat_name">
 								<div class="col-md-6">
-									<p class="offic_hed offic_c">Building Showroom</p>
+									<p class="offic_hed offic_c">Office Space</p>
 								</div>
 								<div class="col-md-6">
-									<p class="offic_hed">Retail Shop </p>
+									<p class="offic_hed">Co-Working</p>
 								</div>
 								<div class="col-md-6">
-									<p class="offic_hed">Retail Malls </p>
+									<p class="offic_hed">IT/ITES/SEZ Park</p>
 								</div>
-								
+								<div class="col-md-6">
+									<p class="offic_hed">Business Center</p>
+								</div>
 							</div>
 						</div>
+				  </div>
+				  <div id="menu1" class="tab-pane fade">
+						
 						<div class="col-md-8">
 							<div id="myCarousel1" class="carousel fdi-Carousel slide">
 							 <!-- Carousel items -->
@@ -570,26 +506,24 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 
 				  </div>
-				  
-				</div>
-				<div id="menu2" class="tab-pane fade">
-					<div class="col-md-4 pad_off">
-							<h3 class="office_hed">Land & <br> Plots</h3>
+				  <div class="col-md-4 pad_off">
+							<h3 class="office_hed">Commercial Retail</h3>
 							<div class="row cat_name">
 								<div class="col-md-6">
-									<p class="offic_hed offic_c">Warehouses</p>
+									<p class="offic_hed offic_c">Building Showroom</p>
 								</div>
 								<div class="col-md-6">
-									<p class="offic_hed">Factory</p>
+									<p class="offic_hed">Retail Shop </p>
 								</div>
 								<div class="col-md-6">
-									<p class="offic_hed">Agriculture Land</p>
+									<p class="offic_hed">Retail Malls </p>
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Institutional Lands</p>
-								</div>
+								
 							</div>
 						</div>
+				</div>
+				<div id="menu2" class="tab-pane fade">
+					
 						<div class="col-md-8">
 							<div id="myCarousel2" class="carousel fdi-Carousel slide">
 							 <!-- Carousel items -->
@@ -633,20 +567,26 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 
 				  </div>
-				</div>
-				<div id="menu3" class="tab-pane fade">
-					<div class="col-md-4 pad_off">
-							<h3 class="office_hed">Hotel <br> </h3>
+				  <div class="col-md-4 pad_off">
+							<h3 class="office_hed">Land & Plots</h3>
 							<div class="row cat_name">
 								<div class="col-md-6">
-									<p class="offic_hed offic_c">Hotels & Resorts</p>
+									<p class="offic_hed offic_c">Warehouses</p>
 								</div>
 								<div class="col-md-6">
-									<p class="offic_hed">Banquets & Guest Houses</p>
+									<p class="offic_hed">Factory</p>
 								</div>
-								
+								<div class="col-md-6">
+									<p class="offic_hed">Agriculture Land</p>
+								</div>
+								<div class="col-md-6">
+									<p class="offic_hed">Institutional Lands</p>
+								</div>
 							</div>
 						</div>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+					
 						<div class="col-md-8">
 							<div id="myCarousel3" class="carousel fdi-Carousel slide">
 							 <!-- Carousel items -->
@@ -701,12 +641,25 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 
 				  </div>
-				</div>
+				  <div class="col-md-4 pad_off">
+							<h3 class="office_hed">Hotel </h3>
+							<div class="row cat_name">
+								<div class="col-md-6">
+									<p class="offic_hed offic_c">Hotels & Resorts</p>
+								</div>
+								<div class="col-md-6">
+									<p class="offic_hed">Banquets & Guest Houses</p>
+								</div>
+								
+							</div>
+						</div>
+				</div> 
 			
 		</div>
 	</div>
 </div>
 </div>
+
 <div class="container-fluid no_pad hidden-xs hidden-sm">
 	
 		<div class="row difference_steps">
@@ -911,13 +864,26 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		
 	</div>
 </div>
+</div>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <?php 
 $script = <<< JS
 
    $(document).ready(function(){
-   
+	$(".accordion_head").click(function() {
+    if ($('.accordion_body').is(':visible')) {
+      $(".accordion_body").slideUp(300);
+      $(".plusminus").text('+');
+    }
+    if ($(this).next(".accordion_body").is(':visible')) {
+      $(this).next(".accordion_body").slideUp(300);
+      $(this).children(".plusminus").text('+');
+    } else {
+      $(this).next(".accordion_body").slideDown(300);
+      $(this).children(".plusminus").text('-');
+    }
+  });
     $('.fadein .brand_name:gt(0)').hide();
 
     setInterval(function(){
