@@ -15,6 +15,7 @@ class LoginForm extends Model
     public $password;
     public $userOTP;
     public $checkotp;
+    public $checkfield;
     public $rememberMe = true;
 
     private $user = false;
@@ -26,15 +27,33 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['identity','userOTP'], 'required'],
+            ['identity', 'required'],
+
+
+            [['password'] ,'required','when'=>function($model){
+                return $model->checkfield == 'password' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-checkfield').val() == 'password';
+               }" ,'message' => Yii::t('frontend', 'Please enter Your Password')],
+
+              [['userOTP'] ,'required','when'=>function($model){
+                return $model->checkfield == 'otp' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-checkfield').val() == 'otp';
+               }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
+
+
+
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
-            ['identity', 'validatePassword'],
-            ['userOTP', 'compare', 'compareAttribute' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
-                return $model->checkotp != $model->userOTP;
+            ['identity', 'validateIdentity'],
+            ['password', 'validatePassword'],
+
+            ['userOTP', 'compare', 'compareValue' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
+                return  $model->userOTP != $model->checkotp;
             }, 'whenClient' => "function (attribute, value) {
-                return $('#loginform-checkotp').val() != $('#loginform-userotp').val();
+                return $('#loginform-userotp').val() != $('#loginform-checkotp').val();
             }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
             ],
         ];
@@ -54,7 +73,7 @@ class LoginForm extends Model
      * Validates the password.
      * This method serves as the inline validation for password.
      */
-    public function validatePassword()
+    public function validateIdentity()
     {
         if (!$this->hasErrors()) {
             
@@ -62,6 +81,25 @@ class LoginForm extends Model
             
             if (!$user) {
                 $this->addError('identity', Yii::t('frontend', 'Incorrect username or password.'));
+            }
+        }
+    }
+
+    public function validatePassword()
+    {
+        if (!$this->hasErrors()) {
+            
+            $user = $this->getUser();
+
+            if($user){
+                echo 'user aya';die;
+            }else{
+
+                echo 'user nhi aya';die;
+            }
+            
+            if (!$user || !$user->validatePassword($this->password)) {
+                $this->addError('password', Yii::t('frontend', 'Incorrect username or password.'));
             }
         }
     }

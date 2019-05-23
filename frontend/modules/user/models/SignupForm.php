@@ -137,14 +137,16 @@ class SignupForm extends Model
                     return $model->email == '' ;
                  }, 'whenClient' => "function (attribute, value) {
                   return $('#signupform-email').val() == '';
-                   }" ,'message' => Yii::t('frontend', 'At least 1 of the field must be filled up properl')],
+                   }" ,'message' => Yii::t('frontend', '')],
+                // }" ,'message' => Yii::t('frontend', 'At least 1 of the field must be filled up properl')],
+
 
 
                    [['email'] ,'required','when'=>function($model){
                     return $model->username == '' ;
                  }, 'whenClient' => "function (attribute, value) {
                   return $('#signupform-username').val() == '';
-                   }" ,'message' => Yii::t('frontend', 'At least 1 of the field must be filled up properl')],
+                   }" ,'message' => Yii::t('frontend', '')],
 
 
                    
