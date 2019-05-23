@@ -3364,3 +3364,34 @@ float:left;
 	width:100%;
 	float:left;
 }
+
+/*new accordion css*/
+
+.accordion_container {
+	width: 100%;
+  }
+  
+  .accordion_head {
+	background-color: #ffffff;
+	color: #c4984f;
+	cursor: pointer;
+	font-size: 24px;
+	padding: 10px;
+	margin:15px 0;
+	font-weight:500;
+  }
+  
+  .accordion_body {
+	background: #ffffff;
+	padding:0 10px 20px;
+	width:100%;
+	float:left;
+  }
+  
+  
+  .plusminus {
+	float: right;
+  }
+  .popup_seprator{
+	  margin:25px 0;
+  }
