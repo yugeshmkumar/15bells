@@ -5,6 +5,32 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
 $urlsd =   Yii::getAlias('@frontendUrl');
+
+
+
+						//$homicount = 0;
+
+						// $session = Yii::$app->session;
+
+						// if(!isset($_SESSION['homi'])) {
+						// 	//echo 'aya';
+							 
+						//   // $homicount = $_SESSION['homi'];
+
+						    
+					    //    $session->set('homi', 1 + $_SESSION['homi']); 
+							  
+							   
+						// }else{
+
+						// 	//echo 'nhi aya';
+						// 	//$homicount = 0;
+
+						// }
+
+						
+
+
 ?>
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/banner.jpg';  ?>">
 			
@@ -14,17 +40,24 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<div class="col-md-12 text-center brand_desp">
 					
 					<div class="fadein">
+
 						<h1 class="brand_name">We have a patented product that helps you in getting the whole experience of your property transaction on demand minus hassles like market research, trust issues, middlemen cost,  
 						site visit & negotiations beating everyone on trust, transparency & time.<br>
 						15bells is innovating every step of your property journey. </h1>
+
+
 						<h1 class="brand_name">15bells. Let the bell ring for 15 times and you are all set to get your property for buying, selling, or leasing.<br>
 						Set it once and then the technology will help you all the way.<br>
 						How much time did you spend doing your property transactions? Compare it with using 15bells anytime and you will be surprised with our patented technology behind it.
 						</h1>
+
+
 						<h1 class="brand_name">Have you experienced pain in doing any property trading?<br>
 						If yes, we already have your pain cured through our patented technology, easing out your complete journey.<br>
 						15bells is the name…We make buying, selling, leasing seamless & faceless & that too within 15 minutes.
 						</h1>
+
+
 						<h1 class="brand_name">We have eased the real estate trading - making it more transparent, flexible, trustworthy - thanks to our patented technology.<br>
 						Property Stakeholders can now have a calm, relaxed & virtual experience of property trading real-time. You can experience it for yourself at 15bells.com
 						</h1>
@@ -916,13 +949,26 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 <?php 
 $script = <<< JS
 
+
+
+		var elems = $("h1");
+if (elems.length) {
+  var keep = Math.floor(Math.random() * elems.length);
+  for (var i = 0; i < elems.length; ++i) {
+    if (i !== keep) {
+      $(elems[i]).hide();
+    }
+  }
+}			
+	
+
    $(document).ready(function(){
    
-    $('.fadein .brand_name:gt(0)').hide();
+    //$('.fadein .brand_name:gt(0)').hide();
 
-    setInterval(function(){
-		$('.fadein > :first-child').fadeOut().next('.brand_name').fadeIn().end().appendTo('.fadein');
-		}, 6000);
+    // setInterval(function(){
+	// 	$('.fadein > :first-child').fadeOut().next('.brand_name').fadeIn().end().appendTo('.fadein');
+	// 	}, 6000);
 	//$(".transp_contnt").hide();
 	
 	$(".trans_clck").click(function(){
@@ -1011,9 +1057,12 @@ JS;
 $this->registerJs($script);
 ?>
 
+
 <?php
 
 $this->registerJsFile('/newjs/siteindex.js',['depends' => [\yii\web\JqueryAsset::className()]]);
+
+session_destroy(); 
 
 ?>
 
