@@ -62,7 +62,7 @@ class ResetPasswordForm extends Model
         $user->password = $this->password;
         $user->removePasswordResetToken();
 
-        return $user->save();
+        return $user->save(false);
     }
 
     public function attributeLabels()

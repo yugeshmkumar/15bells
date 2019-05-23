@@ -657,7 +657,7 @@ public function actionShowpropdetails(){
     
                     $Property_nearby_places->property_id = $property_id;
                     $Property_nearby_places->places_name = $nearbyIdArray[$i];
-                    $modeProperty_nearby_placesl2->is_active = '1';
+                    $Property_nearby_places->is_active = '1';
                     $Property_nearby_places->created_date = $date;
                     $Property_nearby_places->save();
                 }

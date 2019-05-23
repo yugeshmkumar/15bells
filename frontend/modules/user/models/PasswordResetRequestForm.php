@@ -12,6 +12,9 @@ use yii\base\Model;
 class PasswordResetRequestForm extends Model
 {
     public $email;
+    public $otp;    
+    public $checkotp;
+    public $username;
 
     /**
      * @inheritdoc
@@ -20,12 +23,23 @@ class PasswordResetRequestForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
+            ['username', 'required'],
             ['email', 'email'],
-            ['email', 'exist',
+            ['otp','required',
+            'message' => Yii::t('frontend', 'OTP cannot be blank.')],
+            ['username', 'string', 'min' => 10, 'max'=>254,'message'=>'Mobile number is invalid.'],
+	// ['countrycode', 'string', 'min' => 0, 'max'=>254],
+	        ['username','match','pattern'=>"/^[1-9][0-9]{0,254}$/",'message'=>'Mobile number is invalid.'],
+            ['username', 'exist',
                 'targetClass' => '\common\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'Email Id does not exist.'
+                'message' => 'Mobile no. does not exist.'
+            ],
+            ['otp', 'compare', 'compareAttribute' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
+                return $model->checkotp != $model->otp;
+            }, 'whenClient' => "function (attribute, value) {
+                return $('#passwordresetrequestform-checkotp').val() != $('#passwordresetrequestform-otp').val();
+            }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
             ],
         ];
     }
@@ -44,15 +58,23 @@ class PasswordResetRequestForm extends Model
         ]);
 
         if ($user) {
+           // echo 'user aya';die;
+          
             $user->generatePasswordResetToken();
-            if ($user->save()) {
-                return Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'from' => [Yii::$app->params['adminEmail'] => Yii::$app->name],
-                    'to' => $this->email,
-                    'subject' => Yii::t('frontend', 'Password reset for {name}', ['name'=>Yii::$app->name]),
-                    'view' => 'passwordResetToken',
-                    'params' => ['user' => $user]
-                ]));
+            if ($user->save(false)) {
+               // echo 'save hua';die;
+               $resetLink = Yii::$app->urlManager->createAbsoluteUrl(['/user/sign-in/reset-password', 'token' => $user->password_reset_token]);
+
+               $tokens = $user->password_reset_token;
+
+               return $tokens;
+                // return Yii::$app->commandBus->handle(new SendEmailCommand([
+                //     'from' => [Yii::$app->params['adminEmail'] => Yii::$app->name],
+                //     'to' => $this->email,
+                //     'subject' => Yii::t('frontend', 'Password reset for {name}', ['name'=>Yii::$app->name]),
+                //     'view' => 'passwordResetToken',
+                //     'params' => ['user' => $user]
+                // ]));
             }
         }
 

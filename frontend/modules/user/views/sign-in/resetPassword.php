@@ -11,77 +11,47 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-<style type="text/css">
- 
-</style>
-<div id="login">
-  
- 
-  <!-- Begin page content -->
-  <div class="container-fluid no_pad">
-    <div class="row">
-      <div class="col-md-12 text-center no_pad"> 
-        <!--<div class="col-md-2"></div>-->
-          <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<div class="container-fluid no_pad signin_cont">
+	<div class="row">
+		<div class="col-md-6 no_pad">
+			<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/signup1.jpg';  ?>" class="signup_img">
+		</div>
+		<div class="col-md-6 no_pad">
+			<div class="row pad_100">
+				<div class="col-md-12 pad_40 signin_frm">
+					<a href="" class="buttn_prev" type="button"><i class="fa fa-angle-left"></i> Back</a>	
 
-        <div class="col-md-8 no_pad hidden-xs">
-               <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/sign_up.jpg';  ?>" class="img_sign">
-          </div>
-
-        <div class="col-md-4 signup_form login_main_div">
-           
-          <div class="loginbox animated fadeInRight">
-               
-<!--                <div class="social-buttons">
-                  <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                  <a href="#" class="btn btn-gplus"><i class="fa fa-google"></i> Google +</a>
-                </div>-->
-                
-                  <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>   
-                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                <div class="row text-center">
-                                                      <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/logo.png';  ?>" width="100">
-                                                      <h3 class="contct_lin">RESET Password!</h3>
-                                                      
-                                                    </div>
-                    <div class="col-sm-12 col-xs-12" style="z-index: 9;">
-                      <div class="form-group">
-                       <!--<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" required>-->
-                          
- <?php echo $form->field($model, 'password')->passwordInput()->label(false)->textInput(['placeholder' => "Password"]); ?>
-                
-                  </div>
-                    </div>
    
 
 
-                    <div class="col-sm-12 col-xs-12" style="z-index: 9;">
-                      <div class="form-group">
-                       <!--<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" required>-->
-                          
- <?php echo $form->field($model, 'password_repeat')->passwordInput()->label(false)->textInput(['placeholder' => "Confirm Password"]); ?>
-                
-                  </div>
-                    </div>
+					<h2 class="forgot_password">Create new password</h2></h2>
+					
+          <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>  
+					<p class="signup_input">
+          <?php echo $form->field($model, 'password')->passwordInput()->label(false)->textInput(['placeholder' => "New password",'class'=>"form-control input_desgn"]); ?>
 
+					<!-- <input class="form-control input_desgn" placeholder="New password" name="email" /> -->
+          </p>
+					<p class="signup_input">
+          <?php echo $form->field($model, 'password_repeat')->passwordInput()->label(false)->textInput(['placeholder' => "Re-enter new password",'class'=>"form-control input_desgn"]); ?>
 
+					<!-- <input class="form-control input_desgn" placeholder="Re-enter new password" name="email" /> -->
+          </p>
+					<p class="text-center">
+          <!-- <button class="btn btn-default btn_signin">Submit</button> -->
+          <?php echo Html::submitButton('Submit', ['class' => 'btn btn-default btn_signin']) ?> </div>
 
+          </p>
+				</div>
 
-
-                   <div class="col-sm-12">
-                      <div class="form-group">
-                          <?php echo Html::submitButton('Save', ['class' => 'btn btn-primary']) ?> </div>
-                    </div>
-                    
-                 </form>
-              </div>
-        </div>
          <?php ActiveForm::end(); ?>
-        <div class="col-md-2"></div>
-
-      </div>
-    </div>
-  </div>
+				<div class="col-md-12 pad_40 signin_frm success_message">
+					<p class="text-center"><img src="img/success.svg" width="88"></p>
+					<p class="success_text">You have successfully created your new password.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

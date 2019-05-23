@@ -189,7 +189,7 @@ class SignInController extends \yii\web\Controller
         
         else{
 
-            echo 'aya2444';die;
+            echo 'Please login First';die;
         if ($model->load(Yii::$app->request->post()) && $model->login('1234')) {
 
             
@@ -866,19 +866,26 @@ if ($err) {
     {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>Yii::t('frontend', 'Please check your email and set password from reset password link.'),
-                    'options'=>['class'=>'alert-success']
-                ]);
-                  $sd =1;
-                return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-			'sd'=>$sd,
-        ]);
+          
+            if ($tokens =  $model->sendEmail()) {
+
+               // echo $tokens;die;
+
+                return Yii::$app->controller->redirect(['/user/sign-in/reset-password', 'token' => $tokens]);
+               
+                // Yii::$app->getSession()->setFlash('alert', [
+                //     'body'=>Yii::t('frontend', 'Please check your email and set password from reset password link.'),
+                //     'options'=>['class'=>'alert-success']
+                // ]);
+                //   $sd =1;
+        //         return $this->render('requestPasswordResetToken', [
+        //     'model' => $model,
+		// 	'sd'=>$sd,
+        // ]);
             } else {
+               
                 Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.'),
+                    'body'=>Yii::t('frontend', 'Sorry, we are unable to reset password for mobile provided.'),
                     'options'=>['class'=>'alert-danger']
                 ]);
             }
@@ -891,7 +898,7 @@ if ($err) {
 
     public function actionResetPassword($token)
     {
-        $modellog = new LoginForm();
+        $modellog = new SignupForm();
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
@@ -899,11 +906,10 @@ if ($err) {
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-           Yii::$app->session->setFlash('success', "Password Change Successfully");
-           // return $this->goHome();
-            return $this->render('login', [
-                'model' => $modellog
-            ]);
+           //Yii::$app->session->setFlash('success', "Password Change Successfully");
+          
+           
+           return Yii::$app->controller->redirect(['/user/sign-in/signup']);
         }
 
         return $this->render('resetPassword', [
