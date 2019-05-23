@@ -10,7 +10,7 @@ $this->title =  Yii::t('frontend', 'Request password reset');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div id="login">
+
   <?php if(isset($sd)){
 	if($sd == 1){
 	
@@ -34,73 +34,111 @@ $this->params['breadcrumbs'][] = $this->title;
 	
 } }
 ?> 
-                                      <div id="login">
-                                        
-                                      
-                                        <!-- Begin page content -->
-                                        <div class="container-fluid no_pad">
-                                          <div class="row">
-                                            <div class="col-md-12 text-center no_pad">
-                                              <!--<div class="col-md-2"></div>-->
-                                                <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-                                                <div class="col-md-8 no_pad hidden-xs">
-                                                    <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/sign_up.jpg';  ?>" class="img_sign">
-                                                  </div>
-                                              <div class="col-md-4 signup_form login_main_div">
-                                                  <div class="row text-center">
-                                                      <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/logo.png';  ?>" width="100">
-                                                      <h3 class="contct_lin">Forgot Password!</h3>
-                                                      
-                                                    </div>
-                                                <div class="loginbox animated fadeInRight">
-                                                       
+                                    
 
-                                                    <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
-                                      <!--                <div class="social-buttons">
-                                                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                                        <a href="#" class="btn btn-gplus"><i class="fa fa-google"></i> Google +</a>
-                                                      </div>-->
-                                                      
-                                                    
-                                                      <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                         
-                                                          </div>
-                                                          <div class="col-sm-12 col-xs-12" style="z-index: 9;">
-                                                            <div class="form-group">
-                                                            <!--<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" required>-->
-                                                                  <?php echo $form->field($model, 'email')->label(false)->textInput([
-                                        'placeholder' => "E-mail"]); ?>
-                                                    
-                                                          </div>
-                                                          </div>
-                                                        
-                                                          
-                                                          
-                                                          
-                                                          
-                                                          <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                              <?php echo Html::submitButton('<i class="fa fa-check"></i> Send', ['class' => 'btn btn-primary']) ?>  </div>
-                                                        
-                                                          </div>
-                                                          </div>
-                                                        
-                                                          
-                                                      </form>
-                                                    </div>
-                                              </div>
-                                              <?php ActiveForm::end(); ?>
-                                              <div class="col-md-2"></div>
+<div class="container-fluid no_pad signin_cont">
+	<div class="row">
+		<div class="col-md-6 no_pad">
+			<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/signup1.jpg';  ?>" class="signup_img">
+		</div>
+		<div class="col-md-6 no_pad">
+			<div class="row pad_100">
+				<div class="col-md-12 pad_40 signin_frm">
+					<a href="" class="buttn_prev" type="button"><i class="fa fa-angle-left"></i> Back</a>				
+					<h2 class="forgot_password">Forgot Password</h2></h2>
+          <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
+					<p class="signup_input">
+					<label class="password_label">Please input your email address / Phone no.</label>
+          <?php echo $form->field($model, 'username')->label(false)->textInput([
+                                        'placeholder' => "9687878787",'class'=>"form-control input_desgn"]); ?>
+					<!-- <input class="form-control input_desgn" placeholder="9687878787" name="email" /> -->
+          
+          </p>
+					<p class="signup_input">
+					<label class="password_label">Please verify the phone number by entering the OTP sent to your mobile number.</label>
+          <?=$form->field($model, 'otp')->textInput(['placeholder' => "******",'class'=>'form-control input_desgn'])->label(false)?>
+
+          </p>
+
+          <button type="button" id="otpit" class="otp_button">Get one time password (OTP)</button>
+					<p class="text-center">
+
+          <?=	$form->field($model, 'checkotp')->hiddenInput()->label(false);	?>
+          <?php echo Html::submitButton('Submit', ['class' => 'btn btn-default btn_signin']) ?>  </div>
+
+          </p>
+
+           <?php ActiveForm::end(); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
+
+<?php
+$script = <<< JS
+
+
+ $('#otpit').click(function(e){
+   
+	 e.preventDefault();
+	 e.stopImmediatePropagation(); 
+	 var newotp =  generateOTP();
+
+	  var identity = $('#passwordresetrequestform-username').val();
+	
+		var phoneno = /^\d{10}$/;
+		if(identity.match(phoneno))
+ {	 
+
+		$.ajax({
+							 type: "POST",
+							 url: 'rgetotp',
+							 data: {phone : identity,newotp:newotp},
+							 success: function (data) {
+								 //  alert(data); 						
+								 $('#passwordresetrequestform-checkotp').val(newotp);
+									 
+									// $('#otpit').hide();        
+							 },
+					 });
+					 return;
+
+			 }
+
+		
+			 else
+			 {
+				 alert('Not a valid Input');
+					
+			 }
+
+			
+ 
+});
+
+
+
+JS;
+$this->registerJs($script);
+?>
 
 <script>
-function myfunction(str){
-	alert("Check Your E-mail for further Instructions.");
-}
+
+
+function generateOTP() { 
+		
+		// Declare a digits variable 
+		// which stores all digits 
+		var digits = '0123456789'; 
+		let OTP = ''; 
+		for (let i = 0; i < 4; i++ ) { 
+				OTP += digits[Math.floor(Math.random() * 10)]; 
+		} 
+		return OTP; 
+} 
+
 </script>

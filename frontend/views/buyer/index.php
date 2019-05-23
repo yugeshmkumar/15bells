@@ -421,8 +421,8 @@ use yii\bootstrap\Modal;
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/search.svg';  ?>" width="18"></li>
 					<li class=""><img id="polyshape" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/edit.svg';  ?>" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/hand-cursor.svg';  ?>" width="18"></li>
-					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/rect.svg';  ?>" width="18"></li>
-					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/oval.svg';  ?>" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/rect.svg';  ?>" id="rectangles" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/oval.svg';  ?>" id="circles" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/delete.svg';  ?>" id="delete-button" width="18"></li>
           <!-- <button  class="inactiveLink" id="delete-button">Delete <span id="shapedel">Shape </span></button> -->
         </ul>
@@ -450,6 +450,7 @@ use yii\bootstrap\Modal;
 
 <?php 
 $script = <<< JS
+ $('#myModal').modal('show');
 
 var colors = ['#1E90FF', '#FF1493', '#32CD32', '#FF8C00', '#4B0082'];
 var colorButtons = {};
@@ -478,6 +479,7 @@ var polyArray = [];
       var newShape;
 
    $(document).ready(function () {
+    
 $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');
 
@@ -832,7 +834,7 @@ function closeNav() {
         // }
         //  $('#delete-button').removeClass("inactiveLink");
          
-       alert(shape);
+      // alert(shape);
         clearSelection();
         selectedShape = shape;
         if (isNotMarker)
@@ -1017,6 +1019,16 @@ function closeNav() {
         $("#polyshape").click( function(){
       
       drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+       });
+
+       $("#rectangles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE);
+       });
+
+       $("#circles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
        });
         
         

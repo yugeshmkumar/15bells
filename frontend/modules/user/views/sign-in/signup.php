@@ -91,7 +91,12 @@ use yii\widgets\Pjax;
 							</button> -->
 							</p>
 							<p class="text-left tems_lin">By logging in, you agree to our<a href="" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="" class="trms_butn">Privacy Policy </a></p>
-							<p class="text-left tems_lin">Forgot Password? <a href="" class="trms_butn">Click here</a></p>
+							<p class="text-left tems_lin">Forgot Password?
+							 
+							 <?php echo Yii::t('frontend', '<a class="trms_butn" href="{link}">Click here</a>', [
+                        'link'=>yii\helpers\Url::to(['sign-in/request-password-reset'])
+                    ]) ?>
+							 </p>
 						</div>
 						<?php ActiveForm::end(); ?>
 					
