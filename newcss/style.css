@@ -61,6 +61,8 @@ a{text-decoration:none !important;}
 }
 .fixed-me .sign_up{
    border-color:#c4984f !important;
+   background:#c4984f;
+   color:#ffffff !important;
 }
 
 .fixed-me{
@@ -149,9 +151,7 @@ a{text-decoration:none !important;}
     line-height: 42px;
 	padding:0 40px;
 }
-.sign_up{
-	border:1px solid #ffffff;
-}
+
 /**Animation CSS**/
 .lines_main_container {
     top: 0;
@@ -496,8 +496,14 @@ div.mm-dropdown ul li img {
 	font-weight:300;
 }
 .read_more{
-	color:#c4984f !important;
+	color:#ffffff !important;
 	font-size:17px;
+	width:80%;
+	padding:7px;
+	background:#c4984f;
+	outline:none;
+	border-radius:0;
+	border:0;
 }
 .img_trans{
 	
@@ -506,7 +512,7 @@ div.mm-dropdown ul li img {
 	height:140px;
 }
 .pad_trans{
-	padding-top:50px;
+	padding-top:10px;
 	cursor:pointer;
 }
 .pad_trans:hover .img_trans{
@@ -721,6 +727,7 @@ div.mm-dropdown ul li img {
 	font-size:32px;
 	color:#c4984f;
 	line-height:40px;
+	margin:0;
 }
 .offic_hed{
 	font-size:20px;
@@ -730,9 +737,7 @@ div.mm-dropdown ul li img {
 .offic_c{
 	color:#c4984f !important; 
 }
-.pad_off{
-	padding-top:25px;
-}
+
 .cat_name{
 	padding:25px 0;
 }
@@ -1436,9 +1441,11 @@ form.example::after {
 .signup_buttns{
 	margin-top:10px;
 }
-.signup_buttns .sign_up{
+.sign_up{
 	 border-color:#c4984f !important;
-	 color:#c4984f !important;
+	 color:#ffffff !important;
+	 background:#c4984f;
+	 border:1px solid;
 }
 .signup_buttns .menu_a{
 	 color:#c4984f !important;
@@ -1593,8 +1600,6 @@ input.invalid {
 
 .buttn_prev:hover {
   opacity: 0.8;
-}
-.next_butn{
 }
 
 #prevBtn {
@@ -2522,10 +2527,7 @@ input.invalid {
         color: #ffffff;
     }
 
-    .plus_points > .panel-heading + .panel-collapse > .panel-body {
-       
-    }
-	
+  
 	.blue{
 		background:#221d36 !important;
 	}
@@ -2989,9 +2991,7 @@ input.invalid {
 .property_sell .step_hed{
 	height:60px;
 }
-.property_sell .step_txt{
-	height:120px;
-}
+
 
 /*  Seller Css  */
 
@@ -3394,4 +3394,28 @@ float:left;
   }
   .popup_seprator{
 	  margin:25px 0;
+  }
+
+  /**Additional Css**/
+  .step_bells{
+	background-color: #c4984f;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px 20px;
+    margin: 4px 0;
+    font-weight: 300;
+  }
+  .step_mark{
+	  width:30px;
+	  height:30px;
+	  background: #c4984f;
+	  border: 1px solid #ffffff;
+	  border-radius: 50%;
+	  color: #ffffff;
+	  padding: 1px 6px;
+	  font-size: 13px;
+	  margin-right: 10px;
+	  position: relative;
+	  bottom: 2px;
   }
