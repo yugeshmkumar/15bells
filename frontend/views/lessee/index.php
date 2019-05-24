@@ -83,7 +83,7 @@ use yii\bootstrap\Modal;
 						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li>
+						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
 				
@@ -208,21 +208,25 @@ use yii\bootstrap\Modal;
                         
                       <button style="display:none;" id="search_map" class="btn btn-info out_srch" onclick="getpolymymap(),ga('send', 'event', 'Buyer Map Search Button', 'Buyer Map Search Button', 'Buyer Map Search Button','Buyer Map Search Button')" type="button">Search</button>
                        
-						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality"><i class="fa fa-angle-left"></i> Back </a><a class="property_process" data-toggle="modal" data-target="#myModal">Continue <i class="fa fa-angle-right"></i></a></p>
+						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality"><i class="fa fa-angle-left"></i> Back </a>
+            <!-- <a class="property_process" data-toggle="modal" data-target="#myModal">Continue 
+            <i class="fa fa-angle-right"></i></a> -->
+            
+            </p>
 				  </div>
-				   <div id="area_range" class="tab-pane fade">
+				  <div id="area_range" class="tab-pane fade">
 						<div class="row property_type">
 							<div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose an Area / Unit</h3>
-								<ul class="sub_categories">
+								<!-- <ul class="sub_categories">
 									<li class="active"><a href="javascript:void(0)" class="property_subtype square" id="sq_ft">Sq. Feet</a></li>
 									<li class=""><a href="javascript:void(0)" class="property_subtype square" id="sq_yards">Sq. Yard</a></li>
 									<li class=""><a href="javascript:void(0)" class="property_subtype square" id="sq_meter">Sq. Meter</a></li>
-								</ul>
+								</ul> -->
 							</div>
-              <input type="hidden" id="propsquare" name="propsquare">
+             
 							
-							<div class="col-md-12 furnishing_stat">
+							<!-- <div class="col-md-12 furnishing_stat">
 								<div class="col-md-4 pad_left">
 									<h3 class="flow_heading avail_ability">Minimum</h3>
 									<div class="dropdown">
@@ -231,17 +235,15 @@ use yii\bootstrap\Modal;
 											<span class="caret"></span>
 											</button>
 										  <ul class="dropdown-menu User_role area_minimum" aria-labelledby="dLabel">
-											<li>500</li>
-											<li>1000</li>
-											<li>2000</li>
-											<li>3000</li>
-                                            <li>4000</li>
-                                            <li>5000</li>
+											<li>100</li>
+											<li>200</li>
+											<li>300</li>
+											<li>400</li>
 										
 										  </ul>
 									</div>
 								</div>
-                <input type="hidden" id="propareaminimum" name="propareaminimum">
+                
 								<div class="col-md-4 pad_right">
 									<h3 class="flow_heading avail_ability">Maximum</h3>
 									<div class="dropdown">
@@ -250,22 +252,61 @@ use yii\bootstrap\Modal;
 										<span class="caret"></span>
 									  </button>
 									  <ul class="dropdown-menu individual_drop area_maximum" aria-labelledby="dLabel1">
-                                            <li>1000</li>
-                                            <li>2000</li>
-                                            <li>3000</li>
-                                            <li>4000</li>
-                                            <li>5000</li>
-                                            <li>10000</li>
-										
+										<li>100</li>
+										<li>200</li>
+										<li>300</li>
+										<li>400</li>
 									
 									  </ul>
 									</div>
-								</div>
+								</div> -->
+							<!-- </div> -->
+              <select id="propsquare">
+              <option value="sq_ft">Sq. Feet</option>
+              <option value="sq_yards">Sq. Yard</option>
+              <option value="sq_meter">Sq. Meter</option>
+              </select>
+              
+              <input type="text" id="propareaminimum" name="propareaminimum">
+              <input type="text" id="propareamaximum" name="propareamaximum">
+
+<div class="col-md-12 no_pad pad_left">
+								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
+							
+               
+                <input type="text" id="proppriceminimum" name="proppriceminimum">
+              <select id="propminrupees">
+              <option value="lacs">Lacs</option>
+              <option value="crores">Crores</option>
+             
+              </select>
+                <input type="text" id="proppricemaximum" name="proppricemaximum">
+                <select id="propmaxrupees">
+                <option value="lacs">Lacs</option>
+              <option value="crores">Crores</option>
+              
+              </select>
+								
 							</div>
-              <input type="hidden" id="propareamaximum" name="propareamaximum">
+
+
+
+
+
+
 							
 						</div>
-						<p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_back step_area"><i class="fa fa-angle-left"></i> Back </a><a data-toggle="pill" href="#price_range" class="property_process step_details">Continue <i class="fa fa-angle-right"></i></a></p>
+						<p class="text-right process_continue">
+            <a data-toggle="pill" href="#menu1" class="property_back step_area">
+            <i class="fa fa-angle-left"></i> Back </a>
+            
+            <!-- <a data-toggle="pill" href="#price_range" class="property_process step_details">Continue 
+            <i class="fa fa-angle-right"></i></a> -->
+
+       <?= Html::submitButton('Continue <i class="fa fa-angle-right"></i>', ['id'=>'nextBtnrep','class' => 'property_process step_details']) ?>
+
+            
+            </p>
 				   </div>
 				   <div id="price_range" class="tab-pane fade">
 						<div class="row property_type">
@@ -408,7 +449,6 @@ use yii\bootstrap\Modal;
 </div>
 
 
-
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg modal_dialogue">
 
@@ -426,6 +466,8 @@ use yii\bootstrap\Modal;
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/search.svg';  ?>" width="18"></li>
 					<li class=""><img id="polyshape" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/edit.svg';  ?>" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/hand-cursor.svg';  ?>" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/rect.svg';  ?>" id="rectangles" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/oval.svg';  ?>" id="circles" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/delete.svg';  ?>" id="delete-button" width="18"></li>
           <!-- <button  class="inactiveLink" id="delete-button">Delete <span id="shapedel">Shape </span></button> -->
         </ul>
@@ -434,7 +476,7 @@ use yii\bootstrap\Modal;
 				<h4 class="mark_map">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
-											<button class="btn btn-lg" data-dismiss="modal">Go Back</button>
+											<button class="btn btn-lg" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
 											<button class="btn button_togg btn-lg active step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
 										  </div></p>
 				
@@ -536,6 +578,15 @@ var polyArray = [];
     });
 
     $('.confirmbutton').click(function(){ 
+
+       var locals =  $('#town').val();
+
+if(locals !=''){
+  $('#myModal').modal('show');
+
+} else{
+  alert('Please select any locality');
+}
       
           var confirmvalue = $(this).val();          
           $('#propnearby').val(confirmvalue);
@@ -1014,9 +1065,19 @@ function closeNav() {
           map: map
         });
 
-        $("#polyshape").click( function(){
+       $("#polyshape").click( function(){
       
       drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+       });
+
+       $("#rectangles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE);
+       });
+
+       $("#circles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
        });
         
         
