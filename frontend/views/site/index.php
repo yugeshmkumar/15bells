@@ -872,7 +872,7 @@ $script = <<< JS
 
 
 
-		var elems = $("h1");
+		var elems = $(".brand_name");
 if (elems.length) {
   var keep = Math.floor(Math.random() * elems.length);
   for (var i = 0; i < elems.length; ++i) {
@@ -896,7 +896,7 @@ if (elems.length) {
       $(this).children(".plusminus").text('-');
     }
   });
-    $('.fadein .brand_name:gt(0)').hide();
+   // $('.fadein .brand_name:gt(0)').hide();
 
     // setInterval(function(){
 	// 	$('.fadein > :first-child').fadeOut().next('.brand_name').fadeIn().end().appendTo('.fadein');
