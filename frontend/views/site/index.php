@@ -870,6 +870,18 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 <?php 
 $script = <<< JS
 
+
+
+		var elems = $("h1");
+if (elems.length) {
+  var keep = Math.floor(Math.random() * elems.length);
+  for (var i = 0; i < elems.length; ++i) {
+    if (i !== keep) {
+      $(elems[i]).hide();
+    }
+  }
+}			
+
    $(document).ready(function(){
 	$(".accordion_head").click(function() {
     if ($('.accordion_body').is(':visible')) {
@@ -886,9 +898,9 @@ $script = <<< JS
   });
     $('.fadein .brand_name:gt(0)').hide();
 
-    setInterval(function(){
-		$('.fadein > :first-child').fadeOut().next('.brand_name').fadeIn().end().appendTo('.fadein');
-		}, 6000);
+    // setInterval(function(){
+	// 	$('.fadein > :first-child').fadeOut().next('.brand_name').fadeIn().end().appendTo('.fadein');
+	// 	}, 6000);
 	//$(".transp_contnt").hide();
 	
 	$(".trans_clck").click(function(){
