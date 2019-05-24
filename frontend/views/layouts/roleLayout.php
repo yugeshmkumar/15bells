@@ -18,7 +18,7 @@ NewDesignAsset::register($this);
 ?>
 <?php $this->beginContent('@frontend/views/layouts/baserole.php'); ?>
 
-<script src="https://wchat.freshchat.com/js/widget.js"></script>
+
 
 
 		
@@ -173,12 +173,7 @@ NewDesignAsset::register($this);
 
        
        <?php $this->endContent(); ?>
-	   <script>
-  window.fcWidget.init({
-    token: "ebc8f91e-d61d-4c7b-a141-153392459204",
-    host: "https://wchat.freshchat.com"
-  });
-</script>
+	   
 
 	<script>// Check document is loaded
 document.onreadystatechange = function () {

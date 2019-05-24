@@ -54,10 +54,6 @@ use yii\widgets\Pjax;
 
 					<div class="tab-content">
 
-
-
-
-					
 					  <div id="home" class="tab-pane fade in active">
 					
 						<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
