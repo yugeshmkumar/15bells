@@ -583,7 +583,6 @@ div.mm-dropdown ul li img {
 
 /* The navigation menu links */
 .sidenav a {
- padding: 8px 8px 8px 32px;
   text-decoration: none;
   display: block;
   transition: 0.3s;
@@ -2966,17 +2965,15 @@ input.invalid {
 	margin:22px 0;
 }
 .sliding_menu  .active .menu_link{
-	font-size:40px;
+	font-size:22px;
 	color:#c4984f !important; 
     border-left: 3px solid #c4984f;
-	font-weight:700;
 }
 .menu_link{
-	font-size:40px;
+	font-size:22px;
 	color:#ffffff;
 	padding: 2px 15px;
 	transition:.4s;
-	font-weight:700;
 }
 .menu_link:hover{
 	color:#c4984f !important;
