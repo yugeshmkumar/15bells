@@ -80,10 +80,10 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps no_pad"><a data-toggle="pill" href="javascript:void(0)" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="javascript:void(0)" class="categ_selec">Property Location</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="javascript:void(0)" class="categ_selec">Area</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="javascript:void(0)" class="categ_selec">Price Range</a></li>
+						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
+						<li class="property_steps no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
+						<li class="property_steps no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
+						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
 				
@@ -112,7 +112,7 @@ use yii\bootstrap\Modal;
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
 								<li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
-								<li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
+								<li class=""><a data-toggle="pill" href="#menu1" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
 								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
 								<li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
 							</ul>
@@ -151,7 +151,7 @@ use yii\bootstrap\Modal;
 						<div class="col-md-12 seperator_div">
 						</div>
 					</div>
-					<p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_process step_type">Continue <i class="fa fa-angle-right"></i></a></p>
+					<!-- <p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_process step_type">Continue <i class="fa fa-angle-right"></i></a></p> -->
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
 						<div class="row property_type">
@@ -208,21 +208,25 @@ use yii\bootstrap\Modal;
                         
                       <button style="display:none;" id="search_map" class="btn btn-info out_srch" onclick="getpolymymap(),ga('send', 'event', 'Buyer Map Search Button', 'Buyer Map Search Button', 'Buyer Map Search Button','Buyer Map Search Button')" type="button">Search</button>
                        
-						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality"><i class="fa fa-angle-left"></i> Back </a><a class="property_process" data-toggle="modal" data-target="#myModal">Continue <i class="fa fa-angle-right"></i></a></p>
+						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality">
+            <i class="fa fa-angle-left"></i> Back </a>
+            <!-- <a class="property_process" data-toggle="modal" data-target="#myModal">Continue <i class="fa fa-angle-right"></i> -->
+            <!-- </a> -->
+            </p>
 				  </div>
 				   <div id="area_range" class="tab-pane fade">
 						<div class="row property_type">
 							<div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose an Area / Unit</h3>
-								<ul class="sub_categories">
+								<!-- <ul class="sub_categories">
 									<li class="active"><a href="javascript:void(0)" class="property_subtype square" id="sq_ft">Sq. Feet</a></li>
 									<li class=""><a href="javascript:void(0)" class="property_subtype square" id="sq_yards">Sq. Yard</a></li>
 									<li class=""><a href="javascript:void(0)" class="property_subtype square" id="sq_meter">Sq. Meter</a></li>
-								</ul>
+								</ul> -->
 							</div>
-              <input type="hidden" id="propsquare" name="propsquare">
+             
 							
-							<div class="col-md-12 furnishing_stat">
+							<!-- <div class="col-md-12 furnishing_stat">
 								<div class="col-md-4 pad_left">
 									<h3 class="flow_heading avail_ability">Minimum</h3>
 									<div class="dropdown">
@@ -239,7 +243,7 @@ use yii\bootstrap\Modal;
 										  </ul>
 									</div>
 								</div>
-                <input type="hidden" id="propareaminimum" name="propareaminimum">
+                
 								<div class="col-md-4 pad_right">
 									<h3 class="flow_heading avail_ability">Maximum</h3>
 									<div class="dropdown">
@@ -255,12 +259,54 @@ use yii\bootstrap\Modal;
 									
 									  </ul>
 									</div>
-								</div>
+								</div> -->
+							<!-- </div> -->
+              <select id="propsquare">
+              <option value="sq_ft">Sq. Feet</option>
+              <option value="sq_yards">Sq. Yard</option>
+              <option value="sq_meter">Sq. Meter</option>
+              </select>
+              
+              <input type="text" id="propareaminimum" name="propareaminimum">
+              <input type="text" id="propareamaximum" name="propareamaximum">
+
+<div class="col-md-12 no_pad pad_left">
+								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
+							
+               
+                <input type="text" id="proppriceminimum" name="proppriceminimum">
+              <select id="propminrupees">
+              <option value="lacs">Lacs</option>
+              <option value="crores">Crores</option>
+             
+              </select>
+                <input type="text" id="proppricemaximum" name="proppricemaximum">
+                <select id="propmaxrupees">
+                <option value="lacs">Lacs</option>
+              <option value="crores">Crores</option>
+              
+              </select>
+								
 							</div>
-              <input type="hidden" id="propareamaximum" name="propareamaximum">
+
+
+
+
+
+
 							
 						</div>
-						<p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_back step_area"><i class="fa fa-angle-left"></i> Back </a><a data-toggle="pill" href="#price_range" class="property_process step_details">Continue <i class="fa fa-angle-right"></i></a></p>
+						<p class="text-right process_continue">
+            <a data-toggle="pill" href="#menu1" class="property_back step_area">
+            <i class="fa fa-angle-left"></i> Back </a>
+            
+            <!-- <a data-toggle="pill" href="#price_range" class="property_process step_details">Continue 
+            <i class="fa fa-angle-right"></i></a> -->
+
+       <?= Html::submitButton('Continue <i class="fa fa-angle-right"></i>', ['id'=>'nextBtnrep','class' => 'property_process step_details']) ?>
+
+            
+            </p>
 				   </div>
 				   <div id="price_range" class="tab-pane fade">
 						<div class="row property_type">
@@ -284,7 +330,7 @@ use yii\bootstrap\Modal;
 										  </ul>
 									</div>
 								</div>
-                <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+               
 								<div class="col-md-4 pad_right">
 									<h3 class="flow_heading avail_ability">Maximum</h3>
 									<div class="dropdown">
@@ -304,7 +350,7 @@ use yii\bootstrap\Modal;
 									</div>
 								</div>
 							</div>
-              <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+              
              
               <input type="hidden" id="newspaths" name="newspaths">
               <input type="hidden" id="shaped" name="shaped">
@@ -318,7 +364,6 @@ use yii\bootstrap\Modal;
 						</div>
 						<p class="text-right process_continue"><a data-toggle="pill" href="#area_range" class="property_back step_area"><i class="fa fa-angle-left"></i> Back </a>
             <!-- <a data-toggle="pill" href="#property_details" class="property_process step_details">Continue <i class="fa fa-angle-right"></i></a> -->
-            <?= Html::submitButton('Continue <i class="fa fa-angle-right"></i>', ['id'=>'nextBtnrep','class' => 'property_process step_details']) ?>
 
             </p>
 				   </div>
@@ -431,7 +476,7 @@ use yii\bootstrap\Modal;
 				<h4 class="mark_map">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
-											<button class="btn btn-lg" data-dismiss="modal">Go Back</button>
+											<button class="btn btn-lg" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
 											<button class="btn button_togg btn-lg active step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
 										  </div></p>
 				
@@ -450,7 +495,7 @@ use yii\bootstrap\Modal;
 
 <?php 
 $script = <<< JS
- $('#myModal').modal('show');
+ 
 
 var colors = ['#1E90FF', '#FF1493', '#32CD32', '#FF8C00', '#4B0082'];
 var colorButtons = {};
@@ -537,9 +582,27 @@ $(".sub_categories li a").click(function() {
       $('#propcity').val(propcity);
     });
 
+    $('#pac-input').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) { 
+        e.preventDefault();
+        return false;
+        }
+        });
+
     $('.confirmbutton').click(function(){ 
       
-          var confirmvalue = $(this).val();          
+        
+
+        var locals =  $('#town').val();
+
+          if(locals !=''){
+            $('#myModal').modal('show');
+
+          } else{
+            alert('Please select any locality');
+          }
+           var confirmvalue = $(this).val();          
           $('#propnearby').val(confirmvalue);
     });
 
