@@ -521,7 +521,7 @@ $user_id= Yii::$app->user->identity->id;
 				<h4 class="mark_map">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
-											<button class="btn btn-lg" data-dismiss="modal">Go Back</button>
+											<button class="btn btn-lg map_continue" data-dismiss="modal">Skip</button>
 											<button class="btn button_togg btn-lg active step_availablity" type="button" onclick="getbrandcount();">Confirm</button>
 										  </div></p>
 				
@@ -558,10 +558,23 @@ $user_id= Yii::$app->user->identity->id;
 			</div>
 			
 			<div class="col-md-6">
-			<?php $modeled = new \frontend\modules\user\models\SignupForm(); ?>
+            		<ul class="nav nav-pills signup_tabs">
+					  <li class="active"><a class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign up</a></li>
+					  <li><a class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Already a member</a></li>
+					</ul>
+
+<div class="tab-content">
+
+                    <div id="home" class="tab-pane fade in active">
+			<div class="col-md-12">
+            <?php $modeled = new \frontend\modules\user\models\SignupForm(); 
+             $model1 = new \frontend\modules\user\models\LoginForm();
+            
+            ?>
 
 			<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
 			'action'=>"user/sign-in/sellersignup"]); ?>
+
 				<div class="col-md-12 seller_lead">
 					<h2 class="login_head verify_seller">Verify yourself to reach 1,000 Buyers</h2>
 							<div class="form-group">
@@ -613,6 +626,86 @@ $user_id= Yii::$app->user->identity->id;
           <?php ActiveForm::end(); ?>
 				
 			</div>
+
+</div>
+
+
+<div id="menu1" class="tab-pane fade">
+
+	<div class="col-md-12">
+					
+                    <?php 
+
+                    $form = ActiveForm::begin(['id' => $model1->formName(),
+                    'action'=>"user/sign-in/sellerlogin"]); 
+                    
+                    ?>
+                            <?=
+                            $form->field($model1, 'checkotp')->hiddenInput()->label(false);
+
+                            ?>
+                             <?=
+                            $form->field($model1, 'checkfield')->hiddenInput()->label(false);
+
+                            ?>
+                    
+                    <div class="col-md-12 no_pad">
+                        <div class="form-group">
+                        <?php echo $form->field($model1, 'identity')->textInput(['class' => 'form-control input_desgn','placeholder'=>'Email or Phone no'])->label(false) ?>
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                        </div>
+
+                        
+                        <button type="button" id="passwordit" class="otp_button">Login by Password</button>
+                        <button type="button" id="otpits" class="otp_button">Login by OTP</button>
+
+
+                        <div class="form-group" id="hideotp">
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                            <?php echo $form->field($model1, 'userOTP')->textInput(['class' => 'form-control input_desgn','placeholder'=>'OTP'])->label(false) ?>
+                         
+                        </div>
+
+                        <div class="form-group" id="hidepassword">
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                            <?php echo $form->field($model1, 'password')->passwordInput(['class' => 'form-control input_desgn','placeholder'=>'Password'])->label(false) ?>
+                         
+                        </div>
+                        <!--<div class="checkbox">
+                        
+                        <?//php echo $form->field($model1, 'rememberMe')->checkbox() ?>
+                           <label class="rembr_ch"><input type="checkbox" value="">Remember me</label> 
+                        </div>-->
+
+                        
+                        <p class="text-center">
+
+<?php echo Html::submitButton(Yii::t('frontend', '<img src="'.Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg' .'" width="14" class="lock_img">Sign in securely'), ['class' => 'btn btn-default btn_signin', 'name' => 'login-button']) ?>
+                        <!-- <button class="btn btn-default btn_signin">
+                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg';  ?>" width="14" class="lock_img">Sign in securely
+                        </button> -->
+                        </p>
+                        <!-- <p class="text-left tems_lin">By logging in, you agree to our<a href="" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="" class="trms_butn">Privacy Policy </a></p> -->
+                        <p class="text-left tems_lin">Forgot Password?
+                         
+                         <?php echo Yii::t('frontend', '<a class="trms_butn" href="{link}">Click here</a>', [
+                    'link'=>yii\helpers\Url::to(['sign-in/request-password-reset'])
+                ]) ?>
+                         </p>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                
+                  </div>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
 		</div>
 		
       </div>
@@ -723,6 +816,20 @@ $user_id= Yii::$app->user->identity->id;
 <?php
 $script = <<< JS
 
+$("#signup_modal").modal('show');
+
+$('#hideotp').hide();
+$('#hidepassword').hide();
+
+$('#passwordit').click(function(){
+
+$('#loginform-checkfield').val('password');
+
+$('#hideotp').hide();
+$('#hidepassword').show();
+
+});
+
 
 $('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 	
@@ -749,13 +856,25 @@ $.ajax({
 
     success: function (data) {
 
+        if( typeof(data["signupform-username"]) != "undefined"){
+              
+              if (data["signupform-username"] == 'Mobile No. already exist.'){
+
+
+                  alert('Mobile No. Already exisit please sign in here');
+                $( ".signup_butn" ).trigger( "click" );
+              }
+
+        }
+
  if ( typeof(data["signupform-username"]) != "undefined" && data["signupform-username"] !== null && data["signupform-username"] !== 'exist' ) {
                      
                     }
 
                      if(data == 'done'){
-		$("#signup_modal").modal('hide');
-	   }
+
+		                 $("#signup_modal").modal('hide');
+	                 }
         
 
        
@@ -775,6 +894,137 @@ $.ajax({
 	
 
 e.preventDefault();
+
+});
+
+
+
+
+
+
+$('form#{$model1->formName()}').on('beforeSubmit', function(e) {
+	
+    var form = $(this);
+
+     
+    
+    var formData = form.serialize();
+    
+    $.ajax({
+    
+        url: form.attr("action"),
+    
+        type: form.attr("method"),
+    
+        beforeSend: function(){
+        
+         
+       },
+       complete: function(){
+       
+        
+       },
+    
+        data: formData,
+    
+        success: function (data) {
+
+             if( typeof(data['loginform-password']) != "undefined"){
+              
+              if (data['loginform-password'] == 'Incorrect username or password.'){
+
+
+                  alert('Incorrect username or password.');
+              }
+
+        }   
+                         if(data == 'done'){
+    
+                             $("#signup_modal").modal('hide');
+                         }
+            
+    
+           
+    
+        },
+    
+        error: function () {
+    
+            //alert("Something went wrong");
+    
+        }
+    
+    });
+    
+    }).on('submit', function(e){
+    
+       
+    
+    e.preventDefault();
+    
+    });
+
+
+
+
+     $('#otpits').click(function(e){
+
+$('#loginform-checkfield').val('otp');
+
+$('#hideotp').show();
+$('#hidepassword').hide();
+
+e.preventDefault();
+e.stopImmediatePropagation(); 
+var newotp =  generateOTP();
+
+var identity = $('#loginform-identity').val();
+
+var phoneno = /^\d{10}$/;
+if(identity.match(phoneno))
+{	 
+
+$.ajax({
+                     type: "POST",
+                     url: 'user/sign-in/rgetotp',
+                     data: {phone : identity,newotp:newotp},
+                     success: function (data) {
+                         //  alert(data); 						
+                         $('#loginform-checkotp').val(newotp);
+                             
+                            // $('#otpit').hide();        
+                     },
+             });
+             return;
+
+     }
+
+    else if (isValidEmailAddress(identity)) {
+
+     $.ajax({
+        type: "POST",
+        url: 'sendemail',
+        data: {emailid : identity,newotp:newotp},
+        success: function (data) {
+            
+           // toastr.success('OTP has been Send to your Mobile Number','success');
+           // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
+
+                            
+             $('#loginform-checkotp').val(newotp);
+              
+        },
+    });
+
+                return;
+}		 
+     else
+     {
+         alert('Not a valid Input');
+            
+     }
+
+    
 
 });
 
@@ -803,7 +1053,8 @@ function generateOTP() {
 
 	
 	 $('#otpit').click(function(e){
-   
+
+         
    e.preventDefault();
    e.stopImmediatePropagation(); 
    var newotp =  generateOTP();
