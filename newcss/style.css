@@ -2979,7 +2979,6 @@ input.invalid {
 	color:#c4984f !important;
 	border-left:3px solid #c4984f;
 	transition:.4s;
-	font-weight:700;
 }
 .slide_dots{
 	z-index:-1;
