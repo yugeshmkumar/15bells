@@ -61,8 +61,12 @@ use yii\widgets\Pjax;
 					  <div id="home" class="tab-pane fade in active">
 					
 						<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-						<?=
+						        <?=
 								$form->field($model1, 'checkotp')->hiddenInput()->label(false);
+
+								?>
+								 <?=
+								$form->field($model1, 'checkfield')->hiddenInput()->label(false);
 
 								?>
 						
@@ -71,9 +75,21 @@ use yii\widgets\Pjax;
 							<?php echo $form->field($model1, 'identity')->textInput(['class' => 'form-control input_desgn','placeholder'=>'Email or Phone no'])->label(false) ?>
 							  <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
 							</div>
-							<div class="form-group">
+
+							
+							<button type="button" id="passwordit" class="otp_button">Login by Password</button>
+							<button type="button" id="otpit" class="otp_button">Login by OTP</button>
+
+
+							<div class="form-group" id="hideotp">
 							  <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
 								<?php echo $form->field($model1, 'userOTP')->textInput(['class' => 'form-control input_desgn','placeholder'=>'OTP'])->label(false) ?>
+							 
+							</div>
+
+							<div class="form-group" id="hidepassword">
+							  <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+								<?php echo $form->field($model1, 'password')->passwordInput(['class' => 'form-control input_desgn','placeholder'=>'Password'])->label(false) ?>
 							 
 							</div>
 							<!--<div class="checkbox">
@@ -82,7 +98,7 @@ use yii\widgets\Pjax;
 							   <label class="rembr_ch"><input type="checkbox" value="">Remember me</label> 
 							</div>-->
 
-							<button type="button" id="otpit" class="otp_button">Get one time password (OTP)</button>
+							
 							<p class="text-center">
 
 	<?php echo Html::submitButton(Yii::t('frontend', '<img src="'.Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg' .'" width="14" class="lock_img">Sign in securely'), ['class' => 'btn btn-default btn_signin', 'name' => 'login-button']) ?>
@@ -90,7 +106,7 @@ use yii\widgets\Pjax;
 							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg';  ?>" width="14" class="lock_img">Sign in securely
 							</button> -->
 							</p>
-							<p class="text-left tems_lin">By logging in, you agree to our<a href="" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="" class="trms_butn">Privacy Policy </a></p>
+							<!-- <p class="text-left tems_lin">By logging in, you agree to our<a href="" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="" class="trms_butn">Privacy Policy </a></p> -->
 							<p class="text-left tems_lin">Forgot Password?
 							 
 							 <?php echo Yii::t('frontend', '<a class="trms_butn" href="{link}">Click here</a>', [
@@ -114,7 +130,7 @@ use yii\widgets\Pjax;
 							
 								<p class="signup_input">
 									<div class="dropdown">
-										<label class="label_font" for="usr">I'm a</label>
+										<label class="label_font" for="usr">I'm here to</label>
 										<!-- <button id="dLabel" class="form-control dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Select
 										<span class="caret"></span>
@@ -234,7 +250,7 @@ use yii\widgets\Pjax;
 								
 								
 								</p>
-								
+								<p class="text-left tems_lin">By registering to 15Bells, you agree to our<a href="javascript:void(0)" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="javascript:void(0)" class="trms_butn">Privacy Policy </a></p>
 							  </div>
 							
 							  <div class="tab">
@@ -257,6 +273,10 @@ use yii\widgets\Pjax;
 
 <?php
 $script = <<< JS
+
+
+$('#hideotp').hide();
+   $('#hidepassword').hide();
 
 
  document.onkeydown = function(e) {
@@ -322,10 +342,23 @@ $('#dLabel1').val(getValue);
 showTab(currentTab); // Display the current tab
 
 
+ $('#passwordit').click(function(){
+
+	 $('#loginform-checkfield').val('password');
+
+	$('#hideotp').hide();
+   $('#hidepassword').show();
+
+ });
 
 
     $('#otpit').click(function(e){
-   
+
+		$('#loginform-checkfield').val('otp');
+
+   $('#hideotp').show();
+   $('#hidepassword').hide();
+
 	 e.preventDefault();
 	 e.stopImmediatePropagation(); 
 	 var newotp =  generateOTP();
