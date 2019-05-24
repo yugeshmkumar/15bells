@@ -815,7 +815,7 @@ $user_id= Yii::$app->user->identity->id;
 <?php
 $script = <<< JS
 
-$("#signup_modal").modal('show');
+//$("#signup_modal").modal('show');
 
 $('#hideotp').hide();
 $('#otphide').hide();
