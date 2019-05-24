@@ -124,8 +124,8 @@ NewDesignAsset::register($this);
 		
 		<div id="mySidenav" class="sidenav">
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			  <div class="col-md-10 col-md-offset-2">
-				<div class="col-md-5">
+			  <div class="col-md-12">
+				
 					<ul class="sliding_menu">
 							<li class="trst_act active"><a class="menu_link trust_clck" href="javascript:void(0)">Our solution 	</a></li>
 							<li class="trans_act"><a class="menu_link trans_clck" href="javascript:void(0)">Resources</a></li>
@@ -133,37 +133,9 @@ NewDesignAsset::register($this);
 						
 					</ul>
 					
-				</div>
+				
 			 </div>
-			 <div class="container-fluid dot_div slide_dots">
-				<div class="absolute lines_main_container">
-						<div class="lines_container">
-							<div class="lines"></div>
-							<div class="slide_lines"></div>
-						</div>
-						<div class="lines_container">
-							<div class="lines"></div>
-							<div class="slide_lines"></div>
-						</div>
-						<div class="lines_container">
-							<div class="lines small_border"></div>
-							<div class="slide_lines"></div>
-						</div>
-						<div class="lines_container small_hide">
-							<span class="internal_line">&nbsp;</span>
-							<div class="slide_lines"></div>
-							<div class="lines"></div>
-						</div>
-						<div class="lines_container small_hide">
-							<div class="lines"></div>
-							<div class="slide_lines"></div>
-						</div>
-						<div class="lines_container small_hide">
-							<div class="lines"></div>
-							<div class="slide_lines"></div>
-						</div>
-				</div>
-            </div>
+			 
 			</div>
 			<!-- Use any element to open the sidenav -->
 			<span onclick="openNav()"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/menu.png';  ?>" class="img_menu"></span>
@@ -326,7 +298,7 @@ $(window).scroll(function() {
 });
 /* Set the width of the side navigation to 250px */
 function openNav() {
-document.getElementById("mySidenav").style.width = "100%";
+document.getElementById("mySidenav").style.width = "300px";
 }
 
 /* Set the width of the side navigation to 0 */
