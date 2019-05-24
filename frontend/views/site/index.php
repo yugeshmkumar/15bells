@@ -316,6 +316,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 				</div>
 			  </div>
+			  </div>
 				
 			  <div id="lease_out" class="tab-pane fade">
 			  <div class="row text-center pad_step">
