@@ -261,31 +261,46 @@ use yii\bootstrap\Modal;
 									</div>
 								</div> -->
 							<!-- </div> -->
-              <select id="propsquare">
-              <option value="sq_ft">Sq. Feet</option>
-              <option value="sq_yards">Sq. Yard</option>
-              <option value="sq_meter">Sq. Meter</option>
-              </select>
-              
-              <input type="text" id="propareaminimum" name="propareaminimum">
-              <input type="text" id="propareamaximum" name="propareamaximum">
+              <div class="col-md-12 locality_input">
+									<div class="row">
+                      <div class="col-md-2">
+                      <select id="propsquare" class="form-control area_price">
+                      <option value="sq_ft">Sq. Feet</option>
+                      <option value="sq_yards">Sq. Yard</option>
+                      <option value="sq_meter">Sq. Meter</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum" name="propareaminimum">
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum" name="propareamaximum">
 
-<div class="col-md-12 no_pad pad_left">
+                    </div>
+                  </div>
+               </div>
+
+<div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							
-               
-                <input type="text" id="proppriceminimum" name="proppriceminimum">
-              <select id="propminrupees">
-              <option value="lacs">Lacs</option>
-              <option value="crores">Crores</option>
-             
-              </select>
-                <input type="text" id="proppricemaximum" name="proppricemaximum">
-                <select id="propmaxrupees">
-                <option value="lacs">Lacs</option>
-              <option value="crores">Crores</option>
-              
-              </select>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
+                 </div>
+                <div class="col-md-2">
+                    <select id="propminrupees" class="form-control area_price">
+                       <option value="lacs">Lacs</option>
+                       <option value="crores">Crores</option>
+                    </select>
+                 </div>
+                 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+                 </div>
+                 <div class="col-md-2">
+                    <select id="propmaxrupees" class="form-control area_price">
+                      <option value="lacs">Lacs</option>
+                     <option value="crores">Crores</option>
+                     </select>
+                   </div>
 								
 							</div>
 
