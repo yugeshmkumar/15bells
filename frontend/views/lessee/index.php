@@ -19,7 +19,7 @@ use yii\bootstrap\Modal;
 		<div class="container-fluid no_pad div_header">
 		
 			
-			<div class="container">
+			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
 				<p class="about_det animated slideInDown col-md-7">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
 								<h1 class="single_hed col-md-12">Discover a commercial property you would love to buy. </h1>
@@ -90,90 +90,90 @@ use yii\bootstrap\Modal;
 				  <div id="home" class="tab-pane fade in active">	
 					<div class="row property_type">
 						<div class="col-md-12">
-							<div class="col-md-3 commer_office">
+							<div class="col-md-3 col-xs-6 commer_office">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="border_yellow property_image">
 								<p class="property_name">Commercial Office</p>
 							</div>
-							<div class="col-md-3 commer_retail">
+							<div class="col-md-3 col-xs-6 commer_retail">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/retail.svg';  ?>" class="property_image">
 								<p class="property_name">Commercial Retails</p>
 							</div>
-							<div class="col-md-3 commer_land">
+							<div class="col-md-3 col-xs-6 commer_land">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/industrial.svg';  ?>" class="property_image">
 								<p class="property_name">Industrial Land & <br>Plots</p>
 							</div>
-							<div class="col-md-3 ware_house">
+							<div class="col-md-3 col-xs-6 ware_house">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/warehouse.svg';  ?>" class="property_image">
 								<p class="property_name">Warehouse</p>
 							</div>
 						</div>
 						
-						<div class="col-md-12 category_detail commercial_o">
+					
+						<div class="row category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
-								<li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
-								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
-								<li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="11" class="property_subtype proptype step_type">Commercial Office Space</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="12" class="property_subtype proptype step_type">IT / ITES / SEZ Park</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="13" class="property_subtype proptype step_type">Co-working/Business Center</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="14" class="property_subtype proptype step_type">Commercial SEZ</a></li>
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail commercial_r">
+            <div class="row category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
-								<li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
-								<li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
-								<li class=""><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="15" class="property_subtype proptype step_type">Mall/Retail Shop</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="16" class="property_subtype proptype step_type">Showrooms</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="17" class="property_subtype proptype step_type">High Street/ Society Shops</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="18" class="property_subtype proptype step_type">Food Court</a></li>
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail industrial_land">
+						<div class="row category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
-								<li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
-								<li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
-								<li class=""><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="19" class="property_subtype proptype step_type">Commercial land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="22" class="property_subtype proptype step_type">Industrial / Factory land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="23" class="property_subtype proptype step_type">Institutional/Hotel/School land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="24" class="property_subtype proptype step_type">SEZ/IT/ITES land</a></li>
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail warehouse">
+						<div class="row category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
-								<li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="25" class="property_subtype proptype step_type">Shed</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="26" class="property_subtype proptype step_type">Agriculture</a></li>
 								
 							</ul>
-							
 						</div>
             <input type="hidden" id="proptype" name="proptype">
 						<div class="col-md-12 seperator_div">
 						</div>
 					</div>
-					<p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_process step_type">Continue <i class="fa fa-angle-right"></i></a></p>
+          <p class="text-right process_continue"><a data-toggle="pill" href="#menu1" id="click_t" class="step_type step1"></a></p>
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
 						<div class="row property_type">
-							<div class="col-md-12 text-center property_area">
+            <div class="col-md-12 text-center property_area">
 								<div class="col-md-1"></div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="border_yellow1 property_image1">
 									<p class="property_name">Delhi</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="gurugram" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>" class="property_image1">
 									<p class="property_name">Gurgaon</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>" class="property_image1">
 									<p class="property_name">Faridabad</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>" class="property_image1">
 									<p class="property_name">Noida</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>" class="property_image1">
 									<p class="property_name">Gaziabad</p>
 								</div>
@@ -496,6 +496,9 @@ var polyArray = [];
 			$(".property_image1").removeClass("border_yellow1");
 			// $(".tab").addClass("active"); // instead of this do the below 
 			$(this).addClass("border_yellow1");   
+      $('html,body').animate({
+        scrollTop: $(".property_locality").offset().top - 100},
+        'slow');   
 		});
 
 		$(".commer_retail").click(function () {
@@ -503,12 +506,18 @@ var polyArray = [];
 				$('.commercial_r').show();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
+        $('html,body').animate({
+        scrollTop: $(".commercial_r").offset().top - 100},
+        'slow');
 		});
 		$(".commer_office").click(function () {
 				$('.commercial_o').show();
 				$('.commercial_r').hide();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
+        $('html,body').animate({
+        scrollTop: $(".commercial_o").offset().top - 100},
+        'slow');
 				
 		});
 		$(".commer_land").click(function () {
@@ -516,12 +525,18 @@ var polyArray = [];
 				$('.warehouse').hide();
 				$('.industrial_land').show();
 				$('.commercial_r').hide();
+        $('html,body').animate({
+        scrollTop: $(".industrial_land").offset().top - 100},
+        'slow');
 		});
 		$(".ware_house").click(function () {
 				$('.commercial_o').hide();
 				$('.commercial_r').hide();
 				$('.warehouse').show();
 				$('.industrial_land').hide();
+        $('html,body').animate({
+        scrollTop: $(".warehouse").offset().top - 100},
+        'slow');
 		});
 
     $('.proptype').click(function(){
@@ -550,11 +565,17 @@ var polyArray = [];
        //$(.add_property)
        $('.add_property li:nth-child(2)').addClass("active");
        //$(".add_property li:nth-child(1)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $(".property_area").offset().top + 600},
+        'slow');
    });
    $('.step_availablity').click(function(e) {
        //$(.add_property)
        $('.add_property li:nth-child(3)').addClass("active");
        //$(".add_property li:nth-child(2)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $("#home").offset().top + 750},
+        'slow');
    });
    $('.step_locality').click(function(e) {
        //$(.add_property)

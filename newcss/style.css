@@ -600,6 +600,7 @@ div.mm-dropdown ul li img {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  color:#ffffff;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -617,7 +618,8 @@ div.mm-dropdown ul li img {
 	    width: 20px;
     position: absolute;
     left: 2%;
-    top: 50%;
+	top: 50%;
+	cursor:pointer;
 }
 .buy_clk{
 	    padding: 8px 40px;
@@ -1446,9 +1448,7 @@ form.example::after {
 	 background:#c4984f;
 	 border:1px solid;
 }
-.signup_buttns .menu_a{
-	 color:#c4984f !important;
-}
+
 .signin_frm{
 	 border:1px solid #c4984f;
 }
@@ -2012,7 +2012,7 @@ input.invalid {
 	padding:20px !important;
 }
 .property_steps{
-	width:25%;
+	width:33.333%;
 	float:left;
 	text-align:center;
 }
@@ -2046,12 +2046,13 @@ input.invalid {
 }
 .sub_categories li{
 	margin:0 5px;
+	display:flex;
 }
 .property_subtype{
-	padding:6px 15px;
+	padding:6px 10px;
 	border:1px solid #c4984f;
 	color:#c4984f;
-	font-size:16px;
+	font-size:15px;
 	transition:.4s;
 }
 .sub_categories li:hover .property_subtype{
@@ -2553,6 +2554,13 @@ input.invalid {
 	transition:.4s;
 }
 /*Buyer Css*/
+.area_price{
+	border-radius: 0;
+    margin-top: 14px;
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #afafaf;
+}
 .btn_toggle .btn{
 	padding:8px 25px;
 	border:1px solid #c4984f;
@@ -3338,6 +3346,7 @@ float:left;
 .contact_enquiry{
 	list-style:none;
 	padding-top:8px;
+	padding-left:0;
 }
 .contact_enquiry li{
 	font-size: 22px;

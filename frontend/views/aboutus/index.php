@@ -6,8 +6,8 @@
 			
 				<div class="container" id="banner_cont">
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
-						<p class="about_det animated slideInDown">From a background in real estate, our team has formed a common goal to bring together the best and brghtest to do something truely remarkable. We are focused on building solutions where no one gets the short end to stick.</p>
-						<h1 class="about_head">Who we <br>are?</h1>
+						<h1 class="about_head">Who we are?</h1>
+						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a href="#">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					
@@ -30,7 +30,7 @@
 				<h1 class="trans_head">Meet the people <br>who makes our team</h1>
 			</div>
 			<div class="col-md-6 text-left">
-				<p class="brand_txt">From a background in real eastate, our team has formed a common goal to bring together the best and brightest to do something truely remarkable. We are focused on building solutions where no one gets the short end to stick.</p>
+				<p class="brand_txt" style="color:#ffffff;">A team of emerging professionals with a common goal of transforming and creating the largest market of Commercial Real Estate to the next level of Innovation.</p>
 
 			</div>
 		</div>
