@@ -111,10 +111,17 @@ use yii\bootstrap\Modal;
 						<div class="row category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
+<<<<<<< HEAD
 								<li class="active"><a onclick="$('#click_t').trigger('click')" id="11" class="property_subtype proptype step_type">Commercial Office Space</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="12" class="property_subtype proptype step_type">IT / ITES / SEZ Park</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="13" class="property_subtype proptype step_type">Co-working/Business Center</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="14" class="property_subtype proptype step_type">Commercial SEZ</a></li>
+=======
+								<li class="active"><a data-toggle="pill" href="#menu1" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
+								<li class=""><a data-toggle="pill" href="#menu1" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
+								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
+								<li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
+>>>>>>> e0ac2dd1e6397beb707063f3b4850e02add93da0
 							</ul>
 							
 						</div>

@@ -5,8 +5,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Otherwise forward it to index.php
 RewriteRule . index.php
 
-AuthType Basic
-AuthName "Password Protected Area"
-AuthUserFile "/var/www/html/15bells/.htpasswd"
-require valid-user
 
