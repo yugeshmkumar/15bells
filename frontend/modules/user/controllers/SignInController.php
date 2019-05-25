@@ -41,12 +41,12 @@ class SignInController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','fitelogins','sendemail','rgetotp','rverifyotp', 'reset-password', 'oauth','confirmation','search'],
+                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','sellerlogin','fitelogins','sendemail','rgetotp','rverifyotp', 'reset-password', 'oauth','confirmation','search'],
                         'allow' => true,
                         'roles' => ['?']
                     ],
                     [
-                        'actions' => ['login', 'request-password-reset','otp','reset-password', 'sellersignup','oauth','confirmation','search'],
+                        'actions' => ['login', 'request-password-reset','otp','reset-password', 'sellerlogin','sellersignup','oauth','confirmation','search'],
                         'allow' => false,
                         'roles' => ['@'],
                         'denyCallback' => function () {
@@ -54,7 +54,7 @@ class SignInController extends \yii\web\Controller
                         }
                     ],
                     [
-                        'actions' => ['logout','fitelogins','rgetotp','signup','sellersignup','sendemail'],
+                        'actions' => ['logout','fitelogins','rgetotp','signup','sellersignup','sellerlogin','sendemail'],
                         'allow' => true,
                         'roles' => ['@'],
                     ]
@@ -480,11 +480,44 @@ if ($err) {
 
 
 
+    public function actionSellerlogin(){
+
+        $model1 = new LoginForm();
+        
+
+        if (Yii::$app->request->isAjax && $model1->load(Yii::$app->request->post())){ 
+            
+   
+         Yii::$app->response->format = Response::FORMAT_JSON;
+
+
+         if ($model1->load(Yii::$app->request->post()) && $model1->login('1234')) {
+           
+            
+            return 'done';
+
+        } 
+
+          return ActiveForm::validate($model1);
+
+        }
+    
+
+   
+     
+        }
+
+
+
+    
+
+
+
     public function actionSellersignup(){
 
 
         $model = new SignupForm();
-
+       
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) 
         {
         
@@ -523,14 +556,6 @@ if ($err) {
 
                 }
             
-        
-                
-                
-        
-
-
-
-
     }
 
 
@@ -601,6 +626,7 @@ if ($err) {
                 
                 
         }
+
 
 
 

@@ -50,12 +50,14 @@ class LoginForm extends Model
             ['identity', 'validateIdentity'],
             ['password', 'validatePassword'],
 
-            ['userOTP', 'compare', 'compareValue' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
-                return  $model->userOTP != $model->checkotp;
-            }, 'whenClient' => "function (attribute, value) {
-                return $('#loginform-userotp').val() != $('#loginform-checkotp').val();
-            }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
-            ],
+            [['userOTP','checkfield','checkotp'], 'validateOtp'],
+
+            // ['userOTP', 'compare', 'compareValue' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
+            //     return  $model->userOTP != $model->checkotp;
+            // }, 'whenClient' => "function (attribute, value) {
+            //     return $('#loginform-userotp').val() != $('#loginform-checkotp').val();
+            // }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
+            // ],
         ];
     }
 
@@ -73,6 +75,17 @@ class LoginForm extends Model
      * Validates the password.
      * This method serves as the inline validation for password.
      */
+
+    public function validateOtp($attribute, $params, $validator)
+    {
+        if($this->checkfield == 'otp'){
+        if ($this->userOTP <> $this->checkotp) {
+            $this->addError('userOTP', 'OTP is incorrect.');
+        }
+      }
+    }
+
+
     public function validateIdentity()
     {
         if (!$this->hasErrors()) {
@@ -91,13 +104,6 @@ class LoginForm extends Model
             
             $user = $this->getUser();
 
-            if($user){
-                echo 'user aya';die;
-            }else{
-
-                echo 'user nhi aya';die;
-            }
-            
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError('password', Yii::t('frontend', 'Incorrect username or password.'));
             }

@@ -52,6 +52,11 @@ class AddpropertyController extends Controller
                         'actions' => ['setbrandcountb'],
                         'roles' => ['?'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['setbrandcount'],
+                        'roles' => ['?'],
+                    ],
                 ],
             ],
            
