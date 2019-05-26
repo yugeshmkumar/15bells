@@ -270,7 +270,7 @@ if(!isset($_SESSION))
 			
 				</div>
                 
-
+                <button type="button" id="loadMore">Load more</button>
 
 
 				</div>
@@ -2174,7 +2174,16 @@ function getPolygonCoords() {
                                '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" /><button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'+
                                '</div>'+
                            '</div>'+
-                   '</div>'); 
+                   '</div>');
+
+                   var x=3;
+                     $('.property_detail').hide();
+                     $('#getprop .property_detail:lt('+x+')').show();  
+
+                    $('#loadMore').click(function () {
+                    x= (x+5 <= countprop) ? x+5 : countprop;
+                    $('#getprop .property_detail:lt('+x+')').show();
+                    });  
           
                                                        
    

@@ -257,6 +257,9 @@ if(!isset($_SESSION))
 				
 			
 				</div>
+
+
+                <button type="button" id="loadMore">Load more</button>
                 
 
 
@@ -2156,6 +2159,8 @@ function getPolygonCoords() {
                                                   // $(".serch_rslt").show();
                                                    var countprop = Object.keys(obj).length;                                                        
                                                    $('#countprop').html(countprop);
+                                                  
+                                                  
                                                   // $('#getsearchlocation').html(sector);
                                                    
                                                    bindButtonClick(obj);
@@ -2175,6 +2180,7 @@ function getPolygonCoords() {
            var propsid = 'PR'+ haritid;
            var commaNum = numberWithCommas(this.asking_rental_price);
                 
+                       
            $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
@@ -2234,6 +2240,16 @@ function getPolygonCoords() {
                                '</div>'+
                            '</div>'+
                    '</div>'); 
+                     var x=3;
+                     $('.property_detail').hide();
+                     $('#getprop .property_detail:lt('+x+')').show();  
+
+                    $('#loadMore').click(function () {
+                    x= (x+5 <= countprop) ? x+5 : countprop;
+                    $('#getprop .property_detail:lt('+x+')').show();
+                    }); 
+
+                     
           
                                                        
    
