@@ -184,6 +184,16 @@ class BuyeractionController extends Controller {
         }
     }
 
+    public function actionGetsitevisitlocation(){
+
+        $id = $_POST['hardam'];        
+      
+       $payments = \Yii::$app->db->createCommand("SELECT locality,super_area,expected_price from addproperty where id='$id'")->queryOne();
+
+        return json_encode($payments);
+
+}
+
        public function actionShortlistproperties() {
 
     //    echo '<pre>';print_r($_POST);die;

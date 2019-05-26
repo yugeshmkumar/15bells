@@ -338,6 +338,16 @@ class LesseeactionController extends Controller {
  
      }
 
+     public function actionGetsitevisitlocation(){
+
+             $id = $_POST['hardam'];        
+	       
+	        $payments = \Yii::$app->db->createCommand("SELECT locality,super_area,asking_rental_price from addproperty where id='$id'")->queryOne();
+
+		     return json_encode($payments);
+
+     }
+
 
 
 
