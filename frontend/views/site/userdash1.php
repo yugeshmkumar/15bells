@@ -65,8 +65,7 @@ $this->title = 'Dashboard';
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo  ucfirst($user->email);  ?></p>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-4">
+								<div class="row">
 								<p class="profile_edit">
 								<?php
 								$checkrole = \common\models\activemode::checkmyrole(Yii::$app->user->identity->id);
@@ -77,19 +76,23 @@ $this->title = 'Dashboard';
 								<?php } ?>
 								
 								<a href="<?php echo yii::$app->urlManager->createUrl(['site/postlogin']) ?>" class="edit_profile">Edit Profile</a></p>
+								
+								</div>
+							</div>
+							<div class="col-md-4">
+							<div class="col-md-12">
+								<h3 class="current_role">Current Role</h3>
+								<ul class="sub_categories role_list text-center">
+										<li id="buyer" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
+										<li id="seller" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="seller">Seller</a></li>
+										<li id="lessor" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessor">Lessor</a></li>
+										<li id="lessee" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessee">Lessee</a></li>
+								</ul>
+							</div>
 							</div>
 						</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 user_profile">
-								<h3 class="current_role">Current Role</h3>
-								<p class="role_name">You can always change the role to explore more on 15 Bells, by a simple tap on any of the below options</p>
-								<ul class="sub_categories">
-										<li id="buyer" class=""><a href="javascript:void(0)" class="property_subtype" id="buyer">Buyer</a></li>
-										<li id="seller" class=""><a href="javascript:void(0)" class="property_subtype" id="seller">Seller</a></li>
-										<li id="lessor" class=""><a href="javascript:void(0)" class="property_subtype" id="lessor">Lessor</a></li>
-										<li id="lessee" class=""><a href="javascript:void(0)" class="property_subtype" id="lessee">Lessee</a></li>
-								</ul>
-							</div>
+							
 					  </div>
 					  <?php 	if ($company) {
                     $company_name = $company->name;
