@@ -2501,16 +2501,17 @@ function getPolygonCoords() {
            var commaNum = numberWithCommas(this.expected_price);
            var imaged;
            (this.county1 == '1' ? imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart.svg';  ?>":imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart_e.svg';  ?>");
-          
+           var imageds = $.trim(this.featured_image);
+
                 
            $('#getprop').append('<div class="col-md-12 property_detail" id="appendid_'+this.id+'">'+
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                               '<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive">'+
+                            //    '<div class="overlay_sign">'+
+                            //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                            //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
@@ -2834,69 +2835,82 @@ $("#rantime").datepicker({
                                                    // var h = content.substr(showChar-1, content.length - showChar);
                                                    // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                                             
+                                                   var imageds = $.trim(this.featured_image);
                                                     var haritid = 273*179-this.id;
                                                     var propsid = 'PR'+ haritid;
                                                     var commaNum = numberWithCommas(this.expected_price);
+                                                    var imaged;
+           (this.county1 == '1' ? imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart.svg';  ?>":imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart_e.svg';  ?>");
+          
                                                          
-                                                    $('#getprop').append('<div class="col-md-12 property_detail">'+
-                                                                '<p class="property_id">Property ID : '+propsid+'</p>'+
-                                                                '<div class="row single_property">'+
-                                                                    '<div class="col-md-3 no_pad relative">'+
-                                                                        '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                                                        '<div class="overlay_sign">'+
-                                                                            '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                                                        '</div>'+
-                                                                    '</div>'+
-                                                                    '<div class="col-md-9">'+
-                                                                        '<div class="row prop_detail">'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Location</p>'+
-                                                                                '<p class="details_label">'+this.locality+'</p>'+
-                                                                            '</div>'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Facing</p>'+
-                                                                                '<p class="details_label">'+this.facing+'</p>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
-                                                                        '<div class="row prop_detail">'+	
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Price</p>'+
-                                                                                '<p class="details_label">₹ '+commaNum+'</p>'+
-                                                                            '</div>'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Area</p>'+
-                                                                                '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
-                                                                        '<div class="row prop_detail">'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Verified</p>'+
-                                                                                '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
-                                                                            '</div>'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Availability</p>'+
-                                                                                '<p class="details_label">'+this.availability+'</p>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
-                                                                        '</div>'+
-                                                                    '</div>'+
-                                                                    '<div class="row ameneties_section">'+
-                                                                        '<div class="col-md-6 amenities_offered">'+
-                                                                            '<p class="label_name amenities">Ameities</p>'+
-                                                                            '<ul class="amenities_list">'+
-                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
-                                                                            '</ul>'+
-                                                                        '</div>'+
-                                                                        '<div class="col-md-6 shortlist_call">'+
-                                                                            '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
-                                                                        '</div>'+
-                                                                    '</div>'+
-                                                            '</div>'); 
+                                                    $('#getprop').append('<div class="col-md-12 property_detail" id="appendid_'+this.id+'">'+
+                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<div class="row single_property">'+
+                           '<div class="col-md-3 no_pad relative">'+
+                               '<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive">'+
+                            //    '<div class="overlay_sign">'+
+                            //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                            //    '</div>'+
+                           '</div>'+
+                           '<div class="col-md-9">'+
+                               '<div class="row prop_detail">'+
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Location</p>'+
+                                       '<p class="details_label">'+this.locality+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Facing</p>'+
+                                       '<p class="details_label">'+this.facing+'</p>'+
+                                   '</div>'+
+                               '</div>'+
+                               '<div class="row prop_detail">'+	
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Price</p>'+
+                                       '<p class="details_label">₹ '+commaNum+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Area</p>'+
+                                       '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
+                                   '</div>'+
+                               '</div>'+
+                               '<div class="row prop_detail">'+
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Verified</p>'+
+                                       '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-6 company_overview property_manage">'+
+                                       '<p class="label_name">Availability</p>'+
+                                       '<p class="details_label">'+this.availability+'</p>'+
+                                   '</div>'+
+                               '</div>'+
+                               '</div>'+
+                           '</div>'+
+                           '<div class="row ameneties_section">'+
+                               '<div class="col-md-6 amenities_offered">'+
+                                   '<p class="label_name amenities">Ameities</p>'+
+                                   '<ul class="amenities_list">'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                   '</ul>'+
+                               '</div>'+
+                               '<div class="col-md-6 shortlist_call">'+
+                                   '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" /><button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'+
+                               '</div>'+
+                           '</div>'+
+                   '</div>'); 
+
+                   var x=3;
+                     $('.property_detail').hide();
+                     $('#getprop .property_detail:lt('+x+')').show();  
+
+                    $('#loadMore').click(function () {
+                    x= (x+5 <= countprop) ? x+5 : countprop;
+                    $('#getprop .property_detail:lt('+x+')').show();
+                    });  
                                                    
                                                                                                 
                                             

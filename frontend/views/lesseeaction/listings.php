@@ -2687,6 +2687,7 @@ $("#rantime").datepicker({
                                                    // var h = content.substr(showChar-1, content.length - showChar);
                                                    // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                                             
+                                                   var imageds = $.trim(this.featured_image);
                                                     var haritid = 273*179-this.id;
                                                     var propsid = 'PR'+ haritid;
                                                     var commaNum = numberWithCommas(this.asking_rental_price);
@@ -2700,10 +2701,10 @@ $("#rantime").datepicker({
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                               '<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive">'+
+                            //    '<div class="overlay_sign">'+
+                            //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                            //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
