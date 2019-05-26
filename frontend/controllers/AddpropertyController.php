@@ -144,6 +144,7 @@ class AddpropertyController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = "roleLayout";
         $db = Yii::$app->db;
         $model = $db->cache(function($db) use ($id){
             return Yii::$app->controller->findModel($id);
@@ -606,6 +607,8 @@ public function actionShowpropdetails(){
        
         
         if(!empty($getmodel)){
+
+           
             
 
             $getmodel->request_for = $request_for;
@@ -630,6 +633,7 @@ public function actionShowpropdetails(){
                 
         $LessorExpectations = LessorExpectations::find()->where(['property_id'=>$viewid])->andwhere(['user_id'=>$userid])->one();
         if(!empty($LessorExpectations)){
+           
                 
                  $property_id =  $getmodel->id;           
                 //$model1->user_id = $userid;
@@ -650,7 +654,7 @@ public function actionShowpropdetails(){
                 $count = count($nearbyIdArray);
     
                 $amenityies = $amenitiesicon;
-                $amenityiesIdArray = explode(',', $amenityies);
+               $amenityiesIdArray = explode(',', $amenityies);
                 $count1 = count($amenityiesIdArray);
         }
     
@@ -659,6 +663,8 @@ public function actionShowpropdetails(){
                 $Property_nearby_places = Property_nearby_places::find()->where(['property_id'=>$viewid])->andwhere(['places_name'=>$nearbyIdArray[$i]])->one();
 
                 if(!empty($Property_nearby_places)){
+
+                   
     
                     $Property_nearby_places->property_id = $property_id;
                     $Property_nearby_places->places_name = $nearbyIdArray[$i];
@@ -670,11 +676,12 @@ public function actionShowpropdetails(){
                }
     
     
-                    for ($i=0; $i<$count; $i++){
+                    for ($i=0; $i<$count1; $i++){
+                        
               $Property_amenities = Property_amenities::find()->where(['property_id'=>$viewid])->andwhere(['amenities_name'=>$amenityiesIdArray[$i]])->one();
               
-              if(!empty($Property_nearby_places)){
-
+              if(!empty($Property_amenities)){
+               // echo 'nearby';die;
     
                         $Property_amenities->property_id = $property_id;
                         $Property_amenities->amenities_name = $amenityiesIdArray[$i];
@@ -693,7 +700,7 @@ public function actionShowpropdetails(){
             }
         }else{
 
-
+           
             return 'not done';
         }
        
