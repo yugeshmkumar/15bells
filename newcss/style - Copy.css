@@ -2012,12 +2012,7 @@ input.invalid {
 	padding:20px !important;
 }
 .property_steps{
-	width:25%;
-	float:left;
-	text-align:center;
-}
-.search_listing{
-	width:33.333% !important;
+	width:33.333%;
 	float:left;
 	text-align:center;
 }
