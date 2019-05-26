@@ -80,9 +80,9 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
+						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
 						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
@@ -111,69 +111,71 @@ use yii\bootstrap\Modal;
 						<div class="row category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a data-toggle="pill" href="#menu1" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
-								<li class=""><a data-toggle="pill" href="#menu1" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
-								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
-								<li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
+
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="11" class="property_subtype proptype step_type">Commercial Office Space</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="12" class="property_subtype proptype step_type">IT / ITES / SEZ Park</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="13" class="property_subtype proptype step_type">Co-working/Business Center</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="14" class="property_subtype proptype step_type">Commercial SEZ</a></li>
+
 							</ul>
 							
 						</div>
-						<div class="row category_detail commercial_r">
+            <div class="row category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
-								<li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
-								<li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
-								<li class=""><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="15" class="property_subtype proptype step_type">Mall/Retail Shop</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="16" class="property_subtype proptype step_type">Showrooms</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="17" class="property_subtype proptype step_type">High Street/ Society Shops</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="18" class="property_subtype proptype step_type">Food Court</a></li>
 							</ul>
 							
 						</div>
 						<div class="row category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
-								<li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
-								<li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
-								<li class=""><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="19" class="property_subtype proptype step_type">Commercial land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="22" class="property_subtype proptype step_type">Industrial / Factory land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="23" class="property_subtype proptype step_type">Institutional/Hotel/School land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="24" class="property_subtype proptype step_type">SEZ/IT/ITES land</a></li>
 							</ul>
 							
 						</div>
 						<div class="row category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
-								<li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
+								<li class="active"><a onclick="$('#click_t').trigger('click')" id="25" class="property_subtype proptype step_type">Shed</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="26" class="property_subtype proptype step_type">Agriculture</a></li>
 								
 							</ul>
-							
 						</div>
             <input type="hidden" id="proptype" name="proptype">
 						<div class="col-md-12 seperator_div">
 						</div>
 					</div>
-					<!-- <p class="text-right process_continue"><a data-toggle="pill" href="#menu1" class="property_process step_type">Continue <i class="fa fa-angle-right"></i></a></p> -->
+          
+						<p class="text-right process_continue"><a data-toggle="pill" href="#menu1" id="click_t" class="step_type step1"></a></p>
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
 						<div class="row property_type">
 							<div class="col-md-12 text-center property_area">
 								<div class="col-md-1"></div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="border_yellow1 property_image1">
 									<p class="property_name">Delhi</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="gurugram" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>" class="property_image1">
 									<p class="property_name">Gurgaon</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>" class="property_image1">
 									<p class="property_name">Faridabad</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>" class="property_image1">
 									<p class="property_name">Noida</p>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-2 col-xs-6">
 									<img id="ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>" class="property_image1">
 									<p class="property_name">Gaziabad</p>
 								</div>
@@ -261,31 +263,49 @@ use yii\bootstrap\Modal;
 									</div>
 								</div> -->
 							<!-- </div> -->
-              <select id="propsquare">
-              <option value="sq_ft">Sq. Feet</option>
-              <option value="sq_yards">Sq. Yard</option>
-              <option value="sq_meter">Sq. Meter</option>
-              </select>
-              
-              <input type="text" id="propareaminimum" name="propareaminimum">
-              <input type="text" id="propareamaximum" name="propareamaximum">
+              <div class="col-md-12 locality_input">
+									<div class="row">
+                      <div class="col-md-2">
+                      <select id="propsquare" class="form-control area_price">
+                      <option value="sq_ft">Sq. Feet</option>
+                      <option value="sq_yards">Sq. Yard</option>
+                      <option value="sq_meter">Sq. Meter</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum" name="propareaminimum">
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum" name="propareamaximum">
 
-<div class="col-md-12 no_pad pad_left">
+                    </div>
+                  </div>
+               </div>
+               
+									<div class="row">
+                    
+  </div>
+<div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							
-               
-                <input type="text" id="proppriceminimum" name="proppriceminimum">
-              <select id="propminrupees">
-              <option value="lacs">Lacs</option>
-              <option value="crores">Crores</option>
-             
-              </select>
-                <input type="text" id="proppricemaximum" name="proppricemaximum">
-                <select id="propmaxrupees">
-                <option value="lacs">Lacs</option>
-              <option value="crores">Crores</option>
-              
-              </select>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
+                 </div>
+                <div class="col-md-2">
+                    <select id="propminrupees" class="form-control area_price">
+                       <option value="lacs">Lacs</option>
+                       <option value="crores">Crores</option>
+                    </select>
+                 </div>
+                 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+                 </div>
+                 <div class="col-md-2">
+                    <select id="propmaxrupees" class="form-control area_price">
+                      <option value="lacs">Lacs</option>
+                     <option value="crores">Crores</option>
+                     </select>
+                   </div>
 								
 							</div>
 
@@ -492,7 +512,6 @@ use yii\bootstrap\Modal;
 				 <?php ActiveForm::end(); ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
 
-
 <?php 
 $script = <<< JS
  
@@ -524,7 +543,7 @@ var polyArray = [];
       var newShape;
 
    $(document).ready(function () {
-    
+   
 $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');
 
@@ -542,7 +561,10 @@ $(".sub_categories li a").click(function() {
         $(".property_image1").click(function () {
 			$(".property_image1").removeClass("border_yellow1");
 			// $(".tab").addClass("active"); // instead of this do the below 
-			$(this).addClass("border_yellow1");   
+			$(this).addClass("border_yellow1");
+      $('html,body').animate({
+        scrollTop: $(".property_locality").offset().top - 100},
+        'slow');   
 		});
 
 		$(".commer_retail").click(function () {
@@ -550,25 +572,36 @@ $(".sub_categories li a").click(function() {
 				$('.commercial_r').show();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
+        $('html,body').animate({
+        scrollTop: $(".commercial_r").offset().top - 100},
+        'slow');
 		});
 		$(".commer_office").click(function () {
 				$('.commercial_o').show();
 				$('.commercial_r').hide();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
-				
+				$('html,body').animate({
+        scrollTop: $(".commercial_o").offset().top - 100},
+        'slow');
 		});
 		$(".commer_land").click(function () {
 				$('.commercial_o').hide();
 				$('.warehouse').hide();
 				$('.industrial_land').show();
 				$('.commercial_r').hide();
+        $('html,body').animate({
+        scrollTop: $(".industrial_land").offset().top - 100},
+        'slow');
 		});
 		$(".ware_house").click(function () {
 				$('.commercial_o').hide();
 				$('.commercial_r').hide();
 				$('.warehouse').show();
 				$('.industrial_land').hide();
+        $('html,body').animate({
+        scrollTop: $(".warehouse").offset().top - 100},
+        'slow');
 		});
 
     $('.proptype').click(function(){
@@ -615,11 +648,17 @@ $(".sub_categories li a").click(function() {
        //$(.add_property)
        $('.add_property li:nth-child(2)').addClass("active");
        //$(".add_property li:nth-child(1)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $(".property_area").offset().top + 600},
+        'slow');
    });
    $('.step_availablity').click(function(e) {
        //$(.add_property)
        $('.add_property li:nth-child(3)').addClass("active");
        //$(".add_property li:nth-child(2)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $("#home").offset().top + 750},
+        'slow');
    });
    $('.step_locality').click(function(e) {
        //$(.add_property)

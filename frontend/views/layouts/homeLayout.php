@@ -127,10 +127,11 @@ NewDesignAsset::register($this);
 			  <div class="col-md-12">
 				
 					<ul class="sliding_menu">
-							<li class="trst_act active"><a class="menu_link trust_clck" href="javascript:void(0)">Our solution 	</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="javascript:void(0)">Resources</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="javascript:void(0)">Contact Us</a></li>
-						
+							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['aboutus']) ?>">About Us 	</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Blogs</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">FAQ's</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
+
 					</ul>
 					
 				
@@ -205,7 +206,11 @@ NewDesignAsset::register($this);
 
 	<script>// Check document is loaded
 $(document).ready(function(){
-	
+
+		$(".sub_csliding_menuategories li a").click(function() {
+    $(this).parent().addClass('active').siblings().removeClass('active');
+
+    });
 	$(".location_pick").click(function(){
 		
 		  var city = this.id;
@@ -305,14 +310,7 @@ document.getElementById("mySidenav").style.width = "300px";
 function closeNav() {
 document.getElementById("mySidenav").style.width = "0";
 }
-$('.sliding_menu li a').click(function(e) {
 
-        $('.sliding_menu li.active').removeClass('active');
-
-        var $parent = $(this).parent();
-        $parent.addClass('active');
-        e.preventDefault();
-    });
 </script>
 
  

@@ -1333,3 +1333,14 @@ input[type=file]::-webkit-file-upload-button {
 
 
 }
+
+/****Role css****/
+.role_list{
+	display:block !important;
+	margin:0 !important
+}
+.role_list li {
+	margin-bottom:10px;
+	float: left;
+    width: 100%;
+}
