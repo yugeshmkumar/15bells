@@ -4,6 +4,7 @@
 use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 use yii\bootstrap\Modal;
 use yii\web\View;

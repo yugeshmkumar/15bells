@@ -656,11 +656,180 @@ if(!isset($_SESSION))
   </div>
 </div>
 
+<div id="proceedtopay" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+			<div class="container-fluid">
+            <input type="hidden" id="acceptidnew">
+
+				<div class="row site_contain" id="firstshow">
+					<h1 class="visit_prop text-center">You Already has used your complimentry sitevisits . For Site Visit of this property Amount to Pay is 500 /-</h1>
+					
+					
+					<!-- <div id="appendid2">
+					</div> -->
+                    <div class="col-md-12">
+
+                    
+                    <div class="col-md-6 text-right save_site">
+							<div class="row">
+								<button type="button" class="btn btn-default call_butn"  id="setsessions">Proceed to Buy</button>
+							</div>
+							
+						</div>
+				
+					
+				</div>
+
+			</div>
+
+
+            <div class="row site_contain" id="secondshow">
+					<h1 class="visit_prop text-center">Property details</h1>
+					
+					
+					<!-- <div id="appendid2">
+					</div> -->
+                    <div class="col-md-12">
+
+                    <?php 
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
+if(isset($_SESSION['requestids'])){
+           
+    $requestids =  $_SESSION['requestids'];
+    $amount_payable =  $_SESSION['amount_payable'];
+
+}
+
+
+$arrcheckrole = \common\models\RequestSiteVisit::find()->where(['request_id'=>$requestids])->one();
+$user_ids = $arrcheckrole->user_id;
+$property_id = $arrcheckrole->property_id;
+$propidss = 273 * 179 - $property_id;
+$newproidname = 'PR'.$propidss;
+
+$arrcheckrole1 = \common\models\User::find()->where(['id'=>$user_ids])->one();
+$name = $arrcheckrole1->fullname.''.$arrcheckrole1->lastname;
+$email = $arrcheckrole1->email;
+$phonenumber = $arrcheckrole1->username;
+
+
+?>
+<input type="hidden" id="kname" value="<?php echo $name; ?>">
+						<input type="hidden" id="kemail" value="<?php echo $email; ?>">
+						<input type="hidden" id="kphonenumber" value="<?php echo $phonenumber; ?>">
+						<input type="hidden" id="kamount_payable" value="<?php echo $amount_payable; ?>">
+						<input type="hidden" id="krequestids" value="<?php echo $requestids; ?>">
+                    
+                    <div class="col-md-6 text-right save_site">
+							<div class="row">
+								<button class="btn btn-default call_butn" id="rzp-button1" >Pay</button>
+							</div>
+							
+						</div>
+				
+					
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+      
+    </div>
+
+  </div>
+</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
 
 
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+<script>
+
+
+var kname = $('#kname').val();
+var kemail = $('#kemail').val();
+var kphonenumber = $('#kphonenumber').val();
+var kamount_payable = $('#kamount_payable').val();
+
+var  descriptions =  "Online Sitevisit";
+var amounts = kamount_payable * 100;
+
+var options = {
+"key": "rzp_test_9ckspVvYJ0k6GZ",
+"amount": amounts, // 2000 paise = INR 20
+"name": "Stoneray Technologies Private Limited",
+"description": descriptions,
+"image": "/newimg/logo.png",
+"handler": function (response){
+
+//alert(response.razorpay_payment_id);
+//alert(response.razorpay_order_id);
+paymentgateway(response.razorpay_payment_id);
+
+},
+"prefill": {
+"name": kname,
+"email": kemail
+
+},
+"notes": {
+"address": descriptions
+},
+"theme": {
+"color": "#F37254"
+}
+};
+
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+$('#proceedtopay').modal('hide');
+rzp1.open();
+e.preventDefault();
+}
+
+
+function paymentgateway(orderid){
+var urlsd = "<?php echo $urlsd; ?>";
+var krequestids = $('#krequestids').val();
+
+$.ajax({
+                            type: "POST",
+                            url: '/requestSitevisit/paymentgateway',
+
+                            data: {orderid: orderid,krequestids:krequestids,kamount_payable:kamount_payable},
+                            //dataType: 'json',
+                            success: function (data) {                                                   
+                            
+                              if(data == '1'){
+
+                               // window.location.href = urlsd +'/request-sitevisit';  
+                                //location.href = "https://15bells.com/frontend/web/request-sitevisit";
+                              }else{
+                                toastr.error('Some Internal Error', 'error'); 
+                              }
+                            }
+                });
+}
+
+
+
+</script>    
  
 
 <script type="text/javascript">
@@ -872,6 +1041,31 @@ $('.scheduletime').on('click', function() {
     }
     
     });
+
+
+
+$("#setsessions").on("click", function(e){
+     e.preventDefault();
+     $('#firstshow').hide();
+                                 $('#secondshow').show();
+                                    
+                                    var ids = $('#acceptidnew').val();
+                                    var amount_payable = 500;
+                                   
+
+                                        $.ajax({
+						                       type: "POST",
+                                                url: '/request-sitevisit/sessioncheckout',
+                                                data: {id: ids,amount_payable:amount_payable},
+                                                success: function (data) {
+                                                 
+                                                  //alert(data);
+                                                   
+
+                                                },
+                                            }); 
+
+});
 
 
         <?php if(isset($getlocality)){  ?>
@@ -2515,11 +2709,50 @@ function getPolygonCoords() {
 
 
 
+function sitevisitproperties(id){
+
+$("#myModalnew").modal('show');
+$('#sitevisitprop').val(id);
+//var newhtml = $('#appendid_'+id).html();
+
+       $.ajax({
+        type: "POST",
+        url: 'getsitevisitlocation',
+        data: {hardam: id},
+        success: function (data) {
+
+           // alert(data);
+            var obj = $.parseJSON(data);
+            
+            $('#sitevisitlocation').html(obj.locality);
+            $('#sitevisitarea').html(obj.super_area);
+            $('#sitevisitprice').html(obj.asking_rental_price);
+    
+        },
+                  });
+
+var today = new Date();
+
+$("#rantime").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd',
+     minDate: 1 // set the minDate to the today's date
+    // you can add other options here
+});
+
+
+}
+
+
+
+
                                         $(document).ready(function () {                                       
 
                                          
                                           withoutshape();
-                                            $('#rantime').appendDtpicker();
+                                          $('#secondshow').hide();
+                                           // $('#rantime').appendDtpicker();
                                            // $('.datetimepicker').appendDtpicker();
 
                                                      });
@@ -2959,9 +3192,12 @@ $("#rantime").datepicker({
 
 
                                             var id = $('#sitevisitprop').val();
-                                            var rantime = $('#rantime').val();
+                                            var datetime = $('#rantime').val();
+                                            var scheduletime = $('#scheduletime').val();
                                             var visitmode = $('#visitmode').val();
-                                           
+                                            var rantime = datetime +' '+scheduletime;
+
+                                                                                    
                                             
                                             $.ajax({
                                                 type: "POST",
@@ -2988,8 +3224,14 @@ $("#rantime").datepicker({
                                                         }
                                                 },
                                             });
+                                            if(visitmode == 'online'){
+                                            $('#acceptidnew').val(id);       
+                                            $("#proceedtopay").modal('show');
 
-                                             $("#myModalnew").modal('hide');
+                                            }
+                                            $("#myModalnew").modal('hide');
+
+                                             
 
                                         }
                                         
