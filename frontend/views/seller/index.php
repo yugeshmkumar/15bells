@@ -558,7 +558,7 @@ $user_id= Yii::$app->user->identity->id;
 				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sign-in.jpg';  ?>" class="img-responsive">
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-6 seller_lead">
             		<ul class="nav nav-pills signup_tabs">
 					  <li class="active"><a class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign up</a></li>
 					  <li><a class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Already a member</a></li>
@@ -567,7 +567,7 @@ $user_id= Yii::$app->user->identity->id;
 <div class="tab-content">
 
                     <div id="home" class="tab-pane fade in active">
-			<div class="col-md-12">
+			<div class="col-md-12 no_pad">
             <?php $modeled = new \frontend\modules\user\models\SignupForm(); 
              $model1 = new \frontend\modules\user\models\LoginForm();
             
@@ -576,7 +576,7 @@ $user_id= Yii::$app->user->identity->id;
 			<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
 			'action'=>"user/sign-in/sellersignup"]); ?>
 
-				<div class="col-md-12 seller_lead">
+				<div class="col-md-12">
 					<h2 class="login_head verify_seller">Verify yourself to reach <span id="totalcounts1"></span> Buyers</h2>
 							<div class="form-group">
 
