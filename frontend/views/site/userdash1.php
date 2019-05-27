@@ -25,7 +25,7 @@ $this->title = 'Dashboard';
 				</div>
 				<div class="col-md-12">
 						<ul class="add_property nav nav-pills">
-						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Personal Details</a></li>
+						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Profile Details</a></li>
 						<?php 	if ($company) { ?>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#company" class="categ_selec">Company Details</a></li>
 						<?php } ?>

@@ -4,7 +4,7 @@
 use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
+use yii\widgets\ActiveForm;
 use yii\bootstrap\Modal;
 use yii\web\View;
 use common\models\MyExpectationsajaxSearch;
@@ -257,6 +257,9 @@ if(!isset($_SESSION))
 				
 			
 				</div>
+
+
+                <button type="button" id="loadMore">Load more</button>
                 
 
 
@@ -549,10 +552,512 @@ if(!isset($_SESSION))
 
   </div>
 </div>
+
+
+
+<div id="signup_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		<div class="container-fluid no_pad">
+			<div class="col-md-6 no_pad hidden-xs hidden-sm"> 
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sign-in.jpg';  ?>" class="img-responsive">
+			</div>
+			
+			<div class="col-md-6">
+            		<ul class="nav nav-pills signup_tabs">
+					  <li class="active"><a class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign up</a></li>
+					  <li><a class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Already a member</a></li>
+					</ul>
+
+<div class="tab-content">
+
+                    <div id="home" class="tab-pane fade in active">
+			<div class="col-md-12">
+            <?php $modeled = new \frontend\modules\user\models\SignupForm(); 
+             $model1 = new \frontend\modules\user\models\LoginForm();
+            
+            ?>
+
+			<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
+			'action'=>"/user/sign-in/sellersignup"]); ?>
+
+				<div class="col-md-12 seller_lead">
+					<h2 class="login_head verify_seller">Verify yourself to reach <span id="totalcounts1"></span> Buyers</h2>
+							<div class="form-group">
+
+
+							  <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+							  <?=$form->field($modeled, 'username', [
+                                'options' => [
+                                    //'tag' => 'div',
+                                    //'class' => '',
+                                ],
+                                //'template' => '<span class="col-md-2 col-lg-2"><label class="control-label">Final item price</label>{input}{error}</span>'
+                            ])->textInput([ 'placeholder' => "Enter Mobile Number" , 'class' => 'form-control input_desgn'])->label(false)?>
+							</div>
+							<div class="form-group" id="otphide">
+							  <!-- <input type="text" class="form-control input_desgn" placeholder="Password"> -->
+							  <?=$form->field($modeled, 'otp')->textInput(['placeholder' => "Enter OTP" ,'class'=>'form-control input_desgn'])->label(false)?>
+
+
+							</div>
+
+
+							<button type="button" id="otpit" class="otp_button">Get one time password (OTP)</button>
+
+							<p class="text-center">
+							<!-- <button class="btn btn-default btn_signin" data-dismiss="modal">
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg';  ?>" width="14" class="lock_img">
+							Verify securely</button> -->
+							<?=
+                                $form->field($modeled, 'checkotp')->hiddenInput()->label(false);
+                            
+								
+								?>
+
+                                <?=                               
+                            
+								$form->field($modeled, 'mobile')->hiddenInput()->label(false);
+								
+
+								?>
+							<?php echo Html::submitButton(Yii::t('frontend', '<img src="'.Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg' .'" width="14" class="lock_img">Verify securely'), ['id' => 'mjhehit', 'class' => 'btn btn-default btn_signin', 'name' => 'signup-button']) ?>
+
+							
+							
+							</p>
+							
+				</div>
+
+          <?php ActiveForm::end(); ?>
+				
+			</div>
+
+</div>
+
+
+<div id="menu1" class="tab-pane fade">
+
+	<div class="col-md-12">
+					
+                    <?php 
+
+                    $form = ActiveForm::begin(['id' => $model1->formName(),
+                    'action'=>"/user/sign-in/sellerlogin"]); 
+                    
+                    ?>
+                            <?=
+                            $form->field($model1, 'checkotp')->hiddenInput()->label(false);
+
+                            ?>
+                             <?=
+                            $form->field($model1, 'checkfield')->hiddenInput()->label(false);
+
+                            ?>
+                    
+                    <div class="col-md-12 no_pad">
+                        <div class="form-group">
+                        <?php echo $form->field($model1, 'identity')->textInput(['class' => 'form-control input_desgn','placeholder'=>'Email or Phone no'])->label(false) ?>
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                        </div>
+
+                        
+                        <button type="button" id="passwordit" class="otp_button">Login via Password</button>
+                        <button type="button" id="otpits" class="otp_button">Login via OTP</button>
+
+
+                        <div class="form-group" id="hideotp">
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                            <?php echo $form->field($model1, 'userOTP')->textInput(['class' => 'form-control input_desgn','placeholder'=>'OTP'])->label(false) ?>
+                         
+                        </div>
+
+                        <div class="form-group" id="hidepassword">
+                          <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
+                            <?php echo $form->field($model1, 'password')->passwordInput(['class' => 'form-control input_desgn','placeholder'=>'Password'])->label(false) ?>
+                         
+                        </div>
+                        <!--<div class="checkbox">
+                        
+                        <?//php echo $form->field($model1, 'rememberMe')->checkbox() ?>
+                           <label class="rembr_ch"><input type="checkbox" value="">Remember me</label> 
+                        </div>-->
+
+                        
+                        <p class="text-center">
+
+<?php echo Html::submitButton(Yii::t('frontend', '<img src="'.Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg' .'" width="14" class="lock_img">Sign in securely'), ['class' => 'btn btn-default btn_signin', 'name' => 'login-button']) ?>
+                        <!-- <button class="btn btn-default btn_signin">
+                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg';  ?>" width="14" class="lock_img">Sign in securely
+                        </button> -->
+                        </p>
+                        <!-- <p class="text-left tems_lin">By logging in, you agree to our<a href="" class="trms_butn"> Terms &amp; Conditions</a> &amp; <a href="" class="trms_butn">Privacy Policy </a></p> -->
+                        <p class="text-left tems_lin">Forgot Password?
+                         
+                         <?php echo Yii::t('frontend', '<a class="trms_butn" href="{link}">Click here</a>', [
+                    'link'=>yii\helpers\Url::to(['sign-in/request-password-reset'])
+                ]) ?>
+                         </p>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                
+                  </div>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+		</div>
+		
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    
 
+<?php
+$script = <<< JS
 
+//$("#signup_modal").modal('show');
+
+$('#hideotp').hide();
+$('#otphide').hide();
+$('#hidepassword').hide();
+
+$('#passwordit').click(function(){
+
+$('#loginform-checkfield').val('password');
+
+$('#hideotp').hide();
+$('#hidepassword').show();
+
+});
+
+
+$('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
+	
+var form = $(this);
+
+var formData = form.serialize();
+
+$.ajax({
+
+    url: form.attr("action"),
+
+    type: form.attr("method"),
+
+    beforeSend: function(){
+    
+     
+   },
+   complete: function(){
+   
+	
+   },
+
+    data: formData,
+
+    success: function (data) {
+
+        if( typeof(data["signupform-username"]) != "undefined"){
+              
+              if (data["signupform-username"] == 'Mobile No. already exist.'){
+
+
+                  alert('Mobile No. Already exisit please sign in here');
+                  $('#loginform-identity').val($('#signupform-username').val());
+                $( ".signup_butn" ).trigger( "click" );
+              }
+
+        }
+
+ if ( typeof(data["signupform-username"]) != "undefined" && data["signupform-username"] !== null && data["signupform-username"] !== 'exist' ) {
+                     
+                    }
+
+                     if(data == 'done'){
+
+		                 $("#signup_modal").modal('hide');
+                         window.location.replace("searches");
+	                 }
+        
+
+       
+
+    },
+
+    error: function () {
+
+        //alert("Something went wrong");
+
+    }
+
+});
+
+}).on('submit', function(e){
+
+	
+
+e.preventDefault();
+
+});
+
+
+
+
+
+
+$('form#{$model1->formName()}').on('beforeSubmit', function(e) {
+	
+    var form = $(this);
+
+     
+    
+    var formData = form.serialize();
+    
+    $.ajax({
+    
+        url: form.attr("action"),
+    
+        type: form.attr("method"),
+    
+        beforeSend: function(){
+        
+         
+       },
+       complete: function(){
+       
+        
+       },
+    
+        data: formData,
+    
+        success: function (data) {
+
+             if( typeof(data['loginform-password']) != "undefined"){
+              
+              if (data['loginform-password'] == 'Incorrect username or password.'){
+
+
+                  alert('Incorrect username or password.');
+              }
+
+        }   
+                         if(data == 'done'){
+    
+                             $("#signup_modal").modal('hide');
+                             window.location.replace("searches");
+                         }
+            
+    
+           
+    
+        },
+    
+        error: function () {
+    
+            //alert("Something went wrong");
+    
+        }
+    
+    });
+    
+    }).on('submit', function(e){
+    
+       
+    
+    e.preventDefault();
+    
+    });
+
+
+
+
+     $('#otpits').click(function(e){
+
+$('#loginform-checkfield').val('otp');
+
+$('#hideotp').show();
+$('#hidepassword').hide();
+
+e.preventDefault();
+e.stopImmediatePropagation(); 
+var newotp =  generateOTP();
+
+var identity = $('#loginform-identity').val();
+
+var phoneno = /^\d{10}$/;
+if(identity.match(phoneno))
+{	 
+
+$.ajax({
+                     type: "POST",
+                     url: '/user/sign-in/rgetotp',
+                     data: {phone : identity,newotp:newotp},
+                     success: function (data) {
+                         //  alert(data); 						
+                         $('#loginform-checkotp').val(newotp);
+                             
+                            // $('#otpit').hide();        
+                     },
+             });
+             return;
+
+     }
+
+    else if (isValidEmailAddress(identity)) {
+
+     $.ajax({
+        type: "POST",
+        url: 'sendemail',
+        data: {emailid : identity,newotp:newotp},
+        success: function (data) {
+            
+           // toastr.success('OTP has been Send to your Mobile Number','success');
+           // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
+
+                            
+             $('#loginform-checkotp').val(newotp);
+              
+        },
+    });
+
+                return;
+}		 
+     else
+     {
+         alert('Not a valid Input');
+            
+     }
+
+    
+
+});
+
+
+JS;
+$this->registerJs($script);
+?> 
+
+
+
+<script>
+
+function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    return pattern.test(emailAddress);
+}
+
+
+function generateOTP() { 
+							
+							// Declare a digits variable 
+							// which stores all digits 
+							var digits = '0123456789'; 
+							let OTP = ''; 
+							for (let i = 0; i < 4; i++ ) { 
+									OTP += digits[Math.floor(Math.random() * 10)]; 
+							} 
+							return OTP; 
+					} 
+
+   
+   $(document).ready(function () {
+
+	
+	 $('#otpit').click(function(e){
+
+        
+        
+         
+   e.preventDefault();
+   e.stopImmediatePropagation(); 
+   var newotp =  generateOTP();
+
+	var identity = $('#signupform-username').val();
+  
+	  var phoneno = /^\d{10}$/;
+	  if(identity.match(phoneno))
+{
+
+    $('#otphide').show();
+
+
+     
+
+	  $.ajax({
+						   type: "POST",
+						   url: '/user/sign-in/rgetotp',
+						   data: {phone : identity,newotp:newotp},
+						   success: function (data) {
+							   //  alert(data); 
+                               if(data == identity){
+
+                                $('#signupform-checkotp').val(newotp);
+                                $('#signupform-mobile').val(identity);
+
+                               }else{
+                                $('#signupform-checkotp').val('xxxx');
+                               }						
+							  
+								   
+								  // $('#otpit').hide();        
+						   },
+				   });
+				   return;
+
+		   }
+
+		  else if (isValidEmailAddress(identity)) {
+
+              $('#otphide').show();
+
+	  
+		   $.ajax({
+			  type: "POST",
+			  url: 'sendemail',
+			  data: {emailid : identity,newotp:newotp},
+			  success: function (data) {
+				  
+				 // toastr.success('OTP has been Send to your Mobile Number','success');
+				 // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
+
+								  
+				   $('#signupform-checkotp').val(newotp);
+					
+			  },
+		  });
+
+					  return;
+  }		 
+		   else
+		   {
+			   alert('Not a valid Input');
+				  
+		   }
+
+		  
+
+});
+
+});
+
+</script>
 
 
  
@@ -2156,6 +2661,8 @@ function getPolygonCoords() {
                                                   // $(".serch_rslt").show();
                                                    var countprop = Object.keys(obj).length;                                                        
                                                    $('#countprop').html(countprop);
+                                                  
+                                                  
                                                   // $('#getsearchlocation').html(sector);
                                                    
                                                    bindButtonClick(obj);
@@ -2175,6 +2682,7 @@ function getPolygonCoords() {
            var propsid = 'PR'+ haritid;
            var commaNum = numberWithCommas(this.asking_rental_price);
                 
+                       
            $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
@@ -2234,6 +2742,16 @@ function getPolygonCoords() {
                                '</div>'+
                            '</div>'+
                    '</div>'); 
+                     var x=3;
+                     $('.property_detail').hide();
+                     $('#getprop .property_detail:lt('+x+')').show();  
+
+                    $('#loadMore').click(function () {
+                    x= (x+5 <= countprop) ? x+5 : countprop;
+                    $('#getprop .property_detail:lt('+x+')').show();
+                    }); 
+
+                     
           
                                                        
    
@@ -2314,7 +2832,8 @@ function getPolygonCoords() {
 
                     }else if(data == 'nouser'){
 
-                    window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
+                       $('#signup_modal').modal('show');
+                   // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
 
                     }else{
                     toastr.error('Some Internal Error', 'warning');

@@ -299,7 +299,7 @@ return $this->render('indexes', [
             $session->set('requestids', $ids);
             $session->set('amount_payable', $amount_payable);
 
-        return $this->redirect(['onlinesitevisit']);
+        //return $this->redirect(['onlinesitevisit']);
     }
 
     public function actionPaymentgateway(){

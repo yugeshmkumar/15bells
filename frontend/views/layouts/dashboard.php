@@ -23,6 +23,8 @@ $url = $ab[0];
 $userrolesd = yii::$app->user->identity->user_login_as;
 
 $urlsd =   Yii::getAlias('@frontendUrl');
+$userid = Yii::$app->user->identity->id;
+$myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one();
 ?>
 <?php $this->beginContent('@frontend/views/layouts/base9.php'); ?>
 
@@ -73,7 +75,13 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<li><a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" class="link_dash">Lease out</a></li>
 				<li class="dropdown profile_dropdwn">
 					<a href="#" class="dropdown-toggle user_detail" data-toggle="dropdown" role="button" aria-expanded="false">
+					
+						<?php if ($myprofile->logo) { ?>
+							<img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" width="40" class="user_img">
+							<?php }else{ ?>
+
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/user.jpg';  ?>" width="40" class="user_img">
+						<?php } ?>
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu user_menu" role="menu">
 							<!--<li class="dropdown-header">SETTINGS</li>-->

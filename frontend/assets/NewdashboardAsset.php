@@ -34,7 +34,7 @@ class NewdashboardAsset extends AssetBundle
        // 'js/main.js',
         'toastr/toastr.min.js',
        // 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
-       'https://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js',
+       //'https://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js',
 
 
 	   'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
