@@ -2618,10 +2618,6 @@ input.invalid {
 	padding:15px 30px;
 	margin:0;
 }
-.property_detail{
-	padding:20px 40px;
-	margin-top:30px;
-}
 .property_manage img{
 	width:16px !important;
 }
@@ -2720,7 +2716,8 @@ input.invalid {
     padding-right: 25px;
 }
 .amenities{
-	padding-top:10px;
+	padding:0px;
+
 }
 .call_butn{
 	padding: 6px 25px;
@@ -2859,7 +2856,7 @@ input.invalid {
 				padding:30px;
 			}
 			.shortlist_call{
-					margin-top: 40px;
+					margin-top: 20px;
 				text-align: right;
 			}
 			.ameneties_section{
@@ -2916,7 +2913,7 @@ input.invalid {
 				font-weight:600;
 			}
 			.amenities_offered{
-				padding:10px 0 0 20px;
+				padding:0px;
 			}
 			
 			.user_filt{
@@ -3456,4 +3453,7 @@ background: transparent;
 outline: none;
 box-shadow: none;
 border: 0;
+}
+.property_detail{
+	margin-bottom:30px;
 }

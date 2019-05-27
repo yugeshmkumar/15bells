@@ -82,9 +82,9 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
+						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
 						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
@@ -540,7 +540,10 @@ var polyArray = [];
       var newShape;
 
    $(document).ready(function () {
+    $(".sub_categories li a").click(function() {
+    $(this).parent().addClass('active').siblings().removeClass('active');
 
+    });
         $('.warehouse').hide();
     $('.industrial_land').hide();
     $('.commercial_r').hide();

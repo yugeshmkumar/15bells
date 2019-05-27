@@ -263,7 +263,7 @@ if(!isset($_SESSION))
                                 <ul class="sub_categories">
                                     <li class="active commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
                                     <li class="commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
-                                    <li class="commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & <br>Plots</a></li>
+                                    <li class="commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
                                     <li class="ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
                                 </ul>
                             </div>
@@ -1030,7 +1030,10 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
       $('.property_hed').children(".plusminus").text('-');
     }
   });
-  
+  $(".sub_categories li a").click(function() {
+    $(this).parent().addClass('active').siblings().removeClass('active');
+
+    });
 
  $(".prop_area").click(function() {
 	$(".accordion_body").slideUp(300);
