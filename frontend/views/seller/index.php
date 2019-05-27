@@ -153,14 +153,14 @@ $user_id= Yii::$app->user->identity->id;
 									<div class="col-md-6">
 										<div class="row">
 											<h3 class="flow_heading">Let us know the expected price of your property</h3>
-                                            <?= $form->field($model, 'expected_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "Enter Amount", 'class' => 'form-control input_desgn'])->label(false) ?>
+                                            <?= $form->field($model, 'expected_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "Enter Amount", 'class' => 'form-control input_desgn exp_price'])->label(false) ?>
 
 											<!-- <input type="text" class="form-control input_desgn" placeholder="Enter Amount"> -->
 										</div>
 									</div>
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 property_area">
+							<div class="col-md-12 property_area crpet_area">
 								<h3 class="flow_heading">Select unit & enter square and carpet area of your property</h3>
 								<ul class="sub_categories display_inline">
 									<li class="active"><a href="javascript:void(0)" id="sq_feets" class="property_subtype price_unit">Sq. Feet</a></li>
@@ -199,8 +199,8 @@ $user_id= Yii::$app->user->identity->id;
 							
 						<div class="col-md-9 no_pad">
 							<div class="row no_pad">
-								<h3 class="flow_heading avail_ability">Availability</h3>
-								<ul class="sub_categories">
+								<h3 class="flow_heading">Availability</h3>
+								<ul class="sub_categories avail_b">
 									<li class="active"><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
 									<li class=""><a href="javascript:void(0)" id="under_construction"class="property_subtype availability">Under construction</a></li>
 									<li class=""><a href="javascript:void(0)" id="60_days" class="property_subtype availability">60 Days</a></li>
@@ -208,14 +208,14 @@ $user_id= Yii::$app->user->identity->id;
 								</ul>
                                 <?= $form->field($model, 'availability')->hiddenInput()->label(false) ?>
 
-								<div class="col-md-6 date_select">
+								<!--<div class="col-md-6 date_select">
                                 <?= $form->field($model, 'available_date')->textInput([ 'placeholder' => "Select a Date",'class' => 'form-control input_desgn'])->label(false) ?> 
-                                <!-- <input type="text" class="form-control input_desgn" placeholder="Select a Date"> -->
-                                </div>
+                                <!-- <input type="text" class="form-control input_desgn" placeholder="Select a Date"> 
+                                </div>-->
 							</div>
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Furnishing Status</h3>
+							<div class="row f_status">
+								<h3 class="flow_heading">Furnishing Status</h3>
 								<ul class="sub_categories">
 									<li class="active"><a href="#" id="warmshell" class="property_subtype furnishing">Warm Shell</a></li>
 									<li class=""><a href="javascript:void(0)" id="bareshell" class="property_subtype furnishing">Bare Shell</a></li>
@@ -226,9 +226,9 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="row seperator_div"></div>
-							<div class="row possession_time">
-								<h3 class="flow_heading avail_ability">Mention possession time ( If Applicable )</h3>
-								<div class="col-md-12 date_select">
+							<div class="row">
+								<h3 class="flow_heading">Mention possession time ( If Applicable )</h3>
+								<div class="row">
 									<ul class="sub_categories display_inline">
 										<li class="active"><a href="javascript:void(0)" id="1_month" class="property_subtype possesions">1 Month</a></li>
 										<li class=""><a href="javascript:void(0)" id="2_month" class="property_subtype possesions">2 Month</a></li>
@@ -237,15 +237,16 @@ $user_id= Yii::$app->user->identity->id;
 									</ul>
                                     <?= $form->field($model, 'possesion_by')->hiddenInput()->label(false) ?>
 								</div>
-								<div class="col-md-6 date_select">
-                                <input type="text" class="form-control input_desgn" placeholder="Select a Date"></div>
+								<!--<div class="col-md-6 date_select">
+                                <input type="text" class="form-control input_desgn" placeholder="Select a Date">
+                                    </div>-->
 							</div>
 							<div class="row seperator_div"></div>
-							<h1 class="more_detail more_steps">To sell property at earliest, Go ahead and beautify property by sharing property details</h1>
+							<h1 class="more_detail">To sell property at earliest, Go ahead and beautify property by sharing property details</h1>
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
+							<div class="row">
 								<h1 class="more_detail">Add more Basic Details</h1>
-								<h3 class="flow_heading avail_ability">How many floors are there in buildings?</h3>
+								<h3 class="flow_heading">How many floors are there in buildings?</h3>
 								<div class="row no_pad">
 									<div class="col-md-4 col-xs-6"><button id="10" class="button_select uptofloor active_butn">Upto 10</button></div>
 									<div class="col-md-4 col-xs-6"><button id="20"  class="button_select uptofloor">Upto 20</button></div>
@@ -256,7 +257,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Property on floor</h3>
+								<h3 class="flow_heading">Property on floor</h3>
 								<div class="row no_pad" id="floorten">
 									<div class="col-md-2"><button id="G" class="button_select prop_floor active_butn">G</button></div>
 									<div class="col-md-2 col-xs-3"><button id="1" class="button_select prop_floor">1</button></div>
@@ -301,7 +302,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Choose ownership deeds</h3>
+								<h3 class="flow_heading">Choose ownership deeds</h3>
 								<div class="col-md-12 no_pad">
 									<div class="col-md-4 col-xs-6"><button id="freehold" class="button_select ownerships active_butn">Free Hold</button></div>
 									<div class="col-md-4 col-xs-6"><button id="lease_hold" class="button_select ownerships">Lease Hold</button></div>
@@ -313,7 +314,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Is there any loan on property?</h3>
+								<h3 class="flow_heading">Is there any loan on property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select loantakens active_butn">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select loantakens">No</button></div>
@@ -322,7 +323,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Is Floor Area Ratio (FAR) approved?</h3>
+								<h3 class="flow_heading">Is Floor Area Ratio (FAR) approved?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals active_butn">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals">No</button></div>
@@ -332,7 +333,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">How old is the property? </h3>
+								<h3 class="flow_heading">How old is the property? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="0-1" class="button_select propage active_butn">0 - 1 Years</button></div>
 									<div class="col-md-3 col-xs-6"><button id="1-5" class="button_select propage">1 - 5 Years</button></div>
@@ -345,7 +346,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat">
-								<h3 class="flow_heading avail_ability">Property Facing? </h3>
+								<h3 class="flow_heading">Property Facing? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="east" class="button_select active_butn propfacing">East</button></div>
 									<div class="col-md-3 col-xs-6"><button id="west" class="button_select propfacing">West</button></div>
@@ -370,7 +371,7 @@ $user_id= Yii::$app->user->identity->id;
                        <div class="row">
 								<h1 class="more_detail">Expectations, Nearby Places and Amenities</h1>
 								<p class="brand_txt">Please help us understanding you expectations</p>
-								<h3 class="flow_heading avail_ability">Is there any locking period for lessee? </h3>
+								<h3 class="flow_heading">Is there any locking period for lessee? </h3>
 								<div class="col-md-12">
 									<div class="col-md-2  col-xs-4 no_pad"><button id="yes" class="button_select locking_period active_butn">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select locking_period">No</button></div>
@@ -378,7 +379,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							
 							<div class="row">
-								<h3 class="flow_heading avail_ability">Is lease tenure applicable? </h3>
+								<h3 class="flow_heading">Is lease tenure applicable? </h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes"class="button_select tenures active_butn">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select tenures">No</button></div>
@@ -387,7 +388,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 							<div class="col-md-12">
-								<h3 class="flow_heading avail_ability">Is there any rent free period?</h3>
+								<h3 class="flow_heading">Is there any rent free period?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free active_butn">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select rent_free">No</button></div>
@@ -398,7 +399,7 @@ $user_id= Yii::$app->user->identity->id;
                     <input type="hidden" value="" id="rent_free" name="rent_free">
 
 							<div class="col-md-12">
-								<h3 class="flow_heading avail_ability">Please share the interior details of property?</h3>
+								<h3 class="flow_heading">Please share the interior details of property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-6 date_select">
                                     <!-- <input type="text" class="form-control input_desgn" placeholder="Enter revenue layout"> -->
@@ -412,7 +413,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12">
 								<h1 class="more_detail">Nearby Places</h1>
 								<p class="brand_txt">Please help us understanding the nearby places around property?</p>
-								<h3 class="flow_heading avail_ability">Commuting options around the property?</h3>
+								<h3 class="flow_heading">Commuting options around the property?</h3>
 								<div class="col-md-12 text-left padd_amen">
 									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass" id="bus" width="22" /><span class="amenity_prop">Bus</span>
@@ -1147,7 +1148,16 @@ function generateOTP() {
      $('.address_row').show('slow');   
     
    });
-   
+   $('.input_location').blur(function(){
+    $('html,body').animate({
+        scrollTop: $(".addres_input").offset().top - 400},
+        'slow'); 
+});
+$('.exp_price').blur(function(){
+    $('html,body').animate({
+        scrollTop: $(".crpet_area").offset().top - 100},
+        'slow'); 
+});
    $('.addres_input').blur(function(){
 
 	$('.tag_map').show(); 
@@ -1166,14 +1176,17 @@ function generateOTP() {
        $('.property_moredetails').show(); 
        $('.property_start').hide(); 
        $('.add_property li:nth-child(4)').addClass("active");
+       $('html,body').animate({
+        scrollTop: $(".property_moredetails").offset().top - 100},
+        'slow'); 
    });
    $('.map_continue').click(function(){
    $('.user_property').show('slow'); 
    $('#myModal').modal('hide'); 
    $('.add_property li:nth-child(2)').addClass("active");
-		$("body, html").animate({
-			scrollTop: $(".user_property").position().top
-		});
+   $('html,body').animate({
+        scrollTop: $(".user_property").offset().top - 100},
+        'slow'); 
    });
     $('.btn_signin').click(function(){
   $('.add_price').show('slow'); 
@@ -1254,7 +1267,11 @@ function generateOTP() {
    });
 
 
-
+$('.avail_b li a').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".f_status").offset().top - 100},
+        'slow'); 
+});
        $(".sub_categories li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
 
@@ -1287,25 +1304,36 @@ function generateOTP() {
                $('.commercial_r').show();
                $('.warehouse').hide();
                $('.industrial_land').hide();
+               $('html,body').animate({
+        scrollTop: $(".commercial_r").offset().top - 100},
+        'slow');
        });
        $(".commer_office").click(function () {
                $('.commercial_o').show();
                $('.commercial_r').hide();
                $('.warehouse').hide();
                $('.industrial_land').hide();
-               
+               $('html,body').animate({
+        scrollTop: $(".commercial_o").offset().top - 100},
+        'slow');
        });
        $(".commer_land").click(function () {
                $('.commercial_o').hide();
                $('.warehouse').hide();
                $('.industrial_land').show();
                $('.commercial_r').hide();
+               $('html,body').animate({
+        scrollTop: $(".industrial_land").offset().top - 100},
+        'slow');
        });
        $(".ware_house").click(function () {
                $('.commercial_o').hide();
                $('.commercial_r').hide();
                $('.warehouse').show();
                $('.industrial_land').hide();
+               $('html,body').animate({
+        scrollTop: $(".warehouse").offset().top - 100},
+        'slow');
        });
 
 

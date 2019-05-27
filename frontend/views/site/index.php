@@ -14,43 +14,18 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<div class="col-md-12 text-center brand_desp">
 					
 					<div class="fadein">
-						<h1 class="brand_name">We have a patented product that helps you in getting the whole experience of your property transaction on demand minus hassles like market research, trust issues, middlemen cost,  
-						site visit & negotiations beating everyone on trust, transparency & time.<br>
-						15bells is innovating every step of your property journey. </h1>
-						<h1 class="brand_name">15bells. Let the bell ring for 15 times and you are all set to get your property for buying, selling, or leasing.<br>
-						Set it once and then the technology will help you all the way.<br>
-						How much time did you spend doing your property transactions? Compare it with using 15bells anytime and you will be surprised with our patented technology behind it.
-						</h1>
-						<h1 class="brand_name">Have you experienced pain in doing any property trading?<br>
-						If yes, we already have your pain cured through our patented technology, easing out your complete journey.<br>
-						15bells is the name…We make buying, selling, leasing seamless & faceless & that too within 15 minutes.
-						</h1>
-						<h1 class="brand_name">We have eased the real estate trading - making it more transparent, flexible, trustworthy - thanks to our patented technology.<br>
-						Property Stakeholders can now have a calm, relaxed & virtual experience of property trading real-time. You can experience it for yourself at 15bells.com
-						</h1>
-						<h1 class="brand_name">Our patented technology marketplace gives real estate stakeholders a transparent & seamless experience in property transactions.<br>
-						Starting from 15 seconds to 15 minutes. Hence the name 15bells.
-						</h1>
-						<h1 class="brand_name">Buy, rent, lease your property with a virtual experience making it more transparent, flexible, trustworthy. With the patented technology, forget the hassles you deal with real estate trading, and experience the real-time property trading just in 15 minutes.<br>
-						Get the best property deal with 15 Bells.
-						</h1>
-						<h1 class="brand_name">We are making real estate transactions seamless, faceless & hassle less.<br>
-						Our patented technology questions the status quo & within 15 hours, you will be able to buy, sell or lease with ease. Check us out at 15bells.com
-						
-						</h1>
-						<h1 class="brand_name">15bells is the next generation real estate platform where within 15 hours, you are sorted with your property needs.<br>
-						We focus on 3T's-  time, trust & transparency. You will be amazed by looking at the time & cost saving with unbeatable security.
-						</h1>
-						<h1 class="brand_name">15bells is a proptech helping you do more in less. Think of the complete transactions within 15 minutes.
-						<br>
-						Our patented technology helps you real-time to make an informed decision, a decision which can never go wrong.
-						</h1>
-						<h1 class="brand_name">15bells is a revolutionary next-generation way for your commercial property needs. 
-						<br>
-						Our patented technology makes the information & process completely real-time, which is trustworthy, transparent utilizing technology.
-
-						</h1>
-						
+						<h1 class="brand_name">Explore On-Demand experience of commercial properties transaction minus hassles like market research, trust issues, middlemen cost,  site visit & negotiations.
+ </h1>
+						<h1 class="brand_name">The revolutionary proptech platform is making commercial real estate market in India transparent, trustworthy & timely.</h1>
+						<h1 class="brand_name">It's as easy as ringing the bell 15 times to sell, buy, or lease a commercial property in India. Experience the next level of market intelligence from the platform.</h1>
+						<h1 class="brand_name">Set your commercial property requirements once and then the platform will help you achieve the goal without any hassle — leverage Technology to get the best.</h1>
+						<h1 class="brand_name">Ever calculated the time you spent doing your last property transactions? Compare it with using this commercial real estate platform anytime and be surprised by the results.</h1>
+						<h1 class="brand_name">This real estate platform removes unnecessary pain & cost in fulfilling your commercial property requirements. Sell, Buy & Lease with Ease. </h1>
+						<h1 class="brand_name">We have eased the commercial real estate trading - making it more transparent, flexible, trustworthy - Give it a Try & see how it makes you fly.</h1>
+						<h1 class="brand_name">Get the best deal - A Calm, innovative & virtual experience of commercial property trading real-time.</h1>
+						<h1 class="brand_name">15bells is a proptech helping you do more in less. Think of the complete transactions within 15 minutes. Make a real-time informed decision, a decision which can never go wrong.</h1>
+						<h1 class="brand_name">We are making commercial real estate transactions seamless, faceless & hassle less. Our patented technology questions the status quo & in the shortest time, you will be able to buy, sell, or lease with ease.	</h1>
+						<hi class="brand_name">Next-generation revolutionary way to address commercial property needs. Our patented technology makes the information & process completely real-time, which is reliable, transparent, utilizing technology.</h1>
 						
 						</div>
 					
@@ -689,9 +664,9 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<div class="row">
 					<div class="col-md-12 greeen_bg trust_contnt div_time animated slideInUp">
 						<ul class="steps_list">
-							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial property in Gurgaon.</li>
-							<li class="trans_steps">At 15 bells all the property owners are trusted and 100% verified with authorized users.</li>
-							<li class="trans_steps">The properties listed on our commercial property site, undergo "in-person verification" by the team.</li>
+							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial properties in India.</li>
+							<li class="trans_steps">At 15 bells all the property owners and buyers are trusted and 100% verified.</li>
+							<li class="trans_steps">The listings on our commercial real estate platform , undergoes "in-person verification" by the team.</li>
 						</ul>
 					</div>
 					<div class="col-md-12 greeen_bg div_trnsp animated slideInUp" style="display:none;">
@@ -703,8 +678,8 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 					<div class="col-md-12 greeen_bg contn_time animated slideInUp" style="display:none;">
 						<ul class="steps_list">
-							<li class="trans_steps">We are not just a property listing portal, but a real-time virtual platform where buyers meet sellers.     </li>
-							<li class="trans_steps">Creating the largest marketplace where you can get the Best commercial properties for sale in Gurgaon.  </li>
+							<li class="trans_steps">We are not just a property listing portal, but a real-time commercial properties platform where buyers meet sellers.     </li>
+							<li class="trans_steps">Creating the largest marketplace where you can find the Best commercial properties in India.  </li>
 							<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
 						</ul>
 					</div>

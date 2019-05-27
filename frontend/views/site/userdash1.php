@@ -34,7 +34,7 @@ $this->title = 'Dashboard';
 					</ul>
 				<div class="tab-content personal_details">
 					  <div id="home" class="tab-pane row fade in active">
-						<div class="col-md-12 user_profile">
+						<div class="col-md-12">
 							<div class="col-md-8 no_pad">
 								<div class="row">
 									<div class="col-md-3 col-xs-4 prof_image">
@@ -79,11 +79,11 @@ $this->title = 'Dashboard';
 								
 								</div>
 							</div>
-							<div class="col-md-4">
-							<div class="col-md-12">
+							<div class="col-md-4 no_pad">
+							<div class="row">
 								<h3 class="current_role">Current Role</h3>
 								<ul class="sub_categories role_list text-center">
-										<li id="buyer" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
+										<li id="buyer" class="active"><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
 										<li id="seller" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="seller">Seller</a></li>
 										<li id="lessor" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessor">Lessor</a></li>
 										<li id="lessee" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessee">Lessee</a></li>
@@ -91,7 +91,6 @@ $this->title = 'Dashboard';
 							</div>
 							</div>
 						</div>
-							<div class="col-md-12 seperator_div"></div>
 							
 					  </div>
 					  <?php 	if ($company) {
@@ -106,16 +105,17 @@ $this->title = 'Dashboard';
 							<div class="col-md-12 user_profile">
 								<div class="col-md-9">
 									<div class="row">
-			
-                
-										<div class="col-md-6 company_overview">
+										<div class="col-md-6  col-xs-6 company_overview">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Company name</p>
 											<p class="label_name"><?php echo $company_name; ?></p>
 										</div>
-										<div class="col-md-6 company_overview">
+										<div class="col-md-6 col-xs-6 company_overview">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Website</p>
 											<p class="label_name"><?php echo $company_website; ?></p>
 										</div>
+									  </div>
+									  
+								<div class="row">
 										<div class="col-md-6 company_overview">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Type of Industry</p>
 											<p class="label_name"><?php echo $company_type; ?></p>
@@ -217,7 +217,9 @@ $this->title = 'Dashboard';
 		  <?php 
 $script = <<< JS
 
-
+$(".sub_categories li a").click(function() {
+   $(this).parent().addClass('active').siblings().removeClass('active');
+});
 	
 	$('form#{$modeled->formName()}').on('submit',function(e){
 
