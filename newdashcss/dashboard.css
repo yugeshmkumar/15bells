@@ -173,7 +173,9 @@ h1.page-header {
 		height: 0;
 		border-right: 0;
 	}
-
+	.role_list li{
+		width:auto !important;
+	}
 	.side-menu .navbar {
 		z-index: 999;
 		position: relative;
@@ -519,6 +521,7 @@ h1.page-header {
 	color:#221d36;
 	font-weight:700;
 	padding-left:30px;
+	margin:0 0 10px;
 }
 .role_name{
 	font-size:18px;
@@ -1290,12 +1293,19 @@ input[type=file]::-webkit-file-upload-button {
 }
 .sub_categories{
 	margin-top: 10px;
-    padding-left: 10px;
+    padding-left: 0px;
 }
 .current_role {
+	margin-bottom: 20px;
     font-size: 18px;
-    padding-left: 10px;
-    margin-top: 0;
+    padding-left: 5px;
+    margin-top: 15px;
+}
+.details_label{
+	font-size:16px;
+}
+.label_name{
+	font-size:16px;
 }
 .role_name {
     font-size: 15px;
@@ -1344,3 +1354,10 @@ input[type=file]::-webkit-file-upload-button {
 	float: left;
     width: 100%;
 }
+
+@media screen and (max-width: 1300px) and (min-width: 992px){
+	.side-menu .navbar-nav li a{
+		padding: 22px 10px 22px;
+		font-size:15px;
+	}
+} 

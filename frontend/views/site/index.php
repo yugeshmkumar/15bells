@@ -14,43 +14,18 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<div class="col-md-12 text-center brand_desp">
 					
 					<div class="fadein">
-						<h1 class="brand_name">We have a patented product that helps you in getting the whole experience of your property transaction on demand minus hassles like market research, trust issues, middlemen cost,  
-						site visit & negotiations beating everyone on trust, transparency & time.<br>
-						15bells is innovating every step of your property journey. </h1>
-						<h1 class="brand_name">15bells. Let the bell ring for 15 times and you are all set to get your property for buying, selling, or leasing.<br>
-						Set it once and then the technology will help you all the way.<br>
-						How much time did you spend doing your property transactions? Compare it with using 15bells anytime and you will be surprised with our patented technology behind it.
-						</h1>
-						<h1 class="brand_name">Have you experienced pain in doing any property trading?<br>
-						If yes, we already have your pain cured through our patented technology, easing out your complete journey.<br>
-						15bells is the name…We make buying, selling, leasing seamless & faceless & that too within 15 minutes.
-						</h1>
-						<h1 class="brand_name">We have eased the real estate trading - making it more transparent, flexible, trustworthy - thanks to our patented technology.<br>
-						Property Stakeholders can now have a calm, relaxed & virtual experience of property trading real-time. You can experience it for yourself at 15bells.com
-						</h1>
-						<h1 class="brand_name">Our patented technology marketplace gives real estate stakeholders a transparent & seamless experience in property transactions.<br>
-						Starting from 15 seconds to 15 minutes. Hence the name 15bells.
-						</h1>
-						<h1 class="brand_name">Buy, rent, lease your property with a virtual experience making it more transparent, flexible, trustworthy. With the patented technology, forget the hassles you deal with real estate trading, and experience the real-time property trading just in 15 minutes.<br>
-						Get the best property deal with 15 Bells.
-						</h1>
-						<h1 class="brand_name">We are making real estate transactions seamless, faceless & hassle less.<br>
-						Our patented technology questions the status quo & within 15 hours, you will be able to buy, sell or lease with ease. Check us out at 15bells.com
-						
-						</h1>
-						<h1 class="brand_name">15bells is the next generation real estate platform where within 15 hours, you are sorted with your property needs.<br>
-						We focus on 3T's-  time, trust & transparency. You will be amazed by looking at the time & cost saving with unbeatable security.
-						</h1>
-						<h1 class="brand_name">15bells is a proptech helping you do more in less. Think of the complete transactions within 15 minutes.
-						<br>
-						Our patented technology helps you real-time to make an informed decision, a decision which can never go wrong.
-						</h1>
-						<h1 class="brand_name">15bells is a revolutionary next-generation way for your commercial property needs. 
-						<br>
-						Our patented technology makes the information & process completely real-time, which is trustworthy, transparent utilizing technology.
-
-						</h1>
-						
+						<h1 class="brand_name">Explore On-Demand experience of commercial properties transaction minus hassles like market research, trust issues, middlemen cost,  site visit & negotiations.
+ </h1>
+						<h1 class="brand_name">The revolutionary proptech platform is making commercial real estate market in India transparent, trustworthy & timely.</h1>
+						<h1 class="brand_name">It's as easy as ringing the bell 15 times to sell, buy, or lease a commercial property in India. Experience the next level of market intelligence from the platform.</h1>
+						<h1 class="brand_name">Set your commercial property requirements once and then the platform will help you achieve the goal without any hassle — leverage Technology to get the best.</h1>
+						<h1 class="brand_name">Ever calculated the time you spent doing your last property transactions? Compare it with using this commercial real estate platform anytime and be surprised by the results.</h1>
+						<h1 class="brand_name">This real estate platform removes unnecessary pain & cost in fulfilling your commercial property requirements. Sell, Buy & Lease with Ease. </h1>
+						<h1 class="brand_name">We have eased the commercial real estate trading - making it more transparent, flexible, trustworthy - Give it a Try & see how it makes you fly.</h1>
+						<h1 class="brand_name">Get the best deal - A Calm, innovative & virtual experience of commercial property trading real-time.</h1>
+						<h1 class="brand_name">15bells is a proptech helping you do more in less. Think of the complete transactions within 15 minutes. Make a real-time informed decision, a decision which can never go wrong.</h1>
+						<h1 class="brand_name">We are making commercial real estate transactions seamless, faceless & hassle less. Our patented technology questions the status quo & in the shortest time, you will be able to buy, sell, or lease with ease.	</h1>
+						<hi class="brand_name">Next-generation revolutionary way to address commercial property needs. Our patented technology makes the information & process completely real-time, which is reliable, transparent, utilizing technology.</h1>
 						
 						</div>
 					
@@ -106,20 +81,18 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
 				<p class="transac_typ text-center">Instant Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Interested in a commercial Property and want it right away? Get your property deal with a real-time & secured platform for property buyers & sellers. </p>
-				<p> <a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a></p>
+				<p class="transaction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..Experience Instant Real Estate Auction Now</a> </p>
+				
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
 				<p class="transac_typ text-center">Forward Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Intrested in a property where there are multiple Buyers? 15 Bells offers a forward auction where a single seller offers his property for sale.</p>
-				<p> <a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a>				</p>
+				<p class="transaction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..See how Forward Auction is beneficial for everyone.</a> </p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">With 15 bells state of art technology, Reverse Auction is the best option for leasing a commercial property between a single buyer or organization and suppliers.</p> 
-				<p class=""><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more btn btn-default">Explore..</a></p>
+				<p class="transaction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..See the benefits of Reverse Auction</a></p> 
 			</div>
 		</div>
 	</div>
@@ -154,49 +127,56 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
+							<p class="step_txt">One of the most important criteria is considering the location of the property. With 15 bells you get to make your custom advanced search area in any particular location by using different shapes and get the available properties listed.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Search Commercial Properties</a>
+							</p>							</div>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Discover the best-matched properties</a>
+							</p>
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
+							<p class="step_txt">Search more than 1000 commercial properties in Delhi NCR for sale or lease.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Start your Property Search in Delhi NCR</a>
+							 </p>
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit. 15 Bells do it both!
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Find Properties you want to see.</a>
+							</p>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Select a Property to buy & validate documents.</a>
+							  </p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Buy your Favorite Property<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
+							<p class="step_txt">With 15 Bells you can now deal with finalizing the deal on your favorite property in real time via Instant Trading or Forward Auction
+							
+							</p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
-							</div>
-						</div>
+					
 						
 					</div>
 				</div>
@@ -212,49 +192,50 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">1</span>Know your Location <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
+							<p class="step_txt">When you are posting your property, let your buyers know the location of your property. We offer you a faster and easier way to mark the exact property location.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">See the demand in your area.</a></p>							</div>
 							</div>
 						</div>
-						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span>Post your Property<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
+							<p class="step_txt">It’s simple, Select your property type from office space, warehouse or retail shops for the right match.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Post your commercial property</a> </p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Beautify your Property: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
+							<p class="step_txt">Beautify & enrich your property listing by providing relevant information only.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Show how good your property is.</a>	</p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Wait and watch for the right customer: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
+							<p class="step_txt">Once your property is on 15 Bells, potential buyers seeking for your property type in your area will start receiving a notification.
+
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Start Receiving interested buyers requests.</a></p>
 							</div>
 						</div>
-						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Manage your Properties and clients: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
-							</div>
-						</div>
-						
-						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
+							<p class="step_txt">You get a customized dashboard to schedule a visit, put up your expectations, negotiate on the budget or verifying any documents - with 15 Bells Dedicated Account Manager by your side.
+								<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Create your Seller Account now.</a></p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">6</span>Prepare your Property for the auction:<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
+							<p class="step_txt">When selling your property 15 bells offers their “Auction Model” where you can Bid and WIn for the property just within 15 Hours.
+							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Request for putting your Property on Auction.</a></p>
 							</div>
 						</div>
+			
 						
 					</div>
 				</div>
@@ -689,9 +670,9 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				<div class="row">
 					<div class="col-md-12 greeen_bg trust_contnt div_time animated slideInUp">
 						<ul class="steps_list">
-							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial property in Gurgaon.</li>
-							<li class="trans_steps">At 15 bells all the property owners are trusted and 100% verified with authorized users.</li>
-							<li class="trans_steps">The properties listed on our commercial property site, undergo "in-person verification" by the team.</li>
+							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial properties in India.</li>
+							<li class="trans_steps">At 15 bells all the property owners and buyers are trusted and 100% verified.</li>
+							<li class="trans_steps">The listings on our commercial real estate platform , undergoes "in-person verification" by the team.</li>
 						</ul>
 					</div>
 					<div class="col-md-12 greeen_bg div_trnsp animated slideInUp" style="display:none;">
@@ -703,8 +684,8 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 					<div class="col-md-12 greeen_bg contn_time animated slideInUp" style="display:none;">
 						<ul class="steps_list">
-							<li class="trans_steps">We are not just a property listing portal, but a real-time virtual platform where buyers meet sellers.     </li>
-							<li class="trans_steps">Creating the largest marketplace where you can get the Best commercial properties for sale in Gurgaon.  </li>
+							<li class="trans_steps">We are not just a property listing portal, but a real-time commercial properties platform where buyers meet sellers.     </li>
+							<li class="trans_steps">Creating the largest marketplace where you can find the Best commercial properties in India.  </li>
 							<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
 						</ul>
 					</div>

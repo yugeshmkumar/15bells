@@ -76,7 +76,7 @@ if(!isset($_SESSION))
 <style>
 
 #map_canvas {
-   height: 430px;
+   height: 490px;
 }
 #map_canvasd {
     height: 600px;
@@ -112,6 +112,8 @@ if(!isset($_SESSION))
 
    <div class="container-fluid no_pad buyer_result">
 	<div class="row property_requirment text-center">
+    <h2 class="result_text">We have found <span id="countprop"></span> results happen on your search criteria</h2>
+                
     <?php
                                     $query = new Query;
                                     $query->select(['typename','id'])
@@ -129,82 +131,43 @@ if(!isset($_SESSION))
 		</ul>
 	</div>
 	<div class="row">
-		<div class="col-md-4">
-			<div class="col-md-12 filt_ers">
+    <div class="col-md-2 no_pad">
+        <div class="col-md-12 filt_ers">
 			
 			<div class="row">
-				<div class="panel-group our_plus" id="accordion" role="tablist" aria-multiselectable="true">
+				
+				<div class="accordion_container">
+				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
+				  <div class="accordion_body" style="display: none;">
+					<div class="col-md-12 no_pad text-center">
+                        <p class="sort_value">Price</p>
+									<div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
+									<div class="col-md-12 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
+                    </div>
+                    <div class="col-md-12 no_pad text-center">
+                    <p class="sort_value">Selling Status</p>
+									<div class="active col-md-12 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
+									<div class="col-md-12 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
+                                </div>
+                                <div class="col-md-12 no_pad text-center">
+                                <p class="sort_value">Availability</p>
+									<div class="active col-md-12 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
+									<div class="col-md-12 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
+									<div class="col-md-12 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
+									<div class="col-md-12 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
+								</div>
+				  </div>
+				  
+				</div>
+				
 
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a role="button" class="filter_anchor" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Price
-								</a>
-							</h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
-									<div class="col-md-6 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Selling Status
-								</a>
-							</h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
-									<div class="col-md-6 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Availabilty
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
-									<div class="col-md-6 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
-									<div class="col-md-6 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
-									<div class="col-md-6 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-					</div>
-				</div><!-- panel-group -->
+				
 			</div>
 		</div>
 		</div>
-		<div class="col-md-8 buyer_listing no_pad">
+		<div class="col-md-10 buyer_listing no_pad">
 			<div class="row property_list">
-                <h2 class="result_text">We have found <span id="countprop"></span> results happen on your search criteria</h2>
-                
+               
                 <div id="getprop">
 				<!-- <div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : #2345DFGEQ</p>
@@ -268,10 +231,9 @@ if(!isset($_SESSION))
 				
 			
 				</div>
-                
-                <button type="button" id="loadMore">Load more</button>
-
-
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                </div>
 				</div>
 			</div>
   		</div>
@@ -289,97 +251,184 @@ if(!isset($_SESSION))
 		<div class="container-fluid no_pad">
 			<div class="col-md-12 filt_ers">
 			
-			<div class="row">
-				<div class="panel-group our_plus" id="accordion1" role="tablist" aria-multiselectable="true">
+			<div class="accordion_container">
+				  <div class="accordion_head buyer_drop location_hed">Location<span class="plusminus">+</span></div>
+				  <div class="accordion_body location_body" style="display: none;">
+					<div class="panel-body panel_body">
+								<div class="col-md-12 no_pad text-center">
+									<div class="col-md-6">
+										<input type="text" id="pac-input" class="form-control input_desgn" placeholder="Search">
+									</div>
+									<div class="col-md-6 margin_draw text-left">
+                                    <button class="map_butn edit_map">Draw shape on map</button>
+										
+									</div>
+								</div>
+							</div>
+				  </div>
+				  <div class="row seperator_div popup_seprator"></div>
+				  <div class="accordion_head buyer_drop property_hed">Type of Property<span class="plusminus">+</span></div>
+				  <div class="accordion_body property_body" style="display: none;">
+					<div class="panel-body panel_body">
+                            <div class="col-md-12">
+                             
+                                <ul class="sub_categories">
+                                    <li class="active commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
+                                    <li class="commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
+                                    <li class="commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
+                                    <li class="ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-12 category_detail commercial_o">
+                                <h3 class="flow_heading">Choose your category</h3>
+                                <ul class="sub_categories">
+                                    <li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
+                                </ul>
+                                
+                            </div>
+                            <div class="col-md-12 category_detail commercial_r">
+                                <h3 class="flow_heading">Choose your category</h3>
+                                <ul class="sub_categories">
+                                    <li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
+                                </ul>
+                                
+                            </div>
+                            <div class="col-md-12 category_detail industrial_land">
+                                <h3 class="flow_heading">Choose your category</h3>
+                                <ul class="sub_categories">
+                                    <li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
+                                </ul>
+                                
+                            </div>
+                            <div class="col-md-12 category_detail warehouse">
+                                <h3 class="flow_heading">Choose your category</h3>
+                                <ul class="sub_categories">
+                                    <li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
+                                    <li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
+                                    
+                                </ul>
+                                
+                            </div>
+                            <input type="hidden" id="proptype" name="proptype">
+							</div>
+				  </div>
+				  <div class="row seperator_div popup_seprator"></div>
+				  <div class="accordion_head buyer_drop area_hed">Choose a Area / Unit<span class="plusminus">+</span></div>
+				  <div class="accordion_body area_body" style="display: none;">
+						<div class="panel-body panel_body">
+							<div class="row">
+								<div class="col-md-12 no_pad">	
+                                    <ul class="sub_categories popup_categ">
+										<li class="active"><a href="javascript:void(0)" class="property_subtype square">Sq. Feet</a></li>
+										<li class=""><a href="javascript:void(0)" class="property_subtype square">Sq. Yard</a></li>
+										<li class=""><a href="javascript:void(0)" class="property_subtype square">Sq. Meter</a></li>
+									</ul>
+								</div>
+                                <input type="hidden" id="propsquare" name="propsquare">
+										<div class="col-md-12">
+											<div class="col-md-4 pad_left">
+												<h3 class="flow_heading avail_ability">Minimum</h3>
+												<div class="dropdown">
+                                                <button name="propareamin" id="dLabel" class="dropdown-select selectminarea" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														Select
+														<span class="caret"></span>
+														</button>
+													  <ul class="dropdown-menu User_role area_minimum" aria-labelledby="dLabel">
+														<li>100</li>
+														<li>200</li>
+														<li>300</li>
+														<li>400</li>
+													
+													  </ul>
+												</div>
+                                            </div>
+                                            <input type="hidden" id="propareaminimum" name="propareaminimum">
+											<div class="col-md-4 pad_right">
+												<h3 class="flow_heading avail_ability">Maximum</h3>
+												<div class="dropdown">
+                                                <button name="propareamax" id="dLabel1" class="dropdown-select1 selectmaxarea" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Select
+													<span class="caret"></span>
+												  </button>
+												  <ul class="dropdown-menu individual_drop area_maximum" aria-labelledby="dLabel1">
+													<li>100</li>
+													<li>200</li>
+													<li>300</li>
+													<li>400</li>
+												
+												  </ul>
+												</div>
+											</div>
+										</div>
+                                        <input type="hidden" id="propareamaximum" name="propareamaximum">
 
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a role="button" class="filter_anchor" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									I'm a
-								</a>
-							</h4>
-						</div>
-						<div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-4 no_pad"><button class="filter_butn">Buyer</button></div>
-									<div class="col-md-4 no_pad"><button class="filter_butn">Lessee</button></div>
+										
+									</div>
+							</div>
+				  </div>
+				<div class="row seperator_div popup_seprator"></div>
+				<div class="accordion_head price_hed buyer_drop">Choose a Price Range<span class="plusminus">+</span></div>
+				  <div class="accordion_body price_bdy" style="display: none;">
+					<div class="panel-body panel_body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-4 pad_left">
+											<h3 class="flow_heading avail_ability">Minimum</h3>
+											<div class="dropdown">
+											<button name="proppricemin" id="dLabel" class="dropdown-select selectminprice" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Select
+													<span class="caret"></span>
+													</button>
+												  <ul class="dropdown-menu User_role price_minimum" aria-labelledby="dLabel">
+                                                  <li>100000</li>
+											<li>200000</li>
+											<li>300000</li>
+                      <li>400000</li>
+                      <li>500000</li>
+                      <li>1000000</li>
+												
+												  </ul>
+											</div>
+                                        </div>
+                                        <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+
+										<div class="col-md-4 pad_right">
+											<h3 class="flow_heading avail_ability">Maximum</h3>
+											<div class="dropdown">
+                                            <button name="proppricemax" id="dLabel1" class="dropdown-select1 selectmaxprice" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												Select
+												<span class="caret"></span>
+											  </button>
+											  <ul class="dropdown-menu individual_drop price_maximum" aria-labelledby="dLabel1">
+                                              <li>200000</li>
+											<li>300000</li>
+											<li>400000</li>
+                      <li>500000</li>
+                      <li>1000000</li>
+                      <li>2000000</li>
+											
+											  </ul>
+											</div>
+										</div>
+									</div>
+                                    <input type="hidden" id="proppricemaximum" name="proppricemaximum">
 								</div>
 							</div>
-						</div>
+				  </div>
+                </div>
+                <div class="col-md-12 text-right" style="padding:20px 0;">
+                    <button class="btn btn-default call_butn" onclick="applyfilters()">Apply</button>
 					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Location
-								</a>
-							</h4>
-						</div>
-						<div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad">
-                                    <input  name="serachlocality" type="text" id="pac-input" class="form-control input_desgn" placeholder="Enter your locality">
-</div>
-									<div class="active col-md-6 no_pad">
-                                    <button class="filter_butn map_butn">Draw shape on map</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Type of Property
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-3 no_pad"><button class="filter_butn">Commercial Office</button></div>
-									<div class="col-md-3 no_pad"><button class="filter_butn">Commercial Retail</button></div>
-									<div class="col-md-3 no_pad"><button class="filter_butn">Industrial Land & Plots</button></div>
-									<div class="col-md-3 no_pad"><button class="filter_butn">Warehouse</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Choose a Area / Unit
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-3 no_pad"><button class="filter_butn">Sq. Feet</button></div>
-									<div class="col-md-3 no_pad"><button class="filter_butn">Sq. Yard</button></div>
-									<div class="col-md-3 no_pad"><button class="filter_butn">Sq. Meter</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-					</div>
-				</div><!-- panel-group -->
-			</div>
 		</div>
 		</div>
       </div>
@@ -720,6 +769,64 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
 } ?>
 
 
+ $(".accordion_head").click(function() {
+    if ($('.accordion_body').is(':visible')) {
+      $(".accordion_body").slideUp(300);
+      $(".plusminus").text('+');
+    }
+    if ($(this).next(".accordion_body").is(':visible')) {
+      $(this).next(".accordion_body").slideUp(300);
+      $(this).children(".plusminus").text('+');
+    } else {
+      $(this).next(".accordion_body").slideDown(300);
+      $(this).children(".plusminus").text('-');
+    }
+  });
+ $(".locality_area").click(function() {
+	 $(".accordion_body").slideUp(300);
+	 $(".plusminus").text('+');
+    if ($('.accordion_body').is(':visible')) {
+	
+    } else {
+      $(".location_body").slideDown(300);
+      $('.location_hed').children(".plusminus").text('-');
+    }
+  });
+ $(".prop_type").click(function() {
+	$(".accordion_body").slideUp(300);
+	$(".plusminus").text('+');
+    if ($('.accordion_body').is(':visible')) {
+      
+    } else {
+      $(".property_body").slideDown(300);
+      $('.property_hed').children(".plusminus").text('-');
+    }
+  });
+  $(".sub_categories li a").click(function() {
+    $(this).parent().addClass('active').siblings().removeClass('active');
+
+    });
+
+ $(".prop_area").click(function() {
+	$(".accordion_body").slideUp(300);
+	$(".plusminus").text('+');
+    if ($('.accordion_body').is(':visible')) {
+      
+    } else {
+      $(".area_body").slideDown(300);
+      $('.area_hed').children(".plusminus").text('-');
+    }
+  });
+ $(".prop_price").click(function() {
+	$(".accordion_body").slideUp(300);
+	$(".plusminus").text('+');
+    if ($('.accordion_body').is(':visible')) {
+      
+    } else {
+      $(".price_bdy").slideDown(300);
+      $('.price_hed').children(".plusminus").text('-');
+    }
+  });
  $(".map_butn").click(function(){
     $("#map_modal").modal('show');
   $("#myModal").modal('hide');
@@ -1203,28 +1310,24 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1239,7 +1342,10 @@ proptype =  $('#proptypes').val();
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                                
                         '</div>'); 
                                                         }
                                                        
@@ -1368,28 +1474,24 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1404,7 +1506,10 @@ proptype =  $('#proptypes').val();
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                                
                         '</div>'); 
                                                         }
                                                             
@@ -1528,28 +1633,24 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1564,7 +1665,10 @@ proptype =  $('#proptypes').val();
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                                
                         '</div>'); 
         }
                                                             
@@ -2376,28 +2480,24 @@ function getPolygonCoords() {
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                               '</div>'+
-                               '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability+'</p>'+
                                    '</div>'+
                                '</div>'+
-                               '</div>'+
-                           '</div>'+
-                           '<div class="row ameneties_section">'+
+                               '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Ameities</p>'+
                                    '<ul class="amenities_list">'+
@@ -2417,7 +2517,10 @@ function getPolygonCoords() {
                                '<button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
                                )+
                                '</div>'+
+                               '</div>'+
+                               '</div>'+
                            '</div>'+
+                           
                    '</div>');
 
                    var x=3;
@@ -2717,28 +2820,24 @@ $("#rantime").datepicker({
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                               '</div>'+
-                               '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability+'</p>'+
                                    '</div>'+
                                '</div>'+
-                               '</div>'+
-                           '</div>'+
-                           '<div class="row ameneties_section">'+
+                               '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Ameities</p>'+
                                    '<ul class="amenities_list">'+
@@ -2758,7 +2857,10 @@ $("#rantime").datepicker({
                                '<button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
                                )+
                                '</div>'+
+                               '</div>'+
+                               '</div>'+
                            '</div>'+
+                           
                    '</div>');
 
                    var x=3;
