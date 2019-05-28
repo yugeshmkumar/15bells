@@ -1437,6 +1437,8 @@ function generateOTP() {
 
       var nearbythings = [];
      $('.nearbyclass').click(function(){
+
+         
         var nearbyclass = this.id;
         nearbythings.push(nearbyclass);
 
