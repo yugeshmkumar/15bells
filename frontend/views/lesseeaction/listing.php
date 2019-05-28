@@ -110,11 +110,10 @@ if(!isset($_SESSION))
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt">Lessee<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php echo $data['typename']; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php echo $propareaminimum; ?> - <?php echo $propareamaximum; ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php echo $proppriceminimum; ?> - <?php echo $proppricemaximum; ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
 	</div>
 	<div class="row">

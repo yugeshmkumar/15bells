@@ -708,7 +708,7 @@ class LesseeactionController extends Controller {
     }
     public function actionSearchaction() {
 
-        $this->layout = "newdashboard";
+        $this->layout = "roleLayout";
         return $this->render('searchaction');
     }
 
