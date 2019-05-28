@@ -221,8 +221,9 @@ if(!isset($_SESSION))
 			
 				</div>
                 
-
-        <button type="button" id="loadMore">Load more</button>
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                </div>
 
 				</div>
 			</div>
