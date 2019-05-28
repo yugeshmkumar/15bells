@@ -496,14 +496,8 @@ div.mm-dropdown ul li img {
 	font-weight:300;
 }
 .read_more{
-	color:#ffffff !important;
-	font-size:17px;
-	width:80%;
-	padding:7px;
-	background:#c4984f;
-	outline:none;
-	border-radius:0;
-	border:0;
+	color:#c4984f !important;
+	font-size:16px;
 }
 .img_trans{
 	
@@ -2438,6 +2432,7 @@ input.invalid {
 .shortlist_call{
 	text-align:left !important;
 }
+
 .property_flow{
 	padding:0;
 }
@@ -3456,4 +3451,7 @@ border: 0;
 }
 .property_detail{
 	margin-bottom:30px;
+}
+#test{
+	margin-right:10px !important;
 }
