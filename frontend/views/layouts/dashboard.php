@@ -105,7 +105,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 
 
-							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li>
+							<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
 							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['/user/sign-in/logout']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17"> Logout</a></li>
 						</ul>
@@ -153,7 +153,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 
 
-					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li>
+					<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['/user/sign-in/logout']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17"> Logout</a></li>
 
