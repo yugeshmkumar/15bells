@@ -123,11 +123,11 @@ if(!isset($_SESSION))
                                     $data = $command->queryOne();
                                   
                                     ?>  
-		<ul class="users_search">
-            <li class="user_filt locality_area"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_type"><?php echo $data['typename']; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_area"><?php echo $propareaminimum; ?> - <?php echo $propareamaximum; ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><?php echo $proppriceminimum; ?> - <?php echo $proppricemaximum; ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+	<ul class="users_search">
+			<li class="user_filt"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
 	</div>
 	<div class="row">
@@ -2280,19 +2280,19 @@ function getPolygonCoords() {
             if (address_component.types[0] == "locality"){
             // console.log("town:"+address_component.long_name);       
             itemLocality = address_component.long_name;       
-            $('#town').val(itemLocality);
+            $('#towns').val(itemLocality);
             }
             if (address_component.types[0] == "sublocality_level_1"){
             // console.log("province:"+address_component.long_name);
             itemSectorf = address_component.long_name;
-            $('#sector').val(itemSectorf);
+            $('#sectors').val(itemSectorf);
 
             }
 
             if (address_component.types[0] == "country"){ 
              //console.log("country:"+address_component.long_name); 
             itemCountry = address_component.long_name;
-            $('#country').val(itemCountry);
+            $('#countrys').val(itemCountry);
             }
 
             if (address_component.types[0] == "postal_code_prefix"){ 
@@ -2464,9 +2464,9 @@ function getPolygonCoords() {
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                            //    '<div class="overlay_sign">'+
+                            //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                            //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
