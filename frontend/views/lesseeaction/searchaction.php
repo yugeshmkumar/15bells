@@ -501,10 +501,20 @@ if($getSaveID->type == 'blank'){
 					<!-- <div id="appendid2">
 					</div> -->
                     <div class="col-md-12">
-
-                    <div class="col-md-4" id="sitevisitlocation">location</div>
-                    <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
-                    <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div>
+                    <div class="col-md-4 company_overview property_manage">
+						<p class="label_name">Location</p>
+						<p class="details_label" id="sitevisitlocation"></p>
+					</div>
+                    <div class="col-md-4 company_overview property_manage">
+						<p class="label_name">Area</p>
+						<p class="details_label" id="sitevisitarea"></p>
+					</div>
+                    
+                    <div class="col-md-4 company_overview property_manage">
+						<p class="label_name">Area</p>
+						<p class="details_label"> <span id="sitevisitprice">Price</span> Sq. ft.</p>
+					</div>
+                    
                     </div>
 					<div class="col-md-12">
 						<div class="col-md-6">
@@ -513,21 +523,21 @@ if($getSaveID->type == 'blank'){
 							</div>
 							
 						</div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 no_pad">
                         <div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4">
 							
                          <button type="button" class="scheduletime" id="morning">Morning</button>
 							
 							
 						</div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
 							
                             <button type="button" class="scheduletime" id="afternoon">Afternoon</button>
 							
 							
 						</div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
 							
                             <button type="button" class="scheduletime" id="evening">Evening</button>
 							
