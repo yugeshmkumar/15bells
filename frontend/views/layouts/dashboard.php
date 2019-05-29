@@ -105,7 +105,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 
 
-							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li>
+							<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
 							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['/user/sign-in/logout']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17"> Logout</a></li>
 						</ul>
@@ -133,11 +133,14 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 
 					<li class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['lesseeaction/shortlist']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">Shortlisted Properties</a></li>
+					<li class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['save-searches/lessee']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">My activities</a></li>
 					<li  class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-sitevisit']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 					<li  class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['sellor-expectations/expectationsindexbuyer']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
 
 
 <li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['buyeraction/shortlist']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">Shortlisted Properties</a></li>
+<li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['save-searches/buyer']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">My activities</a></li>
+
 					<li  class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/sellorview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 					<li  class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['sellor-expectations/expectationsindexbuyer']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
 
@@ -153,7 +156,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 
 
-					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li>
+					<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['/user/sign-in/logout']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17"> Logout</a></li>
 

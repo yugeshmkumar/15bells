@@ -1468,6 +1468,8 @@ $('.avail_b li a').click(function(){
 
       var nearbythings = [];
      $('.nearbyclass').click(function(){
+
+         
         var nearbyclass = this.id;
         nearbythings.push(nearbyclass);
 
