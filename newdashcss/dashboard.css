@@ -1361,3 +1361,18 @@ input[type=file]::-webkit-file-upload-button {
 		font-size:15px;
 	}
 } 
+.saved_search{
+	padding:10px 40px;
+	background:#f7f7f7;
+}
+.search_head{
+	padding:20px 0;
+}
+.grid-view{
+	padding:20px;
+	background:#ffffff;
+}
+.grid-view a{
+	color:#c4984f;
+	font-size:20px;
+}

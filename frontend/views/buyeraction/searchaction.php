@@ -82,7 +82,7 @@ if($getSaveID->type == 'blank'){
 <style>
 
 #map_canvas {
-   height: 430px;
+   height: 490px;
 }
 #map_canvasd {
     height: 600px;
@@ -128,87 +128,49 @@ if($getSaveID->type == 'blank'){
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+            <li class="user_filt locality_area"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_type"><?php echo $data['typename']; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_area"><?php echo $propareaminimum; ?> - <?php echo $propareamaximum; ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><?php echo $proppriceminimum; ?> - <?php echo $proppricemaximum; ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
         
 	</div>
 	<div class="row">
-		<div class="col-md-4">
-			<div class="col-md-12 filt_ers">
+    <div class="col-md-2 no_pad">
+        <div class="col-md-12 filt_ers">
 			
 			<div class="row">
-				<div class="panel-group our_plus" id="accordion" role="tablist" aria-multiselectable="true">
+				
+				<div class="accordion_container">
+				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
+				  <div class="accordion_body" style="display: none;">
+					<div class="col-md-12 no_pad text-center">
+                        <p class="sort_value">Price</p>
+									<div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
+									<div class="col-md-12 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
+                    </div>
+                    <div class="col-md-12 no_pad text-center">
+                    <p class="sort_value">Selling Status</p>
+									<div class="active col-md-12 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
+									<div class="col-md-12 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
+                                </div>
+                                <div class="col-md-12 no_pad text-center">
+                                <p class="sort_value">Availability</p>
+									<div class="active col-md-12 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
+									<div class="col-md-12 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
+									<div class="col-md-12 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
+									<div class="col-md-12 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
+								</div>
+				  </div>
+				  
+				</div>
+				
 
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a role="button" class="filter_anchor" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Price
-								</a>
-							</h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
-									<div class="col-md-6 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Selling Status
-								</a>
-							</h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
-									<div class="col-md-6 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-						</div>
-					<div class="panel panel-default plus_points filter_style">
-						<div class="panel-heading buyer_drop" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed filter_anchor" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									<i class="more-less glyphicon glyphicon-minus"></i>
-									Availabilty
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body panel_body">
-								<div class="col-md-12 no_pad text-center">
-									<div class="active col-md-6 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
-									<div class="col-md-6 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
-									<div class="col-md-6 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
-									<div class="col-md-6 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 seperator_div">
-					</div>
-				</div><!-- panel-group -->
+				
 			</div>
 		</div>
 		</div>
-		<div class="col-md-8 buyer_listing no_pad">
+		<div class="col-md-10 buyer_listing no_pad">
 			<div class="row property_list">
                 <h2 class="result_text">We have found <span id="countprop"></span> results happen on your search criteria</h2>
                 
@@ -276,8 +238,9 @@ if($getSaveID->type == 'blank'){
 			
 				</div>
                 
-                <button type="button" id="loadMore">Load more</button>
-
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                </div>
 
 				</div>
 			</div>
@@ -1353,28 +1316,24 @@ function applyfilters(){
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1389,7 +1348,10 @@ function applyfilters(){
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                                
                         '</div>'); 
                                                         }
                                                        
@@ -1518,28 +1480,24 @@ function applyfilters(){
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1554,7 +1512,10 @@ function applyfilters(){
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                                
                         '</div>'); 
                                                         }
                                                             
@@ -1678,28 +1639,24 @@ function applyfilters(){
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
                                             '<p class="details_label">₹ '+commaNum+'</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
                                             '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                         '</div>'+
-                                    '</div>'+
-                                    '<div class="row prop_detail">'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Verified</p>'+
                                             '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                         '</div>'+
-                                        '<div class="col-md-6 company_overview property_manage">'+
+                                        '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
                                             '<p class="details_label">'+this.availability+'</p>'+
                                         '</div>'+
                                     '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="row ameneties_section">'+
+                                    '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
                                         '<p class="label_name amenities">Ameities</p>'+
                                         '<ul class="amenities_list">'+
@@ -1714,7 +1671,10 @@ function applyfilters(){
                                     '<div class="col-md-6 shortlist_call">'+
                                         '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                     '</div>'+
+                                    '</div>'+
+                                    '</div>'+
                                 '</div>'+
+                               
                         '</div>'); 
         }
                                                             
@@ -2531,28 +2491,24 @@ function getPolygonCoords() {
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                               '</div>'+
-                               '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability+'</p>'+
                                    '</div>'+
                                '</div>'+
-                               '</div>'+
-                           '</div>'+
-                           '<div class="row ameneties_section">'+
+                               '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Ameities</p>'+
                                    '<ul class="amenities_list">'+
@@ -2567,7 +2523,10 @@ function getPolygonCoords() {
                                '<div class="col-md-6 shortlist_call">'+
                                    '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" /><button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'+
                                '</div>'+
+                               '</div>'+
+                               '</div>'+
                            '</div>'+
+                           
                    '</div>'); 
 
                    var x=3;
@@ -2870,28 +2829,24 @@ $("#rantime").datepicker({
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                               '</div>'+
-                               '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability+'</p>'+
                                    '</div>'+
                                '</div>'+
-                               '</div>'+
-                           '</div>'+
-                           '<div class="row ameneties_section">'+
+                               '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Ameities</p>'+
                                    '<ul class="amenities_list">'+
@@ -2906,7 +2861,10 @@ $("#rantime").datepicker({
                                '<div class="col-md-6 shortlist_call">'+
                                    '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" /><button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'+
                                '</div>'+
+                               '</div>'+
+                               '</div>'+
                            '</div>'+
+                           
                    '</div>'); 
 
                    var x=3;

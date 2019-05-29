@@ -10,8 +10,10 @@ use yii\grid\GridView;
 $this->title = 'Save Searches';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="col-md-9">
-
+<div class="col-md-9 saved_search">
+    <div class="row">
+    <h2 class="dashboard_head search_head">Saved Search</h2>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
