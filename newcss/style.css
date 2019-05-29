@@ -2918,6 +2918,7 @@ input.invalid {
 				background:#c4984f;
 				font-size:17px;
 				margin:0 10px;
+				cursor:pointer;
 			}
 			.user_filt span{
 				margin-left:15px;
