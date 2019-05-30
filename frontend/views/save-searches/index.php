@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-           // 'role_type',
+            'role_type',
            // 'search_for',
            // 'type',
             //'geometry:ntext',
@@ -36,11 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			  //'width'=>'300px',
 			  'value'=>function($data){
 				 // $url = yii\helpers\Url::base() . '/maps.png';	
+				  if($data->role_type == 'lessee'){
+				  return '<a class="map_mrkr" onclick="showmaples(' . $data->id . ')" href="javascript:void(0);"> <i class="fa fa-map-marker"></i></a>';		  
 				  
-				//  return $data->save_search_as .'<a onclick="showmap(' . $data->id . ');" href="javascript:void(0);"> <img src="' . $url . '" /> </a>';	
-				  return '<a class="map_mrkr" onclick="showmap(' . $data->id . ')" href="javascript:void(0);"> <i class="fa fa-map-marker"></i></a>';		  
-				  
+                  }else{
+                    return '<a class="map_mrkr" onclick="showmapbuy(' . $data->id . ')" href="javascript:void(0);"> <i class="fa fa-map-marker"></i></a>';		  
 
+
+                  }
                                 
 			  }
 			
@@ -65,10 +68,17 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <script>
-function showmap(id)
+function showmaples(id)
 {
     
 	var win = window.open('<?php echo yii::$app->urlManager->createUrl(['lesseeaction/searchaction']) ?>?id='+id+'', '_blank');
+  win.focus();
+}
+
+function showmapbuy(id)
+{
+    
+	var win = window.open('<?php echo yii::$app->urlManager->createUrl(['buyeraction/searchaction']) ?>?id='+id+'', '_blank');
   win.focus();
 }
  </script>
