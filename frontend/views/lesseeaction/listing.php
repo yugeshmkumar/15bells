@@ -536,6 +536,20 @@ if(!isset($_SESSION))
 								
 								?>
 
+                                 <?=
+                                
+                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'lessor'])->label(false);
+                                        
+
+                                ?>
+
+                                <?=
+                                
+                                $form->field($modeled, 'companytype')->hiddenInput(['value' => 'Individual'])->label(false);
+                                        
+
+                                ?>
+
                                 <?=                               
                             
 								$form->field($modeled, 'mobile')->hiddenInput()->label(false);
