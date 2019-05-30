@@ -83,7 +83,7 @@ $this->title = 'Dashboard';
 							<div class="row">
 								<h3 class="current_role">Current Role</h3>
 								<ul class="sub_categories role_list text-center">
-										<li id="buyer" class="active"><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
+										<li id="buyer" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
 										<li id="seller" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="seller">Seller</a></li>
 										<li id="lessor" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessor">Lessor</a></li>
 										<li id="lessee" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="lessee">Lessee</a></li>
