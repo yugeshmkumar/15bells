@@ -482,7 +482,7 @@ if(!isset($_SESSION))
 				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sign-in.jpg';  ?>" class="img-responsive">
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-6 signup_add">
             		<ul class="nav nav-pills signup_tabs">
 					  <li class="active"><a class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign up</a></li>
 					  <li><a class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Already a member</a></li>
@@ -500,7 +500,7 @@ if(!isset($_SESSION))
 			<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
 			'action'=>"/user/sign-in/sellersignup"]); ?>
 
-				<div class="col-md-12 seller_lead">
+				<div class="col-md-12 no_pad">
 					<h2 class="login_head verify_seller">Verify yourself to reach <span id="totalcounts1"></span> Buyers</h2>
 							<div class="form-group">
 

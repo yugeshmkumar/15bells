@@ -416,7 +416,7 @@ $user_id= Yii::$app->user->identity->id;
 								<h3 class="flow_heading">Commuting options around the property?</h3>
 								<div class="col-md-12 text-left padd_amen">
 									<div class="col-md-3 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass" id="bus" width="22" /><span class="amenity_prop">Bus</span>
+										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass img_input bus_img" id="bus" width="22" /><span class="amenity_prop bus">Bus</span>
 									</div>
 									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/metro.svg';  ?>" class="nearbyclass" id="metro" width="24"  /><span class="amenity_prop">Metro</span>
@@ -1544,6 +1544,188 @@ $('.avail_b li a').click(function(){
    });
    
  });
+
+//Amenities Icons
+$(".img_input").click(function(){
+			if (this.id == "bus")
+			{
+				if ($(".bus_img").attr('src') == "img/amenities/bus.svg")
+                {
+                    this.src = "newimg/img/amenities/bus_.svg";
+					$(".bus").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/bus.svg";
+					$(".bus").removeClass('change_color');
+                }
+			}
+			if (this.id == "metro")
+			{
+				if ($(".metro_img").attr('src') == "img/amenities/metro.svg")
+                {
+                    this.src = "img/amenities/metro_.svg";
+					$(".metro").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/metro.svg";
+					$(".metro").removeClass('change_color');
+                }
+			}
+			if (this.id == "train")
+			{
+				if ($(".train_img").attr('src') == "img/amenities/train.svg")
+                {
+                    this.src = "img/amenities/train_.svg";
+					$(".train").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/train.svg";
+					$(".train").removeClass('change_color');
+                }
+			}
+			if (this.id == "cab")
+			{
+				if ($(".cab_img").attr('src') == "img/amenities/cab.svg")
+                {
+                    this.src = "img/amenities/cab_.svg";
+					$(".cab").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/cab.svg";
+					$(".cab").removeClass('change_color');
+                }
+			}
+			if (this.id == "market")
+			{
+				if ($(".market_img").attr('src') == "img/amenities/market.svg")
+                {
+                    this.src = "img/amenities/market_.svg";
+					$(".market").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/market.svg";
+					$(".market").removeClass('change_color');
+                }
+			}
+			if (this.id == "atm")
+			{
+				if ($(".atm_img").attr('src') == "img/amenities/atm.svg")
+                {
+                    this.src = "img/amenities/atm_.svg";
+					$(".atm").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/atm.svg";
+					$(".atm").removeClass('change_color');
+                }
+			}
+			if (this.id == "hospital")
+			{
+				if ($(".hospital_img").attr('src') == "img/amenities/hospital.svg")
+                {
+                    this.src = "img/amenities/hospital_.svg";
+					$(".hospital").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/amenities/hospital.svg";
+					$(".hospital").removeClass('change_color');
+                }
+			}
+			if (this.id == "power")
+			{
+				if ($(".power_img").attr('src') == "img/icons/power.svg")
+                {
+                    this.src = "img/icons/power_.svg";
+					$(".power").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/power.svg";
+					$(".power").removeClass('change_color');
+                }
+			}
+			if (this.id == "wifi")
+			{
+				if ($(".wifi_img").attr('src') == "img/icons/wifi.svg")
+                {
+                    this.src = "img/icons/wifi_.svg";
+					$(".wifi").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/wifi.svg";
+					$(".wifi").removeClass('change_color');
+                }
+			}
+			if (this.id == "lift")
+			{
+				if ($(".lift_img").attr('src') == "img/icons/lift.svg")
+                {
+                    this.src = "img/icons/lift_.svg";
+					$(".lift").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/lift.svg";
+					$(".lift").removeClass('change_color');
+                }
+			}
+			if (this.id == "gaurd")
+			{
+				if ($(".gaurd_img").attr('src') == "img/icons/gaurd.svg")
+                {
+                    this.src = "img/icons/gaurd_.svg";
+					$(".gaurd").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/gaurd.svg";
+					$(".gaurd").removeClass('change_color');
+                }
+			}
+			if (this.id == "alarm")
+			{
+				if ($(".alarm_img").attr('src') == "img/icons/alarm.svg")
+                {
+                    this.src = "img/icons/alarm_.svg";
+					$(".alarm").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/alarm.svg";
+					$(".alarm").removeClass('change_color');
+                }
+			}
+			if (this.id == "camera")
+			{
+				if ($(".camera_img").attr('src') == "img/icons/security.svg")
+                {
+                    this.src = "img/icons/security_.svg";
+					$(".camera").addClass('change_color');
+                }
+                else
+                {
+                    this.src = "img/icons/security.svg";
+					$(".camera").removeClass('change_color');
+                }
+			}
+			
+		
+			
+			
+			
+		});
+		
+
+
+
 
 </script>
  <script>
