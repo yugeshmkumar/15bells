@@ -615,28 +615,13 @@ if(!isset($_SESSION))
 
                     <?php 
 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
 
-if(isset($_SESSION['requestids'])){
-           
-    $requestids =  $_SESSION['requestids'];
-    $amount_payable =  $_SESSION['amount_payable'];
-
-}
-
-
-$arrcheckrole = \common\models\RequestSiteVisit::find()->where(['request_id'=>$requestids])->one();
-$user_ids = $arrcheckrole->user_id;
-$property_id = $arrcheckrole->property_id;
-$propidss = 273 * 179 - $property_id;
-$newproidname = 'PR'.$propidss;
-
+ $user_ids = Yii::$app->user->identity->id;
 $arrcheckrole1 = \common\models\User::find()->where(['id'=>$user_ids])->one();
+
+
 $name = $arrcheckrole1->fullname.''.$arrcheckrole1->lastname;
-$email = $arrcheckrole1->email;
+ $email = $arrcheckrole1->email;
 $phonenumber = $arrcheckrole1->username;
 
 
@@ -674,7 +659,11 @@ $phonenumber = $arrcheckrole1->username;
 
     <script>
 
-	
+
+
+document.getElementById('rzp-button1').onclick = function(e){
+   
+    	
 var kname = $('#kname').val();
 var kemail = $('#kemail').val();
 var kphonenumber = $('#kphonenumber').val();
@@ -683,12 +672,13 @@ var kamount_payable = $('#kamount_payable').val();
 var  descriptions =  "Online Sitevisit";
 var amounts = kamount_payable * 100;
 
+
 var options = {
 "key": "rzp_test_9ckspVvYJ0k6GZ",
 "amount": amounts, // 2000 paise = INR 20
 "name": "Stoneray Technologies Private Limited",
 "description": descriptions,
-"image": "/newimg/logo.png",
+"image": "/newimg/img/logo_y.png",
 "handler": function (response){
 
 //alert(response.razorpay_payment_id);
@@ -710,8 +700,6 @@ paymentgateway(response.razorpay_payment_id);
 };
 
 var rzp1 = new Razorpay(options);
-
-document.getElementById('rzp-button1').onclick = function(e){
     $('#proceedtopay').modal('hide');
 rzp1.open();
 e.preventDefault();
@@ -1017,7 +1005,11 @@ $("#setsessions").on("click", function(e){
                                                 data: {id: ids,amount_payable:amount_payable},
                                                 success: function (data) {
                                                  
-                                                  //alert(data);
+                                                 if(data == 'done'){
+                                                  $('#kamount_payable').val(amount_payable);
+                                                  $('#krequestids').val(ids);
+                                                 }
+                                                  
                                                    
 
                                                 },
@@ -3145,7 +3137,7 @@ $.ajax({
     data: {hardam: id,rantime:rantime,visitmode:visitmode},
     success: function (data) {
   
-    alert(data);
+    
     if(data == '1'){
         
         
