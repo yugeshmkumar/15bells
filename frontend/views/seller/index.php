@@ -106,7 +106,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="row category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
 								<li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
 								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
@@ -116,7 +116,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="row category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
 								<li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
 								<li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
@@ -126,7 +126,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="row category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
 								<li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
 								<li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
@@ -136,7 +136,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="row category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories display_inline">
+							<ul class="sub_categories display_inline registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
 								<li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
 								
@@ -609,6 +609,19 @@ $user_id= Yii::$app->user->identity->id;
                             
 								
 								?>
+                                <?=
+                                
+                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'seller'])->label(false);
+                                        
+
+                                ?>
+
+                                <?=
+                                
+                                $form->field($modeled, 'companytype')->hiddenInput(['value' => 'Individual'])->label(false);
+                                        
+
+                                ?>
 
                                 <?=                               
                             
@@ -1272,7 +1285,7 @@ $('.avail_b li a').click(function(){
         scrollTop: $(".f_status").offset().top - 100},
         'slow'); 
 });
-       $(".sub_categories li a").click(function() {
+       $(".registerlogin li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
 
    var userids = $('#getuserid').val();

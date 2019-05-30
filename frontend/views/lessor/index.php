@@ -106,7 +106,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 seperator_div margin_seperator"></div>
 							<div class="col-md-12 category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
 								<li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
 								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
@@ -116,7 +116,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="col-md-12 category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
 								<li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
 								<li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
@@ -126,7 +126,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="col-md-12 category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
 								<li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
 								<li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
@@ -136,7 +136,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="col-md-12 category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
-							<ul class="sub_categories">
+							<ul class="sub_categories registerlogin">
 								<li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
 								<li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
 								
@@ -522,7 +522,7 @@ $user_id= Yii::$app->user->identity->id;
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
                 <button class="btn btn-lg map_continue" data-dismiss="modal">Skip to Continue</button>
-											<button class="btn button_togg btn-lg active step_availablity" type="button" onclick="getbrandcountb();">Confirm</button>
+											<button class="btn button_togg btn-lg active step_availablity" type="button" onclick="getbrandcount();">Confirm</button>
 										  </div></p>
 				
 			</div>
@@ -602,11 +602,26 @@ $user_id= Yii::$app->user->identity->id;
 							<!-- <button class="btn btn-default btn_signin" data-dismiss="modal">
 							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lock.svg';  ?>" width="14" class="lock_img">
 							Verify securely</button> -->
-							<?=
+							   <?=
+
                                 $form->field($modeled, 'checkotp')->hiddenInput()->label(false);
-                            
+                                       
 								
 								?>
+
+                                <?=
+                                
+                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'lessor'])->label(false);
+                                        
+
+                                ?>
+
+                                <?=
+                                
+                                $form->field($modeled, 'companytype')->hiddenInput(['value' => 'Individual'])->label(false);
+                                        
+
+                                ?>
 
                                 <?=                               
                             
@@ -973,7 +988,8 @@ $('form#{$model1->formName()}').on('beforeSubmit', function(e) {
 
 $('#loginform-checkfield').val('otp');
 
-//$('#hideotp').show();
+$('#hideotp').show();
+$('#hidepassword').val('');
 $('#hidepassword').hide();
 
 e.preventDefault();
@@ -1269,7 +1285,7 @@ $('.avail_b li a').click(function(){
         'slow'); 
 });
 
-       $(".sub_categories li a").click(function() {
+       $(".registerlogin li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
 
    var userids = $('#getuserid').val();
