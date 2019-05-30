@@ -57,12 +57,22 @@ NewDesignAsset::register($this);
 									<li>
 										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" id="project-menu">Lease out</a>
 									</li>
+
+                       <?php if(yii::$app->user->isGuest) { ?>
 									<li>
 										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="contact-menu">Sign Up</a>
 									</li>
 									<li>
 										<a class="menu_a" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
 									</li>
+				 	 <?php } else { ?> 				
+						            <li>
+										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['site/userdash']) ?>" id="contact-menu">Dashboard</a>
+									</li>
+
+					   <?php } ?>
+
+
 								</ul>
 						</div><!-- /.navbar-collapse -->
 					</div>
