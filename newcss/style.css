@@ -1194,6 +1194,7 @@ form.example::after {
     border: 1px solid #c4984f;
     font-size: 16px;
 	transition:.4s;
+	margin:30px 0;
 }
 .load_mor:hover{
     background: #c4984f;
@@ -3455,4 +3456,7 @@ border: 0;
 }
 #test{
 	margin-right:10px !important;
+}
+.signup_add{
+	padding:25px;
 }
