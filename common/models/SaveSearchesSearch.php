@@ -42,8 +42,7 @@ class SaveSearchesSearch extends SaveSearches
      */
     public function search($params)
     {
-        $user_id = Yii::$app->user->identity->id; 
-        $query = SaveSearches::find()->where(['user_id' => $user_id])->andwhere(['role_type'=>'buyer']);
+        $query = SaveSearches::find();
 
         // add conditions that should always apply here
 
@@ -142,7 +141,9 @@ class SaveSearchesSearch extends SaveSearches
 
     public function searchbuy($params)
     {
-        $query = SaveSearches::find();
+       
+        $user_id = Yii::$app->user->identity->id; 
+        $query = SaveSearches::find()->where(['user_id' => $user_id])->andwhere(['role_type'=>'buyer']);
 
         // add conditions that should always apply here
 
