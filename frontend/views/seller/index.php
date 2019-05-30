@@ -1074,6 +1074,7 @@ function generateOTP() {
    
    $(document).ready(function () {
 
+       
 	
 	 $('#otpit').click(function(e){
 
@@ -1285,9 +1286,12 @@ $('.avail_b li a').click(function(){
         scrollTop: $(".f_status").offset().top - 100},
         'slow'); 
 });
-       $(".registerlogin li a").click(function() {
+$(".sub_categories li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
+});
+   
 
+    $(".registerlogin li a").click(function() {
    var userids = $('#getuserid').val();
 
    if(userids == ''){
