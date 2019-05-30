@@ -247,7 +247,7 @@ $user_id= Yii::$app->user->identity->id;
 								<h1 class="more_detail">Add more Basic Details</h1>
 								<h3 class="flow_heading ">How many floors are there in buildings?</h3>
 								<div class="col-md-12 no_pad">
-									<div class="col-md-4 col-xs-6"><button id="10" class="button_select uptofloor active_butn">Upto 10</button></div>
+									<div class="col-md-4 col-xs-6"><button id="10" class="button_select uptofloor">Upto 10</button></div>
 									<div class="col-md-4 col-xs-6"><button id="20"  class="button_select uptofloor">Upto 20</button></div>
 									<div class="col-md-4 col-xs-6"><button id="30"  class="button_select uptofloor">Upto 30</button></div>
 									<div class="col-md-4 col-xs-6"><button id="other"  class="button_select uptofloor">Others</button></div>
@@ -334,11 +334,11 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 furnishing_stat">
 								<h3 class="flow_heading ">How old is the property? </h3>
 								<div class="col-md-12">
-									<div class="col-md-3 col-xs-6"><button id="0-1" class="button_select propage active_butn">0 - 1 Years</button></div>
-									<div class="col-md-3 col-xs-6"><button id="1-5" class="button_select propage active_butn">1 - 5 Years</button></div>
-									<div class="col-md-3 col-xs-6"><button id="5-10" class="button_select propage active_butn">5 - 10 Years</button></div>
-									<div class="col-md-3"><button id="10+" class="button_select propage active_butn">10+ Years</button></div>
-									<div class="col-md-3 col-xs-6"><button id="others" class="button_select propage active_butn">Others</button></div>
+									<div class="col-md-3 col-xs-6"><button id="0-1" class="button_select propage">0 - 1 Years</button></div>
+									<div class="col-md-3 col-xs-6"><button id="1-5" class="button_select propage">1 - 5 Years</button></div>
+									<div class="col-md-3 col-xs-6"><button id="5-10" class="button_select propage">5 - 10 Years</button></div>
+									<div class="col-md-3"><button id="10+" class="button_select propage">10+ Years</button></div>
+									<div class="col-md-3 col-xs-6"><button id="others" class="button_select propage">Others</button></div>
 								</div>
                                 <?= $form->field($model, 'age_of_property')->hiddenInput()->label(false) ?>
 
@@ -348,13 +348,13 @@ $user_id= Yii::$app->user->identity->id;
 								<h3 class="flow_heading ">Property Facing? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="east" class="button_select active_butn propfacing">East</button></div>
-									<div class="col-md-3 col-xs-6"><button id="west" class="button_select active_butn propfacing">West</button></div>
-									<div class="col-md-3 col-xs-6"><button id="north" class="button_select active_butn propfacing">North</button></div>
-									<div class="col-md-3 col-xs-6"><button id="south" class="button_select active_butn propfacing">South</button></div>
-									<div class="col-md-3 col-xs-6"><button id="north_east" class="button_select active_butn propfacing">North-East</button></div>
-									<div class="col-md-3 col-xs-6"><button id="north_west" class="button_select active_butn propfacing">North-West</button></div>
-									<div class="col-md-3 col-xs-6"><button id="south_east" class="button_select active_butn propfacing">South-East</button></div>
-									<div class="col-md-3 col-xs-6"><button id="south_west" class="button_select active_butn propfacing">South-West</button></div>
+									<div class="col-md-3 col-xs-6"><button id="west" class="button_select propfacing">West</button></div>
+									<div class="col-md-3 col-xs-6"><button id="north" class="button_select propfacing">North</button></div>
+									<div class="col-md-3 col-xs-6"><button id="south" class="button_select propfacing">South</button></div>
+									<div class="col-md-3 col-xs-6"><button id="north_east" class="button_select propfacing">North-East</button></div>
+									<div class="col-md-3 col-xs-6"><button id="north_west" class="button_select propfacing">North-West</button></div>
+									<div class="col-md-3 col-xs-6"><button id="south_east" class="button_select propfacing">South-East</button></div>
+									<div class="col-md-3 col-xs-6"><button id="south_west" class="button_select propfacing">South-West</button></div>
 								</div>
                                 <?= $form->field($model, 'facing')->hiddenInput()->label(false) ?>
 
