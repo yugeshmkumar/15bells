@@ -300,7 +300,7 @@ public function actionEmdpay($propids, $visitypeid) {
 	       
 	       $payments = \Yii::$app->db->createCommand("SELECT request_id,user_id from request_site_visit where property_id='$id'")->queryAll();
 
-		    echo json_encode($payments);
+		    return json_encode($payments);
 		 
 	    }
 
