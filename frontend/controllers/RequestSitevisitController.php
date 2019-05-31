@@ -50,7 +50,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','indexes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','indexes','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -68,8 +68,20 @@ class RequestSitevisitController extends Controller {
        
                  $searchModel = new RequestSiteVisitSearch();
                  if (\Yii::$app->request->isPost) {
+
+                     $post = Yii::$app->request->post();
+
+                    $sites =  $post['progress'];
+
+                    if($sites == 'Completed'){
+                        
+                        $filter = 'yes';
+
+                    }else{
+                        $filter = 'no';
+                    }
                      
-                    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                    $dataProvider = $searchModel->searchfilter(Yii::$app->request->queryParams,$filter);
 
 
                  }else{
@@ -314,6 +326,19 @@ return $this->render('indexes', [
         //return $this->redirect(['onlinesitevisit']);
     }
 
+    public function actionMakeuseryes(){
+
+        $krequestids =  $_POST['id'];
+        $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
+        if($finduser){
+            $finduser->visit_status_confirm = 'useryes';
+            if($finduser->save(false)){
+                return 'done';
+            }
+
+        }
+    }
+
     public function actionPaymentgateway(){
 
 
@@ -326,12 +351,19 @@ return $this->render('indexes', [
 
         $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
         // echo '<pre>';print_r($finduser);die;
-if($finduser){
-        if ($orderId != '') { 
+      if($finduser){
+
+              if ($orderId != '') { 
                      
            
             $finduser->request_status = 'paid';
+          //  $finduser->visit_status_confirm = 'useryes';
             $finduser->save(false);
+
+
+            $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $krequestids, 'user_id' => $finduser->user_id, 'property_id' => $finduser->property_id, 'created_date' => $date])->execute();
+    
+    
 
             $model = new Payments;
             $model->item_name = 'sitevisit';
@@ -343,6 +375,7 @@ if($finduser){
             $model->created_date = $date;
             if($model->save(false)){
 
+
                 $Invoice = new Invoice;
               //  $Invoice->invoiceID = 'documentshow';
                 $Invoice->propertyid = $finduser->property_id;
@@ -353,6 +386,7 @@ if($finduser){
                 $Invoice->isActive = 1;
                 $Invoice->createdAt = $date;
                 if($Invoice->save(false)){
+
 
                     $payments = \Yii::$app->db->createCommand("SELECT LPAD(invoiceitemid,7,'0') as generateid from invoice_items where invoiceitemid='$Invoice->invoiceitemid'")->queryOne();
                     $generateid =  $payments['generateid'];
@@ -456,7 +490,7 @@ if($finduser){
             ->andWhere('request_site_visit.scheduled_time <> :blank', [':blank' => $blank])
             ->andWhere('request_site_visit.scheduled_time < :date', [':date' => $date])
             ->andwhere('request_site_visit.visit_status_confirm = :no', [':no' => $no])
-            ->andwhere('request_document_show.payment_status <> :payment_status', [':payment_status' => $payment_status])
+            ->andwhere('request_site_visit.request_status = :payment_status', [':payment_status' => $payment_status])
             ->orderBy(['request_site_visit.request_id' => SORT_DESC])->LIMIT(1)
             ->one();
 

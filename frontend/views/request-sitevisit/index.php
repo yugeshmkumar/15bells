@@ -27,8 +27,28 @@ $datas =  $dataProvider->query->all();
 						<h2 class="dashboard_head">Buyer Site Visit</h2>
 					</div>
 					
-				</div>
+			
 
+				<div class="col-md-6 text-right addprop_button">
+						<div class="dropdown filter_drop">
+											<button id="dLabel" class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Filter
+											<span class="caret_filter"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="18" class="svg_drop"></span>
+											</button>
+                                            
+    
+
+										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
+                                          <form method="post">
+											<input name="progress" type="submit" value="In Progress">
+                                            <input name="progress" type="submit" value="Completed">
+                                            </form>
+											<!-- <li></li> -->
+										  </ul>
+                                         
+									</div>
+					</div>
+					</div>
                 <?php foreach ($datas as $data){ 
 
                 $viewid  =  $data->property_id;                
@@ -167,15 +187,15 @@ $datas =  $dataProvider->query->all();
 						<!--<p class="visit_txt">You gave a rating of <span id="count-existing">4</span> star(s)</p>-->
 				</div>
 				<div class="col-md-12 text-center">
-					<h2 class="star_rating">Would you like to buy this property?</h2>
+					<h2 class="star_rating">Would you like to view/verify property document ?</h2>
 					<ul class="sub_categories buy_prop">
 								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
-								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
+								<!-- <li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li> -->
 								<li class=""><a href="javascript:void(0)"  id="later" class="property_subtype buyproperty">Later</a></li>
 							</ul>
 				</div>
 			</div>
-			<div class="row text-center pay_section pay_later">
+			<!-- <div class="row text-center pay_section pay_later">
 				
 				<div class="col-md-12 text-center">
 					<h2 class="star_rating">To close the deal at earliest please go ahead and submit a token money to view/verify property document </h2>
@@ -184,7 +204,7 @@ $datas =  $dataProvider->query->all();
 								<li class=""><a href="javascript:void(0)" id="pay_now" class="property_subtype pay_now">Pay now</a></li>
 						</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!-- <div class="container-fluid padding_rating">
 			<div class="col-md-12 text-center">
@@ -316,8 +336,29 @@ var buttonid =  $(this).attr('id');
 
 if(buttonid == 'yes' || buttonid == 'may_be'){
 
-	$('.rateproperty').hide();
-	$('.pay_later').show();
+          $.ajax({
+											   type: "POST",
+											   url: 'request-sitevisit/makeuseryes',
+											   data: {id: returnid},
+											  // dataType: 'json',
+											   success: function (data) {
+
+													// alert(data);
+
+												  if(data == 'done'){
+
+												$('.rateproperty').hide();
+												$("#visit_rating").modal('hide');
+
+												window.location.replace("documentshow");
+												//$('.pay_later').show();
+												 }
+											                                                
+												  
+
+											   },
+										   });
+	
 
 }else{
 
