@@ -74,6 +74,7 @@ class RequestSitevisitController extends Controller {
                     $sites =  $post['progress'];
 
                     if($sites == 'Completed'){
+                        
                         $filter = 'yes';
 
                     }else{
