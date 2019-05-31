@@ -226,10 +226,11 @@ class DocumentshowController extends Controller {
         $pic = [];
 
 
-
         $docnames = MediaFiles::find()->where(['id' => $ids])->asArray()->all();
 
-        echo json_encode($docnames);
+        
+
+        return json_encode($docnames);
     }
 
     public function actionMovetoemd() {

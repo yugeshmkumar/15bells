@@ -300,7 +300,7 @@ public function actionEmdpay($propids, $visitypeid) {
 	       
 	       $payments = \Yii::$app->db->createCommand("SELECT request_id,user_id from request_site_visit where property_id='$id'")->queryAll();
 
-		    echo json_encode($payments);
+		    return json_encode($payments);
 		 
 	    }
 
@@ -329,7 +329,7 @@ public function actionShowpropdetails(){
            $id = $_POST['id'];  
 	       $payments = \Yii::$app->db->createCommand("SELECT a.* ,p.typename as typename from addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) where a.id='$id'")->queryAll();
 
-	         echo json_encode($payments);
+	         return json_encode($payments);
    } 
 
     /**
