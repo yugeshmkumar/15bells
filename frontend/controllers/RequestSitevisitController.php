@@ -326,12 +326,18 @@ return $this->render('indexes', [
 
         $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
         // echo '<pre>';print_r($finduser);die;
-if($finduser){
-        if ($orderId != '') { 
+      if($finduser){
+
+              if ($orderId != '') { 
                      
            
             $finduser->request_status = 'paid';
             $finduser->save(false);
+
+
+            $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $krequestids, 'user_id' => $finduser->user_id, 'property_id' => $finduser->property_id, 'created_date' => $date])->execute();
+    
+    
 
             $model = new Payments;
             $model->item_name = 'sitevisit';
@@ -343,6 +349,7 @@ if($finduser){
             $model->created_date = $date;
             if($model->save(false)){
 
+
                 $Invoice = new Invoice;
               //  $Invoice->invoiceID = 'documentshow';
                 $Invoice->propertyid = $finduser->property_id;
@@ -353,6 +360,7 @@ if($finduser){
                 $Invoice->isActive = 1;
                 $Invoice->createdAt = $date;
                 if($Invoice->save(false)){
+                    
 
                     $payments = \Yii::$app->db->createCommand("SELECT LPAD(invoiceitemid,7,'0') as generateid from invoice_items where invoiceitemid='$Invoice->invoiceitemid'")->queryOne();
                     $generateid =  $payments['generateid'];
@@ -456,7 +464,7 @@ if($finduser){
             ->andWhere('request_site_visit.scheduled_time <> :blank', [':blank' => $blank])
             ->andWhere('request_site_visit.scheduled_time < :date', [':date' => $date])
             ->andwhere('request_site_visit.visit_status_confirm = :no', [':no' => $no])
-            ->andwhere('request_document_show.payment_status <> :payment_status', [':payment_status' => $payment_status])
+            ->andwhere('request_site_visit.request_status = :payment_status', [':payment_status' => $payment_status])
             ->orderBy(['request_site_visit.request_id' => SORT_DESC])->LIMIT(1)
             ->one();
 

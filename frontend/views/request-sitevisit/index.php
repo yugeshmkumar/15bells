@@ -167,15 +167,15 @@ $datas =  $dataProvider->query->all();
 						<!--<p class="visit_txt">You gave a rating of <span id="count-existing">4</span> star(s)</p>-->
 				</div>
 				<div class="col-md-12 text-center">
-					<h2 class="star_rating">Would you like to buy this property?</h2>
+					<h2 class="star_rating">Would you like to view/verify property document ?</h2>
 					<ul class="sub_categories buy_prop">
 								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
-								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
+								<!-- <li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li> -->
 								<li class=""><a href="javascript:void(0)"  id="later" class="property_subtype buyproperty">Later</a></li>
 							</ul>
 				</div>
 			</div>
-			<div class="row text-center pay_section pay_later">
+			<!-- <div class="row text-center pay_section pay_later">
 				
 				<div class="col-md-12 text-center">
 					<h2 class="star_rating">To close the deal at earliest please go ahead and submit a token money to view/verify property document </h2>
@@ -184,7 +184,7 @@ $datas =  $dataProvider->query->all();
 								<li class=""><a href="javascript:void(0)" id="pay_now" class="property_subtype pay_now">Pay now</a></li>
 						</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!-- <div class="container-fluid padding_rating">
 			<div class="col-md-12 text-center">
@@ -317,7 +317,10 @@ var buttonid =  $(this).attr('id');
 if(buttonid == 'yes' || buttonid == 'may_be'){
 
 	$('.rateproperty').hide();
-	$('.pay_later').show();
+	$("#visit_rating").modal('hide');
+
+	window.location.replace("documentshow");
+	//$('.pay_later').show();
 
 }else{
 
