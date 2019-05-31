@@ -1377,21 +1377,45 @@ input[type=file]::-webkit-file-upload-button {
 	font-size:20px;
 }
 .edit_drop{
-left:-140px;
-}
-.butn_short{
-	background:transparent !important;
-	border:0 !important;
-	outline:none !important;
-}
-
-.butn_short:focus{
-	background:transparent !important;
-	border:0 !important;
-	outline:none !important;
-}
-.drop_editprop{
-	position: absolute;
-	right: 50px;
-	top: 29px;
-}
+	left:-140px;
+	}
+	.butn_short{
+		background:transparent !important;
+		border:0 !important;
+		outline:none !important;
+	}
+	
+	.butn_short:focus{
+		background:transparent !important;
+		border:0 !important;
+		outline:none !important;
+	}
+	.delete_prop{
+		background:transparent !important;
+		border:0 !important;
+		outline:none !important;
+	}
+	.delete_prop:focus{
+		background:transparent !important;
+		border:0 !important;
+		outline:none !important;
+	}
+	.edit_drop li:hover{
+		background:#c4984f;
+		color:#ffffff !important;
+		transition:.4s;
+	}
+	.edit_drop li a:hover{
+		background:transparent;
+		color:#ffffff !important;
+		transition:.4s;
+	}
+	.drop_editprop{
+		position: absolute;
+		right: 50px;
+		top: 29px;
+	}
+	.edit_drop li a{
+		text-align:center;
+		transition:.4s;
+	}

@@ -22,10 +22,10 @@ $datas =  $dataProvider->query->all();
 			<div class="row">
 				<div class="col-md-12">
 					<div class="col-md-6">
-						<h2 class="dashboard_head">Seller Dashboard</h2>
+						<h2 class="dashboard_head">Lessor Dashboard</h2>
 					</div>
 					<div class="col-md-6 text-right addprop_button">
-						<a href="#" class="add_button">Add Property</a>
+						<a href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" class="add_button">Add Property</a>
 					</div>
 				</div>
 
@@ -59,15 +59,14 @@ $datas =  $dataProvider->query->all();
 
 				<div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
-                    <div class="dropdown" style="    position: absolute;right: 50px;top: 29px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
+                    <div class="dropdown drop_editprop">
+					<button class="btn btn-primary dropdown-toggle butn_short" type="button" data-toggle="dropdown"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/option.svg';  ?>" width="7"></button> 
+                        <ul class="dropdown-menu edit_drop">
                             
                             <li><?= Html::a('Edit', ['views','id'=>$viewid]) ?></li>
                             <li><?=
                                 Html::a('Delete', ['delete', 'id' => $viewid], [
-                                'class' => 'btn btn-danger',
+                                'class' => 'btn btn-danger delete_prop',
                                 'data' => [
                                 'confirm' => 'Are you sure you want to delete this item?',
                                 'method' => 'post',
