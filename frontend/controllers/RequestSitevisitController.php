@@ -50,7 +50,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','indexes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','indexes','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -314,6 +314,19 @@ return $this->render('indexes', [
         //return $this->redirect(['onlinesitevisit']);
     }
 
+    public function actionMakeuseryes(){
+
+        $krequestids =  $_POST['id'];
+        $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
+        if($finduser){
+            $finduser->visit_status_confirm = 'useryes';
+            if($finduser->save(false)){
+                return 'done';
+            }
+
+        }
+    }
+
     public function actionPaymentgateway(){
 
 
@@ -332,6 +345,7 @@ return $this->render('indexes', [
                      
            
             $finduser->request_status = 'paid';
+          //  $finduser->visit_status_confirm = 'useryes';
             $finduser->save(false);
 
 
@@ -360,7 +374,7 @@ return $this->render('indexes', [
                 $Invoice->isActive = 1;
                 $Invoice->createdAt = $date;
                 if($Invoice->save(false)){
-                    
+
 
                     $payments = \Yii::$app->db->createCommand("SELECT LPAD(invoiceitemid,7,'0') as generateid from invoice_items where invoiceitemid='$Invoice->invoiceitemid'")->queryOne();
                     $generateid =  $payments['generateid'];

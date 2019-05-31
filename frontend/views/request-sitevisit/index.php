@@ -316,11 +316,29 @@ var buttonid =  $(this).attr('id');
 
 if(buttonid == 'yes' || buttonid == 'may_be'){
 
-	$('.rateproperty').hide();
-	$("#visit_rating").modal('hide');
+          $.ajax({
+											   type: "POST",
+											   url: 'request-sitevisit/makeuseryes',
+											   data: {id: returnid},
+											  // dataType: 'json',
+											   success: function (data) {
 
-	window.location.replace("documentshow");
-	//$('.pay_later').show();
+													 alert(data);
+
+												  if(data == 'done'){
+
+												$('.rateproperty').hide();
+												$("#visit_rating").modal('hide');
+
+												window.location.replace("documentshow");
+												//$('.pay_later').show();
+												 }
+											                                                
+												  
+
+											   },
+										   });
+	
 
 }else{
 
