@@ -37,7 +37,7 @@ $this->title = 'Dashboard';
 						<div class="col-md-12">
 							<div class="col-md-8 no_pad">
 								<div class="row">
-									<div class="col-md-3 col-xs-4 prof_image">
+									<div class="col-md-4 col-xs-4 prof_image">
 									<?php if ($myprofile) { ?>
 									<?php if ($myprofile->logo) { ?>
 								<p><img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" id="thumbnail" class="prof_img" width="140"></p>
@@ -49,7 +49,7 @@ $this->title = 'Dashboard';
 								<?php } ?>
 										
 									</div>
-									<div class="col-md-9 col-xs-8">
+									<div class="col-md-8 col-xs-8">
 									<?php  if($user) {  ?>
 										<h3 class="user_name"><?php echo  ucfirst($user->fullname).' '.ucfirst($user->lastname)  ?></h3>
 										

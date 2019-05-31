@@ -471,7 +471,7 @@ h1.page-header {
 }
 .add_property{
 	background:#221d36;
-	margin-top:50px;
+	margin-top:20px;
 }
 .personal_details{
 	background:#ffffff;
@@ -1375,4 +1375,23 @@ input[type=file]::-webkit-file-upload-button {
 .grid-view a{
 	color:#c4984f;
 	font-size:20px;
+}
+.edit_drop{
+left:-140px;
+}
+.butn_short{
+	background:transparent !important;
+	border:0 !important;
+	outline:none !important;
+}
+
+.butn_short:focus{
+	background:transparent !important;
+	border:0 !important;
+	outline:none !important;
+}
+.drop_editprop{
+	position: absolute;
+	right: 50px;
+	top: 29px;
 }

@@ -21,8 +21,8 @@ use yii\bootstrap\Modal;
 			
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
-								<h1 class="single_hed col-md-12">Discover a commercial property you would love to buy. </h1>
-                <p class="about_det animated slideInDown col-md-7">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
+								<h1 class="single_hed col-md-12">Explore the commercial properties for lease & rent. </h1>
+                <p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations. Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
 	
 				</div>
 				
