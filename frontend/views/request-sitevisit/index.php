@@ -27,8 +27,28 @@ $datas =  $dataProvider->query->all();
 						<h2 class="dashboard_head">Buyer Site Visit</h2>
 					</div>
 					
-				</div>
+			
 
+				<div class="col-md-6 text-right addprop_button">
+						<div class="dropdown filter_drop">
+											<button id="dLabel" class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Filter
+											<span class="caret_filter"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="18" class="svg_drop"></span>
+											</button>
+                                            
+    
+
+										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
+                                          <form method="post">
+											<input name="progress" type="submit" value="In Progress">
+                                            <input name="progress" type="submit" value="Completed">
+                                            </form>
+											<!-- <li></li> -->
+										  </ul>
+                                         
+									</div>
+					</div>
+					</div>
                 <?php foreach ($datas as $data){ 
 
                 $viewid  =  $data->property_id;                
@@ -323,7 +343,7 @@ if(buttonid == 'yes' || buttonid == 'may_be'){
 											  // dataType: 'json',
 											   success: function (data) {
 
-													 alert(data);
+													// alert(data);
 
 												  if(data == 'done'){
 

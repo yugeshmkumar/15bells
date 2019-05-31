@@ -68,8 +68,19 @@ class RequestSitevisitController extends Controller {
        
                  $searchModel = new RequestSiteVisitSearch();
                  if (\Yii::$app->request->isPost) {
+
+                     $post = Yii::$app->request->post();
+
+                    $sites =  $post['progress'];
+
+                    if($sites == 'Completed'){
+                        $filter = 'yes';
+
+                    }else{
+                        $filter = 'no';
+                    }
                      
-                    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                    $dataProvider = $searchModel->searchfilter(Yii::$app->request->queryParams,$filter);
 
 
                  }else{
