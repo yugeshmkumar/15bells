@@ -35,29 +35,30 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="col-md-6 col-xs-6 txt_am">I'm here to </div>
 							<div class="col-md-6 col-xs-6 no_pad">
 								<div class="mm-dropdown">
-								<input type="hidden" id="urlget" value="<?php echo $urlsd; ?>">
-									  <div class="textfirst" id="dropi"> 
-									  <div class="textfirst1" id="dropi1"> 
-									  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>"/> <span class="span_sl">Buy</span>
-									  </div>
-									  </div>
+									<input type="hidden" id="urlget" value="<?php echo $urlsd; ?>">
+										<div class="textfirst" id="dropi"> 
+										  <div class="textfirst1" id="dropi1"> 
+										  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>"/> <span class="span_sl">Buy</span>
+										  </div>
+										</div>
 									  
-									  <ul class="role_select" id="rolee">
-										<li class="input-option li_abc buy_l" data-value="1">
-										<a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="anchr_rol">  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>" class="white_bg"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy_w.png';  ?>" class="yellow_bg"><span class="span_sl"> Buy</span></a>
-										</li>
-										<li class="input-option li_abc sell_l buy_l" data-value="2">
-										  <a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell.png';  ?>" class="white_bg sell_icon" alt=""/> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell_w.png';  ?>" class="yellow_bg sell_icon" alt=""/><span class="span_sl"> Sell </span></a>
-										</li>
-										<li class="input-option li_abc lessee_l buy_l" data-value="3">
-										  <a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease.png';  ?>" class="white_bg" alt="" /> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease_w.png';  ?>" class="yellow_bg" alt="" /><span class="span_sl">Lease In</span></a>
-										</li>
-										<li class="input-option li_abc lessor_l buy_l" data-value="4">
-										  <a href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" class="anchr_rol"><img class="white_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out.png';  ?>" alt=""/><img class="yellow_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out_w.png';  ?>" alt=""/><span class="span_sl"> Lease Out</span></a>
-										</li>
-									  </ul>
-									  <input type="hidden" class="option" name="namesubmit" value="" />
-									</div>
+										<ul class="role_select" id="rolee">
+											<li class="input-option li_abc buy_l" data-value="1">
+											<a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="anchr_rol">  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>" class="white_bg"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy_w.png';  ?>" class="yellow_bg"><span class="span_sl"> Buy</span></a>
+											</li>
+											<li class="input-option li_abc sell_l buy_l" data-value="2">
+											<a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell.png';  ?>" class="white_bg sell_icon" alt=""/> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell_w.png';  ?>" class="yellow_bg sell_icon" alt=""/><span class="span_sl"> Sell </span></a>
+											</li>
+											<li class="input-option li_abc lessee_l buy_l" data-value="3">
+											<a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease.png';  ?>" class="white_bg" alt="" /> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease_w.png';  ?>" class="yellow_bg" alt="" /><span class="span_sl">Lease In</span></a>
+											</li>
+											<li class="input-option li_abc lessor_l buy_l" data-value="4">
+											<a href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" class="anchr_rol"><img class="white_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out.png';  ?>" alt=""/><img class="yellow_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out_w.png';  ?>" alt=""/><span class="span_sl"> Lease Out</span></a>
+											</li>
+										</ul>
+										<i class="fa fa-angle-down role_drop"></i>
+									 	 <input type="hidden" class="option" name="namesubmit" value="" />
+								</div>
 							</div>
 							
 						</div>
@@ -81,18 +82,18 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
 				<p class="transac_typ text-center">Instant Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..Experience Instant Real Estate Auction Now</a> </p>
+				<p class="transaction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">Experience Instant Real Estate Auction Now</a> </p>
 				
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
 				<p class="transac_typ text-center">Forward Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..See how Forward Auction is beneficial for everyone.</a> </p>
+				<p class="transaction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">See how Forward Auction is beneficial for everyone.</a> </p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.<a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">..See the benefits of Reverse Auction</a></p> 
+				<p class="transaction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">See the benefits of Reverse Auction</a></p> 
 			</div>
 		</div>
 	</div>
@@ -418,12 +419,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 							</div>
 							<!--/carousel-inner-->
 						</div><!--/myCarousel-->
-					<div class="controls pull-left hidden-xs">
-						<a class="left left_icn_wt" href="#eventCarousel"
-							data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_w.svg';  ?>" >Previous</a>
-							<a class="right right_icn_wt" href="#eventCarousel"
-								data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_w.svg';  ?>"></a>
-					</div>
+					
 				</div>
 				<div class="col-md-4 pad_off">
 							<h3 class="office_hed">Commercial Office</h3>
@@ -480,12 +476,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								</div>
 								<!--/carousel-inner-->
 							</div><!--/myCarousel-->
-					<div class="controls pull-left hidden-xs">
-						<a class="left left_icn_wt" href="#eventCarousel1"
-							data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_w.svg';  ?>">Previous</a>
-							<a class="right right_icn_wt" href="#eventCarousel1"
-								data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_w.svg';  ?>"></a>
-					</div>
+					
 
 				  </div>
 				  <div class="col-md-4 pad_off">
@@ -541,13 +532,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								</div>
 								<!--/carousel-inner-->
 							</div><!--/myCarousel-->
-					<div class="controls pull-left hidden-xs">
-						<a class="left left_icn_wt" href="#eventCarousel2"
-							data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_w.svg';  ?>">Previous</a>
-							<a class="right right_icn_wt" href="#eventCarousel2"
-								data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_w.svg';  ?>"></a>
-					</div>
-
+					
 				  </div>
 				  <div class="col-md-4 pad_off">
 							<h3 class="office_hed">Land & Plots</h3>
@@ -615,13 +600,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								</div>
 								<!--/carousel-inner-->
 							</div><!--/myCarousel-->
-					<div class="controls pull-left hidden-xs">
-						<a class="left left_icn_wt" href="#eventCarousel3"
-							data-slide="prev"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/left_w.svg';  ?>">Previous</a>
-							<a class="right right_icn_wt" href="#eventCarousel3"
-								data-slide="next">Next<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/right_w.svg';  ?>"></a>
-					</div>
-
+					
 				  </div>
 				  <div class="col-md-4 pad_off">
 							<h3 class="office_hed">Hotel </h3>
