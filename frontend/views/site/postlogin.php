@@ -11,7 +11,7 @@ use kartik\widgets\Select2;
 //use kartik\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset;
+//use johnitvn\ajaxcrud\CrudAsset;
 // use johnitvn\ajaxcrud\BulkButtonWidget;
 $this->title = 'My Profile';
 $userid = Yii::$app->user->identity->id;
@@ -32,7 +32,7 @@ $company = \common\models\Company::find()->where(['userid' => Yii::$app->user->i
 }    
 
 
-CrudAsset::register($this);
+//CrudAsset::register($this);
 
 ?>
 
