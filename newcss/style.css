@@ -354,7 +354,7 @@ a{text-decoration:none !important;}
 .select_catg{
 	position:relative;
 	left:40px;
-	bottom:-150px;
+	bottom:-170px;
 }
 div.mm-dropdown {
   width: 100%;
@@ -497,7 +497,8 @@ div.mm-dropdown ul li img {
 }
 .read_more{
 	color:#c4984f !important;
-	font-size:16px;
+	font-size:17px;
+	font-weight:600;
 }
 .img_trans{
 	
@@ -862,7 +863,8 @@ div.mm-dropdown ul li img {
 	border-right:1px solid #ffffff38;
 }
 .div_header{
-	z-index:999;
+	z-index:9;
+	position:relative;
 }
 .linkedin_logo{
 	margin:0 20px;
@@ -878,7 +880,7 @@ div.mm-dropdown ul li img {
 	color:#ffffff;
 }
 .about_bannr{
-	padding:0 90px;
+	padding:0 60px;
 }
 
 .about_head{
@@ -1214,7 +1216,7 @@ form.example::after {
 	margin-right:10px;
 }
 .single_blogpage{
-	margin-top:200px;
+	margin-top:170px;
 } 
 .blog_qoute{
 	font-size: 24px;
@@ -2194,9 +2196,12 @@ input.invalid {
 @media(max-width:767px) {
 	
 	.select_catg{
-		left:20px;
-		width:90%;
+		left:4px;
+		width:98%;
 		
+	}
+	.single_blogpage{
+		margin-top:80px !important;
 	}
 	.pad50{
 		padding:0 15px;
@@ -3459,4 +3464,10 @@ border: 0;
 }
 .signup_add{
 	padding:25px;
+}
+.role_drop{position: absolute;
+right: 10px;
+top: 28%;
+font-size: 25px;
+color: #c4984f;
 }

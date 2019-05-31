@@ -59,10 +59,8 @@ $datas =  $dataProvider->query->all();
 
 				<div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
-                    <div class="dropdown" style="    position: absolute;right: 50px;top: 29px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
+                    <div class="dropdown drop_editprop" style="">
+					<button class="btn btn-primary dropdown-toggle butn_short" type="button" data-toggle="dropdown"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/option.svg';  ?>" width="7"></button>                        <ul class="dropdown-menu edit_drop">
                             
                             <li><?= Html::a('Edit', ['views','id'=>$viewid]) ?></li>
                             <li><?=

@@ -21,8 +21,8 @@ use yii\bootstrap\Modal;
 			
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
-        <h1 class="single_hed col-md-12">Discover a commercial property you would love to buy. </h1>
-				<p class="about_det animated slideInDown col-md-7">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
+        <h1 class="single_hed col-md-12">Explore the commercial properties for sale. </h1>
+				<p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations. Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
 								
 				</div>
 				
@@ -160,7 +160,7 @@ use yii\bootstrap\Modal;
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
 						<div class="row property_type">
-							<div class="col-md-12 text-center property_area">
+							<div class="row text-center property_area">
 								<div class="col-md-1"></div>
 								<div class="col-md-2 col-xs-6">
 									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="border_yellow1 property_image1">
