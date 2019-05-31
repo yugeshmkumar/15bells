@@ -12,15 +12,15 @@ use yii\db\Query;
 use common\models\MediaFilesConfig;
 use common\models\MediaFiles;
 
-EditableAsset::register($this);
+//EditableAsset::register($this);
 
-use kartik\editable\EditablePjaxAsset;
+//use kartik\editable\EditablePjaxAsset;
 
-EditablePjaxAsset::register($this);
+//EditablePjaxAsset::register($this);
 
-use kartik\popover\PopoverXAsset;
+//use kartik\popover\PopoverXAsset;
 
-PopoverXAsset::register($this);
+//PopoverXAsset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\AddpropertybackendSearch */
@@ -62,10 +62,12 @@ $this->params['breadcrumbs'][] = $this->title;
 		top:55%;
 	}
    }
-</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
+</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div>
+ <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > 
+ <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
 
 
-<div class="col-md-12">
+<div class="col-md-9">
 
     <div class="portlet portlet-sortable sellr_proprty">
         <div class="portlet-title">
@@ -96,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['attribute' => 'property_id',
                             'label' => 'Property ID',
                             'format' => 'raw',
-                            'width' => '120px',
+                          //  'width' => '70px',
                             'filter' => false,
                             'value' => function($data) {
 
@@ -107,32 +109,32 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                                 ],
                                 // 'payment_status',
-                                [
-                                    'label' => 'Payment Status',
-                                    'attribute' => 'payment_status',
-                                    'filter' => false,
-                                    'options' => ['style' => 'width:150px;'],
-                                    'format' => 'raw',
-                                    'value' => function($model) {
-                                if ($model->payment_status == 'pay_now') {
+                            //     [
+                            //         'label' => 'Payment Status',
+                            //         'attribute' => 'payment_status',
+                            //         'filter' => false,
+                            //         'options' => ['style' => 'width:150px;'],
+                            //         'format' => 'raw',
+                            //         'value' => function($model) {
+                            //     if ($model->payment_status == 'pay_now') {
 
 
-                                    $request_id = "'$model->request_id'";
-                                    $documnt_id = "'$model->id'";
-                                    $property_id = "'$model->property_id'";
+                            //         $request_id = "'$model->request_id'";
+                            //         $documnt_id = "'$model->id'";
+                            //         $property_id = "'$model->property_id'";
 
-                                    return Html::a('<button class="btn btn-warning"  id="paymentprop" style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $request_id . ',' . $documnt_id . ',' . $property_id . ')">Pay Now</button>', $url = 'javascript:void(0)', [
-                                                'title' => Yii::t('yii', 'Click to Complete'),
-                                    ]);
-                                } else if ($model->payment_status == 'pending') {
-                                    return Html::a('<button class="btn btn-info" id="paymentprop" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
-                                } else if ($model->payment_status == 'paid') {
-                                    return Html::a('<button class="btn btn-success" id="paymentprop" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
-                                } else {
-                                    return Html::a('<button class="btn btn-success" id="paymentprop" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
-                                }
-                            }
-                                ],
+                            //         return Html::a('<button class="btn btn-warning"  id="paymentprop" style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $request_id . ',' . $documnt_id . ',' . $property_id . ')">Pay Now</button>', $url = 'javascript:void(0)', [
+                            //                     'title' => Yii::t('yii', 'Click to Complete'),
+                            //         ]);
+                            //     } else if ($model->payment_status == 'pending') {
+                            //         return Html::a('<button class="btn btn-info" id="paymentprop" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
+                            //     } else if ($model->payment_status == 'paid') {
+                            //         return Html::a('<button class="btn btn-success" id="paymentprop" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
+                            //     } else {
+                            //         return Html::a('<button class="btn btn-success" id="paymentprop" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
+                            //     }
+                            // }
+                            //     ],
 //                        [
 //                            'label' => 'Document Name',
 //                            'attribute' => 'id',
@@ -150,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'label' => 'Document Name',
                                     'attribute' => 'id',
                                     'filter' => false,
-                                    'options' => ['style' => 'width:200px;'],
+                                    'options' => ['style' => 'width:350px;'],
                                     'format' => 'raw',
                                     'value' => function($model, $data) {
 
@@ -182,14 +184,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                                 ],
                                 //  'payable_amount',
-                                ['attribute' => 'payable_amount',
-                                    'label' => 'Payable Amount',
-                                    'format' => 'raw',
-                                    'width' => '130px',
-                                    'value' => function($data) {
-                                        return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
-                                    }
-                                ],
+                                // ['attribute' => 'payable_amount',
+                                //     'label' => 'Payable Amount',
+                                //     'format' => 'raw',
+                                //     'width' => '130px',
+                                //     'value' => function($data) {
+                                //         return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
+                                //     }
+                                // ],
                                 [
                                     'label' => 'Link to View Doc',
                                     'attribute' => 'id',
@@ -202,49 +204,50 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $property_id = $model->property_id;
                                 $user_id = Yii::$app->user->identity->id;
 
-                                if ($payment_status == 'paid') {
+                              //  if ($payment_status == 'paid') {
                                     return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs(' . $property_id . ')" >Click to view Docs</button>', $url = 'javascript:void(0)', []);
-                                } else {
-                                    $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
-                                    $command = $query->createCommand();
-                                    $data = $command->queryAll();
+                              //  } 
+                                // else {
+                                //     $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
+                                //     $command = $query->createCommand();
+                                //     $data = $command->queryAll();
 
-                                    if ($data) {
-                                        return Html::a('<button class="btn btn-default" style="border-color:#0fd8da !important;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
-                                    } else {
-                                        return Html::a('<button class="btn btn-info" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
-                                    }
-                                }
+                                //     if ($data) {
+                                //         return Html::a('<button class="btn btn-default" style="border-color:#0fd8da !important;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
+                                //     } else {
+                                //         return Html::a('<button class="btn btn-info" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
+                                //     }
+                                // }
                             }
                                 ],
-                                [
-                                    'label' => 'Move to EMD',
-                                    'attribute' => 'id',
-                                    'filter' => false,
-                                    'options' => ['style' => 'width:200px;'],
-                                    'format' => 'raw',
-                                    'value' => function($model, $data) {
-                                $request_id = $model->id;
-                                $payment_status = $model->payment_status;
-                                $property_id = $model->property_id;
-                                $docshowid = $model->id;
-                                $user_id = Yii::$app->user->identity->id;
-                                if ($payment_status == 'paid') {
+                            //     [
+                            //         'label' => 'Move to EMD',
+                            //         'attribute' => 'id',
+                            //         'filter' => false,
+                            //         'options' => ['style' => 'width:200px;'],
+                            //         'format' => 'raw',
+                            //         'value' => function($model, $data) {
+                            //     $request_id = $model->id;
+                            //     $payment_status = $model->payment_status;
+                            //     $property_id = $model->property_id;
+                            //     $docshowid = $model->id;
+                            //     $user_id = Yii::$app->user->identity->id;
+                            //     if ($payment_status == 'paid') {
 
-                                    $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
-                                    $command = $query->createCommand();
-                                    $data = $command->queryAll();
+                            //         $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
+                            //         $command = $query->createCommand();
+                            //         $data = $command->queryAll();
 
-                                    if ($data) {
-                                        return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
-                                    } else {
-                                        return Html::a('<button class="btn btn-info" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $docshowid . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
-                                    }
-                                } else {
-                                    return "N/A";
-                                }
-                            }
-                                ],
+                            //         if ($data) {
+                            //             return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
+                            //         } else {
+                            //             return Html::a('<button class="btn btn-info" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $docshowid . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
+                            //         }
+                            //     } else {
+                            //         return "N/A";
+                            //     }
+                            // }
+                            //     ],
                             // 'status',
                             // 'created_date',
                             //['class' => 'yii\grid\ActionColumn'],
@@ -256,7 +259,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ?>
                         <?php Pjax::end(); ?>
 
-                    </div></div> </div>
+                    </div></div> </div></div>
                 
 
                 <!-- Modal -->
@@ -685,7 +688,7 @@ $(document).ready(function() {
                     $('#myModal').modal('show');
                     $.ajax({
                         type: "POST",
-                        url: 'addproperty/showpropdetails',
+                        url: '/addproperty/showpropdetails',
                         data: {id: id},
                         success: function (data) {
                             var obj = $.parseJSON(data);
@@ -755,7 +758,7 @@ $(document).ready(function() {
 
         function ajaraja(data){
            
-            var https = 'https://staging.15bells.com/encrypteddocuments/';
+            var https = 'http://15bells.test/encrypteddocuments/';
             var afterfilename = '#toolbar=0';
             var totalsrc = https + data + afterfilename;
             //alert(totalsrc);
