@@ -292,7 +292,7 @@ use yii\bootstrap\Modal;
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							
                 <div class="col-md-4">
-                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
                  </div>
                 <div class="col-md-2">
                     <select id="propminrupees" class="form-control area_price">
@@ -300,8 +300,10 @@ use yii\bootstrap\Modal;
                        <option value="crores">Crores</option>
                     </select>
                  </div>
+                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+
                  <div class="col-md-4">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
                  </div>
                  <div class="col-md-2">
                     <select id="propmaxrupees" class="form-control area_price">
@@ -309,7 +311,7 @@ use yii\bootstrap\Modal;
                      <option value="crores">Crores</option>
                      </select>
                    </div>
-								
+                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
 							</div>
 
 
@@ -546,6 +548,66 @@ var polyArray = [];
       var newShape;
 
    $(document).ready(function () {
+
+     $('#propminrupees').change(function(){
+var currency  =  $(this).val();
+if(currency == 'lacs'){
+   var dummyprice =  $('#dummypriceminimum').val();
+   var actualpice = dummyprice * 100000;
+   $('#proppriceminimum').val(actualpice);
+}else{
+    var dummyprice =  $('#dummypriceminimum').val();
+    var actualpice = dummyprice * 10000000;
+    $('#proppriceminimum').val(actualpice);
+}
+
+});
+
+   $("#dummypriceminimum").on("input", function(){       
+              var dummyprice =  $(this).val();
+              var currency =  $('#propminrupees').val();
+               if(currency == 'lacs'){
+
+                    var actualpice = dummyprice * 100000;
+                    $('#proppriceminimum').val(actualpice);
+
+               }else{
+                   
+                    var actualpice = dummyprice * 10000000;
+                    $('#proppriceminimum').val(actualpice);
+               }
+    });
+
+
+
+$('#propmaxrupees').change(function(){
+var currency  =  $(this).val();
+if(currency == 'lacs'){
+   var dummyprice =  $('#dummypricemaximum').val();
+   var actualpice = dummyprice * 100000;
+   $('#proppricemaximum').val(actualpice);
+}else{
+    var dummyprice =  $('#dummypricemaximum').val();
+    var actualpice = dummyprice * 10000000;
+    $('#proppricemaximum').val(actualpice);
+}
+
+});
+
+   $("#dummypricemaximum").on("input", function(){       
+              var dummyprice =  $(this).val();
+              var currency =  $('#propmaxrupees').val();
+               if(currency == 'lacs'){
+
+                    var actualpice = dummyprice * 100000;
+                    $('#proppricemaximum').val(actualpice);
+
+               }else{
+                   
+                    var actualpice = dummyprice * 10000000;
+                    $('#proppricemaximum').val(actualpice);
+               }
+    });
    
 $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');
