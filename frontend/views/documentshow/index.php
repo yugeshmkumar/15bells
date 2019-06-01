@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
+use yii\grid\GridView;
 use yii\widgets\Pjax;
 use kartik\widgets\Select2;
 use kartik\editable\Editable;
@@ -12,6 +12,7 @@ use yii\db\Query;
 use common\models\MediaFilesConfig;
 use common\models\MediaFiles;
 
+$urlsd =   Yii::getAlias('@frontendUrl');
 //EditableAsset::register($this);
 
 //use kartik\editable\EditablePjaxAsset;
@@ -81,6 +82,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="portlet-body">
 
             <div class="addpropertybackend-index">
+
+            <input type="hidden" id="urlget" value="<?php echo $urlsd; ?>">
 
                 <?php Pjax::begin(['id' => 'pjax-grid-view']); ?>   
                 <?php
@@ -721,7 +724,7 @@ $(document).ready(function() {
                     $('#showpropdoc').html('');
                     $.ajax({
                         type: "POST",
-                        url: 'documentshow/documentshow',
+                        url: 'documentshow',
                         data: {id: id},
                         success: function (data) {
 
@@ -757,8 +760,9 @@ $(document).ready(function() {
         var visitypeid = '';
 
         function ajaraja(data){
-           
-            var https = 'http://15bells.test/encrypteddocuments/';
+
+            var urlget =  $('#urlget').val();
+            var https =    urlget+'/encrypteddocuments/';
             var afterfilename = '#toolbar=0';
             var totalsrc = https + data + afterfilename;
             //alert(totalsrc);
