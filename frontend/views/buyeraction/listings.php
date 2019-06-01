@@ -87,6 +87,8 @@ if(!isset($_SESSION))
 .buyer_result{
     margin-top:110px;
 }
+
+.pac-container { z-index: 100000; }
    
    </style>
 
@@ -123,10 +125,10 @@ if(!isset($_SESSION))
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt locality_area"><?php echo $town.' '.$sector; ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_type"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_area"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt locality_area"><span id="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_type"><span id="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_area"><span id="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> Sq. ft.</span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><span id="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?> </span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
         
 	</div>
@@ -1101,6 +1103,12 @@ function applyfilters(){
          proptype =  $('#proptypes').val();
 
           pacinput =  $('#pac-input').val();
+ $('#locality_areas').text(town+' '+sector);
+ $('#prop_areas').text(areamin+' - '+areamax+' Sq. ft.');
+ $('#prop_prices').text(pricemin+' - '+pricemax);
+ ///var typeprop =  $("#"+proptype).html();
+//$('.prop_type').text(typeprop);
+
 
           if(pacinput != ''){
             var getsearchlocation = pacinput;
