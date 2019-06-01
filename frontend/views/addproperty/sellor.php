@@ -25,7 +25,7 @@ $datas =  $dataProvider->query->all();
 						<h2 class="dashboard_head">Seller Dashboard</h2>
 					</div>
 					<div class="col-md-6 text-right addprop_button">
-						<a href="#" class="add_button">Add Property</a>
+						<a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="add_button">Add Property</a>
 					</div>
 				</div>
 
@@ -61,11 +61,11 @@ $datas =  $dataProvider->query->all();
 					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
                     <div class="dropdown drop_editprop" style="">
 					<button class="btn btn-primary dropdown-toggle butn_short" type="button" data-toggle="dropdown"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/option.svg';  ?>" width="7"></button>                        <ul class="dropdown-menu edit_drop">
-                            
+					<ul class="dropdown-menu edit_drop"> 
                             <li><?= Html::a('Edit', ['views','id'=>$viewid]) ?></li>
                             <li><?=
                                 Html::a('Delete', ['delete', 'id' => $viewid], [
-                                'class' => 'btn btn-danger',
+                                'class' => 'btn btn-danger delete_prop',
                                 'data' => [
                                 'confirm' => 'Are you sure you want to delete this item?',
                                 'method' => 'post',
