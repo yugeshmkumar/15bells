@@ -16,7 +16,7 @@ var urlget =  $('#urlget').val();
 		 //clearTimeout(exe);
 		 $('.textfirst').css("display","none");
 		 $('.textfirst1').css("display","none");
-		 
+		 $('.role_drop').css("display","none");
 			main.html(default_text);
 			li.toggle('fast');
 		});
@@ -53,6 +53,7 @@ var urlget =  $('#urlget').val();
 			//alert('aya');
 			$('.textfirst').css("display","block");
 			li.slideUp('fast');
+			$('.role_drop').css("display","block");
 		}		
 		else{
 			//alert('aya2');

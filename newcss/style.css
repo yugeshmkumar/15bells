@@ -2198,7 +2198,7 @@ input.invalid {
 	.select_catg{
 		left:4px;
 		width:98%;
-		
+		bottom:-200px;
 	}
 	.single_blogpage{
 		margin-top:80px !important;
@@ -2219,8 +2219,8 @@ input.invalid {
 		padding:10px 0;
 	}
 	.step_link{
-		padding:8px 18px !important;
-		font-size:14px;
+		padding:8px 10px !important;
+		font-size:13px;
 	}
 	.trans_head_b{
 		font-size:22px;
@@ -2258,8 +2258,8 @@ input.invalid {
 		padding:0;
 	}
 	.brand_name{
-		font-size:16px;
-		line-height:22px;
+		font-size:17px;
+		line-height:25px;
 		padding:20px;
 	}
 	.li_abc img{
@@ -2275,13 +2275,20 @@ input.invalid {
 		font-size:16px;
 	}
 	.textfirst img {
-	 width:30px;
+	 width:27px;
 	}
 	.textfirst{
-		font-size:16px;
+		font-size:14px;
 		height:42px !important;
 		padding-top:9px !important;
+		margin-right: 10px;
 	}
+	.role_drop{
+		right: 8px;
+		top: 22%;
+		font-size: 20px;
+		color: #c4984f;
+		}
 	.sell_png{
 		margin-top:0px !important;
 	}
@@ -2392,7 +2399,7 @@ input.invalid {
 	display:inline-flex !important;
 }
 .sub_categories li {
-    margin: 30px 5px;
+    margin: 10px 5px;
 }
 .property_type{
 	padding:10px;
@@ -2405,7 +2412,8 @@ input.invalid {
 	float:left;
 }
 .property_image1{
-	width:110px;
+	width:100px !important;
+	height:100px;
 }
 .map_icons{
 	padding:10px 0 10px 25px !important;
@@ -2449,8 +2457,15 @@ input.invalid {
 	font-size:20px;
 }
 .property_area{
-	padding: 0 0 50px;
+	padding: 0 0 10px;
 }
+.locality_input{
+	padding:10px 10px;
+}
+.property_locality{
+	padding:0 20px;
+}
+
 .draw_map{
 	margin-left:0 !important;
 	}
@@ -2914,7 +2929,7 @@ input.invalid {
 				font-weight:600;
 			}
 			.amenities_offered{
-				padding:0px;
+				padding:0px 15px;
 			}
 			
 			.user_filt{
@@ -3026,13 +3041,6 @@ input.invalid {
 	padding:30px 0;
 }
 /*profile icon css*/
-.dropdown-menu {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
 
 .profile_dropdwn button:hover, .profile_dropdwn button:focus {
   border: none;
@@ -3470,4 +3478,7 @@ right: 10px;
 top: 28%;
 font-size: 25px;
 color: #c4984f;
+}
+.prop_login{
+	width:100%;
 }

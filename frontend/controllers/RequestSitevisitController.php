@@ -499,7 +499,7 @@ return $this->render('indexes', [
                 $scheduled_time   = $finduser->scheduled_time;
                 $sales_id   = $finduser->sales_id;
 
-                if(sales_id){
+                if($sales_id){
                     
                     $querys = CompanyEmp::find()->where(['id'=>$sales_id])->one();
                      $assigned_id = $querys->userid;
