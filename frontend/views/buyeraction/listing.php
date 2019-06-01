@@ -162,7 +162,7 @@ if(!isset($_SESSION))
 					<p class="property_id">Property ID : #2345DFGEQ</p>
 					<div class="row single_property">
 						<div class="col-md-3 no_pad relative">
-							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">
 							<div class="overlay_sign">
 								<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>
 							</div>
@@ -1550,7 +1550,7 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
+                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">'+
                                     '<div class="overlay_sign">'+
                                         '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                     '</div>'+
@@ -1716,7 +1716,7 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
+                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">'+
                                     '<div class="overlay_sign">'+
                                         '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                     '</div>'+
@@ -1877,7 +1877,7 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
+                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">'+
                                     '<div class="overlay_sign">'+
                                         '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                     '</div>'+
@@ -2723,7 +2723,7 @@ function getPolygonCoords() {
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
+                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
@@ -2979,7 +2979,7 @@ function getPolygonCoords() {
                                                                 '<p class="property_id">Property ID : '+propsid+'</p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-3 no_pad relative">'+
-                                                                        '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
+                                                                        '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login">'+
                                                                         '<div class="overlay_sign">'+
                                                                             '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         '</div>'+

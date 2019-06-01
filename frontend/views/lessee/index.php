@@ -84,14 +84,14 @@ use yii\bootstrap\Modal;
 					<ul class="add_property nav nav-pills">
 						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
 						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
-						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area</a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area / Price</a></li>
 						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
 				
 				  <div id="home" class="tab-pane fade in active">	
-					<div class="row property_type">
-						<div class="col-md-12">
+					<div class="col-md-12 property_type">
+						<div class="row">
 							<div class="col-md-3 col-xs-6 commer_office">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="border_yellow property_image">
 								<p class="property_name">Commercial Office</p>
@@ -156,8 +156,8 @@ use yii\bootstrap\Modal;
           <p class="text-right process_continue"><a data-toggle="pill" href="#menu1" id="click_t" class="step_type step1"></a></p>
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
-						<div class="row property_type">
-            <div class="col-md-12 text-center property_area">
+						<div class="col-md-12 property_type">
+            <div class="row text-center property_area">
 								<div class="col-md-1"></div>
 								<div class="col-md-2 col-xs-6">
 									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="border_yellow1 property_image1">
