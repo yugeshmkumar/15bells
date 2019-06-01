@@ -318,50 +318,25 @@ if(!isset($_SESSION))
 				  <div class="accordion_body area_body" style="display: none;">
 						<div class="panel-body panel_body">
 							<div class="row">
-								<div class="col-md-12 no_pad">	
-                                    <ul class="sub_categories popup_categ">
-										<li class="active"><a href="javascript:void(0)" class="property_subtype square">Sq. Feet</a></li>
-										<li class=""><a href="javascript:void(0)" class="property_subtype square">Sq. Yard</a></li>
-										<li class=""><a href="javascript:void(0)" class="property_subtype square">Sq. Meter</a></li>
-									</ul>
-								</div>
-                                <input type="hidden" id="propsquare" name="propsquare">
-										<div class="col-md-12">
-											<div class="col-md-4 pad_left">
-												<h3 class="flow_heading avail_ability">Minimum</h3>
-												<div class="dropdown">
-                                                <button name="propareamin" id="dLabel" class="dropdown-select selectminarea" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														Select
-														<span class="caret"></span>
-														</button>
-													  <ul class="dropdown-menu User_role area_minimum" aria-labelledby="dLabel">
-														<li>100</li>
-														<li>200</li>
-														<li>300</li>
-														<li>400</li>
-													
-													  </ul>
-												</div>
-                                            </div>
-                                            <input type="hidden" id="propareaminimum" name="propareaminimum">
-											<div class="col-md-4 pad_right">
-												<h3 class="flow_heading avail_ability">Maximum</h3>
-												<div class="dropdown">
-                                                <button name="propareamax" id="dLabel1" class="dropdown-select1 selectmaxarea" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													Select
-													<span class="caret"></span>
-												  </button>
-												  <ul class="dropdown-menu individual_drop area_maximum" aria-labelledby="dLabel1">
-													<li>100</li>
-													<li>200</li>
-													<li>300</li>
-													<li>400</li>
-												
-												  </ul>
-												</div>
-											</div>
-										</div>
-                                        <input type="hidden" id="propareamaximum" name="propareamaximum">
+								
+						 <div class="col-md-12 locality_input">
+									<div class="row">
+                      <div class="col-md-2">
+                      <select id="propsquare" name="propsquare" class="form-control area_price">
+                      <option value="sq_ft">Sq. Feet</option>
+                      <option value="sq_yards">Sq. Yard</option>
+                      <option value="sq_meter">Sq. Meter</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum" name="propareaminimum">
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum" name="propareamaximum">
+
+                    </div>
+                  </div>
+               </div>
 
 										
 									</div>
@@ -372,47 +347,31 @@ if(!isset($_SESSION))
 				  <div class="accordion_body price_bdy" style="display: none;">
 					<div class="panel-body panel_body">
 								<div class="row">
-									<div class="col-md-12">
-										<div class="col-md-4 pad_left">
-											<h3 class="flow_heading avail_ability">Minimum</h3>
-											<div class="dropdown">
-											<button name="proppricemin" id="dLabel" class="dropdown-select selectminprice" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													Select
-													<span class="caret"></span>
-													</button>
-												  <ul class="dropdown-menu User_role price_minimum" aria-labelledby="dLabel">
-                                                  <li>100000</li>
-											<li>200000</li>
-											<li>300000</li>
-                      <li>400000</li>
-                      <li>500000</li>
-                      <li>1000000</li>
-												
-												  </ul>
-											</div>
-                                        </div>
-                                        <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+									<div class="col-md-12 no_pad">
+								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
+							
+                <div class="col-md-4">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
+                 </div>
+                <div class="col-md-2">
+                    <select id="propminrupees" class="form-control area_price">
+                       <option value="lacs">Lacs</option>
+                       <option value="crores">Crores</option>
+                    </select>
+                 </div>
+                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
 
-										<div class="col-md-4 pad_right">
-											<h3 class="flow_heading avail_ability">Maximum</h3>
-											<div class="dropdown">
-                                            <button name="proppricemax" id="dLabel1" class="dropdown-select1 selectmaxprice" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												Select
-												<span class="caret"></span>
-											  </button>
-											  <ul class="dropdown-menu individual_drop price_maximum" aria-labelledby="dLabel1">
-                                              <li>200000</li>
-											<li>300000</li>
-											<li>400000</li>
-                      <li>500000</li>
-                      <li>1000000</li>
-                      <li>2000000</li>
-											
-											  </ul>
-											</div>
-										</div>
-									</div>
-                                    <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+                 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
+                 </div>
+                 <div class="col-md-2">
+                    <select id="propmaxrupees" class="form-control area_price">
+                      <option value="lacs">Lacs</option>
+                     <option value="crores">Crores</option>
+                     </select>
+                   </div>
+                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+							</div>
 								</div>
 							</div>
 				  </div>
@@ -1237,6 +1196,88 @@ $('.price_maximum li').on('click', function() {
  $('.selectmaxprice').text(getValue);
  $('#proppricemaximums').val(getValue);
 });
+
+
+
+
+
+ $('#propminrupees').change(function(){
+var currency  =  $(this).val();
+if(currency == 'lacs'){
+   var dummyprice =  $('#dummypriceminimum').val();
+   var actualpice = dummyprice * 100000;
+   $('#proppriceminimum').val(actualpice);
+   $('#proppriceminimums').val(actualpice);
+}else{
+    var dummyprice =  $('#dummypriceminimum').val();
+    var actualpice = dummyprice * 10000000;
+    $('#proppriceminimum').val(actualpice);
+    $('#proppriceminimums').val(actualpice);
+}
+
+});
+
+   $("#dummypriceminimum").on("input", function(){       
+              var dummyprice =  $(this).val();
+              var currency =  $('#propminrupees').val();
+               if(currency == 'lacs'){
+
+                    var actualpice = dummyprice * 100000;
+                    $('#proppriceminimum').val(actualpice);
+                    $('#proppriceminimums').val(actualpice);
+
+               }else{
+                   
+                    var actualpice = dummyprice * 10000000;
+                    $('#proppriceminimum').val(actualpice);
+                    $('#proppriceminimums').val(actualpice);
+               }
+    });
+
+
+
+$('#propmaxrupees').change(function(){
+var currency  =  $(this).val();
+if(currency == 'lacs'){
+   var dummyprice =  $('#dummypricemaximum').val();
+   var actualpice = dummyprice * 100000;
+   $('#proppricemaximums').val(actualpice);
+}else{
+    var dummyprice =  $('#dummypricemaximum').val();
+    var actualpice = dummyprice * 10000000;
+    $('#proppricemaximums').val(actualpice);
+}
+
+});
+
+   $("#dummypricemaximum").on("input", function(){       
+              var dummyprice =  $(this).val();
+              var currency =  $('#propmaxrupees').val();
+               if(currency == 'lacs'){
+
+                    var actualpice = dummyprice * 100000;
+                    $('#proppricemaximums').val(actualpice);
+
+               }else{
+                   
+                    var actualpice = dummyprice * 10000000;
+                    $('#proppricemaximums').val(actualpice);
+               }
+    });
+
+
+    $("#propareaminimum").on("input", function(){       
+              var actualarea =  $(this).val();             
+                    
+              $('#propareaminimums').val(actualarea);
+               
+    });
+    $("#propareamaximum").on("input", function(){       
+              var actualarea =  $(this).val();             
+                    
+              $('#propareamaximums').val(actualarea);
+               
+    });
 
 
 
