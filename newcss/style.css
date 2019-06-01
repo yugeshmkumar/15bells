@@ -3482,3 +3482,21 @@ color: #c4984f;
 .prop_login{
 	width:100%;
 }
+
+.comm_cta{
+	border-color: #c4984f !important;
+    background: #c4984f;
+	color: #ffffff !important;
+	border-radius:0;
+	outline:none;
+	font-size:18px;
+	margin:15px 0;
+	width:90%;
+}
+.comm_cta:focus{
+	border-color: #c4984f !important;
+    background: #c4984f;
+	color: #ffffff !important;
+	border-radius:0;
+	outline:none;
+}

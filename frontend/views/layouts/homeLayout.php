@@ -35,7 +35,7 @@ NewDesignAsset::register($this);
 							<a class="navbar-brand site-logo one" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo1.png';  ?>" width="80"></a>
 							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="70"></a>
 							 <div class="form-group locality_grp">
-								<span class="location_drop">Gurgaon</span>
+								<span class="location_drop">Select City</span>
 								<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="23" class="svg_drop">
 								</span>
 							  </div>
@@ -127,9 +127,13 @@ NewDesignAsset::register($this);
 			  <div class="col-md-12">
 				
 					<ul class="sliding_menu">
-							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['aboutus']) ?>">About Us 	</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Blogs</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">FAQ's</a></li>
+							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Lessee']) ?>">Search for Lease</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Seller']) ?>">Sell your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Lease/ Rent your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Industries</a></li>
+
 							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
 
 					</ul>
