@@ -81,7 +81,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		<div class="row text-center">
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
-				<p class="transac_typ text-center">Instant Auction</p>
+				<p class="transac_typ text-center">Instant Mode</p>
 				<p class="transaction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">Experience Instant Real Estate Auction Now</a> </p>
 				
 			</div>
@@ -128,16 +128,16 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">One of the most important criteria is considering the location of the property. With 15 bells you get to make your custom advanced search area in any particular location by using different shapes and get the available properties listed.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Search Commercial Properties</a>
-							</p>							</div>
+							<p class="step_txt">One of the most important criteria is considering the location of the property. With 15 bells you get to make your custom advanced search area in any particular location by using different shapes and get the available properties listed.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Search Commercial Properties</a></p>
+														</div>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Discover the best-matched properties</a>
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Discover the best-matched properties</a>
 							</p>
 							</div>
 						</div>
@@ -145,8 +145,8 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Search more than 1000 commercial properties in Delhi NCR for sale or lease.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Start your Property Search in Delhi NCR</a>
+							<p class="step_txt">Search more than 1000 commercial properties in Delhi NCR for sale or lease.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Start your Property Search in Delhi NCR</a>
 							 </p>
 							</div>
 						</div>
@@ -154,16 +154,16 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit. 15 Bells do it both!
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Find Properties you want to see.</a>
+							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit. 15 Bells do it both!</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Find Properties you want to see.</a>
 							</p>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Select a Property to buy & validate documents.</a>
+							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="read_more">Select a Property to buy & validate documents.</a>
 							  </p>
 							</div>
 						</div>
@@ -423,19 +423,15 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				</div>
 				<div class="col-md-4 pad_off">
 							<h3 class="office_hed">Commercial Office</h3>
-							<div class="row cat_name">
-								<div class="col-md-6">
-									<p class="offic_hed offic_c">Office Space</p>
+							<div class="row cat_name text-center">
+								<div class="col-md-12">
+									<button class="btn btn-default comm_cta">Find Commercial Offices for Sale</button>
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Co-Working</p>
+								<div class="col-md-12">
+								<button class="btn btn-default comm_cta">Find Commercial Offices for Lease</button>
+
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">IT/ITES/SEZ Park</p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Business Center</p>
-								</div>
+								
 							</div>
 						</div>
 				  </div>
