@@ -77,7 +77,7 @@ if(!isset($_SESSION))
 .buyer_result{
     margin-top:110px;
 }
-   
+.pac-container { z-index: 100000; }
    </style>
 
    <input type="hidden" id="type" value="<?php if(isset($type)){echo $type;} ?>">
@@ -1300,6 +1300,12 @@ pricemax = $("#proppricemaximums").val();
 proptype =  $('#proptypes').val();
 
  pacinput =  $('#pac-input').val();
+
+ $('.locality_area').text(town+' '+sector);
+ $('.prop_area').text(areamin+' - '+areamax);
+ $('.prop_price').text(pricemin+' - '+pricemax);
+ 
+ $('.prop_type').text($('#'+proptype).text());
 
  if(pacinput != ''){
    var getsearchlocation = pacinput;
