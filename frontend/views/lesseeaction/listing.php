@@ -76,6 +76,8 @@ if(!isset($_SESSION))
 .buyer_result{
     margin-top:110px;
 }
+
+.pac-container { z-index: 100000; }
    
    </style>
 
