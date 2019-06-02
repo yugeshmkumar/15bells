@@ -27,15 +27,13 @@ NewDesignAsset::register($this);
 				<nav class="navbar navbar-default nav_signup">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header col-md-4">
-							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false">
+						<div class="navbar-header col-md-4">.<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="dash_menu" width="25">
+							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="mobile_mnu" width="25">
 							</button>
-							<a class="navbar-brand site-logo one animated slideInDown" href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="65"></a>
-							<a class="navbar-brand site-logo two" href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="65"></a>
+							<a class="navbar-brand site-logo one animated slideInDown" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="60"></a>
+							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="60"></a>
 							
 						</div>
 					  
@@ -53,7 +51,26 @@ NewDesignAsset::register($this);
 					</div>
 				 </nav>
 			</section>
-			
+			<div id="mySidenav" class="sidenav">
+			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  <div class="col-md-12">
+				
+					<ul class="sliding_menu">
+							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Lessee']) ?>">Search for Lease</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Seller']) ?>">Sell your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Lease/ Rent your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Industries</a></li>
+
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
+
+					</ul>
+					
+				
+			 </div>
+			 
+			</div>
 			
 			
 <!-- end of navbar-->
@@ -108,7 +125,17 @@ NewDesignAsset::register($this);
 
        
        <?php $this->endContent(); ?>
+<script>
+function openNav() {
+document.getElementById("mySidenav").style.width = "300px";
+}
 
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+document.getElementById("mySidenav").style.width = "0";
+}
+
+	</script>
 </body>
 
 </html>
