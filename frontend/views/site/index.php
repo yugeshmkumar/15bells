@@ -404,8 +404,8 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="col-md-4 ribbon">
 											<div class="ribbon-top-left">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_business.jpg';  ?>" class="img-responsive">
-	
-											<span>Co-working</span></div>
+											<span>Co-working</span>
+											</div>
 										</div>
 									</div>
 									<div class="item">
@@ -454,27 +454,35 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								<div class="carousel fdi-Carousel slide" id="eventCarousel1" data-interval="0">
 									<div class="carousel-inner onebyone-carosel">
 										<div class="item active">
-											<div class="col-md-4 ">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_mall.jpg';  ?>" class="img-responsive">
-												
+												<span>Building Showroom</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_shop.jpg';  ?>" class="img-responsive">
-												
+												<span>Retail Shop</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_showroom.jpg';  ?>" class="img-responsive">
-												
+												<span>Retail Mall</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/retail_m.jpg';  ?>" class="img-responsive">
-											  
+												<span>Retail Mall</span>
+												</div>
 											</div>
 										</div>
 										
@@ -507,28 +515,37 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 							 <!-- Carousel items -->
 								<div class="carousel fdi-Carousel slide" id="eventCarousel2" data-interval="0">
 									<div class="carousel-inner onebyone-carosel">
-										<div class="item active">
-											<div class="col-md-4">
+									<div class="item active">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/agriculture.jpg';  ?>" class="img-responsive">
-											   
+												<span>Agriculture</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/factory.jpg';  ?>" class="img-responsive">
-												
+												<span>Factory</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/warehouse.jpg';  ?>" class="img-responsive">
-												
+												<span>Warehouse</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
+											
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/farmland.jpg';  ?>" class="img-responsive">
-											  
+												<span>Farmland</span>
+												</div>
 											</div>
 										</div>
 										

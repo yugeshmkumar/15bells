@@ -93,7 +93,7 @@ use yii\bootstrap\Modal;
 					<div class="col-md-12 property_type">
 						<div class="row">
 							<div class="col-md-3 col-xs-6 commer_office">
-								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="border_yellow property_image">
+								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="property_image">
 								<p class="property_name">Commercial Office</p>
 							</div>
 							<div class="col-md-3 col-xs-6 commer_retail">
@@ -114,7 +114,7 @@ use yii\bootstrap\Modal;
 						<div class="row category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a onclick="$('#click_t').trigger('click')" id="11" class="property_subtype proptype step_type">Commercial Office Space</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="11" class="property_subtype proptype step_type">Commercial Office Space</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="12" class="property_subtype proptype step_type">IT / ITES / SEZ Park</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="13" class="property_subtype proptype step_type">Co-working/Business Center</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="14" class="property_subtype proptype step_type">Commercial SEZ</a></li>
@@ -124,7 +124,7 @@ use yii\bootstrap\Modal;
             <div class="row category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a onclick="$('#click_t').trigger('click')" id="15" class="property_subtype proptype step_type">Mall/Retail Shop</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="15" class="property_subtype proptype step_type">Mall/Retail Shop</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="16" class="property_subtype proptype step_type">Showrooms</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="17" class="property_subtype proptype step_type">High Street/ Society Shops</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="18" class="property_subtype proptype step_type">Food Court</a></li>
@@ -134,7 +134,7 @@ use yii\bootstrap\Modal;
 						<div class="row category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a onclick="$('#click_t').trigger('click')" id="19" class="property_subtype proptype step_type">Commercial land</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="19" class="property_subtype proptype step_type">Commercial land</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="22" class="property_subtype proptype step_type">Industrial / Factory land</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="23" class="property_subtype proptype step_type">Institutional/Hotel/School land</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="24" class="property_subtype proptype step_type">SEZ/IT/ITES land</a></li>
@@ -144,7 +144,7 @@ use yii\bootstrap\Modal;
 						<div class="row category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories">
-								<li class="active"><a onclick="$('#click_t').trigger('click')" id="25" class="property_subtype proptype step_type">Shed</a></li>
+								<li class=""><a onclick="$('#click_t').trigger('click')" id="25" class="property_subtype proptype step_type">Shed</a></li>
 								<li class=""><a onclick="$('#click_t').trigger('click')" id="26" class="property_subtype proptype step_type">Agriculture</a></li>
 								
 							</ul>
@@ -160,7 +160,7 @@ use yii\bootstrap\Modal;
             <div class="row text-center property_area">
 								<div class="col-md-1"></div>
 								<div class="col-md-2 col-xs-6">
-									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="border_yellow1 property_image1">
+									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="property_image1">
 									<p class="property_name">Delhi</p>
 								</div>
 								<div class="col-md-2 col-xs-6">

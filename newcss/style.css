@@ -1456,6 +1456,9 @@ form.example::after {
 }
 
 /******** SIGNUP CSS***********/
+.anchr_sign{
+	padding:10px 25px 10px 0 !important;
+}
 .nav_signup{
 	background:#221d36;
 	border-bottom:3px solid #c4984f !important;
