@@ -28,9 +28,10 @@ NewDesignAsset::register($this);
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header col-md-4 logo_div">
-							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false">
+						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="scroll_menu" width="25">
+							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
-							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" width="25">
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="mobile_mnu" width="25">
 							</button>
 							<a class="navbar-brand site-logo one" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo1.png';  ?>" width="80"></a>
 							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="70"></a>
@@ -64,23 +65,23 @@ NewDesignAsset::register($this);
 									<div class="col-md-12 text-center property_area">
 										<div class="col-md-1 hidden-xs"></div>
 										<div class="col-md-2 col-xs-4">
-											<img class="location_pick" id="Delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>">
+											<img class="location_pick property_image1" id="Delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>">
 											<p class="property_name">Delhi</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img class="location_pick" id="Gurgaon" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>">
+											<img class="location_pick property_image1" id="Gurgaon" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>">
 											<p class="property_name">Gurgaon</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img class="location_pick" id="Faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>">
+											<img class="location_pick property_image1" id="Faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>">
 											<p class="property_name">Faridabad</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img class="location_pick" id="Noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>">
+											<img class="location_pick property_image1" id="Noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>">
 											<p class="property_name">Noida</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img class="location_pick" id="Ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>">
+											<img class="location_pick property_image1" id="Ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>">
 											<p class="property_name">Ghaziabad</p>
 										</div>
 										<div class="col-md-1 hidden-xs"></div>
@@ -222,7 +223,12 @@ $(document).ready(function(){
 	  $(".city_section").slideUp("slow");
 	});
 });
-	
+$(".property_image1").click(function () {
+			$(".property_image1").removeClass("border_yellow1");
+			// $(".tab").addClass("active"); // instead of this do the below 
+			$(this).addClass("border_yellow1");
+     
+		});
 document.onreadystatechange = function () {
 
 	  
@@ -303,6 +309,14 @@ $(window).scroll(function() {
         $( ".navbar-me" ).removeClass("fixed-me");
 		$('.one').show();
 			$('.two').hide();
+    }
+
+	 if($(this).scrollTop()>200) {
+		$('.img_menu').hide(400);
+			$('.scroll_menu').show(400);
+    } else {
+		$('.img_menu').show(400);
+			$('.scroll_menu').hide(400);
     }
 });
 /* Set the width of the side navigation to 250px */

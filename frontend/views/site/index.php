@@ -8,9 +8,9 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 ?>
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/banner.jpg';  ?>">
 			
-			<div class="container-fluid no_pad div_header">
+			<div class="container-fluid header_bg no_pad div_header"  id="banner_cont">
 			
-						<div class="container top_section" id="banner_cont">
+						<div class="container top_section">
 				<div class="col-md-12 text-center brand_desp">
 					
 					<div class="fadein">
@@ -30,7 +30,11 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						</div>
 					
 				</div>
-					<div class="col-md-5 col-md-offset-3 text-center select_catg">
+					
+				
+			</div>
+			
+			<div class="col-md-5 col-md-offset-3 text-center select_catg">
 						<div class="row">
 						<div class="col-md-6 col-xs-6 txt_am">I'm here to </div>
 							<div class="col-md-6 col-xs-6 no_pad">
@@ -63,13 +67,9 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 							
 						</div>
 					</div>
-				
-			</div>
-			
-			
 <!-- end of navbar-->
 		</div>
-	
+		
 
 	</section>
 
@@ -82,18 +82,21 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
 				<p class="transac_typ text-center">Instant Mode</p>
-				<p class="transaction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">Experience Instant Real Estate Auction Now</a> </p>
+				<p class="transaction_text auction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone</p>
+				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">Experience Instant Real Estate Auction Now</a> </p>
 				
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
 				<p class="transac_typ text-center">Forward Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">See how Forward Auction is beneficial for everyone.</a> </p>
+				<p class="transaction_text auction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.</p>
+				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">See how Forward Auction is beneficial for everyone.</a> </p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
-				<p class="transaction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.<br><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="read_more">See the benefits of Reverse Auction</a></p> 
+				<p class="transaction_text auction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.</p>
+				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">See the benefits of Reverse Auction</a></p> 
 			</div>
 		</div>
 	</div>
@@ -108,10 +111,10 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<div class="col-md-12 text-center buy_sell">
 				
 				<ul class="nav nav-tabs steps_tab">
-				  <li class="active col-md-3 no_pad"><a data-toggle="tab" class="step_link border_right" href="#buy_t">Buy</a></li>
-				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#sell_l">Sell</a></li>
-				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#lease_in">Lease in</a></li>
-				  <li class="col-md-3 no_pad"><a data-toggle="tab" class="step_link border_left" href="#lease_out">Lease Out</a></li>
+				  <li class="active col-md-3 col-xs-3 no_pad"><a data-toggle="tab" class="step_link border_right" href="#buy_t">Buy</a></li>
+				  <li class="col-md-3 col-xs-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#sell_l">Sell</a></li>
+				  <li class="col-md-3 col-xs-3 no_pad"><a data-toggle="tab" class="step_link border_left border_right" href="#lease_in">Lease in</a></li>
+				  <li class="col-md-3 col-xs-3 no_pad"><a data-toggle="tab" class="step_link border_left" href="#lease_out">Lease Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -390,27 +393,35 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 							<div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
 								<div class="carousel-inner onebyone-carosel">
 									<div class="item active">
-										<div class="col-md-4">
+										<div class="col-md-4 ribbon">
+											<div class="ribbon-top-left">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_office.jpg';  ?>" class="img-responsive">
-										   
+	
+											<span>Office Space</span></div>
 										</div>
 									</div>
 									<div class="item">
-										<div class="col-md-4">
+										<div class="col-md-4 ribbon">
+											<div class="ribbon-top-left">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_business.jpg';  ?>" class="img-responsive">
-											
+	
+											<span>Co-working</span></div>
 										</div>
 									</div>
 									<div class="item">
-										<div class="col-md-4">
+										<div class="col-md-4 ribbon">
+											<div class="ribbon-top-left">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_work.jpg';  ?>" class="img-responsive">
-											
+	
+											<span>IT/ITES/SEZ Park</span></div>
 										</div>
 									</div>
 									<div class="item">
-										<div class="col-md-4">
+										<div class="col-md-4 ribbon">
+											<div class="ribbon-top-left">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_comp.jpg';  ?>" class="img-responsive">
-										  
+	
+											<span>Business Center</span></div>
 										</div>
 									</div>
 									
@@ -425,10 +436,10 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 							<h3 class="office_hed">Commercial Office</h3>
 							<div class="row cat_name text-center">
 								<div class="col-md-12">
-									<button class="btn btn-default comm_cta">Find Commercial Offices for Sale</button>
+									<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Find Commercial Offices for Sale</a>
 								</div>
 								<div class="col-md-12">
-								<button class="btn btn-default comm_cta">Find Commercial Offices for Lease</button>
+								<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Find Commercial Offices for Lease</a>
 
 								</div>
 								
@@ -443,9 +454,9 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								<div class="carousel fdi-Carousel slide" id="eventCarousel1" data-interval="0">
 									<div class="carousel-inner onebyone-carosel">
 										<div class="item active">
-											<div class="col-md-4">
+											<div class="col-md-4 ">
 												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_mall.jpg';  ?>" class="img-responsive">
-											   
+												
 											</div>
 										</div>
 										<div class="item">
@@ -477,15 +488,13 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				  </div>
 				  <div class="col-md-4 pad_off">
 							<h3 class="office_hed">Commercial Retail</h3>
-							<div class="row cat_name">
-								<div class="col-md-6">
-									<p class="offic_hed offic_c">Building Showroom</p>
+							<div class="row cat_name text-center">
+								<div class="col-md-12">
+									<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Find Retail Shops for Sale</a>
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Retail Shop </p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Retail Malls </p>
+								<div class="col-md-12">
+								<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Find Retail Shops for Lease</a>
+
 								</div>
 								
 							</div>
@@ -533,18 +542,16 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				  <div class="col-md-4 pad_off">
 							<h3 class="office_hed">Land & Plots</h3>
 							<div class="row cat_name">
-								<div class="col-md-6">
-									<p class="offic_hed offic_c">Warehouses</p>
+							<div class="row cat_name text-center">
+								<div class="col-md-12">
+									<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Find Land & Plots for Sale</a>
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Factory</p>
+								<div class="col-md-12">
+								<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Find Lands & Plots for Lease</a>
+
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Agriculture Land</p>
-								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Institutional Lands</p>
-								</div>
+								
+							</div>
 							</div>
 						</div>
 				</div>
@@ -600,12 +607,13 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				  </div>
 				  <div class="col-md-4 pad_off">
 							<h3 class="office_hed">Hotel </h3>
-							<div class="row cat_name">
-								<div class="col-md-6">
-									<p class="offic_hed offic_c">Hotels & Resorts</p>
+							<div class="row cat_name text-center">
+								<div class="col-md-12">
+									<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Find Hotels for Sale</a>
 								</div>
-								<div class="col-md-6">
-									<p class="offic_hed">Banquets & Guest Houses</p>
+								<div class="col-md-12">
+								<a class="btn btn-default comm_cta" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Find Hotels for Lease</a>
+
 								</div>
 								
 							</div>
