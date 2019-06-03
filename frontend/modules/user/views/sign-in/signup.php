@@ -48,8 +48,8 @@ use yii\widgets\Pjax;
 					<h2 class="signup_head">Welcome to 15 Bells</h2>
 					 
 					<ul class="nav nav-pills signup_tabs">
-					  <li class="active"><a class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign in</a></li>
-					  <li><a class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Sign up</a></li>
+					  <li class="active"><a id="upperhome" class="anchr_sign signin_butn" data-toggle="pill" href="#home">Sign in</a></li>
+					  <li><a id="uppermenu1" class="anchr_sign signup_butn" data-toggle="pill" href="#menu1">Sign up</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -270,6 +270,26 @@ use yii\widgets\Pjax;
 <?php
 $script = <<< JS
 
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+var first = getUrlVars()["ifs"];
+
+
+if(first == 'menu1'){
+	
+	$('#uppermenu1').trigger('click')
+}
 
 $('#hideotp').hide();
    $('#hidepassword').hide();
@@ -433,6 +453,9 @@ function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
     return pattern.test(emailAddress);
 };
+
+
+
 
 
 
