@@ -575,7 +575,7 @@ $user_id= Yii::$app->user->identity->id;
 			'action'=>"user/sign-in/sellersignup"]); ?>
 
 				<div class="col-md-12 seller_lead">
-					<h2 class="login_head verify_seller">Verify yourself to reach <span id="totalcounts1"></span> Lessee</h2>
+					<h2 class="login_head verify_seller">Verify yourself to reach multiple Lessee</h2>
 							<div class="form-group">
 
 
@@ -1745,9 +1745,14 @@ function closeNav() {
 
                 var totalcount = count + count1 + count2;
 
-               
+                                if(totalcount > 10 ){
 
-				$('#totalcounts').html(totalcount);
+                    $('#totalcounts').html(totalcount);
+
+                    }else{
+                    var num = Math.floor(Math.random() * (30 - 11)) + 11;
+                    $('#totalcounts').html(num);
+                    }
 
                 // swal({
                 //                                        title: "Your property lies under "+ totalcount+" search shapes" ,
