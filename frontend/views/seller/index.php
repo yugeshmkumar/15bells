@@ -153,10 +153,18 @@ $user_id= Yii::$app->user->identity->id;
 									<div class="col-md-6">
 										<div class="row">
 											<h3 class="flow_heading">Let us know the expected price of your property</h3>
-                                            <?= $form->field($model, 'expected_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "Enter Amount", 'class' => 'form-control input_desgn exp_price input_number'])->label(false) ?>
 
-											<!-- <input type="text" class="form-control input_desgn" placeholder="Enter Amount"> -->
-										</div>
+                                        <div class="col-md-4">
+                                        <input type="text" class="form-control input_desgn exp_price input_number" placeholder="Enter Amount" id="dummyexpectedprice">
+
+                                        <?= $form->field($model, 'expected_price')->hiddenInput(['maxlength' => true])->label(false) ?>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <select id="expectedprice" class="form-control area_price">
+                                        <option value="lacs">Lacs</option>
+                                        <option value="crores">Crores</option>
+                                        </select>
+                                        </div>										</div>
 									</div>
 							</div>
 							<div class="col-md-12 seperator_div"></div>
@@ -369,7 +377,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-                       <div class="row">
+                       <!-- <div class="row">
 								<h1 class="more_detail">Expectations, Nearby Places and Amenities</h1>
 								<p class="brand_txt">Please help us understanding you expectations</p>
 								<h3 class="flow_heading">Is there any locking period for lessee? </h3>
@@ -394,7 +402,7 @@ $user_id= Yii::$app->user->identity->id;
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select rent_free">No</button></div>
 								</div>
-							</div>
+							</div> -->
                     <input type="hidden" value="" id="locking_period" name="locking_period">
                     <input type="hidden" value="" id="tenures" name="tenures">
                     <input type="hidden" value="" id="rent_free" name="rent_free">
@@ -1080,6 +1088,64 @@ function generateOTP() {
 
    
    $(document).ready(function () {
+
+
+
+
+
+       $('#expectedprice').change(function(){
+
+       // $('#dummyexpectedprice').removeAttr('readonly'); 
+        $('#dummyexpectedprice').val(''); 
+        $('#addproperty-expected_price').val('');
+
+var currency  =  $(this).val();
+if(currency == 'lacs'){
+   var dummyprice =  $('#dummyexpectedprice').val();
+    var actualpice = dummyprice * 100000;
+   $('#addproperty-expected_price').val(actualpice);
+}else{
+    var dummyprice =  $('#dummyexpectedprice').val();
+     var actualpice = dummyprice * 10000000;
+    $('#addproperty-expected_price').val(actualpice);
+}
+
+});
+
+ 
+
+
+
+   $("#dummyexpectedprice").on("input", function(){ 
+
+      // $('#dummyexpectedprice').removeAttr('readonly');      
+              var dummyprice =  $(this).val();
+              var currency =  $('#expectedprice').val();
+               if(currency == 'lacs'){
+                  if(dummyprice > 99.9){
+
+                     // $('#dummyexpectedprice').attr('readonly',true);
+                      alert('Pease select crores');
+                        $('#dummyexpectedprice').val(
+                        function(index, value){
+                        return value.substr(0, value.length - 1);
+                        });
+                      
+
+                  }else{
+                    var actualpice = dummyprice * 100000;
+                    $('#addproperty-expected_price').val(actualpice);
+                  }
+
+               }else{
+                   
+                var actualpice = dummyprice * 10000000;
+                    $('#addproperty-expected_price').val(actualpice);
+               }
+    });
+
+
+    
 
        
 	
