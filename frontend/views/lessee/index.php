@@ -285,10 +285,10 @@ use yii\bootstrap\Modal;
 <div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-8">
                   <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
                  </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-xs-4">
                     <select id="propminrupees" class="form-control area_price">
                        <option value="lacs">Lacs</option>
                        <option value="crores">Crores</option>
@@ -296,10 +296,10 @@ use yii\bootstrap\Modal;
                  </div>
                  <input type="hidden" id="proppriceminimum" name="proppriceminimum">
 
-                 <div class="col-md-4">
+                 <div class="col-md-4 col-xs-8">
                     <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
                  </div>
-                 <div class="col-md-2">
+                 <div class="col-md-2 col-xs-4">
                     <select id="propmaxrupees" class="form-control area_price">
                       <option value="lacs">Lacs</option>
                      <option value="crores">Crores</option>

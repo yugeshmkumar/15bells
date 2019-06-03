@@ -80,23 +80,23 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 
 		<div class="row text-center">
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
 				<p class="transac_typ text-center">Instant Mode</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone</p>
-				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">Experience Instant Real Estate Auction Now</a> </p>
+				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">Experience Instant Real Estate Auction Now</a> </p>
 				
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
 				<p class="transac_typ text-center">Forward Auction</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.</p>
-				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">See how Forward Auction is beneficial for everyone.</a> </p>
+				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">See how Forward Auction is beneficial for everyone.</a> </p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.</p>
-				<p class="transaction_text hidden-xs hidden-sm"><a href="<?php echo yii::$app->urlManager->createUrl(['transactiontype']) ?>" class="auction_link">See the benefits of Reverse Auction</a></p> 
+				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">See the benefits of Reverse Auction</a></p> 
 			</div>
 		</div>
 	</div>
@@ -847,12 +847,51 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 	</div>
 </div>
 </div>
+
+
+
+
+<!---- Lead Modal-------->
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map lead_auction">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body">
+		<div class="container-fluid">
+			<h1 class="modal_transac">We have built a revolutionary product that makes the commercial real estate deals easy.</h1>
+			<p class="auction_function">The Auction Technology is currently an invite-only functionality. </p>
+			<div class="row details_u">
+					<h3 class="details_user">Please provide your details to ask for early access.</h3>
+					<div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Name">
+				 </div>
+				 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Phone">
+				 </div>
+				 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Email">
+				 </div>
+				 <a class="property_process submit_det" href="#">Submit</a>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <?php 
 $script = <<< JS
 
-
+$(".auction_link").click(function(){
+	$("#myModal").modal('show');
+});
 
 		var elems = $(".brand_name");
 if (elems.length) {
