@@ -3276,6 +3276,8 @@ float:left;
 	font-size:18px;
 	color:#afafaf;
 	margin-left:10px;
+	position:relative;
+	top:3px;
 }
 
 .padd_amen{
