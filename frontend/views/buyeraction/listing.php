@@ -495,7 +495,7 @@ if(!isset($_SESSION))
 
                                  <?=
                                 
-                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'lessor'])->label(false);
+                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'buyer'])->label(false);
                                         
 
                                 ?>
