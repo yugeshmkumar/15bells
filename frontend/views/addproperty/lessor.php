@@ -74,6 +74,16 @@ $datas =  $dataProvider->query->all();
                                 ])
                                 ?>
                            </li>
+						   <li><?=
+                                Html::a('Un-publish', ['unpublish', 'id' => $viewid], [
+                                'class' => 'btn btn-danger delete_prop',
+                                'data' => [
+                                'confirm' => 'Are you sure you want to unpublish this item?',
+                                'method' => 'post',
+                                ],
+                                ])
+                                ?>
+                           </li> 
                            
                         </ul>
                         </div>
