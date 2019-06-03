@@ -46,7 +46,7 @@ NewDesignAsset::register($this);
 								<ul class="nav navbar-nav">
 									
 									<li>
-										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="contact-menu">Sign Up</a>
+										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
 									</li>
 									<li>
 										<a class="menu_a" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
