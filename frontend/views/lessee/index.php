@@ -542,7 +542,7 @@ var polyArray = [];
       var newShape;
 
    $(document).ready(function () {
-
+    initialize();
 
 $('#propminrupees').change(function(){
 var currency  =  $(this).val();
@@ -1381,7 +1381,7 @@ function closeNav() {
       }
       
       
-      google.maps.event.addDomListener(window, 'load', initialize);
+     // google.maps.event.addDomListener(window, 'load', initialize);
 
 JS;
 $this->registerJs($script);
