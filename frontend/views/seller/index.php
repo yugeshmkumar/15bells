@@ -302,7 +302,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
+							<div class="row furnishing_stat owner_deed">
 								<h3 class="flow_heading">Choose ownership deeds</h3>
 								<div class="col-md-12 no_pad">
 									<div class="col-md-4 col-xs-6"><button id="freehold" class="button_select ownerships">Free Hold</button></div>
@@ -314,7 +314,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
+							<div class="row furnishing_stat loan_prop">
 								<h3 class="flow_heading">Is there any loan on property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select loantakens">Yes</button></div>
@@ -323,7 +323,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'LOAN_taken')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="row furnishing_stat">
+							<div class="row furnishing_stat far_app">
 								<h3 class="flow_heading">Is Floor Area Ratio (FAR) approved?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals">Yes</button></div>
@@ -333,7 +333,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
+							<div class="row furnishing_stat prop_age">
 								<h3 class="flow_heading">How old is the property? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="0-1" class="button_select propage">0 - 1 Years</button></div>
@@ -346,7 +346,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 							<div class="row seperator_div"></div>
-							<div class="row furnishing_stat">
+							<div class="row furnishing_stat prop_facing">
 								<h3 class="flow_heading">Property Facing? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="east" class="button_select propfacing">East</button></div>
@@ -399,19 +399,19 @@ $user_id= Yii::$app->user->identity->id;
                     <input type="hidden" value="" id="tenures" name="tenures">
                     <input type="hidden" value="" id="rent_free" name="rent_free">
 
-							<div class="col-md-12">
+							<div class="col-md-12 interior_det">
 								<h3 class="flow_heading">Please share the interior details of property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-6 date_select">
                                     <!-- <input type="text" class="form-control input_desgn" placeholder="Enter revenue layout"> -->
-                                    <?= $form->field($model, 'revenue_lauout')->textInput([ 'placeholder' => "Enter revenue layout",'class' => 'form-control input_desgn'])->label(false) ?> 
+                                    <?= $form->field($model, 'revenue_lauout')->textInput([ 'placeholder' => "Enter revenue layout",'class' => 'form-control input_desgn revenue_inpt'])->label(false) ?> 
 
                                     </div>
 								</div>
 								
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12">
+							<div class="col-md-12 near_by">
 								<h1 class="more_detail">Nearby Places</h1>
 								<p class="brand_txt">Please help us understanding the nearby places around property?</p>
 								<h3 class="flow_heading">Commuting options around the property?</h3>
@@ -1177,6 +1177,45 @@ function generateOTP() {
 $('.exp_price').blur(function(){
     $('html,body').animate({
         scrollTop: $(".crpet_area").offset().top - 100},
+        'slow'); 
+});
+$('.revenue_inpt').blur(function(){
+    $('html,body').animate({
+        scrollTop: $(".near_by").offset().top - 100},
+        'slow'); 
+})
+
+$('.prop_floor').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".owner_deed").offset().top - 100},
+        'slow'); 
+});
+
+$('.loantakens').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".far_app").offset().top - 100},
+        'slow'); 
+});
+$('.propfacing').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".interior_det").offset().top - 100},
+        'slow'); 
+});
+
+$('.propage').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".prop_facing").offset().top - 100},
+        'slow'); 
+});
+
+$('.farapprovals').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".prop_age").offset().top - 100},
+        'slow'); 
+});
+$('.ownerships').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".loan_prop").offset().top - 100},
         'slow'); 
 });
    $('.addres_input').blur(function(){
