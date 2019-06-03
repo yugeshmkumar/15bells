@@ -2211,6 +2211,8 @@ input.invalid {
 }
 .furnishing_stat{
 	padding:30px 0px 30px;
+	float:left;
+	width:100%;
 }
 .possession_time{
 	padding:30px 0px 0;
