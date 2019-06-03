@@ -43,10 +43,10 @@ NewDesignAsset::register($this);
 								<ul class="nav navbar-nav signup_buttns">
 									
 									<li>
-										<a class="menu_a sign_up animated slideInDown" href="javascript:" id="contact-menu">Sign Up</a>
+										<a class="menu_a sign_up animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
 									</li>
 									<li>
-										<a class="menu_a animated slideInDown" href="javascript:" id="project-menu">Sign In</a>
+										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
 									</li>
 								</ul>
 						</div><!-- /.navbar-collapse -->
