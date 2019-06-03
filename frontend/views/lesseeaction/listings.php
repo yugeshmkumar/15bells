@@ -458,8 +458,8 @@ if(!isset($_SESSION))
                     <div class="col-md-12">
 
                     <div class="col-md-4" id="sitevisitlocation">location</div>
-                    <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
-                    <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div>
+                    <!-- <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
+                    <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div> -->
                     </div>
 					<div class="col-md-12">
 						<div class="col-md-6">
@@ -546,7 +546,24 @@ if(!isset($_SESSION))
 
 				<div class="row site_contain" id="firstshow">
 					<h1 class="visit_prop text-center">You Already has used your complimentry sitevisits . For Site Visit of this property Amount to Pay is 500 /-</h1>
-					
+                    <?php 
+
+
+$user_ids = Yii::$app->user->identity->id;
+$arrcheckrole1 = \common\models\User::find()->where(['id'=>$user_ids])->one();
+
+
+$name = $arrcheckrole1->fullname.''.$arrcheckrole1->lastname;
+$email = $arrcheckrole1->email;
+$phonenumber = $arrcheckrole1->username;
+
+
+?>
+<input type="hidden" id="kname" value="<?php echo $name; ?>">
+                       <input type="hidden" id="kemail" value="<?php echo $email; ?>">
+                       <input type="hidden" id="kphonenumber" value="<?php echo $phonenumber; ?>">
+                       <input type="hidden" id="kamount_payable" value="<?php echo $amount_payable; ?>">
+                       <input type="hidden" id="krequestids" value="<?php echo $requestids; ?>">
 					
 					<!-- <div id="appendid2">
 					</div> -->
@@ -555,7 +572,7 @@ if(!isset($_SESSION))
                     
                     <div class="col-md-6 text-right save_site">
 							<div class="row">
-								<button type="button" class="btn btn-default call_butn"  id="setsessions">Proceed to Buy</button>
+								<button type="button" class="btn btn-default call_butn"  id="rzp-button1">Proceed to Buy</button>
 							</div>
 							
 						</div>
@@ -574,28 +591,11 @@ if(!isset($_SESSION))
 					</div> -->
                     <div class="col-md-12">
 
-                    <?php 
-
-
- $user_ids = Yii::$app->user->identity->id;
-$arrcheckrole1 = \common\models\User::find()->where(['id'=>$user_ids])->one();
-
-
-$name = $arrcheckrole1->fullname.''.$arrcheckrole1->lastname;
- $email = $arrcheckrole1->email;
-$phonenumber = $arrcheckrole1->username;
-
-
-?>
-<input type="hidden" id="kname" value="<?php echo $name; ?>">
-						<input type="hidden" id="kemail" value="<?php echo $email; ?>">
-						<input type="hidden" id="kphonenumber" value="<?php echo $phonenumber; ?>">
-						<input type="hidden" id="kamount_payable" value="<?php echo $amount_payable; ?>">
-						<input type="hidden" id="krequestids" value="<?php echo $requestids; ?>">
+                    
                     
                     <div class="col-md-6 text-right save_site">
 							<div class="row">
-								<button class="btn btn-default call_butn" id="rzp-button1" >Pay</button>
+								<button class="btn btn-default call_butn" >Pay</button>
 							</div>
 							
 						</div>
@@ -1050,8 +1050,7 @@ $("#setsessions").on("click", function(e){
                                                 success: function (data) {
                                                  
                                                  if(data == 'done'){
-                                                  $('#kamount_payable').val(amount_payable);
-                                                  $('#krequestids').val(ids);
+                                                  
                                                  }
                                                   
                                                    
@@ -2553,6 +2552,7 @@ function getPolygonCoords() {
                                '<button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
                                )+
                                '</div>'+
+
                                '</div>'+
                                '</div>'+
                            '</div>'+
@@ -2720,8 +2720,8 @@ $('#sitevisitprop').val(id);
             var obj = $.parseJSON(data);
             
             $('#sitevisitlocation').html(obj.locality);
-            $('#sitevisitarea').html(obj.super_area);
-            $('#sitevisitprice').html(obj.asking_rental_price);
+           // $('#sitevisitarea').html(obj.super_area);
+            //$('#sitevisitprice').html(obj.asking_rental_price);
     
         },
                   });
@@ -3171,7 +3171,7 @@ var datetime = $('#rantime').val();
 var scheduletime = $('#scheduletime').val();
 var visitmode = $('#visitmode').val();
 var rantime = datetime +' '+scheduletime;
-
+var amount_payable = 500;
 
 
 $.ajax({
@@ -3184,9 +3184,14 @@ $.ajax({
     
     if(data == '1'){
         
-        
+        $('#kamount_payable').val(amount_payable);
+        $('#krequestids').val(id);
+
     toastr.success('Request for Site Visit has Successfully placed','success');    
     }else if(data == '2'){
+
+        $('#kamount_payable').val(amount_payable);
+        $('#krequestids').val(id);
         
        toastr.success('Request for Site Visit has Successfully placed','success'); 
        toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');  
