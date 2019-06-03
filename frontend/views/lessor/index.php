@@ -49,8 +49,8 @@ $user_id= Yii::$app->user->identity->id;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Location</a></li>
+						<li class="active property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Location</a></li>
+						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Type of Property</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Availability</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Details</a></li>
 					</ul>
@@ -87,7 +87,7 @@ $user_id= Yii::$app->user->identity->id;
 						<div class="row user_property">
 							<div class="col-md-12">
 								<div class="col-md-3 commer_office prop_priceshow">
-									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="border_yellow property_image">
+									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="property_image">
 									<p class="property_name">Commercial Office</p>
 								</div>
 								<div class="col-md-3 commer_retail prop_priceshow">
@@ -107,7 +107,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 category_detail commercial_o">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
-								<li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
+								<li class=""><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
 								<li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
 								<li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
 								<li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
@@ -117,7 +117,7 @@ $user_id= Yii::$app->user->identity->id;
 						<div class="col-md-12 category_detail commercial_r">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
-								<li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
+								<li class=""><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
 								<li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
 								<li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
 								<li class=""><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
@@ -127,7 +127,7 @@ $user_id= Yii::$app->user->identity->id;
 						<div class="col-md-12 category_detail industrial_land">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
-								<li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
+								<li class=""><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
 								<li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
 								<li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
 								<li class=""><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
@@ -137,7 +137,7 @@ $user_id= Yii::$app->user->identity->id;
 						<div class="col-md-12 category_detail warehouse">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
-								<li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
+								<li class=""><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
 								<li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
 								
 							</ul>
@@ -170,7 +170,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 property_area crpet_area">
 								<h3 class="flow_heading">Select unit & enter square and carpet area of your property</h3>
 								<ul class="sub_categories">
-									<li class="active"><a href="javascript:void(0)" id="sq_feets" class="property_subtype price_unit">Sq. Feet</a></li>
+									<li class=""><a href="javascript:void(0)" id="sq_feets" class="property_subtype price_unit">Sq. Feet</a></li>
 									<li class=""><a href="javascript:void(0)" id="sq_yards" class="property_subtype price_unit">Sq. Yard</a></li>
 									<li class=""><a href="javascript:void(0)" id="sq_meters" class="property_subtype price_unit">Sq. Meter</a></li>
 								</ul>
@@ -208,7 +208,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 no_pad">
 								<h3 class="flow_heading ">Availability</h3>
 								<ul class="sub_categories avail_b">
-									<li class="active"><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
+									<li class=""><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
 									<li class=""><a href="javascript:void(0)" id="under_construction"class="property_subtype availability">Under construction</a></li>
 									<li class=""><a href="javascript:void(0)" id="60_days" class="property_subtype availability">60 Days</a></li>
 									<li class=""><a href="javascript:void(0)" id="30_days" class="property_subtype availability">30 Days</a></li>
@@ -221,10 +221,10 @@ $user_id= Yii::$app->user->identity->id;
                                 </p>-->
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 avail_b">
+							<div class="col-md-12 f_status">
 								<h3 class="flow_heading ">Furnishing Status</h3>
-								<ul class="sub_categories">
-									<li class="active"><a href="#" id="warmshell" class="property_subtype furnishing">Warm Shell</a></li>
+								<ul class="sub_categories furnishing_s">
+									<li class=""><a href="#" id="warmshell" class="property_subtype furnishing">Warm Shell</a></li>
 									<li class=""><a href="javascript:void(0)" id="bareshell" class="property_subtype furnishing">Bare Shell</a></li>
 									<li class=""><a href="javascript:void(0)" id="furnished" class="property_subtype furnishing">Furnished</a></li>
 									<li class=""><a href="javascript:void(0)" id="semi_furnished" class="property_subtype furnishing">Semi Furnished</a></li>
@@ -233,11 +233,11 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 possession_time">
+							<div class="col-md-12 possession_time possesion_time">
 								<h3 class="flow_heading ">Mention possession time ( If Applicable )</h3>
 								<div class="col-md-12 date_select">
-									<ul class="sub_categories">
-										<li class="active"><a href="javascript:void(0)" id="1_month" class="property_subtype possesions">1 Month</a></li>
+									<ul class="sub_categories possesion_list">
+										<li class=""><a href="javascript:void(0)" id="1_month" class="property_subtype possesions">1 Month</a></li>
 										<li class=""><a href="javascript:void(0)" id="2_month" class="property_subtype possesions">2 Month</a></li>
 										<li class=""><a href="javascript:void(0)" id="3_month" class="property_subtype possesions">3 Month</a></li>
 										<li class=""><a href="javascript:void(0)" id="4_month" class="property_subtype possesions">4 Month</a></li>
@@ -251,7 +251,7 @@ $user_id= Yii::$app->user->identity->id;
 							<h1 class="more_detail more_steps">To sell property at earliest, Go ahead and beautify property by sharing property details</h1>
 							<div class="col-md-12 seperator_div"></div>
 							<div class="col-md-12 furnishing_stat">
-								<h1 class="more_detail">Add more Basic Details</h1>
+								<h1 class="more_detail basic_det">Add more Basic Details</h1>
 								<h3 class="flow_heading ">How many floors are there in buildings?</h3>
 								<div class="col-md-12 no_pad">
 									<div class="col-md-4 col-xs-6"><button id="10" class="button_select uptofloor">Upto 10</button></div>
@@ -262,10 +262,10 @@ $user_id= Yii::$app->user->identity->id;
 								
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat">
+							<div class="col-md-12 furnishing_stat floor_no">
 								<h3 class="flow_heading ">Property on floor</h3>
 								<div class="col-md-12 no_pad" id="floorten">
-									<div class="col-md-2 col-xs-3"><button id="G" class="button_select prop_floor active_butn">G</button></div>
+									<div class="col-md-2 col-xs-3"><button id="G" class="button_select prop_floor">G</button></div>
 									<div class="col-md-2 col-xs-3"><button id="1" class="button_select prop_floor">1</button></div>
 									<div class="col-md-2 col-xs-3"><button id="2" class="button_select prop_floor">2</button></div>
 									<div class="col-md-2 col-xs-3"><button id="3" class="button_select prop_floor">3</button></div>
@@ -279,7 +279,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
                                 <div class="col-md-12 no_pad" id="floortwenty">
 									
-									<div class="col-md-2 col-xs-3"><button id="11" class="button_select prop_floor active_butn">11</button></div>
+									<div class="col-md-2 col-xs-3"><button id="11" class="button_select prop_floor">11</button></div>
 									<div class="col-md-2 col-xs-3"><button id="12" class="button_select prop_floor">12</button></div>
 									<div class="col-md-2 col-xs-3"><button id="13" class="button_select prop_floor">13</button></div>
 									<div class="col-md-2 col-xs-3"><button id="14" class="button_select prop_floor">14</button></div>
@@ -292,7 +292,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
                                 <div class="col-md-12 no_pad" id="floorthirty">
 									
-									<div class="col-md-2 col-xs-3"><button id="21" class="button_select prop_floor active_butn">21</button></div>
+									<div class="col-md-2 col-xs-3"><button id="21" class="button_select prop_floor">21</button></div>
 									<div class="col-md-2 col-xs-3"><button id="22"class="button_select prop_floor">22</button></div>
 									<div class="col-md-2 col-xs-3"><button id="23"class="button_select prop_floor">23</button></div>
 									<div class="col-md-2 col-xs-3"><button id="24" class="button_select prop_floor">24</button></div>
@@ -310,7 +310,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 furnishing_stat">
 								<h3 class="flow_heading ">Choose ownership deeds</h3>
 								<div class="col-md-12 no_pad">
-									<div class="col-md-4 col-xs-6"><button id="freehold" class="button_select ownerships active_butn">Free Hold</button></div>
+									<div class="col-md-4 col-xs-6"><button id="freehold" class="button_select ownerships">Free Hold</button></div>
 									<div class="col-md-4 col-xs-6"><button id="lease_hold" class="button_select ownerships">Lease Hold</button></div>
 									<div class="col-md-4 col-xs-6"><button id="poa" class="button_select ownerships">General POA</button></div>
 									<div class="col-md-4 col-xs-6"><button id="spa" class="button_select ownerships">SPA</button></div>
@@ -322,7 +322,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 furnishing_stat">
 								<h3 class="flow_heading ">Is there any loan on property?</h3>
 								<div class="col-md-12">
-									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select loantakens active_butn">Yes</button></div>
+									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select loantakens">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select loantakens">No</button></div>
 								</div>
                                 <?= $form->field($model, 'LOAN_taken')->hiddenInput()->label(false) ?>
@@ -331,7 +331,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 furnishing_stat">
 								<h3 class="flow_heading ">Is Floor Area Ratio (FAR) approved?</h3>
 								<div class="col-md-12">
-									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals active_butn">Yes</button></div>
+									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals">No</button></div>
 								</div>
                                 <?= $form->field($model, 'FAR_approval')->hiddenInput()->label(false) ?>
@@ -354,7 +354,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 furnishing_stat">
 								<h3 class="flow_heading ">Property Facing? </h3>
 								<div class="col-md-12">
-									<div class="col-md-3 col-xs-6"><button id="east" class="button_select active_butn propfacing">East</button></div>
+									<div class="col-md-3 col-xs-6"><button id="east" class="button_select propfacing">East</button></div>
 									<div class="col-md-3 col-xs-6"><button id="west" class="button_select propfacing">West</button></div>
 									<div class="col-md-3 col-xs-6"><button id="north" class="button_select propfacing">North</button></div>
 									<div class="col-md-3 col-xs-6"><button id="south" class="button_select propfacing">South</button></div>
@@ -379,7 +379,7 @@ $user_id= Yii::$app->user->identity->id;
 								<p class="brand_txt">Please help us understanding you expectations</p>
 								<h3 class="flow_heading ">Is there any locking period for lessee? </h3>
 								<div class="col-md-12">
-									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select locking_period active_butn">Yes</button></div>
+									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select locking_period">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select locking_period">No</button></div>
 								</div>
 							</div>
@@ -387,7 +387,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12">
 								<h3 class="flow_heading ">Is lease tenure applicable? </h3>
 								<div class="col-md-12">
-									<div class="col-md-2 col-xs-4 no_pad"><button id="yes"class="button_select tenures active_butn">Yes</button></div>
+									<div class="col-md-2 col-xs-4 no_pad"><button id="yes"class="button_select tenures">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select tenures">No</button></div>
 								</div>
 							</div>
@@ -396,7 +396,7 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12">
 								<h3 class="flow_heading ">Is there any rent free period?</h3>
 								<div class="col-md-12">
-									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free active_butn">Yes</button></div>
+									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free">Yes</button></div>
 									<div class="col-md-2 col-xs-4 no_pad"><button id="no" class="button_select rent_free">No</button></div>
 								</div>
 							</div>
@@ -749,8 +749,8 @@ $user_id= Yii::$app->user->identity->id;
       <div class="modal-body no_pad">
 		<div class="container-fluid no_pad">
 			<div class="col-md-12 text-center skip_details">
-				<p class="skip_content">If you are interested in filling other details click on continue button.</p>
-				<p class="process_continue"><a href="#" data-dismiss="modal" class="property_back">Skip </a><a href="#" class="property_process add_stepp">Continue <i class="fa fa-angle-right"></i></a></p>
+				<p class="skip_content">Our intention is to get more information</p>
+				<p class="process_continue"><a href="#" class="property_process add_stepp">Continue <i class="fa fa-angle-right"></i></a></p>
 			</div>
 		</div>
 		
@@ -852,6 +852,16 @@ $('#hidepassword').show();
 
 });
 
+$('.furnishing_s li a').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".possesion_time").offset().top - 100},
+        'slow'); 
+});
+$('.possesion_list li a').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".basic_det").offset().top - 100},
+        'slow'); 
+});
 
 $('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 	
@@ -1235,7 +1245,11 @@ $('.exp_price').blur(function(){
        e.preventDefault();
    });
    
-   
+   $('.uptofloor').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".floor_no").offset().top - 100},
+        'slow'); 
+});
    $('.uptofloor').click(function(e) {
        $('.uptofloor.active_butn').removeClass('active_butn');
        $(this).addClass('active_butn');
