@@ -370,9 +370,9 @@ a{text-decoration:none !important;}
 /**Animation CSS**/
 /*******I am here for css***********/
 .select_catg{
-	position:absolute;
+	position:relative;
 	left:55px;
-	bottom:35%;
+	bottom:-170px;
 }
 div.mm-dropdown {
   width: 100%;
@@ -2227,6 +2227,13 @@ input.invalid {
 }
 /* For responsivness */
 @media(max-width:767px) {
+
+	.accordion_head .plusminus{
+		float: right;
+    position: absolute;
+    right:7%;
+	}
+
 	.span_sl{
 		top:2px;
 	}
@@ -2236,7 +2243,7 @@ input.invalid {
 	.select_catg{
 		left:4px;
 		width:98%;
-		bottom:25%;
+		bottom:-230px;
 	}
 	.read_more{
 		display:flex;
@@ -2362,7 +2369,11 @@ input.invalid {
     padding: 0px 10px 0 0px!important;
 	}
 	.location_drop{
-		font-size:20px !important;
+		font-size:18px !important;
+		margin-right:10px;
+	}
+	.svg_drop{
+		width:18px;
 	}
 	.close_citydrop {
     position: absolute;
@@ -2809,6 +2820,10 @@ input.invalid {
 	cursor:pointer;
 	}
 
+	.property_image:hover{
+		border-color:#c4984f;
+		transition:.4s;
+	}
 	.border_yellow1{
 		border:2px solid #c4984f !important;
 		}
@@ -3467,6 +3482,8 @@ float:left;
   
   .plusminus {
 	float: right;
+    position: absolute;
+    right: 5%;
   }
   .popup_seprator{
 	  margin:25px 0;
@@ -3617,4 +3634,37 @@ color: #c4984f;
     top: 37px;
     transform: rotate(-45deg);
   }
-  
+
+  /**** Transaction modal css****/
+  .lead_auction{
+	  padding:30px 30px 60px;
+  }
+  .modal_transac{
+	  font-size:35px;
+	  font-weight:600;
+	  color:#221d36;
+	  line-height:42px;
+  }
+  .auction_function{
+	font-size:25px;
+	color:#221d36;
+  }
+  .details_user{
+	  padding:30px 0;
+  }
+  .submit_det{
+	 top:20px;
+	 position:relative;
+  }
+  .details_u .col-md-4{
+	padding-left:0;
+  }
+ .choose_login {
+	font-size: 18px;
+    font-weight: 600;
+    color: #c4984f;
+    margin-left: 70px;
+  }
+  #menu1{
+	  border:0 !important;
+  }
