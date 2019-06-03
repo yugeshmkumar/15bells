@@ -550,6 +550,9 @@ var polyArray = [];
 
    $(document).ready(function () {
 
+     
+     initialize();
+
      $('#propminrupees').change(function(){
 var currency  =  $(this).val();
 if(currency == 'lacs'){
@@ -831,6 +834,9 @@ $('.price_maximum li').on('click', function() {
 
 
   $(document).ready(function(){
+
+
+
   $('.btn-toggle').click(function() {
    //alert();
    $(this).find('.btn').toggleClass('active');  
@@ -1139,6 +1145,8 @@ function closeNav() {
 
       /////////////////////////////////////
       function initialize() {
+
+        
 		
         $('#delete-button').removeClass("inactiveLink");
        $('#delete-button').addClass("activeLink");
@@ -1392,7 +1400,7 @@ function closeNav() {
       }
       
       
-      google.maps.event.addDomListener(window, 'load', initialize);
+    //  google.maps.event.addDomListener(window, 'load', initialize);
 
 JS;
 $this->registerJs($script);

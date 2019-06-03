@@ -350,29 +350,28 @@ if(!isset($_SESSION))
 					<div class="panel-body panel_body">
 								<div class="row">
 									<div class="col-md-12 no_pad">
-								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							
-                <div class="col-md-4">
-                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
+                <div class="col-md-6">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
                  </div>
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                     <select id="propminrupees" class="form-control area_price">
                        <option value="lacs">Lacs</option>
                        <option value="crores">Crores</option>
                     </select>
-                 </div>
-                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+                 </div> -->
+                 <!-- <input type="hidden" id="proppriceminimum" name="proppriceminimum"> -->
 
                  <div class="col-md-4">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
                  </div>
-                 <div class="col-md-2">
+                 <!-- <div class="col-md-2">
                     <select id="propmaxrupees" class="form-control area_price">
                       <option value="lacs">Lacs</option>
                      <option value="crores">Crores</option>
                      </select>
                    </div>
-                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+                   <input type="hidden" id="proppricemaximum" name="proppricemaximum"> -->
 							</div>
 								</div>
 							</div>
@@ -1278,6 +1277,19 @@ if(currency == 'lacs'){
               var actualarea =  $(this).val();             
                     
               $('#propareamaximums').val(actualarea);
+               
+    });
+
+    $("#proppriceminimum").on("input", function(){       
+              var actualarea =  $(this).val();             
+                    
+              $('#proppriceminimums').val(actualarea);
+               
+    });
+    $("#proppricemaximum").on("input", function(){       
+              var actualarea =  $(this).val();             
+                    
+              $('#proppricemaximums').val(actualarea);
                
     });
 
