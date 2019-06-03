@@ -483,6 +483,7 @@ use yii\bootstrap\Modal;
       
       <div class="modal-body no_pad">
 		<div class="container-fluid no_pad">
+    <h4 class="mark_map hidden-lg hidden-md">Mark your area on the map</h4>
 			<div class="col-md-6 no_pad">
             <div id="map_canvas" ></div>
 			</div>
@@ -498,7 +499,7 @@ use yii\bootstrap\Modal;
         </ul>
 			</div>
 			<div class="col-md-5 mark_instruction">
-				<h4 class="mark_map">Mark your area on the map</h4>
+				<h4 class="mark_map hidden-xs hidden-sm">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
 											<button class="btn btn-lg" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>

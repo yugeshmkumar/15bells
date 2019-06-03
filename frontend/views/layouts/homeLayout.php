@@ -129,9 +129,9 @@ NewDesignAsset::register($this);
 				
 					<ul class="sliding_menu">
 							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Lessee']) ?>">Search for Lease</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['Seller']) ?>">Sell your Property</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Lease/ Rent your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
 							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
 							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Industries</a></li>
 
@@ -144,7 +144,7 @@ NewDesignAsset::register($this);
 			 
 			</div>
 			<!-- Use any element to open the sidenav -->
-			<span onclick="openNav()"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/menu.png';  ?>" class="img_menu"></span>
+			<span onclick="openNav()"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/menu.png';  ?>" class="img_menu hidden-xs hidden-sm"></span>
     
 	
 	<!--======QUERY FORM==========-->

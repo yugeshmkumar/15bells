@@ -73,7 +73,7 @@ use yii\widgets\Pjax;
 							</div>
 
 							
-							<button type="button" id="passwordit" class="otp_button">Signin by Password</button>
+							<button type="button" id="passwordit" class="otp_button">Signin by Password</button><span class="choose_login">OR</span>
 							<button type="button" id="otpit" class="otp_button" style="float:right;">Signin by OTP</button>
 
 
