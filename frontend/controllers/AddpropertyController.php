@@ -43,7 +43,7 @@ class AddpropertyController extends Controller
                     [
                         'actions' => ['sitevisit','index','creategrouplessor','getpropstatus','lessor','sellor','view','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
-'fileuploads','documents','documentss','upload_avatar','update','savelessor','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
+'fileuploads','documents','documentss','upload_avatar','update','savelessor','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -2468,7 +2468,19 @@ public function actionDocumentss() {
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    
+    public function actionUnpublish($id)
+    {
+        $model =  $this->findModel($id);
+        $model->is_active = 0;
+        $model->save(false);
+
+       // return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    
+     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
