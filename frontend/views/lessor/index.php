@@ -153,8 +153,15 @@ $user_id= Yii::$app->user->identity->id;
 									<div class="col-md-6">
 										<div class="row">
 											<h3 class="flow_heading">Let us know the expected price of your property</h3>
+                                            <div class="col-md-4">
                                             <?= $form->field($model, 'asking_rental_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "Enter Amount", 'class' => 'form-control exp_price input_desgn'])->label(false) ?>
-
+                                            </div>
+                                        <div class="col-md-4">
+                                        <select id="expectedprice" class="form-control area_price">
+                                        <option value="lacs">Sq.ft</option>
+                                      
+                                        </select>
+                                        </div>		
 											<!-- <input type="text" class="form-control input_desgn" placeholder="Enter Amount"> -->
 										</div>
 									</div>
