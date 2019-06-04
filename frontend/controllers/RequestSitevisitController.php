@@ -341,16 +341,18 @@ return $this->render('indexes', [
 
     public function actionPaymentgateway(){
 
+     
+          $orderId =  $_POST['orderid'];
+          $property_id =  $_POST['krequestids'];
 
-       $orderId =  $_POST['orderid'];
-        $krequestids =  $_POST['krequestids'];
+       $user_id = Yii::$app->user->identity->id;
         $kamount_payable =  $_POST['kamount_payable'];
 
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
 
-        $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
-        // echo '<pre>';print_r($finduser);die;
+        $finduser = \common\models\RequestSiteVisit::find()->where(['property_id' => $property_id])->andwhere(['user_id' => $user_id])->one();
+        $krequestids =  $finduser->request_id;
       if($finduser){
 
               if ($orderId != '') { 
