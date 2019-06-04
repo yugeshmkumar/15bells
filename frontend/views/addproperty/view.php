@@ -173,7 +173,7 @@ $undercategory = $property_type->undercategory;
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Property Details
                         <!-- <a href="javascript:void(0)" class="text-right edit_button draw_map">Edit</a -->
-                        ></h3>
+                        </h3>
 						<div class="row">
 						<div class="col-md-4 edit_input">
 							<label class="edit_label">Ownership Deeds</label>
@@ -231,6 +231,17 @@ $undercategory = $property_type->undercategory;
 						</div>
 						</div>
 					</div>
+					<div class="col-md-12 seperator_div"></div>
+					<div class="row possession_time">
+						<h3 class="flow_heading avail_ability">View Documents 
+                        <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
+                        </h3>
+						<div class="row">
+						<p class="label_name" style="padding:20px;"><a href="" class="view_docs">View Documents</a></p>
+						</div>
+						
+					</div>
+                    
 					<div class="col-md-12 seperator_div"></div>
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Availability
