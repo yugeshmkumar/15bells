@@ -23,8 +23,8 @@ $userid = Yii::$app->user->identity->id;
 
 										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
                                           <form method="post">
-											<input name="low" type="submit" value="Low to high">
-                                            <input name="high" type="submit" value="High to low">
+											<input name="low" type="submit" class="sort_list" value="Low to high">
+                                            <input name="high" type="submit" class="sort_list" value="High to low">
                                             </form>
 											<!-- <li></li> -->
 										  </ul>

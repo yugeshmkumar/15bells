@@ -116,34 +116,37 @@ if($RequestSiteVisit){
 
 
 <div id="shortlist" class="modal fade" role="dialog">
-    <div class="modal-dialog prop_shortlst modal-lg">
+    <div class="modal-dialog modal_dialogue modal-lg">
 
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="headpropuser"></h4>
+        <div class="modal-content draw_map no_pad">
+            <div class="">
+                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+                
             </div>
             <div class="modal-body">
-
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-                 
-						<div class="card-header">
-							
-							<div id="appenddata" class="row">
-
-							</div>
-						</div>
-				
-
-
+                <div class="container-fluid user_viewed">
+                    <div class="row text-center">
+                        <h1 class="visit_hed">Scheduled Visit List</h1>
+                        <p class="upcomin_visit">Upcoming scheduled visits of your property</p>
+                    </div>
+                    <div class="col-md-12 bordr_top bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                    <div class="col-md-12 bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                    <div class="col-md-12 bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                </div>
                 </div><!-- panel-group -->
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            
         </div>
 
     </div>
