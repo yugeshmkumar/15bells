@@ -40,9 +40,9 @@ $datas =  $dataProvider->query->all();
 
 										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
                                           <form method="post">
-											<input name="progress" type="submit" value="In Progress">
+																						<input name="progress" type="submit" value="In Progress">
                                             <input name="progress" type="submit" value="Completed">
-                                            </form>
+                                          </form>
 											<!-- <li></li> -->
 										  </ul>
                                          
@@ -158,8 +158,11 @@ $datas =  $dataProvider->query->all();
 								<i class='fa fa-star fa-fw'></i>
 							  </li>
 							</ul>
+							<div class="form-group" style="margin-top:10px;">
+								<textarea class="form-control feedback_input" rows="5" id="comment" placeholder="Your Valuable Feedback"></textarea>
+							</div>
 						  </div>
-						<p class="visit_txt">You gave a rating of <span id="count">0</span> star(s)</p>
+					
 				</div>
 				<div class="col-md-12 text-center">
 					<h2 class="star_rating">Rate your visit of property location JMD Megapolis</h2>
@@ -182,6 +185,9 @@ $datas =  $dataProvider->query->all();
 								<i class='fa fa-star fa-fw'></i>
 							  </li>
 							</ul>
+							<div class="form-group" style="margin-top:10px;">
+								<textarea class="form-control feedback_input" rows="5" id="comment" placeholder="Your Valuable Feedback"></textarea>
+							</div>
 						  </div>
 						  
 						<!--<p class="visit_txt">You gave a rating of <span id="count-existing">4</span> star(s)</p>-->
