@@ -2472,7 +2472,7 @@ input.invalid {
 	height:100px;
 }
 .map_icons{
-	padding:10px 0 10px 25px !important;
+	padding:10px 0 10px 0px !important;
 	border-left:0 !important;
 	border-right:0 !important;
 	display:inline-flex;
@@ -3672,3 +3672,17 @@ color: #c4984f;
   #menu1{
 	  border:0 !important;
   }
+
+  
+/*****Buyer check css***********/
+.check_icon{
+	position:absolute;
+	    right: 10px;
+    width: 17px;
+	margin-top: 3px;
+	display:none;
+}
+.add_property li{
+	position:relative;	
+}
+

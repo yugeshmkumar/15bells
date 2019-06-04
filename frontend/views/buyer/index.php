@@ -83,9 +83,9 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
-						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area / Price</a></li>
+						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon first"></a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon second"></a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area / Price <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon third"></a></li>
 						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
@@ -502,8 +502,8 @@ use yii\bootstrap\Modal;
 				<h4 class="mark_map hidden-xs hidden-sm">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
-											<button class="btn btn-lg" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
-											<button class="btn button_togg btn-lg active step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
+											<button class="btn btn-lg second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
+											<button class="btn button_togg btn-lg active second_clck step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
 										  </div></p>
 				
 			</div>
@@ -677,7 +677,9 @@ $(".sub_categories li a").click(function() {
       var propid = this.id;
       $('#proptype').val(propid);
     });
-
+    (".second_clck").click(function(){
+      $('.second').show();
+    });
      $('.property_image1').click(function(){
        propcity = this.id;
        $('#pac-input').val('');
@@ -717,6 +719,7 @@ $(".sub_categories li a").click(function() {
        //$(.add_property)
        $('.add_property li:nth-child(2)').addClass("active");
        //$(".add_property li:nth-child(1)").removeClass("active");
+       $('.first').show();
        $('html,body').animate({
         scrollTop: $(".property_area").offset().top + 600},
         'slow');
