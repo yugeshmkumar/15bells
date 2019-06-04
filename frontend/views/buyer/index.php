@@ -503,7 +503,7 @@ use yii\bootstrap\Modal;
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
 											<button class="btn btn-lg second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
-											<button class="btn button_togg btn-lg active second_clck step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
+											<button class="btn button_togg btn-lg active step_availablity second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
 										  </div></p>
 				
 			</div>
@@ -677,9 +677,7 @@ $(".sub_categories li a").click(function() {
       var propid = this.id;
       $('#proptype').val(propid);
     });
-    (".second_clck").click(function(){
-      $('.second').show();
-    });
+
      $('.property_image1').click(function(){
        propcity = this.id;
        $('#pac-input').val('');
@@ -719,10 +717,11 @@ $(".sub_categories li a").click(function() {
        //$(.add_property)
        $('.add_property li:nth-child(2)').addClass("active");
        //$(".add_property li:nth-child(1)").removeClass("active");
-       $('.first').show();
+      
        $('html,body').animate({
         scrollTop: $(".property_area").offset().top + 600},
         'slow');
+        $('.first').show();
    });
    $('.step_availablity').click(function(e) {
        //$(.add_property)
@@ -731,6 +730,16 @@ $(".sub_categories li a").click(function() {
        $('html,body').animate({
         scrollTop: $("#home").offset().top + 750},
         'slow');
+        
+   });
+   $('.second_clck').click(function(e) {
+       //$(.add_property)
+       $('.add_property li:nth-child(3)').addClass("active");
+       //$(".add_property li:nth-child(2)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $("#home").offset().top + 750},
+        'slow');
+        $(".second").show();
    });
    $('.step_locality').click(function(e) {
        //$(.add_property)

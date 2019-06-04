@@ -1419,3 +1419,12 @@ input[type=file]::-webkit-file-upload-button {
 		text-align:center;
 		transition:.4s;
 	}
+	.feedback_input{
+		background: #ffffff;
+	border: 1px solid #afafaf;
+	box-shadow: none;
+	border-radius: 0 !important;
+	color: #221d36 !important;
+	padding: 20px;
+	margin: 7px 0px;
+	}
