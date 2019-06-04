@@ -112,11 +112,14 @@ class LesseeactionController extends Controller {
 
 
         if ($payments) {
-            echo '1';
+
+            $insert1 = \Yii::$app->db->createCommand()->delete('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam])->execute();
+
+            return  '1';
         } else {
 
-            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'expectation_id'=>$expectation_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
-            echo '2';
+            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+            return '2';
         }
 
 

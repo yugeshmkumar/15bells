@@ -60,7 +60,7 @@ if(array_key_exists('low',$_POST)){
                 $imaged = $datas['featured_image'];
 
                 $haritid = 273*179-$datas['id'];
-                $propsid = 'PR'+ $haritid;
+                $propsid = 'PR'.$haritid;
 
 ?>
 
