@@ -17,6 +17,7 @@ use yii\filters\AccessControl;
 use Razorpay\Api\Api;
 use common\models\CompanyEmp;
 use common\models\User;
+use yii\helpers\HtmlPurifier;
 
 
 
@@ -50,7 +51,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','indexes','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -329,9 +330,11 @@ return $this->render('indexes', [
     public function actionMakeuseryes(){
 
         $krequestids =  $_POST['id'];
+        $buttonid =  $_POST['buttonid'];
         $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
         if($finduser){
             $finduser->visit_status_confirm = 'useryes';
+            $finduser->buy_property = $buttonid;
             if($finduser->save(false)){
                 return 'done';
             }
@@ -538,6 +541,34 @@ return $this->render('indexes', [
         } else {
             return 2;
         }
+    }
+
+
+    public function actionSubmitfeedback(){
+
+         $id = $_POST['id'];
+        
+         $managerfeedback = HtmlPurifier::process($_POST['managerfeedback']);
+          $propertyfeedback = HtmlPurifier::process($_POST['propertyfeedback']);
+
+         $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $id])->one();
+
+        if ($finduser) {
+
+            $finduser->manager_feedback = $managerfeedback;
+            $finduser->property_feedback = $propertyfeedback;
+
+            if($finduser->save(false)){
+                return 1;
+            }else {
+                return 2;
+            }
+            
+        } else {
+            return 2;
+        }
+         
+
     }
 
 
