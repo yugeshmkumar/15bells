@@ -622,14 +622,13 @@ $phonenumber = $arrcheckrole1->username;
 
  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<script>
 
-
-
-document.getElementById('rzp-button1').onclick = function(e){
+    <script>
    
-    	
+   $(document).ready(function(){
+
 var kname = $('#kname').val();
+
 var kemail = $('#kemail').val();
 var kphonenumber = $('#kphonenumber').val();
 var kamount_payable = $('#kamount_payable').val();
@@ -639,6 +638,7 @@ var amounts = kamount_payable * 100;
 
 
 var options = {
+
 "key": "rzp_test_9ckspVvYJ0k6GZ",
 "amount": amounts, // 2000 paise = INR 20
 "name": "Stoneray Technologies Private Limited",
@@ -646,7 +646,7 @@ var options = {
 "image": "/newimg/img/logo_y.png",
 "handler": function (response){
 
-//alert(response.razorpay_payment_id);
+
 //alert(response.razorpay_order_id);
 paymentgateway(response.razorpay_payment_id);
 
@@ -662,37 +662,26 @@ paymentgateway(response.razorpay_payment_id);
 "theme": {
 "color": "#F37254"
 }
-};
+
+}; 
+
+document.getElementById('rzp-button1').onclick = function(e){
+   
+  
 
 var rzp1 = new Razorpay(options);
-    $('#proceedtopay').modal('hide');
+$('#proceedtopay').modal('hide');
 rzp1.open();
+
 e.preventDefault();
+
 }
 
 
-function paymentgateway(orderid){
-    var urlsd = "<?php echo $urlsd; ?>";
-    var krequestids = $('#krequestids').val();
+  });
 
-    $.ajax({
-                                type: "POST",
-                                url: '/requestSitevisit/paymentgateway',
 
-                                data: {orderid: orderid,krequestids:krequestids,kamount_payable:kamount_payable},
-                                //dataType: 'json',
-                                success: function (data) {                                                   
-                                
-                                  if(data == '1'){
 
-                                   // window.location.href = urlsd +'/request-sitevisit';  
-                                    //location.href = "https://15bells.com/frontend/web/request-sitevisit";
-                                  }else{
-                                    toastr.error('Some Internal Error', 'error'); 
-                                  }
-                                }
-                    });
-}
 
 
 
@@ -2686,6 +2675,42 @@ function getPolygonCoords() {
 
  }       
 
+
+
+
+function paymentgateway(orderid){
+
+
+var placementid = orderid;
+var kamount_payable = $('#kamount_payable').val();
+var krequestids = $('#krequestids').val();  
+
+
+if(krequestids != ''){
+
+$.ajax({
+                           type: "POST",
+                           url: '/request-sitevisit/paymentgateway',
+                           
+                           
+                           data: {orderid: placementid,krequestids:krequestids,kamount_payable:kamount_payable},
+                          
+                           success: function (data) { 
+
+                             if(data == '1'){
+
+                                 alert('Payment Successully done');
+
+                              // window.location.href = urlsd +'/request-sitevisit';  
+                               //location.href = "https://15bells.com/frontend/web/request-sitevisit";
+                             }else{
+                               toastr.error('Some Internal Error', 'error'); 
+                             }
+                           }
+               });
+
+ }
+}
 
 
   function changes(id) {
