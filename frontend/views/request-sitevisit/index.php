@@ -167,8 +167,8 @@ $datas =  $dataProvider->query->all();
 								<i class='fa fa-star fa-fw'></i>
 							  </li>
 							</ul>
-							<div class="form-group" style="margin-top:10px;">
-								<textarea class="form-control feedback_input" rows="5" id="comment" placeholder="Your Valuable Feedback"></textarea>
+							<div class="form-group" style="margin-top:10px;" id="managertextarea">
+						<textarea class="form-control feedback_input" rows="5" id="managertextareas" placeholder="Your Valuable Feedback"></textarea>
 							</div>
 						  </div>
 					
@@ -194,41 +194,41 @@ $datas =  $dataProvider->query->all();
 								<i class='fa fa-star fa-fw'></i>
 							  </li>
 							</ul>
-							<div class="form-group" style="margin-top:10px;">
-								<textarea class="form-control feedback_input" rows="5" id="comment" placeholder="Your Valuable Feedback"></textarea>
+							<div class="form-group" style="margin-top:10px;" id="propertytextarea">
+								<textarea class="form-control feedback_input" rows="5" id="propertytextareas" placeholder="Your Valuable Feedback"></textarea>
 							</div>
 						  </div>
 						  
 						<!--<p class="visit_txt">You gave a rating of <span id="count-existing">4</span> star(s)</p>-->
 				</div>
+
+              <div class="col-md-12 text-center">
+							<ul class="sub_categories">
+							<li class="active"><a href="javascript:void(0)" id="submitfeedback" class="property_subtype">Submit</a></li>
+							<li><a href="javascript:void(0)" data-dismiss="modal" class="property_subtype">Skip</a></li>
+
+             </ul>
+			    	</div> 
+
+			
+
+				
+			</div>
+			<div class="row text-center pay_section pay_later">
+				
 				<div class="col-md-12 text-center">
-					<h2 class="star_rating">Would you like to view/verify property document ?</h2>
+					<h2 class="star_rating">Would you like to buy this property? ?</h2>
 					<ul class="sub_categories buy_prop">
 								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
-								<!-- <li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li> -->
+								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
 								<li class=""><a href="javascript:void(0)"  id="later" class="property_subtype buyproperty">Later</a></li>
 							</ul>
 				</div>
 			</div>
-			<!-- <div class="row text-center pay_section pay_later">
-				
-				<div class="col-md-12 text-center">
-					<h2 class="star_rating">To close the deal at earliest please go ahead and submit a token money to view/verify property document </h2>
-						<ul class="sub_categories">
-								<li class="active"><a href="javascript:void(0)" id="later" class="property_subtype pay_now">Later</a></li>
-								<li class=""><a href="javascript:void(0)" id="pay_now" class="property_subtype pay_now">Pay now</a></li>
-						</ul>
-				</div>
-			</div> -->
+
+
 		</div>
-		<!-- <div class="container-fluid padding_rating">
-			<div class="col-md-12 text-center">
-				<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/success.svg';  ?>" width="100"></p>
-				<h2 class="visit_h">Payment Successful</h2>
-				<p class="visit_txt">Payment has been successfully recieved for document show of Property <span class="color_yell">ID : #2345DFGEQ</span> on <span class="color_yell">14 Feburary, 2019</span> at <span class="color_yell">1 : 30 pm</span>.You’ll receive the instructions on your email to view property documents. </p>
-				
-			</div>
-		</div> -->
+		
       </div>
       
     </div>
@@ -236,7 +236,34 @@ $datas =  $dataProvider->query->all();
   </div>
 </div>
 
+<div id="visit_rating_done" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
 
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		
+		<div class="container-fluid padding_rating">
+			<div class="col-md-12 text-center">
+				<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/success.svg';  ?>" width="100"></p>
+				<h2 class="visit_h">Feedback Submit Successful</h2>
+				<p class="visit_txt">Our Manager will contact you soon </p>
+				
+			</div>
+			<div class="col-md-12 text-center">
+							<ul class="sub_categories">
+							<li><a href="javascript:void(0)" data-dismiss="modal" class="property_subtype">Close</a></li>
+
+             </ul>
+			    	</div> 
+		</div>
+      </div>      
+    </div>
+  </div>
+  
+</div>
 
 
 <?php 
@@ -246,6 +273,9 @@ var returnid;
 
 $(document).ready(function(){
 
+$('.pay_later').hide();
+$('#managertextarea').hide();
+$('#propertytextarea').hide();
 $('.pay_later').hide();
   
   /* 1. Visualizing things on Hover - See next part for action on click */
@@ -287,6 +317,12 @@ $('.pay_later').hide();
     // JUST RESPONSE (Not needed)
     var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
 
+		if(ratingValue < 4 ){
+			$('#managertextarea').show();
+		}else{
+			$('#managertextarea').hide();
+		}
+
 	$.ajax({
 											   type: "POST",
 											   url: 'request-sitevisit/offlinepickdropsave',
@@ -318,6 +354,11 @@ $('.pay_later').hide();
     
     // JUST RESPONSE (Not needed)
     var ratingValue = parseInt($('#stars1 li.selected').last().data('value'), 10);
+		if(ratingValue < 4 ){
+			$('#propertytextarea').show();
+		}else{
+			$('#propertytextarea').hide();
+		}
 	
 	$.ajax({
 											   type: "POST",
@@ -334,6 +375,38 @@ $('.pay_later').hide();
 										   });
     
   });
+
+
+	$('#submitfeedback').click(function(){
+
+		var managerfeedback  = $('#managertextareas').val();
+    var propertyfeedback = $('#propertytextareas').val();
+		
+		$.ajax({
+											   type: "POST",
+											   url: 'request-sitevisit/submitfeedback',
+											   data: {id: returnid,managerfeedback:managerfeedback ,propertyfeedback: propertyfeedback},
+											  // dataType: 'json',
+											   success: function (data) {
+
+													 alert(data);
+
+												  if(data == '1'){
+
+												$('.rateproperty').hide();
+												$('.pay_later').show();
+												
+
+												//window.location.replace("documentshow");
+												//$('.pay_later').show();
+												 }
+											                                                
+												  
+
+											   },
+										   });
+
+	});
   
   
 });
@@ -349,12 +422,12 @@ checkuserconfirmstatus();
  $('.buyproperty').click(function(){
 var buttonid =  $(this).attr('id');
 
-if(buttonid == 'yes' || buttonid == 'may_be'){
+if(buttonid == 'yes' || buttonid == 'may_be' || buttonid == 'no'){
 
           $.ajax({
 											   type: "POST",
 											   url: 'request-sitevisit/makeuseryes',
-											   data: {id: returnid},
+											   data: {id: returnid,buttonid: buttonid},
 											  // dataType: 'json',
 											   success: function (data) {
 
@@ -362,10 +435,9 @@ if(buttonid == 'yes' || buttonid == 'may_be'){
 
 												  if(data == 'done'){
 
-												$('.rateproperty').hide();
 												$("#visit_rating").modal('hide');
 
-												window.location.replace("documentshow");
+                        $("#visit_rating_done").modal('show');
 												//$('.pay_later').show();
 												 }
 											                                                
@@ -374,10 +446,6 @@ if(buttonid == 'yes' || buttonid == 'may_be'){
 											   },
 										   });
 	
-
-}else{
-
-	$("#visit_rating").modal('hide');
 
 }
 
@@ -425,15 +493,21 @@ if(buttonid == 'pay_now'){
 											   data: {id: 'ready'},
 											   dataType: 'json',
 											   success: function (data) {
-												  
+												 
 											
 												var scheduledtime =  data[1];
 												var now = new Date();
 												var d = new Date( scheduledtime);
+
+												
+
 												var nowTime = now.getHours()*60+now.getMinutes();
 												
-												   d.setSeconds(d.getSeconds() + 10);
-												var dateTime = d.getHours()*60+d.getMinutes()+ d.getSeconds();
+											               	d.setSeconds(d.getSeconds() + 10);
+                        var dateTime = d.getHours()*60+d.getMinutes()+ d.getSeconds();
+
+											//	alert(dateTime);
+											//	alert(nowTime);
 												  returnid = data[0];
 												 var sale_name = data[2];
 												 var dates = data[3];
@@ -447,7 +521,8 @@ if(buttonid == 'pay_now'){
 												   if (returnid != '0') {
 
 													  
-													  if (nowTime > dateTime) {
+													  if (now > d) {
+															
 
 														$('#appenddate').html(dates);
 														$('#appendtime').html(times);
