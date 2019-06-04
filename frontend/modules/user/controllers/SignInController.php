@@ -41,7 +41,7 @@ class SignInController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','sellerlogin','fitelogins','sendemail','rgetotp','rverifyotp', 'reset-password', 'oauth','confirmation','search'],
+                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','ajaxsignup','sellerlogin','fitelogins','sendemail','rgetotp','rverifyotp', 'reset-password', 'oauth','confirmation','search'],
                         'allow' => true,
                         'roles' => ['?']
                     ],
@@ -54,7 +54,7 @@ class SignInController extends \yii\web\Controller
                         }
                     ],
                     [
-                        'actions' => ['logout','fitelogins','rgetotp','signup','sellersignup','sellerlogin','sendemail'],
+                        'actions' => ['logout','fitelogins','rgetotp','signup','sellersignup','ajaxsignup','sellerlogin','sendemail'],
                         'allow' => true,
                         'roles' => ['@'],
                     ]
