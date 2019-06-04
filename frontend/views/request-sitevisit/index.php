@@ -40,8 +40,8 @@ $datas =  $dataProvider->query->all();
 
 										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
                                           <form method="post">
-																						<input name="progress" type="submit" value="In Progress">
-                                            <input name="progress" type="submit" value="Completed">
+																						<input name="progress" class="sort_list" type="submit" value="In Progress">
+                                            <input name="progress" class="sort_list" type="submit" value="Completed">
                                           </form>
 											<!-- <li></li> -->
 										  </ul>
@@ -69,23 +69,32 @@ $datas =  $dataProvider->query->all();
 					
 							<div class="col-md-12 visit_buyer">
 								<div class="row">
-									<div class="col-md-3">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="140">
+									<div class="col-md-4 agent_det">
+											<div class="row">
+												<div class="col-md-5">
+													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+												</div>
+												
+												<div class="col-md-7 no_pad">
+												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
+												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+												</div>
+											</div>
+										<div class="row" style="margin-top:30px;">
+											<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
+											<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+											<div class="col-md-7">
+													<p class="details_label"><?php echo  date("F d,Y", strtotime($data->scheduled_time)); ?></p>
+											</div>
+											<div class="col-md-5">
+													<p class="details_label"><?php echo  date("g:i A", strtotime($data->scheduled_time)); ?></p>
+												</div>	
+										</div>
+										
 									</div>
                                    
-									<div class="col-md-9">
-										<div class="row">
-											<div class="col-md-8">
-												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
-												<p class="user_id">UID<?php echo $assigned_id * 23 * 391; ?></p>
-											</div>
-											<div class="col-md-4 date_det">
-												<p class="site_txt"><?php echo  date("F d,Y", strtotime($data->scheduled_time)); ?></p>
-												<p class="site_txt"><?php echo  date("g:i A", strtotime($data->scheduled_time)); ?></p>
-											</div>
-										</div>
-										<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
-										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+									<div class="col-md-8">
+										
 										<div class="row">
 											<div class="col-md-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
@@ -430,7 +439,7 @@ if(buttonid == 'pay_now'){
 												 var dates = data[3];
 												 var times = data[4];
 
-												 
+												
 
 												 var haritid = 273*179-returnid;
 											     var propsid = 'PR'+ haritid;

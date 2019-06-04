@@ -1002,7 +1002,10 @@ input[type=file]::-webkit-file-upload-button {
 /**Site visit buyer**/
 .visit_buyer{
 	background:#ffffff;
-	padding:20px;
+	padding:5px;
+}
+.agent_det{
+	padding-top:20px;
 }
 .button_select{
 	padding:6px 25px;
@@ -1428,3 +1431,47 @@ input[type=file]::-webkit-file-upload-button {
 	padding: 20px;
 	margin: 7px 0px;
 	}
+	.sort_list{
+		width:100%;
+		padding:10px;
+		background:#ffffff;
+		box-shadow:none;
+		border:0;
+		transition:.4s;
+	}
+	.sort_list:hover{
+		background:#c4984f;
+		color:#ffffff;
+		transition:.4s;
+	}
+
+.user_viewed{
+	padding:20px 70px;
+}
+.visit_hed{
+	font-size:28px;
+	line-height:42px;
+	color:#221d36;
+	font-weight:600;
+}
+.upcomin_visit{
+	font-size:18px;
+	line-height:26px;
+	color:#8f8f8f;
+	padding-bottom:30px;
+}
+.visited_user{
+	color:#c4984f;
+	font-size:18px;
+	margin:0;
+}
+.bordr_top {
+	border-top:1px solid #afafaf;
+}
+
+.bordr_bottm{
+	border-bottom:1px solid #afafaf;
+}
+.repeat_id{
+	padding:15px 0;
+}

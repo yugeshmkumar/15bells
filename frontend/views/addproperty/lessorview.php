@@ -61,23 +61,32 @@ if($RequestSiteVisit){
 					
 							<div class="col-md-12 visit_buyer">
 								<div class="row">
-									<div class="col-md-3">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="140">
-									</div>
-                                   
-									<div class="col-md-9">
-										<div class="row">
-											<div class="col-md-8">
+									<div class="col-md-4">
+                                        <div class="row">
+												<div class="col-md-5">
+													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+												</div>
+												
+												<div class="col-md-7 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
-												<p class="user_id">UID<?php echo $assigned_id * 23 * 391; ?></p>
-											</div>
-											<div class="col-md-4 date_det">
-												<p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
-												<p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
-											</div>
-										</div>
-										<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
+												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+												</div>
+                                            </div>
+                                        <div class="row" style="margin-top:30px;">
+                                        <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+											<div class="col-md-5">
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+                                            
+											</div>
+											<div class="col-md-7 no_pad">
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+												</div>	
+										</div>
+                                    
+                                    </div>
+                                   
+									<div class="col-md-8">
 										<div class="row">
 											<div class="col-md-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
@@ -93,8 +102,8 @@ if($RequestSiteVisit){
                                 $command = $query->createCommand();
                                 $datacount = $command->queryOne();
                                 ?>
-                              <p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20"><?php echo $datacount['newcount']; ?></p>
-
+                                        <p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Scheduled Visit</p>
+                                        <p class="label_name"><?php echo $datacount['newcount']; ?></p>
 										</div>
 										<div class="col-md-6">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20"><a class="toglebid" id="<?php echo $data->id ?>" href="javascript:void(0)" >View</a></p>
@@ -116,34 +125,37 @@ if($RequestSiteVisit){
 
 
 <div id="shortlist" class="modal fade" role="dialog">
-    <div class="modal-dialog prop_shortlst modal-lg">
+    <div class="modal-dialog modal_dialogue modal-lg">
 
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="headpropuser"></h4>
+        <div class="modal-content draw_map no_pad">
+            <div class="">
+                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+                
             </div>
             <div class="modal-body">
-
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-                 
-						<div class="card-header">
-							
-							<div id="appenddata" class="row">
-
-							</div>
-						</div>
-				
-
-
+                <div class="container-fluid user_viewed">
+                    <div class="row text-center">
+                        <h1 class="visit_hed">Scheduled Visit List</h1>
+                        <p class="upcomin_visit">Upcoming scheduled visits of your property</p>
+                    </div>
+                    <div class="col-md-12 bordr_top bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                    <div class="col-md-12 bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                    <div class="col-md-12 bordr_bottm repeat_id">
+                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
+                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
+                    </div>
+                </div>
                 </div><!-- panel-group -->
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            
         </div>
 
     </div>
@@ -180,7 +192,7 @@ $.ajax({
 
 
           var usercustomid = 'UID'+this.user_id * 23 * 391;
-            $('#appenddata').append('<div class="more-less glyphicon glyphicon-plus"></i> User Id #' + usercustomid +
+            $('#appenddata').append('<div class=""></i> User Id #' + usercustomid +
                     
                     '</div>');
         });
@@ -217,7 +229,7 @@ $.ajax({
 
 
           var usercustomid = 'UID'+this.user_id * 23 * 391;
-            $('#appenddata').append('<div class="more-less glyphicon glyphicon-plus"></i> User Id #' + usercustomid +
+            $('#appenddata').append('<div class=""></i> User Id #' + usercustomid +
                     
                     '</div>');
         });
