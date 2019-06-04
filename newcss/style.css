@@ -3686,3 +3686,9 @@ color: #c4984f;
 	position:relative;	
 }
 
+.view_docs{
+	font-size:18px;
+	color:#c4984f !important;
+	border-bottom:2px solid #c4984f;
+	font-weight:700;
+}
