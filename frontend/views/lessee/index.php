@@ -22,7 +22,7 @@ use yii\bootstrap\Modal;
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
 								<h1 class="single_hed col-md-12">Explore the commercial properties for lease & rent. </h1>
-                <p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations. Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
+                <p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations.</p>
 	
 				</div>
 				
@@ -82,9 +82,9 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-12 no_pad">
 					<ul class="add_property nav nav-pills">
-						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property</a></li>
-						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location</a></li>
-						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area / Price</a></li>
+						<li class="active property_steps search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Type of Property <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon first"></a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Property Location <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon second"></a></li>
+						<li class="property_steps search_listing no_pad"><a data-toggle="pill" href="#area_range" class="categ_selec">Area / Price <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/checked.svg';  ?>" class="check_icon third"></a></li>
 						<!-- <li class="property_steps no_pad"><a data-toggle="pill" href="#price_range" class="categ_selec">Price Range</a></li> -->
 					</ul>
 				<div class="tab-content">
@@ -284,29 +284,31 @@ use yii\bootstrap\Modal;
 
 <div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
-							
-                <div class="col-md-4 col-xs-8">
+							<div class="row">
+                <div class="col-md-4 col-xs-6">
                   <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
                  </div>
-                <div class="col-md-2 col-xs-4">
+                <div class="col-md-2 col-xs-6">
                     <select id="propminrupees" class="form-control area_price">
                        <option value="lacs">Lacs</option>
                        <option value="crores">Crores</option>
                     </select>
                  </div>
                  <input type="hidden" id="proppriceminimum" name="proppriceminimum">
-
-                 <div class="col-md-4 col-xs-8">
+                </div>
+           	<div class="row">
+                 <div class="col-md-4 col-xs-6">
                     <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
                  </div>
-                 <div class="col-md-2 col-xs-4">
+                 <div class="col-md-2 col-xs-6">
                     <select id="propmaxrupees" class="form-control area_price">
                       <option value="lacs">Lacs</option>
                      <option value="crores">Crores</option>
                      </select>
                    </div>
                    <input type="hidden" id="proppricemaximum" name="proppricemaximum">
-							</div>
+              </div>
+            </div>
 
 
 
@@ -473,10 +475,11 @@ use yii\bootstrap\Modal;
 
     <!-- Modal content-->
     <div class="modal-content draw_map no_pad">
-        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close modal_close second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">&times;</button>
       
       <div class="modal-body no_pad">
 		<div class="container-fluid no_pad">
+    <h4 class="mark_map hidden-lg hidden-md">Mark your area on the map</h4>
 			<div class="col-md-6 no_pad">
             <div id="map_canvas" ></div>
 			</div>
@@ -492,11 +495,11 @@ use yii\bootstrap\Modal;
         </ul>
 			</div>
 			<div class="col-md-5 mark_instruction">
-				<h4 class="mark_map">Mark your area on the map</h4>
+      <h4 class="mark_map hidden-xs hidden-sm">Mark your area on the map</h4>
 				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
-											<button class="btn btn-lg" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
-											<button class="btn button_togg btn-lg active step_availablity" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
+											<button class="btn btn-lg second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">Skip</button>
+											<button class="btn button_togg btn-lg active step_availablity second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">Confirm</button>
 										  </div></p>
 				
 			</div>
@@ -706,6 +709,7 @@ if(locals !=''){
        $('html,body').animate({
         scrollTop: $(".property_area").offset().top + 600},
         'slow');
+        $('.first').show();
    });
    $('.step_availablity').click(function(e) {
        //$(.add_property)
@@ -714,6 +718,15 @@ if(locals !=''){
        $('html,body').animate({
         scrollTop: $("#home").offset().top + 750},
         'slow');
+   });
+   $('.second_clck').click(function(e) {
+       //$(.add_property)
+       $('.add_property li:nth-child(3)').addClass("active");
+       //$(".add_property li:nth-child(2)").removeClass("active");
+       $('html,body').animate({
+        scrollTop: $("#home").offset().top + 750},
+        'slow');
+        $(".second").show();
    });
    $('.step_locality').click(function(e) {
        //$(.add_property)
