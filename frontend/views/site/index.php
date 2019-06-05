@@ -849,7 +849,26 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<p class="auction_function">The Auction Technology is currently an invite-only functionality. </p>
 			<div class="row details_u">
 					<h3 class="details_user">Please provide your details to ask for early access.</h3>
-					<div class="col-md-4">
+
+					<?php $modeled = new \common\models\ChatContactUs(); ?>
+				
+            <?php $form = ActiveForm::begin(['id' => $modeled->formName(),'action'=>"chatcontactus/create"]); ?>
+
+<div class="col-md-4">
+            <?php echo $form->field($modeled, 'name')->textInput(['maxlength' => true, 'placeholder' => "Name", 'class'=>'form-control input_desgn','id' => 'chatname'])->label(false); ?>
+            </div>
+			<div class="col-md-4">
+			<?php echo $form->field($modeled, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email",'class'=>'form-control input_desgn', 'id' => 'chatemail'])->label(false); ?>
+			</div>	
+
+<div class="col-md-4">
+            <?php echo $form->field($modeled, 'phone')->textInput(['placeholder' => "Phone Number", 'class'=>'form-control input_desgn','id' => 'Phone'])->label(false); ?>
+			</div>	
+
+          <p class="col-md-12 no_pad">  <?= Html::submitButton('Submit', ['class' => 'property_process submit_det']) ?></p>
+                    <?php ActiveForm::end(); ?>
+
+					<!-- <div class="col-md-4">
                     <input type="text" class="form-control input_desgn" placeholder="Name">
 				 </div>
 				 <div class="col-md-4">
@@ -858,7 +877,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				 <div class="col-md-4">
                     <input type="text" class="form-control input_desgn" placeholder="Email">
 				 </div>
-				 <p class="col-md-12 no_pad"><a class="property_process submit_det" href="#">Submit</a></p>
+				 <p class="col-md-12 no_pad"><a class="property_process submit_det" href="#">Submit</a></p> -->
 			</div>
 		</div>
       </div>
@@ -871,6 +890,44 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 
 <?php 
 $script = <<< JS
+$('form#{$modeled->formName()}').on('beforeSubmit',function(e){
+ 
+ e.preventDefault();
+ e.stopImmediatePropagation();
+var form = $(this);
+$.post(
+ form.attr("action"),
+  form.serialize()
+
+).done(function(result){
+ 
+if(result == 1){
+
+	// $(document).find('#slider').css("right","-342px");
+   //  var chatid = $(document).find("#slider").eq(0).children(1).attr("id");
+	
+	 
+	 //var chatid = document.getElementById(chatid);
+	  //chatid.setAttribute("id", "sidebar");
+	  
+	  //chatid.setAttribute("onclick", "open_panel()");
+	 $('#myModal').modal('toggle');
+	 $(form).trigger("reset");
+	  toastr.success('Thanks for your time , Our Team will reach you Soon','success');
+
+}else{
+
+	 $('#message').html('Something Wrong');  
+  }
+	   
+}).fail(function(){
+   console.log("server Error"); 
+
+});
+return false;
+
+}); 
+
 
 $(".auction_link").click(function(){
 	$("#myModal").modal('show');
