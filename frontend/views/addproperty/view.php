@@ -232,12 +232,22 @@ $undercategory = $property_type->undercategory;
 						</div>
 					</div>
 					<div class="col-md-12 seperator_div"></div>
-					<div class="row possession_time">
-						<h3 class="flow_heading avail_ability">View Documents 
+					<div class="row possession_time" style="display:none;">
+						<h3 class="flow_heading avail_ability">Property Documents 
                         <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
                         </h3>
 						<div class="row">
-						<p class="label_name" style="padding:20px;"><a href="" class="view_docs">View Documents</a></p>
+						<p class="label_name" style="padding:20px;"><a href="<?= Yii::getAlias('@frontendUrl').'/documentshow';  ?>" class="view_docs">View Documents</a></p>
+						</div>
+						
+					</div>
+
+					<div class="row possession_time">
+						<h3 class="flow_heading avail_ability">Property Documents 
+                        <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
+                        </h3>
+						<div class="row">
+						<p class="label_name" style="padding:20px;"><a href="javascript:void(0);" class="view_docs">Request Documents Access</a></p>
 						</div>
 						
 					</div>
