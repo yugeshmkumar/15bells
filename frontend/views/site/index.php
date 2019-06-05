@@ -875,7 +875,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 				 <div class="col-md-4">
                     <input type="text" class="form-control input_desgn" placeholder="Email">
 				 </div>
-				 <a class="property_process submit_det" href="#">Submit</a>
+				 <p class="col-md-12 no_pad"><a class="property_process submit_det" href="#">Submit</a></p>
 			</div>
 		</div>
       </div>

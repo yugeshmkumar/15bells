@@ -22,7 +22,7 @@ use yii\bootstrap\Modal;
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
         <h1 class="single_hed col-md-12">Explore the commercial properties for sale. </h1>
-				<p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations. Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
+				<p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations.</p>
 								
 				</div>
 				
@@ -276,10 +276,10 @@ use yii\bootstrap\Modal;
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum" name="propareaminimum">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum area" name="propareaminimum">
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum" name="propareamaximum">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum area" name="propareamaximum">
 
                     </div>
                   </div>
@@ -290,29 +290,31 @@ use yii\bootstrap\Modal;
   </div>
 <div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
-							
-                <div class="col-md-4">
-                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
+							<div class="row">
+                <div class="col-md-4 col-xs-6">
+                  <input type="text" class="form-control input_desgn" placeholder="Minimum price" id="dummypriceminimum">
                  </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-xs-6">
                     <select id="propminrupees" class="form-control area_price">
                        <option value="lacs">Lacs</option>
                        <option value="crores">Crores</option>
                     </select>
                  </div>
                  <input type="hidden" id="proppriceminimum" name="proppriceminimum">
-
-                 <div class="col-md-4">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
+              </div>
+              <div class="row">
+                 <div class="col-md-4 col-xs-6">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum price" id="dummypricemaximum">
                  </div>
-                 <div class="col-md-2">
+                 <div class="col-md-2 col-xs-6">
                     <select id="propmaxrupees" class="form-control area_price">
                       <option value="lacs">Lacs</option>
                      <option value="crores">Crores</option>
                      </select>
                    </div>
                    <input type="hidden" id="proppricemaximum" name="proppricemaximum">
-							</div>
+              </div>
+              </div>
 
 
 
@@ -479,7 +481,7 @@ use yii\bootstrap\Modal;
 
     <!-- Modal content-->
     <div class="modal-content draw_map no_pad">
-        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close modal_close second_clck" data-toggle="pill" href="#area_range" data-dismiss="modal">&times;</button>
       
       <div class="modal-body no_pad">
 		<div class="container-fluid no_pad">
