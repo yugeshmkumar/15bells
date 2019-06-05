@@ -182,17 +182,30 @@ $this->title = 'Dashboard';
 				 <?= $form->errorSummary($modeled); ?>
 
 				<p class="user_Detail">
-				<?=$form->field($modeled, 'fname',['enableAjaxValidation'   => false,])->textInput([ 'placeholder' => "User name" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				<?=$form->field($modeled, 'fname')->textInput([ 'placeholder' => "User name" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
 
 				
 				</p>
 				<p class="user_Detail">
-				<?=$form->field($modeled, 'email',['enableAjaxValidation'   => false,])->textInput([ 'placeholder' => "E-mail id" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				<?=$form->field($modeled, 'email')->textInput([ 'placeholder' => "E-mail id" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
 
 				</p>
 				<p class="user_Detail">
-				<?=$form->field($modeled, 'username',['enableAjaxValidation'   => false,])->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				<?=$form->field($modeled, 'username')->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
 				</p>
+				<?=
+                                
+                                $form->field($modeled, 'user_login_as')->hiddenInput(['value' => 'lessee'])->label(false);
+                                        
+
+                                ?>
+
+                                <?=
+                                
+                                $form->field($modeled, 'companytype')->hiddenInput(['value' => 'Individual'])->label(false);
+                                        
+
+                                ?>
 				<p class="user_Detail">
 				<?=$form->field($modeled, 'designation')->textInput([ 'placeholder' => "Designation" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
 
@@ -220,46 +233,78 @@ $script = <<< JS
 $(".sub_categories li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
 });
+
+
+$('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 	
-	$('form#{$modeled->formName()}').on('submit',function(e){
-
-e.preventDefault();
-
-var form = $(this);
-$.post(
-form.attr("action"),
- form.serialize()
-
-)
-  .done(function(result){
-
-
-//var parsed_data = JSON.parse(JSON.stringify(result));
-var otp  =  result['signupform-otp'];
-var username  =   result['signupform-username'];
-//alert(otp);alert(username);
-
-if (result == 'done'){
-
-$('#addusers').hide();
+	var form = $(this);
+	
+	var formData = form.serialize();
+	
+	$.ajax({
+	
+		url: form.attr("action"),
+	
+		type: form.attr("method"),
+	
+		beforeSend: function(){
 		
-		$('#congratss').show();
+		 
+	   },
+	   complete: function(){
+	   
+		
+	   },
+	
+		data: formData,
+	
+		success: function (data) {
+	
+			if( typeof(data["signupform-username"]) != "undefined"){
 
+				  var username  =   data['signupform-username'];
 
-}else{
-	alert('Some Internal Error');
-}
+				  alert(username);
+				 
+	
+			}
+	
+	 if ( typeof(data["signupform-username"]) != "undefined" && data["signupform-username"] !== null && data["signupform-username"] !== 'exist' ) {
+						 
+						}
+	
+						 if(data == 'done'){
+	
+							$('#addusers').hide();
+		
+		                     $('#congratss').show();
 
+								}else{
 
+								alert('Some Internal Error');
 
-	  
-}).fail(function(){
-  console.log("server Error"); 
-
-});
-return false;
-
-}); 
+								}
+			
+	
+		   
+	
+		},
+	
+		error: function () {
+	
+			//alert("Something went wrong");
+	
+		}
+	
+	});
+	
+	}).on('submit', function(e){
+	
+		
+	
+	e.preventDefault();
+	
+	});
 
 
 
