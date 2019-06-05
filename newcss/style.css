@@ -2229,7 +2229,14 @@ input.invalid {
 }
 /* For responsivness */
 @media(max-width:767px) {
-
+	.check_icon {
+		position: absolute;
+		right: 10px;
+		width: 14px !important;
+		margin-top: 0px;
+		display: none;
+		top: 2%;
+	}
 	.accordion_head .plusminus{
 		float: right;
     position: absolute;
@@ -2471,8 +2478,11 @@ input.invalid {
 	width:100px !important;
 	height:100px;
 }
+#map_canvas{
+	height:300px !important;
+}
 .map_icons{
-	padding:10px 0 10px 0px !important;
+	padding:10px 0 10px 10px !important;
 	border-left:0 !important;
 	border-right:0 !important;
 	display:inline-flex;
