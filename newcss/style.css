@@ -3726,3 +3726,13 @@ color: #c4984f;
 	cursor: pointer;
 	z-index:99;
   }
+  .side_sign{
+	  padding:10px;
+	  color:#ffffff;
+	  font-size:18px;
+	  background:#c4984f;
+	  text-align:center;
+  }
+  .brdr_rt{
+	  border-right:1px solid #ffffff;
+  }

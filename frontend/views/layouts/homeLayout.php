@@ -136,12 +136,19 @@ NewDesignAsset::register($this);
 							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faqs']) ?>">Industries</a></li>
 
 							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
-
+							
 					</ul>
 					
 				
 			 </div>
-			 
+			 <div class="col-md-12 no_pad" style="position:absolute;bottom:0;width:100%;">
+					<div class="col-md-6 no_pad">
+					<a class="side_sign brdr_rt" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
+					</div>
+					<div class="col-md-6 no_pad">
+					<a class="side_sign" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
+					</div>
+				</div>
 			</div>
 			<!-- Use any element to open the sidenav -->
 			<span onclick="openNav()"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/menu.png';  ?>" class="img_menu hidden-xs hidden-sm"></span>
