@@ -1356,12 +1356,13 @@ return 2;
         $proptype  = $_POST['proptype'];
         $propbid  = $_POST['propbid'];
         $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
 
-        if (isset(Yii::$app->user->identity->id)){
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => 'polygon', 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-                    'created_date' => $date])->execute();
+        // if (isset(Yii::$app->user->identity->id)){
+        // $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => 'polygon', 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        //             'created_date' => $date])->execute();
         
-        }
+        // }
             
  
         $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
@@ -1392,7 +1393,10 @@ return 2;
                         }
                         if ($sector != '') {
                         $conditions[] = "sector_name='$sector'";
-                        }            
+                        }   
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        }         
 
                         $conditions[] = "a.status='approved'";
                         $conditions[] = "a.user_id <> '$user_id'";
@@ -1408,7 +1412,7 @@ return 2;
 
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-        echo json_encode($payments);
+        return json_encode($payments);
     }
 
     public function actionPetpropertyst($id) {
@@ -1554,6 +1558,8 @@ return 2;
         $proptype  = $_POST['proptype'];
         $propbid  = $_POST['propbid'];
         $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
+
        
        
         if (isset(Yii::$app->user->identity->id)){
@@ -1566,10 +1572,10 @@ return 2;
         $date = date('Y-m-d H:i:s');
        
 
- if (isset(Yii::$app->user->identity->id)){
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-                    'created_date' => $date])->execute(); 
- }          
+//  if (isset(Yii::$app->user->identity->id)){
+//         $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+//                     'created_date' => $date])->execute(); 
+//  }          
            
             
      
@@ -1600,6 +1606,10 @@ return 2;
                          if ($town != '') {
                         $conditions[] = "town_name = '$town'";
                         }
+
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        }
                         if ($sector != '') {
                         $conditions[] = "sector_name='$sector'";
                         }  
@@ -1617,7 +1627,7 @@ return 2;
           
            $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-            echo json_encode($payments);
+            return json_encode($payments);
             
         
 
@@ -1652,7 +1662,7 @@ return 2;
         
         $newkuma = $rectanglecoordinates;
         
-        $center     = $_POST['center'];
+       // $center     = $_POST['center'];
         $shapes     = $_POST['shapes'];
         $town   = $_POST['town'];
         $sector  = $_POST['sector'];
@@ -1666,12 +1676,14 @@ return 2;
         $proptype  = $_POST['proptype'];
         $propbid  = $_POST['propbid'];
         $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
 
 
-        if (isset(Yii::$app->user->identity->id)){
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-                    'created_date' => $date])->execute();
-        }
+
+        // if (isset(Yii::$app->user->identity->id)){
+        // $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        //             'created_date' => $date])->execute();
+        // }
 
      
          
@@ -1702,7 +1714,11 @@ return 2;
                         }
                         if ($sector != '') {
                         $conditions[] = "sector_name='$sector'";
-                        }     
+                        }    
+                                                
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        } 
                         
                         $conditions[] = "a.status='approved'";
                         $conditions[] = "a.user_id <> '$user_id'";
@@ -1712,11 +1728,11 @@ return 2;
                         if (count($conditions) > 0) {
                          $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-    
+   // echo $sqlstr;die;
      
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-        echo json_encode($payments);
+        return json_encode($payments);
      
      
  
