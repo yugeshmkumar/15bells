@@ -106,7 +106,7 @@ if(!isset($_SESSION))
 	<div class="row property_requirment text-center">
         
     <h2 class="result_text">We have found <span id="countprop"></span> results happen on your search criteria</h2>
-                
+     <div class="col-md-12 hidden-xs hidden-sm">           
     <?php
                                     $query = new Query;
                                     $query->select(['typename','id'])
@@ -158,7 +158,49 @@ if(!isset($_SESSION))
 				
 			</div>
 		</div>
+        </div>
+    <span class="sort_butn hidden-lg hidden-md" onclick="openNav3()">Sort By</span>
+    <!--Small Screen Sorting-->
+
+<div id="sort_nav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav3()">&times;</a>
+<div class="col-md-12 filt_ers">
+			
+			<div class="row">
+				
+				<div class="accordion_container">
+				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
+				  <div class="accordion_body" style="display: block;">
+					<div class="col-md-12 no_pad text-center">
+                        <p class="sort_value">Price</p>
+									<div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
+									<div class="col-md-12 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
+                    </div>
+                    <div class="col-md-12 no_pad text-center">
+                    <p class="sort_value">Selling Status</p>
+									<div class="active col-md-12 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
+									<div class="col-md-12 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
+                                </div>
+                                <div class="col-md-12 no_pad text-center">
+                                <p class="sort_value">Availability</p>
+									<div class="active col-md-12 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
+									<div class="col-md-12 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
+									<div class="col-md-12 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
+									<div class="col-md-12 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
+								</div>
+				  </div>
+				  
+				</div>
+				
+
+				
+			</div>
 		</div>
+</div>
+
+
+
+    <!--Sort section end-->
 		<div class="col-md-10 buyer_listing no_pad">
 			<div class="row property_list">
                 <div id="getprop">
@@ -631,6 +673,7 @@ if(!isset($_SESSION))
 <?php
 $script = <<< JS
 
+
 //$("#signup_modal").modal('show');
 
 $('#hideotp').hide();
@@ -1053,7 +1096,15 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
         .toggleClass('glyphicon-plus glyphicon-minus');
       
 }
+/* Set the width of the side navigation to 250px */
+function openNav3() {
+  document.getElementById("sort_nav").style.width = "300px";
+}
 
+/* Set the width of the side navigation to 0 */
+function closeNav3() {
+  document.getElementById("sort_nav").style.width = "0";
+}
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
 

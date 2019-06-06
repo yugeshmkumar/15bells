@@ -196,47 +196,47 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">1</span>Know your Location <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">When you are posting your property, let your buyers know the location of your property. We offer you a faster and easier way to mark the exact property location.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">See the demand in your area.</a></p>							</div>
+							<p class="step_txt">When you are posting your property, let your buyers know the location of your property. We offer you a faster and easier way to mark the exact property location.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">See the demand in your area.</a></p>							</div>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">2</span>Post your Property<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">It’s simple, Select your property type from office space, warehouse or retail shops for the right match.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Post your commercial property</a> </p>
+							<p class="step_txt">It’s simple, Select your property type from office space, warehouse or retail shops for the right match.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Post your commercial property</a> </p>
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">3</span>Beautify your Property: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Beautify & enrich your property listing by providing relevant information only.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Show how good your property is.</a>	</p>
+							<p class="step_txt">Beautify & enrich your property listing by providing relevant information only.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Show how good your property is.</a>	</p>
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">4</span>Wait and watch for the right customer: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Once your property is on 15 Bells, potential buyers seeking for your property type in your area will start receiving a notification.
+							<p class="step_txt">Once your property is on 15 Bells, potential buyers seeking for your property type in your area will start receiving a notification.</p>
 
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Start Receiving interested buyers requests.</a></p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Start Receiving interested buyers requests.</a></p>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">5</span>Manage your Properties and clients: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
 							<p class="step_txt">You get a customized dashboard to schedule a visit, put up your expectations, negotiate on the budget or verifying any documents - with 15 Bells Dedicated Account Manager by your side.
-								<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Create your Seller Account now.</a></p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Create your Seller Account now.</a></p>
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">6</span>Prepare your Property for the auction:<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">When selling your property 15 bells offers their “Auction Model” where you can Bid and WIn for the property just within 15 Hours.
-							<br><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Request for putting your Property on Auction.</a></p>
+							<p class="step_txt">When selling your property 15 bells offers their “Auction Model” where you can Bid and WIn for the property just within 15 Hours.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="read_more">Request for putting your Property on Auction.</a></p>
 							</div>
 						</div>
 			
@@ -254,49 +254,47 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location  <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>
+							<p class="step_txt">There are several parameters to consider while leasing or renting a commercial property. Location is one of the most important factors. Safe environment, public transport, healthy environment, easy accessibility to necessary things, convenience for clients, etc.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Start finding a property to lease or rent in your preferred location</a></p>
 							</div>
 						</div>
 						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
-							</div>
+							<p class="step_txt">Retail shops, Office space, warehouses or lease space? Try setting up your Budget and get the Best Matched properties. </p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Start finding the properties through 15Bells Engine.</a></p>
+
+						</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Lease In.<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease.  </p>
+							<p class="step_txt">Discover all the commercial properties that are best matched to suit your requirements.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Start your Property Search in Delhi NCR</a></p>
+
 							</div>
 						</div>
 						
 						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
-							</div>
+							<p class="step_txt">Want to see the properties in person? We will help you with all that along with a coffee.<br>But if you want to save time & see the properties online, you can get a virtual tour of the shortlisted properties 
+								<br>15 Bells do it both!</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Find Properties you want to see.</a></p>
+	
 						</div>
-						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
+						</div>
+						<div class="accordion_head step_bells"><span class="step_mark">5</span>Make a smart decision.<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
-							</div>
+							<p class="step_txt">With our advanced algorithm, you will know your best-matched properties. Our platform & your dedicated account manager will help you make a data-informed decision which will always go right.  </p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Start your Smart Search </a></p>
+
+						</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
-							</div>
-						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
-							</div>
-						</div>
 						
 					</div>
 				</div>
@@ -310,52 +308,37 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 					</div>
 					<div class="col-md-7 text-left">
 					<div class="accordion_container text-left">
-						<div class="accordion_head step_bells"><span class="step_mark">1</span>Look for a Perfect Location <span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">1</span>Add your Location: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">The most important criteria is to consider where the property is located. With 15 bells you get to choose your own location and get the available properties listed.    </p>							</div>
-							</div>
+							<p class="step_txt">When you are posting your property, let your prospective lessee know the location of your property. We offer you a faster and easier way to mark the exact property location.</p>							</div>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">See how many are looking to rent a property.</a></p>
 						</div>
-						<div class="accordion_head step_bells"><span class="step_mark">2</span>Set up your Expectation<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Retail shops, Office space, warehouses or lease space - Try setting up your Budget and get the Best Matched properties. </p>
-							</div>
 						</div>
-						
-						<div class="accordion_head step_bells"><span class="step_mark">3</span>Discover a commercial  property you would love to Buy<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">2</span> Post your Property: It’s simple.<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Search more than 1000 commercial property in Delhi NCR for sale or lease. </p>
+							<p class="step_txt">Select your property type from office space, warehouse or retail shops for the right match. </p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Post your commercial property for lease</a></p>
 							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">4</span>Schedule your site visit online or offline<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">3</span>Beautify your Property:<span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">You can get a virtual tour of the shortlisted properties and save your time or get a physical site visit to the experience. 15 Bells do it both! </p>
-							</div>
+							<p class="step_txt">Beautify & enrich your property listing by providing information on the amenities & facilities.</p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Show how good your property is.</a></p>
 						</div>
-						<div class="accordion_head step_bells"><span class="step_mark">5</span>Get your Property Documentations verified:<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">Property Document can never be an issue with 15 bells, Be it Buyer, Seller, Lessor or Lessee all the parties get verified before registering.   </p>
-							</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">6</span>Get your Property ready for the transaction<span class="plusminus">+</span></div>
+						<div class="accordion_head step_bells"><span class="step_mark">4</span>Wait and watch for the right customer: <span class="plusminus">+</span></div>
 						<div class="accordion_body" style="display: none;">
 							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">With 15 Bells you can now deal with your property in real time. Get your property auction ready where you Bid and Win for the desired properties. </p>
-							</div>
+							<p class="step_txt">Once your property is on 15 Bells, potential buyers seeking for your property type in your area will start receiving a notification. </p>
+							<p class="step_txt text-center"><a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="read_more">Start Receiving interested buyers requests.</a></p>
+						</div>
 						</div>
 						
-						<div class="accordion_head step_bells"><span class="step_mark">7</span>Enter to our Real-Time Virtual Bidding Room<span class="plusminus">+</span></div>
-						<div class="accordion_body" style="display: none;">
-							<div class="col-md-12 no_pad text-left">
-							<p class="step_txt">We come with a combination of technology & human intervention where you can bid online with trusted Banking partner. </p>
-							</div>
-						</div>
 						
 					</div>
 				</div>
