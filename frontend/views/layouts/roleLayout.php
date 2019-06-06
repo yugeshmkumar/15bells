@@ -88,24 +88,24 @@ NewDesignAsset::register($this);
 									<div class="col-md-12 text-center property_area">
 										<div class="col-md-1 hidden-xs"></div>
 										<div class="col-md-2 col-xs-4">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>">
+											<img class="location_pick property_image1" id="Delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>">
 											<p class="property_name">Delhi</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>">
+											<img class="location_pick property_image1" id="Gurgaon" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>">
 											<p class="property_name">Gurgaon</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>">
+											<img class="location_pick property_image1" id="Faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>">
 											<p class="property_name">Faridabad</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>">
+											<img class="location_pick property_image1" id="Noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>">
 											<p class="property_name">Noida</p>
 										</div>
 										<div class="col-md-2 col-xs-4">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>">
-											<p class="property_name">Gaziabad</p>
+											<img class="location_pick property_image1" id="Ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>">
+											<p class="property_name">Ghaziabad</p>
 										</div>
 										<div class="col-md-1 hidden-xs"></div>
 									</div>
@@ -200,6 +200,24 @@ NewDesignAsset::register($this);
 	   
 
 	<script>// Check document is loaded
+
+	$(document).ready(function(){
+
+$(".location_pick").click(function(){
+
+  var city = this.id;
+$(".location_drop").html(city);
+$(".city_section").slideUp("slow");
+});
+});
+$(".property_image1").click(function () {
+	$(".property_image1").removeClass("border_yellow1");
+	// $(".tab").addClass("active"); // instead of this do the below 
+	$(this).addClass("border_yellow1");
+
+});
+
+
 document.onreadystatechange = function () {
 	
 		$(".locality_grp").click(function(){
