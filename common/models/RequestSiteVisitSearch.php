@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use common\models\RequestSiteVisit;
 use common\models\CompanyEmp;
 
+
 /**
  * RequestSiteVisitSearch represents the model behind the search form about `common\models\RequestSiteVisit`.
  */
@@ -20,7 +21,7 @@ class RequestSiteVisitSearch extends RequestSiteVisit
     {
         return [
             [['request_id', 'user_id', 'property_id', 'company_id', 'terms_conditions_id', 'amount_payable'], 'integer'],
-            [['request_status', 'account_manager_rating', 'property_rating', 'landmark', 'terms_conditions_files', 'feedback', 'scheduled_time', 'visit_status_confirm', 'created_date'], 'safe'],
+            [['request_status', 'account_manager_rating', 'property_rating', 'terms_conditions_files',  'scheduled_time', 'visit_status_confirm', 'created_date'], 'safe'],
         ];
     }
 
@@ -75,9 +76,9 @@ class RequestSiteVisitSearch extends RequestSiteVisit
         $query->andFilterWhere(['like', 'request_status', $this->request_status])
             ->andFilterWhere(['like', 'account_manager_rating', $this->account_manager_rating])
             ->andFilterWhere(['like', 'property_rating', $this->property_rating])
-            ->andFilterWhere(['like', 'landmark', $this->landmark])
+           // ->andFilterWhere(['like', 'landmark', $this->landmark])
             ->andFilterWhere(['like', 'terms_conditions_files', $this->terms_conditions_files])
-            ->andFilterWhere(['like', 'feedback', $this->feedback])
+           // ->andFilterWhere(['like', 'feedback', $this->feedback])
             ->andFilterWhere(['like', 'visit_status_confirm', $this->visit_status_confirm]);
 
         return $dataProvider;
@@ -121,9 +122,9 @@ class RequestSiteVisitSearch extends RequestSiteVisit
         $query->andFilterWhere(['like', 'request_status', $this->request_status])
             ->andFilterWhere(['like', 'account_manager_rating', $this->account_manager_rating])
             ->andFilterWhere(['like', 'property_rating', $this->property_rating])
-            ->andFilterWhere(['like', 'landmark', $this->landmark])
+         //   ->andFilterWhere(['like', 'landmark', $this->landmark])
             ->andFilterWhere(['like', 'terms_conditions_files', $this->terms_conditions_files])
-            ->andFilterWhere(['like', 'feedback', $this->feedback])
+           // ->andFilterWhere(['like', 'feedback', $this->feedback])
             ->andFilterWhere(['like', 'visit_status_confirm', $this->visit_status_confirm]);
 
         return $dataProvider;
@@ -167,9 +168,9 @@ class RequestSiteVisitSearch extends RequestSiteVisit
         $query->andFilterWhere(['like', 'request_status', $this->request_status])
             ->andFilterWhere(['like', 'account_manager_rating', $this->account_manager_rating])
             ->andFilterWhere(['like', 'property_rating', $this->property_rating])
-            ->andFilterWhere(['like', 'landmark', $this->landmark])
+           // ->andFilterWhere(['like', 'landmark', $this->landmark])
             ->andFilterWhere(['like', 'terms_conditions_files', $this->terms_conditions_files])
-            ->andFilterWhere(['like', 'feedback', $this->feedback])
+            //->andFilterWhere(['like', 'feedback', $this->feedback])
             ->andFilterWhere(['like', 'visit_status_confirm', $this->visit_status_confirm]);
 
         return $dataProvider;
@@ -214,9 +215,9 @@ class RequestSiteVisitSearch extends RequestSiteVisit
         $query->andFilterWhere(['like', 'request_status', $this->request_status])
             ->andFilterWhere(['like', 'account_manager_rating', $this->account_manager_rating])
             ->andFilterWhere(['like', 'property_rating', $this->property_rating])
-            ->andFilterWhere(['like', 'landmark', $this->landmark])
+            //->andFilterWhere(['like', 'landmark', $this->landmark])
             ->andFilterWhere(['like', 'terms_conditions_files', $this->terms_conditions_files])
-            ->andFilterWhere(['like', 'feedback', $this->feedback])
+          //  ->andFilterWhere(['like', 'feedback', $this->feedback])
             ->andFilterWhere(['like', 'visit_status_confirm', $this->visit_status_confirm]);
 
         return $dataProvider;
