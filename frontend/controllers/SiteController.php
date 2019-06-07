@@ -1246,7 +1246,8 @@ foreach($arraddresses as $id => $key3) {
 					}	
 					
 					if(isset($_POST['savecreddata'])){
-					$model2->load(Yii::$app->request->post()) && $model2->save(false);
+
+					$model2->getModel('account')->load(Yii::$app->request->post()) && $model2->getModel('account')->save(false);
 			
 					}	
 			   
