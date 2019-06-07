@@ -70,7 +70,14 @@ NewDesignAsset::register($this);
 					
 				
 			 </div>
-			 
+			 <div class="col-md-12 no_pad" style="position:absolute;bottom:0;width:100%;">
+					<div class="col-md-6 no_pad">
+					<a class="side_sign brdr_rt" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
+					</div>
+					<div class="col-md-6 no_pad">
+					<a class="side_sign" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
+					</div>
+				</div>
 			</div>
 			
 			
