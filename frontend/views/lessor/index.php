@@ -88,7 +88,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
                             <input type="hidden" id="propcity" name="propcity">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-6 locality_input">
 											<h3 class="flow_heading">Add property locality below</h3>
 											<!-- <input type="text" class="form-control input_desgn input_location" placeholder="Enter your locality"> -->
 											<?= $form->field($model, 'locality')->textInput(['id' => 'searchTextField', 'onchange' => 'getmap(this.value)', 'placeholder' => "Enter your locality", 'class' => 'form-control input_desgn input_location'])->label(false) ?>
@@ -1091,6 +1091,10 @@ $.ajax({
     
 
 });
+
+
+
+
 JS;
 $this->registerJs($script);
 ?> 
@@ -1998,42 +2002,46 @@ function closeNav() {
 
 
         });
-		var propcity = 'Gurugram';
 
-        $(".property_image1").click(function () {
-			
-      $('html,body').animate({
-        scrollTop: $(".locality_input").offset().top - 100},
-        'slow');   
-		});
+        var propcity = 'Gurugram';
 
-        $('.property_image1').click(function(){
-           
-       propcity = this.id;
-       alert(propcity);
-       $('#searchTextField').val('');
-      $('#propcity').val(propcity);
-    });
+$(".property_image1").click(function () {
+    
+$('html,body').animate({
+scrollTop: $(".locality_input").offset().top - 100},
+'slow');   
+});
 
-        $(input).on('input', function () {
+$('.property_image1').click(function(){
+   
+propcity = this.id;
+
+$('#searchTextField').val('');
+$('#propcity').val(propcity);
+});
+
+$(input).on('input', function () {
 
 
-            var str = input.value;
-            prefix = propcity + ', ';
-            if (str.indexOf(prefix) == 0) {
-                //console.log(input.value);
-            } else {
-                if (prefix.indexOf(str) >= 0) {
-                    input.value = prefix;
-                } else {
-                    input.value = prefix + str;
-                }
-            }
+    var str = input.value;
+    prefix = propcity + ', ';
+    if (str.indexOf(prefix) == 0) {
+        //console.log(input.value);
+    } else {
+        if (prefix.indexOf(str) >= 0) {
+            input.value = prefix;
+        } else {
+            input.value = prefix + str;
+        }
+    }
 
-        });
+});
+		
 
 
     }
+
+    
 
 	google.maps.event.addDomListener(window, 'load', init);
 
