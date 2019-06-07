@@ -65,7 +65,7 @@
 		<div class="row">
 			<div class="col-md-6 no_pad">
 				<h1 class="trans_head_b">Our <br>Mission & Vission</h1>
-				<p class="brand_txt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
+				<p class="brand_txt">Moving towards a better tomorrow is what 15 Bells believe in. We look forward to creating the largest marketplace for Commercial Property in Delhi NCR by bringing the Digital Revolution. Assuring the most state of the art techniques – TRUST, TIME and TRANSPARENCY are where we put our Business Value.  </p>
 				<p class="read_mor"><a href="#">Read more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron_d.svg';  ?>"></a></p>
 				<p class="our_qout"><i class="fa fa-quote-left" aria-hidden="true"></i>Lorem ipsum dolor sit amet, adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
 			</div>
