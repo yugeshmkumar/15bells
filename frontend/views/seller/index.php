@@ -62,9 +62,33 @@ $user_id= Yii::$app->user->identity->id;
 				  <div id="home" class="tab-pane fade in active">	
 					<div class="row property_type property_start">
 							<div class="col-md-12 property_area">
-								
+                            <div class="row text-center property_area">
+								<div class="col-md-1"></div>
+								<div class="col-md-2 col-xs-6">
+									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="property_image1">
+									<p class="property_name">Delhi</p>
+								</div>
+								<div class="col-md-2 col-xs-6">
+									<img id="gurugram" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/gurugram.svg';  ?>" class="property_image1">
+									<p class="property_name">Gurgaon</p>
+								</div>
+								<div class="col-md-2 col-xs-6">
+									<img id="faridabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/faridabad.svg';  ?>" class="property_image1">
+									<p class="property_name">Faridabad</p>
+								</div>
+								<div class="col-md-2 col-xs-6">
+									<img id="noida" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/noida.svg';  ?>" class="property_image1">
+									<p class="property_name">Noida</p>
+								</div>
+								<div class="col-md-2 col-xs-6">
+									<img id="ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>" class="property_image1">
+									<p class="property_name">Gaziabad</p>
+								</div>
+								<div class="col-md-1"></div>
+							</div>
+                            <input type="hidden" id="propcity" name="propcity">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-6 locality_input">
 											<h3 class="flow_heading">Add property locality below</h3>
 											<!-- <input type="text" class="form-control input_desgn input_location" placeholder="Enter your locality"> -->
 											<?= $form->field($model, 'locality')->textInput(['id' => 'searchTextField', 'onchange' => 'getmap(this.value)', 'placeholder' => "Enter your locality", 'class' => 'form-control input_desgn input_location'])->label(false) ?>
@@ -848,6 +872,7 @@ $script = <<< JS
 
 //$("#signup_modal").modal('show');
 
+
 $('#hideotp').hide();
 $('#otphide').hide();
 $('#hidepassword').hide();
@@ -1291,14 +1316,27 @@ $('.ownerships').click(function(){
         scrollTop: $(".loan_prop").offset().top - 100},
         'slow'); 
 });
-   $('.addres_input').blur(function(){
-
-	$('.tag_map').show(); 
-       $('.tag_result').hide(); 
-   $('#myModal').modal('show');
 
 
-   });
+$(".addres_input").on("blur",function (event) {    
+           
+          
+        $('.tag_map').show(); 
+        $('.tag_result').hide(); 
+        $('#myModal').modal('show');
+            
+        });
+
+
+    $('.addres_input').keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+        $('.tag_map').show(); 
+        $('.tag_result').hide(); 
+        $('#myModal').modal('show');
+        }
+});   
 
 
    $('.carpet_area').blur(function(){
@@ -1446,6 +1484,8 @@ $(".sub_categories li a").click(function() {
            // $(".tab").addClass("active"); // instead of this do the below 
            $(this).addClass("border_yellow");   
        });
+
+       
 
 
 		$('.warehouse').hide();
@@ -2236,13 +2276,28 @@ function closeNav() {
 
 
         });
-		var globalvar = 'Gurugram';
+		var propcity = 'Gurugram';
+
+        $(".property_image1").click(function () {
+			
+      $('html,body').animate({
+        scrollTop: $(".locality_input").offset().top - 100},
+        'slow');   
+		});
+
+        $('.property_image1').click(function(){
+           
+       propcity = this.id;
+       
+       $('#searchTextField').val('');
+      $('#propcity').val(propcity);
+    });
 
         $(input).on('input', function () {
 
 
             var str = input.value;
-            prefix = globalvar + ', ';
+            prefix = propcity + ', ';
             if (str.indexOf(prefix) == 0) {
                 //console.log(input.value);
             } else {
