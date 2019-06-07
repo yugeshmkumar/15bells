@@ -25,7 +25,7 @@ use yii\widgets\Pjax;
 		<div class="col-md-6 no_pad hidden-xs">
 			<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/signup1.jpg';  ?>" class="signup_img">
 			<div class="signup_overlay">
-				<p class=""><i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+				<p class=""><i class="fa fa-quote-left"></i>Proptech fulfilling the dreams for many as per the changing real estate consumer behavior. Welcome to the innovation of Commercial Real Estate .</p>
 			</div>
 		</div>
 		<div class="col-md-6 no_pad">
@@ -126,7 +126,7 @@ use yii\widgets\Pjax;
 							
 								<p class="signup_input">
 									<div class="dropdown">
-										<label class="label_font" for="usr">I'm here to</label>
+										<label class="label_font" for="usr">I'm a</label>
 										<!-- <button id="dLabel" class="form-control dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										Select
 										<span class="caret"></span>
