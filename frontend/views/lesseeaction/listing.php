@@ -560,7 +560,7 @@ if(!isset($_SESSION))
                         </div>
 
                         
-                        <button type="button" id="passwordit" class="otp_button">Login via Password</button>
+                        <button type="button" id="passwordit" class="otp_button">Login via Password</button><span class="login_popup">OR</span>
                         <button type="button" id="otpits" class="otp_button">Login via OTP</button>
 
 
