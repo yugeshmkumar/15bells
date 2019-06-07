@@ -131,7 +131,7 @@ if(!isset($_SESSION))
 			<div class="row">
 				
 				<div class="accordion_container">
-				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
+				  <div class="accordion_head buyer_drop">Filter Properties<span class="plusminus">+</span></div>
 				  <div class="accordion_body" style="display: none;">
 					<div class="col-md-12 no_pad text-center">
                         <p class="sort_value">Price</p>

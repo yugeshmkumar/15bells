@@ -475,23 +475,23 @@ if(!isset($_SESSION))
 							</div>
 							
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 no_pad">
                         <div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4">
 							
-                         <button type="button" class="scheduletime" id="morning">Morning</button>
-							
-							
-						</div>
-                        <div class="col-md-2">
-							
-                            <button type="button" class="scheduletime" id="afternoon">Afternoon</button>
+                         <button type="button" class="scheduletime active_butn" id="morning">Morning</button>
 							
 							
 						</div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
 							
-                            <button type="button" class="scheduletime" id="evening">Evening</button>
+                            <button type="button" class="scheduletime active_butn" id="afternoon">Afternoon</button>
+							
+							
+						</div>
+                        <div class="col-md-4">
+							
+                            <button type="button" class="scheduletime active_butn" id="evening">Evening</button>
 							
 							
 						</div>
