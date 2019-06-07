@@ -273,10 +273,10 @@ use yii\bootstrap\Modal;
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum" name="propareaminimum">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn input_number" placeholder="Minimum" name="propareaminimum">
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum" name="propareamaximum">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn input_number" placeholder="Maximum" name="propareamaximum">
 
                     </div>
                   </div>
@@ -295,10 +295,10 @@ use yii\bootstrap\Modal;
                       </select>
                     </div>
                     <div class="col-md-4 col-xs-6">
-                       <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
+                       <input type="text" class="form-control input_desgn input_number" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
                    </div>
                    <div class="col-md-4 col-xs-6">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+                    <input type="text" class="form-control input_desgn input_number" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
                  </div>
                  
                 </div>
@@ -587,7 +587,12 @@ if(currency == 'lacs'){
                }
     });
 
-
+$(".input_number").on("keypress keyup blur",function (event) {    
+           $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
 $('#propmaxrupees').change(function(){
 
 $('#dummypricemaximum').val('');

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-
+$urlsd =   Yii::getAlias('@frontendUrl');
 $user_id= Yii::$app->user->identity->id;
 
 ?>
@@ -169,7 +169,7 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 
 					 <?= $form->field($model, 'project_type_id')->hiddenInput()->label(false) ?>
-
+                     <input type="hidden" id="urlget" value="<?php echo $urlsd; ?>">
 							<div class="col-md-12 seperator_div margin_seperator"></div>
 						</div>
 						<div class="row add_price">
@@ -442,33 +442,41 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12 seperator_div"></div>
 							<div class="col-md-12">
 								<h1 class="more_detail">Nearby Places</h1>
-								<p class="brand_txt">Please help us understanding the nearby places around property?</p>
+								<p class="brand_txt no_pad">Please help us understanding the nearby places around property?</p>
 								<h3 class="flow_heading ">Commuting options around the property?</h3>
+                                <p class="amenities">Click on the icons to select Nearby Places</p>
 								<div class="col-md-12 text-left padd_amen">
-									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass" id="bus" width="22" /><span class="amenity_prop">Bus</span>
+									<div class="col-md-3 amenities_icon">
+                                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass img_input bus_img" id="bus" width="22" />
+                                        <span class="amenity_prop bus">Bus</span>
 									</div>
-									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/metro.svg';  ?>" class="nearbyclass" id="metro" width="24"  /><span class="amenity_prop">Metro</span>
+									<div class="col-md-3 amenities_icon">
+                                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/metro.svg';  ?>" class="nearbyclass img_input  metro_img" id="metro" width="24"  />
+                                        <span class="amenity_prop metro">Metro</span>
 									</div>
-									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/train.svg';  ?>" class="nearbyclass" id="train" width="18"  /><span class="amenity_prop">Train</span>
+									<div class="col-md-3 amenities_icon">
+                                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/train.svg';  ?>" class="nearbyclass img_input train_img" id="train" width="18"  />
+                                        <span class="amenity_prop train">Train</span>
 									</div>
-									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/cab.svg';  ?>" class="nearbyclass" id="cab" width="20"  /><span class="amenity_prop">Cab</span>
+									<div class="col-md-3 amenities_icon">
+                                        <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/cab.svg';  ?>" class="nearbyclass img_input cab_img" id="cab" width="20"  />
+                                        <span class="amenity_prop cab">Cab</span>
 									</div>
 								</div>
 
                                 
-									<div class="col-md-12 text-left padd_amen">
-										<div class="col-md-3 col-xs-6 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/market.svg';  ?>" class="nearbyclass" id="market" width="24"  /><span class="amenity_prop">Market</span>
+                                <div class="col-md-12 text-left padd_amen">
+										<div class="col-md-3 amenities_icon">
+                                            <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/market.svg';  ?>" class="nearbyclass img_input market_img" id="market" width="24"  />
+                                            <span class="amenity_prop market">Market</span>
 										</div>
-										<div class="col-md-3 col-xs-6 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/atm.svg';  ?>" class="nearbyclass" id="atm" width="20"  /><span class="amenity_prop">ATM's</span>
+										<div class="col-md-3 amenities_icon">
+                                            <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/atm.svg';  ?>" class="nearbyclass img_input atm_img" id="atm" width="20"  />
+                                            <span class="amenity_prop atm">ATM's</span>
 										</div>
-										<div class="col-md-3 col-xs-6 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/hospital.svg';  ?>" class="nearbyclass" id="hospital" width="20"  /><span class="amenity_prop">Hospitals</span>
+										<div class="col-md-3 amenities_icon">
+                                            <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/hospital.svg';  ?>" class="nearbyclass img_input hospital_img" id="hospital" width="20"  />
+                                            <span class="amenity_prop hospital">Hospitals</span>
 										</div>
 									</div>
 								</div>
@@ -480,30 +488,31 @@ $user_id= Yii::$app->user->identity->id;
 
 							<div class="col-md-12">
 								<h1 class="more_detail">Amenities</h1>
-								<p class="brand_txt">Please help us understanding the amenities that buyers/lessee can expect?</p>
-								<div class="col-md-12 text-left padd_amen">
+								<p class="brand_txt no_pad">Please help us understanding the amenities that buyers/lessee can expect?</p>
+                                <p class="amenities">Click on the icons to select Amenities</p>
+                                <div class="col-md-12 text-left padd_amen">
 									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amenitiesclass" id="power" width="22"  /><span class="amenity_prop">Power Backup</span>
+										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amenitiesclass img_input power_img" id="power" width="22"  /><span class="amenity_prop power">Power Backup</span>
 									</div>
 									<div class="col-md-3 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amenitiesclass" id="wifi" width="24"  /><span class="amenity_prop">Wi-Fi</span>
+										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amenitiesclass img_input wifi_img" id="wifi" width="24"  /><span class="amenity_prop wifi">Wi-Fi</span>
 									</div>
 									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amenitiesclass" id="lift" width="18"  /><span class="amenity_prop">Service Lift</span>
+										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amenitiesclass img_input lift_img" id="lift" width="18"  /><span class="amenity_prop lift">Service Lift</span>
 									</div>
 									<div class="col-md-3 col-xs-6 amenities_icon">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amenitiesclass"id="security" width="20"  /><span class="amenity_prop">Security Camera</span>
+										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amenitiesclass img_input camera_img"id="security" width="20"  /><span class="amenity_prop camera">Security Camera</span>
 									</div>
 								</div>
 									<div class="col-md-12 col-xs-6 text-left padd_amen">
 										<div class="col-md-3 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/gaurd.svg';  ?>" class="amenitiesclass" id="gaurd" width="24"  /><span class="amenity_prop">Security Personnel</span>
+											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/gaurd.svg';  ?>" class="amenitiesclass img_input gaurd_img" id="gaurd" width="24"  /><span class="amenity_prop gaurd">Security Personnel</span>
 										</div>
 										<div class="col-md-3 col-xs-6 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amenitiesclass" id="parking" width="20"  /><span class="amenity_prop">Parking</span>
+											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amenitiesclass img_input" id="parking" width="20"  /><span class="amenity_prop">Parking</span>
 										</div>
 										<div class="col-md-3 col-xs-6 amenities_icon">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/hospital.svg';  ?>" class="amenitiesclass" id="hospital" width="20"  /><span class="amenity_prop">Hospitals</span>
+											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/hospital.svg';  ?>" class="amenitiesclass img_input hospital_img" id="hospital" width="20"  /><span class="amenity_prop hospital">Hospitals</span>
 										</div>
 									</div>
 							</div>
@@ -1636,6 +1645,188 @@ $('.avail_b li a').click(function(){
    });
    
  });
+
+
+
+var urlget =  $('#urlget').val();
+$(".img_input").click(function(){
+   //alert(this.id);
+			if (this.id == "bus")
+			{
+				if ($(".bus_img").attr('src') == urlget+"/newimg/img/amenities/bus.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/bus_.svg";
+					$(".bus").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/bus.svg";
+					$(".bus").removeClass('change_color');
+                }
+			}
+			if (this.id == "metro")
+			{
+				if ($(".metro_img").attr('src') == urlget+"/newimg/img/amenities/metro.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/metro_.svg";
+					$(".metro").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/metro.svg";
+					$(".metro").removeClass('change_color');
+                }
+			}
+			if (this.id == "train")
+			{
+				if ($(".train_img").attr('src') == urlget+"/newimg/img/amenities/train.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/train_.svg";
+					$(".train").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/train.svg";
+					$(".train").removeClass('change_color');
+                }
+			}
+			if (this.id == "cab")
+			{
+				if ($(".cab_img").attr('src') == urlget+"/newimg/img/amenities/cab.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/cab_.svg";
+					$(".cab").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/cab.svg";
+					$(".cab").removeClass('change_color');
+                }
+			}
+			if (this.id == "market")
+			{
+				if ($(".market_img").attr('src') == urlget+"/newimg/img/amenities/market.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/market_.svg";
+					$(".market").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/market.svg";
+					$(".market").removeClass('change_color');
+                }
+			}
+			if (this.id == "atm")
+			{
+				if ($(".atm_img").attr('src') == urlget+"/newimg/img/amenities/atm.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/atm_.svg";
+					$(".atm").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/atm.svg";
+					$(".atm").removeClass('change_color');
+                }
+			}
+			if (this.id == "hospital")
+			{
+				if ($(".hospital_img").attr('src') == urlget+"/newimg/img/amenities/hospital.svg")
+                {
+                    this.src = urlget+"/newimg/img/amenities/hospital_.svg";
+					$(".hospital").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/amenities/hospital.svg";
+					$(".hospital").removeClass('change_color');
+                }
+			}
+			if (this.id == "power")
+			{
+				if ($(".power_img").attr('src') == urlget+"/newimg/img/icons/power.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/power_.svg";
+					$(".power").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/power.svg";
+					$(".power").removeClass('change_color');
+                }
+			}
+			if (this.id == "wifi")
+			{
+				if ($(".wifi_img").attr('src') == urlget+"/newimg/img/icons/wifi.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/wifi_.svg";
+					$(".wifi").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/wifi.svg";
+					$(".wifi").removeClass('change_color');
+                }
+			}
+			if (this.id == "lift")
+			{
+				if ($(".lift_img").attr('src') == urlget+"/newimg/img/icons/lift.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/lift_.svg";
+					$(".lift").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/lift.svg";
+					$(".lift").removeClass('change_color');
+                }
+			}
+			if (this.id == "gaurd")
+			{
+				if ($(".gaurd_img").attr('src') == urlget+"/newimg/img/icons/gaurd.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/gaurd_.svg";
+					$(".gaurd").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/gaurd.svg";
+					$(".gaurd").removeClass('change_color');
+                }
+			}
+			if (this.id == "alarm")
+			{
+				if ($(".alarm_img").attr('src') == urlget+"/newimg/img/icons/alarm.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/alarm_.svg";
+					$(".alarm").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/alarm.svg";
+					$(".alarm").removeClass('change_color');
+                }
+			}
+			if (this.id == "camera")
+			{
+				if ($(".camera_img").attr('src') == urlget+"/newimg/img/icons/security.svg")
+                {
+                    this.src = urlget+"/newimg/img/icons/security_.svg";
+					$(".camera").addClass('change_color');
+                }
+                else
+                {
+                    this.src = urlget+"/newimg/img/icons/security.svg";
+					$(".camera").removeClass('change_color');
+                }
+			}
+			
+		
+			
+			
+			
+		});
+		
 
 </script>
  <script>
