@@ -95,7 +95,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			<div class="col-md-4 col-xs-4 pad_trans">
 				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
-				<p class="transaction_text auction_text hidden-xs hidden-sm">Our Technology helps the brands at getting the best deals and at the same time ensuring benefits for sellers & lessors.</p>
+				<p class="transaction_text auction_text hidden-xs hidden-sm">Our Technology helps the brands in getting the best deals and at the same time ensuring benefits for sellers & lessors.</p>
 				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">See the benefits of Reverse Auction</a></p> 
 			</div>
 		</div>

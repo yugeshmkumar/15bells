@@ -56,11 +56,11 @@ use yii\helpers\Html;
                 </div>
                 <div class="col-md-6 contact_s">
                     <div class="card_contct">
-                        <p class="contct_hed"><i class="fa fa-phone call_btn"></i> +91 - 7042310544</p>
+                        <p class="contct_hed"><i class="fa fa-phone call_btn"></i> +91 - 6209151515</p>
                         <p class="contct_txt">The best way to get answer faster</p>
                     </div>
                     <div class="faq_contct">
-                        <p class="contct_hed"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/ques.png';  ?>" width="14" class="img_q"> admin@15bells.com</p>
+                        <p class="contct_hed"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/ques.png';  ?>" width="14" class="img_q"> info@15bells.com</p>
                         <p class="contct_txt">We are always happy to help.</p>
                     </div>
                 </div>
