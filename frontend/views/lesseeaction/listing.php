@@ -1207,68 +1207,106 @@ $('.price_maximum li').on('click', function() {
 
 
  $('#propminrupees').change(function(){
+
+$('#dummypriceminimum').val('');
+    $('#proppriceminimum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
-   var dummyprice =  $('#dummypriceminimum').val();
-   var actualpice = dummyprice * 100000;
-   $('#proppriceminimum').val(actualpice);
-   $('#proppriceminimums').val(actualpice);
+ var dummyprice =  $('#dummypriceminimum').val();
+ var actualpice = dummyprice * 100000;
+ $('#proppriceminimum').val(actualpice);
+ $('#proppriceminimums').val(actualpice);
 }else{
-    var dummyprice =  $('#dummypriceminimum').val();
-    var actualpice = dummyprice * 10000000;
-    $('#proppriceminimum').val(actualpice);
-    $('#proppriceminimums').val(actualpice);
+  var dummyprice =  $('#dummypriceminimum').val();
+  var actualpice = dummyprice * 10000000;
+  $('#proppriceminimum').val(actualpice);
+  $('#proppriceminimums').val(actualpice);
 }
 
 });
 
-   $("#dummypriceminimum").on("input", function(){       
-              var dummyprice =  $(this).val();
-              var currency =  $('#propminrupees').val();
-               if(currency == 'lacs'){
+  $("#dummypriceminimum").on("input", function(){       
+            var dummyprice =  $(this).val();
+            var currency =  $('#propminrupees').val();
+             if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppriceminimum').val(actualpice);
-                    $('#proppriceminimums').val(actualpice);
+                        if(dummyprice > 99.9){
 
-               }else{
-                   
-                    var actualpice = dummyprice * 10000000;
-                    $('#proppriceminimum').val(actualpice);
-                    $('#proppriceminimums').val(actualpice);
-               }
-    });
+                          
+                        alert('Pease select crores');
+                        $('#dummypriceminimum').val(
+                        function(index, value){
+                        return value.substr(0, value.length - 1);
+                        });
+
+
+                        }else{
+                        var actualpice = dummyprice * 100000;
+                        $('#proppriceminimum').val(actualpice);
+                        $('#proppriceminimums').val(actualpice);
+                        }
+
+
+             }else{
+                 
+                  var actualpice = dummyprice * 10000000;
+                  $('#proppriceminimum').val(actualpice);
+                  $('#proppriceminimums').val(actualpice);
+             }
+  });
 
 
 
 $('#propmaxrupees').change(function(){
+
+$('#dummypricemaximum').val('');
+$('#proppricemaximum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
-   var dummyprice =  $('#dummypricemaximum').val();
-   var actualpice = dummyprice * 100000;
-   $('#proppricemaximums').val(actualpice);
+var dummyprice =  $('#dummypricemaximum').val();
+var actualpice = dummyprice * 100000;
+$('#proppricemaximums').val(actualpice);
+$('#proppricemaximum').val(actualpice);
 }else{
-    var dummyprice =  $('#dummypricemaximum').val();
-    var actualpice = dummyprice * 10000000;
-    $('#proppricemaximums').val(actualpice);
+var dummyprice =  $('#dummypricemaximum').val();
+var actualpice = dummyprice * 10000000;
+$('#proppricemaximums').val(actualpice);
+$('#proppricemaximum').val(actualpice);
 }
 
 });
 
-   $("#dummypricemaximum").on("input", function(){       
-              var dummyprice =  $(this).val();
-              var currency =  $('#propmaxrupees').val();
-               if(currency == 'lacs'){
+$("#dummypricemaximum").on("input", function(){       
+        var dummyprice =  $(this).val();
+        var currency =  $('#propmaxrupees').val();
+         if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppricemaximums').val(actualpice);
+            if(dummyprice > 99.9){
 
-               }else{
-                   
-                    var actualpice = dummyprice * 10000000;
-                    $('#proppricemaximums').val(actualpice);
-               }
-    });
+
+            alert('Pease select crores');
+            $('#dummypricemaximum').val(
+            function(index, value){
+            return value.substr(0, value.length - 1);
+            });
+
+
+            }else{
+            var actualpice = dummyprice * 100000;
+            $('#proppricemaximums').val(actualpice);
+            $('#proppricemaximum').val(actualpice);
+            }
+
+
+
+
+         }else{
+             
+              var actualpice = dummyprice * 10000000;
+              $('#proppricemaximums').val(actualpice);
+              $('#proppricemaximum').val(actualpice);
+         }
+});
 
 
     $("#propareaminimum").on("input", function(){       

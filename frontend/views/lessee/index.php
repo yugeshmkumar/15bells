@@ -218,7 +218,7 @@ use yii\bootstrap\Modal;
 				  </div>
 				  <div id="area_range" class="tab-pane fade">
 						<div class="row property_type">
-							<div class="col-md-12 no_pad">
+							<div class="col-md-12">
 								<h3 class="flow_heading avail_ability">Choose an Area / Unit</h3>
 								<!-- <ul class="sub_categories">
 									<li class="active"><a href="javascript:void(0)" class="property_subtype square" id="sq_ft">Sq. Feet</a></li>
@@ -263,7 +263,7 @@ use yii\bootstrap\Modal;
 									</div>
 								</div> -->
 							<!-- </div> -->
-              <div class="col-md-12 locality_input">
+              <div class="col-md-12">
 									<div class="row">
                       <div class="col-md-2">
                       <select id="propsquare" class="form-control area_price">
@@ -282,32 +282,27 @@ use yii\bootstrap\Modal;
                   </div>
                </div>
 
-<div class="col-md-12 no_pad">
+<div class="col-md-12">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
-              <div class="col-md-6 no_pad">
-                <div class="col-md-8 col-xs-6">
-                  <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
-                 </div>
-                <div class="col-md-4 col-xs-6">
-                    <select id="propminrupees" class="form-control area_price">
-                       <option value="lacs">Lacs</option>
-                       <option value="crores">Crores</option>
-                    </select>
-                 </div>
-                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
-                </div>
-              <div class="col-md-6 no_pad">
-                 <div class="col-md-8 col-xs-6">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
-                 </div>
-                 <div class="col-md-4 col-xs-6">
-                    <select id="propmaxrupees" class="form-control area_price">
-                      <option value="lacs">Lacs</option>
-                     <option value="crores">Crores</option>
-                     </select>
+
+                
+              <div class="row ">
+              <div class="col-md-2">
+                      <select id="propsquare" class="form-control area_price">
+                      <option value="sq_ft">Sq. Feet</option>
+                      <option value="sq_yards">Sq. Yard</option>
+                      <option value="sq_meter">Sq. Meter</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                       <input type="text" class="form-control input_desgn" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
                    </div>
-                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
-              </div>
+                   <div class="col-md-4 col-xs-6">
+                    <input type="text" class="form-control input_desgn" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+                 </div>
+                 
+                </div>
+            
             </div>
 
 
@@ -548,6 +543,9 @@ var polyArray = [];
     initialize();
 
 $('#propminrupees').change(function(){
+
+  $('#dummypriceminimum').val('');
+      $('#proppriceminimum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
    var dummyprice =  $('#dummypriceminimum').val();
@@ -561,13 +559,26 @@ if(currency == 'lacs'){
 
 });
 
-   $("#dummypriceminimum").on("input", function(){       
+    $("#dummypriceminimum").on("input", function(){       
               var dummyprice =  $(this).val();
               var currency =  $('#propminrupees').val();
                if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppriceminimum').val(actualpice);
+                          if(dummyprice > 99.9){
+
+                            
+                          alert('Pease select crores');
+                          $('#dummypriceminimum').val(
+                          function(index, value){
+                          return value.substr(0, value.length - 1);
+                          });
+
+
+                          }else{
+                          var actualpice = dummyprice * 100000;
+                          $('#proppriceminimum').val(actualpice);
+                          }
+
 
                }else{
                    
@@ -577,35 +588,52 @@ if(currency == 'lacs'){
     });
 
 
-
 $('#propmaxrupees').change(function(){
+
+$('#dummypricemaximum').val('');
+$('#proppricemaximum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
-   var dummyprice =  $('#dummypricemaximum').val();
-   var actualpice = dummyprice * 100000;
-   $('#proppricemaximum').val(actualpice);
+var dummyprice =  $('#dummypricemaximum').val();
+var actualpice = dummyprice * 100000;
+$('#proppricemaximum').val(actualpice);
 }else{
-    var dummyprice =  $('#dummypricemaximum').val();
-    var actualpice = dummyprice * 10000000;
-    $('#proppricemaximum').val(actualpice);
+var dummyprice =  $('#dummypricemaximum').val();
+var actualpice = dummyprice * 10000000;
+$('#proppricemaximum').val(actualpice);
 }
 
 });
 
-   $("#dummypricemaximum").on("input", function(){       
-              var dummyprice =  $(this).val();
-              var currency =  $('#propmaxrupees').val();
-               if(currency == 'lacs'){
+$("#dummypricemaximum").on("input", function(){       
+        var dummyprice =  $(this).val();
+        var currency =  $('#propmaxrupees').val();
+         if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppricemaximum').val(actualpice);
+            if(dummyprice > 99.9){
 
-               }else{
-                   
-                    var actualpice = dummyprice * 10000000;
-                    $('#proppricemaximum').val(actualpice);
-               }
-    });
+
+            alert('Pease select crores');
+            $('#dummypricemaximum').val(
+            function(index, value){
+            return value.substr(0, value.length - 1);
+            });
+
+
+            }else{
+            var actualpice = dummyprice * 100000;
+            $('#proppricemaximum').val(actualpice);
+            }
+
+
+
+
+         }else{
+             
+              var actualpice = dummyprice * 10000000;
+              $('#proppricemaximum').val(actualpice);
+         }
+});
 
 
 

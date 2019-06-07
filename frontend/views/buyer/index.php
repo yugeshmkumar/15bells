@@ -556,6 +556,9 @@ var polyArray = [];
      initialize();
 
      $('#propminrupees').change(function(){
+
+      $('#dummypriceminimum').val('');
+      $('#proppriceminimum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
    var dummyprice =  $('#dummypriceminimum').val();
@@ -574,8 +577,21 @@ if(currency == 'lacs'){
               var currency =  $('#propminrupees').val();
                if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppriceminimum').val(actualpice);
+                          if(dummyprice > 99.9){
+
+                            
+                          alert('Pease select crores');
+                          $('#dummypriceminimum').val(
+                          function(index, value){
+                          return value.substr(0, value.length - 1);
+                          });
+
+
+                          }else{
+                          var actualpice = dummyprice * 100000;
+                          $('#proppriceminimum').val(actualpice);
+                          }
+
 
                }else{
                    
@@ -591,6 +607,9 @@ $('.button_togg').click(function(e) {
    });
 
 $('#propmaxrupees').change(function(){
+
+      $('#dummypricemaximum').val('');
+      $('#proppricemaximum').val('');
 var currency  =  $(this).val();
 if(currency == 'lacs'){
    var dummyprice =  $('#dummypricemaximum').val();
@@ -609,8 +628,23 @@ if(currency == 'lacs'){
               var currency =  $('#propmaxrupees').val();
                if(currency == 'lacs'){
 
-                    var actualpice = dummyprice * 100000;
-                    $('#proppricemaximum').val(actualpice);
+                  if(dummyprice > 99.9){
+
+
+                  alert('Pease select crores');
+                  $('#dummypricemaximum').val(
+                  function(index, value){
+                  return value.substr(0, value.length - 1);
+                  });
+
+
+                  }else{
+                  var actualpice = dummyprice * 100000;
+                  $('#proppricemaximum').val(actualpice);
+                  }
+
+
+
 
                }else{
                    
@@ -801,6 +835,9 @@ $('.price_maximum li').on('click', function() {
  $('.selectmaxprice').text(getValue);
  $('#proppricemaximum').val(getValue);
 });
+
+
+
 
       $('.step_availablity').click(function(){
 
