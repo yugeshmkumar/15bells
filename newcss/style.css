@@ -13,7 +13,7 @@ a{text-decoration:none !important;}
 	margin:0;
 }
 .no_pad{
-	padding:0;
+	padding:0 !important;
 }
 .mobile_mnu{
 	cursor:pointer;
@@ -3677,10 +3677,19 @@ color: #c4984f;
     color: #c4984f;
     margin-left: 70px;
   }
+  .login_popup{
+	font-size: 18px;
+    color: #c4984f;
+	margin-left: 20px;
+	margin-right:10px;
+  }
   #menu1{
 	  border:0 !important;
   }
-
+.amenities{
+	font-size:18px;
+	color:#838383;
+}
   
 /*****Buyer check css***********/
 .check_icon{
@@ -3733,4 +3742,7 @@ color: #c4984f;
   }
   .brdr_rt{
 	  border-right:1px solid #ffffff;
+  }
+  .img_input {
+	  cursor:pointer;
   }
