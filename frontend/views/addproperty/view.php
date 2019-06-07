@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\MediaFilesConfig;
 use common\models\MediaFiles;
+use yii\db\Query;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Addproperty */
@@ -63,7 +65,7 @@ $expected_price = $property->expected_price != '' ? $property->expected_price : 
                 $annual_dues_payable = $property->annual_dues_payable != '' ? $property->annual_dues_payable : "";
 $city = $property->city != '' ? $property->city : "";
 $price_sq_ft = $property->price_sq_ft != '' ? $property->price_sq_ft : "";
-                $expected_rental = $property->asking_rental_price != '' ? $property->asking_rental_price : "";
+                $asking_rental_price = $property->asking_rental_price != '' ? $property->asking_rental_price : "";
 $price_negotiable = $property->price_negotiable != '' ? $property->price_negotiable : "";
 $expected_rental = $property->expected_rental != '' ? $property->expected_rental : "";
 $shed_RCC = $property->shed_RCC != '' ? $property->shed_RCC : "";
@@ -132,7 +134,7 @@ $undercategory = $property_type->undercategory;
 										</li>
 										<li class="col-md-4">
 										<p class="details_label">Price</p>
-										<p class="details_name"><?php echo $expected_price; ?></p>
+										<p class="details_name"><?php echo ($property_for== 'sale' ? $expected_price : $asking_rental_price ); ?></p>
 										</li>
 										
 										
@@ -232,6 +234,28 @@ $undercategory = $property_type->undercategory;
 						</div>
 					</div>
 					<div class="col-md-12 seperator_div"></div>
+
+						<?php 
+
+							$querys = new Query;
+							$user_id = Yii::$app->user->identity->id;
+							$querys->select('COUNT(*) as newcount')
+									->from('request_document_show')
+									->where(['property_id' => $viewid])
+									->andwhere(['user_id' => $user_id])
+									->andwhere(['status' => 1]);
+
+							$commands = $querys->createCommand();
+							$paymentsm = $commands->queryOne();
+
+						//	echo '<pre>';print_r($paymentsm);die;
+
+							$counts =  $paymentsm['newcount'];
+
+							if ($counts == 1) {
+
+						?>
+
 					<div class="row possession_time" style="display:none;">
 						<h3 class="flow_heading avail_ability">Property Documents 
                         <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
@@ -242,15 +266,19 @@ $undercategory = $property_type->undercategory;
 						
 					</div>
 
+					<?php } else { ?>
+
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Property Documents 
                         <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
                         </h3>
 						<div class="row">
-						<p class="label_name" style="padding:20px;"><a href="javascript:void(0);" class="view_docs">Request Documents Access</a></p>
+						<p class="label_name" style="padding:20px;"><a href="javascript:void(0);" onclick="requestaccess(<?php echo $viewid; ?>)" class="view_docs">Request Documents Access</a></p>
 						</div>
 						
 					</div>
+
+					<?php } ?>
                     
 					<div class="col-md-12 seperator_div"></div>
 					<div class="row possession_time">
@@ -275,6 +303,8 @@ $undercategory = $property_type->undercategory;
 					</div>
                     
 					<div class="col-md-12 seperator_div"></div>
+
+                 <?php  if($property_for== 'rent') { ?>
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Expectations
                         <!-- <a href="javascript:void(0)" class="text-right exp_edit draw_map">Edit</a> -->
@@ -299,6 +329,8 @@ $undercategory = $property_type->undercategory;
 						</div>
 						
 					</div>
+				 <?php  } ?> 
+
 					<div class="col-md-12 seperator_div"></div>
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Nearby Places<a href="javascript:void(0)" class="text-right exp_edit draw_map"></a></h3>
@@ -385,8 +417,36 @@ $undercategory = $property_type->undercategory;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  
  <script>
+
+		function requestaccess(id){
+
+			   $.ajax({
+
+					type: "POST",
+					url:  'requestaccess',
+					data: {id : id},
+					success: function(data){
+					
+
+					if(data == '1'){
+
+					toastr.success('Successfully send request for document show of this property', 'success');
+
+					}else if(data == '3'){
+					toastr.warning('Already send request for document show', 'warning');
+					}
+					else{
+					toastr.error('Internal Error', 'error');
+					}
+
+
+					},
+
+					});
+
+		   }
 	
-	$(document).ready(function(){
+	  $(document).ready(function(){
 		$(".edit_button").click(function(){
 		$(".myInput").removeAttr('readonly');
 		$(".myInput").each(function() {

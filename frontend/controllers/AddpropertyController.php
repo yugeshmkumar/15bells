@@ -43,7 +43,7 @@ class AddpropertyController extends Controller
                     [
                         'actions' => ['sitevisit','index','creategrouplessor','getpropstatus','lessor','sellor','view','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
-'fileuploads','documents','documentss','upload_avatar','update','savelessor','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
+'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -278,6 +278,37 @@ public function actionEmdpay($propids, $visitypeid) {
         }
         
         
+    }
+
+    public function actionRequestaccess(){
+
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        $property_id = $_POST['id'];
+        $user_id = Yii::$app->user->identity->id;
+
+        $querys = new Query;
+        $querys->select('COUNT(*) as newcount')
+                ->from('request_document_show')
+                ->where(['property_id' => $property_id])
+                ->andwhere(['user_id' => $user_id]);
+
+        $commands = $querys->createCommand();
+        $paymentsm = $commands->queryOne();
+
+        if ($paymentsm['newcount'] == 0) {
+        $trendingadd = \Yii::$app->db->createCommand()->insert('request_document_show', ['user_id' => $user_id, 'property_id' => $property_id, 'status' => 0, 'created_date' => $date])->execute();
+
+        if(trendingadd){
+
+            return 1;
+        }else{
+
+            return 2;
+        }
+      }else{
+          return 3;
+      } 
     }
 
 
