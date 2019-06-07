@@ -22,7 +22,7 @@ use yii\bootstrap\Modal;
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
         <h1 class="single_hed col-md-12">Explore the commercial properties for sale. </h1>
-				<p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations.</p>
+				<p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.</p>
 								
 				</div>
 				
@@ -77,7 +77,7 @@ use yii\bootstrap\Modal;
 		<div class="row">
 			<div class="col-md-6 no_pad">
 				<h1 class="trans_head_b">Browse Property</h1>
-				<p class="brand_txt">At 15-Bells we are providing you the genuine clients with real-time assistance from our customes service representatives </p>
+				<p class="brand_txt">At 15-Bells we provide you with the genuine & best commercial properties to buy or invest with real-time assistance from our Dedicated Account Manager.</p>
 			</div><div class="col-md-6"></div>
 		</div>
 		<div class="row">
@@ -180,7 +180,7 @@ use yii\bootstrap\Modal;
 								</div>
 								<div class="col-md-2 col-xs-6">
 									<img id="ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>" class="property_image1">
-									<p class="property_name">Gaziabad</p>
+									<p class="property_name">Ghaziabad</p>
 								</div>
 								<div class="col-md-1"></div>
 							</div>
@@ -199,7 +199,7 @@ use yii\bootstrap\Modal;
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
 										<div class="btn-group btn-toggle btn_toggle"> 
-											<button  type="button" class="btn button_togg btn-lg confirmbutton  active" value="yes">Yes</button>
+											<button  type="button" class="btn button_togg btn-lg confirmbutton" value="yes">Yes</button>
 											<button type="button" class="btn button_togg btn-lg confirmbutton" value="no">No</button>
 										  </div>
 									</div>
@@ -213,7 +213,7 @@ use yii\bootstrap\Modal;
                         
                       <button style="display:none;" id="search_map" class="btn btn-info out_srch" onclick="getpolymymap(),ga('send', 'event', 'Buyer Map Search Button', 'Buyer Map Search Button', 'Buyer Map Search Button','Buyer Map Search Button')" type="button">Search</button>
                        
-						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality">
+						<p class="text-right process_continue col-md-12"><a data-toggle="pill" href="#home" class="property_back step_locality">
             <i class="fa fa-angle-left"></i> Back </a>
             <!-- <a class="property_process" data-toggle="modal" data-target="#myModal">Continue <i class="fa fa-angle-right"></i> -->
             <!-- </a> -->
@@ -584,7 +584,11 @@ if(currency == 'lacs'){
                }
     });
 
-
+$('.button_togg').click(function(e) {
+       $('.button_togg').removeClass('active');
+       $(this).addClass('active');
+       e.preventDefault();
+   });
 
 $('#propmaxrupees').change(function(){
 var currency  =  $(this).val();

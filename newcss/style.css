@@ -260,17 +260,16 @@ a{text-decoration:none !important;}
 }
 
 .loader {
-    width: 250px;
-    height: 50px;
+    width: 400px;
     line-height: 50px;
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     font-weight: 900;
-    color: #c4984f;
+    
     letter-spacing: 0.2em;
 }
 
@@ -280,9 +279,8 @@ a{text-decoration:none !important;}
     display: block;
     width: 15px;
     height: 15px;
-    background: #c4984f;
     position: absolute;
-    animation: load 0.7s infinite alternate ease-in-out;
+   
 }
 
 .loader::before {
@@ -1760,7 +1758,7 @@ input.invalid {
 }
 .signup_overlay{
 	position:absolute;
-	bottom:0;
+	top:10%;
 	padding:30px 100px;
 	color:#ffffff;
 	font-size:22px;

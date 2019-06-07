@@ -22,8 +22,7 @@ use yii\bootstrap\Modal;
 			<div class="container" id="banner_cont">
 				<div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
 								<h1 class="single_hed col-md-12">Explore the commercial properties for lease & rent. </h1>
-                <p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi & other locations. Start finding the properties & get connected to the property owners.
-</p>
+                <p class="about_det animated slideInDown col-md-7"> We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.</p>
 	
 				</div>
 				
@@ -197,7 +196,7 @@ use yii\bootstrap\Modal;
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
 										<div class="btn-group btn-toggle btn_toggle"> 
-											<button  type="button" class="btn button_togg btn-lg confirmbutton  active" value="yes">Yes</button>
+											<button  type="button" class="btn button_togg btn-lg confirmbutton" value="yes">Yes</button>
 											<button type="button" class="btn button_togg btn-lg confirmbutton" value="no">No</button>
 										  </div>
 									</div>
@@ -211,7 +210,7 @@ use yii\bootstrap\Modal;
                         
                       <button style="display:none;" id="search_map" class="btn btn-info out_srch" onclick="getpolymymap(),ga('send', 'event', 'Buyer Map Search Button', 'Buyer Map Search Button', 'Buyer Map Search Button','Buyer Map Search Button')" type="button">Search</button>
                        
-						<p class="text-right process_continue"><a data-toggle="pill" href="#home" class="property_back step_locality"><i class="fa fa-angle-left"></i> Back </a>
+						<p class="text-right process_continue col-md-12"><a data-toggle="pill" href="#home" class="property_back step_locality"><i class="fa fa-angle-left"></i> Back </a>
             <!-- <a class="property_process" data-toggle="modal" data-target="#myModal">Continue 
             <i class="fa fa-angle-right"></i></a> -->
             
@@ -285,11 +284,11 @@ use yii\bootstrap\Modal;
 
 <div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
-							<div class="row">
-                <div class="col-md-4 col-xs-6">
+              <div class="col-md-6 no_pad">
+                <div class="col-md-8 col-xs-6">
                   <input type="text" class="form-control input_desgn" placeholder="Minimum" id="dummypriceminimum">
                  </div>
-                <div class="col-md-2 col-xs-6">
+                <div class="col-md-4 col-xs-6">
                     <select id="propminrupees" class="form-control area_price">
                        <option value="lacs">Lacs</option>
                        <option value="crores">Crores</option>
@@ -297,11 +296,11 @@ use yii\bootstrap\Modal;
                  </div>
                  <input type="hidden" id="proppriceminimum" name="proppriceminimum">
                 </div>
-           	<div class="row">
-                 <div class="col-md-4 col-xs-6">
+              <div class="col-md-6 no_pad">
+                 <div class="col-md-8 col-xs-6">
                     <input type="text" class="form-control input_desgn" placeholder="Maximum" id="dummypricemaximum">
                  </div>
-                 <div class="col-md-2 col-xs-6">
+                 <div class="col-md-4 col-xs-6">
                     <select id="propmaxrupees" class="form-control area_price">
                       <option value="lacs">Lacs</option>
                      <option value="crores">Crores</option>

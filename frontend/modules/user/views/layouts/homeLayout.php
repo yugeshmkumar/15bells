@@ -27,7 +27,8 @@ NewDesignAsset::register($this);
 				<nav class="navbar navbar-default nav_signup">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header col-md-4">.<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="dash_menu" width="25">
+						<div class="navbar-header col-md-4">
+						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="dash_menu" width="25">
 							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
 							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="mobile_mnu" width="25">
@@ -84,43 +85,38 @@ NewDesignAsset::register($this);
 
      <!--Footer Section------>
 
+
 <div class="container-fluid footer_banner">
 	<div class="container">
 		<div class="row">
 			<p class="copy_rt">2019 © 15 Bells </p>
-			<div class="col-md-3 col-xs-6">
-				<h4 class="footer_typ">Resources</h4>
-				<ul class="fotter_lst">
-					<li class=""><a href="" class="list_lnk">I'm here for</a></li>
-					<li class=""><a href="" class="list_lnk">Blog</a></li>
-					<li class=""><a href="" class="list_lnk">FAQ's</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 col-xs-6">
-				<h4 class="footer_typ">Contacts</h4>
-				<ul class="fotter_lst">
-					<li class=""><a href="" class="list_lnk">Who we are?</a></li>
-					<li class=""><a href="" class="list_lnk">Contact customer service</a></li>
-					<li class=""><a href="" class="list_lnk">Contact Us</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 col-xs-6">
+			
+			<div class="col-md-4 col-xs-6">
 				<h4 class="footer_typ">Privacy</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="" class="list_lnk">Terms and Conditions</a></li>
-					<li class=""><a href="" class="list_lnk">Privacy Policy</a></li>
+					<li class=""><a href="#" class="list_lnk">Terms and Conditions</a></li>
+					<li class=""><a href="#" class="list_lnk">Privacy Policy</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-xs-6">
+			<div class="col-md-4 col-xs-6">
+				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="" class="list_lnk">+91 7042310544</a></li>
-					<li class=""><a href="" class="list_lnk">info@15bells.com</a></li>
+					<li class=""><a href="#" class="list_lnk">+91 7042310544</a></li>
+					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
 				</ul>
+				</div>
 			</div>
+			<div class="col-md-4 col-xs-6">
+			<h4 class="footer_typ">Follow us</h4>
+					<p class=""><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
+					<span><a href="#"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span>
+				</div>
 		</div>
 	</div>
 </div>
+     
+
 
 
        
