@@ -1250,7 +1250,10 @@ input[type=file]::-webkit-file-upload-button {
 		font-size:14px;
 	}
 	.prof_img{
-		width:100px !important;
+		width:75px !important;
+	}
+	.role_list li{
+		margin-top:15px !important;
 	}
 	.user_profile{
 		padding:20px 0;

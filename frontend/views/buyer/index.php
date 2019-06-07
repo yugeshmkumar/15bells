@@ -276,10 +276,10 @@ use yii\bootstrap\Modal;
                       </select>
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareaminimum" class="form-control input_desgn" placeholder="Minimum area" name="propareaminimum">
+                      <input type="text" id="propareaminimum" class="form-control input_desgn input_number" placeholder="Minimum area" name="propareaminimum">
                     </div>
                     <div class="col-md-4">
-                      <input type="text" id="propareamaximum" class="form-control input_desgn" placeholder="Maximum area" name="propareamaximum">
+                      <input type="text" id="propareamaximum" class="form-control input_desgn input_number" placeholder="Maximum area" name="propareamaximum">
 
                     </div>
                   </div>
@@ -292,7 +292,7 @@ use yii\bootstrap\Modal;
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							<div class="col-md-6 no_pad">
                 <div class="col-md-8 col-xs-6">
-                  <input type="text" class="form-control input_desgn" placeholder="Minimum price" id="dummypriceminimum">
+                  <input type="text" class="form-control input_desgn input_number" placeholder="Minimum price" id="dummypriceminimum">
                  </div>
                 <div class="col-md-4 col-xs-6">
                     <select id="propminrupees" class="form-control area_price">
@@ -304,7 +304,7 @@ use yii\bootstrap\Modal;
               </div>
               <div class="col-md-6 col-xs-12 no_pad">
                  <div class="col-md-8 col-xs-6">
-                    <input type="text" class="form-control input_desgn" placeholder="Maximum price" id="dummypricemaximum">
+                    <input type="text" class="form-control input_desgn input_number" placeholder="Maximum price" id="dummypricemaximum">
                  </div>
                  <div class="col-md-4 col-xs-6">
                     <select id="propmaxrupees" class="form-control area_price">
@@ -652,7 +652,12 @@ if(currency == 'lacs'){
                     $('#proppricemaximum').val(actualpice);
                }
     });
-   
+    $(".input_number").on("keypress keyup blur",function (event) {    
+           $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
 $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');
 
