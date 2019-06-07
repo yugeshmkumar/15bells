@@ -198,7 +198,7 @@ $company = \common\models\Company::find()->where(['userid' => Yii::$app->user->i
 						<div class="col-md-12 user_profile">
                         <?php $form = ActiveForm::begin([
         'id' => 'passworddetails',
-        'enableClientScript' => false,
+        //'enableClientScript' => false,
     ]); ?>
                                      <div class="row">
 									<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Current Password</p>

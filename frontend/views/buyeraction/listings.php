@@ -420,10 +420,12 @@ if(!isset($_SESSION))
             <div id="map_canvas" ></div>
 			</div>
 			<div class="col-md-1 no_pad">
-				<ul class="map_icons">
+            <ul class="map_icons">
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/search.svg';  ?>" width="18"></li>
 					<li class=""><img id="polyshape" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/edit.svg';  ?>" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/hand-cursor.svg';  ?>" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/rect.svg';  ?>" id="rectangles" width="18"></li>
+					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/oval.svg';  ?>" id="circles" width="18"></li>
 					<li class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/delete.svg';  ?>" id="delete-button" width="18"></li>
           <!-- <button  class="inactiveLink" id="delete-button">Delete <span id="shapedel">Shape </span></button> -->
         </ul>
@@ -2232,6 +2234,16 @@ function getPolygonCoords() {
       
       drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
        });
+
+       $("#rectangles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE);
+       });
+
+       $("#circles").click( function(){
+      
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
+       });
         
          drawingManager.setMap(null);
 
@@ -2504,7 +2516,7 @@ function getPolygonCoords() {
            var haritid = 273*179-this.id;
            var propsid = 'PR'+ haritid;
            var commaNum = numberWithCommas(this.expected_price);
-           var imaged;
+           var imaged = $.trim(this.featured_image);
            (this.county1 == '1' ? imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart.svg';  ?>":imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart_e.svg';  ?>");
            var imageds = $.trim(this.featured_image);
 
