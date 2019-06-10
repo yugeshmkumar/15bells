@@ -65,7 +65,7 @@ if(!isset($_SESSION))
 <style>
 
 #map_canvas {
-   height: 430px;
+   height: 490px;
 }
 #map_canvasd {
     height: 600px;
@@ -122,7 +122,8 @@ if(!isset($_SESSION))
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?></span> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
-	</div>
+    </div>
+</div>
 	<div class="row">
 		<div class="col-md-2">
 			

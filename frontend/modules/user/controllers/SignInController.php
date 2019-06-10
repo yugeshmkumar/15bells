@@ -18,6 +18,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use common\models\Company;
+use yii\helpers\Url;
 
 
 class SignInController extends \yii\web\Controller
@@ -789,8 +790,22 @@ if ($err) {
         if ($model1->load(Yii::$app->request->post()) && $model1->login('1234')) {
 
            
-            
-            return $this->checkrolel();
+            $urlsd =   Yii::getAlias('@frontendUrl');           
+
+             $url = Url::previous();
+
+             if($urlsd == $url){
+
+                return $this->checkrolel();
+
+             }else{
+
+               return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+
+
+             }
+
+
         } 
 
        else if ($model->load(Yii::$app->request->post())) {

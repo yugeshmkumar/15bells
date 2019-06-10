@@ -8,6 +8,7 @@ return [
 
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
         // Pages
+        'addproperty/<id:\d+>' => 'addproperty/view',
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
 
         // Articles
