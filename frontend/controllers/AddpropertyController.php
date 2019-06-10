@@ -142,8 +142,9 @@ class AddpropertyController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView()
     {
+        $id = (int) Yii::$app->request->get('id');
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
         $model = $db->cache(function($db) use ($id){

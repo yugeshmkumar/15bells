@@ -477,21 +477,21 @@ if(!isset($_SESSION))
 						</div>
 						<div class="col-md-6 no_pad">
                         <div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4 no_pad">
 							
-                         <button type="button" class="scheduletime active_butn" id="morning">Morning</button>
-							
-							
-						</div>
-                        <div class="col-md-4">
-							
-                            <button type="button" class="scheduletime active_butn" id="afternoon">Afternoon</button>
+                         <button type="button" class="scheduletime time_sv button_select" id="morning">Morning</button>
 							
 							
 						</div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 no_pad">
 							
-                            <button type="button" class="scheduletime active_butn" id="evening">Evening</button>
+                            <button type="button" class="scheduletime time_sv button_select" id="afternoon">Afternoon</button>
+							
+							
+						</div>
+                        <div class="col-md-4 no_pad">
+							
+                            <button type="button" class="scheduletime time_sv button_select" id="evening">Evening</button>
 							
 							
 						</div>
@@ -981,7 +981,11 @@ if(currency == 'lacs'){
                }
     });
 
-
+$('.time_sv').click(function(e) {
+       $('.time_sv.active_butn').removeClass('active_butn');
+       $(this).addClass('active_butn');
+       e.preventDefault();
+   });
 
 $('#propmaxrupees').change(function(){
 var currency  =  $(this).val();
