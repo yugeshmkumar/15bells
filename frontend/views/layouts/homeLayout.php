@@ -175,7 +175,7 @@ NewDesignAsset::register($this);
 				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">+91 7042310544</a></li>
+					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
 					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
 				</ul>
 				</div>
