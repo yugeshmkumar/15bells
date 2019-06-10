@@ -754,7 +754,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		</div>
 	</div>
 </div>
-<div class="container-fluid no_pad step_banner">
+<div class="container-fluid client_pad">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 no_pad">
@@ -766,64 +766,65 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		<div class="row">
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/dlf.png';  ?>" width="80">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/amazon.png';  ?>" width="90">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/emaar.png';  ?>" width="80">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/more.png';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/gaur.png';  ?>" width="80">
+				<div class="clients_det kalinga_pad">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/montecarlo.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/dlf.png';  ?>" width="80">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/swiggy.png';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/emaar.png';  ?>" width="80">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/tata.webp';  ?>" width="80">
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-4 pad_client text-center">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/shiji.png';  ?>" width="110">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/gaur.png';  ?>" width="80">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/nexen.jpg';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/dlf.png';  ?>" width="80">
+				<div class="clients_det clint_sec">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/beeta.jpg';  ?>" width="120">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/gaur.png';  ?>" width="80">
+				<div class="clients_det kalinga_pad">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/kalinga.webp';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/dlf.png';  ?>" width="80">
+				<div class="clients_det" style="padding-top:5px;">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/elite.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/gaur.png';  ?>" width="80">
+				<div class="clients_det" style="padding-top:1px">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/sushi.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/dlf.png';  ?>" width="80">
+				<div class="clients_det" style="padding-top:5px;">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/virendra.png';  ?>" width="80">
 				</div>
 			</div>
-			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/gaur.png';  ?>" width="80">
-				</div>
-			</div>
+			
 			
 		</div>
 		

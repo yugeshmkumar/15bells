@@ -459,7 +459,10 @@ if(!isset($_SESSION))
 					</div> -->
                     <div class="col-md-12">
 
-                    <div class="col-md-4" id="sitevisitlocation">location</div>
+                    <div class="col-md-12">
+                    <p class="label_name no_pad">Location:</p>
+                    <p class="details_label" id="sitevisitlocation">    </p>
+                    </div>
                     <!-- <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
                     <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div> -->
                     </div>
@@ -472,21 +475,21 @@ if(!isset($_SESSION))
 						</div>
                         <div class="col-md-6">
                         <div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4 no_pad">
 							
-                         <button type="button" class="scheduletime" id="morning">Morning</button>
-							
-							
-						</div>
-                        <div class="col-md-2">
-							
-                            <button type="button" class="scheduletime" id="afternoon">Afternoon</button>
+                         <button type="button" class="scheduletime time_sv button_select" id="morning">Morning</button>
 							
 							
 						</div>
-                        <div class="col-md-2">
+                        <div class="col-md-4 no_pad">
 							
-                            <button type="button" class="scheduletime" id="evening">Evening</button>
+                            <button type="button" class="scheduletime time_sv button_select" id="afternoon">Afternoon</button>
+							
+							
+						</div>
+                        <div class="col-md-4 no_pad">
+							
+                            <button type="button" class="scheduletime time_sv button_select" id="evening">Evening</button>
 							
 							
 						</div>
@@ -899,7 +902,11 @@ $('.square').click(function(){
 var squareclick = this.id;
 $('#propsquares').val(squareclick);
 });
-
+$('.time_sv').click(function(e) {
+       $('.time_sv.active_butn').removeClass('active_butn');
+       $(this).addClass('active_butn');
+       e.preventDefault();
+   });
 
 $('.area_minimum li').on('click', function() {
 var getValue = $(this).text();

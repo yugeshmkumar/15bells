@@ -548,6 +548,9 @@ div.mm-dropdown ul li img {
 	background:#ffffff;
 	padding:50px 0;
 }
+.client_pad{
+	padding:20px 0;
+}
 .step_count{
 	font-size:24px;
 	color:#221d36;
@@ -823,12 +826,17 @@ div.mm-dropdown ul li img {
 	padding:0;
 }
 .clients_det{
-	    padding: 25px 0;
     box-shadow: -1px 1px 0px 0px #f7f0f0;
     height: 90px;
     margin: 0 auto;
 	width:99%;
 	 transition:.4s;
+}
+.clint_sec{
+	padding-top:16px;
+}
+.kalinga_pad{
+	padding-top:10px;
 }
 .pad_client:hover .clients_det{
 	    transition:.4s;
@@ -3256,7 +3264,8 @@ input.invalid {
 	color:#ffffff !important;
 	background:#c4984f !important;
 	transition:.4s;
-	outline:none;
+	outline:none !important;
+	box-shadow:none !important;
 }
 .more_steps{
 float:left;
@@ -3478,7 +3487,7 @@ float:left;
 	background-color: #ffffff;
 	color: #c4984f;
 	cursor: pointer;
-	font-size: 24px;
+	font-size: 22px;
 	padding: 10px;
 	margin:15px 0;
 	font-weight:500;
