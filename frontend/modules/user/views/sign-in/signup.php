@@ -57,10 +57,7 @@ use yii\widgets\Pjax;
 					  <div id="home" class="tab-pane fade in active">
 					
 						<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-						        <?=
-								$form->field($model1, 'checkotp')->hiddenInput()->label(false);
-
-								?>
+						       
 								 <?=
 								$form->field($model1, 'checkfield')->hiddenInput()->label(false);
 
@@ -75,6 +72,7 @@ use yii\widgets\Pjax;
 							
 							<button type="button" id="passwordit" class="otp_button">Signin by Password</button><span class="choose_login">OR</span>
 							<button type="button" id="otpit" class="otp_button" style="float:right;">Signin by OTP</button>
+							<button type="button" id="resendotp" class="otp_button" style="float:right;">Resend OTP</button>
 
 
 							<div class="form-group" id="hideotp">
@@ -82,6 +80,10 @@ use yii\widgets\Pjax;
 								<?php echo $form->field($model1, 'userOTP')->textInput(['class' => 'form-control input_desgn','placeholder'=>'OTP'])->label(false) ?>
 							 
 							</div>
+							<?=
+								$form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
+
+								?>
 
 							<div class="form-group" id="hidepassword">
 							  <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
@@ -293,6 +295,7 @@ if(first == 'menu1'){
 
 $('#hideotp').hide();
    $('#hidepassword').hide();
+   $('#resendotp').hide();
 
 
  document.onkeydown = function(e) {
@@ -368,12 +371,114 @@ showTab(currentTab); // Display the current tab
  });
 
 
+ $('#loginform-userotp').blur(function(){
+
+	var identity = $('#loginform-identity').val();
+	var newotp = $('#loginform-userotp').val();
+	var checkotp =  $('#loginform-checkotp').val()
+
+	 var phoneno = /^\d{10}$/;
+		   if(identity.match(phoneno))
+	{
+        var type = 'phone';
+	}else{
+
+		var type = 'email';
+	}
+
+	$.ajax({
+							 type: "POST",
+							 url: 'rverifyotp',
+							 data: {phone : identity,newotp:newotp,type:type},
+							 success: function (data) {
+
+								 if(type == 'email'){
+
+                                    if(checkotp == newotp){
+
+										$('#loginform-checkotp').val('success');
+
+									}else{
+										alert('Please click on resend OTP');
+										$('#loginform-checkotp').val('error');
+									}
+
+										
+								 }else{
+
+									$('#loginform-checkotp').val(data);	
+
+								 }
+
+													
+								      
+							 },
+					 });
+	
+
+ });
+
+
+
+ $('#resendotp').click(function(e){
+		
+		
+	var identity = $('#loginform-identity').val();
+
+		e.preventDefault();
+		e.stopImmediatePropagation(); 
+		var newotp =  generateOTP();
+   
+		 
+	   
+		   var phoneno = /^\d{10}$/;
+		   if(identity.match(phoneno))
+	{	 
+   
+		   $.ajax({
+								type: "POST",
+								url: 'resendotp',
+								data: {phone : identity},
+								success: function (data) {
+									  
+								},
+						});
+						return false;
+   
+				}
+   
+			   else if (isValidEmailAddress(identity)) {
+		   
+				$.ajax({
+				   type: "POST",
+				   url: 'sendemail',
+				   data: {emailid : identity,newotp:newotp},
+				   success: function (data) {
+					   
+					$('#loginform-checkotp').val(newotp);
+						 
+				   },
+			   });
+   
+			   return false;
+	   }		 
+				else
+				{
+					alert('Not a valid Input');
+					   
+				}
+   
+				return false;   
+	
+   });
+
+
     $('#otpit').click(function(e){
+
+
 
 		$('#loginform-checkfield').val('otp');
 
-   $('#hideotp').show();
-   $('#hidepassword').hide();
 
 	 e.preventDefault();
 	 e.stopImmediatePropagation(); 
@@ -384,16 +489,15 @@ showTab(currentTab); // Display the current tab
 		var phoneno = /^\d{10}$/;
 		if(identity.match(phoneno))
  {	 
+	    $('#otpit').hide();
+		$('#resendotp').show();
 
 		$.ajax({
 							 type: "POST",
 							 url: 'rgetotp',
 							 data: {phone : identity,newotp:newotp},
 							 success: function (data) {
-								 //  alert(data); 						
-								 $('#loginform-checkotp').val(newotp);
-									 
-									// $('#otpit').hide();        
+								       
 							 },
 					 });
 					 return;
@@ -401,10 +505,13 @@ showTab(currentTab); // Display the current tab
 			 }
 
 			else if (isValidEmailAddress(identity)) {
+
+				$('#otpit').hide();
+		        $('#resendotp').show();
         
 			 $.ajax({
                 type: "POST",
-                url: 'sendemail',
+				url: 'sendemail',
                 data: {emailid : identity,newotp:newotp},
                 success: function (data) {
                     
@@ -428,6 +535,10 @@ showTab(currentTab); // Display the current tab
 			
  
 });
+
+
+
+ 
 
 
 
@@ -524,7 +635,7 @@ var newotp =  generateOTP();
 
 	 $.ajax({
                 type: "POST",
-                url: 'rgetotp',
+                url: "<?= Yii::getAlias('@frontendUrl').'/user/sign-in/rgetotp';  ?>",
                 data: {phone : mobile,newotp:newotp},
                 success: function (data) {
                     
@@ -556,7 +667,7 @@ var newotp =  generateOTP();
 
 	 $.ajax({
                 type: "POST",
-                url: 'sendemail',
+                url: "<?= Yii::getAlias('@frontendUrl').'/user/sign-in/sendemail';  ?>",
                 data: {emailid : emailid,newotp:newotp},
                 success: function (data) {
                     
