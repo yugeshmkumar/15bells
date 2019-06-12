@@ -337,7 +337,9 @@ class SignInController extends \yii\web\Controller
             } else {
           
             $jsonObj =  json_decode($response);
-            $firstName = $jsonObj->type; 
+            $firstName = $jsonObj->type;
+            $message = $jsonObj->message;  
+   
             
             return $firstName;
             }
