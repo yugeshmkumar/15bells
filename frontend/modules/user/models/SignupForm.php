@@ -219,10 +219,10 @@ return true;
             $checkLoginAsConfig = $this->checkloginas($companytype);
            
 			
-			// if($checkLoginAsConfig->login_to == "company"){
-			// 	 \common\models\activemode::insertmyfirstcompanydetails($this->companyname,$this->companytype,$user->id);
-			// 	 $user->aftercompanySignup();
-			// 	 }else {
+			if($checkLoginAsConfig->login_to == "company"){
+				 \common\models\activemode::insertmyfirstcompanydetails($companytype,$user->id);
+				 $user->aftercompanySignup();
+				 }else {
         $getloginasid = \common\models\activemode::get_my_login_as_id($companytype);
 	$UserLoginAs = new \common\models\UserLoginAs();
 	$UserLoginAs->user_id = $user->id;
@@ -230,7 +230,7 @@ return true;
 	$UserLoginAs->loginasID=$getloginasid;
 	$UserLoginAs->save();
             $user->afterSignup();
-        // }
+        }
             return $user;
         }
         $errors = $this->errors;
