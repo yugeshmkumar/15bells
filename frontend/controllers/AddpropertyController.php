@@ -1252,7 +1252,8 @@ foreach($payment2 as $payments2){
             
             $getfilename=$modelreq['featured_image'];
             $documentroot = $_SERVER['DOCUMENT_ROOT'];
-			$getarchieveurl=$documentroot.'/archive/web';
+            $getarchieveurl=$documentroot.'/archive/web';
+            
 	if($getmodel){
 
 
@@ -1334,12 +1335,17 @@ if (isset($_FILES['Addproperty']['name']['featured_image'])) {
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
                     $new = $filename . $sendingitemContentMod . '.' . $extension;
 
+                    $filenameimage = basename($_FILES['Addproperty']['name']['featured_image'][0]);
+                    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                    $newimage = $filenameimage . $sendingitemContentMod . '.' . $extension;
+
                     $root = $_SERVER['DOCUMENT_ROOT'];
 
 
                     if (move_uploaded_file($_FILES['Addproperty']['tmp_name']['featured_image'][$i], "{$root}/archive/web/propertydefaultimg/{$new}")) {
 
-
+                        $getmodel->featured_image = $newimage;
+                        $getmodel->save(false);
                         //  copy("uploads/{$new}","{$root}/15bells/archive/web/uploadsthumbnails/{$new}");
                         $mediafiles = new \common\models\MediaFiles();
                         $mediafiles->type = $extension;
