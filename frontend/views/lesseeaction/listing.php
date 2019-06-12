@@ -488,6 +488,8 @@ if(!isset($_SESSION))
 
 
 							<button type="button" id="otpit" class="otp_button">Get one time password (OTP)</button>
+                            <button type="button" id="resendotp" class="otp_button">Resend OTP</button>
+
 
 							<p class="text-center">
 							<!-- <button class="btn btn-default btn_signin" data-dismiss="modal">
@@ -545,7 +547,7 @@ if(!isset($_SESSION))
                     
                     ?>
                             <?=
-                            $form->field($model1, 'checkotp')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
                             ?>
                              <?=
@@ -562,6 +564,7 @@ if(!isset($_SESSION))
                         
                         <button type="button" id="passwordit" class="otp_button">Login via Password</button><span class="login_popup">OR</span>
                         <button type="button" id="otpits" class="otp_button">Login via OTP</button>
+                        <button type="button" id="resendotps" class="otp_button">Resend OTP</button>
 
 
                         <div class="form-group" id="hideotp">
@@ -631,6 +634,8 @@ $script = <<< JS
 $('#hideotp').hide();
 $('#otphide').hide();
 $('#hidepassword').hide();
+$('#resendotp').hide();
+$('#resendotps').hide();
 
 $('#passwordit').click(function(){
 
@@ -782,12 +787,10 @@ $('form#{$model1->formName()}').on('beforeSubmit', function(e) {
 
 
 
-     $('#otpits').click(function(e){
+      $('#otpits').click(function(e){
 
 $('#loginform-checkfield').val('otp');
 
-$('#hideotp').show();
-$('#hidepassword').hide();
 
 e.preventDefault();
 e.stopImmediatePropagation(); 
@@ -798,6 +801,13 @@ var identity = $('#loginform-identity').val();
 var phoneno = /^\d{10}$/;
 if(identity.match(phoneno))
 {	 
+$('#otphide').show();
+$('#hideotp').show();
+$('#hidepassword').val('');
+$('#hidepassword').hide();
+$('#otpits').hide();
+$('#resendotps').show();
+
 
 $.ajax({
                      type: "POST",
@@ -805,7 +815,7 @@ $.ajax({
                      data: {phone : identity,newotp:newotp},
                      success: function (data) {
                          //  alert(data); 						
-                         $('#loginform-checkotp').val(newotp);
+                         //$('#loginform-checkotp').val(newotp);
                              
                             // $('#otpit').hide();        
                      },
@@ -815,6 +825,7 @@ $.ajax({
      }
 
     else if (isValidEmailAddress(identity)) {
+        $('#otphide').show();
 
      $.ajax({
         type: "POST",
@@ -826,7 +837,7 @@ $.ajax({
            // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
 
                             
-             $('#loginform-checkotp').val(newotp);
+            // $('#loginform-checkotp').val(newotp);
               
         },
     });
@@ -842,6 +853,96 @@ $.ajax({
     
 
 });
+
+
+$('#loginform-userotp').blur(function(){
+
+var identity = $('#loginform-identity').val();
+var newotp = $('#loginform-userotp').val();
+var checkotp =  $('#loginform-checkotp').val()
+
+ var phoneno = /^\d{10}$/;
+       if(identity.match(phoneno))
+{
+    var type = 'phone';
+}else{
+
+    var type = 'email';
+}
+
+$.ajax({
+                         type: "POST",
+                         url: '/user/sign-in/rverifyotp',
+                         data: {phone : identity,newotp:newotp,type:type},
+                         success: function (data) {
+
+                             if(type == 'email'){
+
+                                if(checkotp == newotp){
+
+                                    $('#loginform-checkotp').val('success');
+
+                                }else{
+                                    alert('Please click on resend OTP');
+                                    $('#loginform-checkotp').val('error');
+                                }
+
+                                    
+                             }else{
+
+                                $('#loginform-checkotp').val(data);	
+
+                             }
+
+                                                
+                                  
+                         },
+                 });
+
+
+});
+
+
+$('#resendotps').click(function(e){
+        
+   
+        e.preventDefault();
+        e.stopImmediatePropagation(); 
+        var newotp =  generateOTP();
+     
+         var identity = $('#loginform-identity').val();
+       
+           var phoneno = /^\d{10}$/;
+           if(identity.match(phoneno))
+     {	 
+         
+         $('#otphide').show();
+     
+           $.ajax({
+                                type: "POST",
+                                url: '/user/sign-in/resendotp',
+                                data: {phone : identity},
+                                success: function (data) {
+                                   				
+                                   
+                                        
+                                       // $('#otpit').hide();        
+                                },
+                        });
+                        return;
+     
+                }
+     
+     	 
+                else
+                {
+                    alert('Not a valid Input');
+                       
+                }
+     
+               
+     
+     });
 
 
 JS;
@@ -874,80 +975,117 @@ function generateOTP() {
    $(document).ready(function () {
 
 	
-	 $('#otpit').click(function(e){
-
+    $('#otpit').click(function(e){
         
-        
-         
-   e.preventDefault();
-   e.stopImmediatePropagation(); 
-   var newotp =  generateOTP();
-
-	var identity = $('#signupform-username').val();
-  
-	  var phoneno = /^\d{10}$/;
-	  if(identity.match(phoneno))
-{
-
-    $('#otphide').show();
-
-
+   
+        e.preventDefault();
+        e.stopImmediatePropagation(); 
+        var newotp =  generateOTP();
      
-
-	  $.ajax({
-						   type: "POST",
-						   url: '/user/sign-in/rgetotp',
-						   data: {phone : identity,newotp:newotp},
-						   success: function (data) {
-							   //  alert(data); 
-                               if(data == identity){
-
-                                $('#signupform-checkotp').val(newotp);
-                                $('#signupform-mobile').val(identity);
-
-                               }else{
-                                $('#signupform-checkotp').val('xxxx');
-                               }						
-							  
-								   
-								  // $('#otpit').hide();        
-						   },
-				   });
-				   return;
-
-		   }
-
-		  else if (isValidEmailAddress(identity)) {
-
+         var identity = $('#signupform-username').val();
+       
+           var phoneno = /^\d{10}$/;
+           if(identity.match(phoneno))
+     {	 
+         $('#resendotp').show();
+         $('#otpit').hide();
+         $('#otphide').show();
+     
+           $.ajax({
+                                type: "POST",
+                                url: '/user/sign-in/rgetotp',
+                                data: {phone : identity,newotp:newotp},
+                                success: function (data) {
+                                    //  alert(data); 
+                                    if(data == identity){
+     
+                                     $('#signupform-checkotp').val(newotp);
+                                     $('#signupform-mobile').val(identity);
+     
+                                    }else{
+                                     $('#signupform-checkotp').val('xxxx');
+                                    }						
+                                   
+                                        
+                                       // $('#otpit').hide();        
+                                },
+                        });
+                        return;
+     
+                }
+     
+     // 		  else if (isValidEmailAddress(identity)) {
+           
+     //             $('#otphide').show();
+     // 		   $.ajax({
+     // 			  type: "POST",
+     // 			  url: 'sendemail',
+     // 			  data: {emailid : identity,newotp:newotp},
+     // 			  success: function (data) {
+                       
+     // 				 // toastr.success('OTP has been Send to your Mobile Number','success');
+     // 				 // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
+     
+                                       
+     // 				   $('#signupform-checkotp').val(newotp);
+                         
+     // 			  },
+     // 		  });
+     
+     // 					  return;
+     //   }		 
+                else
+                {
+                    alert('Not a valid Input');
+                       
+                }
+     
+               
+     
+     });
+     
+     
+     
+      $('#resendotp').click(function(e){
+             
+        
+             e.preventDefault();
+             e.stopImmediatePropagation(); 
+             var newotp =  generateOTP();
+          
+              var identity = $('#signupform-username').val();
+            
+                var phoneno = /^\d{10}$/;
+                if(identity.match(phoneno))
+          {	 
+              
               $('#otphide').show();
-
-	  
-		   $.ajax({
-			  type: "POST",
-			  url: 'sendemail',
-			  data: {emailid : identity,newotp:newotp},
-			  success: function (data) {
-				  
-				 // toastr.success('OTP has been Send to your Mobile Number','success');
-				 // $.pjax.reload({container: '#pjax-grid-view', async:false}); 
-
-								  
-				   $('#signupform-checkotp').val(newotp);
-					
-			  },
-		  });
-
-					  return;
-  }		 
-		   else
-		   {
-			   alert('Not a valid Input');
-				  
-		   }
-
-		  
-
-});
+          
+                $.ajax({
+                                     type: "POST",
+                                     url: '/user/sign-in/resendotp',
+                                     data: {phone : identity},
+                                     success: function (data) {
+                                                        
+                                        
+                                             
+                                            // $('#otpit').hide();        
+                                     },
+                             });
+                             return;
+          
+                     }
+          
+               
+                     else
+                     {
+                         alert('Not a valid Input');
+                            
+                     }
+          
+                    
+          
+          });
 
 });
 

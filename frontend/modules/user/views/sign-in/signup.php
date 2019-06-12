@@ -490,7 +490,9 @@ showTab(currentTab); // Display the current tab
 		if(identity.match(phoneno))
  {	 
 	    $('#otpit').hide();
+		$('#hideotp').show();
 		$('#resendotp').show();
+		$('#hidepassword').hide();
 
 		$.ajax({
 							 type: "POST",
@@ -507,7 +509,9 @@ showTab(currentTab); // Display the current tab
 			else if (isValidEmailAddress(identity)) {
 
 				$('#otpit').hide();
+				$('#hideotp').show();
 		        $('#resendotp').show();
+				$('#hidepassword').hide();
         
 			 $.ajax({
                 type: "POST",
