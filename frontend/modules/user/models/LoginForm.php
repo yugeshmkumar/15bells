@@ -43,6 +43,20 @@ class LoginForm extends Model
                }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
 
 
+               [['password'] ,'required','when'=>function($model){
+                return $model->userOTP == '' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-userotp').val() == '';
+               }" ,'message' => Yii::t('frontend', 'Please enter Your Password')],
+
+               
+               [['userOTP'] ,'required','when'=>function($model){
+                return $model->password == '' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-password').val() == '';
+               }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
+
+
 
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
