@@ -53,8 +53,10 @@ $company = \common\models\Company::find()->where(['userid' => Yii::$app->user->i
                
 						<ul class="add_property nav nav-pills">
 						<li class="active property_steps no_pad"><a data-toggle="pill" href="#home" class="categ_selec">Personal Details</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#company" class="categ_selec">Company Details</a></li>
-						<li class="property_steps no_pad"><a data-toggle="pill" href="#password_change" class="categ_selec">Password</a></li>
+            <?php 	if ($company) { ?>
+          	<li class="property_steps no_pad"><a data-toggle="pill" href="#company" class="categ_selec">Company Details</a></li>
+						<?php } ?>
+            <li class="property_steps no_pad"><a data-toggle="pill" href="#password_change" class="categ_selec">Password</a></li>
 						
 					</ul>
                    
