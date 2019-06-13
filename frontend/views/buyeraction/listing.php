@@ -594,7 +594,7 @@ if(!isset($_SESSION))
                     
                     ?>
                             <?=
-                            $form->field($model1, 'checkotp')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
                             ?>
                              <?=

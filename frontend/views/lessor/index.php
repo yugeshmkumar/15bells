@@ -696,7 +696,7 @@ $user_id= Yii::$app->user->identity->id;
                     
                     ?>
                             <?=
-                            $form->field($model1, 'checkotp')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
                             ?>
                              <?=

@@ -81,7 +81,7 @@ use yii\widgets\Pjax;
 							 
 							</div>
 							<?=
-								$form->field($model1, 'checkotp')->hiddenInput()->label(false);
+								$form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
 								?>
 
