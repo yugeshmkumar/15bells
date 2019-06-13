@@ -176,10 +176,12 @@ public static function get_my_login_as_id($companytype){
 	$myquery = \common\models\LoginAsConfig::find()->where(['name'=>$companytype])->one();
 	return $myquery->id;
 }
-public static function insertmyfirstcompanydetails($companyname,$companytype,$userid)
+public static function insertmyfirstcompanydetails($companytype,$userid)
 {
+
+	
 	$company = new \common\models\Company();
-	$company->name=$companyname;
+	
     $company->userid=$userid;
     $company->company_type=$companytype;
 	$company->save();
