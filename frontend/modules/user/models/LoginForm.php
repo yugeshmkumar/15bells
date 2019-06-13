@@ -43,6 +43,20 @@ class LoginForm extends Model
                }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
 
 
+               [['password'] ,'required','when'=>function($model){
+                return $model->userOTP == '' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-userotp').val() == '';
+               }" ,'message' => Yii::t('frontend', 'Please enter Your Password')],
+
+               
+               [['userOTP'] ,'required','when'=>function($model){
+                return $model->password == '' ;
+             }, 'whenClient' => "function (attribute, value) {
+              return $('#loginform-password').val() == '';
+               }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
+
+
 
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
@@ -50,14 +64,14 @@ class LoginForm extends Model
             ['identity', 'validateIdentity'],
             ['password', 'validatePassword'],
 
-            [['userOTP','checkfield','checkotp'], 'validateOtp'],
+         //   [['userOTP','checkfield','checkotp'], 'validateOtp'],
 
-            // ['userOTP', 'compare', 'compareValue' => 'checkotp', 'operator' => '<>','type' => 'number', 'when' => function($data,$model) {
-            //     return  $model->userOTP != $model->checkotp;
-            // }, 'whenClient' => "function (attribute, value) {
-            //     return $('#loginform-userotp').val() != $('#loginform-checkotp').val();
-            // }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
-            // ],
+            ['checkotp', 'compare', 'compareValue' => 'error', 'operator' => '=', 'when' => function($data,$model) {
+                return  $model->checkotp == 'error';
+            }, 'whenClient' => "function (attribute, value) {
+                return $('#loginform-checkotp').val() == 'error';
+            }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
+            ],
         ];
     }
 
@@ -79,7 +93,7 @@ class LoginForm extends Model
     public function validateOtp($attribute, $params, $validator)
     {
         if($this->checkfield == 'otp'){
-        if ($this->userOTP <> $this->checkotp) {
+        if ($this->checkotp == 'error') {
             $this->addError('userOTP', 'OTP is incorrect.');
         }
       }

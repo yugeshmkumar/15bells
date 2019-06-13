@@ -18,6 +18,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use common\models\Company;
+use yii\helpers\Url;
 
 
 class SignInController extends \yii\web\Controller
@@ -41,7 +42,7 @@ class SignInController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','ajaxsignup','sellerlogin','fitelogins','sendemail','rgetotp','rverifyotp', 'reset-password', 'oauth','confirmation','search'],
+                        'actions' => ['signup', 'login', 'request-password-reset','otp','sellersignup','ajaxsignup','sellerlogin','fitelogins','sendemail','rgetotp','rverifyotp','resendotp', 'reset-password', 'oauth','confirmation','search'],
                         'allow' => true,
                         'roles' => ['?']
                     ],
@@ -54,7 +55,7 @@ class SignInController extends \yii\web\Controller
                         }
                     ],
                     [
-                        'actions' => ['logout','fitelogins','rgetotp','signup','sellersignup','ajaxsignup','sellerlogin','sendemail'],
+                        'actions' => ['logout','fitelogins','rverifyotp','resendotp','rgetotp','signup','sellersignup','ajaxsignup','sellerlogin','sendemail'],
                         'allow' => true,
                         'roles' => ['@'],
                     ]
@@ -298,6 +299,63 @@ class SignInController extends \yii\web\Controller
     }
 
 
+    public function actionRverifyotp(){
+
+        $phonenum =  $_POST['phone'];
+        $activation =  $_POST['newotp'];
+        $type =  $_POST['type'];
+
+        $authKey = "222784ARHZNXuXI5b334809";
+
+        if($type == 'phone'){
+
+             $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://control.msg91.com/api/verifyRequestOTP.php?authkey=$authKey&mobile=$phonenum&otp=$activation",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+            echo "cURL Error #:" . $err;
+            } else {
+          
+            $jsonObj =  json_decode($response);
+            $firstName = $jsonObj->type;
+            $message = $jsonObj->message;  
+   
+            
+            return $firstName;
+            }
+
+        }else{
+
+
+           return 'email';
+
+
+
+        }
+
+    }
+
+
     
 
     public function actionRgetotp(){
@@ -370,39 +428,43 @@ if ($err) {
 
             $emailid =  $_POST['emailid'];
             $activation =  $_POST['newotp'];
-         
-            $html = '<html>
-            <body>
-        
-            <p>Hello! Thank you for creating an account with 15 Bells.
-             We have emailed a OTP to your registered address. 
-             This is your One time OTP  '.$activation.' .
-             
-            </p><br>
 
-            <p>Regards,<br/>
-            Team 15bells.</p>
-            </body>
-            </html>';
+            $authKey = "222784ARHZNXuXI5b334809";
+            $curl = curl_init();
 
-            $email = \Yii::$app->mailer->compose()
-            ->setTo($emailid)
-
-            ->setFrom(['info@15bells.com' => '15bells'])
-            ->setSubject('15bells Register mail ')
-            ->setHtmlBody($html)
-            ->send();   
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://control.msg91.com/api/sendmailotp.php?otp=$activation&authkey=$authKey&email=$emailid",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => "",
+              CURLOPT_SSL_VERIFYHOST => 0,
+              CURLOPT_SSL_VERIFYPEER => 0,
+            ));
             
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
+            if ($err) {
+              echo "cURL Error #:" . $err;
+            } else {
+              echo $response;
+            }
             
        
 
     }
 
 
-    public function actionRverifyotp(){
+    public function actionResendotp(){
 
         $phonenum =  $_POST['phone'];
-        $activation= $_SESSION['otp'];
+        
 
           //Your authentication key
           $authKey = "222784ARHZNXuXI5b334809";
@@ -451,12 +513,7 @@ if ($err) {
   $jsonObj =  json_decode($response);
   $firstName = $jsonObj->type;  
   
-  if($firstName == 'success'){
-
-    $_SESSION['otp']= $activation;
-
-  }
-  echo $activation;
+  return $response;
   
 }
            
@@ -789,8 +846,22 @@ if ($err) {
         if ($model1->load(Yii::$app->request->post()) && $model1->login('1234')) {
 
            
-            
-            return $this->checkrolel();
+            $urlsd =   Yii::getAlias('@frontendUrl');           
+
+             $url = Url::previous();
+
+             if($urlsd == $url){
+
+                return $this->checkrolel();
+
+             }else{
+
+               return $this->goBack((!empty(Yii::$app->request->referrer) ? Yii::$app->request->referrer : null));
+
+
+             }
+
+
         } 
 
        else if ($model->load(Yii::$app->request->post())) {
