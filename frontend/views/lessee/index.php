@@ -282,28 +282,33 @@ use yii\bootstrap\Modal;
                   </div>
                </div>
 
-<div class="col-md-12">
+ <div class="col-md-12">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
-
-                
-              <div class="row ">
-              <div class="col-md-2">
-                      <select id="propsquare" class="form-control area_price">
-                      <option value="sq_ft">Sq. Feet</option>
-                      <option value="sq_yards">Sq. Yard</option>
-                      <option value="sq_meter">Sq. Meter</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                       <input type="text" class="form-control input_desgn input_number" placeholder="Minimum" id="proppriceminimum" name="proppriceminimum">
-                   </div>
-                   <div class="col-md-4 col-xs-6">
-                    <input type="text" class="form-control input_desgn input_number" placeholder="Maximum" id="proppricemaximum" name="proppricemaximum">
+							<div class="col-md-6 no_pad">
+                <div class="col-md-8 col-xs-6">
+                  <input type="text" class="form-control input_desgn input_number" placeholder="Minimum price" id="dummypriceminimum">
                  </div>
-                 
-                </div>
-            
-            </div>
+                <div class="col-md-4 col-xs-6">
+                    <select id="propminrupees" class="form-control area_price">
+                       <option value="lacs">Lacs</option>
+                       <option value="crores">Crores</option>
+                    </select>
+                 </div>
+                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+              </div>
+              <div class="col-md-6 col-xs-12 no_pad">
+                 <div class="col-md-8 col-xs-6">
+                    <input type="text" class="form-control input_desgn input_number" placeholder="Maximum price" id="dummypricemaximum">
+                 </div>
+                 <div class="col-md-4 col-xs-6">
+                    <select id="propmaxrupees" class="form-control area_price">
+                      <option value="lacs">Lacs</option>
+                     <option value="crores">Crores</option>
+                     </select>
+                   </div>
+                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+              </div>
+              </div>
 
 
 
