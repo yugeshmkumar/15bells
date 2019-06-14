@@ -64,7 +64,7 @@ class InvoiceController extends Controller
         $mpdf = new mPDF();
         $mpdf->WriteHTML($this->renderPartial('invoice', [
             'id' => $role,]));
-        $mpdf->Output('MyInvoice.pdf', 'D');
+            $mpdf->Output();
 
         // return $this->render('invoice', [
         //     'id' => $role,
