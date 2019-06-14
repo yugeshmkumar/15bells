@@ -58,6 +58,6 @@ use yii\widgets\DetailView;
 		</div>
 	</div>
 	<div style="width:100%;float:left;padding-top:50px;font-family: 'Nunito Sans', sans-serif;">
-	<p class="detail_p" style="color:#221d36;font-size:18px;">Authorised Signatory</p>
+		<p class="detail_p" style="color:#221d36;font-size:18px;">Authorised Signatory</p>
     </div>
 </div>
