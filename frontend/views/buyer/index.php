@@ -287,8 +287,8 @@ use yii\bootstrap\Modal;
                
 									<div class="row">
                     
-  </div>
-<div class="col-md-12 no_pad">
+         </div>
+         <div class="col-md-12 no_pad">
 								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
 							<div class="col-md-6 no_pad">
                 <div class="col-md-8 col-xs-6">
