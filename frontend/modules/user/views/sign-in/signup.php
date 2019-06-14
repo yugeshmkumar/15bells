@@ -371,52 +371,7 @@ showTab(currentTab); // Display the current tab
  });
 
 
- $('#loginform-userotp').blur(function(){
 
-	var identity = $('#loginform-identity').val();
-	var newotp = $('#loginform-userotp').val();
-	var checkotp =  $('#loginform-checkotp').val()
-
-	 var phoneno = /^\d{10}$/;
-		   if(identity.match(phoneno))
-	{
-        var type = 'phone';
-	}else{
-
-		var type = 'email';
-	}
-
-	$.ajax({
-							 type: "POST",
-							 url: 'rverifyotp',
-							 data: {phone : identity,newotp:newotp,type:type},
-							 success: function (data) {
-
-								 if(type == 'email'){
-
-                                    if(checkotp == newotp){
-
-										$('#loginform-checkotp').val('success');
-
-									}else{
-										alert('Please click on resend OTP');
-										$('#loginform-checkotp').val('error');
-									}
-
-										
-								 }else{
-
-									$('#loginform-checkotp').val(data);	
-
-								 }
-
-													
-								      
-							 },
-					 });
-	
-
- });
 
 
 
@@ -541,7 +496,52 @@ showTab(currentTab); // Display the current tab
 });
 
 
+ $('#loginform-userotp').blur(function(){
 
+var identity = $('#loginform-identity').val();
+var newotp = $('#loginform-userotp').val();
+var checkotp =  $('#loginform-checkotp').val()
+
+ var phoneno = /^\d{10}$/;
+	   if(identity.match(phoneno))
+{
+	var type = 'phone';
+}else{
+
+	var type = 'email';
+}
+
+$.ajax({
+						 type: "POST",
+						 url: 'rverifyotp',
+						 data: {phone : identity,newotp:newotp,type:type},
+						 success: function (data) {
+
+							 if(type == 'email'){
+
+								if(checkotp == newotp){
+
+									$('#loginform-checkotp').val('success');
+
+								}else{
+									//alert('Please click on resend OTP');
+									$('#loginform-checkotp').val('error');
+								}
+
+									
+							 }else{
+
+								$('#loginform-checkotp').val(data);	
+
+							 }
+
+												
+								  
+						 },
+				 });
+
+
+});
  
 
 
