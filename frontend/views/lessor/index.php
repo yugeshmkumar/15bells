@@ -8,7 +8,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 $user_id= Yii::$app->user->identity->id;
 
 ?>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&libraries=places,geometry"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&libraries=places,geometry"></script>
 <style>
     .navbar-me{
         background:#221d36 !important;
@@ -1138,7 +1138,7 @@ $.ajax({
                                     $('#loginform-checkotp').val('success');
 
                                 }else{
-                                    alert('Please click on resend OTP');
+                                    
                                     $('#loginform-checkotp').val('error');
                                 }
 
