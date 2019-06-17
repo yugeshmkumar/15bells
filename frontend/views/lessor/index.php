@@ -82,7 +82,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 								<div class="col-md-2 col-xs-6">
 									<img id="ghaziabad" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/ghaziabad.svg';  ?>" class="property_image1">
-									<p class="property_name">Gaziabad</p>
+									<p class="property_name">Ghaziabad</p>
 								</div>
 								<div class="col-md-1"></div>
 							</div>
