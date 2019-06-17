@@ -929,7 +929,7 @@ $.ajax({
                                     $('#loginform-checkotp').val('success');
 
                                 }else{
-                                    alert('Please click on resend OTP');
+                                    
                                     $('#loginform-checkotp').val('error');
                                 }
 
