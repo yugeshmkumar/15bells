@@ -89,7 +89,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'buildup_area', 'carpet_area', 'total_no_of_floors', 'passenger_lift', 'service_lift', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'covered_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
+            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'passenger_lift', 'service_lift', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'covered_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
             [['locality', 'address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'property_status', 'followup_comment','property_scomment'], 'string'],
             [['longitude', 'latitude'], 'number'],
             //[['total_no_of_floors'], 'required'],
@@ -98,7 +98,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['builder_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'property_tax_id'], 'string', 'max' => 50],
             [['landline_no', 'email_id'], 'string', 'max' => 30],
-            [['buildup_unit', 'carpet_unit'], 'string', 'max' => 15],
+            [['super_unit', 'carpet_unit'], 'string', 'max' => 15],
             [['owner_address'], 'string', 'max' => 100],
         ];
     }
@@ -130,8 +130,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'property_on_floor' => 'Property On Floor',
             'unit_block' => 'Unit Block',
             'unit_number' => 'Unit Number',
-            'buildup_area' => 'Buildup Area',
-            'buildup_unit' => 'Buildup Unit',
+            'super_area' => 'Super Area',
+            'super_unit' => 'Super Unit',
             'carpet_area' => 'Carpet Area',
             'carpet_unit' => 'Carpet Unit',
             'owner_address' => 'Owner Address',
