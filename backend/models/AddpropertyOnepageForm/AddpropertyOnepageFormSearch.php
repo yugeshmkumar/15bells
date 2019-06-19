@@ -132,7 +132,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
          $user_id = Yii::$app->user->identity->id;
          $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
          $assigned_id = $querys->id;
-        $query = AddpropertyOnepageForm::find()->Where(['company_employee_id'=>$assigned_id])->groupBy(['primary_contact_no']);
+        $query = AddpropertyOnepageForm::find()->Where(['company_employee_id'=>$assigned_id])->andwhere(['isactive'=>1])->groupBy(['primary_contact_no']);
 
        // echo '<pre>';print_r($query);die;
 

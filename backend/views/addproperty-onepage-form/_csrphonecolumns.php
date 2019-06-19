@@ -12,6 +12,64 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
+
+
+    [
+        'label' => 'Percentage',
+        'attribute' => 'completion_in_percentage',
+        'filter' => false,
+        'options' => ['style' => 'width:90px;'],
+        'format' => 'raw',
+        'value' => function($model) {
+
+            return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >'.$model->completion_in_percentage.' %</button>', $url = 'javascript:void(0)', []);
+
+          }
+    ],
+
+
+
+    [
+        'class' => 'yii\grid\ActionColumn',
+        'template' => '{complete}',
+        
+        'options' => ['style' => 'width:100px;'],
+        'buttons' => [
+            'complete' => function ($url) {
+
+                return Html::a('<button class="btn btn-info recall_popup" style="border-color:#0fd8da !important;border:1px solid;"  >Send</button>', $url,[
+                    'title' => 'Complete',
+                    'data-pjax' => '0',
+                ]);
+
+                // return Html::a(
+                //     '<button  class="btn btn-success recall_popup" aria-hidden="true"></span>',
+                //     $url, 
+                //     [
+                //         'title' => 'Complete',
+                //         'data-pjax' => '0',
+                //     ]
+                // );
+            },
+        ],
+    ],
+    [
+        'class' => 'kartik\grid\ActionColumn',
+        'dropdown' => false,
+        'vAlign'=>'middle',
+        'options' => ['style' => 'width:100px;'],
+        'urlCreator' => function($action, $model, $key, $index) { 
+                return Url::to([$action,'id'=>$key]);
+        },
+        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
+        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
+        'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
+                          'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                          'data-request-method'=>'post',
+                          'data-toggle'=>'tooltip',
+                          'data-confirm-title'=>'Are you sure?',
+                          'data-confirm-message'=>'Are you sure want to delete this item'], 
+    ],
         // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'id',
@@ -100,7 +158,9 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'primary_contact_no',
+        'width' => '150px',
     ],
+    
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'secondary_contact_no',
@@ -266,18 +326,8 @@ return [
     //     'attribute'=>'completion_in_percentage',
     // ],
 
-    [
-        'label' => 'Percentage',
-        'attribute' => 'completion_in_percentage',
-        'filter' => false,
-        'options' => ['style' => 'width:90px;'],
-        'format' => 'raw',
-        'value' => function($model) {
+    
 
-            return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >'.$model->completion_in_percentage.' %</button>', $url = 'javascript:void(0)', []);
-
-          }
-    ],
 
     [
         'label' => 'Followup',
@@ -319,33 +369,34 @@ return [
         'options' => ['style' => 'width:100px;'],
         'format' => 'raw',
         'value' => function($model) {
+            $wrongid = $model->id;
 
-            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="wrong_lead()" >Wrong lead</button>', $url = 'javascript:void(0)', []);
-
-          }
-    ],
-
-    [
-        'label' => 'Site Visit',
-        'attribute' => 'id',
-        'filter' => false,
-        'options' => ['style' => 'width:100px;'],
-        'format' => 'raw',
-        'value' => function($model) {
-
-            if($model->site_visit == ''){
-
-                $visittype = 'pending';
-            }else{
-                $visittype = $model->site_visit;
-            }
-            $visitid = $model->id;
-            $site_visit = "'".$visittype."'";
-
-            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="site_visit('.$visitid.','.$site_visit.')" >'.$visittype .'</button>', $url = 'javascript:void(0)', []);
+            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="wrong_lead('.$wrongid.')" >Wrong lead</button>', $url = 'javascript:void(0)', []);
 
           }
     ],
+
+    // [
+    //     'label' => 'Site Visit',
+    //     'attribute' => 'id',
+    //     'filter' => false,
+    //     'options' => ['style' => 'width:100px;'],
+    //     'format' => 'raw',
+    //     'value' => function($model) {
+
+    //         if($model->site_visit == ''){
+
+    //             $visittype = 'pending';
+    //         }else{
+    //             $visittype = $model->site_visit;
+    //         }
+    //         $visitid = $model->id;
+    //         $site_visit = "'".$visittype."'";
+
+    //         return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="site_visit('.$visitid.','.$site_visit.')" >'.$visittype .'</button>', $url = 'javascript:void(0)', []);
+
+    //       }
+    // ],
 
     [
         'label' => 'Remarks',
@@ -381,23 +432,7 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'created_date',
     // ],
-    [
-        'class' => 'kartik\grid\ActionColumn',
-        'dropdown' => false,
-        'vAlign'=>'middle',
-        'urlCreator' => function($action, $model, $key, $index) { 
-                return Url::to([$action,'id'=>$key]);
-        },
-        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
-        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
-        'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
-                          'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
-                          'data-request-method'=>'post',
-                          'data-toggle'=>'tooltip',
-                          'data-confirm-title'=>'Are you sure?',
-                          'data-confirm-message'=>'Are you sure want to delete this item'], 
-    ],
-
+    
 ];   
 
 ?>

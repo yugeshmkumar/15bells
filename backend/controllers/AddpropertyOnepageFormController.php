@@ -12,6 +12,12 @@ use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
+use common\models\User;
+use common\models\Addproperty;
+use frontend\modules\user\models\LoginForm;
+use frontend\modules\user\models\PasswordResetRequestForm;
+use frontend\modules\user\models\ResetPasswordForm;
+use frontend\modules\user\models\SignupForm;
 
 /**
  * AddpropertyOnepageFormController implements the CRUD actions for AddpropertyOnepageForm model.
@@ -128,6 +134,28 @@ class AddpropertyOnepageFormController extends Controller
     }
 
 
+    public function actionWrongsave(){
+
+        $wrongid = $_POST['wrongid'];
+        $wrongcomment = $_POST['wrongcomment'];
+        $finduser = AddpropertyOnepageForm::find()->where(['id' => $wrongid])->one();
+
+        if ($finduser) {
+            
+           
+            $finduser->wrongcomment = $wrongcomment;
+            $finduser->save(false);
+
+            return 1;
+            
+        } else {
+            return 'Internal Error';
+        }
+
+    }
+
+
+
 
      public function actionSetvisittype(){
 
@@ -228,7 +256,7 @@ class AddpropertyOnepageFormController extends Controller
              // echo '<pre>';  print_r($hasil);die;
                     $counter++;              
                     $modelnew = new AddpropertyOnepageForm;
-                    if($counter != 1) {
+                    if($counter > 2) {
                     $foto0 = $hasil[0];
                     $foto1 = $hasil[1];
                     $foto2 = $hasil[2];
@@ -474,6 +502,7 @@ class AddpropertyOnepageFormController extends Controller
        
     }
 
+
     /**
      * Updates an existing AddpropertyOnepageForm model.
      * For ajax request will return json object
@@ -481,6 +510,126 @@ class AddpropertyOnepageFormController extends Controller
      * @param integer $id
      * @return mixed
      */
+
+     public function actionComplete($id){
+
+        $request = Yii::$app->request;
+        $model = $this->findModel($id); 
+        $modelajax = new SignupForm(); 
+        $modeladd = new Addproperty(); 
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+ if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> "Update AddpropertyOnepageForm #".$id,
+                    'content'=>$this->renderAjax('update', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];         
+            }else if($model->load($request->post()) && $model->save()){
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> "AddpropertyOnepageForm #".$id,
+                    'content'=>$this->renderAjax('view', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                ];    
+            }else{
+                 return [
+                    'title'=> "Update AddpropertyOnepageForm #".$id,
+                    'content'=>$this->renderAjax('update', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];        
+            }
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            if ($model->load($request->post())){ 
+         //   echo '<pre>';print_r(Yii::$app->request->post());
+            $post = Yii::$app->request->post();
+                   if($model->save()) {
+
+                    $Owner_name  =         $post['AddpropertyOnepageForm']['Owner_name'];
+                    $primary_contact_no =  $post['AddpropertyOnepageForm']['primary_contact_no'];
+                    $emailid =   $post['AddpropertyOnepageForm']['email_id'];
+
+                    $user = $modelajax->signup1($Owner_name,$primary_contact_no,$emailid);
+                    $userid =  $user->id;
+
+                    $modeladd->user_id = $userid;
+                    if($post['AddpropertyOnepageForm']['property_for'] == 'rent'){
+                        $modeladd->role_id = 'lessor';
+                    }else{
+                        $modeladd->role_id = 'seller';
+                    }
+                    
+                    $modeladd->project_name = $post['AddpropertyOnepageForm']['project_name'];
+                    $modeladd->property_for = $post['AddpropertyOnepageForm']['property_for'];
+                    $modeladd->project_type_id = $post['AddpropertyOnepageForm']['property_type_id'];
+                    $modeladd->request_for = 'Instant';
+                    $modeladd->city = $post['AddpropertyOnepageForm']['city'];
+                    $modeladd->locality = $post['AddpropertyOnepageForm']['locality'];
+                    $modeladd->town_name = $post['AddpropertyOnepageForm']['town_name'];
+                    $modeladd->sector_name = $post['AddpropertyOnepageForm']['sector_name'];
+                    $modeladd->address = $post['AddpropertyOnepageForm']['address'];
+                    $modeladd->longitude = $post['AddpropertyOnepageForm']['longitude'];
+                    $modeladd->latitude = $post['AddpropertyOnepageForm']['latitude'];
+                    $modeladd->expected_price = $post['AddpropertyOnepageForm']['Asking_property_price'];
+                    $modeladd->asking_rental_price = $post['AddpropertyOnepageForm']['asking_lease_rate'];
+                    $modeladd->price_negotiable = 'yes';
+                    $modeladd->maintenance_cost = $post['AddpropertyOnepageForm']['maintenance_charge'];
+                    $modeladd->maintenance_cost_unit = 'sq_feets';
+                    $modeladd->availability = 'ready_to_move';
+                    $modeladd->available_from = 'Immediate';
+                    $modeladd->possesion_by = 'Immediate';
+                   // $modeladd->facing = $post['AddpropertyOnepageForm']['email_id'];
+                    $modeladd->super_area = $post['AddpropertyOnepageForm']['super_area'];
+                    $modeladd->super_unit = 'sq_feets';
+                    $modeladd->carpet_area = $post['AddpropertyOnepageForm']['carpet_area'];
+                    $modeladd->carpet_unit = 'sq_feets';
+                    $modeladd->property_on_floor = $post['AddpropertyOnepageForm']['property_on_floor'];
+                    $modeladd->furnished_status = $post['AddpropertyOnepageForm']['type_of_space'];
+                    $modeladd->is_active = 1;
+                    $modeladd->created_date = $date;
+                    $modeladd->status = 'reviewed';
+
+
+                   if($modeladd->save(false)){
+                    $model->property_id = $modeladd->id;
+                    $model->isactive = 2;
+                    $model->save();
+                    
+                    
+                       }
+                       return $this->redirect(['view', 'id' => $model->id]);
+
+                   }
+
+               // 
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+        }
+
+     }
+
+
     public function actionUpdate($id)
     {
         $request = Yii::$app->request;

@@ -261,19 +261,6 @@ return [
 }
     ],
 
-    [
-        'label' => 'Percentage',
-        'attribute' => 'completion_in_percentage',
-        'filter' => false,
-        'options' => ['style' => 'width:90px;'],
-        'format' => 'raw',
-        'value' => function($model) {
-
-            return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >'.$model->completion_in_percentage.' %</button>', $url = 'javascript:void(0)', []);
-
-          }
-    ],
-
     // [
     //     'label' => 'Followup',
     //     'attribute' => 'id',
@@ -345,21 +332,37 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'created_date',
     // ],
-    [
-        'class' => 'kartik\grid\ActionColumn',
-        'dropdown' => false,
-        'vAlign'=>'middle',
-        'urlCreator' => function($action, $model, $key, $index) { 
-                return Url::to([$action,'id'=>$key]);
-        },
-        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
-        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
-        // 'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
-        //                   'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
-        //                   'data-request-method'=>'post',
-        //                   'data-toggle'=>'tooltip',
-        //                   'data-confirm-title'=>'Are you sure?',
-        //                   'data-confirm-message'=>'Are you sure want to delete this item'], 
-    ],
+    // [
+    //     'class' => 'yii\grid\ActionColumn',
+    //     'template' => '{complete}',
+    //     'buttons' => [
+    //         'complete' => function ($url) {
+    //             return Html::a(
+    //                 '<span class="glyphicon glyphicon-arrow-right"></span>',
+    //                 $url, 
+    //                 [
+    //                     'title' => 'Complete',
+    //                     'data-pjax' => '0',
+    //                 ]
+    //             );
+    //         },
+    //     ],
+    // ],
+    // [
+    //     'class' => 'kartik\grid\ActionColumn',
+    //     'dropdown' => false,
+    //     'vAlign'=>'middle',
+    //     'urlCreator' => function($action, $model, $key, $index) { 
+    //             return Url::to([$action,'id'=>$key]);
+    //     },
+    //     'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
+    //     'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
+    //     'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
+    //                       'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+    //                       'data-request-method'=>'post',
+    //                       'data-toggle'=>'tooltip',
+    //                       'data-confirm-title'=>'Are you sure?',
+    //                       'data-confirm-message'=>'Are you sure want to delete this item'], 
+    // ],
 
 ];   
