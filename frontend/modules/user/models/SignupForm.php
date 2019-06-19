@@ -241,21 +241,40 @@ return true;
     }
 
 
-  public function signup1()
+  public function signup1($Owner_name,$primary_contact_no,$emailid)
             
     { 
+          
             $user = new User();
+            $companytype  =  'Individual';
+            $user->username = HtmlPurifier::process($primary_contact_no);
+             
+              
+              $user->fullname = HtmlPurifier::process($Owner_name);
+             // $user->lastname = HtmlPurifier::process($this->lname);
+              $user->email = HtmlPurifier::process($emailid);
+              //$user->countrycode = $this->countrycode;
+              //$user->setPassword($this->password);
+              $user->status = 1;
+              $user->user_login_as = 'lessor';
+              if($user->save(false)){
 
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->username);
-            $user->save(false);
-            
-           
-            $user->afterSubSignup();
-            
-         
-            return $user;
+                $getloginasid = \common\models\activemode::get_my_login_as_id($companytype);
+                $UserLoginAs = new \common\models\UserLoginAs();
+                $UserLoginAs->user_id = $user->id;
+                $UserLoginAs->login_as = $companytype;
+                $UserLoginAs->loginasID=$getloginasid;
+                $UserLoginAs->save();
+                
+                        $user->afterSignup();
+                       
+                    
+                        return $user;
+                  
+              }
+             
+             
+     
        
 
     }

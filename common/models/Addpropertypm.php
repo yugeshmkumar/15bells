@@ -21,8 +21,8 @@ use Yii;
  * @property string $address
  * @property double $longitude
  * @property double $latitude
- * @property integer $total_plot_area
- * @property string $plot_unit
+ 
+
  * @property string $expected_price
  * @property string $asking_rental_price
  * @property integer $price_sq_ft
@@ -85,9 +85,9 @@ class Addpropertypm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'role_id', 'project_name', 'property_for', 'project_type_id', 'request_for', 'city', 'locality', 'address', 'longitude', 'latitude', 'membership_charge', 'availability', 'available_date', 'age_of_property', 'possesion_by', 'FAR_approval', 'furnished_status', 'created_date'], 'required'],
-            [['user_id', 'project_type_id', 'city', 'total_plot_area', 'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
-            [['role_id', 'property_for', 'request_for', 'locality', 'address', 'plot_unit', 'price_negotiable', 'revenue_lauout', 'present_status', 'shed_RCC', 'maintenance_by', 'availability', 'available_from', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'status'], 'string'],
+          //  [['user_id', 'role_id', 'project_name', 'property_for', 'project_type_id', 'request_for', 'city', 'locality', 'address', 'longitude', 'latitude', 'membership_charge', 'availability', 'available_date', 'age_of_property', 'possesion_by', 'FAR_approval', 'furnished_status', 'created_date'], 'required'],
+            [['user_id', 'project_type_id',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
+            [['role_id', 'property_for', 'request_for', 'locality', 'address', 'price_negotiable', 'revenue_lauout', 'present_status', 'shed_RCC', 'maintenance_by', 'availability', 'available_from', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'status'], 'string'],
             [['longitude', 'latitude', 'FAR_approval'], 'number'],
             [['available_date', 'created_date'], 'safe'],
             [['project_name', 'featured_image', 'jurisdiction_development', 'maintenance_cost', 'annual_dues_payable', 'expected_rental'], 'string', 'max' => 100],
@@ -115,8 +115,8 @@ class Addpropertypm extends \yii\db\ActiveRecord
             'address' => 'Address',
             'longitude' => 'Longitude',
             'latitude' => 'Latitude',
-            'total_plot_area' => 'Total Plot Area',
-            'plot_unit' => 'Plot Unit',
+            
+          
             'expected_price' => 'Expected Price',
             'asking_rental_price' => 'Asking Rental Price',
             'price_sq_ft' => 'Price Sq Ft',
