@@ -89,6 +89,9 @@ label{
         padding: 6px 12px;
       }
       .pac-container { z-index: 100000; }
+      .count {
+        background-color:#e4d5d5b0;
+      }
 </style>
 <div class="addproperty-onepage-form-form">
         <div class="row">
@@ -122,10 +125,10 @@ label{
                 <?= $form->field($model, 'sector_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
-                     <?= $form->field($model, 'latitude')->textInput(['class' => 'form-control count','class' => 'form-control'])?>
+                     <?= $form->field($model, 'latitude')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
-                     <?= $form->field($model, 'longitude')->textInput(['class' => 'form-control count','class' => 'form-control'])?>
+                     <?= $form->field($model, 'longitude')->textInput(['class' => 'form-control count'])?>
                 </div>
                
                 
@@ -155,7 +158,7 @@ label{
                 <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count','class' => 'form-control'])?>
+                <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
 
@@ -170,7 +173,7 @@ label{
                 </div>
                 <div class="col-md-3">
 
-                <?= $form->field($model, 'property_on_floor')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'property_on_floor')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
                      <?= $form->field($model, 'unit_block')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
@@ -179,7 +182,7 @@ label{
                         <?= $form->field($model, 'unit_number')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
-                    <?= $form->field($model, 'super_area')->textInput(['class' => 'form-control count','class' => 'form-control'])?>
+                    <?= $form->field($model, 'super_area')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
                     <?= $form->field($model, 'super_unit')->dropDownList(['sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['class' => 'form-control count'])->label('Select Unit') ?>
