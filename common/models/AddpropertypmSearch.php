@@ -18,8 +18,8 @@ class AddpropertypmSearch extends Addpropertypm
     public function rules()
     {
         return [
-            [['id', 'user_id', 'project_type_id', 'city', 'total_plot_area', 'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
-            [['role_id', 'project_name', 'property_for', 'request_for', 'featured_image', 'featured_video', 'locality', 'address', 'plot_unit', 'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
+            [['id', 'user_id', 'project_type_id', 'city',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
+            [['role_id', 'project_name', 'property_for', 'request_for', 'featured_image', 'featured_video', 'locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
             [['longitude', 'latitude', 'FAR_approval'], 'number'],
         ];
     }
@@ -42,11 +42,11 @@ class AddpropertypmSearch extends Addpropertypm
      */
     public function search($params,$userid)
     {
-        $query = Addpropertypm::find()
-		->join('LEFT OUTER JOIN','assign_manager_to_property',
-		'assign_manager_to_property.propertyID = addproperty.id')
-		->where('assign_manager_to_property.managerID =:userid and assign_manager_to_property.isactive =:active  and addproperty.status =:status',array(':userid'=>$userid,':active'=>1,':status'=>"approved"));
-
+        $query = Addpropertypm::find()->orderBy([
+            'id' => SORT_DESC
+            
+          ]);
+		
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -63,7 +63,7 @@ class AddpropertypmSearch extends Addpropertypm
             'longitude' => $this->longitude,
             'latitude' => $this->latitude,
 			'is_active'=>$this->is_active,
-            'total_plot_area' => $this->total_plot_area,
+           
             'expected_price' => $this->expected_price,
             'asking_rental_price' => $this->asking_rental_price,
             'price_sq_ft' => $this->price_sq_ft,
@@ -91,7 +91,7 @@ class AddpropertypmSearch extends Addpropertypm
             ->andFilterWhere(['like', 'featured_video', $this->featured_video])
             ->andFilterWhere(['like', 'locality', $this->locality])
             ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'plot_unit', $this->plot_unit])
+            
             ->andFilterWhere(['like', 'price_negotiable', $this->price_negotiable])
             ->andFilterWhere(['like', 'revenue_lauout', $this->revenue_lauout])
             ->andFilterWhere(['like', 'present_status', $this->present_status])
