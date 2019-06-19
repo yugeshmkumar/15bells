@@ -369,7 +369,9 @@ public function actionShowuserdetails(){
 	 public function actionP_docs()
 	 {
 		 return $this->render('p_docs');
-	 }
+     }
+     
+
 	  public function actionIndex()
     {  
            $model = new \common\models\AddpropertypmSearch();
@@ -420,10 +422,17 @@ public function actionShowuserdetails(){
      * @param integer $id
      * @return mixed
      */
-    public function actionView()
+    public function actionViews()
     {
 		$id = $_POST['expandRowKey'];
         return $this->renderPartial('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionView($id)
+    {
+        return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -475,8 +484,15 @@ public function actionShowuserdetails(){
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+
+           // echo '<pre>';print_r(Yii::$app->request->post());die;
+
+            if($model->save()){
+
+                return $this->redirect('index');
+            }
+            
         } else {
             return $this->render('update', [
                 'model' => $model,

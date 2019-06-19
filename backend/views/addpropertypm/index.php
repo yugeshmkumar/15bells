@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'responsive'=>false,
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
-			 ['class' => 'kartik\grid\CheckboxColumn','name'=>'chkd'],
+			// ['class' => 'kartik\grid\CheckboxColumn','name'=>'chkd'],
 			
 [
 'class' => 'kartik\grid\ExpandRowColumn',
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 'value' => function ($model, $key, $index, $column) {
 return GridView::ROW_COLLAPSED;
 },
-'detailUrl' => yii\helpers\Url::to(['addpropertypm/view']),
+'detailUrl' => yii\helpers\Url::to(['addpropertypm/views']),
 'detailRowCssClass' => GridView::TYPE_DEFAULT,
 'pageSummary' => false,
 ],
@@ -73,19 +73,19 @@ return GridView::ROW_COLLAPSED;
 			  'format'=>'raw',
 			  'width'=>'250px',
 			  'value'=>function($data){
-				  return \common\models\User::findOne($data->user_id)->email;
+				  return \common\models\User::findOne($data->user_id)->username;
 			  }
 			
 			],
-			['attribute'=>'role_id',
-			  'label'=>'Lead Role',
-			  'format'=>'raw',
-			  'width'=>'100px',
-			  'value'=>function($data){
-				  return $data->role_id;
-			  }
+			// ['attribute'=>'role_id',
+			//   'label'=>'Lead Role',
+			//   'format'=>'raw',
+			//   'width'=>'100px',
+			//   'value'=>function($data){
+			// 	  return $data->role_id;
+			//   }
 			
-			],
+			// ],
 			['attribute'=>'project_name',
 			  'label'=>'Project Name',
 			  'format'=>'raw',
@@ -118,64 +118,77 @@ return GridView::ROW_COLLAPSED;
 			
 			],
 			
-			['attribute'=>'request_for',
-			  'label'=>'Request For',
+			// ['attribute'=>'request_for',
+			//   'label'=>'Request For',
+			//   'format'=>'raw',
+			//   'width'=>'100px',
+			//   'value'=>function($data){
+			// 	  return $data->request_for;
+			//   }
+			
+            // ],
+
+            ['attribute'=>'status',
+			  'label'=>'Property_status',
 			  'format'=>'raw',
 			  'width'=>'100px',
 			  'value'=>function($data){
-				  return $data->request_for;
+				  return $data->status;
 			  }
 			
-			],
-			['attribute'=>'id',
-			  'label'=>'Actions',
-			  'format'=>'raw',
-			  'width'=>'100px',
-			  'value'=>function($data){
-				  return ' <div class="page-toolbar">
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right" role="menu">
+            ],
+            
+
+			// ['attribute'=>'id',
+			//   'label'=>'Actions',
+			//   'format'=>'raw',
+			//   'width'=>'100px',
+			//   'value'=>function($data){
+			// 	  return ' <div class="page-toolbar">
+            //                 <div class="btn-group pull-right">
+            //                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+            //                         <i class="fa fa-angle-down"></i>
+            //                     </button>
+            //                     <ul class="dropdown-menu pull-right" role="menu">
                                    
-                                    <li>
-                                        <a onclick = "myfunctionapprove('.$data->id.')" >
-                                            <i class="fa fa-file-text"></i> Approve Property Docs</a>
-                                    </li>
-									<li>
-                                        <a onclick = "myfunctionreview('.$data->id.')" >
-                                            <i class="fa fa-archive"></i> Review User Expectations</a>
-                                    </li>
-                                    <li>
-                                        <a onclick = "myfunctionsite('.$data->id.')" >
-                                            <i class="fa fa-user"></i>  Review Site Visits</a>
-                                    </li>
-									 <li>
-                                        <a onclick = "myfunctiondocs('.$data->id.')" >
-                                            <i class="fa fa-file-word-o"></i>  Schedule Document View</a>
-                                    </li>
+            //                         <li>
+            //                             <a onclick = "myfunctionapprove('.$data->id.')" >
+            //                                 <i class="fa fa-file-text"></i> Approve Property Docs</a>
+            //                         </li>
+			// 						<li>
+            //                             <a onclick = "myfunctionreview('.$data->id.')" >
+            //                                 <i class="fa fa-archive"></i> Review User Expectations</a>
+            //                         </li>
+            //                         <li>
+            //                             <a onclick = "myfunctionsite('.$data->id.')" >
+            //                                 <i class="fa fa-user"></i>  Review Site Visits</a>
+            //                         </li>
+			// 						 <li>
+            //                             <a onclick = "myfunctiondocs('.$data->id.')" >
+            //                                 <i class="fa fa-file-word-o"></i>  Schedule Document View</a>
+            //                         </li>
 									
-                                    <li class="divider"> </li>
-                                    <li>
-									  <a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffmjkkl&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffmjkl&#39;).style.display=&#39;block&#39;,myfunctioncomment('.$data->user_id.')">
-                                       <i class="fa fa-plus"></i>  Add Comment</a>
-                                    </li>
-									<li>
-                                        <a onclick = "myfunctionemail('.$data->id.')" >
-                                            <i class="fa fa-envelope"></i>  Send E-mail</a>
-                                    </li>
-									<li>
-                                        <a onclick = "myfunctionsms('.$data->id.')" >
-                                            <i class="fa fa-tty"></i>  Send SMS</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>';
-			  }
+            //                         <li class="divider"> </li>
+            //                         <li>
+			// 						  <a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffmjkkl&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffmjkl&#39;).style.display=&#39;block&#39;,myfunctioncomment('.$data->user_id.')">
+            //                            <i class="fa fa-plus"></i>  Add Comment</a>
+            //                         </li>
+			// 						<li>
+            //                             <a onclick = "myfunctionemail('.$data->id.')" >
+            //                                 <i class="fa fa-envelope"></i>  Send E-mail</a>
+            //                         </li>
+			// 						<li>
+            //                             <a onclick = "myfunctionsms('.$data->id.')" >
+            //                                 <i class="fa fa-tty"></i>  Send SMS</a>
+            //                         </li>
+            //                     </ul>
+            //                 </div>
+            //             </div>
+            //         </div>';
+			//   }
 			
-			],
+            // ],
+            ['class' => 'yii\grid\ActionColumn'],
        ],
     ]); ?>
 

@@ -141,15 +141,15 @@ CrudAsset::register($this);
         <h4 class="modal-title">Wrong Lead</h4>
       </div>
       <div class="modal-body">        
-        
+      <input type="hidden" id="wrongid">
       <div class="form-group">
       <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="5" id="comment"></textarea>
+      <textarea class="form-control" rows="5" id="wrongcomment"></textarea>
       </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" onclick="wrongsave()" class="btn btn-success">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -297,7 +297,31 @@ var visittypeid = $('#visittypeid').val();
 
     
 function wrong_lead(visitid) {
+ 
         $("#modal_wrong").modal('show');
+        $('#wrongid').val(visitid);
+}
+
+function wrongsave(){
+
+  var wrongid = $('#wrongid').val();
+  var wrongcomment  =  $('#wrongcomment').val();
+           $.ajax({
+						                        type: "POST",
+                                                url: 'wrongsave',
+                                                data: {wrongid: wrongid,wrongcomment:wrongcomment},
+                                                //dataType: 'json',
+                                                success: function (data) {  
+
+                                           if(data == '1'){
+                                              toastr.success('Successfully saved', 'success'); 
+                                            }else{
+                                              toastr.error('Some Internal Error', 'error'); 
+                                            }
+                                            $('#modal_wrong').modal('hide');
+                                                }
+                                    });
+
 }
         
 
