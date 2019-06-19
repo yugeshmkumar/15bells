@@ -29,8 +29,7 @@ Property Details
             'address:ntext',
             'longitude',
             'latitude',
-            'total_plot_area',
-            'plot_unit',
+            
             'expected_price',
             'asking_rental_price',
             'price_sq_ft',

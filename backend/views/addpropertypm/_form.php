@@ -40,10 +40,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'latitude')->textInput() ?>
 
-    <?php echo $form->field($model, 'total_plot_area')->textInput() ?>
-
-    <?php echo $form->field($model, 'plot_unit')->dropDownList([ 'sq_feets' => 'Sq feets', 'sq_yards' => 'Sq yards', 'sq_meters' => 'Sq meters', ], ['prompt' => '']) ?>
-
+   
     <?php echo $form->field($model, 'expected_price')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'asking_rental_price')->textInput(['maxlength' => true]) ?>

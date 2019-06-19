@@ -247,7 +247,7 @@ $bundle = BackendAsset::register($this);
                         ],[
 						    'label'=>Yii::t('backend', 'Property Management'),
                             'icon'=>'<i class="fa fa-building"></i>',
-                            'url'=>['/addpropertybd'],
+                            'url'=>['/addpropertypm'],
                             'badge'=> \common\models\Addpropertybackend::find()->count(),
                             'badgeBgClass'=>'label-primary',
                         ],
