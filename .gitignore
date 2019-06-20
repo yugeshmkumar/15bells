@@ -94,3 +94,7 @@ $RECYCLE.BIN/
 
 .env
 frontend/config/_urlManager.php
+!vendor/kartik-v/yii2-widget-select2
+!vendor/kartik-v/yii2-grid
+!vendor/kartik-v/yii2-widget-fileinput
+!vendor/warrence/yii2-kartikgii
