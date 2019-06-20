@@ -496,7 +496,7 @@ showTab(currentTab); // Display the current tab
 });
 
 
- $('#loginform-userotp').blur(function(){
+ $('#loginform-userotp').change(function(){
 
 var identity = $('#loginform-identity').val();
 var newotp = $('#loginform-userotp').val();
