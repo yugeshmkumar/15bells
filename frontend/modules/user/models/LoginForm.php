@@ -56,6 +56,8 @@ class LoginForm extends Model
               return $('#loginform-password').val() == '';
                }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
 
+               ['userOTP', 'is8NumbersOnly'],
+
 
 
             // rememberMe must be a boolean value
@@ -74,6 +76,14 @@ class LoginForm extends Model
             ],
         ];
     }
+
+
+    public function is8NumbersOnly($attribute)
+{
+    if (!preg_match('/^[0-9]{4}$/', $this->$attribute)) {
+        $this->addError($attribute, 'OTP must contain  4 digits.');
+    }
+}
 
     public function attributeLabels()
     {
