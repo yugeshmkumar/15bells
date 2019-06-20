@@ -81,7 +81,7 @@ use yii\widgets\Pjax;
 							 
 							</div>
 							<?=
-								$form->field($model1, 'checkotp')->hiddenInput()->label(false);
+								$form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
 								?>
 
@@ -496,7 +496,7 @@ showTab(currentTab); // Display the current tab
 });
 
 
- $('#loginform-userotp').change(function(){
+ $('#loginform-userotp').keyup(function(){
 
 var identity = $('#loginform-identity').val();
 var newotp = $('#loginform-userotp').val();
@@ -510,6 +510,9 @@ var checkotp =  $('#loginform-checkotp').val()
 
 	var type = 'email';
 }
+
+if(newotp != '' && newotp.length===4){
+
 
 $.ajax({
 						 type: "POST",
@@ -539,6 +542,8 @@ $.ajax({
 								  
 						 },
 				 });
+
+ }
 
 
 });
