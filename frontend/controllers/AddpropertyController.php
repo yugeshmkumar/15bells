@@ -1155,28 +1155,37 @@ public function actionShowpropdetails(){
     public function actionSetbrandcount(){
 
         $data = array();
-        $payment = \Yii::$app->db->createCommand("SELECT * from save_search where type='rectangle' and role_type='lessee'")->queryAll();
-        $payment1 = \Yii::$app->db->createCommand("SELECT * from save_search where type='circle' and role_type='lessee'")->queryAll();
-        $payment2 = \Yii::$app->db->createCommand("SELECT * from save_search where type='polygon' and role_type='lessee'")->queryAll();
+        $payment = \Yii::$app->db->createCommand("SELECT * from save_searches where type='rectangle' and role_type='lessee'")->queryAll();
+        $payment1 = \Yii::$app->db->createCommand("SELECT * from save_searches where type='circle' and role_type='lessee'")->queryAll();
+        $payment2 = \Yii::$app->db->createCommand("SELECT * from save_searches where type='polygon' and role_type='lessee'")->queryAll();
    //echo '<pre>';print_r($payments);die;
-   
+   if($payment){
+
    foreach($payment as $payments){
         $row_array['geometry'] = $payments['geometry'];   
    
         $data['rectangle'][] = $row_array;
        
    }
+}
+
+if($payment1){
    foreach($payment1 as $payments1){
    
        $row_array1['geometry'] = $payments1['geometry'];
        $data['circle'][] = $row_array1;
    }
+
+}
+
+if($payment2){
    
    foreach($payment2 as $payments2){
        $row_array2['geometry'] = $payments2['geometry'];
         
         $data['polygon'][] = $row_array2;
    }
+}
         
         return json_encode($data);
    }
@@ -1186,10 +1195,13 @@ public function actionShowpropdetails(){
    public function actionSetbrandcountb(){
 
     $data = array();
-    $payment = \Yii::$app->db->createCommand("SELECT * from save_search where type='rectangle' and role_type='buyer'")->queryAll();
-    $payment1 = \Yii::$app->db->createCommand("SELECT * from save_search where type='circle' and role_type='buyer'")->queryAll();
-    $payment2 = \Yii::$app->db->createCommand("SELECT * from save_search where type='polygon' and role_type='buyer'")->queryAll();
+    $payment = \Yii::$app->db->createCommand("SELECT * from save_searches where type='rectangle' and role_type='buyer'")->queryAll();
+    $payment1 = \Yii::$app->db->createCommand("SELECT * from save_searches where type='circle' and role_type='buyer'")->queryAll();
+    $payment2 = \Yii::$app->db->createCommand("SELECT * from save_searches where type='polygon' and role_type='buyer'")->queryAll();
 //echo '<pre>';print_r($payments);die;
+
+
+if($payment){
 
 foreach($payment as $payments){
     $row_array['geometry'] = $payments['geometry'];   
@@ -1197,16 +1209,25 @@ foreach($payment as $payments){
     $data['rectangle'][] = $row_array;
    
 }
+}
+
+
+if($payment1){
 foreach($payment1 as $payments1){
 
    $row_array1['geometry'] = $payments1['geometry'];
    $data['circle'][] = $row_array1;
 }
+}
+
+
+if($payment2){
 
 foreach($payment2 as $payments2){
    $row_array2['geometry'] = $payments2['geometry'];
     
     $data['polygon'][] = $row_array2;
+}
 }
     
     return json_encode($data);

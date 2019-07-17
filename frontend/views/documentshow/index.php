@@ -724,7 +724,7 @@ $(document).ready(function() {
                     $('#showpropdoc').html('');
                     $.ajax({
                         type: "POST",
-                        url: 'documentshow',
+                        url: 'documentshow/documentshow',
                         data: {id: id},
                         success: function (data) {
 
