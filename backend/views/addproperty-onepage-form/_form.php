@@ -107,7 +107,7 @@ label{
                 <?php $form = ActiveForm::begin(); ?>
             
             <div class="col-md-3">
-                    <?= $form->field($model, 'property_for')->dropDownList(['rent' => 'Rent', 'sale' => 'Sale',], ['class' => 'form-control count', 'id' => 'request_for'])->label('Select property for') ?>
+                    <?= $form->field($model, 'property_for')->dropDownList(['rent' => 'Rent', 'sale' => 'Sale',], ['class' => 'form-control count'])->label('Select property for') ?>
                 </div>
                 
                 <?= $form->field($model, 'completion_in_percentage')->hiddenInput()->label(false) ?>

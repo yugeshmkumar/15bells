@@ -2436,6 +2436,8 @@ proptype =  $('#proptypes').val();
      
  var geometry  = <?php echo $geometry; ?>;
 
+
+
 if(type == 'polygon'){
     getpolyshapes = type;
     $('#shapedel').text('Polygon');
@@ -2503,6 +2505,8 @@ if(type == 'polygon'){
 if(type == 'rectangle'){
 
     getpolyshapes = type;
+
+    
     $('#shapedel').text('Rectangle');
        rectangle = new google.maps.Rectangle({
       strokeColor: '#FF0000',
@@ -3095,7 +3099,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3413,10 +3417,17 @@ function getPolygonCoords() {
                                     function shortlistproperties(id){
 
 
-    
     var shaped =  getpolyshapes;
+
+   
     var newspaths = pathstr;
     var locations = getsearchlocation;
+
+     alert(pathstr);
+
+     alert(centercoordinates);
+
+     alert(northlat);
     
     if(shaped == 'polygon'){
     ndata = {shaped:shaped,newspaths : newspaths,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
@@ -3425,6 +3436,8 @@ function getPolygonCoords() {
     ndata = {shaped:shaped,centercoordinates : centercoordinates,totalradius: totalradius,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
     }
     if(shaped == 'rectangle'){
+
+        
     ndata = {shaped:shaped,northlat: northlat,southlat: southlat,northlng: northlng,southlng : southlng,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
     }
     if(pathstr == '' && centercoordinates == '' && northlat == ''){

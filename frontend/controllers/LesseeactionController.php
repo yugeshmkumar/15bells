@@ -434,7 +434,7 @@ class LesseeactionController extends Controller {
             } 
     
             $locations = $_POST['locations'];
-            $shaped = $_POST['shaped'];
+            echo $shaped = $_POST['shaped'];die;
             $propid = $_POST['propid'];
             $town = $_POST['town'];
             $sector = $_POST['sector'];
@@ -1281,8 +1281,14 @@ return 2;
     $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
       
       $conditions = array();
+      $conditionsnew = array();
+      $conditionsprop = array();
         
-      $conditions[] = "property_for='rent'";        
+
+
+            $conditionsprop[] = "property_for='both'";  
+            
+            $conditions[] = "property_for='rent'";  
         
       
         
@@ -1290,7 +1296,10 @@ return 2;
             $conditions[] = "project_type_id = '$proptype'";
         }
         if ($areamin != '' && $areamax !='') {
-            $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+           // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+            $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+            $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
         }
         
         if ($pricemin != '' && $pricemax !='') {
@@ -1317,11 +1326,15 @@ return 2;
 
 
         $sqlstr = $query;
-        if (count($conditions) > 0) {
-            $sqlstr .= " WHERE " . implode(' AND ', $conditions)."GROUP BY a.id";
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+        }
+
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
         }
       
-     // echo $sqlstr;die;
+      //echo $sqlstr;die;
       
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 

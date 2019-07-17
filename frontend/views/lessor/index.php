@@ -2010,7 +2010,7 @@ function closeNav() {
         geocoder = new google.maps.Geocoder();
         var latlng = new google.maps.LatLng(28.4595, 77.0266);
         var mapOptions = {
-            zoom: 8,
+            zoom: 15,
             center: latlng
         }
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -2018,8 +2018,8 @@ function closeNav() {
         var searchTextField = $('#searchTextField').val();
        if(searchTextField !=''){
        
-         var latu = $('#latu').val();
-         var longu = $('#longu').val();
+         var latu = '28.4595';
+         var longu = '77.0266';
          var latlngs = new google.maps.LatLng(latu, longu);
        
         var marker = new google.maps.Marker({
@@ -2056,6 +2056,10 @@ function closeNav() {
 
                   
                 var obj = $.parseJSON(data);
+
+                var countprop = Object.keys(obj).length;
+                
+                if(countprop > 0){
               
                 var curPosition = new google.maps.LatLng(lati,long);
                // alert(curPosition);
@@ -2147,6 +2151,8 @@ function closeNav() {
                 
                        
                });
+
+                }
 
                 var totalcount = count + count1 + count2;
 
@@ -2265,6 +2271,14 @@ function closeNav() {
 
     function initialize() {
 
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(28.4595, 77.0266);
+        var mapOptions = {
+            zoom: 14,
+            center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
         var defaultBounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(-33.8902, 151.1759),
                 new google.maps.LatLng(-33.8474, 151.2631));
@@ -2330,6 +2344,7 @@ function closeNav() {
                 });
 
                 map.fitBounds(place.geometry.viewport);
+                map.setZoom(16); 
             }
 
 
@@ -2377,7 +2392,7 @@ $(input).on('input', function () {
 
     
 
-	google.maps.event.addDomListener(window, 'load', init);
+	//google.maps.event.addDomListener(window, 'load', init);
 
     google.maps.event.addDomListener(window, 'load', initialize);
 	

@@ -2345,6 +2345,14 @@ function closeNav() {
 
     function initialize() {
 
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(28.4595, 77.0266);
+        var mapOptions = {
+            zoom: 14,
+            center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
         var defaultBounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(-33.8902, 151.1759),
                 new google.maps.LatLng(-33.8474, 151.2631));
@@ -2410,6 +2418,7 @@ function closeNav() {
                 });
 
                 map.fitBounds(place.geometry.viewport);
+                map.setZoom(16); 
             }
 
 
@@ -2453,7 +2462,7 @@ function closeNav() {
 
     }
 
-	google.maps.event.addDomListener(window, 'load', init);
+	//google.maps.event.addDomListener(window, 'load', init);
 
     google.maps.event.addDomListener(window, 'load', initialize);
 	

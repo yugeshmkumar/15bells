@@ -252,21 +252,9 @@ $undercategory = $property_type->undercategory;
 
 							$counts =  $paymentsm['newcount'];
 
-							if ($counts == 1) {
+							if ($counts == 0) {
 
 						?>
-
-					<div class="row possession_time" style="display:none;">
-						<h3 class="flow_heading avail_ability">Property Documents 
-                        <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
-                        </h3>
-						<div class="row">
-						<p class="label_name" style="padding:20px;"><a href="<?= Yii::getAlias('@frontendUrl').'/documentshow';  ?>" class="view_docs">View Documents</a></p>
-						</div>
-						
-					</div>
-
-					<?php } else { ?>
 
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Property Documents 
@@ -274,6 +262,22 @@ $undercategory = $property_type->undercategory;
                         </h3>
 						<div class="row">
 						<p class="label_name" style="padding:20px;"><a href="javascript:void(0);" onclick="requestaccess(<?php echo $viewid; ?>)" class="view_docs">Request Documents Access</a></p>
+
+						<!-- <p class="label_name" style="padding:20px;"><a href="<?= Yii::getAlias('@frontendUrl').'/documentshow';  ?>" class="view_docs">View Documents</a></p> -->
+						</div>
+						
+					</div>
+
+					<?php } else if ($counts == 1) { ?>
+
+					<div class="row possession_time">
+						<h3 class="flow_heading avail_ability">Property Documents 
+                        <!-- <a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a -->
+                        </h3>
+						<div class="row">
+						<p class="label_name" style="padding:20px;"><a href="<?= Yii::getAlias('@frontendUrl').'/documentshow';  ?>" class="view_docs">View Documents</a></p>
+
+						<!-- <p class="label_name" style="padding:20px;"><a href="javascript:void(0);" onclick="requestaccess(<?php echo $viewid; ?>)" class="view_docs">Request Documents Access</a></p> -->
 						</div>
 						
 					</div>
