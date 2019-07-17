@@ -59,7 +59,7 @@ use yii\widgets\Pjax;
 						<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 						       
 								 <?=
-								$form->field($model1, 'checkfield')->hiddenInput()->label(false);
+								$form->field($model1, 'checkfield')->hiddenInput(['value'=>'otp'])->label(false);
 
 								?>
 						
@@ -81,7 +81,7 @@ use yii\widgets\Pjax;
 							 
 							</div>
 							<?=
-								$form->field($model1, 'checkotp')->hiddenInput()->label(false);
+								$form->field($model1, 'checkotp')->hiddenInput(['value'=>'error'])->label(false);
 
 								?>
 
@@ -364,6 +364,7 @@ showTab(currentTab); // Display the current tab
  $('#passwordit').click(function(){
 
 	 $('#loginform-checkfield').val('password');
+	
 
 	$('#hideotp').hide();
    $('#hidepassword').show();
@@ -376,8 +377,10 @@ showTab(currentTab); // Display the current tab
 
 
  $('#resendotp').click(function(e){
-		
-		
+
+	$('#loginform-checkfield').val('otp');	
+	$('#hideotp').show();
+	$('#hidepassword').hide();
 	var identity = $('#loginform-identity').val();
 
 		e.preventDefault();
