@@ -56,7 +56,9 @@ class LoginForm extends Model
               return $('#loginform-password').val() == '';
                }" ,'message' => Yii::t('frontend', 'Please enter OTP')],
 
-               ['userOTP', 'is8NumbersOnly'],
+               [['userOTP'], 'is8NumbersOnly','when'=>function($model){
+                return $model->checkfield == 'otp' ;
+             }],
 
 
 
@@ -64,14 +66,17 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['identity', 'validateIdentity'],
-            ['password', 'validatePassword'],
+            // ['password', 'validatePassword'],
+            [['password'], 'validatePassword','when'=>function($model){
+                return $model->checkfield == 'password' ;
+             }],
 
          //   [['userOTP','checkfield','checkotp'], 'validateOtp'],
 
             ['checkotp', 'compare', 'compareValue' => 'error', 'operator' => '=', 'when' => function($data,$model) {
-                return  $model->checkotp == 'error';
+                return  $model->checkotp == 'error' && $model->checkfield == 'otp';
             }, 'whenClient' => "function (attribute, value) {
-                return $('#loginform-checkotp').val() == 'error';
+                return $('#loginform-checkotp').val() == 'error' && $('#loginform-checkfield').val() == 'otp';
             }",'message' => Yii::t('frontend', 'OTP doesnot Match .')
             ],
         ];
@@ -127,9 +132,13 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             
             $user = $this->getUser();
-
+// echo '<pre>';print_r($user);die;
             if (!$user || !$user->validatePassword($this->password)) {
+
+                // echo 'aya';die;
                 $this->addError('password', Yii::t('frontend', 'Incorrect username or password.'));
+            }else{
+                // echo 'nhi aya';die;
             }
         }
     }

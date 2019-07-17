@@ -551,7 +551,7 @@ if(!isset($_SESSION))
 
                             ?>
                              <?=
-                            $form->field($model1, 'checkfield')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkfield')->hiddenInput(['value'=>'otp'])->label(false);
 
                             ?>
                     
@@ -854,8 +854,10 @@ $.ajax({
 
 });
 
+i = 0;
+$('#loginform-userotp').keyup(function(){
 
-$('#loginform-userotp').blur(function(){
+    
 
 var identity = $('#loginform-identity').val();
 var newotp = $('#loginform-userotp').val();
@@ -869,6 +871,14 @@ var checkotp =  $('#loginform-checkotp').val()
 
     var type = 'email';
 }
+
+
+
+i += 1
+
+if(newotp != '' && newotp.length===4){
+    
+   
 
 $.ajax({
                          type: "POST",
@@ -898,6 +908,7 @@ $.ajax({
                                   
                          },
                  });
+}
 
 
 });
@@ -915,8 +926,11 @@ $('#resendotps').click(function(e){
            var phoneno = /^\d{10}$/;
            if(identity.match(phoneno))
      {	 
+        $('#loginform-checkfield').val('otp');	
+	$('#hideotp').show();
+	$('#hidepassword').hide();
          
-         $('#otphide').show();
+        
      
            $.ajax({
                                 type: "POST",
@@ -2436,8 +2450,6 @@ proptype =  $('#proptypes').val();
      
  var geometry  = <?php echo $geometry; ?>;
 
-
-
 if(type == 'polygon'){
     getpolyshapes = type;
     $('#shapedel').text('Polygon');
@@ -2505,8 +2517,6 @@ if(type == 'polygon'){
 if(type == 'rectangle'){
 
     getpolyshapes = type;
-
-    
     $('#shapedel').text('Rectangle');
        rectangle = new google.maps.Rectangle({
       strokeColor: '#FF0000',
@@ -3417,17 +3427,10 @@ function getPolygonCoords() {
                                     function shortlistproperties(id){
 
 
+    
     var shaped =  getpolyshapes;
-
-   
     var newspaths = pathstr;
     var locations = getsearchlocation;
-
-     //alert(pathstr);
-
-     //alert(centercoordinates);
-
-    // alert(northlat);
     
     if(shaped == 'polygon'){
     ndata = {shaped:shaped,newspaths : newspaths,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
@@ -3436,8 +3439,6 @@ function getPolygonCoords() {
     ndata = {shaped:shaped,centercoordinates : centercoordinates,totalradius: totalradius,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
     }
     if(shaped == 'rectangle'){
-
-        
     ndata = {shaped:shaped,northlat: northlat,southlat: southlat,northlng: northlng,southlng : southlng,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
     }
     if(pathstr == '' && centercoordinates == '' && northlat == ''){

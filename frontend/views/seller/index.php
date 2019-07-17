@@ -178,7 +178,7 @@ $user_id= Yii::$app->user->identity->id;
 										<div class="row">
 											<h3 class="flow_heading">Let us know the expected price of your property</h3>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                         <input type="text" class="form-control input_desgn exp_price input_number" placeholder="Enter Amount" id="dummyexpectedprice">
 
                                         <?= $form->field($model, 'expected_price')->hiddenInput(['maxlength' => true])->label(false) ?>
@@ -701,7 +701,7 @@ $user_id= Yii::$app->user->identity->id;
 
                             ?>
                              <?=
-                            $form->field($model1, 'checkfield')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkfield')->hiddenInput(['value'=>'otp'])->label(false);
 
                             ?>
                     
@@ -1100,7 +1100,7 @@ $.ajax({
 });
 
 
-$('#loginform-userotp').blur(function(){
+$('#loginform-userotp').keyup(function(){
 
 var identity = $('#loginform-identity').val();
 var newotp = $('#loginform-userotp').val();
@@ -1114,6 +1114,8 @@ var checkotp =  $('#loginform-checkotp').val()
 
     var type = 'email';
 }
+
+if(newotp != '' && newotp.length===4){
 
 $.ajax({
                          type: "POST",
@@ -1144,6 +1146,8 @@ $.ajax({
                          },
                  });
 
+}
+
 
 });
 
@@ -1161,7 +1165,9 @@ $('#resendotps').click(function(e){
            if(identity.match(phoneno))
      {	 
          
-         $('#otphide').show();
+    $('#loginform-checkfield').val('otp');	
+	$('#hideotp').show();
+	$('#hidepassword').hide();
      
            $.ajax({
                                 type: "POST",
@@ -2084,34 +2090,34 @@ function closeNav() {
 
     function init() {
 
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(28.4595, 77.0266);
-        var mapOptions = {
-            zoom: 8,
-            center: latlng
-        }
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+geocoder = new google.maps.Geocoder();
+var latlng = new google.maps.LatLng(28.4595, 77.0266);
+var mapOptions = {
+    zoom: 15,
+    center: latlng
+}
+map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-        var searchTextField = $('#searchTextField').val();
-       if(searchTextField !=''){
-       
-         var latu = $('#latu').val();
-         var longu = $('#longu').val();
-         var latlngs = new google.maps.LatLng(latu, longu);
-       
-        var marker = new google.maps.Marker({
-            position: latlngs,
-            map: map,
-            draggable: true
-        });
-    }
-    google.maps.event.addListener(marker, 'dragend', function (event) {
-            //$('#position').val('* '+this.getPosition().lat()+','+this.getPosition().lng());
-            saveData(map, event);
-        });
+var searchTextField = $('#searchTextField').val();
+if(searchTextField !=''){
 
-        markers.push(marker);
-    }
+ var latu = '28.4595';
+ var longu = '77.0266';
+ var latlngs = new google.maps.LatLng(latu, longu);
+
+var marker = new google.maps.Marker({
+    position: latlngs,
+    map: map,
+    draggable: true
+});
+}
+google.maps.event.addListener(marker, 'dragend', function (event) {
+    //$('#position').val('* '+this.getPosition().lat()+','+this.getPosition().lng());
+    saveData(map, event);
+});
+
+markers.push(marker);
+}
 
 
     function getbrandcount(){
@@ -2130,7 +2136,7 @@ function closeNav() {
                 data: {kuli: 'luci'},
                 success: function (data) {
 
-
+ if(data == '' ) {
                   
                 var obj = $.parseJSON(data);
               
@@ -2252,13 +2258,18 @@ function closeNav() {
                 //                                       // dangerMode: true,
                 //                                        })
 
-                },
+             }else{
+                    var num = Math.floor(Math.random() * (30 - 11)) + 11;
+                    $('#totalcounts').html(num);
+         }
+         
+           },
             });
    }
 
 
 
-    function getmap(val) {
+     function getmap(val) {
         var marker = '';
         var position = '';
         geocoder.geocode({'address': val}, function (results, status) {
@@ -2279,7 +2290,7 @@ function closeNav() {
         });
     }
 
-    function addMarker(location) {
+     function addMarker(location) {
         //clearMarkers();
 
         var pos = (location).toString();
@@ -2313,7 +2324,7 @@ function closeNav() {
     }
 
 
-    function saveData(map, event)
+     function saveData(map, event)
     {
         var zoomLevel = map.getZoom();
         var pos = (event.latLng).toString();
@@ -2343,128 +2354,132 @@ function closeNav() {
 
 
 
-    function initialize() {
+   function initialize() {
 
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(28.4595, 77.0266);
-        var mapOptions = {
-            zoom: 14,
-            center: latlng
-        }
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+geocoder = new google.maps.Geocoder();
+var latlng = new google.maps.LatLng(28.4595, 77.0266);
+var mapOptions = {
+    zoom: 14,
+    center: latlng
+}
+map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-        var defaultBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(-33.8902, 151.1759),
-                new google.maps.LatLng(-33.8474, 151.2631));
-        var input = document.getElementById('searchTextField');
-
-
-
-        var options = {
-            bounds: defaultBounds,
-            //types: ['(cities)'],
-            componentRestrictions: {country: 'IN'}
-        };
-
-        autocomplete = new google.maps.places.Autocomplete(input, options);
-
-        autocomplete.addListener('place_changed', function () {
+var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(-33.8902, 151.1759),
+        new google.maps.LatLng(-33.8474, 151.2631));
+var input = document.getElementById('searchTextField');
 
 
-            var place = autocomplete.getPlace();
 
-            // If the place has a geometry, then present it on a map.
-            if (place.geometry.viewport) {
+var options = {
+    bounds: defaultBounds,
+    //types: ['(cities)'],
+    componentRestrictions: {country: 'IN'}
+};
 
-                //  console.log(place.geometry.viewport);
-                var arrAddress = place.address_components;
-                $.each(arrAddress, function (i, address_component) {
-                    // console.log('address_component:'+i);
+autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                    if (address_component.types[0] == "route") {
-                        // console.log(i+": route:"+address_component.long_name);
-                        itemRoute = address_component.long_name;
-                    }
+autocomplete.addListener('place_changed', function () {
 
-                    if (address_component.types[0] == "locality") {
-                        //console.log("town:"+address_component.long_name);
 
-                        itemLocality = address_component.long_name;
-                        $('#town').val(itemLocality);
-                    }
+    var place = autocomplete.getPlace();
 
-                    if (address_component.types[0] == "sublocality_level_1") {
-                        // console.log("province:"+address_component.long_name);
-                        itemSectorf = address_component.long_name;
-                        $('#sector').val(itemSectorf);
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
 
-                    }
+        //  console.log(place.geometry.viewport);
+        var arrAddress = place.address_components;
+        $.each(arrAddress, function (i, address_component) {
+            // console.log('address_component:'+i);
 
-                    if (address_component.types[0] == "country") {
-                        //console.log("country:"+address_component.long_name); 
-                        itemCountry = address_component.long_name;
-                    }
-
-                    if (address_component.types[0] == "postal_code_prefix") {
-                        // console.log("pc:"+address_component.long_name);  
-                        itemPc = address_component.long_name;
-                    }
-
-                    if (address_component.types[0] == "street_number") {
-                        // console.log("street_number:"+address_component.long_name);  
-                        itemSnumber = address_component.long_name;
-                    }
-                    //return false; // break the loop   
-                });
-
-                map.fitBounds(place.geometry.viewport);
-                map.setZoom(16); 
+            if (address_component.types[0] == "route") {
+                // console.log(i+": route:"+address_component.long_name);
+                itemRoute = address_component.long_name;
             }
 
+            if (address_component.types[0] == "locality") {
+                //console.log("town:"+address_component.long_name);
 
-
-
-        });
-		var propcity = 'Gurugram';
-
-        $(".property_image1").click(function () {
-			
-      $('html,body').animate({
-        scrollTop: $(".locality_input").offset().top - 100},
-        'slow');   
-		});
-
-        $('.property_image1').click(function(){
-           
-       propcity = this.id;
-       
-       $('#searchTextField').val('');
-      $('#propcity').val(propcity);
-    });
-
-        $(input).on('input', function () {
-
-
-            var str = input.value;
-            prefix = propcity + ', ';
-            if (str.indexOf(prefix) == 0) {
-                //console.log(input.value);
-            } else {
-                if (prefix.indexOf(str) >= 0) {
-                    input.value = prefix;
-                } else {
-                    input.value = prefix + str;
-                }
+                itemLocality = address_component.long_name;
+                $('#town').val(itemLocality);
             }
 
+            if (address_component.types[0] == "sublocality_level_1") {
+                // console.log("province:"+address_component.long_name);
+                itemSectorf = address_component.long_name;
+                $('#sector').val(itemSectorf);
+
+            }
+
+            if (address_component.types[0] == "country") {
+                //console.log("country:"+address_component.long_name); 
+                itemCountry = address_component.long_name;
+            }
+
+            if (address_component.types[0] == "postal_code_prefix") {
+                // console.log("pc:"+address_component.long_name);  
+                itemPc = address_component.long_name;
+            }
+
+            if (address_component.types[0] == "street_number") {
+                // console.log("street_number:"+address_component.long_name);  
+                itemSnumber = address_component.long_name;
+            }
+            //return false; // break the loop   
         });
 
-
+        map.fitBounds(place.geometry.viewport);
+        map.setZoom(16); 
     }
 
-	//google.maps.event.addDomListener(window, 'load', init);
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+});
+
+var propcity = 'Gurugram';
+
+$(".property_image1").click(function () {
+
+$('html,body').animate({
+scrollTop: $(".locality_input").offset().top - 100},
+'slow');   
+});
+
+$('.property_image1').click(function(){
+
+propcity = this.id;
+
+$('#searchTextField').val('');
+$('#propcity').val(propcity);
+});
+
+$(input).on('input', function () {
+
+
+var str = input.value;
+prefix = propcity + ', ';
+if (str.indexOf(prefix) == 0) {
+//console.log(input.value);
+} else {
+if (prefix.indexOf(str) >= 0) {
+    input.value = prefix;
+} else {
+    input.value = prefix + str;
+}
+}
+
+});
+
+
+
+}
+
+
+
+//google.maps.event.addDomListener(window, 'load', init);
+
+google.maps.event.addDomListener(window, 'load', initialize);
 	
 
 

@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
    .veiw_property_description_div .col-md-4{margin:5px 0}
    @media screen and (max-height: 650px) {
 	   .modal-dialog{
-		top:55%;
+		top:10%;
 	}
    }
 </style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div>
@@ -71,15 +71,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-9">
 
     <div class="portlet portlet-sortable sellr_proprty">
-        <div class="portlet-title">
-            <div class="caption font-green-sharp exp_titl">
-                                        
-                                        <span class="caption-subject bold uppercase exp_name">Document Show</span>
-                                        <!--<span class="caption-helper">details...</span>-->
-                                    </div>
-
+        <div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						 <h2 class="dashboard_head">Document Show</h2>
+					</div>
+					
+                
+            </div>
         </div>
-        <div class="portlet-body">
+        <div class="portlet-body padd_docs">
 
             <div class="addpropertybackend-index">
 
@@ -106,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'value' => function($data) {
 
                                 $propid = 273 * 179 - $data->property_id;
-                                return Html::a('<button class="btn btn-default"   id="propertyidprop" data-html="true"  style="width:90px;border-color:#0fd8da;border:1px solid;"  onclick = "showpropdet(' . $data->property_id . ')">PR' . $propid . '</button>', $url = 'javascript:void(0)', [
+                                return Html::a('<button class="btn btn-default"   id="propertyidprop" data-html="true"  style="width:90px;border-color:#c4984f;border:1px solid #c4984f; "  onclick = "showpropdet(' . $data->property_id . ')">PR' . $propid . '</button>', $url = 'javascript:void(0)', [
                                             'title' => Yii::t('yii', 'Click to View Property details'),
                                 ]);
                             }
@@ -208,7 +209,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $user_id = Yii::$app->user->identity->id;
 
                               //  if ($payment_status == 'paid') {
-                                    return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs(' . $property_id . ')" >Click to view Docs</button>', $url = 'javascript:void(0)', []);
+                                    return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid #c4984f;background:#c4984f !important;border-radius:0;" onclick="viewdocs(' . $property_id . ')" >Click to view Docs</button>', $url = 'javascript:void(0)', []);
                               //  } 
                                 // else {
                                 //     $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);

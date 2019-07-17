@@ -598,7 +598,7 @@ if(!isset($_SESSION))
 
                             ?>
                              <?=
-                            $form->field($model1, 'checkfield')->hiddenInput()->label(false);
+                            $form->field($model1, 'checkfield')->hiddenInput(['value'=>'otp'])->label(false);
 
                             ?>
                     
@@ -901,7 +901,7 @@ $.ajax({
 });
 
 
-$('#loginform-userotp').blur(function(){
+$('#loginform-userotp').keyup(function(){
 
 var identity = $('#loginform-identity').val();
 var newotp = $('#loginform-userotp').val();
@@ -915,6 +915,8 @@ var checkotp =  $('#loginform-checkotp').val()
 
     var type = 'email';
 }
+
+if(newotp != '' && newotp.length===4){
 
 $.ajax({
                          type: "POST",
@@ -945,6 +947,8 @@ $.ajax({
                          },
                  });
 
+}
+
 
 });
 
@@ -962,7 +966,9 @@ $('#resendotps').click(function(e){
            if(identity.match(phoneno))
      {	 
          
-         $('#otphide').show();
+        $('#loginform-checkfield').val('otp');	
+	$('#hideotp').show();
+	$('#hidepassword').hide();
      
            $.ajax({
                                 type: "POST",
@@ -3149,7 +3155,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
