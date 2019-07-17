@@ -6,9 +6,20 @@ return [
     'enableStrictParsing' => false,
     'rules'=> [
 
+       // '<controller:\w+>/<action:\w+>/<con:\w+>' => '<controller>/<action>',
+      // '<controller:\w+>/<action:\w+>/<con:\w+>' => '<controller>/<action>',
+  
+
+         
+       // 'register'=>'user/sign-in/signup',
+        '<controller>/<id:\d+>'=>'<controller>/view',
+        '<controller:\w+>/<action:\w+>/<con:\w+>' => '<controller>/<action>',
+       // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
         // Pages
-        'addproperty/<id:\d+>' => 'addproperty/view',
+        //'addproperty/<id:\d+>' => 'addproperty/view',
+        
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
 
         // Articles
