@@ -3423,11 +3423,11 @@ function getPolygonCoords() {
     var newspaths = pathstr;
     var locations = getsearchlocation;
 
-     alert(pathstr);
+     //alert(pathstr);
 
-     alert(centercoordinates);
+     //alert(centercoordinates);
 
-     alert(northlat);
+    // alert(northlat);
     
     if(shaped == 'polygon'){
     ndata = {shaped:shaped,newspaths : newspaths,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 

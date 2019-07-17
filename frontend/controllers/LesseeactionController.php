@@ -434,7 +434,7 @@ class LesseeactionController extends Controller {
             } 
     
             $locations = $_POST['locations'];
-            echo $shaped = $_POST['shaped'];die;
+             $shaped = $_POST['shaped'];
             $propid = $_POST['propid'];
             $town = $_POST['town'];
             $sector = $_POST['sector'];
