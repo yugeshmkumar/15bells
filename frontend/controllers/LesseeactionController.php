@@ -1381,8 +1381,11 @@ return 2;
         $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
         
         
-                  $conditions = array();
-
+        $conditions = array();
+        $conditionsnew = array();
+        $conditionsprop = array();
+          
+                        $conditionsprop[] = "property_for='both'";  
                         $conditions[] = "property_for='rent'";        
 
                         
@@ -1394,7 +1397,8 @@ return 2;
                         $conditions[] = "a.request_for = '$propbid'";
                         }
                         if ($areamin != '' && $areamax !='') {
-                         $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
+                            $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                            $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
                         }
 
                         if ($pricemin != '' && $pricemax !='') {
@@ -1415,8 +1419,12 @@ return 2;
                         $conditions[] = "a.user_id <> '$user_id'";
 
                         $sqlstr = $query;
-                        if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
                         }
             
             
@@ -1511,7 +1519,10 @@ return 2;
             $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";
         
             $conditions = array();
+      $conditionsnew = array();
+      $conditionsprop = array();
         
+      $conditionsprop[] = "property_for='both'";
             $conditions[] = "property_for='rent'";
         
             if ($proptype != 'Property Type') {
@@ -1522,21 +1533,28 @@ return 2;
                 $conditions[] = "a.request_for = '$propbid'";
             }
         
-            if ($areamin != '' && $areamax != '') {
-                $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
-            }
+            if ($areamin != '' && $areamax !='') {
+                // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+     
+                 $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                 $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+             }
         
             if ($pricemin != '' && $pricemax != '') {
                 $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
             }
         
-            $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
+            $conditions[] = "a.user_id <> '$user_id' ";
         
         
         
             $sqlstr = $query;
-            if (count($conditions) > 0) {
-                $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+            if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+            }
+    
+            if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
             }
         
         
@@ -1596,9 +1614,12 @@ return 2;
     
           $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) "; 
           
-                        $conditions = array();
-
-                        $conditions[] = "property_for='rent'";        
+          $conditions = array();
+          $conditionsnew = array();
+          $conditionsprop = array();
+            
+          $conditionsprop[] = "property_for='both'";
+                $conditions[] = "property_for='rent'";      
 
                         
 
@@ -1609,8 +1630,11 @@ return 2;
                         $conditions[] = "a.request_for = '$propbid'";
                         }
                         if ($areamin != '' && $areamax !='') {
-                         $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
-                        }
+                            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+                 
+                             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                         }
 
                         if ($pricemin != '' && $pricemax !='') {
                          $conditions[] = "a.asking_rental_price BETWEEN '$pricemin' AND '$pricemax'";    
@@ -1628,12 +1652,16 @@ return 2;
                         }  
                         $conditions[] = "a.status='approved'";
                         
-                        $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
+                        $conditions[] = "a.user_id <> '$user_id'";
                         
 
                         $sqlstr = $query;
-                        if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
                         }
               
               
@@ -1702,8 +1730,11 @@ return 2;
          
        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
          
-      $conditions = array();
+       $conditions = array();
+       $conditionsnew = array();
+       $conditionsprop = array();
 
+       $conditionsprop[] = "property_for='both'";  
                         $conditions[] = "property_for='rent'";        
 
                         
@@ -1715,8 +1746,11 @@ return 2;
                         $conditions[] = "a.request_for = '$propbid'";
                         }
                         if ($areamin != '' && $areamax !='') {
-                         $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
-                        }
+                            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+                 
+                             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                         }
 
                         if ($pricemin != '' && $pricemax !='') {
                          $conditions[] = "a.asking_rental_price BETWEEN '$pricemin' AND '$pricemax'";    
@@ -1738,8 +1772,12 @@ return 2;
                         
 
                         $sqlstr = $query;
-                        if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
                         }
    // echo $sqlstr;die;
      

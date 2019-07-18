@@ -1321,7 +1321,7 @@ proptype =  $('#proptypes').val();
 
 
                                                             
-                  var commaNum = numberWithCommas(this.asking_rental_price);
+                  var commaNum = this.asking_rental_price;
                 
                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
@@ -1485,7 +1485,7 @@ proptype =  $('#proptypes').val();
 
                                          
 
-                                             var commaNum = numberWithCommas(this.asking_rental_price);
+                                             var commaNum = this.asking_rental_price;
                 
                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
@@ -1644,7 +1644,7 @@ proptype =  $('#proptypes').val();
                
                                        
                                       count3 += 1;                      
-                                      var commaNum = numberWithCommas(this.asking_rental_price);
+                                      var commaNum = this.asking_rental_price;
                 
                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
@@ -2498,7 +2498,7 @@ function getPolygonCoords() {
    
            var haritid = 273*179-this.id;
            var propsid = 'PR'+ haritid;
-           var commaNum = numberWithCommas(this.asking_rental_price);
+           var commaNum = this.asking_rental_price;
            var imageds = $.trim(this.featured_image);
            var typenamed = decodeURIComponent(this.typename);
            var proptyid = this.id;
@@ -2875,7 +2875,7 @@ $("#rantime").datepicker({
                                                    var imageds = $.trim(this.featured_image);
                                                     var haritid = 273*179-this.id;
                                                     var propsid = 'PR'+ haritid;
-                                                    var commaNum = numberWithCommas(this.asking_rental_price);
+                                                    var commaNum = this.asking_rental_price;
                                                     var imaged;
            (this.county1 == '1' ? imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart.svg';  ?>":imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart_e.svg';  ?>");
           
