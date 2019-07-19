@@ -42,10 +42,10 @@ $this->title = 'Dashboard';
 									<?php if ($myprofile->logo) { ?>
 								<p><img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" id="thumbnail" class="prof_img" width="140"></p>
 								<?php }else{ ?>
-									<p><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>"  class="prof_img" width="140" ></p>
+									<p><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/userdummyimage.png';  ?>"  class="prof_img" width="140" ></p>
 								<?php } ?>
 								<?php }else{ ?>
-									<p><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>"  class="prof_img" width="140"></p>
+									<p><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/userdummyimage.png';  ?>"  class="prof_img" width="140"></p>
 								<?php } ?>
 										
 									</div>
