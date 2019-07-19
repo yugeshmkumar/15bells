@@ -452,7 +452,7 @@ if(!isset($_SESSION))
       <div class="modal-body no_pad">
 			<div class="container-fluid">
 				<div class="row site_contain">
-					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span class="prop_ids"> ASAD876</span></h1>
+					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span id="propsidpopup" class="prop_ids"> ASAD876</span></h1>
 					
 					
 					<!-- <div id="appendid2">
@@ -1327,10 +1327,10 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1339,8 +1339,8 @@ proptype =  $('#proptypes').val();
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1358,7 +1358,7 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1491,10 +1491,10 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1503,8 +1503,8 @@ proptype =  $('#proptypes').val();
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1522,7 +1522,7 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1650,10 +1650,10 @@ proptype =  $('#proptypes').val();
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1662,8 +1662,8 @@ proptype =  $('#proptypes').val();
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1681,7 +1681,7 @@ proptype =  $('#proptypes').val();
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -2509,7 +2509,9 @@ function getPolygonCoords() {
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Url::to(['addproperty/view', 'id' => 1,'locality'=>'Jmd Galeria'])  ?>" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == '') ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+
+                         //  '<a href="<?php echo Url::to(['addproperty/view', 'id' => 1,'locality'=>'Jmd Galeria'])  ?>" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == '') ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
 
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
@@ -2522,8 +2524,8 @@ function getPolygonCoords() {
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
-                                       '<p class="label_name">Facing</p>'+
-                                       '<p class="details_label">'+this.facing+'</p>'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2541,7 +2543,7 @@ function getPolygonCoords() {
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
-                                       '<p class="details_label">'+this.availability+'</p>'+
+                                       '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
@@ -2753,7 +2755,12 @@ var imgElement = $('#test').attr('src');
 
 function sitevisitproperties(id){
 
+var haritid = 273*179-id;
+var propsid = 'PR'+ haritid;
+
+$('#propsidpopup').html(propsid);
 $("#myModalnew").modal('show');
+
 $('#sitevisitprop').val(id);
 //var newhtml = $('#appendid_'+id).html();
 
@@ -2898,8 +2905,8 @@ $("#rantime").datepicker({
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
-                                       '<p class="label_name">Facing</p>'+
-                                       '<p class="details_label">'+this.facing+'</p>'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2917,7 +2924,7 @@ $("#rantime").datepicker({
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
-                                       '<p class="details_label">'+this.availability+'</p>'+
+                                       '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
