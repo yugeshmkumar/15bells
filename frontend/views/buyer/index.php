@@ -289,7 +289,7 @@ use yii\bootstrap\Modal;
                     
          </div>
          <div class="col-md-12 no_pad">
-								<h3 class="flow_heading avail_ability">Choose a Price Range</h3>
+								<h3 class="flow_heading avail_ability">Choose a Price Range in <i class="fa fa-inr"></i></h3>
 							<div class="col-md-6 no_pad">
                 <div class="col-md-8 col-xs-6">
                   <input type="text" class="form-control input_desgn input_number" placeholder="Minimum price" id="dummypriceminimum">
