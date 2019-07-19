@@ -1345,10 +1345,10 @@ function applyfilters(){
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1357,8 +1357,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1376,7 +1376,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1508,10 +1508,10 @@ function applyfilters(){
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1520,8 +1520,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1539,7 +1539,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1667,10 +1667,10 @@ function applyfilters(){
                             '<p class="property_id">Property ID : '+propsid+'</p>'+
                             '<div class="row single_property">'+
                                 '<div class="col-md-3 no_pad relative">'+
-                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">'+
-                                    '<div class="overlay_sign">'+
-                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                    '</div>'+
+                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                    // '<div class="overlay_sign">'+
+                                    //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+                                    // '</div>'+
                                 '</div>'+
                                 '<div class="col-md-9">'+
                                     '<div class="row prop_detail">'+
@@ -1679,8 +1679,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1698,7 +1698,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -2541,8 +2541,8 @@ function getPolygonCoords() {
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
-                                       '<p class="label_name">Facing</p>'+
-                                       '<p class="details_label">'+this.facing+'</p>'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2560,7 +2560,7 @@ function getPolygonCoords() {
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
-                                       '<p class="details_label">'+this.availability+'</p>'+
+                                       '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
@@ -2920,8 +2920,8 @@ $("#rantime").datepicker({
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
-                                       '<p class="label_name">Facing</p>'+
-                                       '<p class="details_label">'+this.facing+'</p>'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2939,7 +2939,7 @@ $("#rantime").datepicker({
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
-                                       '<p class="details_label">'+this.availability+'</p>'+
+                                       '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
@@ -3009,6 +3009,10 @@ $("#rantime").datepicker({
 
                                    function sitevisitproperties(id){
 
+var haritid = 273*179-id;
+var propsid = 'PR'+ haritid;
+
+$('#propsidpopup').html(propsid);
 $("#myModalnew").modal('show');
 $('#sitevisitprop').val(id);
 //var newhtml = $('#appendid_'+id).html();
