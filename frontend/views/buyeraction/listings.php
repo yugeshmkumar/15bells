@@ -3009,6 +3009,10 @@ $("#rantime").datepicker({
 
                                    function sitevisitproperties(id){
 
+var haritid = 273*179-id;
+var propsid = 'PR'+ haritid;
+
+$('#propsidpopup').html(propsid);
 $("#myModalnew").modal('show');
 $('#sitevisitprop').val(id);
 //var newhtml = $('#appendid_'+id).html();

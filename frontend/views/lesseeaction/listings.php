@@ -452,7 +452,7 @@ if(!isset($_SESSION))
       <div class="modal-body no_pad">
 			<div class="container-fluid">
 				<div class="row site_contain">
-					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span class="prop_ids"> ASAD876</span></h1>
+					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span id="propsidpopup" class="prop_ids"> ASAD876</span></h1>
 					
 					
 					<!-- <div id="appendid2">
@@ -2755,7 +2755,12 @@ var imgElement = $('#test').attr('src');
 
 function sitevisitproperties(id){
 
+var haritid = 273*179-id;
+var propsid = 'PR'+ haritid;
+
+$('#propsidpopup').html(propsid);
 $("#myModalnew").modal('show');
+
 $('#sitevisitprop').val(id);
 //var newhtml = $('#appendid_'+id).html();
 
