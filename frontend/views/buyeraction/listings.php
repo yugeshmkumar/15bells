@@ -1357,8 +1357,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1376,7 +1376,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1520,8 +1520,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1539,7 +1539,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -1679,8 +1679,8 @@ function applyfilters(){
                                             '<p class="details_label">'+this.locality+'</p>'+
                                         '</div>'+
                                         '<div class="col-md-6 company_overview property_manage">'+
-                                            '<p class="label_name">Facing</p>'+
-                                            '<p class="details_label">'+this.facing+'</p>'+
+                                            '<p class="label_name">Property for</p>'+
+                                            '<p class="details_label">'+this.request_for+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+	
@@ -1698,7 +1698,7 @@ function applyfilters(){
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Availability</p>'+
-                                            '<p class="details_label">'+this.availability+'</p>'+
+                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="row prop_detail">'+
@@ -2541,8 +2541,8 @@ function getPolygonCoords() {
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
-                                       '<p class="label_name">Facing</p>'+
-                                       '<p class="details_label">'+this.facing+'</p>'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2560,7 +2560,7 @@ function getPolygonCoords() {
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
-                                       '<p class="details_label">'+this.availability+'</p>'+
+                                       '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
