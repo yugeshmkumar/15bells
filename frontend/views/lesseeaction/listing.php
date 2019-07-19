@@ -216,7 +216,7 @@ if(!isset($_SESSION))
 								</ul>
 							</div>
 							<div class="col-md-6 shortlist_call">
-								<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>
+								<button class="btn btn-default call_butn back_call">Call</button><button class="btn btn-default short_butn">Shortlist</button>
 							</div>
 						</div>
 				</div> -->
@@ -389,6 +389,63 @@ if(!isset($_SESSION))
 
   </div>
 </div>
+
+
+
+
+<div id="call_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm modal_dialogue modal_user" style="width:450px;">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		
+		<div class="container-fluid no_pad">
+        <div class="col-md-12 text-left" id="addusers">
+				<h2 class="subuser_hed">Please Enter Phone Number</h2>
+
+			<?php $modeled = new \frontend\modules\user\models\SignupForm(); ?>
+
+				<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
+			      //'enableAjaxValidation'   => true,
+
+				//'enableClientValidation' => false,
+				'action'=>\Yii::$app->urlManager->createUrl(['user/sign-in/ajaxsignup'])]);
+
+				 ?>
+
+				 <?= $form->errorSummary($modeled); ?>
+
+				
+				<p class="user_Detail">
+				<?=$form->field($modeled, 'username')->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				</p>
+				<p class="text-center">
+				<?php echo Html::submitButton(Yii::t('frontend', 'Request Callback'), ['class' => 'btn btn-default btn_signin', 'name' => 'signup-button1']) ?>
+				</p>
+				<?php ActiveForm::end(); ?>
+			</div>
+			
+			
+		</div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <div id="map_modal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg modal_dialogue">
@@ -637,6 +694,8 @@ $('#hidepassword').hide();
 $('#resendotp').hide();
 $('#resendotps').hide();
 
+    
+ 
 $('#passwordit').click(function(){
 
 $('#loginform-checkfield').val('password');
@@ -957,7 +1016,7 @@ $('#resendotps').click(function(e){
                
      
      });
-
+     
 
 JS;
 $this->registerJs($script);
@@ -966,7 +1025,9 @@ $this->registerJs($script);
 
 
 <script>
-
+function openModal() {
+    $("#call_modal").modal('show');
+}
 function isValidEmailAddress(emailAddress) {
     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
     return pattern.test(emailAddress);
@@ -1843,7 +1904,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -1988,7 +2049,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2125,7 +2186,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2970,7 +3031,7 @@ function getPolygonCoords() {
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button class="btn btn-default call_butn" onclick="openModal()">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3109,7 +3170,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3259,7 +3320,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3392,7 +3453,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3458,7 +3519,7 @@ function getPolygonCoords() {
                     window.location.replace("searches");
 
                     }else if(data == 'nouser'){
-
+                            
                        $('#signup_modal').modal('show');
                    // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
 

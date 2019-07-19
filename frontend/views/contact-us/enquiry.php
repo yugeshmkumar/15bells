@@ -156,7 +156,7 @@ use yii\helpers\Html;
 
                           <div class="tab">
 								<p class="text-center"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/success.svg';  ?>" width="88"></p>
-								<p class="success_text">Congratulations !!  Your contact us query has been successfully send.</p>
+								<p class="success_text">Congratulations !!  Your contact us query has been successfully sent.</p>
 							  </div>
 						
 						<div style="overflow:auto;float:left;">
