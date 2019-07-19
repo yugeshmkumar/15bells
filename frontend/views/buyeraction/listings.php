@@ -3303,7 +3303,9 @@ $("#rantime").datepicker({
                                                 url: 'getfreevisit',
                                                 data: {hardam: id,rantime:rantime,visitmode:visitmode},
                                                 success: function (data) {
-                                              
+                                                    $('#sitevisitremove_'+id).html('Already Scheduled');
+                                                    $('#sitevisitremove_'+id).removeAttr('onclick');
+    
                                                 
                                                 if(data == '1'){
                                                     $('#kamount_payable').val(amount_payable);
