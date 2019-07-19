@@ -2770,8 +2770,7 @@ var imgElement = $('#test').attr('src');
 
 function sitevisitproperties(id){
 
-    $('#sitevisitremove_'+id).html('Already Scheduled');
-    $('#sitevisitremove_'+id).removeAttr('onclick');
+   
 
 var haritid = 273*179-id;
 var propsid = 'PR'+ haritid;
@@ -3254,6 +3253,8 @@ $.ajax({
     data: {hardam: id,rantime:rantime,visitmode:visitmode},
     success: function (data) {
   
+    $('#sitevisitremove_'+id).html('Already Scheduled');
+    $('#sitevisitremove_'+id).removeAttr('onclick');
     
     if(data == '1'){
         
