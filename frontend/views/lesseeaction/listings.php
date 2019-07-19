@@ -1374,8 +1374,13 @@ proptype =  $('#proptypes').val();
                                         '</ul>'+
                                     '</div>'+
                                     '<div class="col-md-6 shortlist_call">'+
-                                        '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
-                                    '</div>'+
+                               '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" />'+
+                               ((this.county > 0) ?
+                               '<button  class="btn btn-default short_butn">Already Scheduled</button>'
+                                  :
+                               '<button id="sitevisitremove_'+this.id+'" onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
+                               )+
+                               '</div>'+
                                     '</div>'+
                                     '</div>'+
                                 '</div>'+
@@ -1538,8 +1543,13 @@ proptype =  $('#proptypes').val();
                                         '</ul>'+
                                     '</div>'+
                                     '<div class="col-md-6 shortlist_call">'+
-                                        '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
-                                    '</div>'+
+                               '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" />'+
+                               ((this.county > 0) ?
+                               '<button  class="btn btn-default short_butn">Already Scheduled</button>'
+                                  :
+                               '<button id="sitevisitremove_'+this.id+'" onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
+                               )+
+                               '</div>'+
                                     '</div>'+
                                     '</div>'+
                                 '</div>'+
@@ -1697,8 +1707,13 @@ proptype =  $('#proptypes').val();
                                         '</ul>'+
                                     '</div>'+
                                     '<div class="col-md-6 shortlist_call">'+
-                                        '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
-                                    '</div>'+
+                               '<img src="'+imaged+'" id="test" onclick="changes('+this.id+');" />'+
+                               ((this.county > 0) ?
+                               '<button  class="btn btn-default short_butn">Already Scheduled</button>'
+                                  :
+                               '<button id="sitevisitremove_'+this.id+'" onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
+                               )+
+                               '</div>'+
                                     '</div>'+
                                     '</div>'+
                                 '</div>'+
@@ -2563,7 +2578,7 @@ function getPolygonCoords() {
                                ((this.county > 0) ?
                                '<button  class="btn btn-default short_butn">Already Scheduled</button>'
                                   :
-                               '<button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
+                               '<button id="sitevisitremove_'+this.id+'" onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
                                )+
                                '</div>'+
 
@@ -2755,6 +2770,9 @@ var imgElement = $('#test').attr('src');
 
 function sitevisitproperties(id){
 
+    $('#sitevisitremove_'+id).html('Already Scheduled');
+    $('#sitevisitremove_'+id).removeAttr('onclick');
+
 var haritid = 273*179-id;
 var propsid = 'PR'+ haritid;
 
@@ -2944,7 +2962,7 @@ $("#rantime").datepicker({
                                ((this.county > 0) ?
                                '<button  class="btn btn-default short_butn">Already Scheduled</button>'
                                   :
-                               '<button onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
+                               '<button id="sitevisitremove_'+this.id+'" onclick="sitevisitproperties('+this.id+');" class="btn btn-default short_butn">Schedule Visit</button>'
                                )+
                                '</div>'+
                                '</div>'+
