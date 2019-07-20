@@ -80,7 +80,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 							<img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" width="40" class="user_img">
 							<?php }else{ ?>
 
-						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/user.jpg';  ?>" width="40" class="user_img">
+						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/userdummyimage.png';  ?>" width="40" class="user_img">
 						<?php } ?>
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu user_menu" role="menu">

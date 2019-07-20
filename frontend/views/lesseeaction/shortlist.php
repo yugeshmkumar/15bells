@@ -125,8 +125,14 @@ if(array_key_exists('low',$_POST)){
 									</ul>
 								</div>
 								<div class="col-md-12 progress_bar">
-									<p class="text-right process_continue"><a class="property_process" href="javascript:void(0)" id="<?php echo $datas['id']; ?>" onclick="sitevisitproperties(this.id);">Schedule Visit </a>
-                                    <a class="property_back step_locality" href="javascript:void(0)" id="<?php echo $datas['id']; ?>" onclick="deleteprop(this.id)">Remove </a></p>
+								<?php if ($datas['county'] > 0 ){ ?> 
+									<p class="text-right process_continue"><a class="property_process" href="javascript:void(0)" >Already Scheduled </a>
+                                  <?php  }else{ ?>
+									<p class="text-right process_continue">
+									<a class="property_process" href="javascript:void(0)" id="<?php echo $datas['id']; ?>" onclick="sitevisitproperties(this.id);">Schedule Visit </a>
+
+								 <?php   }  ?>
+								    <a class="property_back step_locality" href="javascript:void(0)" id="<?php echo $datas['id']; ?>" onclick="deleteprop(this.id)">Remove </a></p>
 									
 								</div>
 										
@@ -145,7 +151,7 @@ if(array_key_exists('low',$_POST)){
   		</div>
 
 
-		   <div id="myModalnew" class="modal fade" role="dialog">
+		  <div id="myModalnew" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg modal_dialogue">
 
     <!-- Modal content-->
@@ -155,11 +161,20 @@ if(array_key_exists('low',$_POST)){
       <div class="modal-body no_pad">
 			<div class="container-fluid">
 				<div class="row site_contain">
-					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span class="prop_ids"> ASAD876</span></h1>
+					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span id="propsidpopup" class="prop_ids"> ASAD876</span></h1>
 					
 					
-					<div id="appendid2">
-					</div>
+					<!-- <div id="appendid2">
+					</div> -->
+                    <div class="col-md-12">
+
+                    <div class="col-md-12">
+                    <p class="label_name no_pad">Location:</p>
+                    <p class="details_label" id="sitevisitlocation">    </p>
+                    </div>
+                    <!-- <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
+                    <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div> -->
+                    </div>
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<div class="row">
@@ -167,12 +182,30 @@ if(array_key_exists('low',$_POST)){
 							</div>
 							
 						</div>
-						<div class="col-md-6">
-							<div class="row">
-							</div>
+                        <div class="col-md-6">
+                        <div class="row">
+						<div class="col-md-4 no_pad">
+							
+                         <button type="button" class="scheduletime time_sv button_select" id="morning">Morning</button>
+							
 							
 						</div>
+                        <div class="col-md-4 no_pad">
+							
+                            <button type="button" class="scheduletime time_sv button_select" id="afternoon">Afternoon</button>
+							
+							
+						</div>
+                        <div class="col-md-4 no_pad">
+							
+                            <button type="button" class="scheduletime time_sv button_select" id="evening">Evening</button>
+							
+							
+						</div>
+                        </div>
+                        </div>
 					</div>
+                    <input type="hidden" id="scheduletime">
 					<div class="col-md-12 visit_save">
 						<div class="col-md-6">
 							<div class="row">
@@ -190,7 +223,7 @@ if(array_key_exists('low',$_POST)){
 						</div>
 						<div class="col-md-6 text-right save_site">
 							<div class="row">
-								<button class="btn btn-default call_butn" onclick="getfreevisit();">Save</button>
+								<button class="btn btn-default call_butn" onclick="getfreevisit();">Schedule</button>
 							</div>
 							
 						</div>
@@ -222,10 +255,24 @@ $script = <<< JS
 var  dvisitmode = this.id;
 
   $('#visitmode').val(dvisitmode);
-});                              
+});   
 
-  $('#rantime').appendDtpicker();
- 
+
+$('.scheduletime').on('click', function() {
+    
+	var getValue = this.id;
+	if(getValue == 'morning'){
+	$('#scheduletime').val('10:00:00');
+	}else if(getValue == 'afternoon'){
+		$('#scheduletime').val('15:00:00');
+	}
+	else if(getValue == 'evening'){
+		$('#scheduletime').val('18:00:00');
+	}else{
+		$('#scheduletime').val('00:00:00');
+	}
+	
+	});
 
 		  
 JS;
@@ -261,10 +308,41 @@ function deleteprop(id){
 							   function sitevisitproperties(id){
 								  
 
-											$("#myModalnew").modal('show');
-											$('#sitevisitprop').val(id);
-											var newhtml = $('#parntcls_'+id).html();
-											$('#appendid2').html(newhtml);
+																					
+										var haritid = 273*179-id;
+										var propsid = 'PR'+ haritid;
+
+										$('#propsidpopup').html(propsid);
+										$("#myModalnew").modal('show');
+
+										$('#sitevisitprop').val(id);
+										//var newhtml = $('#appendid_'+id).html();
+
+											$.ajax({
+												type: "POST",
+												url: 'getsitevisitlocation',
+												data: {hardam: id},
+												success: function (data) {
+
+												// alert(data);
+													var obj = $.parseJSON(data);
+													
+													$('#sitevisitlocation').html(obj.locality);
+												// $('#sitevisitarea').html(obj.super_area);
+													//$('#sitevisitprice').html(obj.asking_rental_price);
+											
+												},
+														});
+
+										var today = new Date();
+
+										$("#rantime").datepicker({
+											changeMonth: true,
+											changeYear: true,
+											dateFormat: 'yy-mm-dd',
+											minDate: 1 // set the minDate to the today's date
+											// you can add other options here
+										});
 
 
 											}  
@@ -276,9 +354,17 @@ function deleteprop(id){
 
 
 
-											var id = $('#sitevisitprop').val();
-											var rantime = $('#rantime').val();
-											var visitmode = $('#visitmode').val();
+																		
+
+							var id = $('#sitevisitprop').val();
+
+							var datetime = $('#rantime').val();
+							var scheduletime = $('#scheduletime').val();
+							var visitmode = $('#visitmode').val();
+							var rantime = datetime +' '+scheduletime;
+							var amount_payable = 500;
+							
+
 
 
 											$.ajax({
@@ -287,7 +373,8 @@ function deleteprop(id){
 												data: {hardam: id,rantime:rantime,visitmode:visitmode},
 												success: function (data) {
 											
-												
+													$('#'+id).html('Already Scheduled');
+                                                    $('#'+id).removeAttr('onclick');
 												if(data == '1'){
 													
 													
