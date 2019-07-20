@@ -394,7 +394,7 @@ if(!isset($_SESSION))
 
 
 <div id="call_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm modal_dialogue modal_user" style="width:450px;">
+  <div id="call_modal_child" class="modal-dialog modal-sm modal_dialogue modal_user" style="width:450px;">
 
     <!-- Modal content-->
     <div class="modal-content draw_map no_pad">
@@ -406,24 +406,38 @@ if(!isset($_SESSION))
         <div class="col-md-12 text-left" id="addusers">
 				<h2 class="subuser_hed">Please Enter Phone Number</h2>
 
-			<?php $modeled = new \frontend\modules\user\models\SignupForm(); ?>
+			<?php $modelre = new \common\models\Callbuttonaction(); ?>
 
-				<?php $form = ActiveForm::begin(['id' => $modeled->formName(),
+				<?php $form = ActiveForm::begin(['id' => $modelre->formName(),
 			      //'enableAjaxValidation'   => true,
 
 				//'enableClientValidation' => false,
-				'action'=>\Yii::$app->urlManager->createUrl(['user/sign-in/ajaxsignup'])]);
+				'action'=>\Yii::$app->urlManager->createUrl(['callbuttonaction/create'])]);
 
 				 ?>
 
-				 <?= $form->errorSummary($modeled); ?>
+				 <?//= $form->errorSummary($modeled); ?>
 
-				
+              <?php date_default_timezone_set("Asia/Calcutta");
+              $dater = date('Y-m-d H:i:s');
+             
+
+             ?>
+			<?=$form->field($modelre, 'property_id')->hiddenInput()->label(false)?>
+            <?=$form->field($modelre, 'created_date')->hiddenInput(['value'=>$dater])->label(false)?>
+
 				<p class="user_Detail">
-				<?=$form->field($modeled, 'username')->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				<?=$form->field($modelre, 'user_phone')->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
 				</p>
+
+                <div class="user_Detail" id="getotpdiv">
+				<?=$form->field($modelre, 'userOTP')->textInput([ 'placeholder' => "Enter OTP" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				</div>
+                <?=$form->field($modelre, 'checkotp')->hiddenInput(['value'=>'error'])->label(false)?>
+
 				<p class="text-center">
-				<?php echo Html::submitButton(Yii::t('frontend', 'Request Callback'), ['class' => 'btn btn-default btn_signin', 'name' => 'signup-button1']) ?>
+                <button type="button" id="otpcallbutton" class="btn btn-default btn_signin">Get OTP </button>
+				<?php echo Html::submitButton(Yii::t('frontend', 'Request Callback'), ['id'=>'callsubmitbutton','class' => 'btn btn-default btn_signin']) ?>
 				</p>
 				<?php ActiveForm::end(); ?>
 			</div>
@@ -617,6 +631,7 @@ if(!isset($_SESSION))
                         <?php echo $form->field($model1, 'identity')->textInput(['class' => 'form-control input_desgn','placeholder'=>'Email or Phone no'])->label(false) ?>
                           <!-- <input type="text" class="form-control input_desgn" placeholder="Email or Phone no"> -->
                         </div>
+                        
 
                         
                         <button type="button" id="passwordit" class="otp_button">Login via Password</button><span class="login_popup">OR</span>
@@ -688,7 +703,9 @@ $script = <<< JS
 
 //$("#signup_modal").modal('show');
 
+$('#getotpdiv').hide();
 $('#hideotp').hide();
+$('#callsubmitbutton').hide();
 $('#otphide').hide();
 $('#hidepassword').hide();
 $('#resendotp').hide();
@@ -703,8 +720,121 @@ $('#loginform-checkfield').val('password');
 $('#hideotp').hide();
 $('#hidepassword').show();
 
+
 });
 
+$('#otpcallbutton').click(function(){
+
+var userphone =  $('#callbuttonaction-user_phone').val();
+var newotp =  generateOTP();
+           var phoneno = /^\d{10}$/;
+		   if(userphone.match(phoneno))
+	{	
+
+    $('#getotpdiv').show();
+    $('#otpcallbutton').hide();
+    $('#callsubmitbutton').show();
+
+    $.ajax({
+							 type: "POST",
+							 url: '/user/sign-in/rgetotp',
+							 data: {phone : userphone,newotp:newotp},
+							 success: function (data) {
+								       
+							 },
+					 });
+
+    }
+});
+
+
+$('#callbuttonaction-userotp').keyup(function(){
+
+    
+
+var identity = $('#callbuttonaction-user_phone').val();
+var newotp = $('#callbuttonaction-userotp').val();
+var checkotp =  $('#callbuttonaction-checkotp').val()
+var type = 'phone';
+
+if(newotp != '' && newotp.length===4){
+   
+
+ $.ajax({
+                         type: "POST",
+                         url: '/user/sign-in/rverifyotp',
+                         data: {phone : identity,newotp:newotp,type:type},
+                         success: function (data) {
+
+
+                                $('#loginform-checkotp').val(data);	
+
+                                if(data == 'success'){
+                                    $('form#{$modelre->formName()}').on('submit', function(e){
+
+                                    e.preventDefault();
+
+                                    });
+                                }
+
+                             
+
+                                                
+                                  
+                         },
+                 });
+
+ }
+
+
+
+
+});
+
+
+$('form#{$modelre->formName()}').on('beforeSubmit', function(e) {
+
+var form = $(this);
+
+var formData = form.serialize();
+
+$.ajax({
+
+    url: form.attr("action"),
+
+    type: form.attr("method"),
+
+    beforeSend: function(){
+      //$(".loaderContainer").css("display","block");
+    // $(".loaderContainer").show();
+     //$("#loading0").hide();
+   },
+   complete: function(){
+    
+     
+   },
+
+    data: formData,
+
+    success: function (data) {
+
+if(data == 1){
+    $("#call_modal").modal('hide');
+    toastr.success('Your Query has been sent Successfully', 'success');
+}       
+
+
+    },
+
+    error: function () {
+
+        alert("Something went wrong");
+
+    }
+
+});
+
+});
 
 $('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 	
@@ -914,6 +1044,9 @@ $.ajax({
 });
 
 i = 0;
+
+
+
 $('#loginform-userotp').keyup(function(){
 
     
@@ -935,7 +1068,7 @@ var checkotp =  $('#loginform-checkotp').val()
 
 i += 1
 
-if(newotp != '' && newotp.length===4){
+if(newotp != '' && newotp.length ===4){
     
    
 
@@ -1025,9 +1158,21 @@ $this->registerJs($script);
 
 
 <script>
-function openModal() {
+
+
+
+function openModal(id) {
+
+    $('#getotpdiv').hide();
+    $('#otpcallbutton').show();
+    $('#callsubmitbutton').hide();
+
     $("#call_modal").modal('show');
+   
+    $('#callbuttonaction-property_id').val(id);
 }
+
+
 function isValidEmailAddress(emailAddress) {
     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
     return pattern.test(emailAddress);
@@ -1904,7 +2049,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2049,7 +2194,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2186,7 +2331,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3031,7 +3176,7 @@ function getPolygonCoords() {
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button class="btn btn-default call_butn" onclick="openModal()">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:9555322244" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3170,7 +3315,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3320,7 +3465,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3453,7 +3598,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3678,7 +3823,7 @@ function getPolygonCoords() {
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
-                                                                            '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                                                            '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                                                         '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+
