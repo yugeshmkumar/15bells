@@ -199,8 +199,8 @@ use yii\bootstrap\Modal;
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
 										<div class="btn-group btn-toggle btn_toggle"> 
-											<button  type="button" class="btn button_togg btn-lg confirmbutton" value="yes">Yes</button>
-											<button type="button" class="btn button_togg btn-lg confirmbutton" value="no">No</button>
+											<button  type="button" class="btn butn_near btn-lg confirmbutton" value="yes">Yes</button>
+											<button type="button" class="btn butn_near btn-lg confirmbutton" value="no">No</button>
 										  </div>
 									</div>
 								</div>

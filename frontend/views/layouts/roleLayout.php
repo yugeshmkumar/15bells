@@ -122,17 +122,18 @@ NewDesignAsset::register($this);
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			  <div class="col-md-12">
 				
-					<ul class="sliding_menu">
-							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>">Industries</a></li>
+			  <ul class="sliding_menu main_menu">
+							<li class="trst_act"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>">Industries</a></li>
 
-							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
-
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
+							
 					</ul>
+					
 					
 				
 			 </div>
@@ -194,7 +195,10 @@ NewDesignAsset::register($this);
 	<script>// Check document is loaded
 
 	$(document).ready(function(){
-
+		$('.main_menu li a').click(function(){
+    $('.main_menu li a').removeClass("active");
+    $(this).addClass("active");
+		});
 $(".location_pick").click(function(){
 
   var city = this.id;

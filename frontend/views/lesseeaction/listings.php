@@ -215,7 +215,7 @@ if(!isset($_SESSION))
 						</div>
 						<div class="row ameneties_section">
 							<div class="col-md-6 amenities_offered">
-								<p class="label_name amenities">Ameities</p>
+								<p class="label_name amenities">Amenities</p>
 								<ul class="amenities_list">
 									<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>
 									<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>
@@ -1346,7 +1346,7 @@ proptype =  $('#proptypes').val();
                                     '<div class="row prop_detail">'+	
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
-                                            '<p class="details_label">₹ '+commaNum+'</p>'+
+                                            '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
@@ -1363,7 +1363,7 @@ proptype =  $('#proptypes').val();
                                     '</div>'+
                                     '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
-                                        '<p class="label_name amenities">Ameities</p>'+
+                                        '<p class="label_name amenities">Amenities</p>'+
                                         '<ul class="amenities_list">'+
                                             '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
                                             '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
@@ -1515,7 +1515,7 @@ proptype =  $('#proptypes').val();
                                     '<div class="row prop_detail">'+	
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
-                                            '<p class="details_label">₹ '+commaNum+'</p>'+
+                                            '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
@@ -1532,7 +1532,7 @@ proptype =  $('#proptypes').val();
                                     '</div>'+
                                     '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
-                                        '<p class="label_name amenities">Ameities</p>'+
+                                        '<p class="label_name amenities">Amenities</p>'+
                                         '<ul class="amenities_list">'+
                                             '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
                                             '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
@@ -1679,7 +1679,7 @@ proptype =  $('#proptypes').val();
                                     '<div class="row prop_detail">'+	
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Price</p>'+
-                                            '<p class="details_label">₹ '+commaNum+'</p>'+
+                                            '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                         '</div>'+
                                         '<div class="col-md-3 company_overview property_manage">'+
                                             '<p class="label_name">Area</p>'+
@@ -1696,7 +1696,7 @@ proptype =  $('#proptypes').val();
                                     '</div>'+
                                     '<div class="row prop_detail">'+
                                     '<div class="col-md-6 amenities_offered">'+
-                                        '<p class="label_name amenities">Ameities</p>'+
+                                        '<p class="label_name amenities">Amenities</p>'+
                                         '<ul class="amenities_list">'+
                                             '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
                                             '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
@@ -2546,7 +2546,7 @@ function getPolygonCoords() {
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+'</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -2563,7 +2563,7 @@ function getPolygonCoords() {
                                '</div>'+
                                '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Ameities</p>'+
+                                   '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
                                        '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
                                        '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
@@ -2930,7 +2930,7 @@ $("#rantime").datepicker({
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+'</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -2947,7 +2947,7 @@ $("#rantime").datepicker({
                                '</div>'+
                                '<div class="row prop_detail">'+
                                '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Ameities</p>'+
+                                   '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
                                        '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
                                        '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
