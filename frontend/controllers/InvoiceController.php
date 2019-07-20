@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use mPDF;
+use common\models\User;
 
 /**
  * InvoiceController implements the CRUD actions for Invoice model.
@@ -61,9 +62,23 @@ class InvoiceController extends Controller
        $_POST = Yii::$app->request->post();
          $role = $_POST['keyword'];
 
+         $Invoice = \common\models\Invoice::find()->where(['invoiceitemid' => $role])->one();
+         $invoiceID = $Invoice->invoiceID;
+         $createdAt = $Invoice->createdAt;
+         $date =  date("F , d Y", strtotime($createdAt));
+
+         $user_id = $Invoice->user_id;
+
+         $users    =  User::find()->where(['id'=>$user_id])->one();
+         $fullname =  $users->fullname;
+
         $mpdf = new mPDF();
+
         $mpdf->WriteHTML($this->renderPartial('invoice', [
-            'id' => $role,]));
+            'id' => $invoiceID,
+            'fullname'=>$fullname,
+            'createdAt'=>$date,
+            ]));
             $mpdf->Output();
 
         // return $this->render('invoice', [
