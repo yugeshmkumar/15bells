@@ -32,7 +32,7 @@ $datas =  $dataProvider->query->all();
                 <?php foreach ($datas as $data){ 
                     
                 $viewid  =  $data->propertyid; 
-                $invoiceID  =  $data->invoiceID; 
+                $invoiceID  =  $data->invoiceitemid; 
                 $payment_id  =  $data->payment_id;  
                 
                               

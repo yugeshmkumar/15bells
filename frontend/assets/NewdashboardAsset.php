@@ -23,7 +23,7 @@ class NewdashboardAsset extends AssetBundle
      'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
      'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',     
      'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,900',
-    
+     'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
      'newdashcss/dashboard.css',
      'toastr/toastr.css',
      'toastr/toastr.min.css',
@@ -33,6 +33,7 @@ class NewdashboardAsset extends AssetBundle
     public $js = [
        // 'js/main.js',
         'toastr/toastr.min.js',
+        'https://code.jquery.com/ui/1.12.1/jquery-ui.js',
        // 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
        //'https://mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js',
 
