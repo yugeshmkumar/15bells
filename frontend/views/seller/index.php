@@ -91,7 +91,7 @@ $user_id= Yii::$app->user->identity->id;
 										<div class="col-md-6 locality_input">
 											<h3 class="flow_heading">Add property locality below</h3>
 											<!-- <input type="text" class="form-control input_desgn input_location" placeholder="Enter your locality"> -->
-											<?= $form->field($model, 'locality')->textInput(['id' => 'searchTextField', 'onchange' => 'getmap(this.value)', 'placeholder' => "Enter your locality", 'class' => 'form-control input_desgn input_location'])->label(false) ?>
+											<?= $form->field($model, 'locality')->textInput(['id' => 'searchTextField', 'placeholder' => "Enter your locality", 'class' => 'form-control input_desgn input_location'])->label(false) ?>
 
 										</div>
 									</div>
@@ -2269,7 +2269,10 @@ markers.push(marker);
 
 
 
-     function getmap(val) {
+     function getmap() {
+
+           var val = $('#searchTextField').val();
+
         var marker = '';
         var position = '';
         geocoder.geocode({'address': val}, function (results, status) {
@@ -2380,6 +2383,8 @@ var options = {
 autocomplete = new google.maps.places.Autocomplete(input, options);
 
 autocomplete.addListener('place_changed', function () {
+
+    getmap();
 
 
     var place = autocomplete.getPlace();
