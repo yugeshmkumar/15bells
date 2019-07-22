@@ -192,7 +192,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="col-md-12 seperator_div"></div>
 							<div class="col-md-12 property_area crpet_area">
-								<h3 class="flow_heading">Select unit & enter square and carpet area of your property</h3>
+								<h3 class="flow_heading">Select Unit</h3>
 								<ul class="sub_categories">
 									<li class=""><a href="javascript:void(0)" id="sq_feets" class="property_subtype price_unit">Sq. Feet</a></li>
 									<li class=""><a href="javascript:void(0)" id="sq_yards" class="property_subtype price_unit">Sq. Yard</a></li>
@@ -200,6 +200,7 @@ $user_id= Yii::$app->user->identity->id;
 								</ul>
 							</div>
 							<div class="col-md-12">
+                            <h3 class="flow_heading">Enter square and carpet area of your property</h3>
 									<div class="col-md-6">
                                     <?= $form->field($model, 'super_area')->textInput([ 'placeholder' => "Enter Super Area",'class' => 'form-control input_desgn'])->label(false) ?>
                                     <?= $form->field($model, 'super_unit')->hiddenInput()->label(false) ?>
@@ -431,9 +432,9 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="col-md-12">
 								<h3 class="flow_heading ">Please share the interior details of property?</h3>
 								<div class="col-md-12">
-									<div class="col-md-6 date_select">
+									<div class="col-md-8 date_select">
                                     <!-- <input type="text" class="form-control input_desgn" placeholder="Enter revenue layout"> -->
-                                    <?= $form->field($model, 'revenue_lauout')->textInput([ 'placeholder' => "Enter revenue layout",'class' => 'form-control input_desgn'])->label(false) ?> 
+                                    <?= $form->field($model, 'interior_details')->textInput([ 'placeholder' => "Enter revenue layout",'class' => 'form-control input_desgn'])->label(false) ?> 
 
                                     </div>
 								</div>
@@ -522,6 +523,32 @@ $user_id= Yii::$app->user->identity->id;
 
                     <?= Html::submitButton('Save Property', ['class' => 'btn btn-primary save_buttn active_butn']) ?>
 
+
+<div id="modal_skip" class="modal fade" role="dialog">
+  <div class="modal-dialog modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		<div class="container-fluid no_pad">
+			<div class="col-md-12 text-center skip_details">
+            
+				<p class="skip_content">Our intention is to get more information</p>
+				<p class="process_continue">
+                <?= Html::submitButton('Skip', ['class' => 'property_back']) ?>
+                <a href="#" class="property_process add_stepp">Continue <i class="fa fa-angle-right"></i></a>
+                </p>
+			</div>
+		</div>
+		
+      </div>
+      
+    </div>
+
+  </div>
+</div>
 
 						</div>
 						
@@ -774,27 +801,6 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-<div id="modal_skip" class="modal fade" role="dialog">
-  <div class="modal-dialog modal_dialogue">
-
-    <!-- Modal content-->
-    <div class="modal-content draw_map no_pad">
-        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
-      
-      <div class="modal-body no_pad">
-		<div class="container-fluid no_pad">
-			<div class="col-md-12 text-center skip_details">
-				<p class="skip_content">Our intention is to get more information</p>
-				<p class="process_continue"><a href="#" class="property_process add_stepp">Continue <i class="fa fa-angle-right"></i></a></p>
-			</div>
-		</div>
-		
-      </div>
-      
-    </div>
-
-  </div>
-</div>
 
 <div class="container-fluid testimonial_slider">
 	<div class="container">
