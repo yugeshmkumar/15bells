@@ -42,7 +42,7 @@ $user_id= Yii::$app->user->identity->id;
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 no_pad">
-				<h1 class="trans_head_b">Post a Property and Get it for Sale. </h1>
+				<h1 class="trans_head_b">Post a Property for Sale. </h1>
 				<p class="brand_txt">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
 			</div><div class="col-md-6"></div>
 		</div>

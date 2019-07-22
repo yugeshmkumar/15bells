@@ -55,7 +55,7 @@ use yii\widgets\ActiveForm;
 							</div>
 
         <div class="col-md-12">
-		<h3 class="flow_heading avail_ability">Upload documents</h3>
+		<h3 class="flow_heading avail_ability">Upload documents (In PDF Only)</h3>
 
        
 
