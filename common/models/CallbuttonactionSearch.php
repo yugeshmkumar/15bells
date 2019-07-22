@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Invoice;
+use common\models\Callbuttonaction;
 
 /**
- * InvoiceSearch represents the model behind the search form of `common\models\Invoice`.
+ * CallbuttonactionSearch represents the model behind the search form of `common\models\Callbuttonaction`.
  */
-class InvoiceSearch extends Invoice
+class CallbuttonactionSearch extends Callbuttonaction
 {
     /**
      * {@inheritdoc}
@@ -18,9 +18,8 @@ class InvoiceSearch extends Invoice
     public function rules()
     {
         return [
-            [['invoiceitemid', 'propertyid', 'payment_id', 'finyearid', 'isActive'], 'integer'],
-            [['invoiceID', 'createdAt', 'remarks'], 'safe'],
-            [['amount', 'concessionAmount'], 'number'],
+            [['id', 'user_phone', 'property_id'], 'integer'],
+            [['created_date'], 'safe'],
         ];
     }
 
@@ -42,8 +41,7 @@ class InvoiceSearch extends Invoice
      */
     public function search($params)
     {
-        $user_id = Yii::$app->user->identity->id; 
-        $query = Invoice::find()->where(['user_id' => $user_id]);
+        $query = Callbuttonaction::find();
 
         // add conditions that should always apply here
 
@@ -61,18 +59,11 @@ class InvoiceSearch extends Invoice
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'invoiceitemid' => $this->invoiceitemid,
-            'propertyid' => $this->propertyid,
-            'payment_id' => $this->payment_id,
-            'finyearid' => $this->finyearid,
-            'amount' => $this->amount,
-            'isActive' => $this->isActive,
-            'createdAt' => $this->createdAt,
-            'concessionAmount' => $this->concessionAmount,
+            'id' => $this->id,
+            'user_phone' => $this->user_phone,
+            'property_id' => $this->property_id,
+            'created_date' => $this->created_date,
         ]);
-
-        $query->andFilterWhere(['like', 'invoiceID', $this->invoiceID])
-            ->andFilterWhere(['like', 'remarks', $this->remarks]);
 
         return $dataProvider;
     }

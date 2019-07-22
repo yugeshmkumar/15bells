@@ -3,29 +3,20 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\Invoice;
-use common\models\InvoiceSearch;
+use common\models\Callbuttonaction;
+use common\models\CallbuttonactionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use mPDF;
-use common\models\User;
 
 /**
- * InvoiceController implements the CRUD actions for Invoice model.
+ * CallbuttonactionController implements the CRUD actions for Callbuttonaction model.
  */
-class InvoiceController extends Controller
+class CallbuttonactionController extends Controller
 {
     /**
      * {@inheritdoc}
      */
-
-    public function __construct($id, $module, $config = array()) {
-        parent::__construct($id, $module, $config);
-        $this->layout = "dashboard";
-    }
-
-
     public function behaviors()
     {
         return [
@@ -39,12 +30,12 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Lists all Invoice models.
+     * Lists all Callbuttonaction models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new InvoiceSearch();
+        $searchModel = new CallbuttonactionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -53,41 +44,8 @@ class InvoiceController extends Controller
         ]);
     }
 
-
-
-    public function actionCreatepdf()
-    {
-       // $this->layout = "homeLayout"; 
-
-       $_POST = Yii::$app->request->post();
-         $role = $_POST['keyword'];
-
-         $Invoice = \common\models\Invoice::find()->where(['invoiceitemid' => $role])->one();
-         $invoiceID = $Invoice->invoiceID;
-         $createdAt = $Invoice->createdAt;
-         $date =  date("F , d Y", strtotime($createdAt));
-
-         $user_id = $Invoice->user_id;
-
-         $users    =  User::find()->where(['id'=>$user_id])->one();
-         $fullname =  $users->fullname;
-
-        $mpdf = new mPDF();
-
-        $mpdf->WriteHTML($this->renderPartial('invoice', [
-            'id' => $invoiceID,
-            'fullname'=>$fullname,
-            'createdAt'=>$date,
-            ]));
-            $mpdf->Output();
-
-        // return $this->render('invoice', [
-        //     'id' => $role,
-        // ]);
-    }
-
     /**
-     * Displays a single Invoice model.
+     * Displays a single Callbuttonaction model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -100,16 +58,17 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Creates a new Invoice model.
+     * Creates a new Callbuttonaction model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Invoice();
+        $model = new Callbuttonaction();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->invoiceitemid]);
+           // return $this->redirect(['view', 'id' => $model->id]);
+           return 1;
         }
 
         return $this->render('create', [
@@ -118,7 +77,7 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Updates an existing Invoice model.
+     * Updates an existing Callbuttonaction model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -129,7 +88,7 @@ class InvoiceController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->invoiceitemid]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -138,7 +97,7 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Deletes an existing Invoice model.
+     * Deletes an existing Callbuttonaction model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -152,15 +111,15 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Finds the Invoice model based on its primary key value.
+     * Finds the Callbuttonaction model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Invoice the loaded model
+     * @return Callbuttonaction the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Invoice::findOne($id)) !== null) {
+        if (($model = Callbuttonaction::findOne($id)) !== null) {
             return $model;
         }
 
