@@ -4,7 +4,7 @@ use kartik\file\FileInput;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+$propid = $_GET['s_id'];
 
 ?>
 <style>
@@ -29,7 +29,18 @@ use yii\widgets\ActiveForm;
 						<li class="property_steps active no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Availability</a></li>
 						<li class="property_steps active no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Details</a></li>
 					</ul>
+                    <?php if (Yii::$app->session->hasFlash('success')): ?>
+    <div class="alert alert-success alert-dismissable">
+         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+         <h4><i class="icon fa fa-check"></i>Saved!</h4>
+         <?= Yii::$app->session->getFlash('success') ?>
+         <div>Want to Upload More Images ??
+         <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" >Yes</a>
+         <?= Html::a('No', ['documents', 'id' => $propid], ['class' => 'btn btn-primary']) ?>
 
+         </div>
+    </div>
+<?php endif; ?>
 
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
