@@ -392,6 +392,7 @@ public function actionShowpropdetails(){
           $available_date = $yiipost['Addproperty']['available_date'];
           $super_area = $yiipost['Addproperty']['super_area'];
           $super_unit = $yiipost['Addproperty']['super_unit'];
+          $interior_details = $yiipost['Addproperty']['interior_details'];
          
   
           $lattitude = $yiipost['lat1'];
@@ -407,6 +408,7 @@ public function actionShowpropdetails(){
           $model->town_name = $town;
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
+          $model->interior_details = $interior_details;
 
            if($sector != ''){
             $model->sector_name = $sector;
@@ -509,6 +511,7 @@ public function actionShowpropdetails(){
           $available_date = $yiipost['Addproperty']['available_date'];
           $super_area = $yiipost['Addproperty']['super_area'];
           $super_unit = $yiipost['Addproperty']['super_unit'];
+          $interior_details = $yiipost['Addproperty']['interior_details'];
          
   
           $lattitude = $yiipost['lat1'];
@@ -524,6 +527,7 @@ public function actionShowpropdetails(){
           $model->town_name = $town;
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
+          $model->interior_details = $interior_details;
 
            if($sector != ''){
             $model->sector_name = $sector;
