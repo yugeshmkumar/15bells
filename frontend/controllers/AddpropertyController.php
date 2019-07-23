@@ -1779,7 +1779,7 @@ echo 'hiiii333';die;
             $documentroot = $_SERVER['DOCUMENT_ROOT'];
             $getarchieveurl = $documentroot . 'archive/web';
             $sendingitemContentMod = md5(date('Y-m-d H:i:s') . rand(1111, 9999));
-            $allowed =  array('pdf');
+            $allowed =  array('pdf','jpg','jpeg','png','docx');
             // applying condtion that everything is ok nad we ned to submit now. machine will understand that.
             $chkir = $mdataPost['supportchkir'];
            // $model->save(); // save the bus info
@@ -1801,7 +1801,7 @@ echo 'hiiii333';die;
                     $docFiles = $_FILES["documentfiles" . "$rath"];
 
                     $filenamed = $_FILES["documentfiles" . "$rath"]["name"];              
-                    $extd = pathinfo($filenamed, PATHINFO_EXTENSION);
+                     $extd = pathinfo($filenamed, PATHINFO_EXTENSION);
                     if(in_array($extd,$allowed) ) {
 
                     if ($docFiles != '') {
@@ -1816,6 +1816,9 @@ echo 'hiiii333';die;
 
 
                          //$mpdffile = $target_dir1.'/'.
+
+                         if($extd == 'pdf'){
+
                         try {
                           
                           $mpdf = new mPDF;           
@@ -1855,6 +1858,8 @@ echo 'hiiii333';die;
                          throw new MpdfException($e->getMessage()); // Delete this line to return false on fail
                          return false;
                      }
+
+                    }
 
 
                         
