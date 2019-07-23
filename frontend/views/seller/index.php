@@ -15,10 +15,10 @@ $user_id= Yii::$app->user->identity->id;
     }
     
 #map_canvas {
-       height: 500px;
+       height: 445px;
    }
    html, body, #map-canvas {
-       height: 500px;
+       height: 445px;
        margin: 0px;
        padding: 0px;
    }
@@ -233,10 +233,10 @@ $user_id= Yii::$app->user->identity->id;
 							<div class="row no_pad">
 								<h3 class="flow_heading">Availability</h3>
 								<ul class="sub_categories avail_b">
-									<li class=""><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
 									<li class=""><a href="javascript:void(0)" id="under_construction"class="property_subtype availability">Under construction</a></li>
-									<li class=""><a href="javascript:void(0)" id="60_days" class="property_subtype availability">60 Days</a></li>
+									<li class=""><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
 									<li class=""><a href="javascript:void(0)" id="30_days" class="property_subtype availability">30 Days</a></li>
+									<li class=""><a href="javascript:void(0)" id="60_days" class="property_subtype availability">60 Days</a></li>
 								</ul>
                                 <?= $form->field($model, 'availability')->hiddenInput()->label(false) ?>
 
