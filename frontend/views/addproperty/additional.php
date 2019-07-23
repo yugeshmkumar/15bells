@@ -34,6 +34,9 @@ if (!empty($property)) {
                 <div class="portlet-body">
                     
 
+
+		
+
 				<div class="mt-element-step">
 
 				<div class="row step-thin m-0">
@@ -70,6 +73,7 @@ if (!empty($property)) {
 				<br/>
 
 			</div>
+			
 <?php if (Yii::$app->session->hasFlash('success')): ?>
                         <div class="alert alert-success alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
