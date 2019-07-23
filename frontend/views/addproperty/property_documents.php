@@ -38,7 +38,7 @@ $propid = $_GET['id'];
          <?= Yii::$app->session->getFlash('success') ?>
          <div>Want to Upload More Images ??
          <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" >Yes</a>
-         <?= Html::a('No', ['views', 'id' => $propid], ['class' => 'btn btn-primary']) ?>
+         <?= Html::a('No', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary']) ?>
 
          </div>
     </div>

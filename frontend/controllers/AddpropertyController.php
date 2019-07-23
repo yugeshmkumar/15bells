@@ -212,15 +212,17 @@ class AddpropertyController extends Controller
 
   public function actionViews($id)
     {
+
+        $viewid = base64_decode($id);
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
-        $model = $db->cache(function($db) use ($id){
-            return Yii::$app->controller->findModel($id);
+        $model = $db->cache(function($db) use ($viewid){
+            return Yii::$app->controller->findModel($viewid);
         });
 
         return $this->render('property_view', [
             'model' => $model,
-            //'key'   =>$secretKey,
+            'viewid'   =>$viewid,
         ]);
     }
 
@@ -619,12 +621,12 @@ public function actionShowpropdetails(){
         $ownerships =  HtmlPurifier::process($_POST['ownerships']);
         $totalfloors =  HtmlPurifier::process($_POST['totalfloors']);
         $prop_floors =  HtmlPurifier::process($_POST['prop_floors']);
-        $age_of_property =  HtmlPurifier::process($_POST['age_of_property']);
+       $age_of_property =  HtmlPurifier::process($_POST['age_of_property']);
         $facings =  HtmlPurifier::process($_POST['facings']);
         $jurisdiction =  HtmlPurifier::process($_POST['jurisdiction']);
         $annual_dues =  HtmlPurifier::process($_POST['annual_dues']);
         $maintained_by =  HtmlPurifier::process($_POST['maintained_by']);
-        $loan_taken =  HtmlPurifier::process($_POST['loan_taken']);
+      $loan_taken =  HtmlPurifier::process($_POST['loan_taken']);
         $far_approveds =  HtmlPurifier::process($_POST['far_approveds']);
         $revenue_layouts =  HtmlPurifier::process($_POST['revenue_layouts']);
         $expected_rentals =  HtmlPurifier::process($_POST['expected_rentals']);
@@ -1333,7 +1335,7 @@ $sendingitemContentMod = md5(date('Y-m-d H:i:s') . rand(1111, 9999));
 if (isset($_FILES['Addproperty']['name']['featured_image'])) {
 
     $valid_formats = array("jpg", "png", "gif", "zip", "bmp");
-    $max_file_size = 102400 * 100; //100 kb
+    $max_file_size = 2097152; //2 MB
     $path = "uploads/";
     
     if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
