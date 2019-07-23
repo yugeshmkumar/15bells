@@ -40,7 +40,7 @@ $datas =  $dataProvider->query->all();
                 <?php foreach ($datas as $data){ 
 
                 $RequestSiteVisit = \common\models\RequestSiteVisit::find()->where(['property_id' => $data->id])->one();
-if($RequestSiteVisit){
+
 
 
                 $viewid  =  $data->id;                
@@ -108,7 +108,7 @@ if($RequestSiteVisit){
 
 						
 				</div>
-                <?php }  } ?>
+                <?php   } ?>
 			</div>
   		</div>
 
@@ -132,16 +132,8 @@ if($RequestSiteVisit){
                     </div>
                     <div class="col-md-12 bordr_top bordr_bottm repeat_id">
                       <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
                     </div>
-                    <div class="col-md-12 bordr_bottm repeat_id">
-                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
-                    </div>
-                    <div class="col-md-12 bordr_bottm repeat_id">
-                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
-                    </div>
+                    
                 </div>
                 </div><!-- panel-group -->
 
@@ -213,7 +205,7 @@ $.ajax({
         var countprop = Object.keys(obj).length;
         if (countprop == 0) {
             $('#appenddata').html('No User has Placed a Bid for this Property');
-        }
+        }else{
 
 
         $.each(obj, function () {
@@ -224,6 +216,8 @@ $.ajax({
                     
                     '</div>');
         });
+
+    }
 
     },
 });
