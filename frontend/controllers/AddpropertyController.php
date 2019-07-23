@@ -212,15 +212,17 @@ class AddpropertyController extends Controller
 
   public function actionViews($id)
     {
+
+        $viewid = base64_decode($id);
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
-        $model = $db->cache(function($db) use ($id){
-            return Yii::$app->controller->findModel($id);
+        $model = $db->cache(function($db) use ($viewid){
+            return Yii::$app->controller->findModel($viewid);
         });
 
         return $this->render('property_view', [
             'model' => $model,
-            //'key'   =>$secretKey,
+            'viewid'   =>$viewid,
         ]);
     }
 
@@ -392,6 +394,7 @@ public function actionShowpropdetails(){
           $available_date = $yiipost['Addproperty']['available_date'];
           $super_area = $yiipost['Addproperty']['super_area'];
           $super_unit = $yiipost['Addproperty']['super_unit'];
+          $interior_details = $yiipost['Addproperty']['interior_details'];
          
   
           $lattitude = $yiipost['lat1'];
@@ -407,6 +410,7 @@ public function actionShowpropdetails(){
           $model->town_name = $town;
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
+          $model->interior_details = $interior_details;
 
            if($sector != ''){
             $model->sector_name = $sector;
@@ -509,6 +513,7 @@ public function actionShowpropdetails(){
           $available_date = $yiipost['Addproperty']['available_date'];
           $super_area = $yiipost['Addproperty']['super_area'];
           $super_unit = $yiipost['Addproperty']['super_unit'];
+          $interior_details = $yiipost['Addproperty']['interior_details'];
          
   
           $lattitude = $yiipost['lat1'];
@@ -524,6 +529,7 @@ public function actionShowpropdetails(){
           $model->town_name = $town;
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
+          $model->interior_details = $interior_details;
 
            if($sector != ''){
             $model->sector_name = $sector;
@@ -615,12 +621,12 @@ public function actionShowpropdetails(){
         $ownerships =  HtmlPurifier::process($_POST['ownerships']);
         $totalfloors =  HtmlPurifier::process($_POST['totalfloors']);
         $prop_floors =  HtmlPurifier::process($_POST['prop_floors']);
-        $age_of_property =  HtmlPurifier::process($_POST['age_of_property']);
+       $age_of_property =  HtmlPurifier::process($_POST['age_of_property']);
         $facings =  HtmlPurifier::process($_POST['facings']);
         $jurisdiction =  HtmlPurifier::process($_POST['jurisdiction']);
         $annual_dues =  HtmlPurifier::process($_POST['annual_dues']);
         $maintained_by =  HtmlPurifier::process($_POST['maintained_by']);
-        $loan_taken =  HtmlPurifier::process($_POST['loan_taken']);
+      $loan_taken =  HtmlPurifier::process($_POST['loan_taken']);
         $far_approveds =  HtmlPurifier::process($_POST['far_approveds']);
         $revenue_layouts =  HtmlPurifier::process($_POST['revenue_layouts']);
         $expected_rentals =  HtmlPurifier::process($_POST['expected_rentals']);
@@ -1255,7 +1261,9 @@ foreach($payment2 as $payments2){
             }else{
             $modelid ='';
 
-            }              
+            }   
+            
+            
 		$request = Yii::$app->request->post();          
         
        if($_FILES){
@@ -1327,7 +1335,7 @@ $sendingitemContentMod = md5(date('Y-m-d H:i:s') . rand(1111, 9999));
 if (isset($_FILES['Addproperty']['name']['featured_image'])) {
 
     $valid_formats = array("jpg", "png", "gif", "zip", "bmp");
-    $max_file_size = 102400 * 100; //100 kb
+    $max_file_size = 2097152; //2 MB
     $path = "uploads/";
     
     if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
@@ -1401,14 +1409,17 @@ if (isset($_FILES['Addproperty']['name']['featured_image'])) {
 //image upload end    
     
         
-
-        // Yii::$app->session->setFlash('success', "Image has been Successfully Saved");
+          Yii::$app->session->setFlash('success', "Image has been Successfully Saved");
+         
 
          }
 
     }
 
-         return $this->redirect(['addproperty/documents', 'id' =>$modelid]);
+    
+        
+
+         return $this->redirect(['addproperty/additional', 's_id' => $modelid]);
 	 
        } else {
 
@@ -1760,125 +1771,7 @@ echo 'hiiii333';die;
        // print_r($mdataPost);die;
         $model = new Addproperty();
 
-//         if (isset($mdataPost['filedownload'])) {
 
-//             //exit();
-//             function output_file($file, $name, $mime_type = '') {
-
-//                 //Check the file premission
-//                 if (!is_readable($file))
-//                     die('File not found or inaccessible!');
-
-//                 $size = filesize($file);
-//                 $name = rawurldecode($name);
-
-//                 /* Figure out the MIME type | Check in array */
-//                 $known_mime_types = array(
-//                     "pdf" => "application/pdf",
-//                     "txt" => "text/plain",
-//                     "html" => "text/html",
-//                     "htm" => "text/html",
-//                     "exe" => "application/octet-stream",
-//                     "zip" => "application/zip",
-//                     "doc" => "application/msword",
-//                     "xls" => "application/vnd.ms-excel",
-//                     "ppt" => "application/vnd.ms-powerpoint",
-//                     "gif" => "image/gif",
-//                     "png" => "image/png",
-//                     "jpeg" => "image/jpg",
-//                     "jpg" => "image/jpg",
-//                     "php" => "text/plain"
-//                 );
-
-//                 if ($mime_type == '') {
-//                     $file_extension = strtolower(substr(strrchr($file, "."), 1));
-//                     if (array_key_exists($file_extension, $known_mime_types)) {
-//                         $mime_type = $known_mime_types[$file_extension];
-//                     } else {
-//                         $mime_type = "application/force-download";
-//                     };
-//                 };
-
-//                 //turn off output buffering to decrease cpu usage
-//                 @ob_end_clean();
-
-//                 // required for IE, otherwise Content-Disposition may be ignored
-//                 if (ini_get('zlib.output_compression'))
-//                     ini_set('zlib.output_compression', 'Off');
-
-//                 header('Content-Type: ' . $mime_type);
-//                 header('Content-Disposition: attachment; filename="' . $name . '"');
-//                 header("Content-Transfer-Encoding: binary");
-//                 header('Accept-Ranges: bytes');
-
-//                 /* The three lines below basically make the 
-//                   download non-cacheable */
-//                 header("Cache-control: private");
-//                 header('Pragma: private');
-//                 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-
-//                 // multipart-download and download resuming support
-
-
-//                 if (isset($_SERVER['HTTP_RANGE'])) {
-//                     list($a, $range) = explode("=", $_SERVER['HTTP_RANGE'], 2);
-//                     list($range) = explode(",", $range, 2);
-//                     list($range, $range_end) = explode("-", $range);
-//                     $range = intval($range);
-//                     if (!$range_end) {
-//                         $range_end = $size - 1;
-//                     } else {
-//                         $range_end = intval($range_end);
-//                     }
-
-
-//                     $new_length = $range_end - $range + 1;
-//                     header("HTTP/1.1 206 Partial Content");
-//                     header("Content-Length: $new_length");
-//                     header("Content-Range: bytes $range-$range_end/$size");
-//                 } else {
-//                     $new_length = $size;
-//                     header("Content-Length: " . $size);
-//                 }
-
-//                 /* Will output the file itself */
-//                 $chunksize = 1 * (1024 * 1024);
-//                 $bytes_send = 0;
-//                 if ($file = fopen($file, 'r')) {
-//                     if (isset($_SERVER['HTTP_RANGE']))
-//                         fseek($file, $range);
-
-//                     while (!feof($file) &&
-//                     (!connection_aborted()) &&
-//                     ($bytes_send < $new_length)
-//                     ) {
-//                         $buffer = fread($file, $chunksize);
-//                         print($buffer); //echo($buffer); // can also possible
-//                         flush();
-//                         $bytes_send += strlen($buffer);
-//                     }
-//                     fclose($file);
-//                 } else
-//                 //If no permissiion
-//                     die('Error - can not open file.');
-//                 //die
-//                 die();
-//             }
-
-// //Set the time out
-//             set_time_limit(0);
-//             $root = $_SERVER['DOCUMENT_ROOT'];
-// //path to the file
-//             $file_path = $root . '/pdfdocuments/' . $_REQUEST['filenamemain'];
-//             print($file_path);
-
-// //Call the download function with file path,file name and file type
-//             output_file($file_path, '' . $_REQUEST['filenamemain'] . '', 'text/plain');
-//             return $this->redirect(['documents', 'id' => $_GET['id']]);
-//         }
-        
-        
-       
         $request = Yii::$app->request->post();
 
         if (!empty($request)) {
@@ -1888,7 +1781,7 @@ echo 'hiiii333';die;
             $documentroot = $_SERVER['DOCUMENT_ROOT'];
             $getarchieveurl = $documentroot . 'archive/web';
             $sendingitemContentMod = md5(date('Y-m-d H:i:s') . rand(1111, 9999));
-            $allowed =  array('pdf');
+            $allowed =  array('pdf','jpg','jpeg','png','docx');
             // applying condtion that everything is ok nad we ned to submit now. machine will understand that.
             $chkir = $mdataPost['supportchkir'];
            // $model->save(); // save the bus info
@@ -1910,7 +1803,7 @@ echo 'hiiii333';die;
                     $docFiles = $_FILES["documentfiles" . "$rath"];
 
                     $filenamed = $_FILES["documentfiles" . "$rath"]["name"];              
-                    $extd = pathinfo($filenamed, PATHINFO_EXTENSION);
+                     $extd = pathinfo($filenamed, PATHINFO_EXTENSION);
                     if(in_array($extd,$allowed) ) {
 
                     if ($docFiles != '') {
@@ -1925,6 +1818,9 @@ echo 'hiiii333';die;
 
 
                          //$mpdffile = $target_dir1.'/'.
+
+                         if($extd == 'pdf'){
+
                         try {
                           
                           $mpdf = new mPDF;           
@@ -1965,6 +1861,8 @@ echo 'hiiii333';die;
                          return false;
                      }
 
+                    }
+
 
                         
                         
@@ -1998,14 +1896,15 @@ echo 'hiiii333';die;
                 }
             }
 
-            //////////////   end uploading files       ////////////////////
 
-            // return $this->render('property_view', [
-            //             'model' => $model,                       
-            //             'id' => $modelid,
-            // ]);
+         Yii::$app->session->setFlash('success', "Document has  been Successfully Saved");
 
-            return $this->redirect(['views', 'id' => $modelid]);
+            return $this->render('property_documents', [
+                'model' => $model,
+                 'id' =>$modelid,
+           ]);
+
+           // return $this->redirect(['views', 'id' => $modelid]);
 
 
 

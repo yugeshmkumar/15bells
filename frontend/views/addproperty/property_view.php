@@ -8,11 +8,11 @@ use common\models\MediaFiles;
 /* @var $this yii\web\View */
 /* @var $model common\models\Addproperty */
 
-$this->title = $model->id;
+$this->title = $model->locality;
 $this->params['breadcrumbs'][] = ['label' => 'Addproperties', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$viewid = $_GET['id'];   
+
 
 ?>
 <style>
@@ -183,7 +183,7 @@ $undercategory = $property_type->undercategory;
 						</div>
 						<div class="col-md-4 edit_input">
 							<label class="edit_label">Property on floor</label>
-							<input type="text" id="prop_floors" class="form-control input_desgn myInput" value="<?php echo $property_on_floor; ?> floor" placeholder="" readonly>
+							<input type="text" id="prop_floors" class="form-control input_desgn myInput" value="<?php echo $property_on_floor; ?>" placeholder="" readonly>
 						</div>
 						</div>
 						<div class="row">
@@ -211,7 +211,14 @@ $undercategory = $property_type->undercategory;
 						</div>
 						<div class="col-md-4 edit_input">
 							<label class="edit_label">Loan</label>
-							<input type="text" id="loan_taken" class="form-control input_desgn myInput" value="<?php echo $LOAN_taken; ?>" placeholder="" readonly>
+
+							<select class="form-control input_desgn myInput" id="loan_taken" >
+							
+							<option <?php if ($LOAN_taken == 'yes' ) echo 'selected' ; ?> value="yes">Yes</option>
+							<option <?php if ($LOAN_taken == 'no' ) echo 'selected' ; ?>  value="no">No </option>
+							
+							</select>
+							<!-- <input type="text" id="loan_taken" class="form-control input_desgn myInput" value="<?php echo $LOAN_taken; ?>" placeholder="" readonly> -->
 						</div>
 						</div>
 						<div class="row">
@@ -250,7 +257,7 @@ $undercategory = $property_type->undercategory;
 					</div>
                     
 					<div class="col-md-12 seperator_div"></div>
-					<div class="row possession_time">
+					<!-- <div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Expectations<a href="javascript:void(0)" class="text-right exp_edit draw_map">Edit</a></h3>
 						<div class="row">
 							<div class="col-md-4 edit_input">
@@ -265,14 +272,14 @@ $undercategory = $property_type->undercategory;
 								<label class="edit_label">Rent Free Period</label>
 								<input type="text" id="rent_free_periods" class="form-control input_desgn exp_input" value="<?php echo $rent_free_period; ?>" placeholder="" readonly>
 							</div>
-							<!-- <div class="col-md-4 edit_input">
+							 <div class="col-md-4 edit_input">
 								<label class="edit_label">Interior Details</label>
 								<input type="text" class="form-control input_desgn exp_input" value="<?php echo $data1; ?>" placeholder="" readonly>
 							</div> -->
-						</div>
+						<!-- </div>
 						
 					</div>
-					<div class="col-md-12 seperator_div"></div>
+					<div class="col-md-12 seperator_div"></div> --> 
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Nearby Places<a href="javascript:void(0)" class="text-right exp_edit draw_map"></a></h3>
 						<div class="row">
@@ -698,7 +705,7 @@ $undercategory = $property_type->undercategory;
 					   var ownerships =   $('#ownerships').val();
 					   var totalfloors =   $('#totalfloors').val();
 					   var prop_floors =   $('#prop_floors').val();
-					   var age_of_property =   $('#ownersage_of_propertyhips').val();
+					   var age_of_property =   $('#age_of_property').val();
 					   var facings =   $('#facings').val();
 					   var annual_dues =   $('#annual_dues').val();
 					   var jurisdiction =   $('#jurisdiction').val();
@@ -730,11 +737,11 @@ $undercategory = $property_type->undercategory;
 									url:  'savepropertydetails',
 									data:ndata,
 									success: function(data){
-                                     alert(data);
+                                    // alert(data);
 
 									// if(data == '1'){
 									
-									// toastr.success('Your property is going for reviewed', 'success');
+									 toastr.success('Your property is going for reviewed', 'success');
 
 									// }else{
 									// toastr.error('Internal Error', 'error');
