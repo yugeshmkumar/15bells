@@ -524,6 +524,12 @@ $user_id= Yii::$app->user->identity->id;
                     <?= Html::submitButton('Save Property', ['class' => 'btn btn-primary save_buttn active_butn']) ?>
 
 
+
+
+						</div>
+						
+				  </div>
+
 <div id="modal_skip" class="modal fade" role="dialog">
   <div class="modal-dialog modal_dialogue">
 
@@ -549,12 +555,6 @@ $user_id= Yii::$app->user->identity->id;
 
   </div>
 </div>
-
-						</div>
-						
-				  </div>
-
-
      
 
 			
@@ -878,7 +878,7 @@ $user_id= Yii::$app->user->identity->id;
 <?php
 $script = <<< JS
 
-//$("#signup_modal").modal('show');
+$("#modal_skip").modal('show');
 
 $('#hideotp').hide();
 $('#otphide').hide();
