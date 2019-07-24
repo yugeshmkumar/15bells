@@ -457,6 +457,8 @@ showTab(currentTab); // Display the current tab
 							 url: 'rgetotp',
 							 data: {phone : identity,newotp:newotp},
 							 success: function (data) {
+
+								 $('#loginform-identity').val(data);
 								       
 							 },
 					 });
