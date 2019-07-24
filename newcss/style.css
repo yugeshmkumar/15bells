@@ -3756,3 +3756,11 @@ color: #c4984f;
   .img_input {
 	  cursor:pointer;
   }
+ .button_viewadd {
+	color: #fff;
+    background-color: #c4984f;
+    border-color: #c4984f;
+    border-radius: 0;
+    padding: 8px 25px;
+    margin: 25px 8px 20px 20px;
+  }

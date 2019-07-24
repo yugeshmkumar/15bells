@@ -98,7 +98,9 @@ $undercategory = $property_type->undercategory;
 
 <div class="container-fluid property_flow" style="margin-top:100px;">
 	<div class="container">
+						
 		<div class="row property_edit">
+		<h3 class="flow_heading avail_ability" style="margin-bottom:25px;">Preview your property and confirm</h3>
 			<div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : #2345DFGEQ
 					
@@ -202,8 +204,8 @@ $undercategory = $property_type->undercategory;
 						</div>
 						<div class="row">
 						<div class="col-md-4 edit_input">
-							<label class="edit_label">Juridiction of Development</label>
-							<input type="text" id="jurisdiction" class="form-control input_desgn myInput" value="<?php echo $jurisdiction_development; ?>" placeholder="" readonly>
+							<label class="edit_label">Far Approved</label>
+							<input type="text" id="far_approveds" class="form-control input_desgn myInput" value="<?php echo $FAR_approval; ?>" placeholder="" readonly>
 						</div>
 						<div class="col-md-4 edit_input">
 							<label class="edit_label">Maintained By</label>
@@ -222,17 +224,10 @@ $undercategory = $property_type->undercategory;
 						</div>
 						</div>
 						<div class="row">
-						<div class="col-md-4 edit_input">
-							<label class="edit_label">Far Approved</label>
-							<input type="text" id="far_approveds" class="form-control input_desgn myInput" value="<?php echo $FAR_approval; ?>" placeholder="" readonly>
-						</div>
-						<div class="col-md-4 edit_input">
-							<label class="edit_label">Revenue Layout</label>
-							<input type="text" id="revenue_layouts" class="form-control input_desgn myInput" value="<?php echo $revenue_lauout; ?>" placeholder="" readonly>
-						</div>
-						<div class="col-md-4 edit_input">
-							<label class="edit_label">Expected Monthy Rent</label>
-							<input type="text" id="expected_rentals" class="form-control input_desgn myInput" value="<?php echo $expected_rental; ?>" placeholder="" readonly>
+					
+						<div class="col-md-6 edit_input">
+							<label class="edit_label">Juridiction of Development</label>
+							<input type="text" id="jurisdiction" class="form-control input_desgn myInput" value="<?php echo $jurisdiction_development; ?>" placeholder="" readonly>
 						</div>
 						</div>
 					</div>
@@ -242,7 +237,7 @@ $undercategory = $property_type->undercategory;
 						<div class="row">
 							<div class="col-md-4 edit_input">
 								<label class="edit_label">Availability</label>
-								<input type="text" id="availabilits" class="form-control input_desgn avail_input" value="<?php echo $availability; ?>" placeholder="" readonly>
+								<input type="text" id="availabilits" class="form-control input_desgn avail_input" value="<?php echo ucfirst(str_replace('_',' ',$availability)); ?>" placeholder="" readonly>
 							</div>
 							<div class="col-md-4 edit_input">
 								<label class="edit_label">Furnishing Status</label>
@@ -349,8 +344,8 @@ $undercategory = $property_type->undercategory;
 
 						
 					</div>
-                    <button id="publish" type="button" onclick="publishprop()" class="btn btn-success addi_butn">Save Your Property</button>
-
+                    <button id="publish" type="button" onclick="publishprop()" class="btn btn-success button_viewadd addi_butn">Save Your Property</button>
+					<a href="<?php echo yii::$app->urlManager->createUrl(['site/userdash']) ?>" class="btn btn-success button_viewadd">Go to Dashboard</a>
 				</div>
 				<div class="col-md-3">
 

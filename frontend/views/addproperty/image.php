@@ -17,7 +17,7 @@ $propid = $_GET['s_id'];
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 no_pad">
-				<h1 class="trans_head_b">Post a Property and Get it for Sale. </h1>
+				<h1 class="trans_head_b">Post a Property for Sale. </h1>
 				<p class="brand_txt">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
 			</div><div class="col-md-6"></div>
 		</div>
@@ -66,7 +66,7 @@ $propid = $_GET['s_id'];
 							</div>
 
         <div class="col-md-6">
-		<h3 class="flow_heading avail_ability">Property Images</h3>
+		<h3 class="flow_heading avail_ability">Property Images <span style="font-size:18px;font-weight:500;text-transform:uppercase;">(in .jpg, .jpeg, .png with max size of 2mb )</span></h3>
 
        
 
