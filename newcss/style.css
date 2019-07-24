@@ -10,7 +10,7 @@ a{text-decoration:none !important;}
 	padding:50px;
 }
 .no_margin{
-	margin:0;
+	margin:0 !important;
 }
 .no_pad{
 	padding:0 !important;
@@ -3253,6 +3253,7 @@ input.invalid {
 	width:100%;
 	margin:10px 0;
 	background:transparent;
+	border-radius:0;
 }
 .button_select:hover{
 	color:#ffffff;
@@ -3754,4 +3755,12 @@ color: #c4984f;
   }
   .img_input {
 	  cursor:pointer;
+  }
+ .button_viewadd {
+	color: #fff;
+    background-color: #c4984f;
+    border-color: #c4984f;
+    border-radius: 0;
+    padding: 8px 25px;
+    margin: 25px 8px 20px 20px;
   }

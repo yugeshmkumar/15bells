@@ -10,7 +10,7 @@ use yii\bootstrap\Modal;
 ?>
 <style>
     #map_canvas {
-        height: 490px;
+        height: 445px;
     }
 </style>    
 
@@ -198,9 +198,9 @@ use yii\bootstrap\Modal;
 								<div class="col-md-6 locality_input">
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
-										<div class="btn-group btn-toggle btn_toggle"> 
-											<button  type="button" class="btn butn_near btn-lg confirmbutton" value="yes">Yes</button>
-											<button type="button" class="btn butn_near btn-lg confirmbutton" value="no">No</button>
+										<div class="btn-group btn-toggle"> 
+										<div class="col-md-4 col-xs-6 no_pad">	<button  type="button" class="btn button_select btn-lg confirmbutton" value="yes">Yes</button>
+										<div class="col-md-4 col-xs-6 no_pad">	<button type="button" class="btn button_select btn-lg confirmbutton" value="no">No</button>
 										  </div>
 									</div>
 								</div>
