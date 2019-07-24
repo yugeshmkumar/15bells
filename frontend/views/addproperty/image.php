@@ -12,6 +12,11 @@ $propid = $_GET['s_id'];
     .navbar-me{
         background:#221d36 !important;
     }
+    .alert-success {
+    color: #c7984f;
+    background-color: #ffffff;
+    border-color: #d6e9c6;
+    }
 	</style>
 <div class="container-fluid property_flow" style="margin-top:100px;">
 	<div class="container">
@@ -30,13 +35,13 @@ $propid = $_GET['s_id'];
 						<li class="property_steps active no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Details</a></li>
 					</ul>
                     <?php if (Yii::$app->session->hasFlash('success')): ?>
-    <div class="alert alert-success alert-dismissable">
+    <div class="alert alert-success alert-dismissable text-center">
          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-         <h4><i class="icon fa fa-check"></i>Saved!</h4>
+         <h4 style="margin:20px 0;"><i class="icon fa fa-check"></i> Saved!</h4>
          <?= Yii::$app->session->getFlash('success') ?>
          <div>Want to Upload More Images ??
-         <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" >Yes</a>
-         <?= Html::a('No', ['documents', 'id' => $propid], ['class' => 'btn btn-primary']) ?>
+         <a href="javscript:void(0)" aria-hidden="true" class="save_buttn active_butn" data-dismiss="alert" >Yes</a>
+         <?= Html::a('No', ['documents', 'id' => $propid], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
 
          </div>
     </div>
@@ -66,7 +71,7 @@ $propid = $_GET['s_id'];
 							</div>
 
         <div class="col-md-6">
-		<h3 class="flow_heading avail_ability">Property Images <span style="font-size:18px;font-weight:500;text-transform:uppercase;">(in .jpg, .jpeg, .png with max size of 2mb )</span></h3>
+		<h3 class="flow_heading avail_ability">Property Images<br> <span style="font-size:12px;font-weight:500;text-transform:uppercase;">(in .jpg, .jpeg, .png with max size of 2mb )</span></h3>
 
        
 
@@ -82,7 +87,7 @@ echo $form->field($model, 'featured_image[]')->widget(FileInput::classname(), [
         </div>
 
 <div class="col-md-6">
-		<h3 class="flow_heading avail_ability">Property Video</h3>
+		<h3 class="flow_heading avail_ability">Property Video<br> <span style="font-size:12px;font-weight:500;text-transform:uppercase;">(with max size of 10mb )</span></h3>
 
         <?php
 	echo $form->field($model, 'featured_video')->widget(FileInput::classname(), [
