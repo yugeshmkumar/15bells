@@ -32,7 +32,7 @@ $datas =  $dataProvider->query->all();
 			<div class="row">
 				<div class="col-md-12">
 					<div class="col-md-6">
-						<h2 class="dashboard_head">Seller Site Visit</h2>
+						<h2 class="dashboard_head">Lessor Site Visit</h2>
 					</div>
 					
 				</div>
@@ -40,7 +40,7 @@ $datas =  $dataProvider->query->all();
                 <?php foreach ($datas as $data){ 
 
                 $RequestSiteVisit = \common\models\RequestSiteVisit::find()->where(['property_id' => $data->id])->one();
-if($RequestSiteVisit){
+
 
 
                 $viewid  =  $data->id;                
@@ -61,23 +61,32 @@ if($RequestSiteVisit){
 					
 							<div class="col-md-12 visit_buyer">
 								<div class="row">
-									<div class="col-md-3">
-										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="140">
-									</div>
-                                   
-									<div class="col-md-9">
-										<div class="row">
-											<div class="col-md-8">
+									<div class="col-md-4">
+                                        <div class="row">
+												<div class="col-md-5">
+													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+												</div>
+												
+												<div class="col-md-7 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
-												<p class="user_id">UID<?php echo $assigned_id * 23 * 391; ?></p>
-											</div>
-											<div class="col-md-4 date_det">
-												<p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
-												<p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
-											</div>
-										</div>
-										<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
+												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+												</div>
+                                            </div>
+                                        <div class="row" style="margin-top:30px;">
+                                        <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+											<div class="col-md-5">
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+                                            
+											</div>
+											<div class="col-md-7 no_pad">
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+												</div>	
+										</div>
+                                    
+                                    </div>
+                                   
+									<div class="col-md-8">
 										<div class="row">
 											<div class="col-md-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
@@ -93,8 +102,8 @@ if($RequestSiteVisit){
                                 $command = $query->createCommand();
                                 $datacount = $command->queryOne();
                                 ?>
-                              <p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20"><?php echo $datacount['newcount']; ?></p>
-
+                                        <p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Scheduled Visit</p>
+                                        <p class="label_name"><?php echo $datacount['newcount']; ?></p>
 										</div>
 										<div class="col-md-6">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20"><a class="toglebid" id="<?php echo $data->id ?>" href="javascript:void(0)" >View</a></p>
@@ -108,7 +117,7 @@ if($RequestSiteVisit){
 
 						
 				</div>
-                <?php }  } ?>
+                <?php   } ?>
 			</div>
   		</div>
 
@@ -132,16 +141,8 @@ if($RequestSiteVisit){
                     </div>
                     <div class="col-md-12 bordr_top bordr_bottm repeat_id">
                       <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
                     </div>
-                    <div class="col-md-12 bordr_bottm repeat_id">
-                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
-                    </div>
-                    <div class="col-md-12 bordr_bottm repeat_id">
-                      <div class="col-md-4"><div class="visited_user" id="appenddata" class=""></div></div>
-                      <div class="col-md-8 text-right"> <p class="visited_user"> <?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?> at <?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p></div>
-                    </div>
+                   
                 </div>
                 </div><!-- panel-group -->
 
@@ -183,7 +184,7 @@ $.ajax({
 
 
           var usercustomid = 'UID'+this.user_id * 23 * 391;
-            $('#appenddata').append('<div class="more-less glyphicon glyphicon-plus"></i> User Id #' + usercustomid +
+            $('#appenddata').append('<div class=""></i> User Id #' + usercustomid +
                     
                     '</div>');
         });
@@ -213,17 +214,18 @@ $.ajax({
         var countprop = Object.keys(obj).length;
         if (countprop == 0) {
             $('#appenddata').html('No User has Placed a Bid for this Property');
-        }
+        }else{
 
 
         $.each(obj, function () {
 
 
           var usercustomid = 'UID'+this.user_id * 23 * 391;
-            $('#appenddata').append('<div class="more-less glyphicon glyphicon-plus"></i> User Id #' + usercustomid +
+            $('#appenddata').append('<div class=""></i> User Id #' + usercustomid +
                     
                     '</div>');
         });
+        }
 
     },
 });

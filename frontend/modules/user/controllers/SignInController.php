@@ -363,7 +363,7 @@ class SignInController extends \yii\web\Controller
          $phonenum =  $_POST['phone'];
          $activation =  $_POST['newotp'];
        //$activation= mt_rand(1000, 9999);
-
+          $message = 'Use '.$activation.' as one time password (OTP) to login to your 15bells account. Do not share this OTP to anyone for security reasons. Valid for 15 minutes';
           //Your authentication key
           $authKey = "222784ARHZNXuXI5b334809";
 
@@ -383,7 +383,7 @@ class SignInController extends \yii\web\Controller
           $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://control.msg91.com/api/sendotp.php?otp_length=4&authkey=$authKey&sender=$senderId&mobile=$mobileNumber&otp=$activation",
+  CURLOPT_URL => "http://control.msg91.com/api/sendotp.php?otp_length=4&authkey=$authKey&sender=$senderId&mobile=$mobileNumber&otp=$activation&message=$message",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -403,7 +403,7 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-// echo $response;
+ //echo $response;die;
   $jsonObj =  json_decode($response);
   $firstName = $jsonObj->type;  
   
