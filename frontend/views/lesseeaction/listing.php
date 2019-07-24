@@ -1728,7 +1728,7 @@ proptype =  $('#proptypes').val();
     $('.prop_prices').text(pricemin+' - '+pricemax); 
  }
  
- $('.prop_types').text($('#'+proptype).text());
+ $('.prop_types').text($(proptype).text());
 
  if(pacinput != ''){
    var getsearchlocation = pacinput;
