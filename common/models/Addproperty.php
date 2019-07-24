@@ -85,7 +85,7 @@ class Addproperty extends \yii\db\ActiveRecord
             //[['user_id', 'role_id', 'project_name', 'project_type_id', 'request_for', 'featured_image', 'featured_video', 'city', 'locality', 'address', 'longitude', 'latitude', 'total_plot_area', 'plot_unit', 'expected_price', 'price_sq_ft', 'price_acres', 'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'facing', 'FAR_approval', 'LOAN_taken', 'buildup_area', 'build_unit', 'carpet_area', 'carpet_unit', 'total_floors', 'property_on_floor', 'configuration', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'furnished_status', 'parking','ownership_status','available_from', 'created_date'], 'required'],
 			
            // [['user_id', 'role_id', 'project_type_id', 'total_plot_area', 'expected_price', 'price_sq_ft', 'price_acres', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
-            [['asking_rental_price','maintenance_cost','annual_dues_payable','buildup_area','carpet_area','total_floors', 'bedrooms','bathrooms','balconies','servant_room','expected_price','membership_charge','no_of_similiar_shops','expected_rental','property_on_floor'], 'integer','message' => '{attribute} is invalid.'],
+            [['asking_rental_price','maintenance_cost','annual_dues_payable','buildup_area','carpet_area','total_floors', 'bedrooms','bathrooms','balconies','servant_room','expected_price','membership_charge','no_of_similiar_shops','expected_rental'], 'integer','message' => '{attribute} is invalid.'],
 		   
             [['locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'shed_RCC', 'maintenance_by', 'availability', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'jurisdiction_development'], 'string','message' => '{attribute} is invalid.'],
 			
@@ -114,7 +114,7 @@ class Addproperty extends \yii\db\ActiveRecord
             [['available_date'], 'default', 'value' => null],
       
       
-             [['buildup_area','carpet_area','asking_rental_price','total_floors','maintenance_cost','annual_dues_payable','bedrooms','bathrooms','balconies','servant_room','parking','expected_price','membership_charge','expected_rental','property_on_floor'],'match','pattern'=>"/[0-9]+(\.[0-9][0-9]?)?/"],
+             [['buildup_area','carpet_area','asking_rental_price','total_floors','maintenance_cost','annual_dues_payable','bedrooms','bathrooms','balconies','servant_room','parking','expected_price','membership_charge','expected_rental'],'match','pattern'=>"/[0-9]+(\.[0-9][0-9]?)?/"],
        
        
        //[['FAR_approval'],'match','pattern'=>"/^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?/"],
