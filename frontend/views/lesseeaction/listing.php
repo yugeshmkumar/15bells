@@ -3069,7 +3069,6 @@ function getPolygonCoords() {
 
 
 
-
                             function  withoutshape(){
 
                                         var count1 =0;

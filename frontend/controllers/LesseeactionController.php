@@ -206,8 +206,7 @@ class LesseeactionController extends Controller {
          if(!isset($_SESSION)) 
          { 
              session_start(); 
-         } 
- 
+         }  
         $locations = HtmlPurifier::process($_POST['locations']);
          $shaped = HtmlPurifier::process($_POST['shaped']);
          $proptype = HtmlPurifier::process($_POST['proptype']);
