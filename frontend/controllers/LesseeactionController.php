@@ -206,7 +206,8 @@ class LesseeactionController extends Controller {
          if(!isset($_SESSION)) 
          { 
              session_start(); 
-         }  
+         } 
+ 
         $locations = HtmlPurifier::process($_POST['locations']);
          $shaped = HtmlPurifier::process($_POST['shaped']);
          $proptype = HtmlPurifier::process($_POST['proptype']);
@@ -334,18 +335,18 @@ class LesseeactionController extends Controller {
  
       if($shaped == 'polygon'){
  
-          $newspaths = $_SESSION['newspathspost'];
+          $newspaths = $_SESSION['newspathspostl'];
           
       }
       if($shaped == 'circle'){
           
-         $centercoordinates = $_SESSION['centercoordinatespost'];
-         $totalradius = $_SESSION['totalradiuspost'];
+         $centercoordinates = $_SESSION['centercoordinatespostl'];
+         $totalradius = $_SESSION['totalradiuspostl'];
  
       }
       if($shaped == 'rectangle'){
           
-         $newkuma = $_SESSION['newkumapost'];
+         $newkuma = $_SESSION['newkumapostl'];
          
       }
  
@@ -357,24 +358,24 @@ class LesseeactionController extends Controller {
  
             if($shaped == 'polygon'){
                
-             $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'created_date' => $date])->execute();
+             $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid, 'created_date' => $date])->execute();
             }
  
             if($shaped == 'circle'){
              
-             $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
+             $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
                          'created_date' => $date])->execute();
             }
  
            if($shaped == 'rectangle'){
               
-             $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
+             $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
                          'created_date' => $date])->execute();
                          }
  
                          if($shaped == 'blank'){
                         
-                          $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country,'property_type' => $proptype, 'area' => $areamax,'min_prices' => $pricemin, 'max_prices' => $pricemax,'property_auction_type' => $propbid,'created_date' => $date])->execute();
+                          $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,'created_date' => $date])->execute();
  
  
                                       }
@@ -424,7 +425,7 @@ class LesseeactionController extends Controller {
 
      public function actionShortlistproperties() {
 
-        //    echo '<pre>';print_r($_POST);die;
+          //  echo '<pre>';print_r($_POST);die;
          
     //   echo  $user_id = Yii::$app->user->identity->id;die;
             if(!isset($_SESSION)) 
@@ -542,6 +543,120 @@ class LesseeactionController extends Controller {
     
     
                 //                             }
+                   
+    
+                    return 'existuser';
+                  
+                   
+    
+                }else{
+    
+                   return 'nouser';
+                }   
+    
+    
+    
+        }
+
+
+
+        public function actionShortlistpropertiesready() {
+
+        //   echo '<pre>';print_r($_POST);die;
+         
+    //   echo  $user_id = Yii::$app->user->identity->id;die;
+            if(!isset($_SESSION)) 
+            { 
+                session_start(); 
+            } 
+    
+            $locations = $_POST['locations'];
+             $shaped = $_POST['shaped'];
+            $propid = $_POST['propid'];
+            $town = $_POST['town'];
+            $sector = $_POST['sector'];
+            $country = $_POST['country'];
+            $areamin = $_POST['areamin'];
+            $areamax = $_POST['areamax'];
+            $pricemin = $_POST['pricemin'];
+            $pricemax = $_POST['pricemax'];
+            $proptype = $_POST['proptype'];
+            $propbid = $_POST['propbid'];
+            
+    
+            $session = Yii::$app->session;
+    
+    
+                $session->set('townpostl', $town);
+                $session->set('sectorpostl', $sector);
+                $session->set('areaminpostl', $areamin);
+                $session->set('areamaxpostl', $areamax);
+                $session->set('priceminpostl', $pricemin);
+                $session->set('pricemaxpostl', $pricemax);
+                $session->set('proptypepostl', $proptype);
+                $session->set('propbidpostl', $propbid);
+    
+            if($shaped == 'polygon'){
+    
+                 $newspaths = $_POST['newspaths'];
+                $session->set('newspathspostl', $newspaths);
+                $session->set('locationspostl', $locations);
+                $session->set('shapedpostl', $shaped);
+                $session->set('propidpostl', $propid);
+                
+            }
+            if($shaped == 'circle'){
+                
+                $centercoordinates = '"'.$_POST['centercoordinates'].'"';
+                $totalradius = $_POST['totalradius'];
+    
+                $session->set('centercoordinatespostl', $centercoordinates);
+                $session->set('totalradiuspostl', $totalradius);
+                $session->set('locationspostl', $locations);
+                $session->set('shapedpostl', $shaped);
+                $session->set('propidpostl', $propid);
+            }
+            if($shaped == 'rectangle'){                
+               
+            
+
+                $northlat = $_POST['rectanglecoordinates']['north'];
+                $southlat = $_POST['rectanglecoordinates']['south'];
+                $northlng = $_POST['rectanglecoordinates']['east'];
+                $southlng = $_POST['rectanglecoordinates']['west'];
+    
+                $rectanglecoordinates = '{
+                    "north": '.$northlat.',
+                    "south": '.$southlat.',
+                    "east": '.$northlng.',
+                    "west": '.$southlng.'
+                 }';
+               
+                $newkuma = $rectanglecoordinates;
+    
+                $session->set('newkumapostl', $newkuma);
+                $session->set('locationspostl', $locations);
+                $session->set('shapedpostl', $shaped);
+                $session->set('propidpostl', $propid);
+               
+            }
+    
+            if($shaped == 'blank'){            
+                
+                
+                $session->set('locationspostl', $locations);
+                $session->set('shapedpostl', $shaped);
+                $session->set('propidpostl', $propid);
+               
+            }
+    
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
+    
+             
+    
+              if (isset(Yii::$app->user->identity->id)){    
+                
                    
     
                     return 'existuser';
@@ -1377,7 +1492,7 @@ return 2;
         // }
             
  
-        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
+        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
         
         
         $conditions = array();
@@ -1611,7 +1726,7 @@ return 2;
      
             
     
-          $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) "; 
+          $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) "; 
           
           $conditions = array();
           $conditionsnew = array();
@@ -1727,7 +1842,7 @@ return 2;
 
      
          
-       $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
          
        $conditions = array();
        $conditionsnew = array();
@@ -1778,7 +1893,7 @@ return 2;
                         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
                             $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
                         }
-   // echo $sqlstr;die;
+    echo $sqlstr;die;
      
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
