@@ -286,27 +286,15 @@ use yii\bootstrap\Modal;
 								<h3 class="flow_heading avail_ability">Choose a Price Range in <i class="fa fa-inr"></i></h3>
 							<div class="col-md-6 no_pad">
                 <div class="col-md-8 col-xs-6">
-                  <input type="text" class="form-control input_desgn input_number" placeholder="Minimum price" id="dummypriceminimum">
+                  <input type="text" class="form-control input_desgn input_number" name="proppriceminimum" placeholder="Minimum price" id="proppriceminimum">
                  </div>
-                <div class="col-md-4 col-xs-6">
-                    <select id="propminrupees" class="form-control area_price">
-                       <option value="lacs">Lacs</option>
-                       <option value="crores">Crores</option>
-                    </select>
-                 </div>
-                 <input type="hidden" id="proppriceminimum" name="proppriceminimum">
+                
               </div>
               <div class="col-md-6 col-xs-12 no_pad">
                  <div class="col-md-8 col-xs-6">
-                    <input type="text" class="form-control input_desgn input_number" placeholder="Maximum price" id="dummypricemaximum">
+                    <input type="text" class="form-control input_desgn input_number" name="proppricemaximum" placeholder="Maximum price" id="proppricemaximum">
                  </div>
-                 <div class="col-md-4 col-xs-6">
-                    <select id="propmaxrupees" class="form-control area_price">
-                      <option value="lacs">Lacs</option>
-                     <option value="crores">Crores</option>
-                     </select>
-                   </div>
-                   <input type="hidden" id="proppricemaximum" name="proppricemaximum">
+                
               </div>
               </div>
 
@@ -351,7 +339,6 @@ use yii\bootstrap\Modal;
 										  </ul>
 									</div>
 								</div>
-                <input type="hidden" id="proppriceminimum" name="proppriceminimum">
 								<div class="col-md-4 pad_right">
 									<h3 class="flow_heading avail_ability">Maximum</h3>
 									<div class="dropdown">
@@ -371,7 +358,6 @@ use yii\bootstrap\Modal;
 									</div>
 								</div>
 							</div>
-              <input type="hidden" id="proppricemaximum" name="proppricemaximum">
              
               <input type="hidden" id="newspaths" name="newspaths">
               <input type="hidden" id="shaped" name="shaped">
