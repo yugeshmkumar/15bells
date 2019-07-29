@@ -1478,3 +1478,7 @@ input[type=file]::-webkit-file-upload-button {
 .repeat_id{
 	padding:15px 0;
 }
+.info_icon{
+	font-size:16px;
+	color: #c4984f;
+}
