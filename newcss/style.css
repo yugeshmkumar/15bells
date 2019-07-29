@@ -2117,7 +2117,7 @@ input.invalid {
 	transition:.4s;
 }
 .property_back{
-	padding:7px 35px;
+	padding:7px 20px;
 	border:1px solid #c4984f;
 	color:#c4984f !important;
 	background:#ffffff;
@@ -2248,7 +2248,38 @@ input.invalid {
     position: absolute;
     right:7%;
 	}
-
+	.prop_location{
+		padding:30px 0 !important;
+	}
+	.avail_ability{
+		padding-left:0;
+	}
+	.unit_details , .progress_bar{
+		padding:0 !important;
+	}
+	.details_label , .label_name{
+		font-size:15px;
+	}
+	.edit_label , .amenity_prop{
+		font-weight:500;
+		font-size:14px !important;
+	}
+	.img_input{
+		margin:12px 0;
+	}
+	.amenities_icon{
+		padding:0;
+	}
+	.padd_amen{
+		padding:20px 0 !important;
+	}
+	.edit_input .input_desgn{
+		font-weight:500;
+		font-size:14px !important;
+	}
+	.property_edit{
+		padding:20px 0 !important;
+	}
 	.span_sl{
 		top:2px;
 	}
@@ -3284,7 +3315,7 @@ float:left;
 
 /*********Property Edit*****/
 .property_edit{
-	padding:20px 50px;
+	padding:20px 20px;
 	background:#ffffff;
 }
 .prop_location{
@@ -3764,3 +3795,17 @@ color: #c4984f;
     padding: 8px 25px;
     margin: 25px 8px 20px 20px;
   }
+  .info_icon{
+	font-size:16px;
+	color: #c4984f;
+}
+
+.edit_images{
+	padding:70px 0 0;
+}
+.select_loan{
+	padding:0 7px !important;
+}
+.select_loan:focus{
+	padding:0 7px !important;
+}
