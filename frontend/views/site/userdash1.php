@@ -81,7 +81,7 @@ $this->title = 'Dashboard';
 							</div>
 							<div class="col-md-4 no_pad">
 							<div class="row">
-								<h3 class="current_role">Current Role</h3>
+								<h3 class="current_role">Current Role <i class="fa fa-info-circle info_icon" data-placement="bottom" data-toggle="tooltip" title="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's." aria-hidden="true"></i></h3>
 								<ul class="sub_categories role_list text-center">
 										<li id="buyer" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="buyer">Buyer</a></li>
 										<li id="seller" class=""><a href="javascript:void(0)" class="property_subtype col-md-10" id="seller">Seller</a></li>
@@ -229,7 +229,7 @@ $this->title = 'Dashboard';
 </div>	
 		  <?php 
 $script = <<< JS
-
+$('[data-toggle="tooltip"]').tooltip(); 
 $(".sub_categories li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
 });
