@@ -519,7 +519,7 @@ if(!isset($_SESSION))
 							<div class="row">
 								<p class="visit_mode">To schedule property visit, choose the mode of visit</p>
 								<ul class="sub_categories">
-									<li class="active"><a href="javascript:void(0)" id="online" class="property_subtype visitmode">Online</a></li>
+									<li class=""><a href="javascript:void(0)" id="online" class="property_subtype visitmode">Online</a></li>
 									<li class=""><a href="javascript:void(0)" id="offline" class="property_subtype visitmode">Offline</a></li>
 								</ul>
                             </div>

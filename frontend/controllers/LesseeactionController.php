@@ -1397,12 +1397,14 @@ return 2;
       $conditions = array();
       $conditionsnew = array();
       $conditionsprop = array();
+      $conditionsexact = array();
         
 
 
             $conditionsprop[] = "property_for='both'";  
             
             $conditions[] = "property_for='rent'";  
+            
         
       
         
@@ -1414,6 +1416,8 @@ return 2;
 
             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+            $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
         }
         
         if ($pricemin != '' && $pricemax !='') {
@@ -1445,7 +1449,7 @@ return 2;
         }
 
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
         }
       
       //echo $sqlstr;die;
@@ -1498,6 +1502,8 @@ return 2;
         $conditions = array();
         $conditionsnew = array();
         $conditionsprop = array();
+        $conditionsexact = array();
+
           
                         $conditionsprop[] = "property_for='both'";  
                         $conditions[] = "property_for='rent'";        
@@ -1513,6 +1519,8 @@ return 2;
                         if ($areamin != '' && $areamax !='') {
                             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
                             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                            $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
                         }
 
                         if ($pricemin != '' && $pricemax !='') {
@@ -1538,7 +1546,7 @@ return 2;
                         }
                 
                         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
                         }
             
             
@@ -1731,6 +1739,8 @@ return 2;
           $conditions = array();
           $conditionsnew = array();
           $conditionsprop = array();
+          $conditionsexact = array();
+
             
           $conditionsprop[] = "property_for='both'";
                 $conditions[] = "property_for='rent'";      
@@ -1748,6 +1758,8 @@ return 2;
                  
                              $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
                              $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
                          }
 
                         if ($pricemin != '' && $pricemax !='') {
@@ -1775,7 +1787,7 @@ return 2;
                         }
                 
                         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
                         }
               
               
@@ -1847,6 +1859,8 @@ return 2;
        $conditions = array();
        $conditionsnew = array();
        $conditionsprop = array();
+       $conditionsexact = array();
+
 
        $conditionsprop[] = "property_for='both'";  
                         $conditions[] = "property_for='rent'";        
@@ -1864,6 +1878,8 @@ return 2;
                  
                              $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
                              $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
                          }
 
                         if ($pricemin != '' && $pricemax !='') {
@@ -1891,9 +1907,9 @@ return 2;
                         }
                 
                         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
                         }
-    echo $sqlstr;die;
+   // echo $sqlstr;die;
      
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
