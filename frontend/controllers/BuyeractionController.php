@@ -287,36 +287,7 @@ class BuyeractionController extends Controller {
 
          
 
-          if (isset(Yii::$app->user->identity->id)){
-
-            //    $user_id = Yii::$app->user->identity->id;
-
-            //   if($shaped == 'polygon'){
-                 
-            //    $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'created_date' => $date])->execute();
-            //   }
-
-            //   if($shaped == 'circle'){
-               
-            //    $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
-            //                'created_date' => $date])->execute();
-            //   }
-
-            //  if($shaped == 'rectangle'){
-                
-            //    $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
-            //                'created_date' => $date])->execute();
-            //                }
-
-            //                if($shaped == 'blank'){
-                          
-            //                 $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country,'property_type' => $proptype, 'area' => $areamax,'min_prices' => $pricemin, 'max_prices' => $pricemax,'property_auction_type' => $propbid,'created_date' => $date])->execute();
-
-
-            //                             }
-
-         //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
-                            
+          if (isset(Yii::$app->user->identity->id)){                   
                
 
                 return 'existuser';
@@ -331,6 +302,121 @@ class BuyeractionController extends Controller {
 
 
     }
+
+
+
+
+    public function actionShortlistpropertiesready() {
+
+        //   echo '<pre>';print_r($_POST);die;
+         
+    //   echo  $user_id = Yii::$app->user->identity->id;die;
+            if(!isset($_SESSION)) 
+            { 
+                session_start(); 
+            } 
+    
+            $locations = $_POST['locations'];
+             $shaped = $_POST['shaped'];
+            $propid = $_POST['propid'];
+            $town = $_POST['town'];
+            $sector = $_POST['sector'];
+            $country = $_POST['country'];
+            $areamin = $_POST['areamin'];
+            $areamax = $_POST['areamax'];
+            $pricemin = $_POST['pricemin'];
+            $pricemax = $_POST['pricemax'];
+            $proptype = $_POST['proptype'];
+            $propbid = $_POST['propbid'];
+            
+    
+            $session = Yii::$app->session;
+    
+    
+                $session->set('townpost', $town);
+                $session->set('sectorpost', $sector);
+                $session->set('areaminpost', $areamin);
+                $session->set('areamaxpost', $areamax);
+                $session->set('priceminpost', $pricemin);
+                $session->set('pricemaxpost', $pricemax);
+                $session->set('proptypepost', $proptype);
+                $session->set('propbidpost', $propbid);
+    
+            if($shaped == 'polygon'){
+    
+                 $newspaths = $_POST['newspaths'];
+                $session->set('newspathspost', $newspaths);
+                $session->set('locationspost', $locations);
+                $session->set('shapedpost', $shaped);
+                $session->set('propidpost', $propid);
+                
+            }
+            if($shaped == 'circle'){
+                
+                $centercoordinates = '"'.$_POST['centercoordinates'].'"';
+                $totalradius = $_POST['totalradius'];
+    
+                $session->set('centercoordinatespost', $centercoordinates);
+                $session->set('totalradiuspost', $totalradius);
+                $session->set('locationspost', $locations);
+                $session->set('shapedpost', $shaped);
+                $session->set('propidpost', $propid);
+            }
+            if($shaped == 'rectangle'){                
+               
+            
+
+                $northlat = $_POST['rectanglecoordinates']['north'];
+                $southlat = $_POST['rectanglecoordinates']['south'];
+                $northlng = $_POST['rectanglecoordinates']['east'];
+                $southlng = $_POST['rectanglecoordinates']['west'];
+    
+                $rectanglecoordinates = '{
+                    "north": '.$northlat.',
+                    "south": '.$southlat.',
+                    "east": '.$northlng.',
+                    "west": '.$southlng.'
+                 }';
+               
+                $newkuma = $rectanglecoordinates;
+    
+                $session->set('newkumapost', $newkuma);
+                $session->set('locationspost', $locations);
+                $session->set('shapedpost', $shaped);
+                $session->set('propidpost', $propid);
+               
+            }
+    
+            if($shaped == 'blank'){            
+                
+                
+                $session->set('locationspost', $locations);
+                $session->set('shapedpost', $shaped);
+                $session->set('propidpost', $propid);
+               
+            }
+    
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
+    
+             
+    
+              if (isset(Yii::$app->user->identity->id)){    
+                
+                   
+    
+                    return 'existuser';
+                  
+                   
+    
+                }else{
+    
+                   return 'nouser';
+                }   
+    
+    
+    
+        }
 
 
 
@@ -489,39 +575,39 @@ class BuyeractionController extends Controller {
 
      
          
-         if (isset(Yii::$app->user->identity->id)){
+     if (isset(Yii::$app->user->identity->id)){
+ 
+        $user_id = Yii::$app->user->identity->id;
 
-            $user_id = Yii::$app->user->identity->id;
+       if($shaped == 'polygon'){
+          
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid, 'created_date' => $date])->execute();
+       }
 
-           if($shaped == 'polygon'){
-              
-            $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'created_date' => $date])->execute();
-           }
+       if($shaped == 'circle'){
+        
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
+                    'created_date' => $date])->execute();
+       }
 
-           if($shaped == 'circle'){
-            
-            $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
-                        'created_date' => $date])->execute();
-           }
+      if($shaped == 'rectangle'){
+         
+        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
+                    'created_date' => $date])->execute();
+                    }
 
-          if($shaped == 'rectangle'){
-             
-            $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector,
-                        'created_date' => $date])->execute();
-                        }
-
-                        if($shaped == 'blank'){
-                       
-                         $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country,'property_type' => $proptype, 'area' => $areamax,'min_prices' => $pricemin, 'max_prices' => $pricemax,'property_auction_type' => $propbid,'created_date' => $date])->execute();
+                    if($shaped == 'blank'){
+                   
+                     $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,'created_date' => $date])->execute();
 
 
-                                     }
+                                 }
 
-      //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
-                     
-       
+  //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
+                 
+   
 
-         }         
+     }         
  
         
          if($propidpost = $_SESSION['propidpost']){
@@ -1079,20 +1165,12 @@ class BuyeractionController extends Controller {
         $propbid = $_POST['propbid'];
         $availabilitym = $_POST['availabilitym'];
 
+            $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
 
-        // if (isset(Yii::$app->user->identity->id)){
-
-        //     $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'buyer', 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector, 'created_date' => $date])->execute();
-
-        // }
-
-
-
-        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
-
-        $conditions = array();
-      $conditionsnew = array();
-      $conditionsprop = array();
+            $conditions = array();
+            $conditionsnew = array();
+            $conditionsprop = array();
+            $conditionsexact = array();
         
 
 
@@ -1108,6 +1186,7 @@ class BuyeractionController extends Controller {
  
              $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
              $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
          }
 
         if ($pricemin != '' && $pricemax != '') {
@@ -1137,9 +1216,9 @@ class BuyeractionController extends Controller {
         }
 
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
         }
-// echo $sqlstr;die;
+//   echo $sqlstr;die;
 
         if ($sector == '' && $town == '') {
             echo '1';
@@ -1261,56 +1340,61 @@ class BuyeractionController extends Controller {
 
         
 
-            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
+            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
 
 
             $conditions = array();
-      $conditionsnew = array();
-      $conditionsprop = array();
+            $conditionsnew = array();
+            $conditionsprop = array();
+            $conditionsexact = array();
         
 
 
             $conditionsprop[] = "property_for='both'";  
             
-            $conditions[] = "property_for='sale'"; 
+            $conditions[] = "property_for='sale'";  
 
+        if ($proptype != '') {
+            $conditions[] = "project_type_id = '$proptype'";
+        }
+        if ($areamin != '' && $areamax !='') {
+            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+ 
+             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+         }
 
-            if ($proptype != 'Property Type') {
-                $conditions[] = "project_type_id = '$proptype'";
-            }
-            if ($propbid != 'Select') {
-                $conditions[] = "a.request_for = '$propbid'";
-            }
-            if ($areamin != '' && $areamax !='') {
-                // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
-     
-                 $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
-                 $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
-             }
+        if ($pricemin != '' && $pricemax != '') {
+            $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
+        }
 
-            if ($pricemin != '' && $pricemax != '') {
-                $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
-            }
+        if ($propbid != '') {
+            $conditions[] = "a.request_for = '$propbid'";
+        }
+        if ($availabilitym != '') {
+            $conditions[] = "a.availability  = '$availabilitym'";
+        }
+        if ($town != '') {
+            $conditions[] = "town_name = '$town'";
+        }
+        if ($sector != '') {
+            $conditions[] = "sector_name='$sector' ";
+        }
 
-            if ($town != '') {
-                $conditions[] = "town_name = '$town'";
-            }
-            if ($sector != '') {
-                $conditions[] = "sector_name='$sector'";
-            }
-            $conditions[] = "a.status='approved'";
-            $conditions[] = "a.user_id <> '$user_id'";
-            
+        $conditions[] = "a.status='approved'";
 
+        $conditions[] = "a.user_id <> '$user_id' ";
 
-            $sqlstr = $query;
-            if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
-                $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
-            }
-    
-            if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
-            }
+//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+        $sqlstr = $query;
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+        }
+
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+        }
 
             
         
@@ -1513,55 +1597,59 @@ class BuyeractionController extends Controller {
         // }
  
 
-            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";
+            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";
 
-            $conditions = array();
-      $conditionsnew = array();
-      $conditionsprop = array();
+             $conditions = array();
+            $conditionsnew = array();
+            $conditionsprop = array();
+            $conditionsexact = array();
         
 
 
             $conditionsprop[] = "property_for='both'";  
             
-            $conditions[] = "property_for='sale'"; 
+            $conditions[] = "property_for='sale'";  
 
+        if ($proptype != '') {
+            $conditions[] = "project_type_id = '$proptype'";
+        }
+        if ($areamin != '' && $areamax !='') {
+            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+ 
+             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+         }
 
-            if ($proptype != '') {
-                $conditions[] = "project_type_id = '$proptype'";
-            }
-            if ($propbid != '') {
-                $conditions[] = "a.request_for = '$propbid'";
-            }
-            if ($areamin != '' && $areamax !='') {
-                // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
-     
-                 $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
-                 $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
-             }
+        if ($pricemin != '' && $pricemax != '') {
+            $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
+        }
 
-            if ($pricemin != '' && $pricemax != '') {
-                $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
-            }
+        if ($propbid != '') {
+            $conditions[] = "a.request_for = '$propbid'";
+        }
+        if ($availabilitym != '') {
+            $conditions[] = "a.availability  = '$availabilitym'";
+        }
+        if ($town != '') {
+            $conditions[] = "town_name = '$town'";
+        }
+        if ($sector != '') {
+            $conditions[] = "sector_name='$sector' ";
+        }
 
-            if ($town != '') {
-                $conditions[] = "town_name = '$town'";
-            }
-            if ($sector != '') {
-                $conditions[] = "sector_name='$sector'";
-            }
-            
-            $conditions[] = "a.status='approved'";
-            $conditions[] = "a.user_id <> '$user_id'";
+        $conditions[] = "a.status='approved'";
+        $conditions[] = "a.user_id <> '$user_id' ";
 
+//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+        $sqlstr = $query;
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+        }
 
-            $sqlstr = $query;
-            if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
-                $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
-            }
-    
-            if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
-            }
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+        }
 
             
             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
@@ -1618,11 +1706,12 @@ class BuyeractionController extends Controller {
         // }
 
        
-            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";
+            $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";
 
             $conditions = array();
-      $conditionsnew = array();
-      $conditionsprop = array();
+            $conditionsnew = array();
+            $conditionsprop = array();
+            $conditionsexact = array();
         
 
 
@@ -1630,44 +1719,46 @@ class BuyeractionController extends Controller {
             
             $conditions[] = "property_for='sale'";  
 
+        if ($proptype != '') {
+            $conditions[] = "project_type_id = '$proptype'";
+        }
+        if ($areamin != '' && $areamax !='') {
+            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+ 
+             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+         }
 
+        if ($pricemin != '' && $pricemax != '') {
+            $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
+        }
 
-            if ($proptype != '') {
-                $conditions[] = "project_type_id = '$proptype'";
-            }
-            if ($propbid != '') {
-                $conditions[] = "a.request_for = '$propbid'";
-            }
-            if ($areamin != '' && $areamax !='') {
-                // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
-     
-                 $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
-                 $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
-             }
+        if ($propbid != '') {
+            $conditions[] = "a.request_for = '$propbid'";
+        }
+        if ($availabilitym != '') {
+            $conditions[] = "a.availability  = '$availabilitym'";
+        }
+        if ($town != '') {
+            $conditions[] = "town_name = '$town'";
+        }
+        if ($sector != '') {
+            $conditions[] = "sector_name='$sector' ";
+        }
 
-            if ($pricemin != '' && $pricemax != '') {
-                $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
-            }
+        $conditions[] = "a.status='approved'";
+        $conditions[] = "a.user_id <> '$user_id' ";
 
-            if ($town != '') {
-                $conditions[] = "town_name = '$town'";
-            }
-            if ($sector != '') {
-                $conditions[] = "sector_name='$sector'";
-            }
+//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+        $sqlstr = $query;
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+        }
 
-            $conditions[] = "a.status='approved'";
-            $conditions[] = "a.user_id <> '$user_id' ";
-
-
-            $sqlstr = $query;
-            if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
-                $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
-            }
-    
-            if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-                $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( ".implode(' OR ', $conditionsnew).") GROUP BY a.id";
-            }
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+        }
 
         //  echo $sqlstr;die;
             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
