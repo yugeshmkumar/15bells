@@ -504,9 +504,10 @@ public function actionShowpropdetails(){
         $model2 =  new Property_nearby_places();
         $model3 =  new Property_amenities();
 
+       
        if ($model->load(Yii::$app->request->post()) && $model->validate() ) {           
           
-    //   echo '<pre>';print_r(Yii::$app->request->post());die;
+     //  echo '<pre>';print_r(Yii::$app->request->post());die;
 
           $yiipost = Yii::$app->request->post();
           $available_date = $yiipost['Addproperty']['available_date'];
@@ -597,11 +598,16 @@ public function actionShowpropdetails(){
             }
 
               else{
-                        
+                   
                    print_r($model->getErrors());die;
+
                   }
 
-        }
+        } else{
+                   
+            print_r($model->getErrors());die;
+
+           }
 
        
     }
