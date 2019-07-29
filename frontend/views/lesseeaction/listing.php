@@ -20,7 +20,7 @@ if(!isset($_SESSION))
        
         // get a session variable. The following usages are equivalent:
         $getlocality = $_SESSION['locationsl'];     
-        $type = $_SESSION['shapedl'];
+         $type = $_SESSION['shapedl'];
 
          if($type == 'polygon'){
 
@@ -119,7 +119,7 @@ if(!isset($_SESSION))
 			<li class="user_filt locality_area"><span class="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_type"><span class="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?></span> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Area'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
 	</div>
 	<div class="row">
@@ -416,7 +416,7 @@ if(!isset($_SESSION))
 
 				 ?>
 
-				 <?//= $form->errorSummary($modeled); ?>
+				
 
               <?php date_default_timezone_set("Asia/Calcutta");
               $dater = date('Y-m-d H:i:s');
@@ -1728,7 +1728,8 @@ proptype =  $('#proptypes').val();
     $('.prop_prices').text(pricemin+' - '+pricemax); 
  }
  
- $('.prop_types').text($('#'+proptype).text());
+ var commercial_text = $('#'+proptype).text();
+ $('.prop_types').text(commercial_text);
 
  if(pacinput != ''){
    var getsearchlocation = pacinput;
@@ -2123,10 +2124,11 @@ proptype =  $('#proptypes').val();
                                                             // draggable: true,
                                                             radius: radius
                                                             };
-                                                           // circle.setMap(null);
+                                                            
                                                             circle = new google.maps.Circle(circleOptions);
+                                                            circle.setMap(null);
                                                              if(circle.getBounds().contains(curPosition)){
-                                                                circle.setMap(null);
+                                                               // circle.setMap(null);
 
                                                              count2 += 1; 
                                                              var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
@@ -3069,7 +3071,6 @@ function getPolygonCoords() {
 
 
 
-
                             function  withoutshape(){
 
                                         var count1 =0;
@@ -3176,7 +3177,7 @@ function getPolygonCoords() {
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<a href="tel:9555322244" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:9555322244" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3315,7 +3316,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3465,7 +3466,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3598,7 +3599,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3630,13 +3631,15 @@ function getPolygonCoords() {
 
 
 
-                                    function shortlistproperties(id){
+     function shortlistproperties(id){
 
-
+  
     
     var shaped =  getpolyshapes;
     var newspaths = pathstr;
     var locations = getsearchlocation;
+
+    
     
     if(shaped == 'polygon'){
     ndata = {shaped:shaped,newspaths : newspaths,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
@@ -3678,7 +3681,76 @@ function getPolygonCoords() {
 
                 
 
- }        
+ }  
+
+
+
+
+ function shortlistpropertiesready(id){
+
+
+
+                                    var types  = $('#type').val();                               
+                                    var town  = $("#towns").val(); 
+                                    var sector  = $("#sectors").val(); 
+                                    var  country  = $("#countrys").val();
+                                    var areaft = $("#propsquares").val();                                            
+                                    var areamin = $("#propareaminimums").val();
+                                    var areamax = $("#propareamaximums").val();
+                                    var pricemin = $("#proppriceminimums").val();
+                                    var pricemax = $("#proppricemaximums").val();
+                                    var proptype =  $('#proptypes').val();
+                                    var propbid =  $('#propbid').val();
+                                    var availabilitym =  $('#availabilitym').val();
+                                    var totalradiuss =  $('#radius').val();
+                                    var geometry  = <?php echo $geometry; ?>;
+                                    var locations = "<?php echo $getlocality; ?>";
+
+                       
+    
+    if(types == 'polygon'){
+
+        var newgeometry = JSON.stringify(geometry);
+    ndata = {shaped:types,newspaths : newgeometry,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == 'circle'){
+    ndata = {shaped:types,centercoordinates : geometry,totalradius: totalradiuss,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == 'rectangle'){
+    ndata = {shaped:types,rectanglecoordinates:geometry,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == ''){
+        types = 'blank';
+    ndata = {shaped:types,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+
+        $.ajax({
+                type: "POST",
+                url:  'shortlistpropertiesready',
+                data: ndata,
+                success: function (data) {
+
+
+                    if(data == 'existuser'){
+
+                    window.location.replace("searches");
+
+                    }else if(data == 'nouser'){
+                            
+                       $('#signup_modal').modal('show');
+                   // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
+
+                    }else{
+                    toastr.error('Some Internal Error', 'warning');
+                    }
+                    
+                    
+                },
+            });
+
+                
+
+ }      
 
 
 
