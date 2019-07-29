@@ -106,16 +106,52 @@ $undercategory = $property_type->undercategory;
 					
 					</p>
 					<div class="row single_property">
-						<div class="col-md-3 no_pad">
-							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/manage.jpg';  ?>" class="img-responsive">
+					
+						<div class="col-md-4 no_pad">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+								</ol>
+
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner">
+									<div class="item active">
+									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/buy.jpg';  ?>" class="img-responsive">
+									</div>
+
+									<div class="item">
+									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sell.jpg';  ?>" class="img-responsive">
+									</div>
+
+									<div class="item">
+									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessee.jpg';  ?>" class="img-responsive">
+									</div>
+								</div>
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+										<span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#myCarousel" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+								<div class="col-md-12 edit_images text-center">
+								<a href="javascript:void(0)" class="property_back">Edit Images</a><a href="javascript:void(0)" class="property_process prop_video">Property Video</a>
+								</div>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8 ">
 							<div class="row prop_location">
-								<div class="col-md-5 company_overview property_manage">
+								<div class="col-md-5 col-xs-6 company_overview property_manage">
 									<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
 									<p class="label_name"><?php echo $property_types; ?></p>
 								</div>
-								<div class="col-md-5 company_overview property_manage">
+								<div class="col-md-5 col-xs-6 company_overview property_manage">
 									<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
 									<p class="label_name"><?php echo $locality; ?></p>
 								</div>
@@ -171,50 +207,50 @@ $undercategory = $property_type->undercategory;
 			</div>
 			
 			<div class="col-md-12">
-				<div class="col-md-9">
+				<div class="col-md-9 no_pad">
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Property Details<a href="javascript:void(0)" class="text-right edit_button draw_map">Edit</a></h3>
 						<div class="row">
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Ownership Deeds</label>
 							<input type="text" id="ownerships" class="form-control input_desgn myInput" value="<?php echo $ownership; ?>" placeholder="" readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Total floor</label>
 							<input type="text" id="totalfloors" class="form-control input_desgn myInput" value="<?php echo $total_floors; ?>"  readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Property on floor</label>
 							<input type="text" id="prop_floors" class="form-control input_desgn myInput" value="<?php echo $property_on_floor; ?>" placeholder="" readonly>
 						</div>
 						</div>
 						<div class="row">
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Age of Property</label>
 							<input type="text" id="age_of_property" class="form-control input_desgn myInput" value="<?php echo $age_of_property; ?>" placeholder="" readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Facing</label>
 							<input type="text" id="facings" class="form-control input_desgn myInput" value="<?php echo $facing; ?>" placeholder="" readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Annual Dues</label>
 							<input type="text" id="annual_dues" class="form-control input_desgn myInput" value="<?php echo $annual_dues_payable; ?>" placeholder="" readonly>
 						</div>
 						</div>
 						<div class="row">
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Far Approved</label>
 							<input type="text" id="far_approveds" class="form-control input_desgn myInput" value="<?php echo $FAR_approval; ?>" placeholder="" readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Maintained By</label>
 							<input type="text" id="maintained_by" class="form-control input_desgn myInput" value="<?php echo $maintenance_by; ?>" placeholder="" readonly>
 						</div>
-						<div class="col-md-4 edit_input">
+						<div class="col-md-4 col-xs-6 edit_input">
 							<label class="edit_label">Loan</label>
 
-							<select class="form-control input_desgn myInput" id="loan_taken" >
+							<select class="form-control input_desgn myInput select_loan" id="loan_taken" >
 							
 							<option <?php if ($LOAN_taken == 'yes' ) echo 'selected' ; ?> value="yes">Yes</option>
 							<option <?php if ($LOAN_taken == 'no' ) echo 'selected' ; ?>  value="no">No </option>
@@ -225,7 +261,7 @@ $undercategory = $property_type->undercategory;
 						</div>
 						<div class="row">
 					
-						<div class="col-md-6 edit_input">
+						<div class="col-md-6 col-xs-6 edit_input">
 							<label class="edit_label">Juridiction of Development</label>
 							<input type="text" id="jurisdiction" class="form-control input_desgn myInput" value="<?php echo $jurisdiction_development; ?>" placeholder="" readonly>
 						</div>
@@ -235,15 +271,15 @@ $undercategory = $property_type->undercategory;
 					<div class="row possession_time">
 						<h3 class="flow_heading avail_ability">Availability<a href="javascript:void(0)" class="text-right available_edit draw_map">Edit</a></h3>
 						<div class="row">
-							<div class="col-md-4 edit_input">
+							<div class="col-md-4 col-xs-6 edit_input">
 								<label class="edit_label">Availability</label>
 								<input type="text" id="availabilits" class="form-control input_desgn avail_input" value="<?php echo ucfirst(str_replace('_',' ',$availability)); ?>" placeholder="" readonly>
 							</div>
-							<div class="col-md-4 edit_input">
+							<div class="col-md-4 col-xs-6 edit_input">
 								<label class="edit_label">Furnishing Status</label>
 								<input type="text" id="furnishings" class="form-control input_desgn avail_input" value="<?php echo $furnished_status; ?>" placeholder="" readonly>
 							</div>
-							<div class="col-md-4 edit_input">
+							<div class="col-md-4 col-xs-6 edit_input">
 								<label class="edit_label">Possession</label>
 								<input type="text" id="possesions" class="form-control input_desgn avail_input" value="<?php echo $possesion_by; ?>" placeholder="" readonly>
 							</div>
@@ -279,7 +315,7 @@ $undercategory = $property_type->undercategory;
 						<h3 class="flow_heading avail_ability">Nearby Places<a href="javascript:void(0)" class="text-right exp_edit draw_map"></a></h3>
 						<div class="row">
 							
-							<div class="col-md-12 text-left padd_amen">
+							<div class="col-md-12 col-xs-6 text-left padd_amen">
 									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="img_input bus_img" id="bus" width="22" />
 										<span class="amenity_prop bus" id="bus">Bus</span>
@@ -295,7 +331,7 @@ $undercategory = $property_type->undercategory;
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/cab.svg';  ?>" class="img_input cab_img" id="cab" width="20" /><span class="amenity_prop cab">Cab</span>
 									</div>
 								</div>
-									<div class="col-md-12 text-left padd_amen">
+									<div class="col-md-12 col-xs-6 text-left padd_amen">
 										<div class="col-md-3 amenities_icon">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/market.svg';  ?>" class="img_input market_img" id="market" width="24" /><span class="amenity_prop market">Market</span>
 										</div>
@@ -315,7 +351,7 @@ $undercategory = $property_type->undercategory;
 						<h3 class="flow_heading avail_ability">Amenities<a href="javascript:void(0)" class="text-right exp_edit draw_map"></a></h3>
 						<div class="row">
 							
-							<div class="col-md-12 text-left padd_amen">
+							<div class="col-md-12 col-xs-6 text-left padd_amen">
 									<div class="col-md-4 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" id="power" class="img_input power_img" width="22" /><span class="amenity_prop power">Power Backup</span>
 									</div>
@@ -327,7 +363,7 @@ $undercategory = $property_type->undercategory;
 									</div>
 									
 								</div>
-									<div class="col-md-12 text-left padd_amen">
+									<div class="col-md-12 col-xs-6 text-left padd_amen">
 										<div class="col-md-4 amenities_icon">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/gaurd.svg';  ?>" class="img_input gaurd_img" id="gaurd" width="24" /><span class="amenity_prop gaurd">Security Personnal</span>
 										</div>
@@ -354,6 +390,30 @@ $undercategory = $property_type->undercategory;
 		</div>
 		
 	</div>
+</div>
+
+
+<div id="video_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		
+			<div class="container-fluid padding_rating">
+				<div class="col-md-12 text-center">
+					
+					
+				</div>
+				
+			</div> 
+		</div>
+      </div>      
+    </div>
+  </div>
+  
 </div>
 
 
@@ -396,7 +456,9 @@ $undercategory = $property_type->undercategory;
 		});
 
 		
-
+		$(".prop_video").click(function(){
+			$('#video_modal').modal('show');
+		});
 		
 		var nearbythings = [];
 		var amenitiesthings = [];
