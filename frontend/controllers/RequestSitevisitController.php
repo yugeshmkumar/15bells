@@ -51,7 +51,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','buyer','lessee','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -86,6 +86,7 @@ class RequestSitevisitController extends Controller {
 
 
                  }else{
+                     
                     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
                  }
@@ -93,40 +94,7 @@ class RequestSitevisitController extends Controller {
                  $mdataPost = $request->post();
 		
 		 $model = new \common\models\RequestSiteVisit();
-		 
-	// 	  if (isset($_POST['hasEditable'])) {
-			  
-    //     // use Yii's response format to encode output as JSON
-    //     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
-    //     // read your posted model attributes
-    //     if ($model->load($_POST)) {
-	// 		$request = Yii::$app->request->post();
-    //                     $modelreq=$request['RequestSiteVisit'];
-	// 		$editableIndex = $_POST['editableIndex'];
-    //                     $approvestatus=$modelreq[$editableIndex]['visit_type'];
-	// 		$geteditablekey = $_POST['editableKey'];
-	// 		$finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $geteditablekey])->one();
-	// 		if($finduser){
-			
-	// 	    $finduser->visit_type = $approvestatus;
-    //                 $finduser->save(false);
-
-    //         // read or convert your posted information
-    //        // $value = $model->approve_status;
-    //         // return JSON encoded output in the below format
-    //         return $this->refresh();
-            
-    //         // alternatively you can return a validation error
-    //         // return ['output'=>'', 'message'=>'Validation error'];
-    //     }
-        
-    //                             }
-    //     // else if nothing to do always return an empty JSON encoded output
-    //     else {
-    //         return ['output'=>'', 'message'=>''];
-    //     }
-    // }
+	
 
 
         return $this->render('index', [
@@ -134,6 +102,83 @@ class RequestSitevisitController extends Controller {
                     'dataProvider' => $dataProvider,
         ]);
     }
+
+
+    public function actionBuyer() {
+       
+        $searchModel = new RequestSiteVisitSearch();
+        if (\Yii::$app->request->isPost) {
+
+            $post = Yii::$app->request->post();
+
+           $sites =  $post['progress'];
+
+           if($sites == 'Completed'){
+               
+               $filter = 'yes';
+
+           }else{
+               $filter = 'no';
+           }
+            
+           $dataProvider = $searchModel->searchfilter(Yii::$app->request->queryParams,$filter);
+
+
+        }else{
+            
+           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        }
+$request = Yii::$app->request;
+        $mdataPost = $request->post();
+
+$model = new \common\models\RequestSiteVisit();
+
+
+
+return $this->render('buyer', [
+           'searchModel' => $searchModel,
+           'dataProvider' => $dataProvider,
+]);
+}
+
+public function actionLessee() {
+       
+    $searchModel = new RequestSiteVisitSearch();
+    if (\Yii::$app->request->isPost) {
+
+        $post = Yii::$app->request->post();
+
+       $sites =  $post['progress'];
+
+       if($sites == 'Completed'){
+           
+           $filter = 'yes';
+
+       }else{
+           $filter = 'no';
+       }
+        
+       $dataProvider = $searchModel->searchfilter(Yii::$app->request->queryParams,$filter);
+
+
+    }else{
+        
+       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+    }
+$request = Yii::$app->request;
+    $mdataPost = $request->post();
+
+$model = new \common\models\RequestSiteVisit();
+
+
+
+return $this->render('lessee', [
+       'searchModel' => $searchModel,
+       'dataProvider' => $dataProvider,
+]);
+}
 
 
 
