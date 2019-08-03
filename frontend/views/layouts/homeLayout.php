@@ -184,7 +184,48 @@ NewDesignAsset::register($this);
 			<h4 class="footer_typ">Follow us</h4>
 					<p class=""><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
 					<span><a href="#"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span>
+				<div classs="row">
+
+				
+					<!-- Begin Mailchimp Signup Form -->
+<!-- <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style>
+.form_subscribe{
+	text-align:left !important;
+}
+.email_input{
+	float:left;
+	width:70%;
+}
+.sub_buttn{
+	border-color: #c4984f !important;
+    background: #c4984f;
+    color: #ffffff !important;
+    border-radius: 0;
+    outline: none;
+    font-size: 15px;
+    padding: 10px 9px;
+    margin-top: 7px;
+    border: 0;
+}
+</style>
+<div id="mc_embed_signup">
+<form action="https://15bells.us3.list-manage.com/subscribe/post?u=ab39867f2e4b25303dc58ccfd&amp;id=d3c5892067" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form_subscribe" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<input type="email" value="" name="EMAIL" id="mce-EMAIL" class="form-control input_desgn email_input" placeholder="email address" required>
+     real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ab39867f2e4b25303dc58ccfd_d3c5892067" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="sub_buttn"></div>
+    </div>
+</form>
+</div> -->
+
+<!--End mc_embed_signup-->
+
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"ab39867f2e4b25303dc58ccfd","lid":"d3c5892067","uniqueMethods":true}) })</script>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>
