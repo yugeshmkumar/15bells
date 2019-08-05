@@ -804,7 +804,7 @@ div.mm-dropdown ul li img {
 }
 .greeen_bg{
 	background:#c4984f;
-	padding:180px 60px 160px 60px;
+	padding:130px 60px 120px 60px;
 }
 .trans_steps{
 	    font-size: 18px;
@@ -2243,6 +2243,38 @@ input.invalid {
 		display: none;
 		top: 2%;
 	}
+	.btn_toggle .btn{
+		padding:8px 15px !important;
+		margin-right:5px;
+		font-size:16px;
+	}
+	#map-canvas{
+		height:320px;
+	}
+	.pad_right{
+		padding-right:0;
+	}
+	.pad_left{
+		padding-right:0;
+	}
+	.interior_det{
+		float:left;
+	}
+	.brand_txt{
+		padding:15px 0;
+	}
+	.expected_price{
+		padding:20px 20px 40px;
+	}
+	.area_proprty{
+		padding:30px 0;
+	}
+	.pad_rite{
+		padding-right:0;
+	}
+	.sub_categories{
+		margin-top:10px;
+	}
 	.accordion_head .plusminus{
 		float: right;
     position: absolute;
@@ -3253,6 +3285,7 @@ input.invalid {
 }
 .margin_seperator{
 	margin-top:30px;
+	margin-bottom:30px;
 }
 .verify_seller{
 	padding-bottom:30px;
@@ -3273,7 +3306,7 @@ input.invalid {
 	padding:30px 0px;
 }
 .skip_details{
-	padding:70px;
+	padding:70px 0;
 }
 .button_select{
 	padding:6px 0;
@@ -3808,4 +3841,8 @@ color: #c4984f;
 }
 .select_loan:focus{
 	padding:0 7px !important;
+}
+
+.float_left{
+	float:left;
 }
