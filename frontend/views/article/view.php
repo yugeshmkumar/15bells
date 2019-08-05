@@ -42,7 +42,7 @@ $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
         </section>
     
     <!------------Transaction types Section----------->
-    <div class="container-fluid no_pad blog_bg">
+    <div class="container-fluid blog_bg">
         <div class="row">
             <div class="col-md-8">
                 <div class="row blog_repeat">

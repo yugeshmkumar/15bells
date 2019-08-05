@@ -878,6 +878,17 @@ input[type=file]::-webkit-file-upload-button {
 	font-size:18px;
 	transition:.4s;
 	margin-right:20px;
+	border-radius:0;
+}
+.property_process:hover{
+	padding:7px 30px;
+	border:1px solid #c4984f;
+	color:#ffffff !important;
+	background:#c4984f;
+	font-size:18px;
+	transition:.4s;
+	margin-right:20px;
+	border-radius:0;
 }
 .property_back{
 	padding:7px 35px;
@@ -1502,4 +1513,27 @@ input[type=file]::-webkit-file-upload-button {
 	padding-top: 7px;
     color: #221d36;
     font-size: 18px;
+}
+.shortlist_modal{
+	padding:25px;
+}
+.site_button{
+	position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+.visit_prop{
+	padding-left:30px;
+}
+.location_label{
+	color: #8f8f8f;
+    font-size: 18px;
+}
+.location_detail{
+	padding:30px;
+}
+.online_offline{
+	padding-left: 0px !important;
+    position: relative;
+    right: 15px;
 }
