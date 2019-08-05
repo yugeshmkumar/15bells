@@ -47,7 +47,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 			<a class="navbar-brand dashboard_logo" href="#">
 				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo1.png';  ?>" width="80">
 			</a>
-			 <div class="form-group locality_grp">
+			<!-- <div class="form-group locality_grp">
 								<select class="form-control location_drop" placeholer="Gurgaon">
 									<option>Gurgaon</option>
 									<option>Delhi</option>
@@ -57,7 +57,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 								</select>
 								<i class="fa fa-angle-down"></i>
 								
-							  </div>
+							  </div>-->
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,7 +100,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 							<li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lesview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 
 
-							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
+							<li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
 
 							<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 							<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
@@ -149,7 +149,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 					<li  class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lesview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 
 
-					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
+					<li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
 
 					<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
