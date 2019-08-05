@@ -284,11 +284,15 @@ $user_id= Yii::$app->user->identity->id;
 								<h3 class="flow_heading">How many floors are there in buildings?</h3>
 								<div class="row no_pad floor_totl">
 									<div class="col-md-4 col-xs-6"><button id="10" class="button_select uptofloor">Upto 10</button></div>
-									<div class="col-md-4 col-xs-6"><button id="20"  class="button_select uptofloor">Upto 20</button></div>
-									<div class="col-md-4 col-xs-6"><button id="30"  class="button_select uptofloor">Upto 30</button></div>
+									<div class="col-md-4 col-xs-6"><button id="20"  class="button_select uptofloor">11 - 20</button></div>
+									<div class="col-md-4 col-xs-6"><button id="30"  class="button_select uptofloor">20 - 30</button></div>
 									<div class="col-md-4 col-xs-6"><button id="other"  class="button_select uptofloor">Others</button></div>
 								</div>
-								
+                                <div class="row">
+                                <div class="col-md-6">
+                                <input type="text" id="other_floor" class="form-control input_desgn" placeholder="Enter Floor No.">
+								</div>
+                                </div>
 							</div>
 							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat floor_no">
@@ -892,6 +896,7 @@ $('#otphide').hide();
 $('#hidepassword').hide();
 $('#resendotp').hide();
 $('#resendotps').hide();
+$('#other_floor').hide();
 
 
 $('#passwordit').click(function(){
@@ -1611,9 +1616,11 @@ $('.possesion_list li a').click(function(){
         'slow'); 
 });
 $('.uptofloor').click(function(){
+    if(this.id != 'other'){
     $('html,body').animate({
         scrollTop: $(".floor_no").offset().top - 100},
         'slow'); 
+}
 });
 $(".sub_categories li a").click(function() {
    $(this).parent().addClass('active').siblings().removeClass('active');
@@ -1738,6 +1745,9 @@ $(".sub_categories li a").click(function() {
 
 
     $('.uptofloor').click(function(){
+
+        $('#other_floor').hide();
+
         var uptofloor = this.id;
        if(uptofloor == '10'){
            $('#floorten').show();
@@ -1757,6 +1767,20 @@ $(".sub_categories li a").click(function() {
            $('#floorthirty').show();
        }
     });
+
+     $('#other').click(function(){ 
+
+        $('#other_floor').show();
+
+     });
+
+     $('#other_floor').change(function() {
+
+        var dInput = this.value;
+        $('#addproperty-property_on_floor').val(dInput);
+     });
+
+    
 
      $('.prop_floor').click(function(){
         var prop_floor = this.id;

@@ -20,6 +20,13 @@ $this->params['breadcrumbs'][] = $this->title;
     .navbar-me{
         background:#221d36 !important;
     }
+	.view_property .item img{
+		height:245px;
+		margin:0 auto;
+	}
+	.view_property{
+		height:245px;
+	}
 	</style>
 <?php
 $property = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
@@ -108,7 +115,7 @@ $undercategory = $property_type->undercategory;
 					<div class="row single_property">
 					
 						<div class="col-md-4 no_pad">
-							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<div id="myCarousel" class="carousel slide view_property" data-ride="carousel">
 								<!-- Indicators -->
 								<ol class="carousel-indicators">
 									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -117,18 +124,53 @@ $undercategory = $property_type->undercategory;
 								</ol>
 
 								<!-- Wrapper for slides -->
+
+						<?php 
+                        
+						$mainimage = \common\models\Addproperty::find()->where(['id'=>$viewid])->one();
+						
+						if($mainimage->featured_image !=''){
+							$featured_image = $mainimage->featured_image;
+						   }else{
+							 $featured_image = 'gallery9.jpg';  
+						   }
+						 ?> 
 								<div class="carousel-inner">
 									<div class="item active">
-									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/buy.jpg';  ?>" class="img-responsive">
+									<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/'.$featured_image;  ?>" class="img-responsive">
+									</div>
+					<?php 
+                      
+					  $ids = [];
+					  $pic = [];
+					  $url = [];
+					  $pictogramsID = MediaFilesConfig::find()->where(['property_id' => $viewid])->all();
+					  foreach ($pictogramsID as $picID) {
+					  $ids[] = $picID->media_id;
+					  }
+					  
+					  $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['or',['type'=>'png'],['type'=>'jpeg'],['type'=>'jpg']])->all();
+					  foreach ($pictogramsID as $picID) {
+					  $pic[] = $picID->file_name;
+					  }
+					  
+					  
+					  if (empty($pic)) { ?> 
+
+                                    <div class="item">
+									<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/gallery9.jpg';  ?>" class="img-responsive">
 									</div>
 
-									<div class="item">
-									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sell.jpg';  ?>" class="img-responsive">
+									<?php } else{ 
+                                
+								foreach($pic as $pics){ ?>
+
+								<div class="item">
+									<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/'.$pics;  ?>" class="img-responsive">
 									</div>
 
-									<div class="item">
-									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessee.jpg';  ?>" class="img-responsive">
-									</div>
+									 <?php  }   }  ?>
+									
 								</div>
 
 									<!-- Left and right controls -->
@@ -142,7 +184,8 @@ $undercategory = $property_type->undercategory;
 									</a>
 								</div>
 								<div class="col-md-12 edit_images text-center">
-								<a href="javascript:void(0)" class="property_back">Edit Images</a><a href="javascript:void(0)" class="property_process prop_video">Property Video</a>
+								<a href="<?= Yii::$app->getUrlManager()->getBaseUrl() ."/addproperty/additional?s_id=$viewid";  ?>" class="property_back">Edit Images</a>
+								<a href="javascript:void(0)" class="property_process prop_video">Property Video</a>
 								</div>
 						</div>
 						<div class="col-md-8 ">
@@ -397,14 +440,31 @@ $undercategory = $property_type->undercategory;
   <div class="modal-dialog modal-lg modal_dialogue">
 
     <!-- Modal content-->
-    <div class="modal-content draw_map no_pad">
+    <div class="modal-content no_pad"  style="background:transparent;box-shadow:none;border:0;">
         <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
       
       <div class="modal-body no_pad">
-		
-			<div class="container-fluid padding_rating">
+	  
+			<div class="container-fluid no_pad">
 				<div class="col-md-12 text-center">
+				<div class="center-block">
+				<span>
+				      
+				<?php 
+                        
+					$mainvideo = \common\models\Addproperty::find()->where(['id'=>$viewid])->one();
+
+					if($mainvideo->featured_video !=''){
+					$featured_video = $mainvideo->featured_video;
+					?>
+			   <video style="width:100%;" controls loop  src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/'.$featured_video;  ?>"></video>
+					<?php }else { ?>
+
+				<img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/gallery10.jpg';  ?>" class="center-block img-responsive">
 					
+					<?php } ?>
+				</span>
+			</div>
 					
 				</div>
 				
