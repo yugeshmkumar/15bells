@@ -2,14 +2,16 @@
 /* @var $this yii\web\View */
 ?>
 
-<div class="col-md-9">
-    <div class="portlet portlet-sortable add_managed_proper_div sellr_proprty">
-        <div class="portlet-title">
-            <div class="caption font-green-sharp exp_titl">
-                 <span class="caption-subject bold uppercase exp_name">Notifications</span>
-            </div>
-        </div>
-
+<div class="col-md-9 content_dashboard no_pad">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<h2 class="dashboard_head">Notifications</h2>
+					</div>
+					
+					
+				</div>
+        
         <?php 
         $userid = Yii::$app->user->identity->id;
         $payments = \Yii::$app->db->createCommand("select * from notifications where item_id=$userid")->queryAll();
@@ -27,7 +29,7 @@
                     <p class="circle_icon m-0"><?php echo $payment['item_name'][0]; ?></p>
                 </div>
                 <div class="col-md-10 pt-2">
-                    <p class="m-0"><?php echo $payment['description']; ?></p>
+                    <p class="m-0 notif_detail"><?php echo $payment['description']; ?></p>
                 </div>
             </div></a>
         </div>
