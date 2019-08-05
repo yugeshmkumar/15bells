@@ -120,7 +120,7 @@ if(!isset($_SESSION))
 			<li class="user_filt locality_area"><span class="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_type"><span class="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?></span> <span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppriceminimum != '' ? $proppriceminimum : 'Max Area'); ?></span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
     </div>
 </div>
@@ -310,49 +310,49 @@ if(!isset($_SESSION))
 					<div class="panel-body panel_body">
                             <div class="col-md-12">
                              
-                                <ul class="sub_categories">
-                                    <li class="active commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
-                                    <li class="commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
-                                    <li class="commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
-                                    <li class="ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
+                            <ul class="sub_categories">
+                                    <li class="<?php echo (($proptype =='11' || $proptype == '12'|| $proptype == '13'|| $proptype == '14') ? 'active' : ''); ?> commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
+                                    <li class="<?php echo (($proptype =='15' || $proptype == '16'|| $proptype == '17'|| $proptype == '18') ? 'active' : ''); ?> commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
+                                    <li class="<?php echo (($proptype =='19' || $proptype == '22'|| $proptype == '23'|| $proptype == '24') ? 'active' : ''); ?> commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
+                                    <li class="<?php echo (($proptype =='25' || $proptype == '26') ? 'active' : ''); ?> ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
                                 </ul>
                             </div>
                             
                             <div class="col-md-12 category_detail commercial_o">
                                 <h3 class="flow_heading">Choose your category</h3>
                                 <ul class="sub_categories">
-                                    <li class="active"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
+                                    <li class="<?php echo ($proptype =='11' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
+                                    <li class="<?php echo ($proptype =='12' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="12" class="property_subtype proptype">IT / ITES / SEZ Park</a></li>
+                                    <li class="<?php echo ($proptype =='13' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="13" class="property_subtype proptype">Co-working/Business Center</a></li>
+                                    <li class="<?php echo ($proptype =='14' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="14" class="property_subtype proptype">Commercial SEZ</a></li>
                                 </ul>
                                 
                             </div>
                             <div class="col-md-12 category_detail commercial_r">
                                 <h3 class="flow_heading">Choose your category</h3>
                                 <ul class="sub_categories">
-                                    <li class="active"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
+                                    <li class="<?php echo ($proptype =='15' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
+                                    <li class="<?php echo ($proptype =='16' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="16" class="property_subtype proptype">Showrooms</a></li>
+                                    <li class="<?php echo ($proptype =='17' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="17" class="property_subtype proptype">High Street/ Society Shops</a></li>
+                                    <li class="<?php echo ($proptype =='18' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="18" class="property_subtype proptype">Food Court</a></li>
                                 </ul>
                                 
                             </div>
                             <div class="col-md-12 category_detail industrial_land">
                                 <h3 class="flow_heading">Choose your category</h3>
                                 <ul class="sub_categories">
-                                    <li class="active"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
+                                    <li class="<?php echo ($proptype =='19' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
+                                    <li class="<?php echo ($proptype =='22' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="22" class="property_subtype proptype">Industrial / Factory land</a></li>
+                                    <li class="<?php echo ($proptype =='23' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="23" class="property_subtype proptype">Institutional/Hotel/School land</a></li>
+                                    <li class="<?php echo ($proptype =='24' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="24"class="property_subtype proptype">SEZ/IT/ITES land</a></li>
                                 </ul>
                                 
                             </div>
                             <div class="col-md-12 category_detail warehouse">
                                 <h3 class="flow_heading">Choose your category</h3>
                                 <ul class="sub_categories">
-                                    <li class="active"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
-                                    <li class=""><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
+                                    <li class="<?php echo ($proptype =='25' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
+                                    <li class="<?php echo ($proptype =='26' ? 'active' : ''); ?>"><a href="javascript:void(0)" id="26" class="property_subtype proptype">Agriculture</a></li>
                                     
                                 </ul>
                                 
@@ -1391,6 +1391,30 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
     }
   });
  $(".prop_type").click(function() {
+
+      if(proptype=='15' || proptype=='16' || proptype=='17' || proptype=='18'){
+                $('.commercial_o').hide();
+				$('.commercial_r').show();
+				$('.warehouse').hide();
+				$('.industrial_land').hide();
+      }else if(proptype=='11' || proptype=='12' || proptype=='13' || proptype=='14'){
+                $('.commercial_o').show();
+				$('.commercial_r').hide();
+				$('.warehouse').hide();
+				$('.industrial_land').hide();
+      }else if(proptype=='19' || proptype=='22' || proptype=='23' || proptype=='24'){
+                $('.commercial_o').hide();
+				$('.commercial_r').hide();
+				$('.warehouse').hide();
+				$('.industrial_land').show();
+      }else{
+                $('.commercial_o').hide();
+				$('.commercial_r').hide();
+				$('.warehouse').show();
+				$('.industrial_land').hide();
+           }
+
+
 	$(".accordion_body").slideUp(300);
 	$(".plusminus").text('+');
     if ($('.accordion_body').is(':visible')) {
@@ -2062,7 +2086,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' </p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -2207,7 +2231,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' </p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -2344,7 +2368,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' </p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -3189,7 +3213,7 @@ function getPolygonCoords() {
                                '<div class="row prop_detail">'+	
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
-                                       '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                       '<p class="details_label">₹ '+commaNum+' </p>'+
                                    '</div>'+
                                    '<div class="col-md-3 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
@@ -3217,7 +3241,7 @@ function getPolygonCoords() {
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<a href="tel:9555322244" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</a><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:9555322244" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3328,7 +3352,7 @@ function getPolygonCoords() {
                                    '<div class="row prop_detail">'+	
                                        '<div class="col-md-3 company_overview property_manage">'+
                                            '<p class="label_name">Price</p>'+
-                                           '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                           '<p class="details_label">₹ '+commaNum+'</p>'+
                                        '</div>'+
                                        '<div class="col-md-3 company_overview property_manage">'+
                                            '<p class="label_name">Area</p>'+
@@ -3356,7 +3380,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3478,7 +3502,7 @@ function getPolygonCoords() {
                                   '<div class="row prop_detail">'+	
                                       '<div class="col-md-3 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
-                                          '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                          '<p class="details_label">₹ '+commaNum+'</p>'+
                                       '</div>'+
                                       '<div class="col-md-3 company_overview property_manage">'+
                                           '<p class="label_name">Area</p>'+
@@ -3506,7 +3530,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3611,7 +3635,7 @@ function getPolygonCoords() {
                                   '<div class="row prop_detail">'+	
                                       '<div class="col-md-3 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
-                                          '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                          '<p class="details_label">₹ '+commaNum+' </p>'+
                                       '</div>'+
                                       '<div class="col-md-3 company_overview property_manage">'+
                                           '<p class="label_name">Area</p>'+
@@ -3639,7 +3663,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3706,6 +3730,76 @@ function getPolygonCoords() {
 
                     }else if(data == 'nouser'){
 
+                       $('#signup_modal').modal('show');
+                   // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
+
+                    }else{
+                    toastr.error('Some Internal Error', 'warning');
+                    }
+                    
+                    
+                },
+            });
+
+                
+
+ }
+
+
+
+
+ 
+ function shortlistpropertiesready(id){
+
+
+
+    var types  = $('#type').val();                               
+    var town  = $("#towns").val(); 
+    var sector  = $("#sectors").val(); 
+    var  country  = $("#countrys").val();
+    var areaft = $("#propsquares").val();                                            
+    var areamin = $("#propareaminimums").val();
+    var areamax = $("#propareamaximums").val();
+    var pricemin = $("#proppriceminimums").val();
+    var pricemax = $("#proppricemaximums").val();
+    var proptype =  $('#proptypes').val();
+    var propbid =  $('#propbid').val();
+    var availabilitym =  $('#availabilitym').val();
+    var totalradiuss =  $('#radius').val();
+    var geometry  = <?php echo $geometry; ?>;
+    var locations = "<?php echo $getlocality; ?>";
+
+                       
+    
+    if(types == 'polygon'){
+
+        var newgeometry = JSON.stringify(geometry);
+    ndata = {shaped:types,newspaths : newgeometry,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == 'circle'){
+    ndata = {shaped:types,centercoordinates : geometry,totalradius: totalradiuss,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == 'rectangle'){
+    ndata = {shaped:types,rectanglecoordinates:geometry,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+    if(types == ''){
+        types = 'blank';
+    ndata = {shaped:types,locations: locations,propid:id,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+    }
+
+        $.ajax({
+                type: "POST",
+                url:  'shortlistpropertiesready',
+                data: ndata,
+                success: function (data) {
+
+
+                    if(data == 'existuser'){
+
+                    window.location.replace("searches");
+
+                    }else if(data == 'nouser'){
+                            
                        $('#signup_modal').modal('show');
                    // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
 
@@ -3836,7 +3930,7 @@ function getPolygonCoords() {
                                                                         '<div class="row prop_detail">'+	
                                                                             '<div class="col-md-3 company_overview property_manage">'+
                                                                                 '<p class="label_name">Price</p>'+
-                                                                                '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                                                                '<p class="details_label">₹ '+commaNum+' </p>'+
                                                                             '</div>'+
                                                                             '<div class="col-md-3 company_overview property_manage">'+
                                                                                 '<p class="label_name">Area</p>'+

@@ -2436,7 +2436,7 @@ public function actionDocumentss() {
     public function actionUnpublish($id)
     {
         $model =  $this->findModel($id);
-        $model->is_active = 0;
+        $model->status = 'onhold';
         $model->save(false);
 
        // return $this->redirect(['index']);
