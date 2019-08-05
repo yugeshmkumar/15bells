@@ -3331,6 +3331,7 @@ input.invalid {
 	transition:.4s;
 	outline:none !important;
 	box-shadow:none !important;
+	font-size:18px;
 }
 .more_steps{
 float:left;
