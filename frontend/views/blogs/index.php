@@ -32,7 +32,7 @@ use kartik\widgets\TypeaheadBasic;
 								<p class="about_det animated slideInDown hidden-xs">From a background in real eastate, our team has formed a common goal to bring together the best and brightest to do something truely remarkable. </p>
 								<h1 class="about_head">The changing culture of architecture in modern India</h1>
 								<p class="blog_by"><span class="writr_n">Amit Kumar</span>|<span class="date_r">February 10, 2019</span></p>
-								<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>
+								<!--<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>-->
 							  </div>
 						  </div>
 
@@ -42,7 +42,7 @@ use kartik\widgets\TypeaheadBasic;
 								<p class="about_det animated slideInDown hidden-xs">From a background in real eastate, our team has formed a common goal to bring together the best and brightest to do something truely remarkable. </p>
 								<h1 class="about_head">The changing culture of architecture in modern India</h1>
 								<p class="blog_by"><span class="writr_n">Amit Kumar</span>|<span class="date_r">February 10, 2019</span></p>
-								<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>
+								<!--<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>-->
 							  </div>
 						  </div>
 						
@@ -52,7 +52,7 @@ use kartik\widgets\TypeaheadBasic;
 								<p class="about_det animated slideInDown hidden-xs">From a background in real eastate, our team has formed a common goal to bring together the best and brightest to do something truely remarkable. </p>
 								<h1 class="about_head">The changing culture of architecture in modern India</h1>
 								<p class="blog_by"><span class="writr_n">Amit Kumar</span>|<span class="date_r">February 10, 2019</span></p>
-								<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>
+							<!--	<p class="find_mor"><a href="#">Read more <i class="fa fa-angle-right"></i></a></p>-->
 							  </div>
 						  </div>
 						</div>
@@ -78,7 +78,7 @@ use kartik\widgets\TypeaheadBasic;
 	</section>
 
 <!------------Transaction types Section----------->
-<div class="container-fluid no_pad blog_bg">
+<div class="container-fluid blog_bg">
 	<div class="row">
 		<div class="col-md-8">
 
