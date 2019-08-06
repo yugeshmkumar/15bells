@@ -1347,6 +1347,9 @@ input[type=file]::-webkit-file-upload-button {
 .noti_icons{
 	margin-top:20px;
 }
+.manage_image{
+	width:100%;
+}
 .user_viewed {
     padding: 20px 0px !important;
 }
