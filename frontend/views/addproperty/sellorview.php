@@ -63,11 +63,11 @@ $datas =  $dataProvider->query->all();
 								<div class="row">
 									<div class="col-md-4">
                                         <div class="row">
-												<div class="col-md-5">
+												<div class="col-md-5 col-xs-4">
 													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
 												</div>
 												
-												<div class="col-md-7 no_pad">
+												<div class="col-md-7 col-xs-8 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
 												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
 												</div>
@@ -75,11 +75,11 @@ $datas =  $dataProvider->query->all();
                                         <div class="row" style="margin-top:30px;">
                                         <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
-											<div class="col-md-5">
+											<div class="col-md-5 col-xs-4">
                                             <p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
                                             
 											</div>
-											<div class="col-md-7 no_pad">
+											<div class="col-md-7 no_pad col-xs-8">
                                             <p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
 												</div>	
 										</div>
@@ -88,15 +88,15 @@ $datas =  $dataProvider->query->all();
                                    
 									<div class="col-md-8">
 										<div class="row">
-											<div class="col-md-6 company_overview property_manage">
+											<div class="col-md-6 col-xs-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
 											<p class="label_name"><?php echo $property_type->typename ?></p>
 										</div>
-										<div class="col-md-6 company_overview property_manage">
+										<div class="col-md-6 col-xs-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
 											<p class="label_name"><?php echo $data->locality ?></p>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 col-xs-6">
                                         <?php 
                                         $query = (new Query())->select('COUNT(*) as newcount')->from('request_site_visit')->where(['property_id' => $data->id]);
                                 $command = $query->createCommand();
@@ -105,7 +105,7 @@ $datas =  $dataProvider->query->all();
                                         <p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Scheduled Visit</p>
                                         <p class="label_name"><?php echo $datacount['newcount']; ?></p>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-6 col-xs-6">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20"><a class="toglebid" id="<?php echo $data->id ?>" href="javascript:void(0)" >View</a></p>
 											
 										</div>

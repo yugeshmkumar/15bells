@@ -1342,7 +1342,16 @@ input[type=file]::-webkit-file-upload-button {
 	margin-top:5px;
 }
 .dashboard_head{
-	font-size:22px;
+	font-size:32px;
+}
+.noti_icons{
+	margin-top:20px;
+}
+.user_viewed {
+    padding: 20px 0px !important;
+}
+.addprop_button{
+	text-align:left !important;
 }
 .dash_name{
 	padding:0;
