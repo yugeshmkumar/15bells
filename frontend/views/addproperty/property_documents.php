@@ -45,7 +45,7 @@ $propid = $_GET['id'];
          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
          <h4 style="margin:20px 0;"><i class="icon fa fa-check"></i>Saved!</h4>
          <?= Yii::$app->session->getFlash('success') ?>
-         <div class="more_images">Want to Upload More Documents ?
+         <div class="more_images">Want to Upload More Documents ? <br>
          <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" class="save_buttn active_butn yes_upload" >Yes</a>
          <?= Html::a('No', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
 
