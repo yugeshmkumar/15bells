@@ -173,6 +173,10 @@ h1.page-header {
 		height: 0;
 		border-right: 0;
 	}
+	.side-menu .navbar-nav li a{
+		padding: 22px 10px 22px !important;
+		font-size:15px;
+	}
 	.role_list li{
 		width:auto !important;
 	}
@@ -1352,6 +1356,13 @@ input[type=file]::-webkit-file-upload-button {
 }
 .property_detail{
 	padding:20px 10px !important;
+}
+.draw_map{
+	margin-left:0;
+}
+.saved_search {
+    padding: 10px 5px !important;
+    background: #f7f7f7;
 }
 .details_unit{
 	padding:10px 0px 10px 0px !important;

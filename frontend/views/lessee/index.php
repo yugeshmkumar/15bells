@@ -195,7 +195,7 @@ use yii\bootstrap\Modal;
 								<div class="col-md-6 locality_input">
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
-										<div class="btn-group btn-toggle col-md-12"> 
+										<div class="btn-group btn-toggle buttn_confirm col-md-12"> 
                     <div class="col-md-4 col-xs-6 no_pad"><button  type="button" class="btn button_select btn-lg confirmbutton" value="yes">Yes</button></div>
 										<div class="col-md-4 col-xs-6 no_pad">	<button type="button" class="btn button_select btn-lg confirmbutton" value="no">No</button></div>
 										  </div>
