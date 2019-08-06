@@ -2106,6 +2106,7 @@ input.invalid {
 	color:#c4984f;
 	font-size:15px;
 	transition:.4s;
+	cursor:pointer;
 }
 .sub_categories li:hover .property_subtype{
 	color:#ffffff;
@@ -2124,6 +2125,7 @@ input.invalid {
 	background:#c4984f;
 	font-size:18px;
 	transition:.4s;
+	cursor:pointer;
 }
 .property_back{
 	padding:7px 20px;
@@ -2132,6 +2134,7 @@ input.invalid {
 	background:#ffffff;
 	font-size:18px;
 	transition:.4s;
+	cursor:pointer;
 }
 .property_process .fa{
 	position: relative;
