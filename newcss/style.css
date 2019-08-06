@@ -2255,6 +2255,16 @@ input.invalid {
 		display: none;
 		top: 2%;
 	}
+	.more_detail{
+		color:#221d36;
+		font-size:21px;
+		font-weight:600;
+		line-height:25px;
+		padding:30px 0px;
+	}
+	.additional_property{
+		padding: 0 10px 50px;
+	}
 	.float_left{
 		float:left;
 	}
