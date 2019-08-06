@@ -95,7 +95,7 @@ $user_id= Yii::$app->user->identity->id;
 
 										</div>
 									</div>
-									<div class="row address_row">
+									<div class="row address_row float_left">
 										<div class="col-md-6">
 											<h3 class="flow_heading">Add complete address below</h3>
 											<!-- <input type="text" class="form-control input_desgn addres_input" placeholder="Enter address"> -->

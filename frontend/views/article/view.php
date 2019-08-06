@@ -101,11 +101,11 @@ data-mobile-iframe="true">
                 <div class="row">
                     <h3 class="side_head">Keywords / Tags</h3>
                     <ul class="blog_side">
-                        <li class="active"><a href="" class="categ_selec"># Architecture</a></li>
-                        <li><a href="" class="categ_selec"># Investment</a></li>
-                        <li><a href="" class="categ_selec"># Property</a></li>
-                        <li><a href="" class="categ_selec"># Real Estate</a></li>
-                        <li><a href="" class="categ_selec"># Design</a></li>
+                        <li class="active"><a href="javascript:void(0)" class="categ_selec"># Architecture</a></li>
+                        <li><a href="javascript:void(0)" class="categ_selec"># Investment</a></li>
+                        <li><a href="javascript:void(0)" class="categ_selec"># Property</a></li>
+                        <li><a href="javascript:void(0)" class="categ_selec"># Real Estate</a></li>
+                        <li><a href="javascript:void(0)" class="categ_selec"># Design</a></li>
                     </ul>
                 </div>
                 <div class="row">
@@ -160,7 +160,7 @@ data-mobile-iframe="true">
                             <h2 class="abt_writr">Comments <span class="">(2)</span></h2>
                         </div>
                         <div class="col-md-4 col-xs-5 text-right comment_ad">
-                            <a href="" class="add_commnt">Add a comment</a>
+                            <a href="javascript:void(0)" class="add_commnt">Add a comment</a>
                         </div>
                     </div>
                     <div class="col-md-12 comment_section brdr_bottm">
@@ -180,7 +180,7 @@ data-mobile-iframe="true">
                               <textarea class="form-control coment_spac" placeholder="Your comment" rows="5" id="comment"></textarea>
                             </div>
                             <p class="text-right post_cancel">
-                                <a href="" class="cancel_btn">Cancel</a><a href="" class="post_btn">Post a comment</a>
+                                <a href="javascript:void(0)" class="cancel_btn">Cancel</a><a href="javascript:void(0)" class="post_btn">Post a comment</a>
                             </p>
                     </div>
         </div>
@@ -190,7 +190,7 @@ data-mobile-iframe="true">
                             <h2 class="abt_writr">You may also like</h2>
                         </div>
                         <div class="col-md-4 col-xs-4 text-right comment_ad">
-                            <a href="" class="add_commnt">View all</a>
+                            <a href="javascript:void(0)" class="add_commnt">View all</a>
                         </div>
                     </div>
                     <div class="col-md-12 no_pad full_width">
@@ -199,7 +199,7 @@ data-mobile-iframe="true">
                                 <h4 class="othr_blg">How to Rent a property in Gurgaon</h4>
                                 <p class="blog_det"><span class="writr_b">Amit Kumar</span>|<span class="date_b">February 10, 2019</span></p>
                                 <p class="blog_txt">Starting a real estate business can be a lucrative thing. Apart from enjoying the numerous tax benefits that come from investing in real estate, it’s also a solid hedge against inflation and it helps you create a business with a solid cash flow early on and achieve much, much more.</p>
-                                <p class="read_m"><a href="" class="expnd_blog">Read more</a></p>
+                                <p class="read_m"><a href="javascript:void(0)" class="expnd_blog">Read more</a></p>
                                 <p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/b1.jpg';  ?>" class="blog_imag"></p>
                             </div>
                         </div>
@@ -208,7 +208,7 @@ data-mobile-iframe="true">
                                 <h4 class="othr_blg">How to Rent a property in Gurgaon</h4>
                                 <p class="blog_det"><span class="writr_b">Amit Kumar</span>|<span class="date_b">February 10, 2019</span></p>
                                 <p class="blog_txt">Starting a real estate business can be a lucrative thing. Apart from enjoying the numerous tax benefits that come from investing in real estate, it’s also a solid hedge against inflation and it helps you create a business with a solid cash flow early on and achieve much, much more.</p>
-                                <p class="read_m"><a href="" class="expnd_blog">Read more</a></p>
+                                <p class="read_m"><a href="javascript:void(0)" class="expnd_blog">Read more</a></p>
                                 <p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/b2.jpg';  ?>" class="blog_imag"></p>
                             </div>
                         </div>
@@ -217,7 +217,7 @@ data-mobile-iframe="true">
                                 <h4 class="othr_blg">How to Rent a property in Gurgaon</h4>
                                 <p class="blog_det"><span class="writr_b">Amit Kumar</span>|<span class="date_b">February 10, 2019</span></p>
                                 <p class="blog_txt">Starting a real estate business can be a lucrative thing. Apart from enjoying the numerous tax benefits that come from investing in real estate, it’s also a solid hedge against inflation and it helps you create a business with a solid cash flow early on and achieve much, much more.</p>
-                                <p class="read_m"><a href="" class="expnd_blog">Read more</a></p>
+                                <p class="read_m"><a href="javascript:void(0)" class="expnd_blog">Read more</a></p>
                                 <p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/b3.jpg';  ?>" class="blog_imag"></p>
                             </div>
                         </div>
