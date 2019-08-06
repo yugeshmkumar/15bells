@@ -1477,7 +1477,7 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1629,7 +1629,7 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1773,7 +1773,7 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2624,7 +2624,7 @@ function getPolygonCoords() {
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2763,7 +2763,7 @@ function getPolygonCoords() {
                            '<p class="property_id">Property ID : '+propsid+'</p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-3 no_pad relative">'+
-                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //    '<div class="overlay_sign">'+
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
@@ -2913,7 +2913,7 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3048,7 +3048,7 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3472,7 +3472,7 @@ $("#rantime").datepicker({
                                                                 '<p class="property_id">Property ID : '+propsid+'</p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-3 no_pad relative">'+
-                                                                    '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                                                    '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                                                         // '<div class="overlay_sign">'+
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
