@@ -905,7 +905,7 @@ $('#hidepassword').show();
 
 $('.furnishing_s li a').click(function(){
     $('html,body').animate({
-        scrollTop: $(".possesion_time").offset().top - 100},
+        scrollTop: $(".basic_det").offset().top - 100},
         'slow'); 
 });
 $('.possesion_list li a').click(function(){

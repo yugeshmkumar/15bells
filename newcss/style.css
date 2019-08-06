@@ -2255,8 +2255,14 @@ input.invalid {
 		display: none;
 		top: 2%;
 	}
+	.float_left{
+		float:left;
+	}
 	.address_row{
 		margin-top:30px;
+	}
+	.seller_lead{
+		padding:10px 0px 20px;
 	}
 	.btn_toggle .btn{
 		padding:8px 15px !important;
@@ -2279,10 +2285,10 @@ input.invalid {
 		padding:15px 0;
 	}
 	.expected_price{
-		padding:20px 20px 40px;
+		padding:0px 5px 30px;
 	}
 	.area_proprty{
-		padding:30px 0;
+		padding:15px 0;
 	}
 	.pad_rite{
 		padding-right:0;
@@ -2607,7 +2613,7 @@ input.invalid {
 	font-size:20px;
 }
 .property_area{
-	padding: 0 0 10px;
+	padding: 0 10px 10px;
 }
 .locality_input{
 	padding:10px 10px;
@@ -3859,6 +3865,3 @@ color: #c4984f;
 	padding:0 7px !important;
 }
 
-.float_left{
-	float:left;
-}
