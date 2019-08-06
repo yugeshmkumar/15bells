@@ -347,7 +347,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 	</div>
 </div>
 
-<div class="container-fluid no_pad categ_sec hidden-xs hidden-sm">
+<div class="container-fluid categ_sec hidden-xs hidden-sm">
 	<div class="container">
 		<h1 class="trans_head">Browse Properties by <br>Categories</h1>
 		<div class="row">
@@ -563,41 +563,40 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 								<div class="carousel fdi-Carousel slide" id="eventCarousel3" data-interval="0">
 									<div class="carousel-inner onebyone-carosel">
 										<div class="item active">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c1.jpg';  ?>" class="img-responsive">
-											   
+											
+											<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
+												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel1.jpg';  ?>" class="img-responsive">
+												<span>Hotels</span>
+												</div>
+											</div>
+										</div>
+										
+										<div class="item">
+										<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
+												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel2.jpg';  ?>" class="img-responsive">
+												<span>Hotels</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c1.jpg';  ?>" class="img-responsive">
-												
+										<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
+												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel3.jpg';  ?>" class="img-responsive">
+												<span>Hotels</span>
+												</div>
 											</div>
 										</div>
 										<div class="item">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c1.jpg';  ?>" class="img-responsive">
-												
+										<div class="col-md-4 ribbon">
+												<div class="ribbon-top-left">
+												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel4.jpg';  ?>" class="img-responsive">
+												<span>Hotels</span>
+												</div>
 											</div>
 										</div>
-										<div class="item">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c1.jpg';  ?>" class="img-responsive">
-											  
-											</div>
-										</div>
-										<div class="item">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c1.jpg';  ?>" class="img-responsive">
-											  
-											</div>
-										</div>
-										<div class="item">
-											<div class="col-md-4">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c2.jpg';  ?>" class="img-responsive">
-											   
-											</div>
-										</div>
+									
 									</div>
 									
 								</div>

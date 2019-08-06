@@ -804,7 +804,7 @@ div.mm-dropdown ul li img {
 }
 .greeen_bg{
 	background:#c4984f;
-	padding:180px 60px 160px 60px;
+	padding:130px 60px 120px 60px;
 }
 .trans_steps{
 	    font-size: 18px;
@@ -1239,6 +1239,15 @@ form.example::after {
     border-radius: 0;
     color: #ffffff;
     border: 1px solid #c4984f;
+    font-size: 16px;
+	transition:.4s;
+}
+
+.load_mor:focus{
+    background: #c4984f;
+    border-radius: 0;
+    color: #ffffff;
+    border: 1px solid #c4984f !important;
     font-size: 16px;
 	transition:.4s;
 }
@@ -2097,6 +2106,7 @@ input.invalid {
 	color:#c4984f;
 	font-size:15px;
 	transition:.4s;
+	cursor:pointer;
 }
 .sub_categories li:hover .property_subtype{
 	color:#ffffff;
@@ -2115,6 +2125,7 @@ input.invalid {
 	background:#c4984f;
 	font-size:18px;
 	transition:.4s;
+	cursor:pointer;
 }
 .property_back{
 	padding:7px 20px;
@@ -2123,6 +2134,7 @@ input.invalid {
 	background:#ffffff;
 	font-size:18px;
 	transition:.4s;
+	cursor:pointer;
 }
 .property_process .fa{
 	position: relative;
@@ -2242,6 +2254,57 @@ input.invalid {
 		margin-top: 0px;
 		display: none;
 		top: 2%;
+	}
+	.more_detail{
+		color:#221d36;
+		font-size:21px !important;
+		font-weight:600;
+		line-height:25px !important;
+		padding:30px 0px;
+	}
+	.additional_property{
+		padding: 0 10px 50px !important;
+	}
+	.float_left{
+		float:left;
+	}
+	.address_row{
+		margin-top:30px;
+	}
+	.seller_lead{
+		padding:10px 0px 20px;
+	}
+	.btn_toggle .btn{
+		padding:8px 15px !important;
+		margin-right:5px;
+		font-size:16px;
+	}
+	#map-canvas{
+		height:320px;
+	}
+	.pad_right{
+		padding-right:0;
+	}
+	.pad_left{
+		padding-right:0;
+	}
+	.interior_det{
+		float:left;
+	}
+	.brand_txt{
+		padding:15px 0;
+	}
+	.expected_price{
+		padding:0px 5px 30px;
+	}
+	.area_proprty{
+		padding:15px 0;
+	}
+	.pad_rite{
+		padding-right:0;
+	}
+	.sub_categories{
+		margin-top:10px;
 	}
 	.accordion_head .plusminus{
 		float: right;
@@ -2560,7 +2623,7 @@ input.invalid {
 	font-size:20px;
 }
 .property_area{
-	padding: 0 0 10px;
+	padding: 0 10px 10px;
 }
 .locality_input{
 	padding:10px 10px;
@@ -3253,6 +3316,7 @@ input.invalid {
 }
 .margin_seperator{
 	margin-top:30px;
+	margin-bottom:30px;
 }
 .verify_seller{
 	padding-bottom:30px;
@@ -3273,7 +3337,7 @@ input.invalid {
 	padding:30px 0px;
 }
 .skip_details{
-	padding:70px;
+	padding:70px 0;
 }
 .button_select{
 	padding:6px 0;
@@ -3298,6 +3362,7 @@ input.invalid {
 	transition:.4s;
 	outline:none !important;
 	box-shadow:none !important;
+	font-size:18px;
 }
 .more_steps{
 float:left;
@@ -3809,3 +3874,4 @@ color: #c4984f;
 .select_loan:focus{
 	padding:0 7px !important;
 }
+
