@@ -474,7 +474,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 
                                 
-									<div class="col-md-12 text-left padd_amen">
+									<div class="col-md-12 col-xs-6 text-left padd_amen">
 										<div class="col-md-3 amenities_icon">
                                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/market.svg';  ?>" class="nearbyclass img_input market_img" id="market" width="24"  />
                                             <span class="amenity_prop market">Market</span>
