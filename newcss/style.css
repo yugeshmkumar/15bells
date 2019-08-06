@@ -2257,13 +2257,13 @@ input.invalid {
 	}
 	.more_detail{
 		color:#221d36;
-		font-size:21px;
+		font-size:21px !important;
 		font-weight:600;
-		line-height:25px;
+		line-height:25px !important;
 		padding:30px 0px;
 	}
 	.additional_property{
-		padding: 0 10px 50px;
+		padding: 0 10px 50px !important;
 	}
 	.float_left{
 		float:left;
