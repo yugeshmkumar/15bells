@@ -136,11 +136,7 @@ echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Updat
        $(".preview-image.preview-show-"+no).remove();
    });
 
-$('.yes_upload').click(function(){
-    $('html,body').animate({
-        scrollTop: $(".add_property_image").offset().top - 100},
-        'slow'); 
-});
+
 var num = 4;
 function readImage() {
    if (window.File && window.FileList && window.FileReader) {
@@ -189,6 +185,14 @@ function readImage() {
    });
        // $(".transp_contnt").animate({bottom: '250px'});
    
+       $('.yes_upload').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".add_property_image").offset().top - 100},
+        'slow'); 
+});
+
+
+
    $(".buy").click(function(){
         $(".buy").addClass("active");
          $(".sell").removeClass("active");

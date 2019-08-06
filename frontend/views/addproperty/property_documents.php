@@ -78,7 +78,7 @@ $propid = $_GET['id'];
                                 </div>
 							</div>
 
-        <div class="col-md-12">
+        <div class="col-md-12 upload_docs">
 		<h3 class="flow_heading avail_ability">Upload documents <span style="font-size:18px;font-weight:500;text-transform:uppercase;">(In Pdf, Png, Jpg, Docs Only)</span></h3>
 
        
@@ -186,6 +186,16 @@ function readImage() {
        $(".trust_contnt").hide();
        
    });
+
+
+    $('.yes_upload').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".upload_docs").offset().top - 100},
+        'slow'); 
+    });
+
+
+
        // $(".transp_contnt").animate({bottom: '250px'});
    
    $(".buy").click(function(){

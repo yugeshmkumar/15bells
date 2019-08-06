@@ -501,7 +501,7 @@ $user_id= Yii::$app->user->identity->id;
 								<p class="brand_txt no_pad">Please help us understanding the amenities that buyers/lessee can expect?</p>
                                 <p class="amenities">Click on the icons to select Amenities</p>
                                 <div class="col-md-12 col-xs-6 text-left padd_amen">
-									<div class="col-md-3 col-xs-6 amenities_icon">
+									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amenitiesclass img_input power_img" id="power" width="22"  /><span class="amenity_prop power">Power Backup</span>
 									</div>
 									<div class="col-md-3 amenities_icon">
