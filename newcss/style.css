@@ -2262,6 +2262,26 @@ input.invalid {
 		line-height:25px !important;
 		padding:30px 0px;
 	}
+	.manage_image{
+		width:100%;
+	}
+	.property_detail{
+		padding:20px 10px !important;
+	}
+	.details_unit{
+		padding:10px 0px 10px 0px !important;
+		width:100%;
+	}
+	.visitors_detail{
+		padding:10px 0px 10px 0px !important;
+		width:100%;
+	}
+	.progress_bar {
+		padding: 15px 10px 20px !important;
+	}
+	.unit_details{
+		padding:0px !important;
+	}
 	.additional_property{
 		padding: 0 10px 50px !important;
 	}
