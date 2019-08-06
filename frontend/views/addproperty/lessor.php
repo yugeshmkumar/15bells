@@ -63,7 +63,7 @@ $datas =  $dataProvider->query->all();
 					<button class="btn btn-primary dropdown-toggle butn_short" type="button" data-toggle="dropdown"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/option.svg';  ?>" width="7"></button> 
                         <ul class="dropdown-menu edit_drop">
                             
-                            <li><?= Html::a('Edit', ['views','id'=>$viewid]) ?></li>
+                            <li><?= Html::a('Edit', ['views','id'=>base64_encode($viewid)]) ?></li>
                             <li><?=
                                 Html::a('Delete', ['delete', 'id' => $viewid], [
                                 'class' => 'btn btn-danger delete_prop',
