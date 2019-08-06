@@ -48,7 +48,7 @@ $user_id= Yii::$app->user->identity->id;
 		</div>
 		<div class="row">
 			<div class="col-md-12 no_pad">
-					<ul class="add_property nav nav-pills">
+					<ul class="add_property nav nav-pills hidden-xs hidden-sm">
 						<li class="active property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Location</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Type of Property</a></li>
 						<li class="property_steps no_pad"><a data-toggle="pill" href="#" class="categ_selec">Property Availability</a></li>
@@ -61,8 +61,8 @@ $user_id= Yii::$app->user->identity->id;
 				
 				  <div id="home" class="tab-pane fade in active">	
 					<div class="row property_type property_start">
-							<div class="col-md-12 property_area">
-                            <div class="row text-center property_area">
+							<div class="row property_area">
+                            <div class="col-md-12 text-center property_area float_left">
 								<div class="col-md-1"></div>
 								<div class="col-md-2 col-xs-6">
 									<img id="delhi" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/delhi.svg';  ?>" class="property_image1">
@@ -87,7 +87,7 @@ $user_id= Yii::$app->user->identity->id;
 								<div class="col-md-1"></div>
 							</div>
                             <input type="hidden" id="propcity" name="propcity">
-									<div class="row">
+									<div class="row float_left">
 										<div class="col-md-6 locality_input">
 											<h3 class="flow_heading">Add property locality below</h3>
 											<!-- <input type="text" class="form-control input_desgn input_location" placeholder="Enter your locality"> -->
@@ -95,7 +95,7 @@ $user_id= Yii::$app->user->identity->id;
 
 										</div>
 									</div>
-									<div class="row address_row">
+									<div class="row address_row float_left">
 										<div class="col-md-6">
 											<h3 class="flow_heading">Add complete address below</h3>
 											<!-- <input type="text" class="form-control input_desgn addres_input" placeholder="Enter address"> -->
@@ -109,26 +109,27 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							
 						<div class="row user_property">
-							<div class="col-md-12">
-								<div class="col-md-3 commer_office prop_priceshow">
+							<div class="col-md-12 float_left">
+								<div class="col-md-3 col-xs-6 commer_office prop_priceshow">
 									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="property_image">
 									<p class="property_name">Commercial Office</p>
 								</div>
-								<div class="col-md-3 commer_retail prop_priceshow">
+								<div class="col-md-3 col-xs-6 commer_retail prop_priceshow">
 									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/retail.svg';  ?>" class="property_image">
 									<p class="property_name">Commercial Retails</p>
 								</div>
-								<div class="col-md-3 commer_land prop_priceshow">
+								<div class="col-md-3 col-xs-6 commer_land prop_priceshow">
 									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/industrial.svg';  ?>" class="property_image">
 									<p class="property_name">Industrial Land & <br>Plots</p>
 								</div>
-								<div class="col-md-3 ware_house prop_priceshow">
+								<div class="col-md-3 col-xs-6 ware_house prop_priceshow">
 									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/warehouse.svg';  ?>" class="property_image">
 									<p class="property_name">Warehouse</p>
 								</div>
 							</div>
+                        
 							<div class="col-md-12 seperator_div margin_seperator"></div>
-							<div class="col-md-12 category_detail commercial_o">
+							<div class="row category_detail commercial_o float_left">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
 								<li class=""><a href="javascript:void(0)" id="11" class="property_subtype proptype">Commercial Office Space</a></li>
@@ -138,7 +139,7 @@ $user_id= Yii::$app->user->identity->id;
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail commercial_r">
+						<div class="col-md-12 category_detail commercial_r float_left">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
 								<li class=""><a href="javascript:void(0)" id="15" class="property_subtype proptype">Mall/Retail Shop</a></li>
@@ -148,7 +149,7 @@ $user_id= Yii::$app->user->identity->id;
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail industrial_land">
+						<div class="col-md-12 category_detail industrial_land float_left">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
 								<li class=""><a href="javascript:void(0)" id="19" class="property_subtype proptype">Commercial land</a></li>
@@ -158,7 +159,7 @@ $user_id= Yii::$app->user->identity->id;
 							</ul>
 							
 						</div>
-						<div class="col-md-12 category_detail warehouse">
+						<div class="col-md-12 category_detail warehouse float_left">
 							<h3 class="flow_heading">Choose your category</h3>
 							<ul class="sub_categories registerlogin">
 								<li class=""><a href="javascript:void(0)" id="25" class="property_subtype proptype">Shed</a></li>
@@ -174,13 +175,13 @@ $user_id= Yii::$app->user->identity->id;
 						</div>
 						<div class="row add_price">
 							<div class="col-md-12 property_area">
-									<div class="col-md-6">
+									<div class="col-md-6 expected_price">
 										<div class="row">
-											<h3 class="flow_heading">Let us know the expected price of your property</h3>
-                                            <div class="col-md-8">
+											<h3 class="flow_heading">Let us know the expected rental of your property</h3>
+                                            <div class="col-md-8 pad_rite col-xs-8">
                                             <?= $form->field($model, 'asking_rental_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "Enter Amount", 'class' => 'form-control exp_price input_desgn'])->label(false) ?>
                                             </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 pad_right col-xs-4">
                                         <select id="expectedprice" class="form-control area_price">
                                         <option value="lacs">Sq.ft</option>
                                       
@@ -201,13 +202,13 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 							<div class="col-md-12">
                             <h3 class="flow_heading">Enter square and carpet area of your property</h3>
-									<div class="col-md-6">
-                                    <?= $form->field($model, 'super_area')->textInput([ 'placeholder' => "Enter Super Area",'class' => 'form-control input_desgn'])->label(false) ?>
+									<div class="col-md-6 area_proprty">
+                                    <?= $form->field($model, 'super_area')->textInput([ 'placeholder' => "Enter Gross Area",'class' => 'form-control input_desgn'])->label(false) ?>
                                     <?= $form->field($model, 'super_unit')->hiddenInput()->label(false) ?>
 
 											<!-- <input type="text" class="form-control input_desgn" placeholder="Enter Super Area"> -->
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 area_proprty">
                                     <?= $form->field($model, 'carpet_area')->textInput([ 'placeholder' => "Enter Carpet Area",'class' => 'form-control input_desgn carpet_area'])->label(false) ?>
                                     <?= $form->field($model, 'carpet_unit')->hiddenInput()->label(false) ?>
 
@@ -237,6 +238,7 @@ $user_id= Yii::$app->user->identity->id;
 									<li class=""><a href="javascript:void(0)" id="ready_to_move" class="property_subtype availability">Ready to move in</a></li>
 									<li class=""><a href="javascript:void(0)" id="30_days" class="property_subtype availability">30 Days</a></li>
 									<li class=""><a href="javascript:void(0)" id="60_days" class="property_subtype availability">60 Days</a></li>
+									<li class=""><a href="javascript:void(0)" id="90_days" class="property_subtype availability">90 Days</a></li>
 								</ul>
                                 <?= $form->field($model, 'availability')->hiddenInput()->label(false) ?>
 
@@ -246,7 +248,7 @@ $user_id= Yii::$app->user->identity->id;
                                 </p>-->
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 f_status">
+							<div class="row f_status">
 								<h3 class="flow_heading ">Furnishing Status</h3>
 								<ul class="sub_categories furnishing_s">
 									<li class=""><a href="#" id="warmshell" class="property_subtype furnishing">Warm Shell</a></li>
@@ -258,7 +260,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 possession_time possesion_time">
+							<!--<div class="col-md-12 possession_time possesion_time">
 								<h3 class="flow_heading ">Mention possession time ( If Applicable )</h3>
 								<div class="col-md-12 date_select">
 									<ul class="sub_categories possesion_list">
@@ -267,15 +269,15 @@ $user_id= Yii::$app->user->identity->id;
 										<li class=""><a href="javascript:void(0)" id="3_month" class="property_subtype possesions">3 Month</a></li>
 										<li class=""><a href="javascript:void(0)" id="4_month" class="property_subtype possesions">4 Month</a></li>
 									</ul>
-                                    <?= $form->field($model, 'possesion_by')->hiddenInput()->label(false) ?>
+                                    <?//= $form->field($model, 'possesion_by')->hiddenInput()->label(false) ?>
 								</div>
 								<!--<div class="col-md-6 date_select">
-                                <input type="text" class="form-control input_desgn" placeholder="Select a Date"></div>-->
-							</div>
+                                <input type="text" class="form-control input_desgn" placeholder="Select a Date"></div>
+							</div>-->
 							<div class="col-md-12 seperator_div"></div>
 							<h1 class="more_detail more_steps">To sell property at earliest, Go ahead and beautify property by sharing property details</h1>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat">
+							<div class="row furnishing_stat">
 								<h1 class="more_detail basic_det">Add more Basic Details</h1>
 								<h3 class="flow_heading ">How many floors are there in buildings?</h3>
 								<div class="col-md-12 no_pad">
@@ -292,7 +294,7 @@ $user_id= Yii::$app->user->identity->id;
 								
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat floor_no">
+							<div class="row furnishing_stat floor_no">
 								<h3 class="flow_heading ">Property on floor</h3>
 								<div class="col-md-12 no_pad" id="floorten">
 									<div class="col-md-2 col-xs-3"><button id="G" class="button_select prop_floor">G</button></div>
@@ -337,7 +339,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat owner_deed">
+							<div class="row furnishing_stat owner_deed">
 								<h3 class="flow_heading ">Choose ownership deeds</h3>
 								<div class="col-md-12 no_pad">
 									<div class="col-md-4 col-xs-6"><button id="freehold" class="button_select ownerships">Free Hold</button></div>
@@ -349,7 +351,7 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat loan_prop">
+							<div class="row furnishing_stat loan_prop">
 								<h3 class="flow_heading ">Is there any loan on property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select loantakens">Yes</button></div>
@@ -358,7 +360,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'LOAN_taken')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 furnishing_stat far_app">
+							<div class="row furnishing_stat far_app">
 								<h3 class="flow_heading ">Is Floor Area Ratio (FAR) approved?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select farapprovals">Yes</button></div>
@@ -368,20 +370,20 @@ $user_id= Yii::$app->user->identity->id;
 
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat prop_age">
+							<div class="row furnishing_stat prop_age">
 								<h3 class="flow_heading ">How old is the property? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="0-1" class="button_select propage">0 - 1 Years</button></div>
 									<div class="col-md-3 col-xs-6"><button id="1-5" class="button_select propage">1 - 5 Years</button></div>
 									<div class="col-md-3 col-xs-6"><button id="5-10" class="button_select propage">5 - 10 Years</button></div>
-									<div class="col-md-3"><button id="10+" class="button_select propage">10+ Years</button></div>
+									<div class="col-md-3 col-xs-6"><button id="10+" class="button_select propage">10+ Years</button></div>
 									<div class="col-md-3 col-xs-6"><button id="others" class="button_select propage">Others</button></div>
 								</div>
                                 <?= $form->field($model, 'age_of_property')->hiddenInput()->label(false) ?>
 
 
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12 furnishing_stat prop_facing">
+							<div class="row furnishing_stat prop_facing">
 								<h3 class="flow_heading ">Property Facing? </h3>
 								<div class="col-md-12">
 									<div class="col-md-3 col-xs-6"><button id="east" class="button_select propfacing">East</button></div>
@@ -404,7 +406,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-                       <div class="col-md-12">
+                       <div class="row interior_det float_left">
 								<h1 class="more_detail">Expectations, Nearby Places and Amenities</h1>
 								<p class="brand_txt">Please help us understanding you expectations</p>
 								<h3 class="flow_heading ">Is there any locking period for lessee? </h3>
@@ -414,7 +416,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 							</div>
 							
-							<div class="col-md-12">
+							<div class="row tenure__applicable float_left">
 								<h3 class="flow_heading ">Is lease tenure applicable? </h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes"class="button_select tenures">Yes</button></div>
@@ -423,7 +425,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 
 
-							<div class="col-md-12">
+							<div class="row free_period float_left">
 								<h3 class="flow_heading ">Is there any rent free period?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free">Yes</button></div>
@@ -434,24 +436,24 @@ $user_id= Yii::$app->user->identity->id;
                     <input type="hidden" value="" id="tenures" name="tenures">
                     <input type="hidden" value="" id="rent_free" name="rent_free">
 
-							<div class="col-md-12">
+							<div class="row office_interior float_left">
 								<h3 class="flow_heading ">Please share the interior details of property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-8 date_select">
                                     <!-- <input type="text" class="form-control input_desgn" placeholder="Enter revenue layout"> -->
-                                    <?= $form->field($model, 'interior_details')->textInput([ 'placeholder' => "Enter revenue layout",'class' => 'form-control input_desgn'])->label(false) ?> 
+                                    <?= $form->field($model, 'interior_details')->textInput([ 'placeholder' => "Eg.  (2 Cabins , 1 conference room, 20 workstations)",'class' => 'form-control input_desgn'])->label(false) ?> 
 
                                     </div>
 								</div>
 								
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="col-md-12">
+							<div class="row float_left">
 								<h1 class="more_detail">Nearby Places</h1>
 								<p class="brand_txt no_pad">Please help us understanding the nearby places around property?</p>
 								<h3 class="flow_heading ">Commuting options around the property?</h3>
                                 <p class="amenities">Click on the icons to select Nearby Places</p>
-								<div class="col-md-12 text-left padd_amen">
+								<div class="col-md-12 col-xs-6 text-left padd_amen">
 									<div class="col-md-3 amenities_icon">
                                         <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/bus.svg';  ?>" class="nearbyclass img_input bus_img" id="bus" width="22" />
                                         <span class="amenity_prop bus">Bus</span>
@@ -471,7 +473,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 
                                 
-                                <div class="col-md-12 text-left padd_amen">
+                                <div class="col-md-12 col-xs-6 text-left padd_amen">
 										<div class="col-md-3 amenities_icon">
                                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/market.svg';  ?>" class="nearbyclass img_input market_img" id="market" width="24"  />
                                             <span class="amenity_prop market">Market</span>
@@ -492,21 +494,21 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-							<div class="col-md-12">
+							<div class="row">
 								<h1 class="more_detail">Amenities</h1>
 								<p class="brand_txt no_pad">Please help us understanding the amenities that buyers/lessee can expect?</p>
                                 <p class="amenities">Click on the icons to select Amenities</p>
-                                <div class="col-md-12 text-left padd_amen">
-									<div class="col-md-3 col-xs-6 amenities_icon">
+                                <div class="col-md-12 col-xs-6 text-left padd_amen">
+									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amenitiesclass img_input power_img" id="power" width="22"  /><span class="amenity_prop power">Power Backup</span>
 									</div>
 									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amenitiesclass img_input wifi_img" id="wifi" width="24"  /><span class="amenity_prop wifi">Wi-Fi</span>
 									</div>
-									<div class="col-md-3 col-xs-6 amenities_icon">
+									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amenitiesclass img_input lift_img" id="lift" width="18"  /><span class="amenity_prop lift">Service Lift</span>
 									</div>
-									<div class="col-md-3 col-xs-6 amenities_icon">
+									<div class="col-md-3 amenities_icon">
 										<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amenitiesclass img_input camera_img"id="security" width="20"  /><span class="amenity_prop camera">Security Camera</span>
 									</div>
 								</div>
@@ -514,10 +516,10 @@ $user_id= Yii::$app->user->identity->id;
 										<div class="col-md-3 amenities_icon">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/gaurd.svg';  ?>" class="amenitiesclass img_input gaurd_img" id="gaurd" width="24"  /><span class="amenity_prop gaurd">Security Personnel</span>
 										</div>
-										<div class="col-md-3 col-xs-6 amenities_icon">
+										<div class="col-md-3  amenities_icon">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amenitiesclass img_input" id="parking" width="20"  /><span class="amenity_prop">Parking</span>
 										</div>
-										<div class="col-md-3 col-xs-6 amenities_icon">
+										<div class="col-md-3 amenities_icon">
 											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/amenities/hospital.svg';  ?>" class="amenitiesclass img_input hospital_img" id="hospital" width="20"  /><span class="amenity_prop hospital">Hospitals</span>
 										</div>
 									</div>
@@ -903,12 +905,34 @@ $('#hidepassword').show();
 
 $('.furnishing_s li a').click(function(){
     $('html,body').animate({
-        scrollTop: $(".possesion_time").offset().top - 100},
+        scrollTop: $(".basic_det").offset().top - 100},
         'slow'); 
 });
 $('.possesion_list li a').click(function(){
     $('html,body').animate({
         scrollTop: $(".basic_det").offset().top - 100},
+        'slow'); 
+});
+
+$('.propfacing').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".interior_det").offset().top - 100},
+        'slow'); 
+});
+
+$('.locking_period').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".tenure__applicable").offset().top - 100},
+        'slow'); 
+});
+$('.tenures').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".free_period").offset().top - 100},
+        'slow'); 
+});
+$('.rent_free').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".office_interior").offset().top - 100},
         'slow'); 
 });
 

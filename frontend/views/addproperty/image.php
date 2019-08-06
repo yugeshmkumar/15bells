@@ -16,6 +16,10 @@ $propid = $_GET['s_id'];
     color: #c7984f;
     background-color: #ffffff;
     border-color: #d6e9c6;
+    font-size:28px;
+    }
+    .more_images{
+        padding:30px 0;
     }
 	</style>
 <div class="container-fluid property_flow" style="margin-top:100px;">
@@ -39,8 +43,8 @@ $propid = $_GET['s_id'];
          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
          <h4 style="margin:20px 0;"><i class="icon fa fa-check"></i> Saved!</h4>
          <?= Yii::$app->session->getFlash('success') ?>
-         <div>Want to Upload More Images ??
-         <a href="javscript:void(0)" aria-hidden="true" class="save_buttn active_butn" data-dismiss="alert" >Yes</a>
+         <div class="more_images">Want to Upload More Images ?? <br>
+         <a href="javscript:void(0)" aria-hidden="true" class="save_buttn active_butn yes_upload" data-dismiss="alert" >Yes</a>
          <?= Html::a('No', ['documents', 'id' => $propid], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
 
          </div>
@@ -70,7 +74,7 @@ $propid = $_GET['s_id'];
 								<div class="col-md-6 date_select"><input type="text" class="form-control input_desgn" placeholder="Enter property description"></div>
 							</div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 add_property_image">
 		<h3 class="flow_heading avail_ability">Property Images<br> <span style="font-size:12px;font-weight:500;text-transform:uppercase;">(in .jpg, .jpeg, .png with max size of 2mb )</span></h3>
 
        
@@ -133,8 +137,6 @@ echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Updat
    });
 
 
-
-
 var num = 4;
 function readImage() {
    if (window.File && window.FileList && window.FileReader) {
@@ -183,6 +185,14 @@ function readImage() {
    });
        // $(".transp_contnt").animate({bottom: '250px'});
    
+       $('.yes_upload').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".add_property_image").offset().top - 400},
+        'slow'); 
+});
+
+
+
    $(".buy").click(function(){
         $(".buy").addClass("active");
          $(".sell").removeClass("active");

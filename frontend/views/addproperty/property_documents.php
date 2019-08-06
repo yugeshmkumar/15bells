@@ -12,6 +12,15 @@ $propid = $_GET['id'];
     .navbar-me{
         background:#221d36 !important;
     }
+    .alert-success {
+    color: #c7984f;
+    background-color: #ffffff;
+    border-color: #d6e9c6;
+    font-size:28px;
+    }
+    .more_images{
+        padding:30px 0;
+    }
 	</style>
 <div class="container-fluid property_flow" style="margin-top:100px;">
 	<div class="container">
@@ -32,13 +41,13 @@ $propid = $_GET['id'];
 
 
                     <?php if (Yii::$app->session->hasFlash('success')): ?>
-    <div class="alert alert-success alert-dismissable">
+    <div class="alert alert-success alert-dismissable text-center">
          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-         <h4><i class="icon fa fa-check"></i>Saved!</h4>
+         <h4 style="margin:20px 0;"><i class="icon fa fa-check"></i>Saved!</h4>
          <?= Yii::$app->session->getFlash('success') ?>
-         <div>Want to Upload More Images ??
-         <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" >Yes</a>
-         <?= Html::a('No', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary']) ?>
+         <div class="more_images">Want to Upload More Documents ? <br>
+         <a href="javscript:void(0)" aria-hidden="true" data-dismiss="alert" class="save_buttn active_butn yes_upload" >Yes</a>
+         <?= Html::a('No', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
 
          </div>
     </div>
@@ -69,7 +78,7 @@ $propid = $_GET['id'];
                                 </div>
 							</div>
 
-        <div class="col-md-12">
+        <div class="col-md-12 upload_docs">
 		<h3 class="flow_heading avail_ability">Upload documents <span style="font-size:18px;font-weight:500;text-transform:uppercase;">(In Pdf, Png, Jpg, Docs Only)</span></h3>
 
        
@@ -177,6 +186,16 @@ function readImage() {
        $(".trust_contnt").hide();
        
    });
+
+
+    $('.yes_upload').click(function(){
+    $('html,body').animate({
+        scrollTop: $(".upload_docs").offset().top - 100},
+        'slow'); 
+    });
+
+
+
        // $(".transp_contnt").animate({bottom: '250px'});
    
    $(".buy").click(function(){

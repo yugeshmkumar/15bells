@@ -155,26 +155,26 @@ if(array_key_exists('low',$_POST)){
   <div class="modal-dialog modal-lg modal_dialogue">
 
     <!-- Modal content-->
-    <div class="modal-content draw_map no_pad">
+    <div class="modal-content draw_map shortlist_modal">
         <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
       
       <div class="modal-body no_pad">
 			<div class="container-fluid">
 				<div class="row site_contain">
-					<h1 class="visit_prop text-center">Scheduling visit for property ID :<span id="propsidpopup" class="prop_ids"> ASAD876</span></h1>
+					<h1 class="visit_prop">Scheduling visit for property ID :<span id="propsidpopup" class="prop_ids"> ASAD876</span></h1>
 					
 					
 					<!-- <div id="appendid2">
 					</div> -->
-                    <div class="col-md-12">
+                   
 
-                    <div class="col-md-12">
-                    <p class="label_name no_pad">Location:</p>
+                    <div class="col-md-12 location_detail">
+                    <p class="location_label">Location:</p>
                     <p class="details_label" id="sitevisitlocation">    </p>
                     </div>
                     <!-- <div class="col-md-4">₹ <span id="sitevisitarea">Area</span></div>
                     <div class="col-md-4"><span id="sitevisitprice">Price</span> Sq. ft.</div> -->
-                    </div>
+                    
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<div class="row">
@@ -210,8 +210,8 @@ if(array_key_exists('low',$_POST)){
 						<div class="col-md-6">
 							<div class="row">
 								<p class="visit_mode">To schedule property visit, choose the mode of visit</p>
-								<ul class="sub_categories">
-									<li class="active"><a href="javascript:void(0)" id="online" class="property_subtype visitmode">Online</a></li>
+								<ul class="sub_categories online_offline">
+									<li class=""><a href="javascript:void(0)" id="online" class="property_subtype visitmode">Online</a></li>
 									<li class=""><a href="javascript:void(0)" id="offline" class="property_subtype visitmode">Offline</a></li>
 								</ul>
                             </div>
@@ -221,9 +221,9 @@ if(array_key_exists('low',$_POST)){
                             <input type="hidden" id="visitmode">
 							
 						</div>
-						<div class="col-md-6 text-right save_site">
+						<div class="col-md-6 text-right save_site site_button">
 							<div class="row">
-								<button class="btn btn-default call_butn" onclick="getfreevisit();">Schedule</button>
+								<button class="btn btn-default call_butn property_process" onclick="getfreevisit();">Schedule</button>
 							</div>
 							
 						</div>
@@ -257,7 +257,10 @@ var  dvisitmode = this.id;
   $('#visitmode').val(dvisitmode);
 });   
 
+$(".sub_categories li a").click(function() {
+    $(this).parent().addClass('active').siblings().removeClass('active');
 
+    });
 $('.scheduletime').on('click', function() {
     
 	var getValue = this.id;
