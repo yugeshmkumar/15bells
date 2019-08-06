@@ -43,7 +43,7 @@ $propid = $_GET['s_id'];
          <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
          <h4 style="margin:20px 0;"><i class="icon fa fa-check"></i> Saved!</h4>
          <?= Yii::$app->session->getFlash('success') ?>
-         <div class="more_images">Want to Upload More Images ??
+         <div class="more_images">Want to Upload More Images ?? <br>
          <a href="javscript:void(0)" aria-hidden="true" class="save_buttn active_butn yes_upload" data-dismiss="alert" >Yes</a>
          <?= Html::a('No', ['documents', 'id' => $propid], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
 
@@ -187,7 +187,7 @@ function readImage() {
    
        $('.yes_upload').click(function(){
     $('html,body').animate({
-        scrollTop: $(".add_property_image").offset().top - 100},
+        scrollTop: $(".add_property_image").offset().top - 400},
         'slow'); 
 });
 
