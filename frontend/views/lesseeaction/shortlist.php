@@ -72,15 +72,15 @@ if(array_key_exists('low',$_POST)){
 					</p>
 					<div class="row single_property">
 						<div class="col-md-3 no_pad">
-							<img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/' . (( $imaged == null) ? 'not.jpg' : $imaged ) ?>" class="img-responsive">
+							<img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/' . (( $imaged == null) ? 'not.jpg' : $imaged ) ?>" class="img-responsive manage_image">
 						</div>
 						<div class="col-md-9">
 							<div class="row">
-								<div class="col-md-6 company_overview property_manage">
+								<div class="col-md-6 col-xs-6 company_overview property_manage">
 									<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
 									<p class="label_name"><?php echo $datas['typename']; ?></p>
 								</div>
-								<div class="col-md-6 company_overview property_manage">
+								<div class="col-md-6 col-xs-6 company_overview property_manage">
 									<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
 									<p class="label_name">J<?php echo $datas['locality'] ?></p>
 								</div>
