@@ -285,13 +285,13 @@ use yii\bootstrap\Modal;
  <div class="col-md-12">
 								<h3 class="flow_heading avail_ability">Choose a Price Range in <i class="fa fa-inr"></i></h3>
 							<div class="col-md-6 no_pad">
-                <div class="col-md-8 col-xs-6">
+                <div class="col-md-8 col-xs-12">
                   <input type="text" class="form-control input_desgn input_number" name="proppriceminimum" placeholder="Minimum price" id="proppriceminimum">
                  </div>
                 
               </div>
-              <div class="col-md-6 col-xs-12 no_pad">
-                 <div class="col-md-8 col-xs-6">
+              <div class="col-md-6 no_pad">
+                 <div class="col-md-8 col-xs-12">
                     <input type="text" class="form-control input_desgn input_number" name="proppricemaximum" placeholder="Maximum price" id="proppricemaximum">
                  </div>
                 
