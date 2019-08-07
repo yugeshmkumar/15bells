@@ -2255,6 +2255,12 @@ input.invalid {
 		display: none;
 		top: 2%;
 	}
+	.otp_button{
+		font-size:14px !important;
+	}
+	.choose_login{
+		margin-left: 8px !important;
+	}
 	.image_property{
 		width:100%;
 	}
