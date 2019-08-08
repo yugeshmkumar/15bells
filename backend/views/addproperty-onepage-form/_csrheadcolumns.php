@@ -15,6 +15,18 @@ return [
 
 
     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'Owner_name',
+        'width' => '150px',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'primary_contact_no',
+        'width' => '150px',
+    ],
+
+
+    [
         'label' => 'Percentage',
         'attribute' => 'completion_in_percentage',
         'filter' => false,
@@ -30,29 +42,59 @@ return [
 
 
     [
-        'label' => 'Send ',
-        'attribute' => 'id',
-        'filter' => false,
+        'class' => 'yii\grid\ActionColumn',
+        'template' => '{complete}',
+        'header'   =>'Approve', 
+        
         'options' => ['style' => 'width:100px;'],
-                        'format' => 'raw',
-        'value' => function($data) {
+        'buttons' => [
+            'complete' => function ($url) {
 
-             return '<div class="btn-group">
-                                        <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
-                                            <span class="fa fa-angle-down"> </span>
-                                        </a><ul class="dropdown-menu pull-right">
-                                        
-                                                                                    
-                                              <li>
-                                              <a onclick="assigncsrhead(' . $data->id . ')">
-                       
-                                                    <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Send to CSR Head
-                                                </a>
-                                        </li>
-                                        
-                                            </ul></div>';
-          }
+                return Html::a('<button class="btn btn-info recall_popup" style="border-color:#0fd8da !important;border:1px solid;"  >Approve</button>', $url,[
+                    'title' => 'Complete',
+                    'data-pjax' => '0',
+                ]);
+
+                // return Html::a(
+                //     '<button  class="btn btn-success recall_popup" aria-hidden="true"></span>',
+                //     $url, 
+                //     [
+                //         'title' => 'Complete',
+                //         'data-pjax' => '0',
+                //     ]
+                // );
+            },
+        ],
     ],
+
+    [
+            'label' => 'Reassign',
+            'attribute' => 'id',
+            'filter' => false,
+            'options' => ['style' => 'width:100px;'],
+                            'format' => 'raw',
+            'value' => function($data) {
+    
+                 return '<div class="btn-group">
+                                            <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
+                                                <span class="fa fa-angle-down"> </span>
+                                            </a><ul class="dropdown-menu pull-right">
+											
+                                                                                        
+                                                  <li>
+                                                  <a onclick="assigncsr(' . $data->id . ')">
+						   
+                                                        <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Reassign to CSR
+                                                    </a>
+											</li>
+											
+												</ul></div>';
+              }
+        ],
+
+
+
+
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,
@@ -151,15 +193,7 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'property_type_id',
     // // ],
-    // [
-    //     'class'=>'\kartik\grid\DataColumn',
-    //     'attribute'=>'Owner_name',
-    // ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'primary_contact_no',
-        'width' => '150px',
-    ],
+    
     
     // [
         // 'class'=>'\kartik\grid\DataColumn',
@@ -329,30 +363,30 @@ return [
     
 
 
-    [
-        'label' => 'Followup',
-        'attribute' => 'followup_date_time',
-        'filter' => false,
-        'options' => ['style' => 'width:100px;'],
-                        'format' => 'raw',
-        'value' => function($model) {
+    // [
+    //     'label' => 'Followup',
+    //     'attribute' => 'followup_date_time',
+    //     'filter' => false,
+    //     'options' => ['style' => 'width:100px;'],
+    //                     'format' => 'raw',
+    //     'value' => function($model) {
 
-            if ($model->followup_date_time == '') {
-                $showtime = 'Not Set';
-            } else {
-                $showtime = $model->followup_date_time;
-            }
+    //         if ($model->followup_date_time == '') {
+    //             $showtime = 'Not Set';
+    //         } else {
+    //             $showtime = $model->followup_date_time;
+    //         }
 
-            $date = date_create($model->followup_date_time);
-                    $scheduled_times = date_format($date, "Y-m-d H:i:s");
-                    $scheduled_timesnew = "'$scheduled_times'";                    
-                    $request_id = "'$model->id'";
-                    $followup_comment = "'$model->followup_comment'";
+    //         $date = date_create($model->followup_date_time);
+    //                 $scheduled_times = date_format($date, "Y-m-d H:i:s");
+    //                 $scheduled_timesnew = "'$scheduled_times'";                    
+    //                 $request_id = "'$model->id'";
+    //                 $followup_comment = "'$model->followup_comment'";
              
-            return Html::a('<button class="btn btn-success recall_popup" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs('. $scheduled_timesnew . ',' . $request_id . ',' . $followup_comment . ')" >' . $showtime . '</button>', $url = 'javascript:void(0)', []);
+    //         return Html::a('<button class="btn btn-success recall_popup" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs('. $scheduled_timesnew . ',' . $request_id . ',' . $followup_comment . ')" >' . $showtime . '</button>', $url = 'javascript:void(0)', []);
 
-          }
-    ],
+    //       }
+    // ],
 
 
 
@@ -362,19 +396,19 @@ return [
 
 
 
-    [
-        'label' => 'Wrong lead',
-        'attribute' => 'id',
-        'filter' => false,
-        'options' => ['style' => 'width:100px;'],
-        'format' => 'raw',
-        'value' => function($model) {
-            $wrongid = $model->id;
+    // [
+    //     'label' => 'Wrong lead',
+    //     'attribute' => 'id',
+    //     'filter' => false,
+    //     'options' => ['style' => 'width:100px;'],
+    //     'format' => 'raw',
+    //     'value' => function($model) {
+    //         $wrongid = $model->id;
 
-            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="wrong_lead('.$wrongid.')" >Wrong lead</button>', $url = 'javascript:void(0)', []);
+    //         return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="wrong_lead('.$wrongid.')" >Wrong lead</button>', $url = 'javascript:void(0)', []);
 
-          }
-    ],
+    //       }
+    // ],
 
     // [
     //     'label' => 'Site Visit',
@@ -398,20 +432,20 @@ return [
     //       }
     // ],
 
-    [
-        'label' => 'Remarks',
-        'attribute' => 'id',
-        'filter' => false,
-        'options' => ['style' => 'width:100px;'],
-        'format' => 'raw',
-        'value' => function($model) {
+    // [
+    //     'label' => 'Remarks',
+    //     'attribute' => 'id',
+    //     'filter' => false,
+    //     'options' => ['style' => 'width:100px;'],
+    //     'format' => 'raw',
+    //     'value' => function($model) {
 
-            $visitid = $model->id;
+    //         $visitid = $model->id;
 
-            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >Remarks</button>', $url = 'javascript:void(0)', []);
+    //         return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >Remarks</button>', $url = 'javascript:void(0)', []);
 
-          }
-    ],
+    //       }
+    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'property_status',

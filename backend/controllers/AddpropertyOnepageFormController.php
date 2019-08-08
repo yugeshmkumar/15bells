@@ -70,8 +70,9 @@ class AddpropertyOnepageFormController extends Controller
     }
 
     public function actionCsrphoneindex()
-    {    
-         $phones =  $_GET['phone'];
+    { 
+
+        $phones =  $_GET['phone'];
         $searchModel = new AddpropertyOnepageFormSearch();
         $dataProviders = $searchModel->searchcsrphone(Yii::$app->request->queryParams,$phones);
 
@@ -79,6 +80,21 @@ class AddpropertyOnepageFormController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProviders,
         ]);
+
+    }
+
+    public function actionCsrhead()
+    { 
+
+        $this->layout = "csr_head_layout";
+        $searchModel = new AddpropertyOnepageFormSearch();
+        $dataProviders = $searchModel->searchcsrhead(Yii::$app->request->queryParams);
+
+        return $this->render('csrhead', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProviders,
+        ]);
+        
     }
 
 
@@ -100,6 +116,38 @@ class AddpropertyOnepageFormController extends Controller
 	return 2;die;
 	}
         
+     }
+
+
+     public function actionReassigncsr(){
+
+        $crmid = $_POST['crmid'];
+        $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
+      
+        $rbac->isactive = 1;        
+        $rbac->save(false);
+	if($rbac){
+	return 1;die;
+	}else{
+	return 2;die;
+	}
+
+     }
+
+
+     public function actionAssigncsrhead(){
+
+        $crmid = $_POST['crmid'];
+        $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
+      
+        $rbac->isactive = 2;        
+        $rbac->save(false);
+	if($rbac){
+	return 1;die;
+	}else{
+	return 2;die;
+	}
+
      }
 
 
@@ -577,6 +625,7 @@ class AddpropertyOnepageFormController extends Controller
                         $modeladd->role_id = 'seller';
                     }
                     
+                    
                     $modeladd->project_name = $post['AddpropertyOnepageForm']['project_name'];
                     $modeladd->property_for = $post['AddpropertyOnepageForm']['property_for'];
                     $modeladd->project_type_id = $post['AddpropertyOnepageForm']['property_type_id'];
@@ -605,17 +654,17 @@ class AddpropertyOnepageFormController extends Controller
                     $modeladd->furnished_status = $post['AddpropertyOnepageForm']['type_of_space'];
                     $modeladd->is_active = 1;
                     $modeladd->created_date = $date;
-                    $modeladd->status = 'reviewed';
+                    $modeladd->status = 'approved';
 
 
                    if($modeladd->save(false)){
                     $model->property_id = $modeladd->id;
-                    $model->isactive = 2;
+                    $model->isactive = 0;
                     $model->save();
                     
                     
                        }
-                       return $this->redirect(['view', 'id' => $model->id]);
+                       return $this->redirect(['csrhead']);
 
                    }
 
