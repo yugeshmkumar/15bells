@@ -1477,36 +1477,36 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
@@ -1629,36 +1629,36 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
@@ -1773,36 +1773,36 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
@@ -2624,36 +2624,36 @@ function getPolygonCoords() {
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 company_overview property_manage">'+
+                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Price</p>'+
                                        '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Area</p>'+
                                        '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Verified</p>'+
                                        '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                    '</div>'+
-                                   '<div class="col-md-3 company_overview property_manage">'+
+                                   '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Availability</p>'+
                                        '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                    '</div>'+
@@ -2763,36 +2763,36 @@ function getPolygonCoords() {
                            '<p class="property_id">Property ID : '+propsid+'</p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-3 no_pad relative">'+
-                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //    '<div class="overlay_sign">'+
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
                                '</div>'+
                                '<div class="col-md-9">'+
                                    '<div class="row prop_detail">'+
-                                       '<div class="col-md-6 company_overview property_manage">'+
+                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
                                            '<p class="details_label">'+this.locality+'</p>'+
                                        '</div>'+
-                                       '<div class="col-md-6 company_overview property_manage">'+
+                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Property for</p>'+
                                            '<p class="details_label">'+this.request_for+'</p>'+
                                        '</div>'+
                                    '</div>'+
                                    '<div class="row prop_detail">'+	
-                                       '<div class="col-md-3 company_overview property_manage">'+
+                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Price</p>'+
                                            '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                        '</div>'+
-                                       '<div class="col-md-3 company_overview property_manage">'+
+                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Area</p>'+
                                            '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                        '</div>'+
-                                       '<div class="col-md-3 company_overview property_manage">'+
+                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Availability</p>'+
                                            '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                        '</div>'+
-                                       '<div class="col-md-3 company_overview property_manage">'+
+                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Verified</p>'+
                                            '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                        '</div>'+
@@ -2913,36 +2913,36 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
                               '<div class="col-md-9">'+
                                   '<div class="row prop_detail">'+
-                                      '<div class="col-md-6 company_overview property_manage">'+
+                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
                                           '<p class="details_label">'+this.locality+'</p>'+
                                       '</div>'+
-                                      '<div class="col-md-6 company_overview property_manage">'+
+                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Property for</p>'+
                                           '<p class="details_label">'+this.request_for+'</p>'+
                                       '</div>'+
                                   '</div>'+
                                   '<div class="row prop_detail">'+	
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
                                           '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Area</p>'+
                                           '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Verified</p>'+
                                           '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Availability</p>'+
                                           '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                       '</div>'+
@@ -3048,36 +3048,36 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
                               '<div class="col-md-9">'+
                                   '<div class="row prop_detail">'+
-                                      '<div class="col-md-6 company_overview property_manage">'+
+                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
                                           '<p class="details_label">'+this.locality+'</p>'+
                                       '</div>'+
-                                      '<div class="col-md-6 company_overview property_manage">'+
+                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Property for</p>'+
                                           '<p class="details_label">'+this.request_for+'</p>'+
                                       '</div>'+
                                   '</div>'+
                                   '<div class="row prop_detail">'+	
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
                                           '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Area</p>'+
                                           '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Verified</p>'+
                                           '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                       '</div>'+
-                                      '<div class="col-md-3 company_overview property_manage">'+
+                                      '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Availability</p>'+
                                           '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                       '</div>'+
@@ -3472,36 +3472,36 @@ $("#rantime").datepicker({
                                                                 '<p class="property_id">Property ID : '+propsid+'</p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-3 no_pad relative">'+
-                                                                    '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
+                                                                    '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                                                         // '<div class="overlay_sign">'+
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
                                                                     '</div>'+
                                                                     '<div class="col-md-9">'+
                                                                         '<div class="row prop_detail">'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
+                                                                            '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Location</p>'+
                                                                                 '<p class="details_label">'+this.locality+'</p>'+
                                                                             '</div>'+
-                                                                            '<div class="col-md-6 company_overview property_manage">'+
+                                                                            '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Property for</p>'+
                                                                                 '<p class="details_label">'+this.request_for+'</p>'+
                                                                             '</div>'+
                                                                         '</div>'+
                                                                         '<div class="row prop_detail">'+	
-                                                                            '<div class="col-md-3 company_overview property_manage">'+
+                                                                            '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Price</p>'+
                                                                                 '<p class="details_label">₹ '+commaNum+' psf</p>'+
                                                                             '</div>'+
-                                                                            '<div class="col-md-3 company_overview property_manage">'+
+                                                                            '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Area</p>'+
                                                                                 '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
                                                                             '</div>'+
-                                                                            '<div class="col-md-3 company_overview property_manage">'+
+                                                                            '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Verified</p>'+
                                                                                 '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                                                             '</div>'+
-                                                                            '<div class="col-md-3 company_overview property_manage">'+
+                                                                            '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Availability</p>'+
                                                                                 '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                                                             '</div>'+

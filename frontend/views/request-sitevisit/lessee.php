@@ -74,11 +74,11 @@ $datas =  $dataProvider->query->all();
 								<div class="row">
 									<div class="col-md-4 agent_det">
 											<div class="row">
-												<div class="col-md-5">
+												<div class="col-md-5 col-xs-5">
 													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
 												</div>
 												
-												<div class="col-md-7 no_pad">
+												<div class="col-md-7 col-xs-7 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
 												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
 												</div>
@@ -86,10 +86,10 @@ $datas =  $dataProvider->query->all();
 										<div class="row" style="margin-top:30px;">
 											<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 											<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
-											<div class="col-md-7">
+											<div class="col-md-7 col-xs-7">
 													<p class="details_label"><?php echo  date("F d,Y", strtotime($data->scheduled_time)); ?></p>
 											</div>
-											<div class="col-md-5">
+											<div class="col-md-5 col-xs-5">
 													<p class="details_label"><?php echo  date("g:i A", strtotime($data->scheduled_time)); ?></p>
 												</div>	
 										</div>
@@ -99,11 +99,11 @@ $datas =  $dataProvider->query->all();
 									<div class="col-md-8">
 										
 										<div class="row">
-											<div class="col-md-6 company_overview property_manage">
+											<div class="col-md-6 col-xs-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
 											<p class="label_name"><?php echo $property_type->typename ?></p>
 										</div>
-										<div class="col-md-6 company_overview property_manage">
+										<div class="col-md-6 col-xs-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
 											<p class="label_name">J<?php echo $addproperty->locality ?></p>
 										</div>
