@@ -253,7 +253,9 @@ return [
          $totalCount = Yii::$app->db->createCommand('SELECT COUNT(*) FROM addproperty_onepage_form  where primary_contact_no= "'.$model->primary_contact_no.'"')->queryScalar();      
         
          if ($totalCount > 0) {
-            return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >'.$totalCount.' Properties</button>', $url = 'csrphoneindex?phone='.$model->primary_contact_no, []);
+            return Html::a($totalCount.' Properties','',['onclick' => "window.open ('".Url::toRoute(['csrphoneindex', 
+            'phone' => $model->primary_contact_no])."'); return false", 
+                'class' => 'btn btn-success center-block']);
         } else {
             return Html::a('<button class="btn btn-info" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd()" >'.$totalCount.' Properties</button>', $url = 'javascript:void(0)', []);
         }
