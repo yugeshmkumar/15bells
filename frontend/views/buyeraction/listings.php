@@ -2587,7 +2587,7 @@ function getPolygonCoords() {
                                   //  alert(types);alert(totalradiuss);
                                   $('#getprop').html('');
 
-                                 if(types == ''){
+                                 if(types == 'blank'){
                                        
                                        ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
                                       
