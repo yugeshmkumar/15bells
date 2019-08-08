@@ -2255,6 +2255,16 @@ input.invalid {
 		display: none;
 		top: 2%;
 	}
+	.otp_button{
+		font-size:14px !important;
+		margin-top:3px;
+	}
+	.choose_login{
+		margin-left: 8px !important;
+	}
+	.image_property{
+		width:100%;
+	}
 	.more_detail{
 		color:#221d36;
 		font-size:21px !important;
@@ -2284,6 +2294,9 @@ input.invalid {
 	}
 	.additional_property{
 		padding: 0 10px 50px !important;
+	}
+	.buttn_confirm{
+		width:100%;
 	}
 	.float_left{
 		float:left;

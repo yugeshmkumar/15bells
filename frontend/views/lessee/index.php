@@ -195,7 +195,7 @@ use yii\bootstrap\Modal;
 								<div class="col-md-6 locality_input">
 									<div class="row">
 										<h3 class="flow_heading">Do you want to include nearby areas?</h3>
-										<div class="btn-group btn-toggle col-md-12"> 
+										<div class="btn-group btn-toggle buttn_confirm col-md-12"> 
                     <div class="col-md-4 col-xs-6 no_pad"><button  type="button" class="btn button_select btn-lg confirmbutton" value="yes">Yes</button></div>
 										<div class="col-md-4 col-xs-6 no_pad">	<button type="button" class="btn button_select btn-lg confirmbutton" value="no">No</button></div>
 										  </div>
@@ -285,13 +285,13 @@ use yii\bootstrap\Modal;
  <div class="col-md-12">
 								<h3 class="flow_heading avail_ability">Choose a Price Range in <i class="fa fa-inr"></i></h3>
 							<div class="col-md-6 no_pad">
-                <div class="col-md-8 col-xs-6">
+                <div class="col-md-8 col-xs-12">
                   <input type="text" class="form-control input_desgn input_number" name="proppriceminimum" placeholder="Minimum price" id="proppriceminimum">
                  </div>
                 
               </div>
-              <div class="col-md-6 col-xs-12 no_pad">
-                 <div class="col-md-8 col-xs-6">
+              <div class="col-md-6 no_pad">
+                 <div class="col-md-8 col-xs-12">
                     <input type="text" class="form-control input_desgn input_number" name="proppricemaximum" placeholder="Maximum price" id="proppricemaximum">
                  </div>
                 
