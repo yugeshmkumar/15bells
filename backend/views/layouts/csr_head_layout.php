@@ -152,9 +152,15 @@ $bundle = BackendAsset::register($this);
 						[
                             'label'=>Yii::t('backend', 'Lead Management'),
                             'icon'=>'<i class="fa fa-question"></i>',
-                            'url'=>['/leadrequest/index?status=1'],
+                            'url'=>['csrhead'],
                           //  'badge'=> TimelineEvent::find()->today()->count(),
                           //  'badgeBgClass'=>'label-primary',
+                        ],[
+						    'label'=>Yii::t('backend', 'Property Management'),
+                            'icon'=>'<i class="fa fa-building"></i>',
+                            'url'=>['/addpropertypm'],
+                            'badge'=> \common\models\Addpropertybackend::find()->count(),
+                            'badgeBgClass'=>'label-primary',
                         ],
 						
                     ]
