@@ -199,6 +199,33 @@ CrudAsset::register($this);
   </div>
 </div>
 <script>
+
+
+function assigncsrhead(id){
+
+
+var crmid = id;
+
+ $.ajax({
+           type: "POST",
+           url: 'assigncsrhead',
+           data: {crmid:crmid},
+           //dataType: 'json',
+           success: function (data) {  
+                                                         
+             if(data == '1'){
+               toastr.success('Successfully sent', 'success'); 
+             }else{
+               toastr.error('Some Internal Error', 'error'); 
+             }
+             
+             $.pjax({container: '#crud-datatable-pjax'}) 
+           }
+});
+
+
+
+}
     
     function viewdocs(date,id,comment) {
 

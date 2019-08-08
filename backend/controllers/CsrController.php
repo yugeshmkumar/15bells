@@ -22,7 +22,7 @@ class CsrController extends Controller
     /**
      * @return string
      */
-	 public $layout = "csr_layout";
+	 public $layout = "csr_head_layout";
     public function actionIndex()
     {
        
