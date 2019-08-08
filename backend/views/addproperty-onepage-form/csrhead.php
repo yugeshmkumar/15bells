@@ -53,7 +53,7 @@ CrudAsset::register($this);
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'pjax'=>true,
-            'columns' => require(__DIR__.'/_csrphonecolumns.php'),
+            'columns' => require(__DIR__.'/_csrheadcolumns.php'),
             'toolbar'=> [
                 ['content'=>
                     Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
@@ -223,30 +223,34 @@ CrudAsset::register($this);
 
   </div>
 </div>
+
+
+
+
 <script>
 
 
-function assigncsrhead(id){
+function assigncsr(id){
 
 
-var crmid = id;
+    var crmid = id;
 
- $.ajax({
-           type: "POST",
-           url: 'assigncsrhead',
-           data: {crmid:crmid},
-           //dataType: 'json',
-           success: function (data) {  
-                                                         
-             if(data == '1'){
-               toastr.success('Successfully sent', 'success'); 
-             }else{
-               toastr.error('Some Internal Error', 'error'); 
-             }
-             
-             $.pjax({container: '#crud-datatable-pjax'}) 
-           }
-});
+     $.ajax({
+               type: "POST",
+               url: 'reassigncsr',
+               data: {crmid:crmid},
+               //dataType: 'json',
+               success: function (data) {  
+                                                             
+                 if(data == '1'){
+                   toastr.success('Successfully sent', 'success'); 
+                 }else{
+                   toastr.error('Some Internal Error', 'error'); 
+                 }
+                 
+                 $.pjax({container: '#crud-datatable-pjax'}) 
+               }
+   });
 
 
 
