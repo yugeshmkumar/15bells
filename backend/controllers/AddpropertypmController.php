@@ -29,7 +29,8 @@ class AddpropertypmController extends Controller
  public function __construct($id, $module, $config = array()) {
         parent::__construct($id, $module, $config);
         $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
-	if($assigndash->item_name == "sales_demand_lessee"){
+    
+        if($assigndash->item_name == "sales_demand_lessee"){
 		
 		$this->layout="sales_supply_layout";
 		
@@ -48,7 +49,10 @@ if($assigndash->item_name == "sales_supply_seller"){
 if($assigndash->item_name == "sales_supply_lessor"){
 		
 		$this->layout="sales_leasing_layout";		
-	}
+	}else{
+
+        $this->layout="csr_head_layout";
+    }
 }
     /**
      * Lists all Addpropertypm models.

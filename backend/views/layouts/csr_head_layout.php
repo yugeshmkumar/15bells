@@ -13,6 +13,20 @@ use yii\widgets\Breadcrumbs;
 $bundle = BackendAsset::register($this);
 ?>
 <?php $this->beginContent('@backend/views/layouts/base.php'); ?>
+
+<style>
+.btn-group>.dropdown-menu:before, .dropdown-toggle>.dropdown-menu:before, .dropdown>.dropdown-menu:before{
+	display:none !important;
+}
+.btn-group>.dropdown-menu:after, .dropdown-toggle>.dropdown-menu:after, .dropdown>.dropdown-menu:after{
+	display:none !important;
+}
+.user_ftr{
+	background-color:#605ca8 !important;
+}
+</style>
+
+
     <div class="wrapper">
         <!-- header logo: style can be found in header.less -->
         <header class="main-header">
@@ -75,11 +89,11 @@ $bundle = BackendAsset::register($this);
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
                                 <img src="<?php echo URL::to('@web/img') ?>/anonymous.png"  class="user-image">
                                 <span><?php echo Yii::$app->user->identity->username ?> <i class="caret"></i></span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu drop_befor">
                                 <!-- User image -->
                                 <li class="user-header light-blue">
                                     <img src="<?php echo URL::to('@web/img') ?>/anonymous.png" class="img-circle" alt="User Image" />
@@ -90,7 +104,7 @@ $bundle = BackendAsset::register($this);
                                         </small>
                                 </li>
                                 <!-- Menu Footer-->
-                                <li class="user-footer">
+                                <li class="user-footer user_ftr">
                                     <div class="pull-left">
                                         <?php echo Html::a(Yii::t('backend', 'Profile'), ['/sign-in/profile'], ['class'=>'btn btn-default btn-flat']) ?>
                                     </div>
@@ -120,8 +134,8 @@ $bundle = BackendAsset::register($this);
                         <img src="<?php echo URL::to('@web/img') ?>/anonymous.png" class="img-circle" />
                     </div>
                     <div class="pull-left info">
-                        <p><?php echo Yii::t('backend', 'Hello CSR, {username}', ['username'=>Yii::$app->user->identity->username]) ?>
-                       <br/> <a href="<?php echo Url::to(['/sign-in/profile']) ?>">
+                        <p style="margin:4px 0 0 0;"><?php echo Yii::t('backend', 'Hello CSR, {username}', ['username'=>Yii::$app->user->identity->username]) ?>
+                       <br/> <a href="<?php echo Url::to(['/sign-in/profile']) ?>"  style="font-size:10px;">
                             <i class="fa fa-circle text-success"></i>
                             <?php echo Yii::$app->formatter->asDatetime(time()) ?>
                         </a>
@@ -152,7 +166,7 @@ $bundle = BackendAsset::register($this);
 						[
                             'label'=>Yii::t('backend', 'Lead Management'),
                             'icon'=>'<i class="fa fa-question"></i>',
-                            'url'=>['csrhead'],
+                            'url'=>['addproperty-onepage-form/csrhead'],
                           //  'badge'=> TimelineEvent::find()->today()->count(),
                           //  'badgeBgClass'=>'label-primary',
                         ],[
@@ -198,5 +212,11 @@ $bundle = BackendAsset::register($this);
             </section><!-- /.content -->
         </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".drp_dwn").dropdown();
+	
+});
+</script>
 <?php $this->endContent(); ?>
