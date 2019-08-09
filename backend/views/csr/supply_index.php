@@ -56,7 +56,7 @@
 <div class="container-fluid">
     <div class="row">
 
-        
+        <a href="<?php echo Yii::getAlias('@backendUrl') ?>/addproperty-onepage-form/csrindex">
         <div class="col-lg-3 col-md-6">
               <div class="card">
                      <div class="col-md-4">
@@ -79,6 +79,10 @@
                </div>
 
       </div>
+      </a>
+
+
+      <a href="<?php echo Yii::getAlias('@backendUrl') ?>/addproperty-onepage-form/csrindex">
         <div class="col-lg-3 col-md-6">
               <div class="card">
                      <div class="col-md-4">
@@ -91,6 +95,9 @@
                </div>
 
       </div>
+      </a>
+
+       <a href="<?php echo Yii::getAlias('@backendUrl') ?>/addproperty-onepage-form/csrindex">
         <div class="col-lg-3 col-md-6">
               <div class="card">
                      <div class="col-md-4">
@@ -103,7 +110,9 @@
                </div>
 
       </div>
+</a>
 
+ <a href="<?php echo Yii::getAlias('@backendUrl') ?>/addproperty-onepage-form/csrindex">
       <div class="col-lg-3 col-md-6">
               <div class="card">
                      <div class="col-md-4">
@@ -117,6 +126,7 @@
 
       </div>
 </div>
+</a>
 <div class="container-fluid pad50">
     <div class="col-md-5" style="padding-left:0;">
         <div id="chartdiv2"></div>
