@@ -8,7 +8,7 @@
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
 						<h1 class="about_head">Who we are?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
-						<p class="find_mor"><a href="#">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
+						<p class="find_mor"><a href="<?php echo yii::$app->urlManager->createUrl(['aboutus/details']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					
 					
@@ -23,7 +23,7 @@
 
 
 
-<div class="container-fluid no_pad team_banner">
+<div class="container-fluid team_banner">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 no_pad">
@@ -37,30 +37,30 @@
 		
 		<div class="row">
 			<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" class="img-responsive"></p>
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/ankur.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Ankur Gupta</p>
 				<p class="membr_desig">Managing Director</p>
 			</div>
 			<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" class="img-responsive"></p>
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/akhilesh_1.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Akhilesh Sharma</p>
 				<p class="membr_desig">Managing Partner</p>
 			</div>
 			<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" class="img-responsive"></p>
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/subash.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Subash Das</p>
 				<p class="membr_desig">CEO</p>
 			</div>
-			<div class="col-md-3 pad_trans">
+			<!--<div class="col-md-3 pad_trans">
 				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Amit Kumar</p>
 				<p class="membr_desig">IT</p>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </div>
 
-<div class="container-fluid no_pad our_mission">
+<div class="container-fluid our_mission">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 no_pad">
