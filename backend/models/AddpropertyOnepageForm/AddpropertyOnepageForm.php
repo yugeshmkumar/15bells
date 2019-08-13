@@ -72,6 +72,11 @@ use Yii;
 class AddpropertyOnepageForm extends \yii\db\ActiveRecord
 {
 
+    public $efficiency;
+    public $ownership_title;
+    public $ID_proof;
+   
+
    
 
     /**
@@ -89,9 +94,11 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'passenger_lift', 'service_lift', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'covered_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
+            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
             [['locality', 'address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'property_status', 'followup_comment','property_scomment'], 'string'],
             [['longitude', 'latitude'], 'number'],
+                  ['property_on_floor', 'compare','compareAttribute'=>'total_no_of_floors','operator'=>'<',
+    'message'=>'Property on floor should be smaller than total no. of floors', 'type' => 'number'],
             //[['total_no_of_floors'], 'required'],
             [['followup_date_time', 'created_date'], 'safe'],
             [['city', 'property_on_floor', 'unit_block', 'unit_number'], 'string', 'max' => 20],
@@ -110,6 +117,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'efficiency'=>'Efficiency (%)',
             'company_employee_id' => 'Company Employee ID',
             'property_for' => 'Property For',
             'city' => 'City',
@@ -120,6 +128,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'longitude' => 'Longitude',
             'latitude' => 'Latitude',
             'builder_name' => 'Builder Name',
+            'building_name' => 'Building Name',
             'project_name' => 'Project Name',
             'property_type_id' => 'Property Type ID',
             'Owner_name' => 'Owner Name',
@@ -128,8 +137,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'landline_no' => 'Landline No',
             'email_id' => 'Email ID',
             'property_on_floor' => 'Property On Floor',
-            'unit_block' => 'Unit Block',
-            'unit_number' => 'Unit Number',
+            'unit_block' => 'Unit Block/Phase/Tower',
+            'unit_number' => 'Unit Number/Plot Number',
             'super_area' => 'Super Area',
             'super_unit' => 'Super Unit',
             'carpet_area' => 'Carpet Area',
@@ -146,7 +155,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'type_of_space' => 'Type Of Space',
             'visitor_parking' => 'Visitor Parking',
             'covered_parking' => 'Covered Parking',
-            'asking_lease_rate' => 'Asking Lease Rate',
+            'asking_lease_rate' => 'Asking Lease Rate (PSF)',
             'rate_negotiable' => 'Rate Negotiable',
             'maintenance_charge' => 'Maintenance Charge',
             'security_deposit' => 'Security Deposit',
@@ -154,7 +163,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'lock_in_period' => 'Lock In Period',
             'lock_in_negotiable' => 'Lock In Negotiable',
             'lease_period_restriction' => 'Lease Period Restriction',
-            'max_period_lease' => 'Max Period Lease',
+            'max_period_lease' => 'Max Lease Tenure',
+            'max_period_lease_negotiable' => 'Max Lease Tenure Negotiable',
             'open_rentfree_period' => 'Open Rentfree Period',
             'max_rentfree_period' => 'Max Rentfree Period',
             'Asking_property_price' => 'Asking Property Price',
@@ -162,6 +172,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'property_with_saledeed' => 'Property With Saledeed',
             'property_power_attorney' => 'Property Power Attorney',
             'pan_card' => 'Pan Card',
+            'ID_proof' => 'ID Proof',
             'adhar_card' => 'Adhar Card',
             'property_tax_id' => 'Property Tax ID',
             'completion_in_percentage' => 'Completion In Percentage',
