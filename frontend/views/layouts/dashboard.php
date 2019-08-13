@@ -182,9 +182,8 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 			<div class="col-md-3 col-xs-6">
 				<h4 class="footer_typ">Resources</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">I'm here for</a></li>
-					<li class=""><a href="#" class="list_lnk">Blog</a></li>
-					<li class=""><a href="#" class="list_lnk">FAQ's</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>" class="list_lnk">Blogs</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>" class="list_lnk">FAQ's</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 col-xs-6">
