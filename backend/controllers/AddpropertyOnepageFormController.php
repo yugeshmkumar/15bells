@@ -393,8 +393,8 @@ class AddpropertyOnepageFormController extends Controller
                     $modelnew->property_on_floor = $foto18;
                     $modelnew->unit_block = $foto19;
                     $modelnew->unit_number = $foto20;
-                    $modelnew->buildup_area = $foto21;
-                    $modelnew->buildup_unit = $foto22;
+                    $modelnew->super_area = $foto21;
+                    $modelnew->super_unit = $foto22;
                     $modelnew->carpet_area = $foto23;
                     $modelnew->carpet_unit = $foto24;
                     $modelnew->owner_address = $foto25;

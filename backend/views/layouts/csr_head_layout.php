@@ -30,7 +30,7 @@ $bundle = BackendAsset::register($this);
     <div class="wrapper">
         <!-- header logo: style can be found in header.less -->
         <header class="main-header">
-            <a href="<?php echo Yii::getAlias('@backendUrl') ?>" class="logo">
+            <a href="<?php echo Yii::getAlias('@backendUrl') ?>/csr" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <?php echo Yii::$app->name ?>
             </a>
@@ -135,7 +135,7 @@ $bundle = BackendAsset::register($this);
                     </div>
                     <div class="pull-left info">
                         <p style="margin:4px 0 0 0;"><?php echo Yii::t('backend', 'Hello CSR, {username}', ['username'=>Yii::$app->user->identity->username]) ?>
-                       <br/> <a href="<?php echo Url::to(['/sign-in/profile']) ?>"  style="font-size:10px;">
+                       <br/> <a href="javascript:void(0)"  style="font-size:10px;">
                             <i class="fa fa-circle text-success"></i>
                             <?php echo Yii::$app->formatter->asDatetime(time()) ?>
                         </a>
