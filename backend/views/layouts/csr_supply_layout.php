@@ -43,7 +43,7 @@ $bundle = BackendAsset::register($this);
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li id="timeline-notifications" class="notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
                                 <i class="fa fa-bell"></i>
                                 <span class="label label-primary">
                                     <?php echo \common\models\UserKycdocuments::find()->where('approve_status !=:config',array(':config'=>1))->count() ?>
@@ -72,7 +72,7 @@ $bundle = BackendAsset::register($this);
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li id="log-dropdown" class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
                             <span class="label label-danger">
                                 <?php echo \backend\models\SystemLog::find()->count() ?>
