@@ -29,47 +29,7 @@ return [
 
 
 
-    [
-        'label' => 'Send ',
-        'attribute' => 'id',
-        'filter' => false,
-        'options' => ['style' => 'width:100px;'],
-                        'format' => 'raw',
-        'value' => function($data) {
-
-             return '<div class="btn-group">
-                                        <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
-                                            <span class="fa fa-angle-down"> </span>
-                                        </a><ul class="dropdown-menu pull-right">
-                                        
-                                                                                    
-                                              <li>
-                                              <a onclick="assigncsrhead(' . $data->id . ')">
-                       
-                                                    <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Send to CSR Head
-                                                </a>
-                                        </li>
-                                        
-                                            </ul></div>';
-          }
-    ],
-    [
-        'class' => 'kartik\grid\ActionColumn',
-        'dropdown' => false,
-        'vAlign'=>'middle',
-        'options' => ['style' => 'width:100px;'],
-        'urlCreator' => function($action, $model, $key, $index) { 
-                return Url::to([$action,'id'=>$key]);
-        },
-        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
-        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
-        'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
-                          'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
-                          'data-request-method'=>'post',
-                          'data-toggle'=>'tooltip',
-                          'data-confirm-title'=>'Are you sure?',
-                          'data-confirm-message'=>'Are you sure want to delete this item'], 
-    ],
+    
         // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'id',
@@ -139,10 +99,10 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'latitude',
     // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'builder_name',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'building_name',
+    ],
     // [
     //     'class'=>'\kartik\grid\DataColumn',
     //     'attribute'=>'project_name',
@@ -411,6 +371,48 @@ return [
             return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >Remarks</button>', $url = 'javascript:void(0)', []);
 
           }
+    ],
+
+    [
+        'label' => 'Send ',
+        'attribute' => 'id',
+        'filter' => false,
+        'options' => ['style' => 'width:100px;'],
+                        'format' => 'raw',
+        'value' => function($data) {
+
+             return '<div class="btn-group">
+                                        <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
+                                            <span class="fa fa-angle-down"> </span>
+                                        </a><ul class="dropdown-menu pull-right">
+                                        
+                                                                                    
+                                              <li>
+                                              <a onclick="assigncsrhead(' . $data->id . ')">
+                       
+                                                    <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Send to CSR Head
+                                                </a>
+                                        </li>
+                                        
+                                            </ul></div>';
+          }
+    ],
+    [
+        'class' => 'kartik\grid\ActionColumn',
+        'dropdown' => false,
+        'vAlign'=>'middle',
+        'options' => ['style' => 'width:100px;'],
+        'urlCreator' => function($action, $model, $key, $index) { 
+                return Url::to([$action,'id'=>$key]);
+        },
+        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
+        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
+        'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
+                          'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                          'data-request-method'=>'post',
+                          'data-toggle'=>'tooltip',
+                          'data-confirm-title'=>'Are you sure?',
+                          'data-confirm-message'=>'Are you sure want to delete this item'], 
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',

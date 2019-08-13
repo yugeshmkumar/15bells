@@ -107,7 +107,7 @@ label{
                 <?php $form = ActiveForm::begin(); ?>
             
             <div class="col-md-3">
-                    <?= $form->field($model, 'property_for')->dropDownList(['rent' => 'Rent', 'sale' => 'Sale',], ['class' => 'form-control count'])->label('Select property for') ?>
+                    <?= $form->field($model, 'property_for')->dropDownList(['rent' => 'Rent', 'sale' => 'Sale', 'both' => 'Both'], ['class' => 'form-control count'])->label('Select property for') ?>
                 </div>
                 
                 <?= $form->field($model, 'completion_in_percentage')->hiddenInput()->label(false) ?>
@@ -138,11 +138,9 @@ label{
                 
                 
                 <div class="col-md-3">
-                     <?= $form->field($model, 'builder_name')->textInput(['maxlength' => true]) ?>
+                     <?= $form->field($model, 'building_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
-                <div class="col-md-3">
-                      <?= $form->field($model, 'project_name')->textInput(['maxlength' => true]) ?>
-                </div>
+                
                 <div class="col-md-3">
                     <?=
                             $form->field($model, 'property_type_id')->dropDownList(ArrayHelper::map(PropertyType::find()->where(['undercategory' => "Commercial", 'isactive' => 1])->all(), 'id', 'typename'), [
@@ -164,10 +162,7 @@ label{
 
                 <?= $form->field($model, 'secondary_contact_no')->textInput(['class' => 'form-control'])?>
                 </div>
-                <div class="col-md-3">
-
-                <?= $form->field($model, 'landline_no')->textInput(['maxlength' => true]) ?>
-                </div>
+               
                 <div class="col-md-3">
                 <?= $form->field($model, 'email_id')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
@@ -191,7 +186,7 @@ label{
                 <?= $form->field($model, 'carpet_area')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'carpet_unit')->dropDownList(['sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['class' => 'form-control count'])->label('Select Unit') ?>
+                <?= $form->field($model, 'efficiency')->textInput(['class' => 'form-control count'])?>
 
                 </div>
                 <div class="col-md-3">
@@ -203,27 +198,28 @@ label{
                 <?= $form->field($model, 'total_no_of_floors')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
+                <?= $form->field($model, 'passenger_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
-                <?= $form->field($model, 'passenger_lift')->textInput(['class' => 'form-control'])?>
+                </div>
+                <div class="col-md-3">
+                <?= $form->field($model, 'service_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+
+                </div>
+                
+                <div class="col-md-3">
+                <?= $form->field($model, 'backup_power')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+
                 </div>
                 <div class="col-md-3">
 
-                <?= $form->field($model, 'service_lift')->textInput(['class' => 'form-control'])?>
+               <?= $form->field($model, 'building_security')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+
                 </div>
                 <div class="col-md-3">
 
-                <?= $form->field($model, 'ceiling_height')->textInput(['class' => 'form-control count'])?>
-                </div>
-                <div class="col-md-3">
 
-                <?= $form->field($model, 'backup_power')->textInput(['class' => 'form-control'])?>
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'building_security')->textInput(['class' => 'form-control'])?>
-                </div>
-                <div class="col-md-3">
+                <?= $form->field($model, 'maintenance_agency')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
-                <?= $form->field($model, 'maintenance_agency')->textInput(['class' => 'form-control'])?>
                 </div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'floor_plate_area')->textInput(['class' => 'form-control'])?>
@@ -231,19 +227,22 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'type_of_space')->dropDownList(['furnished' => 'Furnished', 'semi_furnished' => 'Semi furnished', 'bareshell' => 'Bareshell',], ['prompt' => 'Select Furnishing', 'class' => 'form-control count'])->label('Select furnishing Status') ?>
                 </div>
-                <div class="col-md-3">
-
-                <?= $form->field($model, 'visitor_parking')->textInput(['class' => 'form-control'])?>
-                </div>
+                
                 <div class="col-md-3">
 
                 <?= $form->field($model, 'covered_parking')->textInput(['class' => 'form-control'])?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" id="askingleaserate">
 
                 <?= $form->field($model, 'asking_lease_rate')->textInput(['class' => 'form-control count'])?>
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-3" id="totalleaserate">
+
+                <?= $form->field($model, 'total_lease_rate')->textInput(['class' => 'form-control count']) ?>
+
+                </div>
+                <div class="col-md-3" id="ratenegotiable">
                 <?= $form->field($model, 'rate_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])->label('Rate Negotiable') ?>
                 </div>
                 <div class="col-md-3">
@@ -259,42 +258,53 @@ label{
                 <?= $form->field($model, 'lock_in_period')->textInput(['class' => 'form-control'])?>
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'lock_in_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])->label('Rate Negotiable') ?>
+                <?= $form->field($model, 'lock_in_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
                 </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'lease_period_restriction')->textInput(['class' => 'form-control'])?>
+
+                 <div class="col-md-3">
+                <?= $form->field($model, 'max_period_lease')->dropDownList([ '3' => '3', '6' => '6','9'=>'9'], [ 'class' => 'one_inpt form-control count'])?>
                 </div>
+
                 <div class="col-md-3">
-                <?= $form->field($model, 'max_period_lease')->textInput(['class' => 'form-control count'])?>
+                <?= $form->field($model, 'max_period_lease_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control count'])?>
                 </div>
+               
                 <div class="col-md-3">
                 <?= $form->field($model, 'open_rentfree_period')->textInput(['class' => 'form-control'])?>
                 </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'max_rentfree_period')->textInput(['class' => 'form-control'])?>
-                </div>
-                <div class="col-md-3">
+                
+                <div class="col-md-3" id="askingpropertyprice" style="display:none;">
                 <?= $form->field($model, 'Asking_property_price')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'price_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])->label('Rate Negotiable') ?>
 
                 </div>
-                <div class="col-md-3">
+
+                 <div class="col-md-3">
+                <?= $form->field($model, 'ownership_title')->dropDownList([ 'property_with_saledeed' => 'Property with saledeed', 'property_power_attorney' => 'Property power attorney',], [ 'prompt'=>'Select Ownership Title','class' => 'one_inpt form-control'])->label('Ownership Title') ?>
+
+                </div>
+                <div class="col-md-3" style="display:none">
                 <?= $form->field($model, 'property_with_saledeed')->textInput(['class' => 'form-control'])?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" style="display:none">
                 <?= $form->field($model, 'property_power_attorney')->textInput(['class' => 'form-control'])?>
                 </div>
+
                 <div class="col-md-3">
-                <?= $form->field($model, 'pan_card')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'ID_proof')->dropDownList([ 'pan_card' => 'Pan card', 'adhar_card' => 'Adhar card','property_tax_id'=>'Property tax id'], ['prompt'=>'Select ID Proof' ,'class' => 'one_inpt form-control'])?>
+
                 </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'adhar_card')->textInput(['maxlength' => true]) ?>
+                <div class="col-md-3" id="pancard" style="display:none">
+                <?= $form->field($model, 'pan_card')->textInput(['maxlength' => true])->label('ID Number') ?>
                 </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'property_tax_id')->textInput(['maxlength' => true]) ?>
+                <div class="col-md-3" id="adharcard" style="display:none">
+                <?= $form->field($model, 'adhar_card')->textInput(['maxlength' => true])->label('ID Number') ?>
+                </div>
+                <div class="col-md-3" id="propertytaxid" style="display:none">
+                <?= $form->field($model, 'property_tax_id')->textInput(['maxlength' => true])->label('ID Number') ?>
                 </div>
 
                  <div class="col-md-3">
@@ -313,6 +323,157 @@ label{
                 
 </div>
 <script>
+
+
+
+
+
+$('#addpropertyonepageform-unit_number,#addpropertyonepageform-unit_block').blur(function(){
+
+  var address =  $('#addpropertyonepageform-address').val();
+  var unitnumber = $(this).val();
+
+  $('#addpropertyonepageform-address').val(address +' '+unitnumber);
+
+});
+
+
+$('#addpropertyonepageform-property_on_floor').blur(function(){
+
+var address =  $('#addpropertyonepageform-address').val();
+var floors = $(this).val();
+
+$('#addpropertyonepageform-address').val(address +' '+floors+' floor');
+
+});
+
+
+$('#addpropertyonepageform-efficiency').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var efficiency = $(this).val();
+
+if(super_area != '' && efficiency != ''){
+
+var carpet_area  =  Math.round(efficiency/100 * super_area);
+$('#addpropertyonepageform-carpet_area').val(carpet_area);
+}
+
+});
+
+
+$('#addpropertyonepageform-carpet_area').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var carpet_area = $(this).val();
+
+if(super_area != '' && carpet_area != ''){
+  
+var efficiency  =  carpet_area/super_area;
+var efficiencypercent = Math.round(efficiency*100);  
+$('#addpropertyonepageform-efficiency').val(efficiencypercent);
+}
+
+});
+
+$('#addpropertyonepageform-asking_lease_rate').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var asking_lease_rate = $(this).val();
+
+if(super_area != '' && asking_lease_rate != ''){
+  
+var totalarea  =  super_area * asking_lease_rate;
+var efficiencypercent = Math.round(totalarea);  
+$('#addpropertyonepageform-total_lease_rate').val(efficiencypercent);
+}
+
+});
+
+
+$('#addpropertyonepageform-total_lease_rate').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var total_lease_rate = $(this).val();
+
+if(super_area != '' && total_lease_rate != ''){
+  
+var asking_lease_rate  =  total_lease_rate/super_area;
+var efficiencypercent = Math.round(asking_lease_rate);  
+$('#addpropertyonepageform-asking_lease_rate').val(efficiencypercent);
+}
+
+});
+
+$('#addpropertyonepageform-property_for').change(function(){
+
+       var propertyfor =  $(this).val();
+       if(propertyfor == 'sale'){
+
+         $('#askingleaserate').hide();
+         $('#totalleaserate').hide();
+         $('#ratenegotiable').hide();
+
+         $('#askingpropertyprice').show();
+        
+
+       }else if(propertyfor == 'rent'){
+        $('#askingleaserate').show();
+         $('#totalleaserate').show();
+         $('#ratenegotiable').show();
+
+         $('#askingpropertyprice').hide();
+       }else{}
+});
+
+
+$('#addpropertyonepageform-ownership_title').change(function(){
+
+var ownership_title =  $(this).val();
+
+
+if(ownership_title == 'property_with_saledeed'){
+
+  $('#addpropertyonepageform-property_with_saledeed').val('yes');
+
+}else if(ownership_title == 'property_power_attorney'){
+
+$('#addpropertyonepageform-property_power_attorney').val('yes');
+}else{
+
+}
+
+//alert($('#addpropertyonepageform-property_with_saledeed').val());
+
+});
+
+
+$('#addpropertyonepageform-id_proof').change(function(){
+
+var id_proof =  $(this).val();
+
+if(id_proof=='pan_card'){
+
+  $('#pancard').show();
+  $('#adharcard').hide();
+  $('#propertytaxid').hide();
+
+}else if(id_proof=='adhar_card'){
+
+   $('#pancard').hide();
+  $('#adharcard').show();
+  $('#propertytaxid').hide();
+
+}else{
+  $('#pancard').hide();
+  $('#adharcard').hide();
+  $('#propertytaxid').show();
+}
+
+});
+
+
+
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
@@ -410,13 +571,24 @@ itemLocality = address_component.long_name;
 
 $('#addpropertyonepageform-city').val(itemLocality);
 $('#addpropertyonepageform-town_name').val(itemLocality);
+var addressed =  $('#addpropertyonepageform-address').val();
+$('#addpropertyonepageform-address').val(addressed +' ' +itemLocality);
+
+
+
 }
 if (address_component.types[0] == "sublocality_level_1"){
 // console.log("province:"+address_component.long_name);
 itemSectorf = address_component.long_name;
 $('#addpropertyonepageform-sector_name').val(itemSectorf);
+var addressed =  $('#addpropertyonepageform-address').val();
+$('#addpropertyonepageform-address').val(addressed +' ' +itemSectorf);
+
+
 
 }
+
+
 
 if (address_component.types[0] == "country"){ 
 //console.log("country:"+address_component.long_name); 
