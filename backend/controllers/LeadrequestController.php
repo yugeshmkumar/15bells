@@ -19,6 +19,40 @@ class LeadrequestController extends Controller {
 
     public $layout = "csr_layout";
 
+
+    public function __construct($id, $module, $config = array()) {
+        parent::__construct($id, $module, $config);
+        $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
+    
+        if($assigndash->item_name == "sales_demand_lessee"){
+		
+		$this->layout="sales_supply_layout";
+		
+	}if($assigndash->item_name == "sales_head"){
+		
+		$this->layout="sales_layout";
+		
+	}if($assigndash->item_name == "sales_demand_buyer"){
+		
+		$this->layout="sales_demand_layout";		
+	}
+if($assigndash->item_name == "sales_supply_seller"){
+		
+		$this->layout="sales_buying_layout";		
+	}
+if($assigndash->item_name == "sales_supply_lessor"){
+		
+		$this->layout="sales_leasing_layout";		
+    }
+    if($assigndash->item_name == "csr_supply"){
+		
+		$this->layout="csr_supply_layout";		
+	}else{
+
+        $this->layout="csr_head_layout";
+    }
+}
+
     public function behaviors() {
         return [
             'verbs' => [
