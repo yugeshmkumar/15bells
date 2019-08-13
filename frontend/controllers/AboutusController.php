@@ -12,4 +12,17 @@ class AboutusController extends \yii\web\Controller
 
     }
 
+
+
+
+    public function actionDetails()
+
+    {
+        $this->layout = "homeLayout";
+        return $this->render('aboutdetails');
+
+    }
+
+    
+
 }
