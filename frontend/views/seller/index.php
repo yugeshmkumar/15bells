@@ -437,7 +437,7 @@ $user_id= Yii::$app->user->identity->id;
                     <input type="hidden" value="" id="tenures" name="tenures">
                     <input type="hidden" value="" id="rent_free" name="rent_free">
 
-							<div class="row interior_det">
+							<div class="row interior_det left_flow property_interior">
 								<h3 class="flow_heading">Please share the interior details of property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-8 date_select">
@@ -449,7 +449,7 @@ $user_id= Yii::$app->user->identity->id;
 								
 							</div>
 							<div class="col-md-12 seperator_div"></div>
-							<div class="row near_by">
+							<div class="row near_by left_flow">
 								<h1 class="more_detail">Nearby Places</h1>
 								<p class="brand_txt no_pad">Please help us understanding the nearby places around property?</p>
 								<h3 class="flow_heading">Commuting options around the property?</h3>
@@ -496,7 +496,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-							<div class="row">
+							<div class="row left_flow">
 								<h1 class="more_detail">Amenities</h1>
 								<p class="brand_txt no_pad">Please help us understanding the amenities that buyers/lessee can expect?</p>
                                 <p class="amenities">Click on the icons to select Amenities</p>
@@ -530,7 +530,7 @@ $user_id= Yii::$app->user->identity->id;
 				           <input type="hidden" name="amenityies" id="amenities_array">
 
 
-                    <?= Html::submitButton('Save Property', ['class' => 'btn btn-primary save_buttn active_butn']) ?>
+                    <?= Html::submitButton('Save Property', ['class' => 'btn btn-primary save_buttn active_butn left_flow']) ?>
 
 
 						</div>
@@ -1457,7 +1457,7 @@ $('.loantakens').click(function(){
 });
 $('.propfacing').click(function(){
     $('html,body').animate({
-        scrollTop: $(".interior_det").offset().top - 100},
+        scrollTop: $(".property_interior").offset().top - 100},
         'slow'); 
 });
 

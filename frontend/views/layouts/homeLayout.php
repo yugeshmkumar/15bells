@@ -132,8 +132,8 @@ NewDesignAsset::register($this);
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
-							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Insights</a></li>
-							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>">Industries</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Blogs</a></li>
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['aboutus']) ?>">About Us</a></li>
 
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
 							
@@ -163,15 +163,21 @@ NewDesignAsset::register($this);
 	<div class="container">
 		<div class="row">
 			<p class="copy_rt">2019 © 15 Bells </p>
-			
-			<div class="col-md-4 col-xs-6">
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Resources</h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>" class="list_lnk">Blogs</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>" class="list_lnk">FAQ's</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-xs-6">
 				<h4 class="footer_typ">Privacy</h4>
 				<ul class="fotter_lst">
 					<li class=""><a href="#" class="list_lnk">Terms and Conditions</a></li>
 					<li class=""><a href="#" class="list_lnk">Privacy Policy</a></li>
 				</ul>
 			</div>
-			<div class="col-md-4 col-xs-6">
+			<div class="col-md-3 col-xs-6">
 				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
@@ -180,8 +186,8 @@ NewDesignAsset::register($this);
 				</ul>
 				</div>
 			</div>
-			<div class="col-md-4 col-xs-6">
-			<h4 class="footer_typ">Follow us</h4>
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Follow us</h4>
 					<p class=""><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
 					<span><a href="#"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span>
 				<div classs="row">

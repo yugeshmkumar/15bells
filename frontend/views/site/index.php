@@ -74,7 +74,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 	</section>
 
 <!--Transaction types Section-->
-<div class="container-fluid no_pad transac_banner">
+<div class="container-fluid transac_banner">
 	<div class="container">
 		<h2 class="trans_head">Real Estate made Easy with <br>Commercial Property Auction</h2>
 
@@ -102,7 +102,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 	</div>
 </div>
 
-<div class="container-fluid no_pad step_banner">
+<div class="container-fluid step_banner">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 no_pad">

@@ -28,6 +28,20 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 <link rel="shortcut icon" href="../favicon.ico" />
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120052176-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120052176-1');
+</script>
+
+
+
 </head>
 <?php echo Html::beginTag('body', [
     

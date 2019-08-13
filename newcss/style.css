@@ -99,7 +99,7 @@ a{text-decoration:none !important;}
 
 .header_bg{
 	padding:0; 
-	height:110vh;
+	height:100vh;
 }
 .sign_p{
 	    border: 1px solid #ffffff;
@@ -888,12 +888,12 @@ div.mm-dropdown ul li img {
 .dot_div{
 	position: absolute;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     top: 0;
 }
 .dot_line{
 	border-left:1px solid #ffffff26;
-	height:110vh;
+	height:100vh;
 }
 .rt_brdr{
 	border-right:1px solid #ffffff38;
@@ -1030,7 +1030,7 @@ div.mm-dropdown ul li img {
     position: absolute;
     padding: 20px;
     right: 0;
-    bottom: -10%;
+    bottom: 0%;
 	}
 .carousel_blog{
 	z-index:-1;
@@ -3908,3 +3908,6 @@ color: #c4984f;
 	padding:0 7px !important;
 }
 
+.left_flow{
+	float:left;
+}
