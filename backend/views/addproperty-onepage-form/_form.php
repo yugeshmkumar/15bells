@@ -111,6 +111,15 @@ label{
             <div class="col-md-3">
                     <?= $form->field($model, 'property_for')->dropDownList(['rent' => 'Rent', 'sale' => 'Sale', 'both' => 'Both'], ['class' => 'form-control count'])->label('Select property for') ?>
                 </div>
+                <div class="col-md-3">
+                <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+                </div>
+                <div class="col-md-3">
+                <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
+                </div>
+                <div class="col-md-3">
+                     <?= $form->field($model, 'building_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+                </div>
                 
                 <?= $form->field($model, 'completion_in_percentage')->hiddenInput()->label(false) ?>
                 
@@ -118,31 +127,21 @@ label{
                      <?= $form->field($model, 'locality')->textInput(['class' => 'form-control count','maxlength' => true])?>
                 </div>
                 <div class="col-md-3">
+                <?= $form->field($model, 'sector_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+                </div>
+                <div class="col-md-3">
                 <?= $form->field($model, 'city')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
 
                 </div>
                 
                 
-                <div class="col-md-3">
-                <?= $form->field($model, 'sector_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
+               
                 <div class="col-md-3">
                      <?= $form->field($model, 'latitude')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
                      <?= $form->field($model, 'longitude')->textInput(['class' => 'form-control count'])?>
                 </div>
-               
-                
-                <div class="col-md-3">
-                     <?= $form->field($model, 'address')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
-                
-                
-                <div class="col-md-3">
-                     <?= $form->field($model, 'building_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
-                
                 <div class="col-md-3">
                     <?=
                             $form->field($model, 'property_type_id')->dropDownList(ArrayHelper::map(PropertyType::find()->where(['undercategory' => "Commercial", 'isactive' => 1])->all(), 'id', 'typename'), [
@@ -155,28 +154,10 @@ label{
                 
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
-                </div>
-                <div class="col-md-3">
-
-                <?= $form->field($model, 'secondary_contact_no')->textInput(['class' => 'form-control'])?>
-                </div>
-               
-                <div class="col-md-3">
-                <?= $form->field($model, 'email_id')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
-                <div class="col-md-3">
-
-                <?= $form->field($model, 'property_on_floor')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+                        <?= $form->field($model, 'unit_number')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
                      <?= $form->field($model, 'unit_block')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-                </div>
-                <div class="col-md-3">
-                        <?= $form->field($model, 'unit_number')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
                     <?= $form->field($model, 'super_area')->textInput(['class' => 'form-control count'])?>
@@ -185,36 +166,49 @@ label{
                     <?= $form->field($model, 'super_unit')->dropDownList(['sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['class' => 'form-control count'])->label('Select Unit') ?>
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'carpet_area')->textInput(['class' => 'form-control count'])?>
+
+                <?= $form->field($model, 'property_on_floor')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'efficiency')->textInput(['class' => 'form-control count'])?>
 
                 </div>
                 <div class="col-md-3">
-
-                <?= $form->field($model, 'owner_address')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'carpet_area')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
-
-                <?= $form->field($model, 'total_no_of_floors')->textInput(['class' => 'form-control count'])?>
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'passenger_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
-
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'service_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
-
+                     <?= $form->field($model, 'address')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
                 
                 <div class="col-md-3">
-                <?= $form->field($model, 'backup_power')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+                <?= $form->field($model, 'type_of_space')->dropDownList(['furnished' => 'Furnished', 'semi_furnished' => 'Semi furnished', 'bareshell' => 'Bareshell',], ['prompt' => 'Select Furnishing', 'class' => 'form-control count'])->label('Select furnishing Status') ?>
+                </div>
+                
+                <div class="col-md-3" id="askingleaserate">
 
+                  <?= $form->field($model, 'asking_lease_rate')->textInput(['class' => 'form-control count'])?>
+                  </div>
+
+                  <div class="col-md-3" id="totalleaserate">
+
+                  <?= $form->field($model, 'total_lease_rate')->textInput(['class' => 'form-control count']) ?>
+
+                  </div>
+                  <div class="col-md-3" id="ratenegotiable">
+                  <?= $form->field($model, 'rate_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])->label('Rate Negotiable') ?>
+                  </div>
+                  <div class="col-md-3">
+                  <?= $form->field($model, 'maintenance_charge')->textInput(['class' => 'form-control count'])?>
+                  </div>
+                  <div class="col-md-3">
+
+                    <?= $form->field($model, 'total_no_of_floors')->textInput(['class' => 'form-control count'])?>
+                    </div>
+                    <div class="col-md-3">
+                <?= $form->field($model, 'floor_plate_area')->textInput(['class' => 'form-control'])?>
                 </div>
                 <div class="col-md-3">
-
-               <?= $form->field($model, 'building_security')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+                <?= $form->field($model, 'passenger_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
                 </div>
                 <div class="col-md-3">
@@ -224,31 +218,9 @@ label{
 
                 </div>
                 <div class="col-md-3">
-                <?= $form->field($model, 'floor_plate_area')->textInput(['class' => 'form-control'])?>
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'type_of_space')->dropDownList(['furnished' => 'Furnished', 'semi_furnished' => 'Semi furnished', 'bareshell' => 'Bareshell',], ['prompt' => 'Select Furnishing', 'class' => 'form-control count'])->label('Select furnishing Status') ?>
-                </div>
-                
-                <div class="col-md-3">
 
-                <?= $form->field($model, 'covered_parking')->textInput(['class' => 'form-control'])?>
-                </div>
-                <div class="col-md-3" id="askingleaserate">
+               <?= $form->field($model, 'building_security')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
-                <?= $form->field($model, 'asking_lease_rate')->textInput(['class' => 'form-control count'])?>
-                </div>
-
-                <div class="col-md-3" id="totalleaserate">
-
-                <?= $form->field($model, 'total_lease_rate')->textInput(['class' => 'form-control count']) ?>
-
-                </div>
-                <div class="col-md-3" id="ratenegotiable">
-                <?= $form->field($model, 'rate_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])->label('Rate Negotiable') ?>
-                </div>
-                <div class="col-md-3">
-                <?= $form->field($model, 'maintenance_charge')->textInput(['class' => 'form-control count'])?>
                 </div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'security_deposit')->textInput(['class' => 'form-control'])?>
@@ -256,25 +228,59 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'security_negotiable')->textInput(['class' => 'form-control'])?>
                 </div>
+               
+                
+             
+               
+               
+               
+               
+               
                 <div class="col-md-3">
-                <?= $form->field($model, 'lock_in_period')->textInput(['class' => 'form-control'])?>
+
+                <?= $form->field($model, 'owner_address')->textInput(['maxlength' => true]) ?>
                 </div>
+                
+               
+                <!--<div class="col-md-3">
+                <?//= $form->field($model, 'service_lift')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+
+                </div>-->
+                
                 <div class="col-md-3">
-                <?= $form->field($model, 'lock_in_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+                <?= $form->field($model, 'backup_power')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
 
                 </div>
+                
+                
+               
+                
+                
+                <div class="col-md-3">
 
-                 <div class="col-md-3">
-                <?= $form->field($model, 'max_period_lease')->dropDownList([ '3' => '3', '6' => '6','9'=>'9'], [ 'class' => 'one_inpt form-control count'])?>
+                <?= $form->field($model, 'covered_parking')->textInput(['class' => 'form-control'])?>
+                </div>
+                
+                
+               <!-- <div class="col-md-3">
+                <?//= $form->field($model, 'lock_in_period')->textInput(['class' => 'form-control'])?>
+                </div>
+                <div class="col-md-3">
+                <?//= $form->field($model, 'lock_in_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+
+                </div>-->
+
+               <!--  <div class="col-md-3">
+                <?//= $form->field($model, 'max_period_lease')->dropDownList([ '3' => '3', '6' => '6','9'=>'9'], [ 'class' => 'one_inpt form-control count'])?>
                 </div>
 
                 <div class="col-md-3">
-                <?= $form->field($model, 'max_period_lease_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control count'])?>
+                <?//= $form->field($model, 'max_period_lease_negotiable')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control count'])?>
                 </div>
                
                 <div class="col-md-3">
-                <?= $form->field($model, 'open_rentfree_period')->textInput(['class' => 'form-control'])?>
-                </div>
+                <?//= $form->field($model, 'open_rentfree_period')->textInput(['class' => 'form-control'])?>
+                </div>-->
                 
                 <div class="col-md-3" id="askingpropertyprice" style="display:none;">
                 <?= $form->field($model, 'Asking_property_price')->textInput(['class' => 'form-control count'])?>
@@ -294,7 +300,14 @@ label{
                 <div class="col-md-3" style="display:none">
                 <?= $form->field($model, 'property_power_attorney')->textInput(['class' => 'form-control'])?>
                 </div>
+                <div class="col-md-3">
 
+<?= $form->field($model, 'secondary_contact_no')->textInput(['class' => 'form-control'])?>
+</div>
+
+<div class="col-md-3">
+<?= $form->field($model, 'email_id')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+</div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'ID_proof')->dropDownList([ 'pan_card' => 'Pan card', 'adhar_card' => 'Adhar card','property_tax_id'=>'Property tax id'], ['prompt'=>'Select ID Proof' ,'class' => 'one_inpt form-control'])?>
 
@@ -313,7 +326,7 @@ label{
                 <?= $form->field($model, 'town_name')->hiddenInput(['class' => 'form-control','maxlength' => true])->label(false) ?>
                 </div>
                
-
+            
             
                 <?php if (!Yii::$app->request->isAjax){ ?>
                     <div class="form-group">
