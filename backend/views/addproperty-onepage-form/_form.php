@@ -8,6 +8,8 @@ use common\models\PropertyType;
 /* @var $model backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
+
 <style>
 .modal-dialog {
     width:80%;
@@ -322,6 +324,23 @@ label{
                 <?php ActiveForm::end(); ?>
                 
 </div>
+
+
+
+
+<?php
+$script = <<< JS
+
+
+initMap();
+
+
+
+JS;
+$this->registerJs($script);
+?> 
+
+
 <script>
 
 
@@ -608,10 +627,10 @@ itemSnumber = address_component.long_name;
 //return false; // break the loop 
 });
 
-          infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-address'].textContent = address;
-          infowindow.open(map, marker);
+         // infowindowContent.children['place-icon'].src = place.icon;
+         // infowindowContent.children['place-name'].textContent = place.name;
+         // infowindowContent.children['place-address'].textContent = address;
+         // infowindow.open(map, marker);
         });
 
         // Sets a listener on a radio button to change the filter type on Places
@@ -623,20 +642,21 @@ itemSnumber = address_component.long_name;
           });
         }
 
-        setupClickListener('changetype-all', []);
-        setupClickListener('changetype-address', ['address']);
-        setupClickListener('changetype-establishment', ['establishment']);
-        setupClickListener('changetype-geocode', ['geocode']);
+       // setupClickListener('changetype-all', []);
+       // setupClickListener('changetype-address', ['address']);
+       // setupClickListener('changetype-establishment', ['establishment']);
+        //setupClickListener('changetype-geocode', ['geocode']);
 
-        document.getElementById('use-strict-bounds')
-            .addEventListener('click', function() {
-              console.log('Checkbox clicked! New state=' + this.checked);
-              autocomplete.setOptions({strictBounds: this.checked});
-            });
+        // document.getElementById('use-strict-bounds')
+        //     .addEventListener('click', function() {
+        //       console.log('Checkbox clicked! New state=' + this.checked);
+        //       autocomplete.setOptions({strictBounds: this.checked});
+        //     });
       }
+
+
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places&callback=initMap"
-        async defer></script>
+   
 
 <script>
 
