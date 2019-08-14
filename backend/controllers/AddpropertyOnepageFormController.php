@@ -770,10 +770,13 @@ class AddpropertyOnepageFormController extends Controller
     public function actionBulkDelete()
     {        
         $request = Yii::$app->request;
+//echo $request->post( 'pks' );die;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
             $model = $this->findModel($pk);
-            $model->delete();
+            $clone = new AddpropertyOnepageForm;
+            $clone->attributes = $model->attributes;
+            $clone->save();
         }
 
         if($request->isAjax){

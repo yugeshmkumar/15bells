@@ -455,7 +455,13 @@ $('#addpropertyonepageform-property_for').change(function(){
          $('#ratenegotiable').show();
 
          $('#askingpropertyprice').hide();
-       }else{}
+       }else{
+        $('#askingleaserate').show();
+         $('#totalleaserate').show();
+         $('#ratenegotiable').show();
+
+         $('#askingpropertyprice').show();
+       }
 });
 
 
