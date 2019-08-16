@@ -102,7 +102,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
             [['followup_date_time', 'created_date'], 'safe'],
-            [['city', 'property_on_floor', 'unit_block', 'unit_number'], 'string', 'max' => 20],
+            [['city', 'property_on_floor', 'unit_block','property_for', 'unit_number'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
             [['landline_no', 'email_id'], 'string', 'max' => 30],
