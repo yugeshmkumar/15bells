@@ -346,6 +346,43 @@ $script = <<< JS
 
 
 initMap();
+var propertyfor = $('#addpropertyonepageform-property_for').val();
+
+if(propertyfor == 'sale'){
+
+$('#askingleaserate').hide();
+$('#totalleaserate').hide();
+$('#ratenegotiable').hide();
+
+$('#askingpropertyprice').show();
+
+
+}else if(propertyfor == 'rent'){
+$('#askingleaserate').show();
+$('#totalleaserate').show();
+$('#ratenegotiable').show();
+
+$('#askingpropertyprice').hide();
+}else{
+$('#askingleaserate').show();
+$('#totalleaserate').show();
+$('#ratenegotiable').show();
+
+$('#askingpropertyprice').show();
+}
+
+
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var carpet_area = $('#addpropertyonepageform-carpet_area').val();
+
+if(super_area != '' && carpet_area != ''){
+  
+var efficiency  =  carpet_area/super_area;
+var efficiencypercent = Math.round(efficiency*100);  
+$('#addpropertyonepageform-efficiency').val(efficiencypercent);
+}
+
 
 
 
