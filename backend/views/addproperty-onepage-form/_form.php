@@ -300,12 +300,12 @@ label{
                 </div>
                 <div class="col-md-3">
 
-<?= $form->field($model, 'secondary_contact_no')->textInput(['class' => 'form-control'])?>
-</div>
+                <?= $form->field($model, 'secondary_contact_no')->textInput(['class' => 'form-control'])?>
+                </div>
 
-<div class="col-md-3">
-<?= $form->field($model, 'email_id')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
-</div>
+                <div class="col-md-3">
+                <?= $form->field($model, 'email_id')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
+                </div>
                 <div class="col-md-3">
                 <?= $form->field($model, 'ID_proof')->dropDownList([ 'pan_card' => 'Pan card', 'adhar_card' => 'Adhar card','property_tax_id'=>'Property tax id'], ['prompt'=>'Select ID Proof' ,'class' => 'one_inpt form-control'])?>
 
