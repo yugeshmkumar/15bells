@@ -28,7 +28,7 @@ $bundle = BackendAsset::register($this);
 .notif_dropdown{
     width:310px !important;
 }
-.notif_dropdown li a{
+.notif_dropdown .notif_list{
     padding: 20px 10px !important;
     background: #e0d6d7 ;
 }
@@ -100,7 +100,7 @@ $bundle = BackendAsset::register($this);
                                 ->andwhere(['=','company_employee_id',$assigned_id])
                                 ->andwhere(['=','is_seen',0])->all() as $newEntry): ?>
                                             <li>
-                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>" onclick="changecolour(<?php echo $newEntry->id; ?>)" target="_blank">
+                                                <a class="notif_list" href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>" onclick="changecolour(<?php echo $newEntry->id; ?>)" target="_blank">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     <?php
 
