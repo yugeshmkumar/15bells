@@ -98,9 +98,9 @@ $bundle = BackendAsset::register($this);
                                 ->where(['>=','followup_date_time',$convertedTime])
                                 ->andwhere(['=','DATE(followup_date_time)',$todaysDate])
                                 ->andwhere(['=','company_employee_id',$assigned_id])
-                                ->andwhere(['=','is_seen',0])->all() as $newEntry): ?>
+                                ->all() as $newEntry): ?>
                                             <li>
-                                                <a class="notif_list" href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>" onclick="changecolour(<?php echo $newEntry->id; ?>)" target="_blank">
+                                                <a class="<?php echo  ($newEntry->is_seen==0? 'notif_list':'') ?>" href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>" onclick="changecolour(<?php echo $newEntry->id; ?>)" target="_blank">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     <?php
 
@@ -122,7 +122,7 @@ $bundle = BackendAsset::register($this);
                                 </li>
                                 <li class="footer">
 								
-                                    <?php echo Html::a(Yii::t('backend', 'View all'), ['/user-kycdocuments/index']) ?>
+                                    <?php echo Html::a(Yii::t('backend', 'View all'), ['/addproperty-onepage-form/csrallfollowups']) ?>
                                 </li>
                             </ul>
                         </li>
@@ -303,7 +303,7 @@ function changecolour(id){
 
 $.ajax({
               type: "POST",
-              url: "/addproperty-onepage-form/changecolour",
+              url: "/backend/web/addproperty-onepage-form/changecolour",
               data: {id: id},	                
               cache: false,
               success: function (data)

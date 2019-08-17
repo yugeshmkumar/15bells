@@ -83,6 +83,20 @@ class AddpropertyOnepageFormController extends Controller
 
     }
 
+    public function actionCsrallfollowups()
+    { 
+
+        
+        $searchModel = new AddpropertyOnepageFormSearch();
+        $dataProviders = $searchModel->searchcsrallfollowups(Yii::$app->request->queryParams);
+
+        return $this->render('csrphoneindex', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProviders,
+        ]);
+
+    }
+
     public function actionCsrhead()
     { 
 
