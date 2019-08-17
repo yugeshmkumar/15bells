@@ -8,6 +8,8 @@ use common\models\PropertyType;
 /* @var $model backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
+
 <style>
 .modal-dialog {
     width:80%;
@@ -335,6 +337,60 @@ label{
                 <?php ActiveForm::end(); ?>
                 
 </div>
+
+
+
+
+<?php
+$script = <<< JS
+
+
+initMap();
+var propertyfor = $('#addpropertyonepageform-property_for').val();
+
+if(propertyfor == 'sale'){
+
+$('#askingleaserate').hide();
+$('#totalleaserate').hide();
+$('#ratenegotiable').hide();
+
+$('#askingpropertyprice').show();
+
+
+}else if(propertyfor == 'rent'){
+$('#askingleaserate').show();
+$('#totalleaserate').show();
+$('#ratenegotiable').show();
+
+$('#askingpropertyprice').hide();
+}else{
+$('#askingleaserate').show();
+$('#totalleaserate').show();
+$('#ratenegotiable').show();
+
+$('#askingpropertyprice').show();
+}
+
+
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var carpet_area = $('#addpropertyonepageform-carpet_area').val();
+
+if(super_area != '' && carpet_area != ''){
+  
+var efficiency  =  carpet_area/super_area;
+var efficiencypercent = Math.round(efficiency*100);  
+$('#addpropertyonepageform-efficiency').val(efficiencypercent);
+}
+
+
+
+
+JS;
+$this->registerJs($script);
+?> 
+
+
 <script>
 
 
@@ -436,7 +492,13 @@ $('#addpropertyonepageform-property_for').change(function(){
          $('#ratenegotiable').show();
 
          $('#askingpropertyprice').hide();
-       }else{}
+       }else{
+        $('#askingleaserate').show();
+         $('#totalleaserate').show();
+         $('#ratenegotiable').show();
+
+         $('#askingpropertyprice').show();
+       }
 });
 
 
@@ -621,10 +683,10 @@ itemSnumber = address_component.long_name;
 //return false; // break the loop 
 });
 
-          infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-address'].textContent = address;
-          infowindow.open(map, marker);
+         // infowindowContent.children['place-icon'].src = place.icon;
+         // infowindowContent.children['place-name'].textContent = place.name;
+         // infowindowContent.children['place-address'].textContent = address;
+         // infowindow.open(map, marker);
         });
 
         // Sets a listener on a radio button to change the filter type on Places
@@ -636,20 +698,21 @@ itemSnumber = address_component.long_name;
           });
         }
 
-        setupClickListener('changetype-all', []);
-        setupClickListener('changetype-address', ['address']);
-        setupClickListener('changetype-establishment', ['establishment']);
-        setupClickListener('changetype-geocode', ['geocode']);
+       // setupClickListener('changetype-all', []);
+       // setupClickListener('changetype-address', ['address']);
+       // setupClickListener('changetype-establishment', ['establishment']);
+        //setupClickListener('changetype-geocode', ['geocode']);
 
-        document.getElementById('use-strict-bounds')
-            .addEventListener('click', function() {
-              console.log('Checkbox clicked! New state=' + this.checked);
-              autocomplete.setOptions({strictBounds: this.checked});
-            });
+        // document.getElementById('use-strict-bounds')
+        //     .addEventListener('click', function() {
+        //       console.log('Checkbox clicked! New state=' + this.checked);
+        //       autocomplete.setOptions({strictBounds: this.checked});
+        //     });
       }
+
+
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places&callback=initMap"
-        async defer></script>
+   
 
 <script>
 

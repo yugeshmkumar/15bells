@@ -18,6 +18,7 @@ use Yii;
  * @property double $longitude
  * @property double $latitude
  * @property string $builder_name
+ * @property string $building_name
  * @property string $project_name
  * @property int $property_type_id
  * @property string $Owner_name
@@ -94,16 +95,16 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
+            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'asking_lease_rate','total_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
             [['locality', 'address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'property_status', 'followup_comment','property_scomment'], 'string'],
             [['longitude', 'latitude'], 'number'],
-                  ['property_on_floor', 'compare','compareAttribute'=>'total_no_of_floors','operator'=>'<',
-    'message'=>'Property on floor should be smaller than total no. of floors', 'type' => 'number'],
+    //               ['property_on_floor', 'compare','compareValue'=>'total_no_of_floors','operator'=>'<',
+    // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
             [['followup_date_time', 'created_date'], 'safe'],
-            [['city', 'property_on_floor', 'unit_block', 'unit_number'], 'string', 'max' => 20],
+            [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
-            [['builder_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'property_tax_id'], 'string', 'max' => 50],
+            [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
             [['landline_no', 'email_id'], 'string', 'max' => 30],
             [['super_unit', 'carpet_unit'], 'string', 'max' => 15],
             [['owner_address'], 'string', 'max' => 100],
@@ -156,6 +157,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'visitor_parking' => 'Visitor Parking',
             'covered_parking' => 'Covered Parking',
             'asking_lease_rate' => 'Asking Lease Rate (PSF)',
+            'total_lease_rate' => 'Total lease rate',
             'rate_negotiable' => 'Rate Negotiable',
             'maintenance_charge' => 'Maintenance Charge',
             'security_deposit' => 'Security Deposit',
