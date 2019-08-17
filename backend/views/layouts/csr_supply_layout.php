@@ -9,6 +9,8 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
+use common\models\CompanyEmp;
+use yii\db\Expression;
 
 $bundle = BackendAsset::register($this);
 ?>
@@ -45,20 +47,67 @@ $bundle = BackendAsset::register($this);
                         <li id="timeline-notifications" class="notifications-menu">
                             <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
                                 <i class="fa fa-bell"></i>
-                                <span class="label label-primary">
-                                    <?php echo \common\models\UserKycdocuments::find()->where('approve_status !=:config',array(':config'=>1))->count() ?>
+                                <?php 
+                                     $user_id = Yii::$app->user->identity->id;
+                                     $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+                                     $assigned_id = $querys->id;
+
+                                     $startTime = date("Y-m-d H:i:s");
+                                     $todaysDate = date("Y-m-d");
+
+                                     
+                                     //add 1 hour to time
+                                     $convertedTime = date('Y-m-d H:i:s',strtotime('+5 minutes',strtotime($startTime)));
+
+                                    $counter =  \backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm::find()
+                                     ->where(['>=','followup_date_time',$convertedTime])
+                                     ->andwhere(['=','DATE(followup_date_time)',$todaysDate])
+                                     ->andwhere(['=','company_employee_id',$assigned_id])
+                                     ->andwhere(['=','is_seen',0])
+                                     ->count();
+                                   // echo \backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm::find()->where('company_employee_id =:configs AND followup_date_time !=:followups AND is_seen=:seen',array(':configs'=>$assigned_id,':followups'=>DATE_SUB(NOW(), INTERVAL 5 MINUTE)))->count() 
+                                   ?>
+
+                                    <?php if ($counter > 0 ){
+                                           
+                                    ?>
+                                <span class="label label-danger">
+                                  <?php echo $counter;  ?>
                                 </span>
+
+                                <?php    } ?>
                             </a>
 							  <ul class="dropdown-menu">
-                                <li class="header"><?php echo Yii::t('backend', 'You have {num} new approval requests', ['num'=>\common\models\UserKycdocuments::find()->where('approve_status !=:config',array(':config'=>1))->count()]) ?></li>
+                                <li class="header"><?php 
+                                echo Yii::t('backend', 'You have {num} Followups', ['num'=>\backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm::find()
+                                ->where(['>=','followup_date_time',$convertedTime])
+                                ->andwhere(['=','DATE(followup_date_time)',$todaysDate])
+                                ->andwhere(['=','company_employee_id',$assigned_id])
+                                ->andwhere(['=','is_seen',0])->count()]) ?></li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-                                        <?php foreach(\common\models\UserKycdocuments::find()->where('approve_status !=:config',array(':config'=>1))->all() as $newEntry): ?>
+                                        <?php foreach(\backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm::find()
+                                ->where(['>=','followup_date_time',$convertedTime])
+                                ->andwhere(['=','DATE(followup_date_time)',$todaysDate])
+                                ->andwhere(['=','company_employee_id',$assigned_id])
+                                ->andwhere(['=','is_seen',0])->all() as $newEntry): ?>
                                             <li>
-                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/user-kycdocuments/view', 'id'=>$newEntry->userid]) ?>">
-                                                    <i class="fa fa-file"></i>
-                                                    <?php echo $newEntry->docment_file_name ?>
+                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    <?php
+
+                                                     $comment =  $newEntry->followup_comment;
+                                                    if (strlen($comment) >= 20) {
+                                                        echo substr($comment, 0, 20). " ... " . substr($string, -5);
+                                                    }
+                                                    else {
+                                                        echo $comment;
+                                                    }
+                                                    
+                                                    
+                                                    ?>
+                                                    <span><?php echo  date("M j , Y", strtotime($newEntry->followup_date_time)); ?> <?php echo  date("h:i A", strtotime($newEntry->followup_date_time)); ?></span>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -71,33 +120,33 @@ $bundle = BackendAsset::register($this);
                             </ul>
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
-                        <li id="log-dropdown" class="dropdown notifications-menu">
+                        <!-- <li id="log-dropdown" class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
                             <span class="label label-danger">
-                                <?php echo \backend\models\SystemLog::find()->count() ?>
+                                <?php //echo \backend\models\SystemLog::find()->count() ?>
                             </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header"><?php echo Yii::t('backend', 'You have {num} log items', ['num'=>\backend\models\SystemLog::find()->count()]) ?></li>
+                            </a> -->
+                            <!-- <ul class="dropdown-menu">
+                                <li class="header"><?php //echo Yii::t('backend', 'You have {num} log items', ['num'=>\backend\models\SystemLog::find()->count()]) ?></li>
                                 <li>
-                                    <!-- inner menu: contains the actual data -->
+                                    inner menu: contains the actual data
                                     <ul class="menu">
-                                        <?php foreach(\backend\models\SystemLog::find()->orderBy(['log_time'=>SORT_DESC])->limit(5)->all() as $logEntry): ?>
+                                        <?php //foreach(\backend\models\SystemLog::find()->orderBy(['log_time'=>SORT_DESC])->limit(5)->all() as $logEntry): ?>
                                             <li>
-                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/log/view', 'id'=>$logEntry->id]) ?>">
-                                                    <i class="fa fa-warning <?php echo $logEntry->level == \yii\log\Logger::LEVEL_ERROR ? 'text-red' : 'text-yellow' ?>"></i>
-                                                    <?php echo $logEntry->category ?>
+                                                <a href="<?php// echo Yii::$app->urlManager->createUrl(['/log/view', 'id'=>$logEntry->id]) ?>">
+                                                    <i class="fa fa-warning <?php //echo $logEntry->level == \yii\log\Logger::LEVEL_ERROR ? 'text-red' : 'text-yellow' ?>"></i>
+                                                    <?php //echo $logEntry->category ?>
                                                 </a>
                                             </li>
-                                        <?php endforeach; ?>
+                                        <?php //endforeach; ?>
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <?php echo Html::a(Yii::t('backend', 'View all'), ['/log/index']) ?>
+                                    <?php //echo Html::a(Yii::t('backend', 'View all'), ['/log/index']) ?>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu ">
                             <a href="#" class="dropdown-toggle drp_dwn" data-toggle="dropdown">
