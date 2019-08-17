@@ -25,6 +25,13 @@ $bundle = BackendAsset::register($this);
 .user_ftr{
 	background-color:#605ca8 !important;
 }
+.notif_dropdown{
+    width:310px !important;
+}
+.notif_dropdown li a{
+    padding: 20px 10px !important;
+    background: #e0d6d7 ;
+}
 </style>
     <div class="wrapper">
         <!-- header logo: style can be found in header.less -->
@@ -77,7 +84,7 @@ $bundle = BackendAsset::register($this);
 
                                 <?php    } ?>
                             </a>
-							  <ul class="dropdown-menu">
+							  <ul class="dropdown-menu notif_dropdown">
                                 <li class="header"><?php 
                                 echo Yii::t('backend', 'You have {num} Followups', ['num'=>\backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm::find()
                                 ->where(['>=','followup_date_time',$convertedTime])
@@ -107,7 +114,7 @@ $bundle = BackendAsset::register($this);
                                                     
                                                     
                                                     ?>
-                                                    <span><?php echo  date("M j , Y", strtotime($newEntry->followup_date_time)); ?> <?php echo  date("h:i A", strtotime($newEntry->followup_date_time)); ?></span>
+                                                    <span style="font-weight:600;"><?php echo  date("M j , Y", strtotime($newEntry->followup_date_time)); ?> <?php echo  date("h:i A", strtotime($newEntry->followup_date_time)); ?></span>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
