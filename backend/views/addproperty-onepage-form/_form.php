@@ -385,6 +385,22 @@ $('#addpropertyonepageform-efficiency').val(efficiencypercent);
 
 
 
+var saledeed = $('#addpropertyonepageform-property_with_saledeed').val();
+var powerattorney = $('#addpropertyonepageform-property_power_attorney').val();
+
+if(saledeed == 'yes'){
+
+  $('#addpropertyonepageform-ownership_title').val('property_with_saledeed');
+}else if(powerattorney == 'yes'){
+
+  $('#addpropertyonepageform-ownership_title').val('property_power_attorney');
+
+}else{
+
+}
+
+
+
 
 JS;
 $this->registerJs($script);
@@ -510,10 +526,12 @@ var ownership_title =  $(this).val();
 if(ownership_title == 'property_with_saledeed'){
 
   $('#addpropertyonepageform-property_with_saledeed').val('yes');
+  $('#addpropertyonepageform-property_power_attorney').val('');
 
 }else if(ownership_title == 'property_power_attorney'){
 
 $('#addpropertyonepageform-property_power_attorney').val('yes');
+$('#addpropertyonepageform-property_with_saledeed').val('');
 }else{
 
 }
@@ -546,6 +564,8 @@ if(id_proof=='pan_card'){
 }
 
 });
+
+
 
 
 
