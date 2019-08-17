@@ -108,11 +108,11 @@ CrudAsset::register($this);
         'name' => 'datetime_10',
         'value' => '12/31/2010 05:10:20',
         'options' => ['placeholder' => 'Select operating time ...'],
-        'convertFormat' => true,
+       // 'convertFormat' => true,
         'pluginOptions' => [
 
         'autoclose'=>true,
-        'format' => 'yyyy-MM-dd hh:i:00',    
+        'format' => 'yyyy-mm-dd hh:i:00',    
         'todayHighlight' => true
         ]
         ]);
