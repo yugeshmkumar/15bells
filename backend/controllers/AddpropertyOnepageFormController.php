@@ -192,6 +192,7 @@ class AddpropertyOnepageFormController extends Controller
             
            
             $finduser->wrongcomment = $wrongcomment;
+            $finduser->isactive = 3;
             $finduser->save(false);
 
             return 1;
