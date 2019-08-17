@@ -338,6 +338,7 @@ function wrongsave(){
 
   var wrongid = $('#wrongid').val();
   var wrongcomment  =  $('#wrongcomment').val();
+  if(wrongcomment != ''){
            $.ajax({
 						                        type: "POST",
                                                 url: 'wrongsave',
@@ -351,8 +352,10 @@ function wrongsave(){
                                               toastr.error('Some Internal Error', 'error'); 
                                             }
                                             $('#modal_wrong').modal('hide');
+                                            $.pjax({container: '#crud-datatable-pjax'}) 
                                                 }
                                     });
+}
 
 }
         

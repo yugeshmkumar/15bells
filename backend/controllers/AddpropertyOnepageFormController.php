@@ -203,6 +203,16 @@ class AddpropertyOnepageFormController extends Controller
 
     }
 
+    public function actionChangecolour() {
+
+
+        $id = $_POST['id'];
+        $getbbcompany = AddpropertyOnepageForm::find()->where(['id'=>$id])->one();	  
+        $getbbcompany->is_seen = 1 ;
+        $getbbcompany->save();
+    
+    }
+
 
 
 

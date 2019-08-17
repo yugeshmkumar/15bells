@@ -100,7 +100,7 @@ $bundle = BackendAsset::register($this);
                                 ->andwhere(['=','company_employee_id',$assigned_id])
                                 ->andwhere(['=','is_seen',0])->all() as $newEntry): ?>
                                             <li>
-                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>">
+                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/addproperty-onepage-form/csrphoneindex', 'phone'=>$newEntry->primary_contact_no]) ?>" onclick="changecolour(<?php echo $newEntry->id; ?>)" target="_blank">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     <?php
 
@@ -299,5 +299,24 @@ $(document).ready(function(){
     $(".drp_dwn").dropdown();
 	
 });
+function changecolour(id){
+
+$.ajax({
+              type: "POST",
+              url: "/addproperty-onepage-form/changecolour",
+              data: {id: id},	                
+              cache: false,
+              success: function (data)
+              {
+
+               $('#notifcolor_'+id).removeClass('row repeat_notif').addClass('row notif_seen');
+              
+
+              },
+
+
+              });
+
+        }
 </script>
 <?php $this->endContent(); ?>
