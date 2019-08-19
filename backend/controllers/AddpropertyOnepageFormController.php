@@ -704,7 +704,20 @@ class AddpropertyOnepageFormController extends Controller
                     
                     
                        }
-                       return $this->redirect(['csrhead']);
+
+
+                     $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
+    
+                        if($assigndash->item_name == "csr_supply"){
+                        
+                            return $this->redirect(['csrindex']);                        
+                       }else{
+                           
+                        return $this->redirect(['csrhead']);                        
+
+                       }
+
+                       
 
                    }
 

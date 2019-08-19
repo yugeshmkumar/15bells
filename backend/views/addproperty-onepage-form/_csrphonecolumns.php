@@ -15,6 +15,32 @@ return [
 
 
     [
+        'class' => 'yii\grid\ActionColumn',
+        'template' => '{complete}',
+        'header'   =>'Approve', 
+        
+        'options' => ['style' => 'width:100px;'],
+        'buttons' => [
+            'complete' => function ($url) {
+
+                return Html::a('<button class="btn btn-info recall_popup" style="border-color:#0fd8da !important;border:1px solid;"  >Approve</button>', $url,[
+                    'title' => 'Complete',
+                    'data-pjax' => '0',
+                ]);
+
+                // return Html::a(
+                //     '<button  class="btn btn-success recall_popup" aria-hidden="true"></span>',
+                //     $url, 
+                //     [
+                //         'title' => 'Complete',
+                //         'data-pjax' => '0',
+                //     ]
+                // );
+            },
+        ],
+    ],
+
+    [
         'label' => 'Percentage',
         'attribute' => 'completion_in_percentage',
         'filter' => false,
