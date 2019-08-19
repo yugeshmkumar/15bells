@@ -83,6 +83,21 @@ class AddpropertyOnepageFormController extends Controller
 
     }
 
+
+    public function actionCsrphonereassign()
+    { 
+
+        
+        $searchModel = new AddpropertyOnepageFormSearch();
+        $dataProviders = $searchModel->searchcsrphoneassign(Yii::$app->request->queryParams);
+
+        return $this->render('csrphoneindex', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProviders,
+        ]);
+
+    }
+
     public function actionCsrallfollowups()
     { 
 
@@ -138,7 +153,7 @@ class AddpropertyOnepageFormController extends Controller
         $crmid = $_POST['crmid'];
         $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
       
-        $rbac->isactive = 1;        
+        $rbac->isactive = 4;        
         $rbac->save(false);
 	if($rbac){
 	return 1;die;

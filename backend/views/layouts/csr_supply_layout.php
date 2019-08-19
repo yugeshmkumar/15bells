@@ -254,7 +254,8 @@ $bundle = BackendAsset::register($this);
                             'items'=>[
                                 ['label'=>Yii::t('backend', 'Web'), 'url'=>['/leadrequest/allotedindex?status=1'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'Excel'), 'url'=>['/addproperty-onepage-form/csrindex'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                    
+                                ['label'=>Yii::t('backend', 'Reassigned'), 'url'=>['/addproperty-onepage-form/csrphonereassign'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+
                              ]
                         ],
 						
