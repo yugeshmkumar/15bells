@@ -5,6 +5,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Articles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
+use common\models\Article_author;
 ?>
 
 <div id="fb-root"></div>
@@ -26,9 +27,11 @@ $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
                 <div class="container" id="banner_cont">
                     <div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
                                     <h1 class="single_hed"><?php  echo $model->title; ?></h1>
-                                    <p class="blog_by"><span class="writr_n">Amit Kumar</span>|<span class="date_r">February 10, 2019</span></p>
+                                    <?php  $users = Article_author::find()->where(['id'=>$model->author_id])->one(); ?>
+                                    <p class="blog_by"><span class="writr_n"><?php  echo $users->author_name; ?></span>|<span class="date_r"><?php echo  date("F d,Y", strtotime($users->created_date)); ?></span></p>
                     </div>
                     
+
                     
                 </div>
                 
@@ -47,10 +50,10 @@ $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
             <div class="col-md-8">
                 <div class="row blog_repeat">
                     <div class="col-md-12 contnt_blg">
-                        <p class="blog_txt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
-                        <p class="blog_qoute">"Strud exerci tation ullamcorper suscipit lobortis amet consectetur adipiscing nisl aliquip ex commodo consequat duis autem."</p>
-                        <p class="blog_txt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
-                        <div class="col-md-4 pad_lft">
+                        <p class="blog_txt"><?php  echo $model->body; ?> </p>
+                        <!-- <p class="blog_qoute">"Strud exerci tation ullamcorper suscipit lobortis amet consectetur adipiscing nisl aliquip ex commodo consequat duis autem."</p> -->
+                        <!-- <p class="blog_txt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p> -->
+                        <!-- <div class="col-md-4 pad_lft">
                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/1.png';  ?>" class="img-responsive">
                         </div>
                         <div class="col-md-4 pad_cntr">
@@ -61,8 +64,8 @@ $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
                         </div>
                         <div class="col-md-12 no_pad">
                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/b1.jpg';  ?>" class="blog_imag">
-                        </div>
-                        <p class="blog_txt col-md-12 padding_lst no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
+                        </div> -->
+                        <!-- <p class="blog_txt col-md-12 padding_lst no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p> -->
                 </div>
                 </div>
                 <div class="row row_socal">
@@ -184,7 +187,7 @@ data-mobile-iframe="true">
                             </p>
                     </div>
         </div>
-            <div class="row author_div">
+            <!-- <div class="row author_div">
                     <div class="col-md-12 no_pad brdr_bottm">
                         <div class="col-md-8 col-xs-8 no_pad">
                             <h2 class="abt_writr">You may also like</h2>
@@ -222,7 +225,7 @@ data-mobile-iframe="true">
                             </div>
                         </div>
                     </div>
-            </div>
+            </div> -->
     </div>
 
 
