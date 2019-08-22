@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 
+
 class BlogsController extends Controller {
 
     public function __construct($id, $module, $config = array()) {
@@ -71,6 +72,9 @@ class BlogsController extends Controller {
 	 public function actionDet() {
         return $this->render('det');
     }
+
+
+   
 
    
 
