@@ -186,14 +186,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>" class="list_lnk">FAQ's</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-xs-6">
-				<h4 class="footer_typ">Contacts</h4>
-				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">Who we are?</a></li>
-					<li class=""><a href="#" class="list_lnk">Contact customer service</a></li>
-					<li class=""><a href="#" class="list_lnk">Contact Us</a></li>
-				</ul>
-			</div>
+			
 			<div class="col-md-3 col-xs-6">
 				<h4 class="footer_typ">Privacy</h4>
 				<ul class="fotter_lst">
@@ -205,15 +198,16 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">+91 7042310544</a></li>
+					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
 					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
 				</ul>
 				</div>
-				<div class="col-md-12 no_pad">
-					<h5 class="follow_us">Follow us</h5>
-					<p class=""><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
-					<span><a href="#"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a href="#"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span>
-				</div>
+			</div>
+			
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Follow us</h4>
+				<p><span><a target="_blank" href="https://www.instagram.com/15bells/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
+					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
 			</div>
 		</div>
 	</div>
