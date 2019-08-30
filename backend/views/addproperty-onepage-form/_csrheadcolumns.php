@@ -16,11 +16,7 @@ return [
         'width' => '30px',
     ],
 
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'id',
-        'width' => '150px',
-    ],
+    
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'Owner_name',
