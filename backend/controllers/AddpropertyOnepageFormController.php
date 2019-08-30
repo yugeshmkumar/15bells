@@ -167,9 +167,12 @@ class AddpropertyOnepageFormController extends Controller
      public function actionAssigncsrhead(){
 
         $crmid = $_POST['crmid'];
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
         $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
       
-        $rbac->isactive = 2;        
+        $rbac->isactive = 2;  
+        $rbac->reassign_date = $date;        
         $rbac->save(false);
 	if($rbac){
 	return 1;die;
