@@ -198,6 +198,9 @@ CrudAsset::register($this);
 
   </div>
 </div>
+
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
+
 <script>
 
 
