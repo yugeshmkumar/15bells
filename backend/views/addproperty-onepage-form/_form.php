@@ -3,6 +3,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use common\models\PropertyType;
+use common\models\CompanyEmp;
+
+
+$user_id = Yii::$app->user->identity->id;
+$querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+$assigned_id = $querys->id;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm */
@@ -114,7 +120,7 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
-                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count','value' => yii::$app->user->identity->id])->label(false) ?>
+                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count','value' => $assigned_id])->label(false) ?>
 
                 <div class="col-md-3">
                 <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
