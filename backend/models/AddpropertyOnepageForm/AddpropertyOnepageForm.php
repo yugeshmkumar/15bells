@@ -101,7 +101,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     //               ['property_on_floor', 'compare','compareValue'=>'total_no_of_floors','operator'=>'<',
     // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
-            [['followup_date_time', 'created_date','maintenance_charge'], 'safe'],
+            [['followup_date_time', 'created_date','maintenance_charge','reassign_date'], 'safe'],
             [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
@@ -186,6 +186,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'remarks' => 'Remarks',
             'followup_comment' => 'Followup Comment',
             'isactive' => 'Isactive',
+            'reassign_date' => 'Reassign Date',
             'created_date' => 'Created Date',
         ];
     }

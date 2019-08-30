@@ -9,6 +9,7 @@ use yii\base\view;
 use kartik\datetime\DateTimePicker;
 
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AddpropertyOnepageForm\AddpropertyOnepageFormSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -225,6 +226,7 @@ CrudAsset::register($this);
 </div>
 
 
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
 
 
 <script>
