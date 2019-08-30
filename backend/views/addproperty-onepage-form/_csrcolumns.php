@@ -74,6 +74,11 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'primary_contact_no',
     ],
+
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'building_name',
+    ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'secondary_contact_no',
