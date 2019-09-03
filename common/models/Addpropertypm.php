@@ -74,6 +74,18 @@ class Addpropertypm extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $efficiency;
+    public $total_lease_rate;
+    public $passenger_lift;
+    public $covered_parking;
+    public $type_of_space;
+    public $floor_plate_area;
+    public $security_deposit;
+    public $backup_power;
+    public $building_name;
+
+
     public static function tableName()
     {
         return 'addproperty';

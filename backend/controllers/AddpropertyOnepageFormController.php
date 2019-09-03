@@ -694,6 +694,7 @@ class AddpropertyOnepageFormController extends Controller
                     $modeladd->carpet_area = $post['AddpropertyOnepageForm']['carpet_area'];
                     $modeladd->carpet_unit = 'sq_feets';
                     $modeladd->property_on_floor = $post['AddpropertyOnepageForm']['property_on_floor'];
+                    $modeladd->total_floors = $post['AddpropertyOnepageForm']['total_no_of_floors'];
                     $modeladd->furnished_status = $post['AddpropertyOnepageForm']['type_of_space'];
                     $modeladd->is_active = 1;
                     $modeladd->created_date = $date;
