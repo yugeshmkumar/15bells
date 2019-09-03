@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * AddpropertypmController implements the CRUD actions for Addpropertypm model.
  */
@@ -487,6 +488,10 @@ public function actionShowuserdetails(){
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
+
+
+       // echo '<pre>';print_r($formOtherDetails);die;
 
         if ($model->load(Yii::$app->request->post()) ) {
 
@@ -499,7 +504,9 @@ public function actionShowuserdetails(){
             
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'model' => $model,                
+                'ids'=>$id
+               
             ]);
         }
     }

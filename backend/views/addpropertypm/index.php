@@ -86,15 +86,15 @@ return GridView::ROW_COLLAPSED;
 			//   }
 			
 			// ],
-			['attribute'=>'project_name',
-			  'label'=>'Project Name',
-			  'format'=>'raw',
-			  'width'=>'250px',
-			  'value'=>function($data){
-				  return $data->project_name;
-			  }
+			// ['attribute'=>'project_name',
+			//   'label'=>'Project Name',
+			//   'format'=>'raw',
+			//   'width'=>'250px',
+			//   'value'=>function($data){
+			// 	  return $data->project_name;
+			//   }
 			
-			],
+			// ],
 			['attribute'=> 'property_for',
 			  'label'=>'Request Type',
 			  'format'=>'raw',
