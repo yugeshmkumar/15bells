@@ -101,13 +101,13 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     //               ['property_on_floor', 'compare','compareValue'=>'total_no_of_floors','operator'=>'<',
     // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
-            [['followup_date_time', 'created_date','maintenance_charge','reassign_date'], 'safe'],
+            [['followup_date_time', 'created_date','maintenance_charge','reassign_date','landline_no', 'email_id','owner_address'], 'safe'],
             [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
-            [['landline_no', 'email_id'], 'string', 'max' => 30],
+            //[['landline_no', 'email_id'], 'string', 'max' => 30],
             [['super_unit', 'carpet_unit'], 'string', 'max' => 15],
-            [['owner_address'], 'string', 'max' => 100],
+           // [['owner_address'], 'string', 'max' => 100],
         ];
     }
 

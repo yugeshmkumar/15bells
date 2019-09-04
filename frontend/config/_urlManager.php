@@ -24,6 +24,7 @@ return [
 
         // Articles
         ['pattern'=>'article/index', 'route'=>'article/index'],
+        ['pattern'=>'blogs', 'route'=>'blogs/index'],
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'blogs/<slug>', 'route'=>'article/view'],
 
