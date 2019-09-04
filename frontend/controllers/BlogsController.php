@@ -50,7 +50,7 @@ class BlogsController extends Controller {
                 
 
                 $pagination = new Pagination([
-                'defaultPageSize' => 5,
+                'defaultPageSize' => 2,
                 'totalCount' => $query->count(),
                 ]);
 
