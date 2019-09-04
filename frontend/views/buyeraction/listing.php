@@ -492,6 +492,17 @@ if(!isset($_SESSION))
       <div class="modal-body no_pad">
 		
 		<div class="container-fluid no_pad">
+
+        <div class="col-md-12 call_me_butn">
+            <span class="call_icn"><i class="fa fa-phone"></i></span><span class="hot_no">9355-73-15-15</span>
+        </div>
+        <div class="col-md-12 text-center">
+        <span class="split_call">OR</span>
+        </div>
+     <div class="col-md-12 call_me_butn" id="callmenowdiv">
+         <button type="button" id="callmenow" class="btn btn-default btn_signin">Call me now</button>
+     </div>
+
         <div class="col-md-12 text-left" id="addusers">
 				<h2 class="subuser_hed">Please Enter Phone Number</h2>
 
@@ -505,7 +516,7 @@ if(!isset($_SESSION))
 
 				 ?>
 
-				 <?//= $form->errorSummary($modeled); ?>
+				
 
               <?php date_default_timezone_set("Asia/Calcutta");
               $dater = date('Y-m-d H:i:s');
@@ -2052,7 +2063,7 @@ proptype =  $('#proptypes').val();
                         
                             var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                         
-                        var imaged = $.trim(this.featured_image);
+                        var imageds = $.trim(this.featured_image);
                         var c = content.substr(0, showChar);
             var h = content.substr(showChar-1, content.length - showChar);
                         var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -2067,10 +2078,20 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                           <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
@@ -2114,7 +2135,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2196,7 +2217,7 @@ proptype =  $('#proptypes').val();
                                                              count2 += 1; 
                                                              var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                                            
-                                                            var imaged = $.trim(this.featured_image);
+                                                            var imageds = $.trim(this.featured_image);
                                                             var c = content.substr(0, showChar);
 			                                    var h = content.substr(showChar-1, content.length - showChar);
                                                             var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -2212,10 +2233,20 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                           <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
@@ -2259,7 +2290,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2331,7 +2362,7 @@ proptype =  $('#proptypes').val();
                                                              
                                 var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
 
-                                var imaged = $.trim(this.featured_image);
+                                var imageds = $.trim(this.featured_image);
                                 var c = content.substr(0, showChar);
                                 var h = content.substr(showChar-1, content.length - showChar);
                                 var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -2349,10 +2380,20 @@ proptype =  $('#proptypes').val();
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                           <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
@@ -2396,7 +2437,7 @@ proptype =  $('#proptypes').val();
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3188,16 +3229,28 @@ function getPolygonCoords() {
            var haritid = 273*179-this.id;
            var propsid = 'PR'+ haritid;
            var commaNum = numberWithCommas(this.expected_price);
+           var imageds = $.trim(this.featured_image);
+
                 
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+'</p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-3 no_pad relative">'+
-                               '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                               '<div class="overlay_sign">'+
-                                   '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                               '</div>'+
+                           <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                            '</div>'+
                            '<div class="col-md-9">'+
                                '<div class="row prop_detail">'+
@@ -3241,7 +3294,7 @@ function getPolygonCoords() {
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
-                                   '<a href="tel:9555322244" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3318,7 +3371,7 @@ function getPolygonCoords() {
                        
                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                        
-                       var imaged = $.trim(this.featured_image);
+                       var imageds = $.trim(this.featured_image);
                        var c = content.substr(0, showChar);
            var h = content.substr(showChar-1, content.length - showChar);
                        var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -3333,10 +3386,20 @@ function getPolygonCoords() {
                            '<p class="property_id">Property ID : '+propsid+'</p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-3 no_pad relative">'+
-                                   '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login image_property">'+
-                                   '<div class="overlay_sign">'+
-                                       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                   '</div>'+
+                               <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                                '</div>'+
                                '<div class="col-md-9">'+
                                    '<div class="row prop_detail">'+
@@ -3380,7 +3443,7 @@ function getPolygonCoords() {
                                        '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
-                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                       '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
                                    '</div>'+
@@ -3467,7 +3530,7 @@ function getPolygonCoords() {
                                                                 count2 += 1; 
                                                                 var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                                               
-                                                               var imaged = $.trim(this.featured_image);
+                                                               var imageds = $.trim(this.featured_image);
                                                                var c = content.substr(0, showChar);
                                                    var h = content.substr(showChar-1, content.length - showChar);
                                                                var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -3483,10 +3546,20 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                                  '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                                  '<div class="overlay_sign">'+
-                                      '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                  '</div>'+
+                              <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                               '</div>'+
                               '<div class="col-md-9">'+
                                   '<div class="row prop_detail">'+
@@ -3530,7 +3603,7 @@ function getPolygonCoords() {
                                       '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
-                                      '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button href="tel:9355731515"  onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3598,7 +3671,7 @@ function getPolygonCoords() {
                                                                 
                                    var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
    
-                                   var imaged = $.trim(this.featured_image);
+                                   var imageds = $.trim(this.featured_image);
                                    var c = content.substr(0, showChar);
                                    var h = content.substr(showChar-1, content.length - showChar);
                                    var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -3616,10 +3689,20 @@ function getPolygonCoords() {
                           '<p class="property_id">Property ID : '+propsid+'</p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-3 no_pad relative">'+
-                                  '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                                  '<div class="overlay_sign">'+
-                                      '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                  '</div>'+
+                              <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                               '</div>'+
                               '<div class="col-md-9">'+
                                   '<div class="row prop_detail">'+
@@ -3898,7 +3981,7 @@ function getPolygonCoords() {
                                                        
                                                    // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
                                                     
-                                                  //  var imaged = $.trim(this.featured_image);
+                                                   var imageds = $.trim(this.featured_image);
                                                  //   var c = content.substr(0, showChar);
                                                    // var h = content.substr(showChar-1, content.length - showChar);
                                                    // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
@@ -3911,10 +3994,20 @@ function getPolygonCoords() {
                                                                 '<p class="property_id">Property ID : '+propsid+'</p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-3 no_pad relative">'+
-                                                                        '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                                                                        '<div class="overlay_sign">'+
-                                                                            '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                                                        '</div>'+
+                                                                    <?php if(yii::$app->user->isGuest){  ?>
+
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+      <?php  } ?>
                                                                     '</div>'+
                                                                     '<div class="col-md-9">'+
                                                                         '<div class="row prop_detail">'+
@@ -3958,7 +4051,7 @@ function getPolygonCoords() {
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
-                                                                            '<button class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                                                            '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
                                                                         '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+
@@ -4004,125 +4097,170 @@ function getPolygonCoords() {
                                     }      
                                     
                                     
-                                 function filterButtonClick(obj){
+                                    function bindButtonClick(obj){
                            
-                                      $('#filterme').click(function(){
-                                       
-                                        var areaft = $("#areaft").val();                                            
-                                        var areamin = $("#areamin").val();
-                                        var areamax = $("#areamax").val();
+                           $('.sortby').click(function(){
 
-                                        var pricemin = $("#pricemin").val();
-                                        var pricemax = $("#pricemax").val();
-                                        var proptype =  $('#proptype').val();  
-                                        var propbid =  $('#propbid').val(); 
-                                       
-                                       // alert(JSON.stringify(obj));
-                                           
-                                         var narcos = obj.filter(function (a) {                                          
-                                          
-                                          result = true;  
-                                          
-                                        if (proptype && (proptype != 'Commercial')) {
-                                        result = result && a.project_type_id == proptype;
-                                           }
-                                           
-                                        if (propbid && (propbid != 'Select')) {
-                                        result = result && a.request_for == propbid;
-                                           }
-                                           
-                                       if (areamin && (areamin != '')) {
-                                        result = result && a.total_plot_area > areamin && a.total_plot_area < areamax ;
-                                           }  
-                                           
-                                       if (pricemin && (pricemin != '')) {
-                                        result = result && a.asking_rental_price > pricemin && a.asking_rental_price < pricemax ;
-                                           }    
+                             
+                             
+                            var ferit = 0;  
+                            var sortvar =  this.id; 
+                            var searchlat = $('#searchlats').val();
+                            var searchlng = $('#searchlngs').val();
+                          
+                            
+                            if(sortvar != ''){
+                                
+                               if(sortvar == 'low'){
+                                   
+                                   obj.sort(function(a, b){
+                             return a.asking_rental_price - b.asking_rental_price;
+                             });
+                                   
+                               }else if(sortvar == 'high'){
+                                   
+                                   obj.sort(function(a, b){
+                             return b.asking_rental_price - a.asking_rental_price;
+                             });
+                             
+                               } 
+                               else if(sortvar == 'nearest'){
+                                
+                                 ferit = 1;  
+                                  for ( i = 0; i < obj.length; i++) {
+obj[i]["distance"] = calculateDistance(searchlat,searchlng,obj[i]["latitude"],obj[i]["longitude"]);
+     }
 
-                                        return result;
-                                        });  
-//                                          
-                                        //console.log(find_in_object(obj, query)); //returns none
-                                       $(".serch_rslt").show();
-                                                        var countprop = Object.keys(narcos).length;                                                        
-                                                        $('#countprop').html(countprop);
-                                       
-                                        $('#getprop').html('');  
+                             obj.sort(function(a, b) { 
+                                 return a.distance - b.distance;
+                                 });
+                             
+                               } 
+                               
+                             var countprop = Object.keys(obj).length; 
+                            
+                             $('#getprop').html('');  
+                             
+                             $.each(obj, function (index) {
                                         
-                                         $.each(narcos, function () {
-                                                            
-                                                            ((this.undercategory == 'Residential') ? 
-                                                            content = this.furnished_status +' '+ this.typename +' on '+ this.property_for +' in '+ this.locality + ((this.buildup_area == null) ? ' - plot area : '+ this.total_plot_area +' sqft' : ' - super area : '+ this.buildup_area +' sqft ') + ' - furnishing specification :* bedrooms : '+ this.bedrooms+' * bathrooms : '+ this.bathrooms+' * balconies : '+ this.balconies+' * pooja room : '+ this.pooja_room +' * study_room * servant_room , For more details or Site Visit , please Contact Us..;'
-                                                           :
-                                                            content =  'A very good '+ this.typename +' availabale for rent/lease in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ' )
-                                                           
-                                                            var imaged = $.trim(this.featured_image);
-                                                            var c = content.substr(0, showChar);
-			                                    var h = content.substr(showChar-1, content.length - showChar);
-                                                            var html = c + '<span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-
-                                                            
-                                        $('#getprop').append('<div class="col-md-6 serch_row">'+
-                                        '<div class="col-md-12 property_main_div">'+
-                                        '<div class="col-md-12 property_main_div_1" style="height:60px">'+
-                                        '<div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' +  this.typename +' availabale for sale in '+ this.city  + '</p></div>'+
-
-                                        '<div class="col-md-3 col-sm-3 col-xs-3"> <i class="fa fa-eye" aria-hidden="true"></i></div>'+
-                                        '</div>'+
-                                        '<div class="col-md-12 property_main_div_2" style="height:310px;">'+
-                                        '<div class="row">'+
-                                        '<div class="col-md-6 property_main_div_2_inner_1">'+
-                                        '<div class="img_prop"><img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imaged)+'" class="img-responsive"></div>'+
-                                        '</div>'+
-                                        '<div class="col-md-6 property_main_div_2_inner_2">'+
-                                        '<p style="color: #ffeb3b;"><b>Locality :</b> '+ this.locality +'</p>'+
-                                        '<p style="color: #ffba00;"><b>Highlights:</b>  On Sale / ' + this.age_of_property + ' Years Old'+ (( this.furnished_status == '') ? '' : '/ '+ this.furnished_status)+' / ' + this. property_on_floor + 'th Floor '+ (( this.total_floors == null) ? '' : '(out of ' + this.total_floors +')')+'</p>'+
-                                        '<p><b>Description:</b> '+ html +'</p>'+
-                                        '<a class="btn btn-default" href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank" role="button">More Details <i class="fa fa-caret-right" aria-hidden="true"></i></a>'+
-                                        '</div>'+
-                                        '</div>'+
-                                        '</div>'+
-                                        '<div class="col-md-12 property_main_div_2_inner_p">'+
-                                        '<ul class="list_li">'+
-                                        '<li><p>₹  ' + this.asking_rental_price + ' </p></li>'+
-                                        '<li><i class="fa fa-building" aria-hidden="true"></i>  '+ ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) +' sqft</li>'+
-                                        '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
-                                        '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
-                                        '<li><i class="fa fa-users" aria-hidden="true"></i> '+ this.county1 +'</li>'+ 
-                                        '</ul>'+
-                                        '</div>'+
-                                        '<div class="col-md-12 property_main_div_3">'+
-                                        '<div class="col-md-5 text-center property_main_div_3_inner1">'+
-                                         ((this.request_for == 'Instant') ?
-                                        '<a href="javascript:void(0)" onclick="directitnow(' + this.id + ')" class="appr_cursr">'+ 
-                                          'Instant Approach</a>'
-                                          :
-                                        ((this.request_for == 'bid') ?
-                                        '<a href="javascript:void(0)" onclick="bititnow(' + this.id + ')">'+ 
-                                          'Bid it Now</a>'
-                                          : ''
-                                         )) +
-                                        '</div>'+
-                                        '<div class="col-md-4 text-center property_main_div_3_inner1">'+
-                                        '<a href="javascript:void(0)" id="' + this.id + '" onclick="getfreevisit(this.id)">'+
-                                         (this.county > 0 ? 'Site Visited': 'Book Site Visit') +
-                                         '</a>'+
-                                        '</div>'+
                                         
-                                        '<div class="col-md-3 text-center property_main_div_3_inner1">'+
-                                        '<a href="javascript:void(0)" id="' + this.id + '" onclick="getchecki(this.id)"><i style="padding-right: 5px;"class="fa fa-thumbs-o-up" aria-hidden="true"></i>Shortlist</a>'+
-                                        '</div>'+
-                                        '</div>'+
-                                        '</div>'+
-                                        '</div>');
-                                                            
+                                            
+                                        // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+                                         
+                                        var imageds = $.trim(this.featured_image);
+                                      //   var c = content.substr(0, showChar);
+                                        // var h = content.substr(showChar-1, content.length - showChar);
+                                        // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+                                 
+                                         var haritid = 273*179-this.id;
+                                         var propsid = 'PR'+ haritid;
+                                         var commaNum = this.asking_rental_price;
+                                              
+                                         $('#getprop').append('<div class="col-md-12 property_detail">'+
+                                                     '<p class="property_id">Property ID : '+propsid+'</p>'+
+                                                     '<div class="row single_property">'+
+                                                         '<div class="col-md-3 no_pad relative">'+
+                                                         <?php if(yii::$app->user->isGuest){  ?>
 
-                                                        });
-                                                        
-                                                        
-                                    
-                                              });
-                                    } 
+'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+'<div class="overlay_sign">'+
+'<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'</div>'+
+
+<?php   }else{ ?>
+
+'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+
+
+
+<?php  } ?>
+                                                         '</div>'+
+                                                         '<div class="col-md-9">'+
+                                                             '<div class="row prop_detail">'+
+                                                                 '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Location</p>'+
+                                                                     '<p class="details_label">'+this.locality+'</p>'+
+                                                                 '</div>'+
+                                                                 '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Property for</p>'+
+                                                                     '<p class="details_label">'+this.request_for+'</p>'+
+                                                                 '</div>'+
+                                                             '</div>'+
+                                                             '<div class="row prop_detail">'+	
+                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Price</p>'+
+                                                                     '<p class="details_label">₹ '+commaNum+' psf</p>'+
+                                                                 '</div>'+
+                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Area</p>'+
+                                                                     '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
+                                                                 '</div>'+
+                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Verified</p>'+
+                                                                     '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
+                                                                 '</div>'+
+                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+                                                                     '<p class="label_name">Availability</p>'+
+                                                                     '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
+                                                                 '</div>'+
+                                                             '</div>'+
+                                                             '<div class="row prop_detail">'+
+                                                             '<div class="col-md-6 amenities_offered">'+
+                                                                 '<p class="label_name amenities">Amenities</p>'+
+                                                                 '<ul class="amenities_list">'+
+                                                                     '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
+                                                                     '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
+                                                                     '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
+                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
+                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
+                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                                                 '</ul>'+
+                                                             '</div>'+
+                                                             '<div class="col-md-6 shortlist_call">'+
+                                                                 '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                                             '</div>'+
+                                                             '</div>'+
+                                                             '</div>'+
+                                                         '</div>'+
+                                                         '<div class="row">'+
+                                                   
+                                                         '</div>'+
+                                                 '</div>'); 
+                                        
+                                                                                     
+                                 
+                                                                                 });
+                                             
+                             //   showPage(1);    
+                             //   var i;
+                             //   var totals = Math.ceil(countprop/6);
+                               
+                             //    var dynamic = "";   
+                             //    for(i=1;i<=totals;i++){
+                                  
+                             //     dynamic += '<li><a href="javascript:void(0)">'+i+'</a></li>';                                           
+                                 
+                             //    }
+
+                                 
+                             //    $('#paginater').html('');
+                             //    $('#paginater').html('<ol id="pagin" class="paginclass">'+ dynamic+  '</ol>'); 
+                             //     $("#pagin li a").first().addClass("current"); 
+                             //       $("#pagin li a").click(function() {
+                                   
+                             //     $("#pagin li a").removeClass("current");
+                             //     $(this).addClass("current");
+                                
+                             //     showPage(parseInt($(this).text())) 
+                             // });
+                                             
+                                             }
+
+
+
+                         
+                                   });
+                         } 
                                         
                                         
                                         

@@ -31,7 +31,7 @@ class BuyeractionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','index','viewpropertys', 'shortlistproperties','search','searchaction','mapproperty2update','getpolymyupdate', 'saveprop', 'viewproperty', 'petproperty', 'directitnow', 'getfreevisit', 'bititnow', 'savemessages', 'similiarprop', 'getpolymy', 'mapproperty1','mapproperty1update', 'mapproperty2'],
                         'allow' => true,
                     ],
                     [
