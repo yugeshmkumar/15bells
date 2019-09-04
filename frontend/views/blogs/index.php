@@ -127,8 +127,8 @@ use common\models\Article_author;
 			
 			<div class="row text-center">
 			<?php	echo LinkPager::widget(['pagination' => $pagination,
-	//	'prevPageLabel' => 'Previous',
-		'nextPageLabel' => '<button class="btn btn-default load_mor">Load More</button>',
+		'prevPageLabel' => 'Previous',
+		'nextPageLabel' => '<button class="btn btn-default blog_load">See More</button>',
 		'maxButtonCount' => 0,
 		
 		]);
