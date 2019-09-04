@@ -33,14 +33,19 @@ class LesseeactionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
                         'allow' => true,
                     ],
                     [
-                      //  'actions' => ['index','index1','search','withoutshape','saveprop','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
-                        'allow' => true,
-                        //'roles' => ['@'],
+                      // 'actions' => ['index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
+                      //  'allow' => true,
+                        //'roles' => ['?'],
                     ],
+                    // [
+                    //     'allow' => true,
+                    //     'actions' => ['viewpropertys'],
+                        
+                    // ],
                 ],
             ],
            
