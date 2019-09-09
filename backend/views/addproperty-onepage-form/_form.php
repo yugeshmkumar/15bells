@@ -346,6 +346,7 @@ label{
                 
 </div>
 
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
 
 
 
@@ -353,8 +354,10 @@ label{
 $script = <<< JS
 
 
+
 initMap();
 var propertyfor = $('#addpropertyonepageform-property_for').val();
+
 
 if(propertyfor == 'sale'){
 
@@ -383,7 +386,6 @@ $('#askingpropertyprice').show();
 
 var super_area =  $('#addpropertyonepageform-super_area').val();
 var carpet_area = $('#addpropertyonepageform-carpet_area').val();
-
 if(super_area != '' && carpet_area != ''){
   
 var efficiency  =  carpet_area/super_area;
@@ -406,6 +408,164 @@ if(saledeed == 'yes'){
 }else{
 
 }
+
+
+
+
+
+
+$('#addpropertyonepageform-unit_number,#addpropertyonepageform-unit_block').blur(function(){
+
+var address =  $('#addpropertyonepageform-address').val();
+var unitnumber = $(this).val();
+
+$('#addpropertyonepageform-address').val(address +' '+unitnumber);
+
+});
+
+
+$('#addpropertyonepageform-property_on_floor').blur(function(){
+
+var address =  $('#addpropertyonepageform-address').val();
+var floors = $(this).val();
+
+$('#addpropertyonepageform-address').val(address +' '+floors+' floor');
+
+});
+
+
+$('#addpropertyonepageform-efficiency').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var efficiency = $(this).val();
+
+if(super_area != '' && efficiency != ''){
+
+var carpet_area  =  Math.round(efficiency/100 * super_area);
+$('#addpropertyonepageform-carpet_area').val(carpet_area);
+}
+
+});
+
+
+$('#addpropertyonepageform-carpet_area').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var carpet_area = $(this).val();
+
+if(super_area != '' && carpet_area != ''){
+
+var efficiency  =  carpet_area/super_area;
+var efficiencypercent = Math.round(efficiency*100);  
+$('#addpropertyonepageform-efficiency').val(efficiencypercent);
+}
+
+});
+
+$('#addpropertyonepageform-asking_lease_rate').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var asking_lease_rate = $(this).val();
+
+if(super_area != '' && asking_lease_rate != ''){
+
+var totalarea  =  super_area * asking_lease_rate;
+var efficiencypercent = Math.round(totalarea);  
+$('#addpropertyonepageform-total_lease_rate').val(efficiencypercent);
+}
+
+});
+
+
+$('#addpropertyonepageform-total_lease_rate').blur(function(){
+
+var super_area =  $('#addpropertyonepageform-super_area').val();
+var total_lease_rate = $(this).val();
+
+if(super_area != '' && total_lease_rate != ''){
+
+var asking_lease_rate  =  total_lease_rate/super_area;
+var efficiencypercent = Math.round(asking_lease_rate);  
+$('#addpropertyonepageform-asking_lease_rate').val(efficiencypercent);
+}
+
+});
+
+$('#addpropertyonepageform-property_for').change(function(){
+
+
+     var propertyfor =  $(this).val();
+     if(propertyfor == 'sale'){
+
+       $('#askingleaserate').hide();
+       $('#totalleaserate').hide();
+       $('#ratenegotiable').hide();
+
+       $('#askingpropertyprice').show();
+      
+
+     }else if(propertyfor == 'rent'){
+      $('#askingleaserate').show();
+       $('#totalleaserate').show();
+       $('#ratenegotiable').show();
+
+       $('#askingpropertyprice').hide();
+     }else{
+      $('#askingleaserate').show();
+       $('#totalleaserate').show();
+       $('#ratenegotiable').show();
+
+       $('#askingpropertyprice').show();
+     }
+});
+
+
+$('#addpropertyonepageform-ownership_title').change(function(){
+
+var ownership_title =  $(this).val();
+
+
+if(ownership_title == 'property_with_saledeed'){
+
+$('#addpropertyonepageform-property_with_saledeed').val('yes');
+$('#addpropertyonepageform-property_power_attorney').val('');
+
+}else if(ownership_title == 'property_power_attorney'){
+
+$('#addpropertyonepageform-property_power_attorney').val('yes');
+$('#addpropertyonepageform-property_with_saledeed').val('');
+}else{
+
+}
+
+//alert($('#addpropertyonepageform-property_with_saledeed').val());
+
+});
+
+
+$('#addpropertyonepageform-id_proof').change(function(){
+
+var id_proof =  $(this).val();
+
+if(id_proof=='pan_card'){
+
+$('#pancard').show();
+$('#adharcard').hide();
+$('#propertytaxid').hide();
+
+}else if(id_proof=='adhar_card'){
+
+ $('#pancard').hide();
+$('#adharcard').show();
+$('#propertytaxid').hide();
+
+}else{
+$('#pancard').hide();
+$('#adharcard').hide();
+$('#propertytaxid').show();
+}
+
+});
 
 
 
@@ -499,6 +659,8 @@ $('#addpropertyonepageform-asking_lease_rate').val(efficiencypercent);
 });
 
 $('#addpropertyonepageform-property_for').change(function(){
+
+  alert();
 
        var propertyfor =  $(this).val();
        if(propertyfor == 'sale'){

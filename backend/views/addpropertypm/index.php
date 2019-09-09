@@ -68,15 +68,25 @@ return GridView::ROW_COLLAPSED;
 
 
            // 'id',
-            ['attribute'=>'user_id',
-			  'label'=>'Lead Details',
-			  'format'=>'raw',
-			  'width'=>'250px',
-			  'value'=>function($data){
-				  return \common\models\User::findOne($data->user_id)->username;
-			  }
+            // ['attribute'=>'user_id',
+			//   'label'=>'Lead Details',
+			//   'format'=>'raw',
+			//   'width'=>'250px',
+			//   'value'=>function($data){
+			// 	  return \common\models\User::findOne($data->user_id)->username;
+			//   }
 			
-			],
+            // ],
+            
+            [
+                'label'=> 'Mobile No.',
+                'attribute' => 'user_id',
+                'width'=>'150px',
+                'value' => 'username.username'
+
+            ],
+
+
 			// ['attribute'=>'role_id',
 			//   'label'=>'Lead Role',
 			//   'format'=>'raw',
@@ -86,19 +96,30 @@ return GridView::ROW_COLLAPSED;
 			//   }
 			
 			// ],
-			// ['attribute'=>'project_name',
-			//   'label'=>'Project Name',
-			//   'format'=>'raw',
-			//   'width'=>'250px',
-			//   'value'=>function($data){
-			// 	  return $data->project_name;
-			//   }
+			['attribute'=>'locality',
+			  'label'=>'Locality',
+			  'format'=>'raw',
+			  'width'=>'280px',
+			  'value'=>function($data){
+				  return $data->locality;
+			  }
 			
-			// ],
+            ],
+            
+            ['attribute'=>'super_area',
+			  'label'=>'Super Area',
+			  'format'=>'raw',
+			  'width'=>'100px',
+			  'value'=>function($data){
+				  return $data->super_area;
+			  }
+			
+			],
 			['attribute'=> 'property_for',
 			  'label'=>'Request Type',
 			  'format'=>'raw',
-			  'width'=>'90px',
+              'width'=>'110px',
+              'filter'=>array("rent"=>"Rent","sale"=>"Sale"),
 			  'value'=>function($data){
 				  return $data->property_for;
 			  }
@@ -111,12 +132,21 @@ return GridView::ROW_COLLAPSED;
                 
 			   	   
 			  'format'=>'raw',
-			  'width'=>'250px',
+			  'width'=>'180px',
 			  'value'=>function($data){
 				  return \common\models\PropertyType::findOne($data->project_type_id)->typename;
 			  }
 			
-			],
+            ],
+            
+
+            [
+                'label'=> 'Building name',
+                'attribute' => 'project_name',
+                'width'=>'150px',
+                'value' => 'buildingname.building_name'
+
+            ],
 			
 			// ['attribute'=>'request_for',
 			//   'label'=>'Request For',
@@ -128,15 +158,15 @@ return GridView::ROW_COLLAPSED;
 			
             // ],
 
-            ['attribute'=>'status',
-			  'label'=>'Property_status',
-			  'format'=>'raw',
-			  'width'=>'100px',
-			  'value'=>function($data){
-				  return $data->status;
-			  }
+            // ['attribute'=>'status',
+			//   'label'=>'Property_status',
+			//   'format'=>'raw',
+			//   'width'=>'100px',
+			//   'value'=>function($data){
+			// 	  return $data->status;
+			//   }
 			
-            ],
+            // ],
             
 
 			// ['attribute'=>'id',

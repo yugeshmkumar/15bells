@@ -604,6 +604,8 @@ class AddpropertyOnepageFormController extends Controller
 
      public function actionComplete($id){
 
+
+        $this->layout = "csr_head_layout";
         $request = Yii::$app->request;
         $model = $this->findModel($id); 
         $modelajax = new SignupForm(); 

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm;
 
 /**
  * This is the model class for table "addproperty".
@@ -176,4 +177,17 @@ class Addpropertypm extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    public function getUsername()
+{
+    return $this->hasOne(User::className(), ['id' => 'user_id']);
+}
+
+
+public function getBuildingname()
+{
+    return $this->hasOne(AddpropertyOnepageForm::className(), ['property_id' => 'id']);
+}
+
+
 }
