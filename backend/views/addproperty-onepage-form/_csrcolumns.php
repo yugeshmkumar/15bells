@@ -12,10 +12,10 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'id',
-    // ],
+        [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id',
+    ],
     // [
     //     'class'=>'\kartik\grid\DataColumn',
     //     'attribute'=>'company_employee_id',
@@ -66,6 +66,26 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'property_type_id',
     // ],
+
+    [
+        'label' => 'Assign Date',
+        'attribute' => 'assign_date',
+        'filter' => \yii\jui\DatePicker::widget([
+            'language' => 'en',
+            'dateFormat' => 'yyyy-MM-dd',
+            'model' => $searchModel,
+            'attribute' => 'assign_date',
+              ]),
+          'format' => 'html',
+
+            // 'options' => ['style' => 'width:90px;'],
+        
+             'value' => function($model) {
+             
+                return   date("d M Y", strtotime($model->assign_date));
+
+             }
+    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'Owner_name',

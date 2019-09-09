@@ -82,7 +82,7 @@ if($building_name != ''){
     <?php echo $form->field($model, 'building_name')->textInput(['maxlength' => true]) ?>
 </div>
 <div class="col-md-3">
-    <?php echo $form->field($model, 'property_for')->dropDownList([ 'sale' => 'Sale', 'rent' => 'Rent', ], ['prompt' => '']) ?>
+    <?php echo $form->field($model, 'property_for')->dropDownList(['both'=>'Both' ,'sale' => 'Sale', 'rent' => 'Rent', ], ['prompt' => '']) ?>
 </div>
 <div class="col-md-3">
 <?=

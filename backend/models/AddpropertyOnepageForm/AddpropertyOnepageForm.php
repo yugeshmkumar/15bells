@@ -187,6 +187,7 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'followup_comment' => 'Followup Comment',
             'isactive' => 'Isactive',
             'reassign_date' => 'Reassign Date',
+            'assign_date' => 'Assign Date',
             'created_date' => 'Created Date',
         ];
     }
@@ -246,8 +247,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
                 
                
     $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counters],'id = "'.$newids.'"')->execute();
-    $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids],'id = "'.$idf.'"')->execute();
-    $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
+    $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids,'lead_id'=>$newleadid,'assign_date'=>$date],'id = "'.$idf.'"')->execute();
+    $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids,'lead_id'=>$newleadid,'assign_date'=>$date],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
     
             $trendingadd = \Yii::$app->db->createCommand()->insert('leadassignment', ['leadid' => $newleadid, 'lead_current_status_ID' => $newleadstatus, 'assigned_toID' => $newids, 'assigned_at' => $date])->execute();
     
@@ -261,9 +262,9 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     
            $updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter],'id = "'.$newid.'"')->execute();
     
-           $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid],'id = "'.$idf.'"')->execute();
+           $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid,'lead_id'=>$newleadid,'assign_date'=>$date],'id = "'.$idf.'"')->execute();
 
-           $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
+           $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid,'lead_id'=>$newleadid,'assign_date'=>$date],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
 
     
     
