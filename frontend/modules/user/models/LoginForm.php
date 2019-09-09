@@ -28,8 +28,9 @@ class LoginForm extends Model
         return [
             // username and password are both required
             ['identity', 'required'],
+            ['checkfield', 'safe'],
 
-
+            //['password', 'validatePassword'],
             [['password'] ,'required','when'=>function($model){
                 return $model->checkfield == 'password' ;
              }, 'whenClient' => "function (attribute, value) {
@@ -132,7 +133,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             
             $user = $this->getUser();
-// echo '<pre>';print_r($user);die;
+//  echo '<pre>';print_r($user);die;
             if (!$user || !$user->validatePassword($this->password)) {
 
                 // echo 'aya';die;
