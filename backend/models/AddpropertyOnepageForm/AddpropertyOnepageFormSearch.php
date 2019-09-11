@@ -178,7 +178,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
-            'assign_date' => $this->assign_date,
+            'DATE(assign_date)' => $this->assign_date,
             'reassign_date' => $this->reassign_date,
         ]);
 
@@ -270,6 +270,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'assign_date' => $this->assign_date,
             'reassign_date' => $this->reassign_date,
         ]);
 
