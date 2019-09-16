@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Addpropertypms')
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
+
 <div class="addpropertypm-update">
 
     <?php echo $this->render('_form', [

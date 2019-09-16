@@ -101,13 +101,13 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     //               ['property_on_floor', 'compare','compareValue'=>'total_no_of_floors','operator'=>'<',
     // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
-            [['followup_date_time', 'created_date','maintenance_charge'], 'safe'],
+            [['followup_date_time', 'created_date','maintenance_charge','reassign_date','landline_no', 'email_id','owner_address'], 'safe'],
             [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
-            [['landline_no', 'email_id'], 'string', 'max' => 30],
+            //[['landline_no', 'email_id'], 'string', 'max' => 30],
             [['super_unit', 'carpet_unit'], 'string', 'max' => 15],
-            [['owner_address'], 'string', 'max' => 100],
+           // [['owner_address'], 'string', 'max' => 100],
         ];
     }
 
@@ -186,6 +186,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'remarks' => 'Remarks',
             'followup_comment' => 'Followup Comment',
             'isactive' => 'Isactive',
+            'reassign_date' => 'Reassign Date',
+            'assign_date' => 'Assign Date',
             'created_date' => 'Created Date',
         ];
     }
@@ -245,8 +247,8 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
                 
                
     $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counters],'id = "'.$newids.'"')->execute();
-    $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids],'id = "'.$idf.'"')->execute();
-    $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
+    $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids,'lead_id'=>$newleadid,'assign_date'=>$date],'id = "'.$idf.'"')->execute();
+    $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newids,'lead_id'=>$newleadid,'assign_date'=>$date],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
     
             $trendingadd = \Yii::$app->db->createCommand()->insert('leadassignment', ['leadid' => $newleadid, 'lead_current_status_ID' => $newleadstatus, 'assigned_toID' => $newids, 'assigned_at' => $date])->execute();
     
@@ -260,9 +262,9 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     
            $updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter],'id = "'.$newid.'"')->execute();
     
-           $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid],'id = "'.$idf.'"')->execute();
+           $updater = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid,'lead_id'=>$newleadid,'assign_date'=>$date],'id = "'.$idf.'"')->execute();
 
-           $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
+           $updater2 = Yii::$app->db->createCommand()->update('addproperty_onepage_form', ['company_employee_id' => $newid,'lead_id'=>$newleadid,'assign_date'=>$date],'primary_contact_no = "'.$primary_contact_no.'"')->execute();
 
     
     

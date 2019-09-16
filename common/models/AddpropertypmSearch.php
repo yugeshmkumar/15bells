@@ -19,7 +19,7 @@ class AddpropertypmSearch extends Addpropertypm
     {
         return [
             [['id', 'user_id', 'project_type_id', 'city',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
-            [['role_id', 'project_name', 'property_for', 'request_for', 'featured_image', 'featured_video', 'locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
+            [['role_id', 'project_name', 'property_for','super_area', 'request_for', 'featured_image', 'featured_video', 'locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
             [['longitude', 'latitude', 'FAR_approval'], 'number'],
         ];
     }
@@ -51,13 +51,16 @@ class AddpropertypmSearch extends Addpropertypm
             'query' => $query,
         ]);
 
+        $query->joinWith('username');
+        $query->joinWith('buildingname');
+
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
+           // 'user_id' => $this->user_id,
             'project_type_id' => $this->project_type_id,
             'city' => $this->city,
             'longitude' => $this->longitude,
@@ -71,7 +74,7 @@ class AddpropertypmSearch extends Addpropertypm
             'membership_charge' => $this->membership_charge,
             'available_date' => $this->available_date,
             'FAR_approval' => $this->FAR_approval,
-            'buildup_area' => $this->buildup_area,
+            'addproperty.super_area' => $this->super_area,
             'carpet_area' => $this->carpet_area,
             'total_floors' => $this->total_floors,
             'property_on_floor' => $this->property_on_floor,
@@ -84,12 +87,12 @@ class AddpropertypmSearch extends Addpropertypm
         ]);
 
         $query->andFilterWhere(['like', 'role_id', $this->role_id])
-            ->andFilterWhere(['like', 'project_name', $this->project_name])
-            ->andFilterWhere(['like', 'property_for', $this->property_for])
-            ->andFilterWhere(['like', 'request_for', $this->request_for])
+            ->andFilterWhere(['like', 'addproperty_onepage_form.building_name', $this->project_name])
+            ->andFilterWhere(['like', 'addproperty.property_for', $this->property_for])
+            ->andFilterWhere(['like', 'addproperty.request_for', $this->request_for])
             ->andFilterWhere(['like', 'featured_image', $this->featured_image])
             ->andFilterWhere(['like', 'featured_video', $this->featured_video])
-            ->andFilterWhere(['like', 'locality', $this->locality])
+            ->andFilterWhere(['like', 'addproperty.locality', $this->locality])
             ->andFilterWhere(['like', 'address', $this->address])
             
             ->andFilterWhere(['like', 'price_negotiable', $this->price_negotiable])
@@ -118,7 +121,7 @@ class AddpropertypmSearch extends Addpropertypm
             ->andFilterWhere(['like', 'servant_room', $this->servant_room])
             ->andFilterWhere(['like', 'other_room', $this->other_room])
             ->andFilterWhere(['like', 'furnished_status', $this->furnished_status])
-            //->andFilterWhere(['like', 'is_active', $this->is_active])
+            ->andFilterWhere(['like', 'user.username', $this->user_id])
             ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;

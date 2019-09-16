@@ -14,31 +14,31 @@ return [
     ],
 
 
-    [
-        'class' => 'yii\grid\ActionColumn',
-        'template' => '{complete}',
-        'header'   =>'Approve', 
+    // [
+    //     'class' => 'yii\grid\ActionColumn',
+    //     'template' => '{complete}',
+    //     'header'   =>'Approve', 
         
-        'options' => ['style' => 'width:100px;'],
-        'buttons' => [
-            'complete' => function ($url) {
+    //     'options' => ['style' => 'width:100px;'],
+    //     'buttons' => [
+    //         'complete' => function ($url) {
 
-                return Html::a('<button class="btn btn-info recall_popup" style="border-color:#0fd8da !important;border:1px solid;"  >Approve</button>', $url,[
-                    'title' => 'Complete',
-                    'data-pjax' => '0',
-                ]);
+    //             return Html::a('<button class="btn btn-info recall_popup" style="border-color:#0fd8da !important;border:1px solid;"  >Approve</button>', $url,[
+    //                 'title' => 'Complete',
+    //                 'data-pjax' => '0',
+    //             ]);
 
-                // return Html::a(
-                //     '<button  class="btn btn-success recall_popup" aria-hidden="true"></span>',
-                //     $url, 
-                //     [
-                //         'title' => 'Complete',
-                //         'data-pjax' => '0',
-                //     ]
-                // );
-            },
-        ],
-    ],
+    //             // return Html::a(
+    //             //     '<button  class="btn btn-success recall_popup" aria-hidden="true"></span>',
+    //             //     $url, 
+    //             //     [
+    //             //         'title' => 'Complete',
+    //             //         'data-pjax' => '0',
+    //             //     ]
+    //             // );
+    //         },
+    //     ],
+    // ],
 
     [
         'label' => 'Percentage',
@@ -334,8 +334,20 @@ return [
                     $scheduled_timesnew = "'$scheduled_times'";                    
                     $request_id = "'$model->id'";
                     $followup_comment = "'$model->followup_comment'";
+                    $shortfollowup_comment = $model->followup_comment;
+
+                    if (strlen($shortfollowup_comment) >= 20) {
+                       $newstring = substr($shortfollowup_comment, 0, 5). " ... " . substr($shortfollowup_comment, -5);
+                    }
+                    else if (strlen($shortfollowup_comment) == 0) {
+
+                        $newstring =   'Add Followup';
+                    }
+                    else {
+                        $newstring =   $shortfollowup_comment;
+                    }
              
-            return Html::a('<button class="btn btn-success recall_popup" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs('. $scheduled_timesnew . ',' . $request_id . ',' . $followup_comment . ')" >' . $showtime . '</button>', $url = 'javascript:void(0)', []);
+            return Html::a('<button class="btn btn-success recall_popup" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs('. $scheduled_timesnew . ',' . $request_id . ',' . $followup_comment . ')" >' . $newstring . '</button>', $url = 'javascript:void(0)', []);
 
           }
     ],
@@ -356,6 +368,7 @@ return [
         'format' => 'raw',
         'value' => function($model) {
             $wrongid = $model->id;
+            
 
             return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="wrong_lead('.$wrongid.')" >Wrong lead</button>', $url = 'javascript:void(0)', []);
 
@@ -393,8 +406,22 @@ return [
         'value' => function($model) {
 
             $visitid = $model->id;
+            $shortwrongcomment = $model->remarks;
 
-            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >Remarks</button>', $url = 'javascript:void(0)', []);
+                    if (strlen($shortwrongcomment) >= 20) {
+                       $newstring = substr($shortwrongcomment, 0, 5). " ... " . substr($shortwrongcomment, -5);
+                    }
+                    else if (strlen($shortwrongcomment) == 0) {
+
+                        $newstring =   'Add remarks';
+                    }
+
+                    else {
+                        
+                        $newstring =   $shortwrongcomment;
+                    }
+
+            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >'.$newstring.'</button>', $url = 'javascript:void(0)', []);
 
           }
     ],

@@ -12,9 +12,9 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'id',
+    //     [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'id',
     // ],
     // [
     //     'class'=>'\kartik\grid\DataColumn',
@@ -66,6 +66,51 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'property_type_id',
     // ],
+
+    [
+        'label' => 'Assign Date',
+        'attribute' => 'assign_date',
+        'filter' => \yii\jui\DatePicker::widget([
+            'language' => 'en',
+            'dateFormat' => 'yyyy-MM-dd',
+            'model' => $searchModel,
+            'attribute' => 'assign_date',
+              ]),
+          'format' => 'html',
+
+            // 'options' => ['style' => 'width:90px;'],
+        
+             'value' => function($model) {
+             
+                return   date("d M Y", strtotime($model->assign_date));
+
+             }
+    ],
+
+    [
+        'label' => 'Followup Comment',
+        'attribute' => 'followup_comment',        
+          'format' => 'raw',
+
+        // 'options' => ['style' => 'width:90px;'],
+        
+             'value' => function($model) {
+
+                $followup_comment = "'$model->followup_comment'";
+                $shortfollowup_comment = $model->followup_comment;
+
+                if (strlen($shortfollowup_comment) >= 20) {
+                   $newstring = substr($shortfollowup_comment, 0, 5). " ... " . substr($shortfollowup_comment, -5);
+                }
+                
+                else {
+                    $newstring =   $shortfollowup_comment;
+                }
+             
+                return   $newstring;
+
+             }
+    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'Owner_name',
@@ -73,6 +118,11 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'primary_contact_no',
+    ],
+
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'building_name',
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',

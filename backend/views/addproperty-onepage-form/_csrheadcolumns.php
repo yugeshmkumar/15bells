@@ -2,18 +2,21 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\db\Query;
+use kartik\datetime\DateTimePicker;
+
 
 return [
     [
         'class' => 'kartik\grid\CheckboxColumn',
         'width' => '20px',
     ],
+    
     [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
 
-
+    
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'Owner_name',
@@ -37,6 +40,26 @@ return [
             return Html::a('<button class="btn btn-default" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid ;" >'.$model->completion_in_percentage.' %</button>', $url = 'javascript:void(0)', []);
 
           }
+    ],
+
+    [
+        'label' => 'Assign Date',
+        'attribute' => 'reassign_date',
+        'filter' => \yii\jui\DatePicker::widget([
+            'language' => 'en',
+            'dateFormat' => 'yyyy-MM-dd',
+            'model' => $searchModel,
+            'attribute' => 'reassign_date',
+              ]),
+          'format' => 'html',
+
+            // 'options' => ['style' => 'width:90px;'],
+        
+             'value' => function($model) {
+             
+                return   date("d M Y", strtotime($model->reassign_date));
+
+             }
     ],
 
 

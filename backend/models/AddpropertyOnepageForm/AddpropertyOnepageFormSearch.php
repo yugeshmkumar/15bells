@@ -20,7 +20,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
     {
         return [
             [['id', 'company_employee_id', 'property_for', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'buildup_area', 'carpet_area', 'total_no_of_floors', 'passenger_lift', 'service_lift', 'ceiling_height', 'floor_plate_area', 'visitor_parking', 'covered_parking', 'asking_lease_rate', 'maintenance_charge', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
-            [['city', 'locality', 'town_name', 'sector_name', 'address', 'builder_name', 'building_name','project_name', 'Owner_name', 'landline_no', 'email_id', 'property_on_floor', 'unit_block', 'unit_number', 'buildup_unit', 'carpet_unit', 'owner_address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'pan_card', 'adhar_card', 'property_tax_id', 'property_status', 'followup_date_time', 'followup_comment', 'created_date'], 'safe'],
+            [['city', 'locality', 'town_name', 'sector_name', 'assign_date','address', 'builder_name', 'building_name','project_name', 'Owner_name', 'landline_no', 'email_id', 'property_on_floor', 'unit_block', 'unit_number', 'buildup_unit', 'carpet_unit', 'owner_address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'pan_card', 'adhar_card', 'property_tax_id', 'property_status', 'followup_date_time', 'followup_comment','reassign_date', 'created_date'], 'safe'],
             [['longitude', 'latitude'], 'number'],
         ];
     }
@@ -85,6 +85,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'completion_in_percentage' => $this->completion_in_percentage,
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
+            'reassign_date' => $this->reassign_date,
             'created_date' => $this->created_date,
         ]);
 
@@ -177,6 +178,8 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'DATE(assign_date)' => $this->assign_date,
+            'reassign_date' => $this->reassign_date,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])
@@ -267,6 +270,8 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'assign_date' => $this->assign_date,
+            'reassign_date' => $this->reassign_date,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])
@@ -362,6 +367,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'reassign_date' => $this->reassign_date,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])
@@ -462,6 +468,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'reassign_date' => $this->reassign_date,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])
@@ -555,6 +562,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
             'created_date' => $this->created_date,
+            'DATE(reassign_date)' => $this->reassign_date,
         ]);
 
         $query->andFilterWhere(['like', 'city', $this->city])
@@ -589,6 +597,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             ->andFilterWhere(['like', 'adhar_card', $this->adhar_card])
             ->andFilterWhere(['like', 'property_tax_id', $this->property_tax_id])
             ->andFilterWhere(['like', 'property_status', $this->property_status])
+            ->andFilterWhere(['like', 'DATE(reassign_date)', $this->reassign_date])
             ->andFilterWhere(['like', 'followup_comment', $this->followup_comment]);
 
         return $dataProvider;

@@ -183,7 +183,7 @@ $undercategory = $property_type->undercategory;
 									</a>
 								</div>
 								<div class="col-md-12 edit_images text-center">
-								<a href="<?= Yii::$app->getUrlManager()->getBaseUrl() ."/addproperty/additional?s_id=$viewid";  ?>" class="property_back">Edit Images</a>
+								<!-- <a href="<?= Yii::$app->getUrlManager()->getBaseUrl() ."/addproperty/additional?s_id=$viewid";  ?>" class="property_back">Edit Images</a> -->
 								<a href="javascript:void(0)" class="property_process prop_video">Property Video</a>
 								</div>
 						</div>
