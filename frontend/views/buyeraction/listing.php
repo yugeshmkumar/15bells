@@ -2064,15 +2064,15 @@ proptype =  $('#proptypes').val();
             var commaNum = numberWithCommas(this.expected_price);
                 
                   $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2209,15 +2209,15 @@ proptype =  $('#proptypes').val();
                                              var commaNum = numberWithCommas(this.expected_price);
                 
                                              $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2346,15 +2346,15 @@ proptype =  $('#proptypes').val();
                                       var commaNum = numberWithCommas(this.expected_price);
                 
                                       $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -3191,15 +3191,15 @@ function getPolygonCoords() {
                 
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -3330,15 +3330,15 @@ function getPolygonCoords() {
                                                            var commaNum = numberWithCommas(this.expected_price);
                
                $('#getprop').append('<div class="col-md-12">'+
-                           '<p class="property_id">Property ID : '+propsid+'</p>'+
+                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                            '<div class="row single_property">'+
-                               '<div class="col-md-3 no_pad relative">'+
+                               '<div class="col-md-2 no_pad relative">'+
                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login image_property">'+
                                    '<div class="overlay_sign">'+
                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                    '</div>'+
                                '</div>'+
-                               '<div class="col-md-9">'+
+                               '<div class="col-md-10">'+
                                    '<div class="row prop_detail">'+
                                        '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
@@ -3480,15 +3480,15 @@ function getPolygonCoords() {
                                                                var commaNum = numberWithCommas(this.expected_price);
                    
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+'</p>'+
+                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                                   '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                   '<div class="overlay_sign">'+
                                       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3613,15 +3613,15 @@ function getPolygonCoords() {
                                          var commaNum = numberWithCommas(this.expected_price);
                    
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+'</p>'+
+                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                                   '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                   '<div class="overlay_sign">'+
                                       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3908,15 +3908,15 @@ function getPolygonCoords() {
                                                     var commaNum = numberWithCommas(this.expected_price);
                                                          
                                                     $('#getprop').append('<div class="col-md-12 property_detail">'+
-                                                                '<p class="property_id">Property ID : '+propsid+'</p>'+
+                                                                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                                                                 '<div class="row single_property">'+
-                                                                    '<div class="col-md-3 no_pad relative">'+
+                                                                    '<div class="col-md-2 no_pad relative">'+
                                                                         '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                                                         '<div class="overlay_sign">'+
                                                                             '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         '</div>'+
                                                                     '</div>'+
-                                                                    '<div class="col-md-9">'+
+                                                                    '<div class="col-md-10">'+
                                                                         '<div class="row prop_detail">'+
                                                                             '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Location</p>'+
