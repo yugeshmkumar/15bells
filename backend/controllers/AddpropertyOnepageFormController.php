@@ -167,9 +167,12 @@ class AddpropertyOnepageFormController extends Controller
      public function actionAssigncsrhead(){
 
         $crmid = $_POST['crmid'];
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
         $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
       
-        $rbac->isactive = 2;        
+        $rbac->isactive = 2;  
+        $rbac->reassign_date = $date;        
         $rbac->save(false);
 	if($rbac){
 	return 1;die;
@@ -601,6 +604,8 @@ class AddpropertyOnepageFormController extends Controller
 
      public function actionComplete($id){
 
+
+        $this->layout = "csr_head_layout";
         $request = Yii::$app->request;
         $model = $this->findModel($id); 
         $modelajax = new SignupForm(); 
@@ -691,6 +696,7 @@ class AddpropertyOnepageFormController extends Controller
                     $modeladd->carpet_area = $post['AddpropertyOnepageForm']['carpet_area'];
                     $modeladd->carpet_unit = 'sq_feets';
                     $modeladd->property_on_floor = $post['AddpropertyOnepageForm']['property_on_floor'];
+                    $modeladd->total_floors = $post['AddpropertyOnepageForm']['total_no_of_floors'];
                     $modeladd->furnished_status = $post['AddpropertyOnepageForm']['type_of_space'];
                     $modeladd->is_active = 1;
                     $modeladd->created_date = $date;

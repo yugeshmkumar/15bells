@@ -1034,5 +1034,7 @@ class Addproperty extends \yii\db\ActiveRecord
                                 cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
         return $angle * $earthRadius;
     }
+
+    
     
 }

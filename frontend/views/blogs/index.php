@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use kartik\widgets\TypeaheadBasic;
+use common\models\Article_author;
+
 ?>
 
 
@@ -87,7 +89,10 @@ use kartik\widgets\TypeaheadBasic;
 			<div class="row blog_repeat">
 				<div class="col-md-12 contnt_blg">
 					<h2 class="blog_titl"><?= Html::encode($country->title) ?></h2>
-					<p class="blog_det"><span class="writr_b">Amit Kumar</span>|<span class="date_b"><?= Html::encode(date("F jS, Y ", $country->published_at)); ?></span></p>
+
+				<?php  $users = Article_author::find()->where(['id'=>$country->author_id])->one(); ?>
+
+					<p class="blog_det"><span class="writr_b"><?php  echo $users->author_name; ?></span>|<span class="date_b"><?= Html::encode(date("F jS, Y ", $country->published_at)); ?></span></p>
 					<?php
 					
 						$string = strip_tags($country->body);
@@ -121,7 +126,14 @@ use kartik\widgets\TypeaheadBasic;
 
 			
 			<div class="row text-center">
-				<button class="btn btn-default load_mor">Load More</button>
+			<?php	echo LinkPager::widget(['pagination' => $pagination,
+		'prevPageLabel' => 'Previous',
+		'nextPageLabel' => '<button class="btn btn-default blog_load">See More</button>',
+		'maxButtonCount' => 0,
+		
+		]);
+?>
+			<!-- <button class="btn btn-default load_mor">Load More</button>	 -->
 			</div>
 		
 		</div>

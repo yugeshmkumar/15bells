@@ -6,6 +6,12 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Articles'), 'ur
 $this->params['breadcrumbs'][] = $this->title;
 $currenturl =  Yii::getAlias('@frontendUrl').Yii::$app->request->url;
 use common\models\Article_author;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+
+
+
 ?>
 
 <div id="fb-root"></div>
@@ -28,7 +34,7 @@ use common\models\Article_author;
                     <div class="col-md-10 col-md-offset-1 text-left single_blogpage about_bannr">
                                     <h1 class="single_hed"><?php  echo $model->title; ?></h1>
                                     <?php  $users = Article_author::find()->where(['id'=>$model->author_id])->one(); ?>
-                                    <p class="blog_by"><span class="writr_n"><?php  echo $users->author_name; ?></span>|<span class="date_r"><?php echo  date("F d,Y", strtotime($users->created_date)); ?></span></p>
+                                    <p class="blog_by"><span class="writr_n"><?php  echo $users->author_name; ?></span>|<span class="date_r"><?= Html::encode(date("F jS, Y ", $model->published_at)); ?></span></p>
                     </div>
                     
 
@@ -70,7 +76,7 @@ use common\models\Article_author;
                 </div>
                 <div class="row row_socal">
                     <div class="col-md-6 no_pad">
-                        <p class="hash_tg"><span class="hastg_1"># Architecture</span><span class="hastg_2"># Design</span></p>
+                        <!-- <p class="hash_tg"><span class="hastg_1"># Architecture</span><span class="hastg_2"># Design</span></p> -->
                     </div>
                     <div class="col-md-6 text-right">
                         <ul class="social_share">
@@ -95,23 +101,25 @@ data-mobile-iframe="true">
             </div>
         <!---Blog Side menu----->
             <div class="col-md-4 blog_filter">
-                <div class="row">
+                <!-- <div class="row">
                     <form class="example" action="/action_page.php" style="margin:auto;">
                       <input type="text" placeholder="Search.." class="serch_inpt" name="search2">
                       <button type="submit"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/search.png';  ?>"></button>
                     </form>
-                </div>
+                </div> -->
                 <div class="row">
-                    <h3 class="side_head">Keywords / Tags</h3>
-                    <ul class="blog_side">
-                        <li class="active"><a href="javascript:void(0)" class="categ_selec"># Architecture</a></li>
-                        <li><a href="javascript:void(0)" class="categ_selec"># Investment</a></li>
-                        <li><a href="javascript:void(0)" class="categ_selec"># Property</a></li>
-                        <li><a href="javascript:void(0)" class="categ_selec"># Real Estate</a></li>
-                        <li><a href="javascript:void(0)" class="categ_selec"># Design</a></li>
-                    </ul>
+                <h3 class="side_head">Keywords / Tags</h3>
+				<ul class="blog_side">
+				<?php $form = ActiveForm::begin(); ?>
+                    <li class="active"><?= Html::submitButton('#Architecture', ['class'=>'categ_selec','name' => 'keyword', 'value' => 'Architecture']) ?></li>
+                    <li class=""><?= Html::submitButton('#Investment', ['class'=>'categ_selec','name' => 'keyword', 'value' => 'Investment']) ?></li>
+                    <li><?= Html::submitButton('#RERA', ['class'=>'categ_selec','name' => 'role', 'keyword' => 'RERA']) ?></li>
+                    <li><?= Html::submitButton('#Promoters', ['class'=>'categ_selec','name' => 'keyword', 'value' => 'promoters']) ?></li>
+					<?php ActiveForm::end(); ?>
+					
+				</ul>
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <h3 class="side_head">Popular Post</h3>
                     <div class="col-md-12 no_pad">
                         <div class="row row_rep brdr_btm">
@@ -135,14 +143,14 @@ data-mobile-iframe="true">
                         <div class="row row_rep">
                             <div class="col-md-4 col-xs-4">
                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blog/bs_3.png';  ?>" class="img-responsive">
-                        </div>
-                        <div class="col-md-8 col-xs-8">
+                             </div>
+                            <div class="col-md-8 col-xs-8">
                             <h3 class="blog_hed">How to Get a 50% Buyer Agent Commission Refund</h3>
                             <p class="blog_dat">February 10, 2019</p>
-                        </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="row author_div">
@@ -152,7 +160,7 @@ data-mobile-iframe="true">
                             <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="100" class="img-circle">
                         </div>
                         <div class="col-md-10">
-                            <h2 class="writr_nam">Tom Hodges, Managing Director</h3>
+                            <h2 class="writr_nam"><?php  echo $users->author_name; ?>, <?php  echo $users->author_position; ?></h3>
                             <p class="blog_txt col-md-12  no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
                         </div>
                     </div>
@@ -160,32 +168,67 @@ data-mobile-iframe="true">
         <div class="row author_div">
                     <div class="col-md-12 no_pad brdr_bottm">
                         <div class="col-md-8 col-xs-7 no_pad">
-                            <h2 class="abt_writr">Comments <span class="">(2)</span></h2>
+                    <?php 
+
+                    $articlecommments = \common\models\Article_comments::find()->where(['article_id' => $model->id])->andwhere(['status' => 'approved'])->all();
+                    $commentscount = \common\models\Article_comments::find()->where(['article_id' => $model->id])->andwhere(['status' => 'approved'])->count();
+
+                    ?>
+                            <h2 class="abt_writr">Comments <span class="">(<?php echo $commentscount; ?>)</span></h2>
                         </div>
                         <div class="col-md-4 col-xs-5 text-right comment_ad">
                             <a href="javascript:void(0)" class="add_commnt">Add a comment</a>
                         </div>
                     </div>
+
+                    <?php 
+
+
+                    foreach($articlecommments  as $articlecommment){
+
+
+                    ?>
                     <div class="col-md-12 comment_section brdr_bottm">
                         
-                            <h4 class="writr_nam col-md-8 no_pad col-xs-7">Albert Thomas</h4><p class="author_date text-right col-md-4 col-xs-5">February 10, 2019</p>
-                            <p class="blog_txt col-md-12  no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, </p>
+                            <h4 class="writr_nam col-md-8 no_pad col-xs-7"><?php echo $articlecommment->comment_name; ?></h4><p class="author_date text-right col-md-4 col-xs-5"><?php echo date("F j, Y ", strtotime($articlecommment->created_date)); ?> </p>
+                            <p class="blog_txt col-md-12  no_pad"><?php echo $articlecommment->comment_description; ?> </p>
                         
                     </div>
-                    <div class="col-md-12 comment_section brdr_bottm">
-                        
-                            <h4 class="writr_nam col-md-8 col-xs-7 no_pad">Albert Thomas</h4><p class="author_date text-right col-md-4 col-xs-5">February 10, 2019</p>
-                            <p class="blog_txt col-md-12  no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, </p>
-                        
+
+                    <?php }  ?>
+                    
+
+                    
+                    <?php
+                    
+                    $modeled = new \common\models\Article_comments();
+                    $form = ActiveForm::begin(['action'=>"/article/savecomments"]); 
+
+                    ?>
+                    <div class="col-md-12 comment_section no_pad" style="margin-top:30px">
+                    <div class="form-group">
+                              <?php echo $form->field($modeled, 'comment_name')->textInput(['class'=>"form-control coment_spac",'placeholder'=>'Your Name'])->label(false); ?>
+
+                            </div>
                     </div>
+                    
+                    <?php echo $form->field($modeled, 'article_id')->hiddenInput(['value'=>$model->id,'class'=>"form-control coment_spac",'placeholder'=>'Your Name'])->label(false); ?>
+
                     <div class="col-md-12 comment_section no_pad">
+                    
                             <div class="form-group">
-                              <textarea class="form-control coment_spac" placeholder="Your comment" rows="5" id="comment"></textarea>
+                              <?php echo $form->field($modeled, 'comment_description')->textarea(['class'=>"form-control coment_spac",'placeholder'=>'Your Comment','rows'=>'5'])->label(false); ?>
+
                             </div>
                             <p class="text-right post_cancel">
-                                <a href="javascript:void(0)" class="cancel_btn">Cancel</a><a href="javascript:void(0)" class="post_btn">Post a comment</a>
+                                <a href="javascript:void(0)" class="cancel_btn">Cancel</a>
+                                <?= Html::submitButton('Post a comment', ['class' => 'post_btn']) ?>
+                                
                             </p>
                     </div>
+                    <?php ActiveForm::end(); ?>
+
+                    
         </div>
             <!-- <div class="row author_div">
                     <div class="col-md-12 no_pad brdr_bottm">

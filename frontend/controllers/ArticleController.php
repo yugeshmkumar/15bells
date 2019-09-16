@@ -7,6 +7,9 @@ use common\models\ArticleAttachment;
 use frontend\models\search\ArticleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use common\models\Article_comments;
+use Yii;
+
 
 /**
  * @author Eugene Terentev <eugene@terentev.net>
@@ -63,5 +66,28 @@ class ArticleController extends Controller
             \Yii::$app->fileStorage->getFilesystem()->readStream($model->path),
             $model->name
         );
+    }
+
+    public function actionSavecomments(){
+
+       
+
+        $model = new Article_comments();
+         
+         date_default_timezone_set("Asia/Calcutta");
+         $date = date('Y-m-d H:i:s');
+
+        //  echo '<pre>';print_r(Yii::$app->request->post());die;
+        if ($model->load(Yii::$app->request->post()) && $model->validate() ) {
+            
+            $model->created_date = $date;
+            if($model->save()){
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+        }else{
+           print_r($model->errors);die;
+        }
+
+
     }
 }

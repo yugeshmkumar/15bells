@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm;
 
 /**
  * This is the model class for table "addproperty".
@@ -74,6 +75,18 @@ class Addpropertypm extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $efficiency;
+    public $total_lease_rate;
+    public $passenger_lift;
+    public $covered_parking;
+    public $type_of_space;
+    public $floor_plate_area;
+    public $security_deposit;
+    public $backup_power;
+    public $building_name;
+
+
     public static function tableName()
     {
         return 'addproperty';
@@ -86,7 +99,7 @@ class Addpropertypm extends \yii\db\ActiveRecord
     {
         return [
           //  [['user_id', 'role_id', 'project_name', 'property_for', 'project_type_id', 'request_for', 'city', 'locality', 'address', 'longitude', 'latitude', 'membership_charge', 'availability', 'available_date', 'age_of_property', 'possesion_by', 'FAR_approval', 'furnished_status', 'created_date'], 'required'],
-            [['user_id', 'project_type_id',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
+            [['user_id', 'project_type_id',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies'], 'integer'],
             [['role_id', 'property_for', 'request_for', 'locality', 'address', 'price_negotiable', 'revenue_lauout', 'present_status', 'shed_RCC', 'maintenance_by', 'availability', 'available_from', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'status'], 'string'],
             [['longitude', 'latitude', 'FAR_approval'], 'number'],
             [['available_date', 'created_date'], 'safe'],
@@ -164,4 +177,17 @@ class Addpropertypm extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    public function getUsername()
+{
+    return $this->hasOne(User::className(), ['id' => 'user_id']);
+}
+
+
+public function getBuildingname()
+{
+    return $this->hasOne(AddpropertyOnepageForm::className(), ['property_id' => 'id']);
+}
+
+
 }
