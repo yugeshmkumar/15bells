@@ -36,6 +36,8 @@ $user_id= Yii::$app->user->identity->id;
    .ui-datepicker-header{
        padding:0 10px;
    }
+
+  
 </style>
 
 <div class="container-fluid property_flow" style="margin-top:100px;">
@@ -44,7 +46,10 @@ $user_id= Yii::$app->user->identity->id;
 			<div class="col-md-6 no_pad">
 				<h1 class="trans_head_b">Post a Property for Sale. </h1>
 				<p class="brand_txt">Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property</p>
-			</div><div class="col-md-6"></div>
+			</div>
+            <div class="col-md-6">
+            
+            </div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 no_pad">
@@ -94,6 +99,9 @@ $user_id= Yii::$app->user->identity->id;
 											<?= $form->field($model, 'locality')->textInput(['id' => 'searchTextField', 'placeholder' => "Enter your locality", 'class' => 'form-control input_desgn input_location'])->label(false) ?>
 
 										</div>
+                                        <div class="col-md-6">
+                                           
+                                        </div>
 									</div>
 									<div class="row address_row">
 										<div class="col-md-6">
@@ -886,6 +894,7 @@ $user_id= Yii::$app->user->identity->id;
 
 <?php
 $script = <<< JS
+
 
 //$("#signup_modal").modal('show');
 

@@ -164,13 +164,13 @@ if(!isset($_SESSION))
 				<!-- <div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : #2345DFGEQ</p>
 					<div class="row single_property">
-						<div class="col-md-3 no_pad relative">
+						<div class="col-md-2 no_pad relative">
 							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive">
 							<div class="overlay_sign">
 								<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>
 							</div>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-10">
 							<div class="row prop_detail">
 								<div class="col-md-6 company_overview property_manage">
 									<p class="label_name">Location</p>
@@ -2036,16 +2036,16 @@ proptype =  $('#proptypes').val();
                   var commaNum = this.asking_rental_price;
                 
                   $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
-                               '<div class="row prop_detail">'+
+                           '<div class="col-md-10">'+
+                           '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
@@ -2077,12 +2077,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -2182,16 +2182,16 @@ proptype =  $('#proptypes').val();
                                              var commaNum = this.asking_rental_price;
                 
                                              $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
-                               '<div class="row prop_detail">'+
+                           '<div class="col-md-10">'+
+                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
@@ -2223,12 +2223,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -2319,16 +2319,16 @@ proptype =  $('#proptypes').val();
                                       var commaNum = this.asking_rental_price;
                 
                                       $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
-                               '<div class="row prop_detail">'+
+                           '<div class="col-md-10">'+
+                           '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.locality+'</p>'+
@@ -2360,12 +2360,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -3163,15 +3163,15 @@ function getPolygonCoords() {
                 
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+'</p>'+
+                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                                '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                '<div class="overlay_sign">'+
                                    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -3204,12 +3204,12 @@ function getPolygonCoords() {
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -3302,15 +3302,15 @@ function getPolygonCoords() {
                  var commaNum = this.asking_rental_price;
                
                $('#getprop').append('<div class="col-md-12">'+
-                           '<p class="property_id">Property ID : '+propsid+'</p>'+
+                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                            '<div class="row single_property">'+
-                               '<div class="col-md-3 no_pad relative">'+
+                               '<div class="col-md-2 no_pad relative">'+
                                    '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive prop_login image_property">'+
                                    '<div class="overlay_sign">'+
                                        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                    '</div>'+
                                '</div>'+
-                               '<div class="col-md-9">'+
+                               '<div class="col-md-10">'+
                                    '<div class="row prop_detail">'+
                                        '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
@@ -3343,13 +3343,13 @@ function getPolygonCoords() {
                                    '<div class="col-md-6 amenities_offered">'+
                                        '<p class="label_name amenities">Amenities</p>'+
                                        '<ul class="amenities_list">'+
-                                           '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                           '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                           '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                           '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                           '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                           '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
-                                       '</ul>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                   '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
                                        '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
@@ -3452,15 +3452,15 @@ function getPolygonCoords() {
                                                 var commaNum = this.asking_rental_price;
                    
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+'</p>'+
+                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                                   '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                   '<div class="overlay_sign">'+
                                       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3493,13 +3493,13 @@ function getPolygonCoords() {
                                   '<div class="col-md-6 amenities_offered">'+
                                       '<p class="label_name amenities">Amenities</p>'+
                                       '<ul class="amenities_list">'+
-                                          '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
-                                      '</ul>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                        '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
@@ -3585,15 +3585,15 @@ function getPolygonCoords() {
                                          var commaNum = this.asking_rental_price;
                    
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+'</p>'+
+                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                                   '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                   '<div class="overlay_sign">'+
                                       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3626,13 +3626,13 @@ function getPolygonCoords() {
                                   '<div class="col-md-6 amenities_offered">'+
                                       '<p class="label_name amenities">Amenities</p>'+
                                       '<ul class="amenities_list">'+
-                                          '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
-                                      '</ul>'+
+                                         '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                         '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                         '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                        '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
                                       '<button onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
@@ -3881,25 +3881,25 @@ function getPolygonCoords() {
                                                     var commaNum = this.asking_rental_price;
                                                          
                                                     $('#getprop').append('<div class="col-md-12 property_detail">'+
-                                                                '<p class="property_id">Property ID : '+propsid+'</p>'+
+                                                                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
                                                                 '<div class="row single_property">'+
-                                                                    '<div class="col-md-3 no_pad relative">'+
+                                                                    '<div class="col-md-2 no_pad relative">'+
                                                                         '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
                                                                         '<div class="overlay_sign">'+
                                                                             '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         '</div>'+
                                                                     '</div>'+
-                                                                    '<div class="col-md-9">'+
-                                                                        '<div class="row prop_detail">'+
-                                                                            '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Location</p>'+
-                                                                                '<p class="details_label">'+this.locality+'</p>'+
+                                                                    '<div class="col-md-10">'+
+                                                                    '<div class="row prop_detail">'+
+                                                                          '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                                                              '<p class="label_name">Location</p>'+
+                                                                              '<p class="details_label">'+this.locality+'</p>'+
                                                                             '</div>'+
-                                                                            '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                                                             '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Property for</p>'+
-                                                                                '<p class="details_label">'+this.request_for+'</p>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
+                                                                                 '<p class="details_label">'+this.request_for+'</p>'+
+                                                                              '</div>'+
+                                                                    '</div>'+
                                                                         '<div class="row prop_detail">'+	
                                                                             '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Price</p>'+
@@ -3922,12 +3922,12 @@ function getPolygonCoords() {
                                                                         '<div class="col-md-6 amenities_offered">'+
                                                                             '<p class="label_name amenities">Amenities</p>'+
                                                                             '<ul class="amenities_list">'+
-                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
