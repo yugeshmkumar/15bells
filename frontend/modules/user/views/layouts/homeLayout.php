@@ -116,7 +116,7 @@ NewDesignAsset::register($this);
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
 					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
-					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
+					<li class=""><a href="href="mailto:info@15bells.com"" class="list_lnk">info@15bells.com</a></li>
 				</ul>
 				</div>
 			</div>
