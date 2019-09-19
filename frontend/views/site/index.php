@@ -42,22 +42,22 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<input type="hidden" id="urlget" value="<?php echo $urlsd; ?>">
 										<div class="textfirst" id="dropi"> 
 										  <div class="textfirst1" id="dropi1"> 
-										  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>"/> <span class="span_sl">Buy</span>
+										  <img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>"/> <span class="span_sl">Buy</span>
 										  </div>
 										</div>
 									  
 										<ul class="role_select" id="rolee">
 											<li class="input-option li_abc buy_l" data-value="1">
-											<a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="anchr_rol">  <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>" class="white_bg"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy_w.png';  ?>" class="yellow_bg"><span class="span_sl"> Buy</span></a>
+											<a href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" class="anchr_rol">  <img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy.png';  ?>" class="white_bg"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/buy_w.png';  ?>" class="yellow_bg"><span class="span_sl"> Buy</span></a>
 											</li>
 											<li class="input-option li_abc sell_l buy_l" data-value="2">
-											<a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell.png';  ?>" class="white_bg sell_icon" alt=""/> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell_w.png';  ?>" class="yellow_bg sell_icon" alt=""/><span class="span_sl"> Sell </span></a>
+											<a href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" class="anchr_rol"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell.png';  ?>" class="white_bg sell_icon" alt=""/> <img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/sell_w.png';  ?>" class="yellow_bg sell_icon" alt=""/><span class="span_sl"> Sell </span></a>
 											</li>
 											<li class="input-option li_abc lessee_l buy_l" data-value="3">
-											<a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="anchr_rol"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease.png';  ?>" class="white_bg" alt="" /> <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease_w.png';  ?>" class="yellow_bg" alt="" /><span class="span_sl">Lease In</span></a>
+											<a href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" class="anchr_rol"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease.png';  ?>" class="white_bg" alt="" /> <img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease_w.png';  ?>" class="yellow_bg" alt="" /><span class="span_sl">Lease In</span></a>
 											</li>
 											<li class="input-option li_abc lessor_l buy_l" data-value="4">
-											<a href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" class="anchr_rol"><img class="white_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out.png';  ?>" alt=""/><img class="yellow_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out_w.png';  ?>" alt=""/><span class="span_sl"> Lease Out</span></a>
+											<a href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" class="anchr_rol"><img alt="" class="white_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out.png';  ?>" alt=""/><img alt="" class="yellow_bg" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lease-out_w.png';  ?>" alt=""/><span class="span_sl"> Lease Out</span></a>
 											</li>
 										</ul>
 										<i class="fa fa-angle-down role_drop"></i>
@@ -80,20 +80,20 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 
 		<div class="row text-center">
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/instant.svg';  ?>" class="img_trans intant_auc" width="75"></a></p>
 				<p class="transac_typ text-center">Instant Mode</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Buy, Sell or Lease by utilizing our commercial property Instant Auction technology. Win-Win for everyone</p>
 				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">Experience Instant Real Estate Auction Now</a> </p>
 				
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/forward.svg';  ?>" width="110" class="img_trans forward_auc"></a></p>
 				<p class="transac_typ text-center">Forward Auction</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Our technology helps both Suppliers & Seekers in maintaining the market equilibrium based on supply & demand real-time.</p>
 				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">See how Forward Auction is beneficial for everyone.</a> </p>
 			</div>
 			<div class="col-md-4 col-xs-4 pad_trans">
-				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
+				<p class="img_s text-center"><a href="javascript:void()" class="auction_link"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/reverse.svg';  ?>" width="130" class="img_trans reverse_auc"></a></p>
 				<p class="transac_typ text-center">Reverse Auction</p>
 				<p class="transaction_text auction_text hidden-xs hidden-sm">Our Technology helps the brands in getting the best deals and at the same time ensuring benefits for sellers & lessors.</p>
 				<p class="transaction_text hidden-xs hidden-sm"><a href="javascript:void()" class="auction_link">See the benefits of Reverse Auction</a></p> 
@@ -124,7 +124,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			  <div id="buy_t" class="tab-pane fade in active">
 				<div class="row pad_step">
 					<div class="col-md-5 text-center">
-						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/buy.jpg';  ?>" class="img-responsive">
+						<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/buy.jpg';  ?>" class="img-responsive">
 					</div>
 					<div class="col-md-7 text-left">
 					<div class="accordion_container text-left">
@@ -189,7 +189,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			  <div id="sell_l" class="tab-pane fade">
 				<div class="row text-center pad_step">
 					<div class="col-md-5">
-						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sell.jpg';  ?>" class="img-responsive">
+						<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/sell.jpg';  ?>" class="img-responsive">
 					</div>
 					<div class="col-md-7 text-left">
 					<div class="accordion_container text-left">
@@ -247,7 +247,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			  <div id="lease_in" class="tab-pane fade">
 				<div class="row text-center pad_step">
 					<div class="col-md-5">
-						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessee.jpg';  ?>" class="img-responsive">
+						<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessee.jpg';  ?>" class="img-responsive">
 					</div>
 					<div class="col-md-7 text-left">
 					<div class="accordion_container text-left">
@@ -304,7 +304,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 			  <div id="lease_out" class="tab-pane fade">
 			  <div class="row text-center pad_step">
 					<div class="col-md-5">
-						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessor.jpg';  ?>" class="img-responsive">
+						<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/lessor.jpg';  ?>" class="img-responsive">
 					</div>
 					<div class="col-md-7 text-left">
 					<div class="accordion_container text-left">
@@ -378,7 +378,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<div class="item active">
 										<div class="col-md-4 ribbon">
 											<div class="ribbon-top-left">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_office.jpg';  ?>" class="img-responsive">
+											<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_office.jpg';  ?>" class="img-responsive">
 	
 											<span>Office Space</span></div>
 										</div>
@@ -386,7 +386,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<div class="item">
 										<div class="col-md-4 ribbon">
 											<div class="ribbon-top-left">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_business.jpg';  ?>" class="img-responsive">
+											<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_business.jpg';  ?>" class="img-responsive">
 											<span>Co-working</span>
 											</div>
 										</div>
@@ -394,7 +394,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<div class="item">
 										<div class="col-md-4 ribbon">
 											<div class="ribbon-top-left">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_work.jpg';  ?>" class="img-responsive">
+											<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_work.jpg';  ?>" class="img-responsive">
 	
 											<span>IT/ITES/SEZ Park</span></div>
 										</div>
@@ -402,7 +402,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<div class="item">
 										<div class="col-md-4 ribbon">
 											<div class="ribbon-top-left">
-											<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_comp.jpg';  ?>" class="img-responsive">
+											<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/c_comp.jpg';  ?>" class="img-responsive">
 	
 											<span>Business Center</span></div>
 										</div>
@@ -439,7 +439,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item active">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_mall.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_mall.jpg';  ?>" class="img-responsive">
 												<span>Building Showroom</span>
 												</div>
 											</div>
@@ -447,7 +447,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_shop.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_shop.jpg';  ?>" class="img-responsive">
 												<span>Retail Shop</span>
 												</div>
 											</div>
@@ -455,7 +455,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_showroom.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/r_showroom.jpg';  ?>" class="img-responsive">
 												<span>Retail Mall</span>
 												</div>
 											</div>
@@ -463,7 +463,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/retail_m.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/retail_m.jpg';  ?>" class="img-responsive">
 												<span>Retail Mall</span>
 												</div>
 											</div>
@@ -501,7 +501,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 									<div class="item active">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/agriculture.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/agriculture.jpg';  ?>" class="img-responsive">
 												<span>Agriculture</span>
 												</div>
 											</div>
@@ -509,7 +509,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/factory.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/factory.jpg';  ?>" class="img-responsive">
 												<span>Factory</span>
 												</div>
 											</div>
@@ -517,7 +517,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/warehouse.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/warehouse.jpg';  ?>" class="img-responsive">
 												<span>Warehouse</span>
 												</div>
 											</div>
@@ -526,7 +526,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 											
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/farmland.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/farmland.jpg';  ?>" class="img-responsive">
 												<span>Farmland</span>
 												</div>
 											</div>
@@ -566,7 +566,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 											
 											<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel1.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel1.jpg';  ?>" class="img-responsive">
 												<span>Hotels</span>
 												</div>
 											</div>
@@ -575,7 +575,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 										<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel2.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel2.jpg';  ?>" class="img-responsive">
 												<span>Hotels</span>
 												</div>
 											</div>
@@ -583,7 +583,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 										<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel3.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel3.jpg';  ?>" class="img-responsive">
 												<span>Hotels</span>
 												</div>
 											</div>
@@ -591,7 +591,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 										<div class="item">
 										<div class="col-md-4 ribbon">
 												<div class="ribbon-top-left">
-												<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel4.jpg';  ?>" class="img-responsive">
+												<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/categories/hotel4.jpg';  ?>" class="img-responsive">
 												<span>Hotels</span>
 												</div>
 											</div>
@@ -637,7 +637,7 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 						</ul>
 					</div>
 					<div class="col-md-2 text-right no_pad">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dot.png';  ?>">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dot.png';  ?>">
 					</div>
 				</div>
 				<div class="row padd_h">
@@ -765,62 +765,62 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		<div class="row">
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/amazon.png';  ?>" width="90">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/amazon.png';  ?>" width="90">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/more.png';  ?>" width="100">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/more.png';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det kalinga_pad">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/montecarlo.jpg';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/montecarlo.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/swiggy.png';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/swiggy.png';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/tata.webp';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/tata.webp';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/shiji.png';  ?>" width="110">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/shiji.png';  ?>" width="110">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/nexen.jpg';  ?>" width="100">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/nexen.jpg';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/beeta.jpg';  ?>" width="120">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/beeta.jpg';  ?>" width="120">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det kalinga_pad">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/kalinga.webp';  ?>" width="100">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/kalinga.webp';  ?>" width="100">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det" style="padding-top:5px;">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/elite.jpg';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/elite.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det" style="padding-top:1px">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/sushi.jpg';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/sushi.jpg';  ?>" width="80">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det" style="padding-top:5px;">
-					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/virendra.png';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/virendra.png';  ?>" width="80">
 				</div>
 			</div>
 			

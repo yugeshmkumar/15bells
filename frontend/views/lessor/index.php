@@ -231,7 +231,7 @@ $user_id= Yii::$app->user->identity->id;
 							<h1 class="more_detail">Help us in getting the best price for your property which is 20% more than your expectation </h1>
 							
 						<div class="col-md-9 no_pad">
-							<div class="col-md-12 no_pad">
+							<div class="row no_pad">
 								<h3 class="flow_heading ">Availability</h3>
 								<ul class="sub_categories avail_b">
 									<li class=""><a href="javascript:void(0)" id="under_construction"class="property_subtype availability">Under construction</a></li>
@@ -247,7 +247,7 @@ $user_id= Yii::$app->user->identity->id;
                                  <input type="text" class="form-control input_desgn" placeholder="Select a Date"> 
                                 </p>-->
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row f_status">
 								<h3 class="flow_heading ">Furnishing Status</h3>
 								<ul class="sub_categories furnishing_s">
@@ -259,7 +259,6 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'furnished_status')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 seperator_div"></div>
 							<!--<div class="col-md-12 possession_time possesion_time">
 								<h3 class="flow_heading ">Mention possession time ( If Applicable )</h3>
 								<div class="col-md-12 date_select">
@@ -274,7 +273,7 @@ $user_id= Yii::$app->user->identity->id;
 								<!--<div class="col-md-6 date_select">
                                 <input type="text" class="form-control input_desgn" placeholder="Select a Date"></div>
 							</div>-->
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<h1 class="more_detail more_steps">To sell property at earliest, Go ahead and beautify property by sharing property details</h1>
 							<div class="col-md-12 seperator_div"></div>
 							<div class="row furnishing_stat">
@@ -293,7 +292,7 @@ $user_id= Yii::$app->user->identity->id;
                                 </div>
 								
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat floor_no">
 								<h3 class="flow_heading ">Property on floor</h3>
 								<div class="col-md-12 no_pad" id="floorten">
@@ -338,7 +337,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'property_on_floor')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat owner_deed">
 								<h3 class="flow_heading ">Choose ownership deeds</h3>
 								<div class="col-md-12 no_pad">
@@ -350,7 +349,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'ownership')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat loan_prop">
 								<h3 class="flow_heading ">Is there any loan on property?</h3>
 								<div class="col-md-12">
@@ -369,7 +368,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'FAR_approval')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat prop_age">
 								<h3 class="flow_heading ">How old is the property? </h3>
 								<div class="col-md-12">
@@ -382,7 +381,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'age_of_property')->hiddenInput()->label(false) ?>
 
 
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 							<div class="row furnishing_stat prop_facing">
 								<h3 class="flow_heading ">Property Facing? </h3>
 								<div class="col-md-12">
@@ -398,7 +397,7 @@ $user_id= Yii::$app->user->identity->id;
                                 <?= $form->field($model, 'facing')->hiddenInput()->label(false) ?>
 
 							</div>
-							<div class="col-md-12 seperator_div"></div>
+							<div class="row seperator_div"></div>
 						</div>
 							
 
@@ -406,9 +405,9 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-                       <div class="row interior_det float_left">
+                       <div class="row interior_det float_left lessor_width">
 								<h1 class="more_detail">Expectations, Nearby Places and Amenities</h1>
-								<p class="brand_txt">Please help us understanding you expectations</p>
+								<p class="brand_txt no_pad">Please help us understanding you expectations</p>
 								<h3 class="flow_heading ">Is there any locking period for lessee? </h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select locking_period">Yes</button></div>
@@ -416,7 +415,7 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 							</div>
 							
-							<div class="row tenure__applicable float_left">
+							<div class="row tenure__applicable float_left lessor_width">
 								<h3 class="flow_heading ">Is lease tenure applicable? </h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes"class="button_select tenures">Yes</button></div>
@@ -425,7 +424,7 @@ $user_id= Yii::$app->user->identity->id;
 							</div>
 
 
-							<div class="row free_period float_left">
+							<div class="row free_period float_left lessor_width">
 								<h3 class="flow_heading ">Is there any rent free period?</h3>
 								<div class="col-md-12">
 									<div class="col-md-2 col-xs-4 no_pad"><button id="yes" class="button_select rent_free">Yes</button></div>
@@ -436,7 +435,7 @@ $user_id= Yii::$app->user->identity->id;
                     <input type="hidden" value="" id="tenures" name="tenures">
                     <input type="hidden" value="" id="rent_free" name="rent_free">
 
-							<div class="row office_interior float_left">
+							<div class="row office_interior float_left lessor_width">
 								<h3 class="flow_heading ">Please share the interior details of property?</h3>
 								<div class="col-md-12">
 									<div class="col-md-8 date_select">
@@ -447,8 +446,8 @@ $user_id= Yii::$app->user->identity->id;
 								</div>
 								
 							</div>
-							<div class="col-md-12 seperator_div"></div>
-							<div class="row float_left">
+							<div class="row seperator_div"></div>
+							<div class="row float_left lessor_width">
 								<h1 class="more_detail">Nearby Places</h1>
 								<p class="brand_txt no_pad">Please help us understanding the nearby places around property?</p>
 								<h3 class="flow_heading ">Commuting options around the property?</h3>
@@ -494,7 +493,7 @@ $user_id= Yii::$app->user->identity->id;
 
 
 
-							<div class="row">
+							<div class="row lessor_width">
 								<h1 class="more_detail">Amenities</h1>
 								<p class="brand_txt no_pad">Please help us understanding the amenities that buyers/lessee can expect?</p>
                                 <p class="amenities">Click on the icons to select Amenities</p>
