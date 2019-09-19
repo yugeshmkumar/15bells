@@ -184,6 +184,7 @@ function triggerLoc() {
          success: function(data) {
 			
              console.log(data);
+            
             $('#active_users').html(data);
          }
      });
@@ -352,6 +353,7 @@ $("#bid").val(res[0]);
 	ifModified: true,
          success: function(data,status,xhr) {
 var length = Object.keys(data).length;
+
 
       $('#comment').html(data);
          }
@@ -24260,7 +24262,7 @@ Gh/BgwW7AAAAGElEQVRIx+3BAQEAAACCIP+vbkhAAQB8GAj4AAElcCLeAAAAAElFTkSuQmCC" transf
 		</image>
 		<path class="st7" d="z"/>
 		<g class="img_side">
-		<foreignObject x="1150" y="650" width="360" height="150">
+		<foreignObject x="1150" y="650" width="360" height="80">
        
            <form id="chat_form">
                <textarea id="msg_sent" type="text" placeholder="Type your message.." style="width:215px;height:77px;overflow-x:scroll;"> </textarea>
@@ -24884,7 +24886,7 @@ oAAAAAAAHgYUngAB2LiYUwAAAABJRU5ErkJggg==" transform="matrix(1 0 0 1 1145 209)">
             </form>
         </body>
     </foreignObject>
-		<foreignObject x="885" y="665" width="150" height="80">
+		<foreignObject x="885" y="665" width="150" height="30">
         <body xmlns="http://www.w3.org/1999/xhtml">
             <form>
 
