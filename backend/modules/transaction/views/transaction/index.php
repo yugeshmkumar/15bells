@@ -47,8 +47,6 @@ if ($currenttime > $bid )
 
 $script = <<< JS
 var jq=$.noConflict();
-$(document).ready(function(){
-$('#msg_sent').val('');
 
 setInterval(userenter, 2000);
 setInterval(deleteuser, 2000);
@@ -62,10 +60,10 @@ setInterval(startbid, 1000);
 		setInterval(triggerLoc, 1000); 
 		setInterval(perminutebell, 60000); 
      setInterval(function() { 
-         $.pjax.defaults.timeout = false;  
-   $.pjax.reload({container:'#m1'});
-    }, 2000);
- });
+          $.pjax.defaults.timeout = false;  
+    $.pjax.reload({container:'#m1'});
+     }, 2000);
+ 
 
 function playsound(){
 document.getElementById('sound1').play();
@@ -87,7 +85,7 @@ function triggerLoc() {
            if ( appliedData != data ) {
 
                appliedData = data;
-          playsound();
+         // playsound();
 
            } else {           
 
@@ -99,7 +97,7 @@ function triggerLoc() {
 
 })}
  function perminutebell() {
-	 playsound();
+	// playsound();
  }
 
 
@@ -110,12 +108,12 @@ function userenter() {
       success : function(data) {
            if ( c1 != data ) {
                c1 = data; 
- playsound();
+ //playsound();
            }
       }
 })}
 
-function deleteusers() {
+function deleteuser() {
     $.ajax({   
       url : "transaction/deleteuser?id=$pid",              
       success : function(data) {
@@ -129,10 +127,10 @@ function deleteusers() {
 		 
          url: 'transaction/bid?id=$pid',
          success: function(data) {
-             //console.log(data);
+             console.log(data);
 var a=data;
-var b="Current Bid-"+a;
- $('#current_price').html(data);
+var b= a;
+ $('#current_price').html(b);
          }
      });
  }
@@ -165,6 +163,8 @@ function me()
 
 function biduser()
 {
+
+    
    $.ajax({
 		 
          url: 'transaction/maxbidders?id=$pid',
@@ -219,7 +219,7 @@ function test()
 
 	  });
 
-	  $(document).ready(function(){
+	
         $("#submit").click(function(){
 
 var time = $("#t1").val();
@@ -246,7 +246,7 @@ data: dataString,
 cache: false,
 success: function(result){
 alert("Time Added");
-
+// location.reload();
 }
 });
 
@@ -255,7 +255,7 @@ alert("Time Added");
         
         
         });
-   });
+
    
    
     function notification(){
@@ -280,50 +280,20 @@ var txt=data +" Seconds Left";
      $.ajax({
          
          url: 'transaction/dynamic?pid=$pid',
-         success: function(data) { 
-
-         
+         success: function(data) {         
       $('#comment').html(data);
          }
      });
  }
-
-
-     $("#msg_sent").keyup(function(event){
-
-     var chat = $("#msg_sent").val();
-
-
-     if(event.keyCode == 13){ 
- 
-     if(chat==''){
-       
-	alert("Please enter message");
-	return false;
-     }else{
- 
-        sendmessage();
-       }
-    }
-  });  
-
    
    $("#b1").click(function(){
-	 sendmessage();  
-
-
-});
-   
-function sendmessage(){
-
+	   
 var chat = $("#msg_sent").val();
-
+$('#msg_sent').val("");
 if(chat==""){
-
 	alert("Please enter message");
 	return false;
-}else{
-
+}
 var userid = $("#user option:selected").val();
 
 var dataString = 'chat='+ chat + '&id='+userid ;
@@ -333,12 +303,13 @@ url: 'transaction/chat?pid=$pid',
 data: dataString,
 cache: false,
 success: function(result){
-$("#msg_sent").val('');
+alert(result);
 }
 });
-}
-}
 
+
+});
+   
 
 jq("#t3").datetimepicker({
 	format: 'yyyy-mm-dd hh:ii',
@@ -355,9 +326,9 @@ jq("#t2").datetimepicker({
 JS;
 $this->registerJs($script);
 ?>
- <audio id="sound1" src="http://dev.15bells.com/common/chat.mp3" preload="auto"></audio>
+ <!-- <audio id="sound1" src="http://dev.15bells.com/common/chat.mp3" preload="auto"></audio> -->
 
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24213,7 +24184,7 @@ VAjXY2AYPAAAAIwAAVPSZNQAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 1321 729)">
 		</image>
 		<path class="st0" d="z"/>
 		<text transform="matrix(1 0 0 1 1332.6335 743.25)" id="b1" class="st2 st8 st9 btn btn-default">SEND1</text>
-		
+		<button id="b11" style="background-color:green;"type="button">Click Me!</button> 
 		
 			<image class="img_side" style="overflow:visible;" width="222" height="23" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAAAXAQMAAABeTmOIAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEUAnL0AAABeieWZAAAA
@@ -24251,12 +24222,12 @@ Gh/BgwW7AAAAGElEQVRIx+3BAQEAAACCIP+vbkhAAQB8GAj4AAElcCLeAAAAAElFTkSuQmCC" transf
 		</image>
 		<path class="st7" d="z"/>
 		<g class="img_side">
-		<foreignObject x="1150" y="650" width="360" height="150">
+		<foreignObject x="1150" y="650" width="360" height="80">
         
-            <form id="chat_form">
-               <textarea id="msg_sent" type="text" placeholder="Type your message.." style="width:215px;height:77px;overflow-x:scroll;"> </textarea>
-			   
-            </form>  
+            <form>
+               <input id="msg_sent" type="text" placeholder="Type your message here.." style="width:215px;height:77px;"/>
+			  
+            </form>
         
     </foreignObject>
 		<!--<text transform="matrix(1 0 0 1 1164.9609 439.5)" class="st2 st11 st4">MODERATOR</text>-->
@@ -24293,7 +24264,7 @@ echo "<option value='$id' >".$user."</option>";
 	echo "</select";			?>
             </form>
             <form>            
-	   <div  style="width:215px;min-height:180px;overflow:scroll;height:180px" id="comment"></div>
+	   <div  style="width:215px;min-height:200px;overflow:scroll;height:200px" id="comment"></div>
             </form>
         
     </foreignObject>
@@ -24648,8 +24619,8 @@ e6D32drGo6vEDchGw7kXev9r96CzMNJ0/5aDuCt6X+5h+Hk9Xbz9wL0Del/up7sBVr3VYL0bet/u
 rrsBAr3tAL03ei/vuLsBh/phQ/EvMqIbp+LS68wAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 268 43)">
 		</image>
 		<path class="st16" d="z"/>
-		<rect fill="#ff0" transform="matrix(1.0031 0 0 1.013 374 237)" width="325" height="77"></rect>
-			<image style="overflow:visible;display:none;" width="325" height="77" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUUAAABNCAMAAAAGjoa2AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+		
+			<image style="overflow:visible;" width="325" height="77" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUUAAABNCAMAAAAGjoa2AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABPlBMVEUAAAD27gD37gD58AD8
 8wD+9QD/9gD+9QD+9QD68QDt5QDPxwBuagAAAAD37gD27QDy6gDx6AD27QDq4gDIwACoogCOiQA8
 OgAAAAD37gDx6QD07AD58AD88wD68QDw5wDa0gC9tgCzrQAAAAAAAAD58AD06wD78gD27QDh2QDb
@@ -24662,6 +24633,7 @@ YzocZLvu/PzRllQsBA8oR19qCxYeI26MHjgAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS
 3X78AAAAB3RJTUUH4QYKChon6YG9JQAAAblJREFUeNrt3WlSU0EYheFPMAnIpAwSRCKYMBmMErjc
 C6IIShhEQQE1qEAGIPtfAblLiDlVXZ16nxWceqv7b7eZPejqfphoJFMJtKIn2Uj0PurrH7CmwaHH
 T4Yb+D8jo2NPx9NmE88mn0+5HuOtzIvpmZfZnM3Ozbue4rWFxVf5JXudSroe4rXCm7fLRXO9ogOs
+rFqP6w3eC9ZCKrYtiEJLuR7hvfgsUrFdVFSgogIVFaioQEUFKipQUYGKClRUoKICFRWoqEBFBSoq
 UFGBigpUVKCiAhUVqKhARQUqKlBRgYoKVFSgogIVFaioQEUFKipQUYGKClRUoKICFRWoqEBFBSoq
 UFGBigpUVKCiAhUVqKhARQUqKlBRgYoKVFSgogIVFaioQEUFKipQUYGKClRU4J0xBSoqxBVdb+gA
 UWjrGwXXK7xWCN41z+Lm+w+uh3ht6+P2yqrtfPq8m3E9xVuZ0t7+wXLRDr8cff3meoy3jk++/zjN
@@ -24896,9 +24868,9 @@ cwAACxIAAAsSAdLdfvwAAAAHdElNRQfhBgoKGih5PqC0AAAALElEQVQ4y2P8/5+B+oARStPObBqY
 zEQDxw5RMBoUcDAaFHAwGhRwMBoUcAAAD8MECkKsgQQAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 181 113)">
 		</image>
 		<path class="st0" d="z"/>
-		<text transform="matrix(1 0 0 1 187.9951 105)" class="st2 st12 st4">Hours</text>
-		<text transform="matrix(1 0 0 1 230.6592 105)" class="st2 st12 st4">Minutes</text>
-		<text transform="matrix(1 0 0 1 272.6582 105)" class="st2 st12 st4">Seconds</text>
+		<text transform="matrix(1 0 0 1 187.9951 105)" class="st2 st12 st4">5min</text>
+		<text transform="matrix(1 0 0 1 230.6592 105)" class="st2 st12 st4">10min</text>
+		<text transform="matrix(1 0 0 1 272.6582 105)" class="st2 st12 st4">15min</text>
 		
 			<image style="overflow:visible;" width="86" height="115" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABzCAYAAAACN/VyAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAA
@@ -52927,8 +52899,3 @@ bGmJysZsJzRhzK3NbGytrM0wNlus9qA16CD2ANCLjvLsmf8H1JviNw==
 </div>
 
 <?php } ?>
-<script type="text/javascript">
-    $(".form_datetime").datetimepicker({
-        format: "dd MM yyyy - hh:ii"
-    });
-</script>   

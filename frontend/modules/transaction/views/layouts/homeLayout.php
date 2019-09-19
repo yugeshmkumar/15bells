@@ -1,183 +1,155 @@
 <?php
 
-//use yii;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\bootstrap\Html;
-use yii\bootstrap\ActiveForm;
+/**
+ * @var $this yii\web\View
+ */
+use frontend\assets\NewDesignAsset;
+use frontend\widgets\Menu;
+use common\models\TimelineEvent;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Url;
-use frontend\modules\user\models\SignupForm;
-use frontend\modules\user\models\LoginForm;
-use frontend\modules\user\models\PasswordResetRequestForm;
-use frontend\modules\user\models\ResetPasswordForm;
-/* @var $this \yii\web\View */
-/* @var $content string */
-use frontend\modules\user\views\login;
-\frontend\assets\FrontendAsset::register($this);
-$this->title = Yii::$app->name;
-$model = new SignupForm();
-$login = new LoginForm();  
+use yii\widgets\Breadcrumbs;
+use yii\widgets\ActiveForm;
+
+NewDesignAsset::register($this);
 ?>
-<!DOCTYPE html>
+<?php $this->beginContent('@frontend/views/layouts/base10signup.php'); ?>
 
-<html lang="<?php echo Yii::$app->language ?>">
-    <head>
-        <meta charset="<?php echo Yii::$app->charset ?>"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
-        <?php echo Html::csrfMetaTags() ?>
-    </head>
-    <body>
-        <?php $this->beginBody() ?>
-		<?php
-		
-		if(isset($_POST['signup-button'])){
 
-	$model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-				
-            $user = $model->signup();
-            if ($user && Yii::$app->getUser()->login($user)) {
-			$checkrole = \common\models\RbacAuthAssignment::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
-	exit();
-	if($checkrole){
-			$findallrouting = \common\models\Bellsroutings::find()->where(['isactive'=>1,'rolename'=>$checkrole->item_name])->one();
-			if($findallrouting){
-				
-		     return Yii::$app->response->redirect(Yii::getAlias('@'.$findallrouting->login_to.'Url').$findallrouting->login_url, 301)->send();
-			}
-		}}
-        } 
-}
-  $login = new LoginForm();        
-       if(isset($_POST['login-button'])){ 
-	 
-	    if (Yii::$app->request->isAjax) {
-            $login->load($_POST);
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($login);
-		}
-	   if ($login->load(Yii::$app->request->post()) && $login->login()) {
+
+<body>
+   
+<div class="container-fluid no_pad div_header">
 		
-	$checkrole = \common\models\RbacAuthAssignment::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
+			<section class="navbar-info nav_bg">
+
+				<nav class="navbar navbar-default nav_signup">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header col-md-4">
+						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="dash_menu" width="25">
+							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="mobile_mnu" width="25">
+							</button>
+							<a class="navbar-brand site-logo one animated slideInDown" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="60"></a>
+							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="60"></a>
+							
+						</div>
+					  
+						<div class="collapse navbar-collapse navbar-right  header-right-menu" id="navbar-primary-collapse">
+								<ul class="nav navbar-nav signup_buttns">
+									
+									<li>
+										<a class="menu_a sign_up animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
+									</li>
+									<li>
+										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
+									</li>
+								</ul>
+						</div><!-- /.navbar-collapse -->
+					</div>
+				 </nav>
+			</section>
+			<div id="mySidenav" class="sidenav">
+			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  <div class="col-md-12">
+				
+					<ul class="sliding_menu">
+							<li class="trst_act active"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Blogs</a></li>
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['aboutus']) ?>">About Us</a></li>
+
+							<li class="trans_act"><a class="menu_link trans_clck" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
+
+					</ul>
+					
+				
+			 </div>
+			 <div class="col-md-12 no_pad" style="position:absolute;bottom:0;width:100%;">
+					<div class="col-md-6 no_pad">
+					<a class="side_sign brdr_rt" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
+					</div>
+					<div class="col-md-6 no_pad">
+					<a class="side_sign" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
+					</div>
+				</div>
+			</div>
+			
+			
+<!-- end of navbar-->
+		</div>
+    
 	
-	if($checkrole){
-			$findallrouting = \common\models\Bellsroutings::find()->where(['isactive'=>1,'rolename'=>$checkrole->item_name])->one();
-			if($findallrouting){
-				
-		     return Yii::$app->response->redirect(Yii::getAlias('@'.$findallrouting->login_to.'Url').$findallrouting->login_url, 301)->send();
-			}
-		}
-        }
+	<!--======QUERY FORM==========-->
 		
-	   }
-?>
-        <header>
-		<?php
-		$getagreement = \common\models\Aggrementmgmt::find()->where('roleid =:roleid and eventname =:eventname and ispublish =:publish and isactive =:active',array(':roleid'=>3,':eventname'=>"Signup",':publish'=>1,':active'=>1))->one();
-		?>
-		 <div class="modal fade bs-modal-lg" id="large" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                    <h4 class="modal-title"> <?php if($getagreement) { echo $getagreement->subject ; } ?></h4>
-                                                </div>
-                                                <div class="modal-body"><?php if($getagreement) { echo $getagreement->content ; } else {  ?> Agreement Expired! <?php } ?></div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                                                    
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-            <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="<?= Yii::$app->homeUrl ?>"> 
-                            <img src="<?= Url::to('@web/img') ?>/logo.png" class="img-responsive" alt="">
-                        </a>
-                    </div>
+<?php echo $content ?>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="<?= Yii::$app->homeUrl ?>">HOME <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                               <li><a href="<?= Yii::$app->urlManager->createUrl("lessee") ?>">LESSEE <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                                   <li><a href="<?= Yii::$app->urlManager->createUrl("lessor") ?>">LESSOR <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                         <li><a href="<?= Yii::$app->urlManager->createUrl("broker") ?>">BROKERS <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                            <li><a href="<?= Yii::$app->urlManager->createUrl("buyer") ?>">BUYERS <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                            <li><a href="<?= Yii::$app->urlManager->createUrl("seller") ?>">SELLERS <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-                        <?php if(isset(Yii::$app->user->identity->id)){ ?>
-						
-						 <?php $checkrole = \common\models\RbacAuthAssignment::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
-	                             if($checkrole){
-			$findallrouting = \common\models\Bellsroutings::find()->where(['isactive'=>1,'rolename'=>$checkrole->item_name])->one();
-			if($findallrouting){ ?>
-				<?php if($findallrouting->login_to == "backend"){ ?>
-				   <li> <a href="<?php echo Yii::getAlias('@backendUrl') ?><?php echo $findallrouting->login_url ?>"><strong> MY DASHBOARD </strong><b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-		   	      <?php } else{ ?>
-		      <li> <a href="<?php echo Yii::$app->urlManager->createUrl($findallrouting->login_url); ?> "><strong> MY DASHBOARD </strong><b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-		    <?php } } } ?>
-						     
-							<li> <?php echo Html::a(Yii::t('frontend', 'LOGOUT<b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b>'), ['/user/sign-in/logout'], ['data-method' => 'post']) ?></li>
-<?php } else { ?>
-                          <li><a href="<?= Yii::$app->urlManager->createUrl("user/sign-in/signup") ?>">REGISTER <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-        <li><a href="<?= Yii::$app->urlManager->createUrl("user/sign-in/login") ?>">LOGIN <b class="middle hidden-xs">&nbsp; &nbsp;|&nbsp; &nbsp;</b></a></li>
-						<?php } ?>
-		<li class="last"><a href="#contact">CONTACT US</a>
-                            </li>
+     <!--Footer Section------>
 
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
 
-        </header>
-		
-        <?php echo $content ?>
-        <?php include 'commonFooterLayout.php'; ?> 
-        <?php $this->endBody() ?>
-    </body>
+<div class="container-fluid footer_banner">
+	<div class="container">
+		<div class="row">
+			<p class="copy_rt">2019 © 15 Bells </p>
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Resources</h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>" class="list_lnk">Blogs</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>" class="list_lnk">FAQ's</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Privacy</h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="#" class="list_lnk">Terms and Conditions</a></li>
+					<li class=""><a href="#" class="list_lnk">Privacy Policy</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<div class="col-md-12 no_pad">
+				<h4 class="footer_typ">Reach Out</h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
+					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
+				</ul>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-xs-6">
+				<h4 class="footer_typ">Follow us</h4>
+				<p><span><a target="_blank" href="https://www.instagram.com/15bells/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
+					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
+				</div>
+		</div>
+	</div>
+</div>
+     
+
+
+
+       
+       <?php $this->endContent(); ?>
+<script>
+function openNav() {
+document.getElementById("mySidenav").style.width = "300px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+document.getElementById("mySidenav").style.width = "0";
+}
+
+	</script>
+</body>
+
 </html>
 
- <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
   
-    <script>
-      $(document).ready(function(){
-     $(window).scroll(function () {
-            if ($(this).scrollTop() > 50) {
-                $('#back-to-top').fadeIn();
-            } else {
-                $('#back-to-top').fadeOut();
-            }
-        });
-        // scroll body to 0px on click
-        $('#back-to-top').click(function () {
-            $('#back-to-top').tooltip('hide');
-            $('body,html').animate({
-                scrollTop: 0
-            }, 800);
-            return false;
-        });
-        
-        $('#back-to-top').tooltip('show');
-});
-
-    </script>
-<?php $this->endPage() ?>
-
