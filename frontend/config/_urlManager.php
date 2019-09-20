@@ -13,7 +13,7 @@ return [
          
        // 'register'=>'user/sign-in/signup',
         '<controller>/<id:\d+>'=>'<controller>/view',
-        '<controller:\w+>/<action:\w+>/<con:\w+>' => '<controller>/<action>',
+       // '<controller:\w+>/<action:\w+>/<con:\w+>' => '<controller>/<action>',
        // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
