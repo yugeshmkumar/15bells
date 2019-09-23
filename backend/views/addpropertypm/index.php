@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="portlet-body">
                                      
 									<div class="addpropertybackend-index">
-
+                                    <?= $this->render('_search', ['model' => $searchModel]); ?>
 
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -86,6 +86,14 @@ return GridView::ROW_COLLAPSED;
 
             ],
 
+            [
+                'label'=> 'Owner Name',
+                'attribute' => 'user_id',
+                'width'=>'150px',
+                'value' => 'username.fullname'
+
+            ],
+
 
 			// ['attribute'=>'role_id',
 			//   'label'=>'Lead Role',
@@ -119,7 +127,7 @@ return GridView::ROW_COLLAPSED;
 			  'label'=>'Request Type',
 			  'format'=>'raw',
               'width'=>'110px',
-              'filter'=>array("rent"=>"Rent","sale"=>"Sale"),
+              'filter'=>array("both"=>"Both","rent"=>"Rent","sale"=>"Sale"),
 			  'value'=>function($data){
 				  return $data->property_for;
 			  }
