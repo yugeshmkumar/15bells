@@ -753,6 +753,35 @@ $urlsd =   Yii::getAlias('@frontendUrl');
 		</div>
 	</div>
 </div>
+
+
+<div class="container-fluid featured_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 no_pad">
+				<h6 class="trans_head">We Got <br>Featured In</h6>
+				<p class="brand_txt">It gives us immense pleasure to be recognised by various publications for our work and innovation.</p>
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-xs-6 pad_client text-center">
+				<div class="clients_det">
+					<a target="_blank" href="https://m.dailyhunt.in/news/india/english/yourstory-epaper-yourstory/proptech+the+real+estate+underdog+taking+india+by+storm-newsid-135609202"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/daily.png';  ?>" width="190"></a>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-xs-6 pad_client text-center">
+				<div class="clients_det">
+					<a target="_blank" href="https://yourstory.com/mystory/proptech-the-real-estate-underdog-taking-india-by-"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/story.png';  ?>" width="190"></a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
 <div class="container-fluid client_pad">
 	<div class="container">
 		<div class="row">
