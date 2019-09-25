@@ -24,7 +24,7 @@ class AppAsset extends AssetBundle
 	'jstrans/custom.js',
  'jstrans/bootstrap.min.js',
 'jstrans/jquery.countdownTimer.js',
-'jstrans/jquery-2.0.3.js',
+// 'jstrans/jquery-2.0.3.js',
 'jstrans/bootstrap-datetimepicker.min.js',
 
 

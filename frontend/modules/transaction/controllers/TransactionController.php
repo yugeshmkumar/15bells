@@ -19,7 +19,7 @@ class TransactionController extends Controller {
     /**
      * @inheritdoc
      */
-	  public $layout = 'commontrans';
+	  public $layout = 'homeLayout';
     public function behaviors() {
         return [
             'verbs' => [
@@ -314,7 +314,7 @@ $alis='Me';
 
                 echo "</tr>";
             }
-            echo "</table>";
+            echo "</table>";die;
         }
     }
 
@@ -392,7 +392,7 @@ $user=$row['user'];
 echo $user."-".$row['message'];
 echo "<br/>";
 
-}
+} exit();
 }
 	
 	
@@ -500,14 +500,14 @@ return false;
  if($model->save())
 
 {
-             echo "Bid Placed Successfully";
-             die;
+             return  "Bid Placed Successfully";
+            
 }
 
 else
 {
-echo "Add Higher Bid";
-             die; 
+    return "Add Higher Bid";
+             
 }
 
     }
@@ -517,27 +517,27 @@ echo "Add Higher Bid";
             if ($model->save()) {
                 $stat = $model->getuserstatus($id);
 
-                echo "Bid Placed Successfully";
+                return "Bid Placed Successfully";
             } else {
-                echo "Please add Higher Bid";
+                return "Please add Higher Bid";
             }
         } 
 		
 		
 		else if($stat == "Pending")
 		{
-			echo "Your previous Bid is Pending";
-			die;
+			return "Your previous Bid is Pending";
+			
 		}
 		
 		else {
 
   if ($amt > $max_db_bid) {
                 $model->save();
-                echo "Bid Placed";
-                die;
+                return "Bid Placed";
+                
             }
-            echo "Please Add Higher Bid than Current";
+            return "Please Add Higher Bid than Current";
         }
     }
 

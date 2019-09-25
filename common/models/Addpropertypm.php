@@ -84,7 +84,9 @@ class Addpropertypm extends \yii\db\ActiveRecord
     public $floor_plate_area;
     public $security_deposit;
     public $backup_power;
+
     public $building_name;
+    public $minsuper_area;
 
 
     public static function tableName()

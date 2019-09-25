@@ -28,13 +28,10 @@ class CommonController extends Controller {
         $getstatus = \common\models\MyProfileProgressStatus::getStatus($user_id);
 
 
-        if ($getstatus == 1) {
+        //if ($getstatus == 1) {
 
-            $this->layout = "newdashboard";
-        } else {
-
-            $this->layout = "beforeprofilecomplete";  // common
-        }
+            $this->layout = "dashboard";
+       // } 
         $searchModel = new AuctionParticipantsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

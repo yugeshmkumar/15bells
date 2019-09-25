@@ -14,16 +14,16 @@ use yii\bootstrap\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
+<div class="col-md-12">
+    <?php // echo $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'id') ?>
+    <?php //echo $form->field($model, 'user_id') ?>
 
-    <?php echo $form->field($model, 'user_id') ?>
+    <?php //echo $form->field($model, 'role_id') ?>
 
-    <?php echo $form->field($model, 'role_id') ?>
+    <?php //echo $form->field($model, 'project_name') ?>
 
-    <?php echo $form->field($model, 'project_name') ?>
-
-    <?php echo $form->field($model, 'property_for') ?>
+    <?php //echo $form->field($model, 'property_for') ?>
 
     <?php // echo $form->field($model, 'project_type_id') ?>
 
@@ -43,7 +43,13 @@ use yii\bootstrap\ActiveForm;
 
     <?php // echo $form->field($model, 'latitude') ?>
 
-    <?php // echo $form->field($model, 'total_plot_area') ?>
+<div class="col-md-3">
+    <?php  echo $form->field($model, 'minsuper_area')->textInput(['placeholder'=>'Min Area'])->label(false) ?>
+    </div>
+
+    <div class="col-md-3">
+    <?php  echo $form->field($model, 'super_area')->textInput(['placeholder'=>'Max Area'])->label(false) ?>
+    </div>
 
     <?php // echo $form->field($model, 'plot_unit') ?>
 
@@ -136,12 +142,15 @@ use yii\bootstrap\ActiveForm;
     <?php // echo $form->field($model, 'created_date') ?>
 
     <?php // echo $form->field($model, 'status') ?>
-
+    <div class="col-md-3">
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
         <?php echo Html::resetButton(Yii::t('backend', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
+    </div>
 
     <?php ActiveForm::end(); ?>
+
+</div>
 
 </div>

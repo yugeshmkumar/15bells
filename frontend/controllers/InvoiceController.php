@@ -79,7 +79,7 @@ class InvoiceController extends Controller
             'fullname'=>$fullname,
             'createdAt'=>$date,
             ]));
-            $mpdf->Output();
+            $mpdf->Output('MyInvoice.pdf', 'D');
 
         // return $this->render('invoice', [
         //     'id' => $role,
