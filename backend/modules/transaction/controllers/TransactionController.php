@@ -47,12 +47,19 @@ class TransactionController extends Controller {
         ];
     }
 	
-	
+	public function beforeAction($action) 
+{ 
+    $this->enableCsrfValidation = false; 
+    return parent::beforeAction($action); 
+}
+
+
 public function actionChat() {
         $model = new Transaction();
 $pid=$_GET['pid'];
 
-$chat=$_POST['chat'];
+ $chat=$_POST['chat'];
+
 $id=$_POST['id'];
 $send=Yii::$app->user->identity->id;
   $sql="insert into chat_history(send_by,message,sent_to,property_id) values ($send,'$chat','$id','$pid')";
@@ -112,12 +119,11 @@ $result1 = $command1->queryOne();
 }
 
 
+$user=$row['user'];
 echo $user."-".$row['message'];
-
-
 echo "<br/>";
 
-}
+}exit();
 }
 
     /**
@@ -127,11 +133,13 @@ echo "<br/>";
     public function actionIndex() {
 			$checkmyrolemod = \backend\models\BackMode::checkrole(yii::$app->user->identity->id,"moderator");
 		$checkmyrolepm = \backend\models\BackMode::checkrole(yii::$app->user->identity->id,"property_manager");
-		if($checkmyrolemod){
+        
+       
+       // if($checkmyrolemod){
 			$this->layout = "moderator_layout";
-		} else if($checkmyrolepm){
-			$this->layout = "pmanager_layout";
-		}
+		//} else if($checkmyrolepm){
+			//$this->layout = "pmanager_layout";
+		//}
 		$vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
 		 if($vr_setup){
            $product = $vr_setup->propertyID;
@@ -367,7 +375,7 @@ $sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcip
                 echo "<td align=center>$bidamount</td>";
                 echo "</tr>";
             }
-            echo "</table>";
+            echo "</table>";die;
         }
     }
 
@@ -594,9 +602,9 @@ die;
 }
         $currenttime = $model->getCurrenttime();
         if ($currenttime >= $start) {
-            echo "true";
+            return true;
         } else {
-            echo "false";
+            return false;
         }
     }
 

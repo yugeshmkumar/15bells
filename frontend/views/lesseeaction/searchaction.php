@@ -1487,7 +1487,7 @@ proptype =  $('#proptypes').val();
                   var commaNum = this.asking_rental_price;
                 
                   $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                  '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -1499,7 +1499,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
-                                       '<p class="details_label">'+this.locality+'</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
@@ -1639,7 +1639,7 @@ proptype =  $('#proptypes').val();
                                              var commaNum = this.asking_rental_price;
                 
                                              $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                                             '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -1651,7 +1651,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
-                                       '<p class="details_label">'+this.locality+'</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
@@ -1783,7 +1783,7 @@ proptype =  $('#proptypes').val();
                                       var commaNum = this.asking_rental_price;
                 
                                       $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                                      '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -1795,7 +1795,7 @@ proptype =  $('#proptypes').val();
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
-                                       '<p class="details_label">'+this.locality+'</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
@@ -2634,7 +2634,7 @@ function getPolygonCoords() {
           
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
-                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -2646,7 +2646,7 @@ function getPolygonCoords() {
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
-                                       '<p class="details_label">'+this.locality+'</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
@@ -2773,7 +2773,7 @@ function getPolygonCoords() {
            (this.county1 == '1' ? imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart.svg';  ?>":imaged="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/heart_e.svg';  ?>");
           
                $('#getprop').append('<div class="col-md-12">'+
-                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+               '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-2 no_pad relative">'+
                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -2785,7 +2785,7 @@ function getPolygonCoords() {
                                    '<div class="row prop_detail">'+
                                        '<div class="col-md-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
-                                           '<p class="details_label">'+this.locality+'</p>'+
+                                           '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                        '</div>'+
                                        '<div class="col-md-6 company_overview property_manage">'+
                                            '<p class="label_name">Property for</p>'+
@@ -2923,7 +2923,7 @@ function getPolygonCoords() {
           
                    
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                                                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -2935,7 +2935,7 @@ function getPolygonCoords() {
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
-                                          '<p class="details_label">'+this.locality+'</p>'+
+                                          '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                       '</div>'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Property for</p>'+
@@ -3058,7 +3058,7 @@ function getPolygonCoords() {
                                          count3 += 1;                      
                    
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
-                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                                         '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -3070,7 +3070,7 @@ function getPolygonCoords() {
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
-                                          '<p class="details_label">'+this.locality+'</p>'+
+                                          '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                       '</div>'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Property for</p>'+
@@ -3482,7 +3482,7 @@ $("#rantime").datepicker({
           
                                                          
                                                     $('#getprop').append('<div class="col-md-12 property_detail">'+
-                                                                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">Vipul Agora</span></p>'+
+                                                    '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-2 no_pad relative">'+
                                                                     '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
@@ -3494,7 +3494,7 @@ $("#rantime").datepicker({
                                                                         '<div class="row prop_detail">'+
                                                                             '<div class="col-md-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Location</p>'+
-                                                                                '<p class="details_label">'+this.locality+'</p>'+
+                                                                                '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                                                             '</div>'+
                                                                             '<div class="col-md-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Property for</p>'+

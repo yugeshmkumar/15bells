@@ -17,7 +17,7 @@ class BackendAsset extends AssetBundle
 
     public $css = [
         'css/style.css',
-		 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all',
+		 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all',
         'assets/global/plugins/font-awesome/css/font-awesome.min.css',
         'assets/global/plugins/simple-line-icons/simple-line-icons.min.css',
         'assets/global/plugins/bootstrap/css/bootstrap.min.css',
@@ -36,7 +36,7 @@ class BackendAsset extends AssetBundle
 	 'dashcss/components.min.css',
          'toastr/toastr.css',
          'toastr/toastr.min.css',
-'tour/bootstrap-tour.min.css',
+         //'tour/bootstrap-tour.min.css',
          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
          'https://fonts.googleapis.com/css?family=Roboto:400,700,900',
          'https://fonts.googleapis.com/css?family=Poppins',
@@ -70,7 +70,7 @@ class BackendAsset extends AssetBundle
          'js/main.js',
         'toastr/toastr.min.js',
       // 'js/custom.js',
-        'tour/bootstrap-tour.min.js',
+        //'tour/bootstrap-tour.min.js',
         'dashjs/bootstrap.min.js',
         'dashjs/modernizr.custom.86080.js', 
    

@@ -19,7 +19,7 @@ class AddpropertypmSearch extends Addpropertypm
     {
         return [
             [['id', 'user_id', 'project_type_id', 'city',  'expected_price', 'asking_rental_price', 'price_sq_ft', 'price_acres', 'membership_charge', 'buildup_area', 'carpet_area', 'total_floors', 'property_on_floor', 'floors_allowed_construction', 'bedrooms', 'bathrooms', 'balconies', 'parking'], 'integer'],
-            [['role_id', 'project_name', 'property_for','super_area', 'request_for', 'featured_image', 'featured_video', 'locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
+            [['role_id', 'project_name', 'property_for','minsuper_area','super_area', 'request_for', 'featured_image', 'featured_video', 'locality', 'address',  'price_negotiable', 'revenue_lauout', 'present_status', 'jurisdiction_development', 'shed_RCC', 'maintenance_cost', 'maintenance_by', 'annual_dues_payable', 'expected_rental', 'availability', 'available_from', 'available_date', 'age_of_property', 'possesion_by', 'rental_type', 'ownership', 'ownership_status', 'facing', 'LOAN_taken', 'build_unit', 'carpet_unit', 'configuration', 'pooja_room', 'study_room', 'servant_room', 'other_room', 'furnished_status', 'is_active', 'created_date', 'status'], 'safe'],
             [['longitude', 'latitude', 'FAR_approval'], 'number'],
         ];
     }
@@ -74,7 +74,7 @@ class AddpropertypmSearch extends Addpropertypm
             'membership_charge' => $this->membership_charge,
             'available_date' => $this->available_date,
             'FAR_approval' => $this->FAR_approval,
-            'addproperty.super_area' => $this->super_area,
+           // 'addproperty.super_area' => $this->super_area,
             'carpet_area' => $this->carpet_area,
             'total_floors' => $this->total_floors,
             'property_on_floor' => $this->property_on_floor,
@@ -96,6 +96,11 @@ class AddpropertypmSearch extends Addpropertypm
             ->andFilterWhere(['like', 'address', $this->address])
             
             ->andFilterWhere(['like', 'price_negotiable', $this->price_negotiable])
+            // ->andFilterWhere([ 'between',
+            //                  ['like', 'addproperty.minsuper_area', $this->minsuper_area],
+            //                  ['like', 'addproperty.super_area', $this->super_area],
+            //                 ])
+            ->andFilterWhere(['between', 'addproperty.super_area', $this->minsuper_area,$this->super_area ])
             ->andFilterWhere(['like', 'revenue_lauout', $this->revenue_lauout])
             ->andFilterWhere(['like', 'present_status', $this->present_status])
             ->andFilterWhere(['like', 'jurisdiction_development', $this->jurisdiction_development])
@@ -123,6 +128,8 @@ class AddpropertypmSearch extends Addpropertypm
             ->andFilterWhere(['like', 'furnished_status', $this->furnished_status])
             ->andFilterWhere(['like', 'user.username', $this->user_id])
             ->andFilterWhere(['like', 'status', $this->status]);
+
+           // $query->andFilterWhere(['between', 'super_area', $this->minsuper_area,$this->super_area ]);
 
         return $dataProvider;
     }
