@@ -1495,7 +1495,7 @@ proptype =  $('#proptypes').val();
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -1647,7 +1647,7 @@ proptype =  $('#proptypes').val();
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -1791,7 +1791,7 @@ proptype =  $('#proptypes').val();
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2642,7 +2642,7 @@ function getPolygonCoords() {
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2781,7 +2781,7 @@ function getPolygonCoords() {
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
                                '</div>'+
-                               '<div class="col-md-9">'+
+                               '<div class="col-md-10">'+
                                    '<div class="row prop_detail">'+
                                        '<div class="col-md-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
@@ -2931,7 +2931,7 @@ function getPolygonCoords() {
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3066,7 +3066,7 @@ function getPolygonCoords() {
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3490,7 +3490,7 @@ $("#rantime").datepicker({
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
                                                                     '</div>'+
-                                                                    '<div class="col-md-9">'+
+                                                                    '<div class="col-md-10">'+
                                                                         '<div class="row prop_detail">'+
                                                                             '<div class="col-md-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Location</p>'+

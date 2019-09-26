@@ -1489,13 +1489,13 @@ proptype =  $('#proptypes').val();
                   $('#getprop').append('<div class="col-md-12 property_detail">'+
                   '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -1641,13 +1641,13 @@ proptype =  $('#proptypes').val();
                                              $('#getprop').append('<div class="col-md-12 property_detail">'+
                                              '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -1785,13 +1785,13 @@ proptype =  $('#proptypes').val();
                                       $('#getprop').append('<div class="col-md-12 property_detail">'+
                                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2636,13 +2636,13 @@ function getPolygonCoords() {
            $('#getprop').append('<div class="col-md-12 property_detail">'+
            '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
-                           '<div class="col-md-3 no_pad relative">'+
+                           '<div class="col-md-2 no_pad relative">'+
                            '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
                            '</div>'+
-                           '<div class="col-md-9">'+
+                           '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
                                    '<div class="col-md-6 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
@@ -2775,13 +2775,13 @@ function getPolygonCoords() {
                $('#getprop').append('<div class="col-md-12">'+
                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                            '<div class="row single_property">'+
-                               '<div class="col-md-3 no_pad relative">'+
+                               '<div class="col-md-2 no_pad relative">'+
                                '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                                 //    '<div class="overlay_sign">'+
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
                                '</div>'+
-                               '<div class="col-md-9">'+
+                               '<div class="col-md-10">'+
                                    '<div class="row prop_detail">'+
                                        '<div class="col-md-6 company_overview property_manage">'+
                                            '<p class="label_name">Location</p>'+
@@ -2925,13 +2925,13 @@ function getPolygonCoords() {
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                                                 '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3060,13 +3060,13 @@ function getPolygonCoords() {
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
                                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-3 no_pad relative">'+
+                              '<div class="col-md-2 no_pad relative">'+
                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
                               '</div>'+
-                              '<div class="col-md-9">'+
+                              '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
                                       '<div class="col-md-6 company_overview property_manage">'+
                                           '<p class="label_name">Location</p>'+
@@ -3492,13 +3492,13 @@ $("#rantime").datepicker({
                                                     $('#getprop').append('<div class="col-md-12 property_detail">'+
                                                     '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                                                                 '<div class="row single_property">'+
-                                                                    '<div class="col-md-3 no_pad relative">'+
+                                                                    '<div class="col-md-2 no_pad relative">'+
                                                                     '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive"></a>'+
                                                                         // '<div class="overlay_sign">'+
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
                                                                     '</div>'+
-                                                                    '<div class="col-md-9">'+
+                                                                    '<div class="col-md-10">'+
                                                                         '<div class="row prop_detail">'+
                                                                             '<div class="col-md-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Location</p>'+

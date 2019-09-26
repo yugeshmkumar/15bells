@@ -831,6 +831,7 @@ div.mm-dropdown ul li img {
     margin: 0 auto;
 	width:99%;
 	 transition:.4s;
+	 background:#ffffff;
 }
 .clint_sec{
 	padding-top:16px;
@@ -3507,14 +3508,13 @@ float:left;
 	border-bottom:0px !important;
 }
 .edit_label{
-	font-size:18px;
+	font-size:15px;
 	color:#8f8f8f;
 	line-height:20px;
 }
 .edit_input .input_desgn{
 	color:#221d36;
-	font-weight:700;
-	font-size:18px;
+	font-size:15px;
 	margin:0;
 }
 .edit_input{
@@ -4042,4 +4042,15 @@ color: #c4984f;
     font-size: 16px;
     transition: .4s;
     margin: 0px 0;
+}
+
+.featured_section{
+	padding:50px;
+	background:#221d36;
+}
+.featured_section img{
+	margin-top:20px;
+}
+.featured_links{
+	padding:30px;
 }
