@@ -148,10 +148,11 @@ echo "<br/>";
 		 }
         $model = new Transaction();
         $dataProvider = new ActiveDataProvider([
-            'query' => Transaction::find()->where(['product_id'=>$product]),
+            'query' => Transaction::find()->where(['product_id'=>$product])->orderBy(['id'=>SORT_DESC]),
         ]);
-
+        $dataProvider->pagination  = false;
         return $this->render('index', [
+                    
                     'dataProvider' => $dataProvider,
                     'model' => '$model'
         ]);
