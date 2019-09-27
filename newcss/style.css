@@ -2251,6 +2251,12 @@ input.invalid {
 	.property_id{
 		font-size:15px;
 	}
+	.featured_links{
+		padding:0;
+	}
+	.mobile_feature{
+		margin-top:10px;
+	}
 	.check_icon {
 		position: absolute;
 		right: 10px;
