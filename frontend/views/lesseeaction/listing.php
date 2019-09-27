@@ -3530,26 +3530,22 @@ function getPolygonCoords() {
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
-                              '<div class="col-md-2 no_pad relative">'+
-                                  '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+
-                                  '<div class="overlay_sign">'+
-                                      '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-                                  '</div>'+
-                              '<div class="col-md-3 no_pad relative">'+
-                              <?php if(yii::$app->user->isGuest){  ?>
+                          '<div class="col-md-2 no_pad relative">'+
 
-'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
-'<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-'</div>'+
+<?php if(yii::$app->user->isGuest){  ?>
 
+ '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+ '<div class="overlay_sign">'+
+     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+ '</div>'+
+ 
 <?php   }else{ ?>
 
 '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
-      <?php  } ?>
+       <?php  } ?>
                               '</div>'+
                               '<div class="col-md-10">'+
                                   '<div class="row prop_detail">'+
