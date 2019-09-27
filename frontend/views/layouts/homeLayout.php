@@ -44,13 +44,18 @@ NewDesignAsset::register($this);
 						
 						<div class="collapse navbar-collapse navbar-right  header-right-menu" id="navbar-primary-collapse">
 								<ul class="nav navbar-nav">
-									
+								<?php if(yii::$app->user->isGuest) { ?>
 									<li>
 										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
 									</li>
 									<li>
 										<a class="menu_a" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
 									</li>
+									<?php } else { ?> 	
+										<li>
+										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['site/userdash']) ?>" id="contact-menu">Dashboard</a>
+										</li>
+									   <?php } ?>
 								</ul>
 						</div><!-- /.navbar-collapse -->
 					</div>

@@ -47,7 +47,7 @@ class SignInController extends \yii\web\Controller
                         'roles' => ['?']
                     ],
                     [
-                        'actions' => ['login', 'request-password-reset','otp','reset-password', 'sellerlogin','sellersignup','oauth','confirmation','search'],
+                        'actions' => ['login','signup', 'request-password-reset','otp','reset-password', 'sellerlogin','sellersignup','oauth','confirmation','search'],
                         'allow' => false,
                         'roles' => ['@'],
                         'denyCallback' => function () {
