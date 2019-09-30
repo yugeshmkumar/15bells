@@ -601,8 +601,8 @@ $user_id= Yii::$app->user->identity->id;
 			</div>
 			
 			<div class="col-md-5 mark_instruction">
-				<h4 class="mark_map">Mark your area on the map</h4>
-				<p class="map_text">Draw a shape on the map to select an area. Please mark your desired location area on the map to get the better results.</p>
+				<h4 class="mark_map">Tag your property on the map</h4>
+				<p class="map_text">Tag your property and get featured in the shapes drawn by brands.Get set go.</p>
 				<p class=""><div class="btn-group btn-toggle btn_toggle"> 
 											<button class="btn btn-lg map_continue" data-dismiss="modal">Skip</button>
 											<button class="btn button_togg btn-lg step_availablity" type="button" onclick="getbrandcount();">Confirm</button>
@@ -613,7 +613,7 @@ $user_id= Yii::$app->user->identity->id;
 		<div class="container-fluid no_pad tag_result">
 			<div class="col-md-12 no_pad result_show text-center">
 				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/map_tagging.svg';  ?>" width="110">
-				<p class="search_tag">There are <span id="totalcounts"></span> recent searched happen in this area.</p>
+				<p class="search_tag"><span id="totalcounts"></span> Brands searching in your locality for the property - let's connect!!</p>
 				<p class="text-center process_continue"><a href="javascript:void(0)" class="property_process map_continue">Continue <i class="fa fa-angle-right"></i></a></p>
 			</div>
 			
