@@ -60,7 +60,7 @@ class AddpropertypmSearch extends Addpropertypm
 
         $query->andFilterWhere([
             'id' => $this->id,
-           // 'user_id' => $this->user_id,
+          //  'user_id' => $this->user_id,
             'project_type_id' => $this->project_type_id,
             'city' => $this->city,
             'longitude' => $this->longitude,
@@ -86,7 +86,7 @@ class AddpropertypmSearch extends Addpropertypm
             'created_date' => $this->created_date,
         ]);
 
-        $query->andFilterWhere(['like', 'role_id', $this->role_id])
+        $query
             ->andFilterWhere(['like', 'addproperty_onepage_form.building_name', $this->project_name])
             ->andFilterWhere(['like', 'addproperty.property_for', $this->property_for])
             ->andFilterWhere(['like', 'addproperty.request_for', $this->request_for])
@@ -127,6 +127,7 @@ class AddpropertypmSearch extends Addpropertypm
             ->andFilterWhere(['like', 'other_room', $this->other_room])
             ->andFilterWhere(['like', 'furnished_status', $this->furnished_status])
             ->andFilterWhere(['like', 'user.username', $this->user_id])
+            ->andFilterWhere(['like', 'user.fullname', $this->role_id])
             ->andFilterWhere(['like', 'status', $this->status]);
 
            // $query->andFilterWhere(['between', 'super_area', $this->minsuper_area,$this->super_area ]);
