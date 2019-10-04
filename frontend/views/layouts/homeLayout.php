@@ -22,7 +22,7 @@ NewDesignAsset::register($this);
 
 
 <!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
+<!-- <div id="fb-root"></div>
       <script>
         window.fbAsyncInit = function() {
           FB.init({
@@ -39,12 +39,12 @@ NewDesignAsset::register($this);
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
 
-      <!-- Your customer chat code -->
-      <div class="fb-customerchat"
+      Your customer chat code
+       <div class="fb-customerchat"
         attribution=setup_tool
         page_id="100312244664763"
   theme_color="#44bec7">
-      </div>
+      </div> -->
 
 
 		
