@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use kartik\widgets\Select2;
 use kartik\editable\Editable;
+use kartik\export\ExportMenu;
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\AddpropertybackendSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -45,13 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
 									<div class="addpropertybackend-index">
                                     <?= $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php echo GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-		'responsive'=>false,
-        'columns' => [
+    <?php 
+        $gridColumns = [
             ['class' => 'kartik\grid\SerialColumn'],
-			// ['class' => 'kartik\grid\CheckboxColumn','name'=>'chkd'],
+             ['class' => 'kartik\grid\CheckboxColumn',
+             'headerOptions' => ['class' => 'kartik-sheet-style'],
+            ],
 			
 [
 'class' => 'kartik\grid\ExpandRowColumn',
@@ -88,7 +89,7 @@ return GridView::ROW_COLLAPSED;
 
             [
                 'label'=> 'Owner Name',
-                'attribute' => 'user_id',
+                'attribute' => 'role_id',
                 'width'=>'150px',
                 'value' => 'username.fullname'
 
@@ -227,8 +228,32 @@ return GridView::ROW_COLLAPSED;
 			
             // ],
             ['class' => 'yii\grid\ActionColumn'],
-       ],
-    ]); ?>
+      ];
+
+      echo  ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        
+        'columns' => $gridColumns,
+        'columnSelectorOptions'=>[
+            'label' => 'Columns',
+            'class' => 'btn btn-danger'
+        ],
+        'fontAwesome' => true,
+        'dropdownOptions' => [
+            'label' => 'Export All',
+            'class' => 'btn btn-primary'
+        ],
+        'exportConfig' => [
+    ExportMenu::FORMAT_HTML => false,
+    ExportMenu::FORMAT_TEXT => false,
+    ],
+    ]);
+
+echo \kartik\grid\GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'columns' => $gridColumns
+]); ?>
 
 </div></div> </div> 
 <script>

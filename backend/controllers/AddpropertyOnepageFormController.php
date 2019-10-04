@@ -768,6 +768,8 @@ class AddpropertyOnepageFormController extends Controller
                             Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
             }else{
+
+               // print_r($model->getErrors());die;
                  return [
                     'title'=> "Update AddpropertyOnepageForm #".$id,
                     'content'=>$this->renderAjax('update', [
@@ -782,6 +784,8 @@ class AddpropertyOnepageFormController extends Controller
             *   Process for non-ajax request
             */
             if ($model->load($request->post()) && $model->save()) {
+
+
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 return $this->render('update', [
