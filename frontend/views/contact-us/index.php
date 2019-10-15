@@ -13,7 +13,7 @@ use yii\helpers\Html;
                 <div class="container" id="banner_cont">
                     <div class="col-md-7 col-md-offset-1 text-left brand_desp about_bannr">
                     <h1 class="about_head">Want us to contact you?</h1>
-                        <p class="about_det animated slideInDown">From a background in real estate, our team has formed a common goal to bring together the best and brghtest to do something truely remarkable. We are focused on building solutions where no one gets the short end to stick.</p>
+                        <p class="about_det animated slideInDown">Our team at the backend is all set you to guide you through your real estate buying cycle. Help us with your contact details and we will get back to you as soon as possible. </p>
                         
                         <p class="call_back"><a href="<?php echo yii::$app->urlManager->createUrl(['contact-us/enquiry']) ?>">Organise call back <i class="fa fa-angle-right"></i></a></p>
                     </div>
