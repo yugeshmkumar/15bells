@@ -67,7 +67,7 @@
 				<h1 class="trans_head_b">Our <br>Mission & Vission</h1>
 				<p class="brand_txt">Moving towards a better tomorrow is what 15 Bells believe in. We look forward to creating the largest marketplace for Commercial Property in Delhi NCR by bringing the Digital Revolution. Assuring the most state of the art techniques – TRUST, TIME and TRANSPARENCY are where we put our Business Value.  </p>
 				<p class="read_mor"><a href="#">Read more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron_d.svg';  ?>"></a></p>
-				<p class="our_qout"><i class="fa fa-quote-left" aria-hidden="true"></i>Lorem ipsum dolor sit amet, adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+				<p class="our_qout"><i class="fa fa-quote-left" aria-hidden="true"></i>“Look at market fluctuations as your friend rather than your enemy; profit from folly rather than participate in it.”</p>
 			</div>
 			<div class="col-md-6"></div>
 		</div>
