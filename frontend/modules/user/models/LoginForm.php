@@ -151,10 +151,24 @@ class LoginForm extends Model
      */
     public function login($otp)
     {
-
-       // echo $otp;die;
         
         if ($this->validate()) {
+
+           
+            
+            if (Yii::$app->user->login($this->getUser(), $this->rememberMe ? Time::SECONDS_IN_A_MONTH : 0)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function loginapi()
+    {
+        
+        if ($this->validate()) {
+
+           
             
             if (Yii::$app->user->login($this->getUser(), $this->rememberMe ? Time::SECONDS_IN_A_MONTH : 0)) {
                 return true;
@@ -201,7 +215,7 @@ class LoginForm extends Model
         if ($this->user === false) {
            // echo $this->identity;die;
             $this->user = User::find()->where(['or', ['username'=>$this->identity], ['email'=>$this->identity]])->andwhere(['status'=>1])->one();
-           // $this->user = User::find()->where(['email'=>$this->identity])->andwhere(['status'=>1])->one();
+            //$this->user = User::find()->where(['email'=>$this->identity])->andwhere(['status'=>1])->one();
              
         }
 
