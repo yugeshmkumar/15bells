@@ -47,6 +47,8 @@ class UserController extends \yii\web\Controller
   public function actionOnlinesitevisit($userid){
 
     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+    header('Access-Control-Allow-Origin: *');
     $this->setHeader(200);
 
     $model12 = RequestSiteVisit::find()->where(['user_id' => $userid])->andwhere(['visit_type' => 'online'])->andwhere(['status' => 1])->all();
@@ -68,13 +70,16 @@ class UserController extends \yii\web\Controller
 
     //$data['site_visit'] =  $array3;
      
-         echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);
+         echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);die;
   }
 
 
   public function actionOnlinesitevisitagent($userid){
 
     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+    header('Access-Control-Allow-Origin: *');
+
     $this->setHeader(200);
 
     $model12 = RequestSiteVisit::find()->where(['sales_id' => $userid])->andwhere(['visit_type' => 'online'])->andwhere(['status' => 1])->all();
@@ -96,7 +101,7 @@ class UserController extends \yii\web\Controller
 
     //$data['site_visit'] =  $array3;
      
-         echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);
+         echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);die;
   }
 
 
