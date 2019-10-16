@@ -15,8 +15,9 @@ use yii\helpers\Html;
 			<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/signup1.jpg';  ?>" class="signup_img">
 			<div class="contactus_content">
 				<p class="contact_bold">Let’s discuss the recommended solution for your next investment</p>
-				<p class="contact_para">From a background in real eastate, our team has formed a common goal to bring together the best and brightest to do something truely remarkable. We are focused on building solutions where no one gets the short end to stick.</p>
-			</div>
+				<p class="contact_para">Fill our information form in just a few clicks and help us with your requirements. Once our team is done with the right research material for you, we will get in touch.</p>
+        <p class="contact_para">Yes, we are that fast when it comes to serving you!</p>
+    	</div>
 		</div>
 		<div class="col-md-6 no_pad">
 			<div class="row pad_100 padding_enquiry">
