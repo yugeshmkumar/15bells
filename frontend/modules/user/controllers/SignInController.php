@@ -243,7 +243,9 @@ class SignInController extends \yii\web\Controller
             $array4['LoginForm']['identity'] = $identity;
             $array4['LoginForm']['password'] = $password;
 
-            if ($model->load($array4) && $model->login()) {
+            if ($model->load($array4) && $model->loginapi()) {
+
+              
 
 
                 $arrcheckrole = \common\models\RbacAuthAssignment::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
@@ -258,11 +260,11 @@ class SignInController extends \yii\web\Controller
         
 
 
-                echo  json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT);
+                echo  json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT);die;
                 
                 
             }else{
-                echo  json_encode(array('status'=>0,'Online_Site_Visit'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT);
+                echo  json_encode(array('status'=>0,'Online_Site_Visit'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT);die;
             }
 
         
