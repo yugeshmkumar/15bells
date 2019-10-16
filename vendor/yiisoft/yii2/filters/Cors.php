@@ -139,10 +139,6 @@ class Cors extends ActionFilter
     public function extractHeaders()
     {
         $headers = [];
-
-        $_SERVER['HTTP_ACCESS_CONTROL_ALLOW_HEADERS'] = 'MY_CUSTOM_HEADER, X-CSRF-Token, Origin, X-Requested-With, Content-Type, Accept';
-        $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'] = 'MY_CUSTOM_HEADER, X-CSRF-Token, Origin, X-Requested-With, Content-Type, Accept';
-
         foreach (array_keys($this->cors) as $headerField) {
             $serverField = $this->headerizeToPhp($headerField);
             $headerData = isset($_SERVER[$serverField]) ? $_SERVER[$serverField] : null;
