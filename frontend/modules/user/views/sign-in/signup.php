@@ -757,13 +757,20 @@ function showTab(n) {
 				
 					valid = false;
 				}
-				else if($('#'+emailid).parent().hasClass("has-error") ||  $('#'+phoneid).parent().hasClass("has-error")){
+				else if($('#'+emailid).parent().hasClass("has-error") && $('#'+emailid).val() != ''){  
+					 y[i].className += " invalid";
 
+					valid = false;
+
+					}
+
+						else if($('#'+phoneid).parent().hasClass("has-error") && $('#'+phoneid).val() != ''){  
 					y[i].className += " invalid";
 
 					valid = false;
 
 					}
+
 
 			 }else{
 
