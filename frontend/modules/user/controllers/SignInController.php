@@ -235,6 +235,8 @@ class SignInController extends \yii\web\Controller
         
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $this->setHeader(200);
+        header("Access-Control-Allow-Headers: *");
+        
          $model = new LoginForm();
 
        
