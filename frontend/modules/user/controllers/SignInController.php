@@ -262,14 +262,14 @@ class SignInController extends \yii\web\Controller
         
 
 
-               // echo  json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT);die;
-                echo $_GET['callback'] . '('.json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT).')'; die;
+               echo  json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT);die;
+                // echo $_GET['callback'] . '('.json_encode(array('status'=>1,'User_details'=>$array3),JSON_PRETTY_PRINT).')'; die;
 
                 
                 
             }else{
-               // echo  json_encode(array('status'=>0,'Online_Site_Visit'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT);die;
-                echo $_GET['callback'] . '('.json_encode(array('status'=>0,'User_details'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT).')'; die;
+               echo  json_encode(array('status'=>0,'Online_Site_Visit'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT);die;
+                // echo $_GET['callback'] . '('.json_encode(array('status'=>0,'User_details'=>'Username password Doesnt Match'),JSON_PRETTY_PRINT).')'; die;
 
             }
 
