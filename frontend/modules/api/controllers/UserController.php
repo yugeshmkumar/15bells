@@ -117,6 +117,9 @@ class UserController extends \yii\web\Controller
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
+        header('Access-Control-Allow-Origin: *');
+
+
         $model2 = UserViewProperties::find()->where(['property_id' => $id])->andwhere(['active' => '1'])->all();
         $model1 = Addproperty::find()->where(['id' => $id])->andwhere(['is_active' => '1'])->one();
          $userid = $model1->user_id;
@@ -195,9 +198,10 @@ class UserController extends \yii\web\Controller
         
         
         
-        
+     echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT).')'; die;
 
-        echo  json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT);
+
+       // echo  json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT);
          //echo  json_encode(array('status'=>1,'data'=>array_filter($model->attributes)),JSON_PRETTY_PRINT);
     }
 
