@@ -54,6 +54,8 @@ class UserController extends \yii\web\Controller
     
     $this->setHeader(200);
 
+    header("Access-Control-Allow-Headers: *");
+
     $model12 = RequestSiteVisit::find()->where(['user_id' => $userid])->andwhere(['visit_type' => 'online'])->andwhere(['status' => 1])->all();
     
     $array3 = array();
