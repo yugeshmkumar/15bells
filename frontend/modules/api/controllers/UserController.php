@@ -126,6 +126,7 @@ class UserController extends \yii\web\Controller
         $model1 = Addproperty::find()->where(['id' => $id])->andwhere(['is_active' => '1'])->one();
          $userid = $model1->user_id;
 
+       
         $model=$this->findModel($userid);      
         $this->setHeader(200);
        
@@ -134,27 +135,36 @@ class UserController extends \yii\web\Controller
         $data['property_for'] = $model1->property_for;
         $proptype_id  = $model1->project_type_id;
 
+        // echo '<pre>';print_r($proptype_id);die;
+
         $model12 = PropertyType::find()->where(['id' => $proptype_id])->andwhere(['isactive' => '1'])->one();
 
 
         $data['property_type'] = $model12->typename;
+       
         $data['locality'] = $model1->locality;
+       
         $data['Auction_type'] = $model1->request_for;
         $data['locality'] = $model1->locality;
         $data['property_for'] = $model1->property_for;
-        $data['locality'] = $model1->locality;
+       // $data['locality'] = $model1->locality;
+        
         $time['id']=$model->id;
         $time['name']=$model->username;
         $time['email']=$model->email;
 
         $data['Owner_details'] = $time;
-
+       
         $data['property_for'] = $model1->property_for;
-        $data['total_plot_area'] = $model1->total_plot_area;
-        $data['plot_unit'] = $model1->plot_unit;
+        $data['total_plot_area'] = $model1->super_area;
+        $data['plot_unit'] = $model1->super_unit;
         $data['expected_price'] = $model1->expected_price;
         $data['asking_rental_price'] = $model1->asking_rental_price;
         
+        if(!empty($model2)){
+
+           
+
         foreach ($model2 as $model2s){
 
 
@@ -202,7 +212,13 @@ class UserController extends \yii\web\Controller
         
       echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT).')'; die;
 
+    }else{
 
+       
+        echo $_GET['callback'] . '('.json_encode(array('status'=>0,'Property'=>'No user'),JSON_PRETTY_PRINT).')'; die;
+
+
+    }
        // echo  json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT);
          //echo  json_encode(array('status'=>1,'data'=>array_filter($model->attributes)),JSON_PRETTY_PRINT);
     }
