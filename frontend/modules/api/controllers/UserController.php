@@ -75,7 +75,9 @@ class UserController extends \yii\web\Controller
 
     //$data['site_visit'] =  $array3;
      
-    echo json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT); die;
+    // echo json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT); die;
+    echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT).')'; die;
+
 }
 
 
@@ -106,8 +108,8 @@ class UserController extends \yii\web\Controller
 
     //$data['site_visit'] =  $array3;
      
-         echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);die;
-         //echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT).')'; die;
+        // echo  json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT);die;
+         echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Online_Site_Visit'=>$array3),JSON_PRETTY_PRINT).')'; die;
 
   }
 
@@ -198,10 +200,10 @@ class UserController extends \yii\web\Controller
         
         
         
-    //  echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT).')'; die;
+      echo $_GET['callback'] . '('.json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT).')'; die;
 
 
-        echo  json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT);
+       // echo  json_encode(array('status'=>1,'Property'=>$data),JSON_PRETTY_PRINT);
          //echo  json_encode(array('status'=>1,'data'=>array_filter($model->attributes)),JSON_PRETTY_PRINT);
     }
 
