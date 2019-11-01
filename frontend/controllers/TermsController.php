@@ -14,6 +14,9 @@ class TermsController extends Controller {
     public function actionIndex() {
         return $this->render('index');
     }
+    public function actionPrivacypolicy() {
+        return $this->render('privacy-policy');
+    }
 
     
 
