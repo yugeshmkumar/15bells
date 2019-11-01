@@ -8,7 +8,7 @@ $this->title = 'Terms&conditions';
 
 <?php
 
- $getcontent = \common\models\activemode::findmywebsitepagecontent("termsconditions");
+ $getcontent = \common\models\activemode::findmywebsitepagecontent("privacypolicy");
  
   
 ?>
@@ -30,7 +30,7 @@ $this->title = 'Terms&conditions';
                     <div class="container margin-bottom-40">
                         <div class="col-lg-12">
                             <div class="portlet light">
-                            <h3 class="trans_head_b">Terms & Conditions</h3>
+                            <h3 class="trans_head_b">Privacy Policy</h3>
                                 <p class="margin-top-30">  <?php if($getcontent) { ?><?php echo $getcontent->content; ?><?php } ?></p>
 </div>
                         </div>
