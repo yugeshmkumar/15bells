@@ -1510,8 +1510,10 @@ return 2;
         $conditionsexact = array();
 
           
-                        $conditionsprop[] = "property_for='both'";  
-                        $conditions[] = "property_for='rent'";        
+                        
+            $conditionsprop[] = "( property_for='both'";  
+            
+            $conditions[] = "property_for='rent' )";        
 
                         
 
@@ -1747,8 +1749,10 @@ return 2;
           $conditionsexact = array();
 
             
-          $conditionsprop[] = "property_for='both'";
-                $conditions[] = "property_for='rent'";      
+          
+          $conditionsprop[] = "( property_for='both'";  
+            
+          $conditions[] = "property_for='rent' )";      
 
                         
 
@@ -1867,8 +1871,10 @@ return 2;
        $conditionsexact = array();
 
 
-       $conditionsprop[] = "property_for='both'";  
-                        $conditions[] = "property_for='rent'";        
+       
+       $conditionsprop[] = "( property_for='both'";  
+            
+       $conditions[] = "property_for='rent' )";        
 
                         
 
