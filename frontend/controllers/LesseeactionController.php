@@ -1457,7 +1457,7 @@ return 2;
             $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
         }
       
-      echo $sqlstr;die;
+      //echo $sqlstr;die;
       
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
