@@ -188,7 +188,7 @@ use yii\bootstrap\Modal;
 								<div class="col-md-6 locality_input">
 									<div class="row">
 										<h3 class="flow_heading">Choose Locality</h3>
-										<input  name="serachlocality" type="text" id="pac-input" class="form-control input_desgn" placeholder="Enter your locality">
+										<input  name="serachlocality" type="text" id="pac-input" class="form-control input_desgn locality_serch" placeholder="Enter your locality">
 									</div>
 									
 								</div>
@@ -632,7 +632,13 @@ $("#dummypricemaximum").on("input", function(){
 });
 
 
-
+$(".locality_serch").keypress(
+function(event){
+if (event.which == '13') {
+$("#myModal").modal('show');
+event.preventDefault();
+}
+});
 
     $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');

@@ -1174,9 +1174,9 @@ class BuyeractionController extends Controller {
         
 
 
-            $conditionsprop[] = "property_for='both'";  
+            $conditionsprop[] = "( property_for='both'";  
             
-            $conditions[] = "property_for='sale'";  
+            $conditions[] = "property_for='sale' )";  
 
         if ($proptype != '') {
             $conditions[] = "project_type_id = '$proptype'";
@@ -1350,9 +1350,10 @@ class BuyeractionController extends Controller {
         
 
 
-            $conditionsprop[] = "property_for='both'";  
             
-            $conditions[] = "property_for='sale'";  
+            $conditionsprop[] = "( property_for='both'";  
+            
+            $conditions[] = "property_for='sale' )";  
 
         if ($proptype != '') {
             $conditions[] = "project_type_id = '$proptype'";
@@ -1606,9 +1607,9 @@ class BuyeractionController extends Controller {
         
 
 
-            $conditionsprop[] = "property_for='both'";  
+            $conditionsprop[] = "( property_for='both'";  
             
-            $conditions[] = "property_for='sale'";  
+            $conditions[] = "property_for='sale' )";   
 
         if ($proptype != '') {
             $conditions[] = "project_type_id = '$proptype'";
@@ -1715,9 +1716,9 @@ class BuyeractionController extends Controller {
         
 
 
-            $conditionsprop[] = "property_for='both'";  
+            $conditionsprop[] = "( property_for='both'";  
             
-            $conditions[] = "property_for='sale'";  
+            $conditions[] = "property_for='sale' )";  
 
         if ($proptype != '') {
             $conditions[] = "project_type_id = '$proptype'";

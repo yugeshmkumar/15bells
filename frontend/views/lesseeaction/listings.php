@@ -2176,7 +2176,7 @@ if(type == 'polygon'){
 
     getpolyshapes = type;
   //  $('#shapedel').text('Circle');
-    var radiuss  = $('#radiuss').val();
+    var radiuss  = $('#radius').val();
     var radius =  parseInt(radiuss);
     var newcircleCoord = geometry.split(","); 
     var townCenter = new google.maps.LatLng(newcircleCoord[0],newcircleCoord[1]);
