@@ -33,7 +33,7 @@ class LesseeactionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','searches','shortlistpropertiesready','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
+                        'actions' => ['login', 'error','searches','shortlistpropertiesready','shortlist','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
                         'allow' => true,
                     ],
                     [
