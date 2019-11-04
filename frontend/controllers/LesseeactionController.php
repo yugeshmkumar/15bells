@@ -1406,9 +1406,9 @@ return 2;
         
 
 
-            $conditionsprop[] = "property_for='both'";  
+            $conditionsprop[] = "( property_for='both'";  
             
-            $conditions[] = "property_for='rent'";  
+            $conditions[] = "property_for='rent' )";  
             
         
       
@@ -1457,7 +1457,7 @@ return 2;
             $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
         }
       
-      //echo $sqlstr;die;
+      echo $sqlstr;die;
       
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
