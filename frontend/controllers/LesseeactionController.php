@@ -33,7 +33,7 @@ class LesseeactionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','searches','shortlistpropertiesready','shortlist','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
+                        'actions' => ['login', 'error','searches','shortlistpropertiesready','getsitevisitlocation','shortlist','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
                         'allow' => true,
                     ],
                     [
@@ -973,6 +973,22 @@ class LesseeactionController extends Controller {
         $commands = $querys->createCommand();
         $paymentsm = $commands->queryOne();
        // echo '<pre>';print_r($paymentsm);die;
+
+
+       $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+        
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+           }
 
         if ($paymentsm['newcount'] == 0) {
             //echo 'aya';die;
