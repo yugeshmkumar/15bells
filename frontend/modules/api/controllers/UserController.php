@@ -8,6 +8,7 @@ use common\models\UserViewProperties;
 use common\models\PropertyType;
 use common\models\RequestSiteVisit;
 use common\models\RequestDocumentShow;
+use common\models\CompanyEmp;
 
 class UserController extends \yii\web\Controller
 {
@@ -89,7 +90,10 @@ class UserController extends \yii\web\Controller
 
     $this->setHeader(200);
 
-    $model12 = RequestSiteVisit::find()->where(['sales_id' => $userid])->andwhere(['visit_type' => 'online'])->andwhere(['status' => 1])->all();
+    $querys = CompanyEmp::find()->where(['userid'=>$userid])->one();
+    $assigned_id = $querys->id;
+
+    $model12 = RequestSiteVisit::find()->where(['sales_id' => $assigned_id])->andwhere(['visit_type' => 'online'])->andwhere(['status' => 1])->all();
     
     $array3 = array();
     foreach ($model12 as $model1){
