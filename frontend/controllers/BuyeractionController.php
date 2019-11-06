@@ -497,11 +497,60 @@ class BuyeractionController extends Controller {
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
 
-        // if(isset(Yii::$app->user->identity->id)){
-        //     echo '1';die;
-        // }else{
-        //    echo '2';die;
-        // }  
+        $user_id = Yii::$app->user->identity->id;
+
+
+        if (isset(Yii::$app->user->identity->id)){
+
+           $querys = new Query;
+           $querys->select('COUNT(*) as newcount')
+                   ->from('save_searches')
+                   ->where(['user_id' => $user_id])
+                   ->andwhere(['sector' => $sector])
+                   ->andwhere(['role_type' => 'buyer']);
+
+           $commands = $querys->createCommand();
+           $paymentsm = $commands->queryOne();
+
+          // print_r($paymentsm);die;
+
+           if ($paymentsm['newcount'] == 0) {
+
+               
+
+           
+
+          if($shaped == 'polygon'){
+             
+           $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant', 'created_date' => $date])->execute();
+          }
+
+         else if($shaped == 'circle'){
+           
+           $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                       'created_date' => $date])->execute();
+          }
+
+         else if($shaped == 'rectangle'){
+            
+           $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                       'created_date' => $date])->execute();
+                       }
+
+                       else{
+                      
+                        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+
+
+                                    }
+
+     //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
+                    
+      
+
+        }
+
+       }
       
         
         return $this->render('listing',[
@@ -579,32 +628,61 @@ class BuyeractionController extends Controller {
  
         $user_id = Yii::$app->user->identity->id;
 
-       if($shaped == 'polygon'){
-          
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid, 'created_date' => $date])->execute();
-       }
+        $user_id = Yii::$app->user->identity->id;
 
-       if($shaped == 'circle'){
+
+        if (isset(Yii::$app->user->identity->id)){
+
+           $querys = new Query;
+           $querys->select('COUNT(*) as newcount')
+                   ->from('save_searches')
+                   ->where(['user_id' => $user_id])
+                   ->andwhere(['sector' => $sector])
+                   ->andwhere(['role_type' => 'buyer']);
+
+           $commands = $querys->createCommand();
+           $paymentsm = $commands->queryOne();
+
+          // print_r($paymentsm);die;
+
+           if ($paymentsm['newcount'] == 0) {
+
+               
+
+           
+
+          if($shaped == 'polygon'){
+             
+           $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant', 'created_date' => $date])->execute();
+          }
+
+         else if($shaped == 'circle'){
+           
+           $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                       'created_date' => $date])->execute();
+          }
+
+         else if($shaped == 'rectangle'){
+            
+           $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                       'created_date' => $date])->execute();
+                       }
+
+                       else{
+                      
+                        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+
+
+                                    }
+
+     //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
+                    
+      
+
+        }
+
+       }
         
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
-                    'created_date' => $date])->execute();
-       }
-
-      if($shaped == 'rectangle'){
-         
-        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,
-                    'created_date' => $date])->execute();
-                    }
-
-                    if($shaped == 'blank'){
-                   
-                     $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => $propbid,'created_date' => $date])->execute();
-
-
-                                 }
-
-  //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
-                 
    
 
      }         
