@@ -76,7 +76,8 @@ class NotificationsController extends \yii\web\Controller
         echo $response;
         }
 
-
+if($emailuser != ''){
+    
         $html = '<html>
         <body>
     
@@ -96,6 +97,8 @@ class NotificationsController extends \yii\web\Controller
         ->setSubject('15bells Notification mail ')
         ->setHtmlBody($html)
         ->send();
+
+}
 
         
         }
