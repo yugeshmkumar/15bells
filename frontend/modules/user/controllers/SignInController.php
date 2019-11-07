@@ -256,7 +256,7 @@ class SignInController extends \yii\web\Controller
 
                 $array2['id'] = Yii::$app->user->identity->id;
                 $array2['email'] = Yii::$app->user->identity->email;
-                $array2['role_name'] = "user";               
+                $array2['role_name'] = $role_name;               
         
                 $array3[] = $array2;
         
