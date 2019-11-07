@@ -32,6 +32,7 @@ class NotificationsController extends \yii\web\Controller
         $scheduletime = $payment['date'];
         $arrcheckrole = \common\models\User::find()->where(['id'=>$itemid])->one();
         $mobileNumber = $arrcheckrole->username;
+        $emailuser = $arrcheckrole->email;
 
 
         $message = $payment['description'];
@@ -76,12 +77,11 @@ class NotificationsController extends \yii\web\Controller
         }
 
 
-        }
-
         $html = '<html>
         <body>
     
-        <p>Hi, <br/> <br/> We need to make sure you are human. Please verify your email and get started using your Website account. <br/> <br/> <a href="'.Yii::getAlias('@frontendUrl').'/user/sign-in/login?code='.$activation.'">Click here to Activate</a>
+        <p>Hi, <br/> <br/>  <br/> <br/> $message
+        
         </p><br>
 
         <p>Regards,<br/>
@@ -90,10 +90,10 @@ class NotificationsController extends \yii\web\Controller
         </html>';
 
         $email = \Yii::$app->mailer->compose()
-        ->setTo('chirag@15bells.com')
+        ->setTo($emailuser)
 
         ->setFrom(['info@15bells.com' => '15bells'])
-        ->setSubject('15bells Register mail ')
+        ->setSubject('15bells Notification mail ')
         ->setHtmlBody($html)
         ->send();
 
@@ -104,10 +104,15 @@ class NotificationsController extends \yii\web\Controller
         // }
 
 
+        }
 
       $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
+ 
+      if($model3){
+          
+           return 'done';
 
-      //return 'done';
+      }
 
     }
 
