@@ -71,9 +71,9 @@ class NotificationsController extends \yii\web\Controller
         curl_close($curl);
 
         if ($err) {
-        echo "cURL Error #:" . $err;die;
+        echo "cURL Error #:" . $err;
         } else {
-        echo $response;die;
+        echo $response;
         }
 
 
@@ -109,7 +109,7 @@ class NotificationsController extends \yii\web\Controller
       $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
  
       if($model3){
-          
+
            return 'done';
 
       }
