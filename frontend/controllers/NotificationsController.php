@@ -33,6 +33,7 @@ class NotificationsController extends \yii\web\Controller
         $arrcheckrole = \common\models\User::find()->where(['id'=>$itemid])->one();
         $mobileNumber = $arrcheckrole->username;
         $emailuser = $arrcheckrole->email;
+        $fullname = $arrcheckrole->fullname;
 
 
         $message = $payment['description'];
@@ -80,7 +81,7 @@ class NotificationsController extends \yii\web\Controller
         $html = '<html>
         <body>
     
-        <p>Hi, <br/> <br/>  <br/> <br/> $message
+        <p>Hello '.$fullname.', <br/> <br/> '.$message.'
         
         </p><br>
 
@@ -97,13 +98,7 @@ class NotificationsController extends \yii\web\Controller
         ->setHtmlBody($html)
         ->send();
 
-        // if($email){
-        //     echo 'hii';die;
-        // }else{
-        //     echo 'hii22222';die;
-        // }
-
-
+        
         }
 
       $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
