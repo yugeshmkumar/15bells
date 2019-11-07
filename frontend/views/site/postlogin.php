@@ -84,9 +84,12 @@ $company = \common\models\Company::find()->where(['userid' => Yii::$app->user->i
                                 $model->first_name = $myprofile->first_name;
                                 ?>
                                 <?= $form->field($model, 'first_name')->textInput(['class' => 'form-control input_desgn','placeholder'=>"Enter Full Name"])->label(false); ?>
-                                <?php }  ?>
+                                <?php } else{ ?>
+
+                             <?= $form->field($model, 'first_name')->textInput(['class' => 'form-control input_desgn','placeholder'=>"Enter Full Name"])->label(false); ?>
+
                                
-                                <?php } else { ?>
+                                  <?php }  } else { ?>
                                 <?= $form->field($model, 'first_name')->textInput(['placeholder'=>"Enter Full Name",'class' => 'form-control input_desgn'])->label(false); ?>
                                 <?php }
                                 ?>
