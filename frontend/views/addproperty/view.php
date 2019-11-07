@@ -572,8 +572,25 @@ $undercategory = $property_type->undercategory;
 					});
 
 		   }
+
+		   function userview(){
+
+             var viewid =   $('#viewid').val();
+        $.ajax({
+			   type: "POST",
+			 url: '/lesseeaction/userview',
+			 data: {hardam: viewid},
+			 success: function (data) {
+
+			 },
+		 });
+
+          }      
 	
 	  $(document).ready(function(){
+
+		  userview();
+
 		$(".edit_button").click(function(){
 		$(".myInput").removeAttr('readonly');
 		$(".myInput").each(function() {

@@ -35,7 +35,6 @@ class NotificationsController extends \yii\web\Controller
         $emailuser = $arrcheckrole->email;
         $fullname = $arrcheckrole->fullname;
 
-
         $message = $payment['description'];
             //Your authentication key
         $authKey = "222784ARHZNXuXI5b334809";
@@ -103,12 +102,6 @@ class NotificationsController extends \yii\web\Controller
 
       $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
  
-      if($model3){
-
-           return 'done';
-
-      }
-
     }
 
     
