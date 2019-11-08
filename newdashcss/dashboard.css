@@ -1417,6 +1417,9 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 
+
+
+
 }
 
 /****Role css****/
@@ -1595,3 +1598,20 @@ input[type=file]::-webkit-file-upload-button {
     position: relative;
     right: 15px;
 }
+
+.notif_counter {
+
+	color: #f30707;
+    font-size: 13px;
+    border: 1px solid #f30707;
+    font-weight: 300;
+    padding: 0 4px;
+    float: right;
+   }
+
+   .notif_seen {
+
+	padding: 15px 15px 7px;
+    margin: 5px !important;
+    background: #eee;
+   }

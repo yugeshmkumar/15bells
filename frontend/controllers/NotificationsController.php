@@ -15,6 +15,20 @@ class NotificationsController extends \yii\web\Controller
         return $this->render('index');
     }
 
+    public function actionChangeviewed(){
+
+        $userid = Yii::$app->user->identity->id;
+        $model3 = Yii::$app->db->createCommand()->update('notifications', ['viewed' => '1'], 'item_id = "' . $userid . '"')->execute();
+
+       if($model3){
+              return 1;
+       }else {
+           return 2;
+       }
+
+
+    }
+
 
     public function actionSendmessages()
     {
