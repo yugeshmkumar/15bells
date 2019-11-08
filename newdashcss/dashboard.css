@@ -483,19 +483,17 @@ h1.page-header {
 }
 .user_name{
 	color:#221d36;
-	    font-size: 26px;
-    font-weight: 700;
+	    font-size: 20px;
     line-height: 26px;
     margin-top: 5px;
 }
 .user_id{
 	color:#8f8f8f;
-	font-size:18px;
-	margin-bottom:30px;
+	font-size:16px;
 }
 .user_detail{
 	color:#221d36;
-	font-size:18px;
+	font-size:16px;
 }
 .user_detail .fa{
 	color:#c4984f;
@@ -1061,12 +1059,22 @@ input[type=file]::-webkit-file-upload-button {
 	outline:none;
 }
 .site_txt{
-	font-size:18px;
+	font-size:16px;
 	color:#838383;
 	line-height:20px;
 }
+.mt_dash{
+	margin-top:15px;
+}
 .date_det{
 	padding-top:13px;
+}
+.agent_sep{
+	border-right: 1px solid #cecece;
+}
+.agent_detail{
+	padding-left:10px;
+	margin-top:15px;
 }
 
 /**Modal Css**/
@@ -1409,6 +1417,9 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 
+
+
+
 }
 
 /****Role css****/
@@ -1587,3 +1598,20 @@ input[type=file]::-webkit-file-upload-button {
     position: relative;
     right: 15px;
 }
+
+.notif_counter {
+
+	color: #f30707;
+    font-size: 13px;
+    border: 1px solid #f30707;
+    font-weight: 300;
+    padding: 0 4px;
+    float: right;
+   }
+
+   .notif_seen {
+
+	padding: 15px 15px 7px;
+    margin: 5px !important;
+    background: #eee;
+   }

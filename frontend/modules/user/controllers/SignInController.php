@@ -252,7 +252,10 @@ class SignInController extends \yii\web\Controller
 
                 $arrcheckrole = \common\models\RbacAuthAssignment::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
                 $role_name = $arrcheckrole->item_name;
-        
+                
+                if($role_name == 'Company_user' || $role_name == 'company_subuser'){
+                    $role_name = 'user';
+                }
 
                 $array2['id'] = Yii::$app->user->identity->id;
                 $array2['email'] = Yii::$app->user->identity->email;
