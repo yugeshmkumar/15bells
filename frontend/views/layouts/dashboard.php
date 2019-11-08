@@ -8,6 +8,7 @@ use common\models\TimelineEvent;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\db\Query;
 use yii\widgets\Breadcrumbs;
 
 NewdashboardAsset::register($this);
@@ -132,11 +133,13 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 					<li class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['lesseeaction/shortlist']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">Shortlisted Properties</a></li>
 					<li class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['save-searches/lessee','sort'=>'-id']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">My activities</a></li>
 					<li  class="lessee"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-sitevisit/lessee']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
+					<li class="lessee"><a href="https://live.15bells.com" target="_blank"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17" > Live Site Visit</a></li>
 
 
 <li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['buyeraction/shortlist']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">Shortlisted Properties</a></li>
 <li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['save-searches/buyer','sort'=>'-id']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17">My activities</a></li>
 <li  class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-sitevisit/buyer']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
+<li class="buyer"><a href="https://live.15bells.com" target="_blank"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>"  width="17"> Live Site Visit</a></li>
 
 
 
@@ -152,7 +155,27 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 					<li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
 
 					<!-- <li><a href="<?php echo Yii::$app->urlManager->createUrl(['banknew']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Bank Details.svg';  ?>" width="17"> Bank Details</a></li> -->
-					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications</a></li>
+					<?php 
+                    $user_id = Yii::$app->user->identity->id;
+
+					$querysd = new Query;
+					$querysd->select('COUNT(*) as newcountd')
+					->from('notifications')					
+					->where(['item_id' => $user_id])
+					->andwhere(['viewed' => '0']);
+					
+					$commandsd = $querysd->createCommand();
+					$paymentsmd = $commandsd->queryOne();
+					// print_r($paymentsmd);die;
+
+					if($paymentsmd['newcountd'] > 0){
+
+					 $counter = $paymentsmd['newcountd'];
+					}
+
+					?>					
+
+					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['notifications']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Notifications.svg';  ?>" width="17"> Notifications <?php if($paymentsmd['newcountd'] > 0){ ?><span class="notif_counter"><?php echo $counter; ?></span> <?php } ?></a></li>
 					<li><a href="<?php echo Yii::$app->urlManager->createUrl(['/user/sign-in/logout']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Logout.svg';  ?>" width="17"> Logout</a></li>
 
 					
