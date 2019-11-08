@@ -33,7 +33,7 @@ class LesseeactionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','searches','shortlistpropertiesready','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
+                        'actions' => ['login', 'error','searches','shortlistpropertiesready','userview','getsitevisitlocation','shortlist','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
                         'allow' => true,
                     ],
                     [
@@ -280,12 +280,60 @@ class LesseeactionController extends Controller {
  
          date_default_timezone_set("Asia/Calcutta");
          $date = date('Y-m-d H:i:s');
+         $user_id = Yii::$app->user->identity->id;
+
+
+         if (isset(Yii::$app->user->identity->id)){
+
+            $querys = new Query;
+            $querys->select('COUNT(*) as newcount')
+                    ->from('save_searches')
+                    ->where(['user_id' => $user_id])
+                    ->andwhere(['sector' => $sector])
+                    ->andwhere(['role_type' => 'lessee']);
+
+            $commands = $querys->createCommand();
+            $paymentsm = $commands->queryOne();
+
+           // print_r($paymentsm);die;
+
+            if ($paymentsm['newcount'] == 0) {
+
+                
  
-         // if(isset(Yii::$app->user->identity->id)){
-         //     echo '1';die;
-         // }else{
-         //    echo '2';die;
-         // }  
+            
+
+           if($shaped == 'polygon'){
+              
+            $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newspaths, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant', 'created_date' => $date])->execute();
+           }
+
+          else if($shaped == 'circle'){
+            
+            $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $centercoordinates, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                        'created_date' => $date])->execute();
+           }
+
+          else if($shaped == 'rectangle'){
+             
+            $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'google', 'type' => $shaped, 'geometry' => $newkuma, 'radius' => $totalradius, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant',
+                        'created_date' => $date])->execute();
+                        }
+
+                        else{
+                       
+                         $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+
+
+                                     }
+
+      //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
+                     
+       
+
+         }
+
+        }
        
          
          return $this->render('listing',[
@@ -360,6 +408,22 @@ class LesseeactionController extends Controller {
           if (isset(Yii::$app->user->identity->id)){
  
              $user_id = Yii::$app->user->identity->id;
+
+
+             $querys = new Query;
+            $querys->select('COUNT(*) as newcount')
+                    ->from('save_searches')
+                    ->where(['user_id' => $user_id])
+                    ->andwhere(['sector' => $sector])
+                    ->andwhere(['role_type' => 'lessee']);
+
+            $commands = $querys->createCommand();
+            $paymentsm = $commands->queryOne();
+
+           // print_r($paymentsm);die;
+
+            if ($paymentsm['newcount'] == 0) {
+
  
             if($shaped == 'polygon'){
                
@@ -390,6 +454,8 @@ class LesseeactionController extends Controller {
         
  
           }
+
+        }
  
         
          if($propidpost = $_SESSION['propidpostl']){
@@ -949,6 +1015,41 @@ class LesseeactionController extends Controller {
         }
     }
 
+
+
+    public function actionUserview(){
+
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        $hardam = $_POST['hardam'];
+        $userid = Yii::$app->user->identity->id;
+
+
+        $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+        
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+            if($insert1){
+
+                return 1;
+              }else{
+                  return 2;
+              }
+           }else{
+               return 3;
+           }
+
+    }
+
     public function actionGetfreevisit() {
 
         date_default_timezone_set("Asia/Calcutta");
@@ -973,6 +1074,22 @@ class LesseeactionController extends Controller {
         $commands = $querys->createCommand();
         $paymentsm = $commands->queryOne();
        // echo '<pre>';print_r($paymentsm);die;
+
+
+       $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+        
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+           }
 
         if ($paymentsm['newcount'] == 0) {
             //echo 'aya';die;
@@ -1406,9 +1523,9 @@ return 2;
         
 
 
-            $conditionsprop[] = "property_for='both'";  
+            $conditionsprop[] = "( property_for='both'";  
             
-            $conditions[] = "property_for='rent'";  
+            $conditions[] = "property_for='rent' )";  
             
         
       
@@ -1510,8 +1627,10 @@ return 2;
         $conditionsexact = array();
 
           
-                        $conditionsprop[] = "property_for='both'";  
-                        $conditions[] = "property_for='rent'";        
+                        
+            $conditionsprop[] = "( property_for='both'";  
+            
+            $conditions[] = "property_for='rent' )";        
 
                         
 
@@ -1747,8 +1866,10 @@ return 2;
           $conditionsexact = array();
 
             
-          $conditionsprop[] = "property_for='both'";
-                $conditions[] = "property_for='rent'";      
+          
+          $conditionsprop[] = "( property_for='both'";  
+            
+          $conditions[] = "property_for='rent' )";      
 
                         
 
@@ -1867,8 +1988,10 @@ return 2;
        $conditionsexact = array();
 
 
-       $conditionsprop[] = "property_for='both'";  
-                        $conditions[] = "property_for='rent'";        
+       
+       $conditionsprop[] = "( property_for='both'";  
+            
+       $conditions[] = "property_for='rent' )";        
 
                         
 

@@ -54,25 +54,30 @@ $datas =  $dataProvider->query->all();
                  $assigned_id = $querys->userid;
 
                 $users = User::find()->where(['id'=>$assigned_id])->one();
-                                    
+                $myprofile = \common\models\Myprofile::find()->where(['userID' => $assigned_id])->one();
+                   
                     ?>
 				<div class="col-md-12 property_detail">
 					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
 					
 							<div class="col-md-12 visit_buyer">
 								<div class="row">
-									<div class="col-md-4">
-                                        <div class="row">
+									<div class="col-md-4 agent_sep">
+                                        <div class="row mt_dash">
 												<div class="col-md-5">
+                                                <?php if ($myprofile->logo) { ?>
+                                                    <img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" width="60">
+                                                <?php } else { ?>
 													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
-												</div>
+                                                <?php } ?>
+                                            	</div>
 												
 												<div class="col-md-7 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
 												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
 												</div>
                                             </div>
-                                        <div class="row" style="margin-top:30px;">
+                                        <div class="row agent_detail" style="margin-top:30px;">
                                         <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
 											<div class="col-md-5">
