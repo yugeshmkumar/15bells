@@ -593,7 +593,7 @@ $phonenumber = $arrcheckrole1->username;
                     <div class="col-md-12">
 
                     
-                    <div class="col-md-6 text-right save_site">
+                    <div class="col-md-12 text-center save_site">
 							<div class="row">
 								<button type="button" class="btn btn-default call_butn"  id="rzp-button1">Proceed to Buy</button>
 							</div>
@@ -743,6 +743,14 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
       $(this).children(".plusminus").text('-');
     }
   });
+
+   $('.time_sv').click(function(e) {
+$('.time_sv.active_butn').removeClass('active_butn');
+$(this).addClass('active_butn');
+e.preventDefault();
+});
+
+
  $(".locality_area").click(function() {
 	 $(".accordion_body").slideUp(300);
 	 $(".plusminus").text('+');
