@@ -514,7 +514,7 @@ class BuyeractionController extends Controller {
 
           // print_r($paymentsm);die;
 
-           if ($paymentsm['newcount'] == 0) {
+        //    if ($paymentsm['newcount'] == 0) {
 
                
 
@@ -539,7 +539,7 @@ class BuyeractionController extends Controller {
 
                        else{
                       
-                        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+                        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => 'blank', 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
 
 
                                     }
@@ -548,7 +548,7 @@ class BuyeractionController extends Controller {
                     
       
 
-        }
+        // }
 
        }
       
@@ -639,13 +639,24 @@ class BuyeractionController extends Controller {
                    ->where(['user_id' => $user_id])
                    ->andwhere(['sector' => $sector])
                    ->andwhere(['role_type' => 'buyer']);
+                   $buyer = 'buyer';
+
 
            $commands = $querys->createCommand();
            $paymentsm = $commands->queryOne();
 
           // print_r($paymentsm);die;
 
-           if ($paymentsm['newcount'] == 0) {
+           if ($paymentsm['newcount'] > 0) {
+
+            $insert1 = \Yii::$app->db->createCommand('DELETE FROM save_searches WHERE user_id=:userid and sector=:sector and role_type=:role_type ORDER BY id DESC LIMIT 1');
+            $insert1->bindParam(':userid', $user_id);
+            $insert1->bindParam(':sector', $sector);
+            $insert1->bindParam(':role_type', $buyer);
+            $insert1->execute();
+
+
+           }
 
                
 
@@ -679,7 +690,7 @@ class BuyeractionController extends Controller {
                     
       
 
-        }
+        
 
        }
         
