@@ -100,14 +100,22 @@ echo $form->field($model, 'featured_image[]')->widget(FileInput::classname(), [
 	?>
 
     </div>
-	<div class="col-md-12">
+	<div class="col-md-6">
     <?php 
 
 echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Update', [
     'class'=>$model->isNewRecord ? 'btn btn-success save_buttn active_butn' : 'btn btn-primary save_buttn active_butn']
 );
+
+
     ?>
-			</div>				
+
+
+			</div>	
+            <div class="col-md-6">	
+            <?= Html::a('Skip to view property', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
+
+            </div>			
         </div>
         </div>
 
