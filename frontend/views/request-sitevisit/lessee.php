@@ -51,7 +51,8 @@ $datas =  $dataProvider->query->all();
 					</div>
                 <?php foreach ($datas as $data){ 
 
-                $viewid  =  $data->property_id;                
+								$viewid  =  $data->property_id;  
+								$scheduled_time  =  $data->scheduled_time;                
                 $haritid = 273*179-$viewid;
                 $propsid = 'PR'. $haritid;
 
@@ -91,11 +92,11 @@ $datas =  $dataProvider->query->all();
                                         <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
 											<div class="col-md-5">
-                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($scheduled_time)); ?></p>
                                             
 											</div>
 											<div class="col-md-7 no_pad">
-                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($RequestSiteVisit->scheduled_time)); ?></p>
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($scheduled_time)); ?></p>
 												</div>	
 										</div>
                                     
