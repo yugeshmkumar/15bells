@@ -110,6 +110,8 @@ $user_id= Yii::$app->user->identity->id;
 							
 						<div class="row user_property">
 							<div class="col-md-12 float_left">
+                            <h3 class="flow_heading add_address">Select type of property you want to Lease at 15 Bells platform</h3>
+
 								<div class="col-md-3 col-xs-6 commer_office prop_priceshow">
 									<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="property_image">
 									<p class="property_name">Commercial Office</p>
@@ -1445,7 +1447,7 @@ $(".addres_input").on("blur",function (event) {
    $('#myModal').modal('hide'); 
    $('.add_property li:nth-child(2)').addClass("active");
    $('html,body').animate({
-        scrollTop: $(".user_property").offset().top + 100},
+        scrollTop: $(".user_property").offset().top - 100},
         'slow'); 
    });
     $('.btn_signin').click(function(){
