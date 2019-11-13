@@ -145,6 +145,9 @@ class AddpropertyController extends Controller
     public function actionView()
     {
         $id = (int) Yii::$app->request->get('id');
+        $city = Yii::$app->request->get('city');
+        $proptype = Yii::$app->request->get('proptype');
+        $locality = Yii::$app->request->get('locality');
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
         $model = $db->cache(function($db) use ($id){
