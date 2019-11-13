@@ -19,6 +19,8 @@ return [
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
         // Pages
         //'addproperty/<id:\d+>' => 'addproperty/view',
+
+        '<city:[A-Za-z0-9 -_.]+>/<proptype:[A-Za-z0-9 -_.]+>/<locality:[A-Za-z0-9 -_.]+>/<id:\d+>' => 'addproperty/view',
         
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
 
