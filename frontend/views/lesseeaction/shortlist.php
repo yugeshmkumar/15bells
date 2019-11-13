@@ -261,6 +261,15 @@ $(".sub_categories li a").click(function() {
     $(this).parent().addClass('active').siblings().removeClass('active');
 
     });
+
+	
+	$('.time_sv').click(function(e) {
+$('.time_sv.active_butn').removeClass('active_butn');
+$(this).addClass('active_butn');
+e.preventDefault();
+});
+
+
 $('.scheduletime').on('click', function() {
     
 	var getValue = this.id;
