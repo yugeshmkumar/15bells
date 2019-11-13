@@ -111,7 +111,7 @@ $datas =  $dataProvider->query->all();
 										</div>
 										<div class="col-md-6 company_overview property_manage">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
-											<p class="label_name">J<?php echo $addproperty->locality ?></p>
+											<p class="label_name"><?php echo $addproperty->locality ?></p>
 										</div>
 										<div class="col-md-6">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Visit Type</p>
