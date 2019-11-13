@@ -2068,7 +2068,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2225,7 +2225,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2373,7 +2373,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3229,8 +3229,7 @@ function getPolygonCoords() {
                                
                               <?php   }else{ ?>
 
-                   '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
-
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
                                      <?php  } ?>
@@ -3380,7 +3379,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3541,7 +3540,7 @@ function getPolygonCoords() {
  
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3685,7 +3684,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3992,7 +3991,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
-'<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/view?id=']) ?>'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
