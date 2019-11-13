@@ -33,7 +33,7 @@ class LesseeactionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','searches','shortlistpropertiesready','userview','getsitevisitlocation','shortlist','Shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
+                        'actions' => ['login', 'error','searches','shortlistpropertiesready','userview','getsitevisitlocation','shortlist','shortlistproperties','viewpropertys','index','index1','search','withoutshape','saveprop','','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','mapproperty1','mapproperty2','directitnow','searchaction','getpolymyupdate','mapproperty1update','mapproperty2update'],
                         'allow' => true,
                     ],
                     [
@@ -297,7 +297,7 @@ class LesseeactionController extends Controller {
 
            // print_r($paymentsm);die;
 
-            if ($paymentsm['newcount'] == 0) {
+           // if ($paymentsm['newcount'] == 0) {
 
                 
  
@@ -322,7 +322,7 @@ class LesseeactionController extends Controller {
 
                         else{
                        
-                         $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => $shaped, 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+                         $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => 'blank', 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
 
 
                                      }
@@ -331,7 +331,7 @@ class LesseeactionController extends Controller {
                      
        
 
-         }
+        // }
 
         }
        
@@ -416,13 +416,25 @@ class LesseeactionController extends Controller {
                     ->where(['user_id' => $user_id])
                     ->andwhere(['sector' => $sector])
                     ->andwhere(['role_type' => 'lessee']);
+                    $lessee = 'lessee';
 
             $commands = $querys->createCommand();
             $paymentsm = $commands->queryOne();
 
+            if ($paymentsm['newcount'] > 0) {
+
+           // $insert1 = \Yii::$app->db->createCommand()->delete('save_searches', ['user_id' => $user_id, 'sector' => $sector,'role_type'=>'lessee'])->orderBy(['id' => SORT_DESC])->limit(1)->execute();
+            
+            $insert1 = \Yii::$app->db->createCommand('DELETE FROM save_searches WHERE user_id=:userid and sector=:sector and role_type=:role_type ORDER BY id DESC LIMIT 1');
+            $insert1->bindParam(':userid', $user_id);
+            $insert1->bindParam(':sector', $sector);
+            $insert1->bindParam(':role_type', $lessee);
+            $insert1->execute();
+        }
+
            // print_r($paymentsm);die;
 
-            if ($paymentsm['newcount'] == 0) {
+            // if ($paymentsm['newcount'] == 0) {
 
  
             if($shaped == 'polygon'){
@@ -453,7 +465,7 @@ class LesseeactionController extends Controller {
                       
         
  
-          }
+        //   }
 
         }
  

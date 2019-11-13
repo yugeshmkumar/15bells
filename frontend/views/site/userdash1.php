@@ -268,6 +268,15 @@ $('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 				 
 	
 			}
+
+			if( typeof(data["signupform-email"]) != "undefined"){
+
+				var emaild  =   data['signupform-email'];
+
+				alert(emaild);
+
+
+}
 	
 	 if ( typeof(data["signupform-username"]) != "undefined" && data["signupform-username"] !== null && data["signupform-username"] !== 'exist' ) {
 						 
@@ -281,7 +290,7 @@ $('form#{$modeled->formName()}').on('beforeSubmit', function(e) {
 
 								}else{
 
-								alert('Some Internal Error');
+								//alert('Some Internal Error');
 
 								}
 			
@@ -321,6 +330,7 @@ $(".sub_users").click(function() {
 	$('#addusers').show();
 	$('#congratss').hide();
     $("#add_user").modal('show');
+	document.getElementById("SignupForm").reset();
 
     });
 

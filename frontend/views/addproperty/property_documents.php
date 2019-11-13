@@ -100,7 +100,7 @@ echo FileInput::widget([
                         <!-- <a href="#" title="" class="add-author" onclick="myfunction(1)"><button class="btn icon btn-info"><i class="fa fa-plus"></i></button> </a> -->
 
 
-   <div class="col-md-12">
+   <div class="col-md-6">
    <?php 
 
 echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Update', [
@@ -108,6 +108,11 @@ echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Updat
 );
     ?>
 	</div>
+
+    <div class="col-md-6">	
+            <?= Html::a('Skip to view property', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
+
+            </div>
 							
 					</div>
 				</div>

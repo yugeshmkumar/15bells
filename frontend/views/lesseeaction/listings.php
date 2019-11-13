@@ -592,7 +592,7 @@ $phonenumber = $arrcheckrole1->username;
                     <div class="col-md-12">
 
                     
-                    <div class="col-md-6 text-right save_site">
+                    <div class="col-md-12 text-center save_site">
 							<div class="row">
 								<button type="button" class="btn btn-default call_butn"  id="rzp-button1">Proceed to Buy</button>
 							</div>
@@ -615,7 +615,7 @@ $phonenumber = $arrcheckrole1->username;
 
                     
                     
-                    <div class="col-md-6 text-right save_site">
+                    <div class="col-md-12 text-center save_site">
 							<div class="row">
 								<button class="btn btn-default call_butn" >Pay</button>
 							</div>
@@ -742,6 +742,14 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
       $(this).children(".plusminus").text('-');
     }
   });
+
+  $('.time_sv').click(function(e) {
+$('.time_sv.active_butn').removeClass('active_butn');
+$(this).addClass('active_butn');
+e.preventDefault();
+});
+
+
  $(".locality_area").click(function() {
 	 $(".accordion_body").slideUp(300);
 	 $(".plusminus").text('+');
@@ -3796,108 +3804,108 @@ $("#rantime").datepicker({
                                         var user_id = $("#username").val();
                                         
 
-                                        function getfreevisit(id) {
+                                        // function getfreevisit(id) {
 
 
 
-                                            ga("send", "event", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit","Buyeraction Search Book Site Visit");
-                                            var getexpectationID = $('#expectid').val();
+                                        //     ga("send", "event", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit","Buyeraction Search Book Site Visit");
+                                        //     var getexpectationID = $('#expectid').val();
                                             
+                                        //     $.ajax({
+                                        //         type: "POST",
+                                        //         url: 'getfreevisit',
+                                        //         data: {hardam: id,getexpectationID:getexpectationID},
+                                        //         success: function (data) {
+                                              
+                                                
+                                        //         if(data == '1'){
+                                                    
+                                                    
+                                        //         toastr.success('Request for Site Visit has Successfully placed','success');    
+                                        //         }else if(data == '2'){
+                                                    
+                                        //            toastr.success('Request for Site Visit has Successfully placed','success'); 
+                                        //            toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 500 Rs Along with you','warning');    
+                                                   
+                                        //         }else if(data == '5'){
+                                                    
+                                        //            toastr.warning('Already Visited For this Site','warning');    
+                                                   
+                                        //         }else{
+                                        //            toastr.error('Internal Error','error');    
+                                        //                 }
+                                        //         },
+                                        //     });
+
+                                        // }
+                                        
+                                        
+                                        
+                                            function getfreevisit() {
+
+
+
+                                            var id = $('#sitevisitprop').val();
+
+                                            var datetime = $('#rantime').val();
+                                            var scheduletime = $('#scheduletime').val();
+                                            var visitmode = $('#visitmode').val();
+                                            var rantime = datetime +' '+scheduletime;
+                                            var amount_payable = 500;
+
+
                                             $.ajax({
+
                                                 type: "POST",
                                                 url: 'getfreevisit',
-                                                data: {hardam: id,getexpectationID:getexpectationID},
+                                                data: {hardam: id,rantime:rantime,visitmode:visitmode},
                                                 success: function (data) {
-                                              
+                                            
+                                                $('#sitevisitremove_'+id).html('Already Scheduled');
+                                                $('#sitevisitremove_'+id).removeAttr('onclick');
                                                 
                                                 if(data == '1'){
                                                     
-                                                    
+                                                    $('#kamount_payable').val(amount_payable);
+                                                    $('#krequestids').val(id);
+
                                                 toastr.success('Request for Site Visit has Successfully placed','success');    
                                                 }else if(data == '2'){
+
+                                                    $('#kamount_payable').val(amount_payable);
+                                                    $('#krequestids').val(id);
                                                     
-                                                   toastr.success('Request for Site Visit has Successfully placed','success'); 
-                                                   toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');    
-                                                   
+                                                toastr.success('Request for Site Visit has Successfully placed','success'); 
+                                                toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 500 Rs Along with you','warning');  
+                                                
+                                                if(visitmode == 'online'){
+                                                $('#acceptidnew').val(id);       
+                                                $("#proceedtopay").modal('show');
+
+                                            }
+                                                
                                                 }else if(data == '5'){
                                                     
-                                                   toastr.warning('Already Visited For this Site','warning');    
-                                                   
+                                                toastr.warning('Already Visited For this Site','warning');    
+                                                
                                                 }else{
-                                                   toastr.error('Internal Error','error');    
+                                                toastr.error('Internal Error','error');    
                                                         }
+
+                                                        
+
+                                            
                                                 },
+
+                                                
                                             });
 
-                                        }
-                                        
-                                        
-                                        
-function getfreevisit() {
+                                            
+                                            $("#myModalnew").modal('hide');
 
+                                            
 
-
-var id = $('#sitevisitprop').val();
-
-var datetime = $('#rantime').val();
-var scheduletime = $('#scheduletime').val();
-var visitmode = $('#visitmode').val();
-var rantime = datetime +' '+scheduletime;
-var amount_payable = 500;
-
-
-$.ajax({
-
-    type: "POST",
-    url: 'getfreevisit',
-    data: {hardam: id,rantime:rantime,visitmode:visitmode},
-    success: function (data) {
-  
-    $('#sitevisitremove_'+id).html('Already Scheduled');
-    $('#sitevisitremove_'+id).removeAttr('onclick');
-    
-    if(data == '1'){
-        
-        $('#kamount_payable').val(amount_payable);
-        $('#krequestids').val(id);
-
-    toastr.success('Request for Site Visit has Successfully placed','success');    
-    }else if(data == '2'){
-
-        $('#kamount_payable').val(amount_payable);
-        $('#krequestids').val(id);
-        
-       toastr.success('Request for Site Visit has Successfully placed','success'); 
-       toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');  
-       
-     
-       
-    }else if(data == '5'){
-        
-       toastr.warning('Already Visited For this Site','warning');    
-       
-    }else{
-       toastr.error('Internal Error','error');    
-            }
-
-             
-
- 
-    },
-
-    
-});
-
- if(visitmode == 'online'){
-    $('#acceptidnew').val(id);       
-    $("#proceedtopay").modal('show');
-
- }
- $("#myModalnew").modal('hide');
-
- 
-
-}
+                                            }
 
 
 
