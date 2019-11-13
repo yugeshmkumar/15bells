@@ -65,7 +65,9 @@ $datas =  $dataProvider->query->all();
                 $querys = CompanyEmp::find()->where(['id'=>$data->sales_id])->one();
                  $assigned_id = $querys->userid;
 
-                $users = User::find()->where(['id'=>$assigned_id])->one();
+								$users = User::find()->where(['id'=>$assigned_id])->one();
+								$myprofile = \common\models\Myprofile::find()->where(['userID' => $assigned_id])->one();
+
                                     
                     ?>
 				<div class="col-md-12 property_detail">
