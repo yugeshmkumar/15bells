@@ -2577,6 +2577,8 @@ function getPolygonCoords() {
 
                             function  withoutshape(){
 
+                               
+
                                         var count1 =0;
                                           var count2 =0;
                                           var count3 =0;
@@ -2599,7 +2601,7 @@ function getPolygonCoords() {
                                   //  alert(types);alert(totalradiuss);
                                   $('#getprop').html('');
 
-                                 if(types == ''){
+                                 if(types == 'blank'){
                                        
                                        ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
                                       
@@ -3808,40 +3810,40 @@ $("#rantime").datepicker({
                                         var user_id = $("#username").val();
                                         
 
-                                        function getfreevisit(id) {
+                                        // function getfreevisit(id) {
 
 
 
-                                            ga("send", "event", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit","Buyeraction Search Book Site Visit");
-                                            var getexpectationID = $('#expectid').val();
+                                        //     ga("send", "event", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit", "Buyeraction Search Book Site Visit","Buyeraction Search Book Site Visit");
+                                        //     var getexpectationID = $('#expectid').val();
                                             
-                                            $.ajax({
-                                                type: "POST",
-                                                url: 'getfreevisit',
-                                                data: {hardam: id,getexpectationID:getexpectationID},
-                                                success: function (data) {
+                                        //     $.ajax({
+                                        //         type: "POST",
+                                        //         url: 'getfreevisit',
+                                        //         data: {hardam: id,getexpectationID:getexpectationID},
+                                        //         success: function (data) {
                                               
                                                 
-                                                if(data == '1'){
+                                        //         if(data == '1'){
                                                     
                                                     
-                                                toastr.success('Request for Site Visit has Successfully placed','success');    
-                                                }else if(data == '2'){
+                                        //         toastr.success('Request for Site Visit has Successfully placed','success');    
+                                        //         }else if(data == '2'){
                                                     
-                                                   toastr.success('Request for Site Visit has Successfully placed','success'); 
-                                                   toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');    
+                                        //            toastr.success('Request for Site Visit has Successfully placed','success'); 
+                                        //            toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');    
                                                    
-                                                }else if(data == '5'){
+                                        //         }else if(data == '5'){
                                                     
-                                                   toastr.warning('Already Visited For this Site','warning');    
+                                        //            toastr.warning('Already Visited For this Site','warning');    
                                                    
-                                                }else{
-                                                   toastr.error('Internal Error','error');    
-                                                        }
-                                                },
-                                            });
+                                        //         }else{
+                                        //            toastr.error('Internal Error','error');    
+                                        //                 }
+                                        //         },
+                                        //     });
 
-                                        }
+                                        // }
                                         
                                         
                                         
@@ -3880,8 +3882,12 @@ $.ajax({
         $('#krequestids').val(id);
         
        toastr.success('Request for Site Visit has Successfully placed','success'); 
-       toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 100 Rs Along with you','warning');  
-       
+       toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 500 Rs Along with you','warning');  
+       if(visitmode == 'online'){
+    $('#acceptidnew').val(id);       
+    $("#proceedtopay").modal('show');
+
+ }
      
        
     }else if(data == '5'){
@@ -3900,11 +3906,7 @@ $.ajax({
     
 });
 
- if(visitmode == 'online'){
-    $('#acceptidnew').val(id);       
-    $("#proceedtopay").modal('show');
 
- }
  $("#myModalnew").modal('hide');
 
  

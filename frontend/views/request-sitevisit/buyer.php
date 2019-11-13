@@ -53,7 +53,8 @@ $datas =  $dataProvider->query->all();
 
                 $viewid  =  $data->property_id;                
                 $haritid = 273*179-$viewid;
-                $propsid = 'PR'. $haritid;
+								$propsid = 'PR'. $haritid;
+								$scheduled_time  =  $data->scheduled_time;    
 
                 $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
                 $project_type_id = $addproperty->project_type_id;
@@ -71,30 +72,35 @@ $datas =  $dataProvider->query->all();
 					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
 					
 							<div class="col-md-12 visit_buyer">
-								<div class="row">
-									<div class="col-md-4 agent_det">
-											<div class="row">
+							<div class="row">
+									<div class="col-md-4 agent_sep">
+                                        <div class="row mt_dash">
 												<div class="col-md-5">
+                                                <?php if ($myprofile->logo) { ?>
+                                                    <img src="<?php echo Yii::getAlias('@archiveUrl'); ?>/mycompanylogo/<?php echo $myprofile->logo ?>" width="60">
+                                                <?php } else { ?>
 													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
-												</div>
+                                                <?php } ?>
+                                            	</div>
 												
 												<div class="col-md-7 no_pad">
 												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
 												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
 												</div>
-											</div>
-										<div class="row" style="margin-top:30px;">
-											<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
-											<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
-											<div class="col-md-7">
-													<p class="details_label"><?php echo  date("F d,Y", strtotime($data->scheduled_time)); ?></p>
-											</div>
+                                            </div>
+                                        <div class="row agent_detail" style="margin-top:30px;">
+                                        <p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->username; ?></p>
+										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
 											<div class="col-md-5">
-													<p class="details_label"><?php echo  date("g:i A", strtotime($data->scheduled_time)); ?></p>
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($scheduled_time)); ?></p>
+                                            
+											</div>
+											<div class="col-md-7 no_pad">
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($scheduled_time)); ?></p>
 												</div>	
 										</div>
-										
-									</div>
+                                    
+                   </div>
                                    
 									<div class="col-md-8">
 										
