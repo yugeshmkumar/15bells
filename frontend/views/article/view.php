@@ -79,22 +79,7 @@ use yii\widgets\ActiveForm;
                         <!-- <p class="hash_tg"><span class="hastg_1"># Architecture</span><span class="hastg_2"># Design</span></p> -->
                     </div>
                     <div class="col-md-6 text-right">
-                        <ul class="social_share">
-                            <li class="shar_lnk">Share :</li>
-                            <div class="fb-share-button" 
-data-href= <?php echo $currenturl; ?> 
-data-layout="button" 
-data-size="small" 
-data-mobile-iframe="true">
-    <a target="_blank" 
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.codemeright.com%2Ffacebook-share-button.html&amp;src=sdkpreparse" 
-    class="fb-xfbml-parse-ignore"><img src="<?php Yii::getAlias('@frontendUrl').'/newimg/img/fb.png';  ?>"></a>
-</div>
-                             <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"  data-mobile-iframe="true"><a  target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" ><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/fb.png';  ?>" width="12"></a></div> -->
-                           
-                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                
-                            <!-- <li class="shar_lnk"><a href=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/twitter.png';  ?>" width="20"></a></li> -->
-                        </ul>
+                    <div class="sharethis-inline-share-buttons"></div>
                     </div>
                 </div>
                 
@@ -271,7 +256,7 @@ data-mobile-iframe="true">
             </div> -->
     </div>
 
-
+<script src="https://platform-api.sharethis.com/js/sharethis.js#property=5dcd42be25f7ed00128a9982&product=inline-share-buttons"></script>
     <script>
    
    $(document).ready(function () {
