@@ -3234,7 +3234,11 @@ function getPolygonCoords() {
            var commaNum = numberWithCommas(this.expected_price);
            var imageds = $.trim(this.featured_image);
 
-                
+                 <?php if(!yii::$app->user->isGuest){  ?>
+
+sendownernotif(this.id);
+
+<?php   } ?>
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
            '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3385,6 +3389,11 @@ function getPolygonCoords() {
 
                                                            
                                                            var commaNum = numberWithCommas(this.expected_price);
+                <?php if(!yii::$app->user->isGuest){  ?>
+
+                sendownernotif(this.id);
+
+                <?php   } ?>
                
                $('#getprop').append('<div class="col-md-12">'+
                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3546,6 +3555,12 @@ function getPolygonCoords() {
                                             
    
                                                                var commaNum = numberWithCommas(this.expected_price);
+
+                                                <?php if(!yii::$app->user->isGuest){  ?>
+
+                                                sendownernotif(this.id);
+
+                                                <?php   } ?>
                    
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                                                 '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3690,6 +3705,13 @@ function getPolygonCoords() {
                                           
                                          count3 += 1;                      
                                          var commaNum = numberWithCommas(this.expected_price);
+
+
+                                        <?php if(!yii::$app->user->isGuest){  ?>
+
+                                        sendownernotif(this.id);
+
+                                        <?php   } ?>
                    
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
                                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -4102,7 +4124,21 @@ function getPolygonCoords() {
 
                                     
                                               });
-                                    }      
+                                    }  
+
+
+                                    function  sendownernotif(id){
+
+                                    $.ajax({
+                                                type: "POST",
+                                                url: 'sendownernotification',
+                                                data: {hardam: id},
+                                                success: function (data) {
+                                              
+                                                },
+                                            });
+
+                                 }     
                                     
                                     
                                     function bindButtonClick(obj){

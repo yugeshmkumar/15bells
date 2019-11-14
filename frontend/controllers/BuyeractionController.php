@@ -31,7 +31,7 @@ class BuyeractionController extends Controller {
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error','index','searches','shortlistpropertiesready','shortlist','Shortlistproperties','viewpropertys', 'shortlistproperties','search','searchaction','mapproperty2update','getpolymyupdate', 'saveprop', 'viewproperty', 'petproperty', 'directitnow', 'getfreevisit', 'bititnow', 'savemessages', 'similiarprop', 'getpolymy', 'mapproperty1','mapproperty1update', 'mapproperty2'],
+                        'actions' => ['login', 'error','index','searches','shortlistpropertiesready','sendownernotification','shortlist','Shortlistproperties','viewpropertys', 'shortlistproperties','search','searchaction','mapproperty2update','getpolymyupdate', 'saveprop', 'viewproperty', 'petproperty', 'directitnow', 'getfreevisit', 'bititnow', 'savemessages', 'similiarprop', 'getpolymy', 'mapproperty1','mapproperty1update', 'mapproperty2'],
                         'allow' => true,
                     ],
                     [
@@ -183,6 +183,22 @@ class BuyeractionController extends Controller {
             echo '2';
         }
     }
+
+
+    public function actionSendownernotification(){
+
+
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        $hardam = $_POST['hardam'];
+        $description =  'Your Property lies under one new saved search';
+
+        $propuserids = Addpropertypm::find('user_id')->where(['id' => $hardam])->andwhere(['status' => 'approved'])->one();
+        $propuserid  =  $propuserids->user_id;
+        $insert1 = \Yii::$app->db->createCommand()->insert('notifications', ['item_name' => 'Property under Search', 'item_id' => $propuserid, 'link' => '#','description'=>$description,'date'=>$date])->execute();
+
+    }
+
 
     public function actionGetsitevisitlocation(){
 

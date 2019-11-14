@@ -5,9 +5,13 @@
 
 
 use yii\db\Query;
-$query =  "SELECT id from addproperty where is_active='1' and status='approved'";
+$query =  "SELECT a.*,t.typename from addproperty as a join property_type as t on a.project_type_id = t.id where a.is_active='1' and a.status='approved'";
 
 $getproperties  =  Yii::$app->db->createCommand($query)->queryAll(); 
+
+$query1 =  "SELECT slug from article  where status='1'";
+
+$getblogs  =  Yii::$app->db->createCommand($query1)->queryAll(); 
 
 
 echo '<url>'.PHP_EOL;
@@ -60,120 +64,49 @@ echo '<loc>'.Yii::getAlias('@frontendUrl') . '/site/userdash</loc>'.PHP_EOL;
 echo '<changefreq>daily</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/buyeraction/search</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/sellor-expectations/buyer</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/index1</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/request-sitevisit</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>https://live.15bells.com</loc>'.PHP_EOL;
 echo '<changefreq>daily</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/documentshow</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/banknew/create</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/search</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lessor-expectations/lessee</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/index</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/creates</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/sellorview</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/sellor</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/sellor-expectations/sellor</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/create</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/lesview</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/lessor</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lessor-expectations/lessor</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/site/couserdash</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/site/postlogin</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
-echo '</url>'.PHP_EOL;
-
-echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/common/documents</loc>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/blogs</loc>'.PHP_EOL;
 echo '<changefreq>daily</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 
 
+// echo '<pre>';print_r($getblogs);die;
+foreach ($getblogs as $getblog){
+
+
+  echo '<url>'.PHP_EOL;
+   echo '<loc>'.Yii::getAlias('@frontendUrl') . '/blogs/'.$getblog['slug'].'</loc>'.PHP_EOL;
+   echo '<changefreq>daily</changefreq>'.PHP_EOL;
+   echo '</url>'.PHP_EOL;
+
+}
 
 foreach($getproperties as $getproperti)
 
   {
         $id = $getproperti['id'];
+        $typename = strtolower($getproperti['typename']);
+        $typename  =  preg_replace("/[\s_]/", "-", $typename);
+        $town_name = strtolower($getproperti['town_name']);
+        $locality = $getproperti['locality'];
+         $arr = explode(",", $locality, 2);
+        $first = $arr[0];
+        
+        $second = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $first);
+        $string = strtolower($second);
+        $string = preg_replace("/[\s_]/", "-", $string);
         echo '<url>'.PHP_EOL;
-        echo '<loc>'.Yii::getAlias('@frontendUrl') . '/addproperty/sitemapview?id='.$id.'</loc>'.PHP_EOL;
+       // echo '<loc>'.Yii::getAlias('@frontendUrl') . '/'.$second.'?id='.$id.'</loc>'.PHP_EOL;
+
+        echo '<loc>'.Yii::getAlias('@frontendUrl') . '/'.$town_name.'/'.$typename.'/'.$string.'/'.$id.'</loc>'.PHP_EOL;
         echo '<changefreq>daily</changefreq>'.PHP_EOL;
         echo '</url>'.PHP_EOL;
   }
