@@ -3369,7 +3369,11 @@ function getPolygonCoords() {
    var haritid = 273*179-this.id;
                        var propsid = 'PR'+ haritid;
 
+ <?php if(!yii::$app->user->isGuest){  ?>
 
+sendownernotif(this.id);
+
+<?php   } ?>
                                                            
                  var commaNum = this.asking_rental_price;
                
@@ -3533,7 +3537,13 @@ function getPolygonCoords() {
                                             
    
                                                 var commaNum = this.asking_rental_price;
-                   
+
+                            <?php if(!yii::$app->user->isGuest){  ?>
+
+                            sendownernotif(this.id);
+
+                            <?php   } ?>
+
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
@@ -3677,7 +3687,14 @@ function getPolygonCoords() {
                                           
                                          count3 += 1;                      
                                          var commaNum = this.asking_rental_price;
-                   
+                                         
+                                        <?php if(!yii::$app->user->isGuest){  ?>
+
+                                        sendownernotif(this.id);
+
+                                        <?php   } ?>
+
+
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
