@@ -74,14 +74,11 @@ use yii\widgets\ActiveForm;
                         <!-- <p class="blog_txt col-md-12 padding_lst no_pad">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p> -->
                 </div>
                 </div>
-                <div class="row row_socal">
-                    <div class="col-md-6 no_pad">
-                        <!-- <p class="hash_tg"><span class="hastg_1"># Architecture</span><span class="hastg_2"># Design</span></p> -->
-                    </div>
-                    <div class="col-md-6 text-right">
-                    <div class="sharethis-inline-share-buttons"></div>
-                    </div>
-                </div>
+               
+                <!-- AddToAny BEGIN -->
+<a class="a2a_dd" href="https://www.addtoany.com/share"><img src="https://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="18" border="0" alt="Share"></a>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
                 
             </div>
         <!---Blog Side menu----->
@@ -256,7 +253,7 @@ use yii\widgets\ActiveForm;
             </div> -->
     </div>
 
-<script src="https://platform-api.sharethis.com/js/sharethis.js#property=5dcd42be25f7ed00128a9982&product=inline-share-buttons"></script>
+
     <script>
    
    $(document).ready(function () {
