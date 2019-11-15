@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="196" viewBox="0 0 196 196">
+    <defs>
+        <filter id="a" width="130.7%" height="130.7%" x="-15.3%" y="-15.3%" filterUnits="objectBoundingBox">
+            <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.809386322 0 0 0 0 0.809386322 0 0 0 0 0.809386322 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd" filter="url(#a)" transform="translate(10 6)">
+        <path fill="#F7F7F7" stroke="#C4984F" stroke-width="2" d="M1 1h174v174H1z"/>
+        <path fill="#C4984F" d="M54.632 129.93h31.943V45.001H54.632zM102.371 129.93h18.438V45.001H102.37z"/>
+        <path stroke="#FFF" stroke-width="2" d="M86.575 66.801H64.907M86.575 73.251H64.907M102.37 79.703H64.908"/>
+        <path stroke="#C4984F" stroke-width="2" d="M102.37 79.703H86.575"/>
+        <path stroke="#FFF" stroke-width="2" d="M86.575 86.153H64.907M102.37 92.603H64.908"/>
+        <path stroke="#C4984F" stroke-width="2" d="M102.37 92.603H86.575"/>
+        <path stroke="#FFF" stroke-width="2" d="M86.575 99.055H64.907M86.575 105.505H64.907M86.575 111.955H64.907M86.575 118.407H64.907M120.809 66.801h-9.218M120.809 73.251h-9.218M120.809 79.703h-9.218M120.809 86.153h-9.218M120.809 92.603h-9.218M120.809 99.055h-9.218M120.809 105.505h-9.218M120.809 111.955h-9.218M120.809 118.407h-9.218"/>
+        <path fill="#B38841" d="M54.632 129.929h15.973V87.465L54.632 73.252z"/>
+        <path stroke="#C4984F" stroke-width="2" d="M89.103 79.703l10.74 12.9M99.842 79.703l-10.739 12.9"/>
+        <path fill="#B38841" d="M102.37 45v13.486L120.807 45z"/>
+        <path stroke="#B38841" stroke-width="2" d="M39 129.93h98.193"/>
+    </g>
+</svg>

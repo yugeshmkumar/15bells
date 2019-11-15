@@ -1,0 +1,96 @@
+#assets/*
+#!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+# phpstorm project files
+.idea/**
+
+# OS cache
+Thumbs.db
+.DS_Store
+
+# composer vendor dir
+
+
+# Uploads dir
+web/media
+
+# Yii temp directories
+web/assets/**
+runtime/**
+web/minify/**
+
+# composer itself is not needed
+composer.lock
+
+# Gulp
+package.json
+npm-debug.log
+node_modules/**
+
+# Components from node.js and composer
+components/jquery
+components/select2
+components/require.config.js
+components/require.css
+components/require.js
+components/require-built.js
+
+# Codeception
+tests/codeception/_support/_generated/*
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+.env
+frontend/config/_urlManager.php
