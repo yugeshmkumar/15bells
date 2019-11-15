@@ -21,6 +21,9 @@ use yii\filters\AccessControl;
 use mPDF;
 use yii\helpers\HtmlPurifier;
 
+use WebPConvert\WebPConvert;
+
+
 
 /**
  * AddpropertyController implements the CRUD actions for Addproperty model.
@@ -1370,6 +1373,7 @@ if (isset($_FILES['Addproperty']['name']['featured_image'])) {
 
 // No error found! Move uploaded files 
                 $filename = basename($_FILES['Addproperty']['name']['featured_image'][$i]);
+              //  echo '<pre>';print_r($_FILES);die;
                     $extension = pathinfo($filename, PATHINFO_EXTENSION);
                     $new = $filename . $sendingitemContentMod . '.' . $extension;
 
@@ -1382,13 +1386,21 @@ if (isset($_FILES['Addproperty']['name']['featured_image'])) {
 
                     if (move_uploaded_file($_FILES['Addproperty']['tmp_name']['featured_image'][$i], "{$root}/archive/web/propertydefaultimg/{$new}")) {
 
-                        $getmodel->featured_image = $newimage;
+
+                        $source ="{$root}/archive/web/propertydefaultimg/". $new;
+                        $destination = $source . '.webp';
+                        $options = [];
+                        WebPConvert::convert($source, $destination, $options);
+
+
+                        $getmodel->featured_image = $new.'.webp';
                         $getmodel->save(false);
+
                         //  copy("uploads/{$new}","{$root}/15bells/archive/web/uploadsthumbnails/{$new}");
                         $mediafiles = new \common\models\MediaFiles();
-                        $mediafiles->type = $extension;
+                        $mediafiles->type = 'webp';
                         $mediafiles->link = "{$root}/archive/web/propertydefaultimg/";
-                        $mediafiles->file_name = $new;
+                        $mediafiles->file_name = $new.'.webp';
                         $mediafiles->file_descr = $new;
                         $mediafiles->save();
                         
