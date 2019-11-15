@@ -10,11 +10,17 @@ use yii\db\Query;
 /* @var $this yii\web\View */
 /* @var $model common\models\Addproperty */
 
-$this->title = $model->id;
+
+$cityurl = strtolower($_GET['city']); 
+$proptypeurl = strtolower($_GET['proptype']); 
+$localityurl = strtolower($_GET['locality']); 
+$viewid = $_GET['id'];   
+
+
+$this->title = $cityurl.'/'.$proptypeurl.'/'.$localityurl.'/'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Addproperties', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$viewid = $_GET['id'];   
 
 ?>
 <style>
@@ -148,7 +154,8 @@ $undercategory = $property_type->undercategory;
 					  $ids[] = $picID->media_id;
 					  }
 					  
-					  $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['or',['type'=>'png'],['type'=>'jpeg'],['type'=>'jpg']])->all();
+					//   $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['or',['type'=>'png'],['type'=>'jpeg'],['type'=>'jpg']])->all();
+					  $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['type'=>'webp'])->all();
 					  foreach ($pictogramsID as $picID) {
 					  $pic[] = $picID->file_name;
 					  }
@@ -575,17 +582,17 @@ $undercategory = $property_type->undercategory;
 
 		   function userview(){
 
-             var viewid =   $('#viewid').val();
-        $.ajax({
-			   type: "POST",
-			 url: '/lesseeaction/userview',
-			 data: {hardam: viewid},
-			 success: function (data) {
+				var viewid =   $('#viewid').val();
+			$.ajax({
+				type: "POST",
+				url: '/lesseeaction/userview',
+				data: {hardam: viewid},
+				success: function (data) {
 
-			 },
-		 });
+				},
+			});
 
-          }      
+		}      
 	
 	  $(document).ready(function(){
 

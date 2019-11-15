@@ -67,7 +67,6 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
             'kartik\\time\\' => 12,
             'kartik\\switchinput\\' => 19,
             'kartik\\spinner\\' => 15,
-            'kartik\\sortable\\' => 16,
             'kartik\\sidenav\\' => 15,
             'kartik\\select2\\' => 15,
             'kartik\\rating\\' => 14,
@@ -84,9 +83,7 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
             'kartik\\grid\\' => 12,
             'kartik\\form\\' => 12,
             'kartik\\file\\' => 12,
-            'kartik\\export\\' => 14,
             'kartik\\editable\\' => 16,
-            'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
             'kartik\\detail\\' => 14,
             'kartik\\depdrop\\' => 15,
@@ -120,6 +117,7 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+            'WebPConvert\\' => 12,
         ),
         'S' => 
         array (
@@ -290,10 +288,6 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-spinner',
         ),
-        'kartik\\sortable\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable/src',
-        ),
         'kartik\\sidenav\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-sidenav',
@@ -358,17 +352,9 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput/src',
         ),
-        'kartik\\export\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-export',
-        ),
         'kartik\\editable\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-editable/src',
-        ),
-        'kartik\\dynagrid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-dynagrid/src',
         ),
         'kartik\\dialog\\' => 
         array (
@@ -441,6 +427,10 @@ class ComposerStaticInit40bdc6928c29d60a6abdf29e5ab0b1e1
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'WebPConvert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
         ),
         'Symfony\\Polyfill\\Php70\\' => 
         array (
