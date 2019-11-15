@@ -1,0 +1,10 @@
+
+
+VDJS LIVE SITE POINTS:
+_________________________________________________________
+
+1. In "News and events" please review all inside pages should be proper
+
+2. In All pqges breadcrumb should not navigate on blank page.
+
+3. In "download TC" page calender should  display in firefox browser and it should working properly and in email dateof birth format should be same.
