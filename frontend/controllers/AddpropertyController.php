@@ -2273,7 +2273,7 @@ public function actionDocumentss() {
 
 
 // print_r($paymentsm);die;
-        $rootPath= '/var/www/html/15bells/archive/web/propertydefaultimg/';
+        $rootPath= '/var/www/html/15bells.com/public_html/archive/web/propertydefaultimg/';
         unlink($rootPath.$paymentsm['file_name']);
         unlink($rootPath.$paymentsm['file_descr']);
 
