@@ -7,6 +7,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 $propid = $_GET['s_id'];
 
+$arrfindmykyc = \common\models\MediaFilesConfig::find()->where(['property_id' => $propid])->all();
+
 ?>
 <style>
 
@@ -51,6 +53,87 @@ $propid = $_GET['s_id'];
          </div>
     </div>
 <?php endif; ?>
+
+
+
+
+
+
+<?php
+if (!empty($arrfindmykyc)) {
+    ?> 
+
+        <div class="portlet docum_ents">
+            <div class="portlet-title">
+                <div class="caption"><i class="fa fa-check" style="color:#fff !important;"></i>My Images
+                </div>	
+            </div>
+            <div class="portlet-body form">
+                <div class="table-scrollable">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th>Image name </th>
+                                <th>Action </th>
+                                <th>Status </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+    <?php
+    $temp = 0;
+    foreach ($arrfindmykyc as $findmykyc) {
+        $temp++;
+        ?> 
+
+                                <?php
+                                $filename = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_descr;
+                                $filename1 = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_name;
+                                $type1 = \common\models\MediaFiles::findOne($findmykyc->media_id)->type;
+                                $id1 = \common\models\MediaFiles::findOne($findmykyc->media_id)->id;
+                                $file_actual_name = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_actual_name;
+                                ?>
+                                <tr>
+                                    <td> <?php echo $temp ?> </td>
+                                    <!-- <td><?php //echo $filename ?> </td> -->
+                                  <?php  
+                                          $source  =  Yii::getAlias('@frontendUrl').'/archive/web/propertydefaultimg/'.$filename1;
+                                  
+                                  ?>
+
+                                    <td><img src="<?php echo $source; ?>" width="150"> </img></td>
+                              
+
+                                        <td><a onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-trash"></i> <?php echo $file_actual_name; ?></a> </td>
+
+                                   
+
+                                    <td>
+                                        <span class="label label-sm label-warning"><?php echo $findmykyc->status; ?> </span>
+                                    </td>
+
+                                </tr>
+    <?php } ?>
+                        </tbody>
+                    </table>
+
+
+                </div> 
+
+
+            </div> </div>
+
+<?php } ?>
+
+
+
+
+
+
+
+
+
 
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
@@ -251,3 +334,39 @@ function closeNav() {
  document.getElementById("mySidenav").style.width = "0";
 }
  </script>
+
+
+ <script>
+    
+
+
+    function downloadfileconfig(id) {
+
+        // Adding extra parameters to form_data
+
+        var result = confirm("Sure Want to delete?");
+
+        if (result) {
+   
+        $.ajax({
+            url: "/addproperty/deleteimage",            
+            data: {imageid:id}, // Setting the data attribute of ajax with file_data
+            type: 'POST',
+            success: function (data) {
+               if(data = '1'){
+                toastr.success('Image Deleted Successfully', 'success');
+                parent.location.reload();
+            }
+               
+            },
+
+        });
+
+    }
+
+
+
+    }
+
+
+</script>

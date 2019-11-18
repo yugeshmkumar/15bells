@@ -44,7 +44,7 @@ class AddpropertyController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['sitevisit','index','creategrouplessor','getpropstatus','lessor','sellor','view','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
+                        'actions' => ['sitevisit','index','creategrouplessor','deleteimage','getpropstatus','lessor','sellor','view','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
 'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
@@ -2254,6 +2254,43 @@ public function actionDocumentss() {
 
 
          }
+
+
+    }
+
+    public function actionDeleteimage(){
+
+        $imageid = $_POST['imageid'];
+
+
+        $querys = new Query;
+        $querys->select('*')
+                ->from('media_files')
+                ->where(['id' => $imageid]);               
+
+        $commands = $querys->createCommand();
+        $paymentsm = $commands->queryOne();
+
+
+// print_r($paymentsm);die;
+        $rootPath= '/var/www/html/15bells/archive/web/propertydefaultimg/';
+        unlink($rootPath.$paymentsm['file_name']);
+        unlink($rootPath.$paymentsm['file_descr']);
+
+        $insert1 = \Yii::$app->db->createCommand()->delete('media_files_config', ['media_id' => $imageid])->execute();
+        $insert2 = \Yii::$app->db->createCommand()->delete('media_files', ['id' => $imageid])->execute();
+
+
+        if($insert2){
+
+            return 1;
+        }else{
+
+            return 2;
+        }
+
+        
+
 
 
     }
