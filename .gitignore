@@ -91,6 +91,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# .env
-# frontend/config/_urlManager.php
