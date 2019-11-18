@@ -8,6 +8,8 @@ use common\models\CallbuttonactionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\Addpropertypm;
+
 
 /**
  * CallbuttonactionController implements the CRUD actions for Callbuttonaction model.
@@ -66,9 +68,60 @@ class CallbuttonactionController extends Controller
     {
         $model = new Callbuttonaction();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
            // return $this->redirect(['view', 'id' => $model->id]);
-           return 1;
+          // echo '<pre>';print_r(Yii::$app->request->post()['Callbuttonaction']['property_id']);die;
+           $propid  = Yii::$app->request->post()['Callbuttonaction']['property_id'];
+           $user_phone  = Yii::$app->request->post()['Callbuttonaction']['user_phone'];
+          $propuserids = Addpropertypm::find('locality')->where(['id' => $propid])->andwhere(['status' => 'approved'])->one();
+    
+
+        $message = 'This '.$user_phone.' has shown interest in this Property-id '.$propid;
+            //Your authentication key
+
+        $authKey = "222784ARHZNXuXI5b334809";
+        $mobileNumber = '9355731515';
+
+        //Multiple mobiles numbers separated by comma
+        //$mobileNumber = $phonenum;
+
+        //Sender ID,While using route4 sender id should be 6 characters long.
+        $senderId = "XVBELL";
+
+        //Your message to send, Add URL encoding here.
+    // $message = urlencode("Your Verification Code is ".$activation."");
+
+        //Define route 
+        $route = 4;
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.msg91.com/api/sendhttp.php?mobiles=$mobileNumber&authkey=$authKey&route=$route&sender=$senderId&message=$message&country=91",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_SSL_VERIFYHOST => 0,
+        CURLOPT_SSL_VERIFYPEER => 0,
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+       // echo "cURL Error #:" . $err;die;
+        } else {
+        //echo $response;die;
+        }
+           if($model->save()){
+               return 1;
+           }
+           
         }
 
         return $this->render('create', [
