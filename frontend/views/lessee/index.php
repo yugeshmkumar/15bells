@@ -68,7 +68,7 @@ use yii\bootstrap\Modal;
 	</section>
 
   <?php 
-  $urlsd =   Yii::getAlias('@frontendUrl');
+  echo $urlsd =   Yii::getAlias('@frontendUrl');die;
   $form = ActiveForm::begin(['id' => $model->formName(),'action'=>$urlsd."/lesseeaction/viewpropertys"]); ?>
 
     <div class="container-fluid property_flow">
