@@ -376,7 +376,8 @@ function deleteprop(id){
 							var rantime = datetime +' '+scheduletime;
 							var amount_payable = 500;
 							
-
+							
+  if ($('#rantime').val() != '' &&  $('#scheduletime').val() != '' &&  $('#visitmode').val() != '') {
 
 
 											$.ajax({
@@ -407,6 +408,10 @@ function deleteprop(id){
 											});
 
 											$("#myModalnew").modal('hide');
+  									}
+									  else{
+												toastr.warning('Please Fill the details correctly');    
+														}
 
 							}
 

@@ -203,7 +203,7 @@ $user_id= Yii::$app->user->identity->id;
 								</ul>
 							</div>
 							<div class="col-md-12">
-                            <h3 class="flow_heading">Enter square and carpet area of your property</h3>
+                            <h3 class="flow_heading">Enter super and carpet area of your property</h3>
 									<div class="col-md-6 area_proprty">
                                     <?= $form->field($model, 'super_area')->textInput([ 'placeholder' => "Enter Gross Area",'class' => 'form-control input_desgn'])->label(false) ?>
                                     <?= $form->field($model, 'super_unit')->hiddenInput()->label(false) ?>
@@ -1578,7 +1578,7 @@ $('.avail_b li a').click(function(){
    var userids = $('#getuserid').val();
 
    if(userids == ''){
-    $("#signup_modal").modal('show');
+    $("#signup_modal").modal({show:true, backdrop: 'static', keyboard: false});
        }else{
   $('.add_price').show('slow'); 
   $('.add_property li:nth-child(3)').addClass("active");
