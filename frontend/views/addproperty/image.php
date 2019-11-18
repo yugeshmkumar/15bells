@@ -101,6 +101,7 @@ echo $form->field($model, 'featured_image[]')->widget(FileInput::classname(), [
 	?>
 
     </div>
+    <div class="col-md-12 no_pad">
 	<div class="col-md-6">
     <?php 
 
@@ -116,6 +117,7 @@ echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Updat
             <div class="col-md-6">	
             <?= Html::a('Skip to view property', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn']) ?>
 
+            </div>
             </div>			
         </div>
         </div>
