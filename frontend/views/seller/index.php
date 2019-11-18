@@ -209,7 +209,7 @@ $user_id= Yii::$app->user->identity->id;
 								</ul>
 							</div>
 							<div class="col-md-12">
-                            <h3 class="flow_heading">Enter square and carpet area of your property</h3>
+                            <h3 class="flow_heading">Enter super and carpet area of your property</h3>
 									<div class="col-md-6">
                                     <?= $form->field($model, 'super_area')->textInput([ 'placeholder' => "Enter Gross Area",'class' => 'input_number form-control input_desgn'])->label(false) ?>
                                     <?= $form->field($model, 'super_unit')->hiddenInput()->label(false) ?>
@@ -1442,7 +1442,7 @@ if(currency == 'lacs'){
         scrollTop: $(".addres_input").offset().top - 400},
         'slow'); 
 });
-$('.exp_price').blur(function(){
+$('#expectedprice').on('change', function(){
     $('html,body').animate({
         scrollTop: $(".crpet_area").offset().top - 100},
         'slow'); 
@@ -1496,7 +1496,7 @@ $(".addres_input").on("blur",function (event) {
         $('#myModal').modal('show');
             
         });
-
+        
 
     $('.addres_input').keypress(function (e) {
         var key = e.which;
@@ -1640,7 +1640,7 @@ $(".sub_categories li a").click(function() {
    var userids = $('#getuserid').val();
 
    if(userids == ''){
-    $("#signup_modal").modal('show');
+    $("#signup_modal").modal({show:true, backdrop: 'static', keyboard: false});
        }else{
   $('.add_price').show('slow'); 
   $('.add_property li:nth-child(3)').addClass("active");

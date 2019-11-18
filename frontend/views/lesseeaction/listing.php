@@ -2068,7 +2068,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2225,7 +2225,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2373,7 +2373,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3213,13 +3213,7 @@ function getPolygonCoords() {
            var propsid = 'PR'+ haritid;
            var commaNum = this.asking_rental_price;
            var imageds = $.trim(this.featured_image);
-
-
-           <?php if(!yii::$app->user->isGuest){  ?>
-
-           sendownernotif(this.id);
-
-           <?php   } ?>
+                
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3235,9 +3229,7 @@ function getPolygonCoords() {
                                
                               <?php   }else{ ?>
 
-                             
-
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
                                      <?php  } ?>
@@ -3369,11 +3361,7 @@ function getPolygonCoords() {
    var haritid = 273*179-this.id;
                        var propsid = 'PR'+ haritid;
 
- <?php if(!yii::$app->user->isGuest){  ?>
 
-sendownernotif(this.id);
-
-<?php   } ?>
                                                            
                  var commaNum = this.asking_rental_price;
                
@@ -3391,7 +3379,7 @@ sendownernotif(this.id);
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3537,13 +3525,7 @@ sendownernotif(this.id);
                                             
    
                                                 var commaNum = this.asking_rental_price;
-
-                            <?php if(!yii::$app->user->isGuest){  ?>
-
-                            sendownernotif(this.id);
-
-                            <?php   } ?>
-
+                   
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
@@ -3558,7 +3540,7 @@ sendownernotif(this.id);
  
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3687,14 +3669,7 @@ sendownernotif(this.id);
                                           
                                          count3 += 1;                      
                                          var commaNum = this.asking_rental_price;
-                                         
-                                        <?php if(!yii::$app->user->isGuest){  ?>
-
-                                        sendownernotif(this.id);
-
-                                        <?php   } ?>
-
-
+                   
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
@@ -3709,7 +3684,7 @@ sendownernotif(this.id);
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3826,7 +3801,7 @@ sendownernotif(this.id);
 
                     }else if(data == 'nouser'){
                             
-                       $('#signup_modal').modal('show');
+                       $('#signup_modal').modal({show:true, backdrop: 'static', keyboard: false});
                    // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
 
                     }else{
@@ -3895,7 +3870,7 @@ sendownernotif(this.id);
 
                     }else if(data == 'nouser'){
                             
-                       $('#signup_modal').modal('show');
+                       $('#signup_modal').modal({show:true, backdrop: 'static', keyboard: false});
                    // window.location.replace("<?= Yii::getAlias('@frontendUrl').'/user/sign-in/signup';  ?>");
 
                     }else{
@@ -4016,7 +3991,7 @@ sendownernotif(this.id);
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -4110,20 +4085,6 @@ sendownernotif(this.id);
                                     }      
                                     
                                     
-
-                                 function  sendownernotif(id){
-
-                                    $.ajax({
-                                                type: "POST",
-                                                url: 'sendownernotification',
-                                                data: {hardam: id},
-                                                success: function (data) {
-                                              
-                                                },
-                                            });
-
-                                 } 
-
                                  function filterButtonClick(obj){
                            
                                       $('#filterme').click(function(){
