@@ -100,6 +100,8 @@ $pooja_room = $property->pooja_room != '' ? $property->pooja_room : "____";
 $property_types = $property_type->typename != '' ? $property_type->typename : "____";
 $undercategory = $property_type->undercategory;
 
+$haritid = 273*179-$viewid;
+$propsid = 'PR'. $haritid;
 ?>
 
 
@@ -109,7 +111,7 @@ $undercategory = $property_type->undercategory;
 		<div class="row property_edit">
 		<h3 class="flow_heading avail_ability" style="margin-bottom:25px;">Preview your property and confirm</h3>
 			<div class="col-md-12 property_detail">
-					<p class="property_id">Property ID : #2345DFGEQ
+					<p class="property_id">Property ID : <?php echo $propsid; ?>
 					
 					</p>
 					<div class="row single_property">

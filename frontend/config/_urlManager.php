@@ -17,6 +17,7 @@ return [
        // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 
         ['pattern' => 'sitemap', 'route' => 'sitemap/index', 'suffix' => '.xml'],
+        
         // Pages
         //'addproperty/<id:\d+>' => 'addproperty/view',
 
