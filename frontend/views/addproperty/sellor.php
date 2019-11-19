@@ -136,7 +136,7 @@ $datas =  $dataProvider->query->all();
 										<p class="details_name"><?php echo $data2; ?></p>
 										</li>
 										<li class="online col-md-3">
-										<p class="details_label">Online</p>
+										<p class="details_label">Approval</p>
 										<p class="details_name"><?php echo $data->status; ?></p>
 										</li>
 										
