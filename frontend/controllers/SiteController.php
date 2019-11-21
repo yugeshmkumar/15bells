@@ -1509,7 +1509,7 @@ foreach($arraddresses as $id => $key3) {
 		$this->layout="homeLayout";
 		//    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = '15Bells | 15Bells';
+		$title =  \Yii::$app->view->title = '15Bells - Commercial Property Investment, Sale & Lease in NCR';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
@@ -1517,7 +1517,7 @@ foreach($arraddresses as $id => $key3) {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => 'With 15Bells.com, set your commercial property requirements once and then the platform will help you achieve the goal without any hassle — leverage Technology to get the best.'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
@@ -1532,7 +1532,7 @@ foreach($arraddresses as $id => $key3) {
 		]);
 		Yii::$app->view->registerMetaTag([
 		'property' => 'og:type',			
-		'content' => 'website'
+		'content' => 'article'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'property' => 'og:url',			
@@ -1540,11 +1540,11 @@ foreach($arraddresses as $id => $key3) {
 		]);
 		Yii::$app->view->registerMetaTag([
 		'property' => 'og:image',			
-		'content' => 'https://staging.15bells.com/newimg/logo.png'
+		'content' => 'https://www.15bells.com/newimg/img/logo1.png'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'property' => 'og:description',			
-		'content' => 'Strive to create a transparent and safe place for swift real estate transactions with disruptive technology.'
+		'content' => 'With 15Bells.com, set your commercial property requirements once and then the platform will help you achieve the goal without any hassle — leverage Technology to get the best.'
 		]);
 	
 		//    meta tags description ends here  
