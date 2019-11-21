@@ -20,7 +20,7 @@ class LessorController extends Controller {
 
         //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = 'Lessor';
+		$title =  \Yii::$app->view->title = '15Bells - Lease Your Commercial Property  | List property for Lease';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
@@ -28,13 +28,16 @@ class LessorController extends Controller {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => 'Lease your commercial property space with ease. 15bells will find you verfied lessors at best price.'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
 		'content' => '15Bells'
 		]);
-
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
 		//  og tags 
 
 		Yii::$app->view->registerMetaTag([

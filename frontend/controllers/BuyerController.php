@@ -17,7 +17,7 @@ class BuyerController extends Controller {
 
         //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = 'Buyer';
+		$title =  \Yii::$app->view->title = '15Bells - Buy Commercial Property, Find and Search Best Deals';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
@@ -25,13 +25,16 @@ class BuyerController extends Controller {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
 		'content' => '15Bells'
 		]);
-
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
 		//  og tags 
 
 		Yii::$app->view->registerMetaTag([

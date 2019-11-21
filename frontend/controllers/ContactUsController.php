@@ -45,9 +45,9 @@ class ContactUsController extends Controller
     public function actionIndex() {
 		
 		$this->layout = "homeLayout";
-                //    meta tags description starts here  
+           //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = 'Contact Us';
+		$title =  \Yii::$app->view->title = '15Bells Blogs - Contact us for all your property deals';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
@@ -55,12 +55,16 @@ class ContactUsController extends Controller
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => 'Our team at the backend is all set you to guide you through your real estate buying cycle. Help us with your contact details and we will get back to you as soon as possible.'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
 		'content' => '15Bells'
 		]);
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
 
 		//  og tags 
 
