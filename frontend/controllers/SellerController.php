@@ -21,7 +21,7 @@ class SellerController extends Controller {
 
         //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = 'Seller';
+		$title =  \Yii::$app->view->title = '15Bells - Sell Your Commercial Property  | List property for Sale';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
@@ -29,13 +29,16 @@ class SellerController extends Controller {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => 'Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property.'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
 		'content' => '15Bells'
-		]);
-
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
 		//  og tags 
 
 		Yii::$app->view->registerMetaTag([

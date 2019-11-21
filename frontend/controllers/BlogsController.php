@@ -21,6 +21,28 @@ class BlogsController extends Controller {
 
     public function actionIndex() {
 
+         //    meta tags description starts here  
+
+		$title =  \Yii::$app->view->title = '15Bells Blogs - Latest Real Estate News | Find the best of commercial real estate';
+
+		Yii::$app->view->registerMetaTag([
+		'name' => 'viewport',			
+		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+		]);
+		\Yii::$app->view->registerMetaTag([
+		'name' => 'description',			
+		'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
+		]);
+		Yii::$app->view->registerMetaTag([
+		'name' => 'author',			
+		'content' => '15Bells'
+		]);
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
+
+
 
         if (\Yii::$app->request->isPost) {
 
