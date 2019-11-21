@@ -68,19 +68,8 @@ if (!empty($arrfindmykyc)) {
                 <div class="caption"><i class="fa fa-check" style="color:#fff !important;"></i>My Images
                 </div>	
             </div>
-            <div class="portlet-body form">
-                <div class="table-scrollable">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th>Image name </th>
-                                <th>Action </th>
-                                <th>Status </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div class="portlet-body form col-md-12">
+            <div class="col-md-3"> 
     <?php
     $temp = 0;
     foreach ($arrfindmykyc as $findmykyc) {
@@ -94,32 +83,25 @@ if (!empty($arrfindmykyc)) {
                                 $id1 = \common\models\MediaFiles::findOne($findmykyc->media_id)->id;
                                 $file_actual_name = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_actual_name;
                                 ?>
-                                <tr>
-                                    <td> <?php echo $temp ?> </td>
+                                
+                                    
                                     <!-- <td><?php //echo $filename ?> </td> -->
                                   <?php  
                                           $source  =  Yii::getAlias('@frontendUrl').'/archive/web/propertydefaultimg/'.$filename1;
                                   
                                   ?>
-
-                                    <td><img src="<?php echo $source; ?>" width="150"> </img></td>
+								
+                                    <img src="<?php echo $source; ?>" width="150"> </img>
                               
 
-                                        <td><a onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-trash"></i> <?php echo $file_actual_name; ?></a> </td>
+                                        <a onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-trash"></i> <?php echo $file_actual_name; ?></a> 
+
+                                 
 
                                    
 
-                                    <td>
-                                        <span class="label label-sm label-warning"><?php echo $findmykyc->status; ?> </span>
-                                    </td>
-
-                                </tr>
     <?php } ?>
-                        </tbody>
-                    </table>
-
-
-                </div> 
+                     </div> 
 
 
             </div> </div>
