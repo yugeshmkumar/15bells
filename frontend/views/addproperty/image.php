@@ -69,7 +69,7 @@ if (!empty($arrfindmykyc)) {
                 </div>	
             </div>
             <div class="portlet-body form col-md-12">
-            <div class="col-md-3"> 
+           
     <?php
     $temp = 0;
     foreach ($arrfindmykyc as $findmykyc) {
@@ -84,7 +84,7 @@ if (!empty($arrfindmykyc)) {
                                 $file_actual_name = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_actual_name;
                                 ?>
                                 
-                                    
+                                <div class="col-md-3">   
                                     <!-- <td><?php //echo $filename ?> </td> -->
                                   <?php  
                                           $source  =  Yii::getAlias('@frontendUrl').'/archive/web/propertydefaultimg/'.$filename1;
@@ -96,12 +96,12 @@ if (!empty($arrfindmykyc)) {
 
                                         <a onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-trash"></i> <?php echo $file_actual_name; ?></a> 
 
-                                 
+                                 </div> 
 
                                    
 
     <?php } ?>
-                     </div> 
+                     
 
 
             </div> </div>
