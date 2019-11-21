@@ -31,7 +31,7 @@ class BlogsController extends Controller {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
+		'content' => '15bells blogs gives you insights about commercial real estate in india. Follow us and get the best news from industry'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
