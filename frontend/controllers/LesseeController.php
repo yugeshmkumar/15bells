@@ -28,13 +28,16 @@ class LesseeController extends Controller {
 		]);
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
-		'content' => 'Redefining Transparency'
+		'content' => '15Bells - Commercial Property on Lease | Search Property on Rent'
 		]);
 		Yii::$app->view->registerMetaTag([
 		'name' => 'author',			
 		'content' => '15Bells'
 		]);
-
+        Yii::$app->view->registerMetaTag([
+            'name' => 'robots',			
+            'content' => 'index, follow'
+            ]);
 		//  og tags 
 
 		Yii::$app->view->registerMetaTag([

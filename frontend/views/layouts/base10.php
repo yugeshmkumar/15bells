@@ -26,6 +26,7 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
 
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
+  
     <?php $this->head() ?>
 <link rel="shortcut icon" href="../favicon.ico" />
 
