@@ -131,7 +131,7 @@ $propsid = 'PR'. $haritid;
                         
 						$mainimage = \common\models\Addproperty::find()->where(['id'=>$viewid])->one();
 						
-						if($mainimage->featured_image !=''){
+						if($mainimage->featured_image !='' && $mainimage->featured_image !=null ){
 							$featured_image = $mainimage->featured_image;
 						   }else{
 							 $featured_image = 'gallery9.jpg';  
@@ -151,7 +151,7 @@ $propsid = 'PR'. $haritid;
 					  $ids[] = $picID->media_id;
 					  }
 					  
-					  $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['or',['type'=>'png'],['type'=>'jpeg'],['type'=>'jpg']])->all();
+					  $pictogramsID = MediaFiles::find()->where(['id' => $ids])->andWhere(['type'=>'webp'])->all();
 					  foreach ($pictogramsID as $picID) {
 					  $pic[] = $picID->file_name;
 					  }
