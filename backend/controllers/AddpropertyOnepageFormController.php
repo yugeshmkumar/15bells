@@ -326,6 +326,8 @@ class AddpropertyOnepageFormController extends Controller
         $model = new CsvForm;
 
         $model1 = new AddpropertyOnepageForm;
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
 
         if($model->load(Yii::$app->request->post())){
 
@@ -481,7 +483,7 @@ class AddpropertyOnepageFormController extends Controller
                     $modelnew->site_visit_comment = $foto63;
                     $modelnew->remarks = $foto64;                    
                     $modelnew->isactive = $foto65;                    
-                    $modelnew->created_date = $foto66;
+                    $modelnew->created_date = $date;
                     $modelnew->save(false);
 
                 }
