@@ -44,7 +44,7 @@ class AddpropertyController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['sitevisit','index','creategrouplessor','deleteimage','getpropstatus','lessor','sellor','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
+                        'actions' => ['sitevisit','index','creategrouplessor','deleteimage','getpropstatus','lessor','view','sellor','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
 'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
