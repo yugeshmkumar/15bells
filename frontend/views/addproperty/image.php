@@ -24,6 +24,18 @@ $arrfindmykyc = \common\models\MediaFilesConfig::find()->where(['property_id' =>
     .more_images{
         padding:30px 0;
     }
+    .image_viewer{
+        padding:30px;
+    }
+    .image_delete{
+        position: absolute;
+    right: 40px;
+    top: -20px;
+    font-size: 20px;
+    }
+    .image_delete .fa{
+        color:#c4984f;
+    }
 	</style>
 <div class="container-fluid property_flow" style="margin-top:100px;">
 	<div class="container">
@@ -64,23 +76,9 @@ if (!empty($arrfindmykyc)) {
     ?> 
 
         <div class="portlet docum_ents">
-            <div class="portlet-title">
-                <div class="caption"><i class="fa fa-check" style="color:#fff !important;"></i>My Images
-                </div>	
-            </div>
-            <div class="portlet-body form">
-                <div class="table-scrollable">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th>Image name </th>
-                                <th>Action </th>
-                                <th>Status </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
+           
+            <div class="portlet-body form col-md-12 image_viewer">
+            <h3 class="flow_heading avail_ability">Preview Uploaded Images</h3>
     <?php
     $temp = 0;
     foreach ($arrfindmykyc as $findmykyc) {
@@ -94,32 +92,25 @@ if (!empty($arrfindmykyc)) {
                                 $id1 = \common\models\MediaFiles::findOne($findmykyc->media_id)->id;
                                 $file_actual_name = \common\models\MediaFiles::findOne($findmykyc->media_id)->file_actual_name;
                                 ?>
-                                <tr>
-                                    <td> <?php echo $temp ?> </td>
+                                
+                                <div class="col-md-3 text-center">   
                                     <!-- <td><?php //echo $filename ?> </td> -->
                                   <?php  
                                           $source  =  Yii::getAlias('@frontendUrl').'/archive/web/propertydefaultimg/'.$filename1;
                                   
                                   ?>
-
-                                    <td><img src="<?php echo $source; ?>" width="150"> </img></td>
+								
+                                    <img src="<?php echo $source; ?>" width="150"> </img>
                               
 
-                                        <td><a onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-trash"></i> <?php echo $file_actual_name; ?></a> </td>
+                                        <a class="image_delete" onclick="downloadfileconfig('<?php echo $id1 ?>')"><i class="fa fa-close"></i> <?php echo $file_actual_name; ?></a> 
+
+                                 </div> 
 
                                    
 
-                                    <td>
-                                        <span class="label label-sm label-warning"><?php echo $findmykyc->status; ?> </span>
-                                    </td>
-
-                                </tr>
     <?php } ?>
-                        </tbody>
-                    </table>
-
-
-                </div> 
+                     
 
 
             </div> </div>

@@ -110,7 +110,7 @@ echo Html::submitButton($model->isNewRecord ? 'Save & Upload Documents' : 'Updat
 	        </div>
 
             <div class="col-md-6">	
-                 <?= Html::a('Skip to view property', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn no_margin']) ?>
+                 <?= Html::a('Skip to view property', ['views', 'id' => base64_encode($propid)], ['class' => 'btn btn-primary save_buttn active_butn']) ?>
 
              </div>
 		</div>		
