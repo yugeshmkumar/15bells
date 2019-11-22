@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use kartik\widgets\Select2;
 use kartik\editable\Editable;
-use kartik\export\ExportMenu;
+//use kartik\export\ExportMenu;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\AddpropertybackendSearch */
@@ -230,24 +230,24 @@ return GridView::ROW_COLLAPSED;
             ['class' => 'yii\grid\ActionColumn'],
       ];
 
-      echo  ExportMenu::widget([
-        'dataProvider' => $dataProvider,
+    //   echo  ExportMenu::widget([
+    //     'dataProvider' => $dataProvider,
         
-        'columns' => $gridColumns,
-        'columnSelectorOptions'=>[
-            'label' => 'Columns',
-            'class' => 'btn btn-danger'
-        ],
-        'fontAwesome' => true,
-        'dropdownOptions' => [
-            'label' => 'Export All',
-            'class' => 'btn btn-primary'
-        ],
-        'exportConfig' => [
-    ExportMenu::FORMAT_HTML => false,
-    ExportMenu::FORMAT_TEXT => false,
-    ],
-    ]);
+    //     'columns' => $gridColumns,
+    //     'columnSelectorOptions'=>[
+    //         'label' => 'Columns',
+    //         'class' => 'btn btn-danger'
+    //     ],
+    //     'fontAwesome' => true,
+    //     'dropdownOptions' => [
+    //         'label' => 'Export All',
+    //         'class' => 'btn btn-primary'
+    //     ],
+    //     'exportConfig' => [
+    // ExportMenu::FORMAT_HTML => false,
+    // ExportMenu::FORMAT_TEXT => false,
+    // ],
+    // ]);
 
 echo \kartik\grid\GridView::widget([
     'dataProvider' => $dataProvider,
