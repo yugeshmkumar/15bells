@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $property = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
 $project_type_id = $property->project_type_id;
 $property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
-$userid = Yii::$app->user->identity->id;
+// $userid = Yii::$app->user->identity->id;
 
 
 $totalvisitors  = "SELECT count(*) as totalvisitor from user_view_properties where property_id= $viewid and active='1'";
@@ -54,17 +54,6 @@ $data1=  $shortlists[0]['totalshortlist'];
 $totalsitevisit  = "SELECT count(*) as totalsitevisit from request_site_visit where property_id= $viewid";
 $sitevisits = \Yii::$app->db->createCommand($totalsitevisit)->queryAll();
 $data2=  $sitevisits[0]['totalsitevisit'];
-
-$lessor_expectations  = "SELECT *  from lessor_expectations where property_id= $viewid and user_id=$userid and is_active='1'";
-$expectations = \Yii::$app->db->createCommand($lessor_expectations)->queryOne();
-//  echo '<pre>';print_r($lessor_expectations );die;
-if($expectations){
-
-    $lock_in_period = $expectations['lock_in_period'] != '' ? $expectations['lock_in_period'] : "";
-    $lease_tenure = $expectations['lease_tenure'] != '' ? $expectations['lease_tenure'] : "";
-     $rent_free_period = $expectations['rent_free_period'] != '' ? $expectations['rent_free_period'] : "";
-    //$lock_in_period = $expectations['lock_in_period'] != '' ? $expectations['lock_in_period'] : "";
-}
 
 
 $property_for = $property->property_for != '' ? $property->property_for : "";
@@ -121,6 +110,10 @@ $propsid = 'PR'. $haritid;
 					
 					</p>
 					<div class="row single_property">
+
+
+           <?php if(!yii::$app->user->isGuest){  ?>
+
 					<div class="col-md-4 no_pad">
 							<div id="myCarousel" class="carousel slide view_property" data-ride="carousel">
 								<!-- Indicators -->
@@ -196,6 +189,22 @@ $propsid = 'PR'. $haritid;
 								<a href="javascript:void(0)" class="property_process prop_video">Property Video</a>
 								</div>
 						</div>
+
+
+		   <?php } else { ?>
+
+<div class="col-md-4 no_pad">
+		   <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>"  class="img-responsive image_property loginimage">                             
+<div class="overlay_sign">
+    <p class="sign_click"><span class="color_orange"><a href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>">Login</a></span> or <span class="color_orange"><a href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>">Sign</a></span> up to view this property</p>
+</div>
+</div>
+
+
+		   <?php  }   ?>
+
+
+
 						<div class="col-md-8">
 							<div class="row prop_location">
 								<div class="col-md-5 company_overview property_manage">
