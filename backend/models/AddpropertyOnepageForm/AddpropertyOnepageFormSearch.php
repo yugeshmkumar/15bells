@@ -177,7 +177,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'completion_in_percentage' => $this->completion_in_percentage,
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
-            'created_date' => $this->created_date,
+            'DATE(created_date)' => $this->created_date,
             'DATE(assign_date)' => $this->assign_date,
             'reassign_date' => $this->reassign_date,
         ]);
@@ -561,7 +561,7 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
             'completion_in_percentage' => $this->completion_in_percentage,
             'followup_date_time' => $this->followup_date_time,
             'isactive' => $this->isactive,
-            'created_date' => $this->created_date,
+            'DATE(created_date)' => $this->created_date,
             'DATE(reassign_date)' => $this->reassign_date,
         ]);
 
