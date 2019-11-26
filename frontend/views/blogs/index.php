@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -6,6 +6,9 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use kartik\widgets\TypeaheadBasic;
 use common\models\Article_author;
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/blogs/']); 
+
 
 ?>
 

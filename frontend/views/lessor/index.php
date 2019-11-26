@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 $urlsd =   Yii::getAlias('@frontendUrl');
 $user_id= Yii::$app->user->identity->id;
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/lessor/']); 
 
 ?>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&libraries=places,geometry"></script>

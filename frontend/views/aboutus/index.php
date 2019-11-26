@@ -1,3 +1,8 @@
+<?php
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/aboutus/']); 
+
+?>
 
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/about.jpg';  ?>">
 			
