@@ -1,8 +1,15 @@
 <?php
+
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 
 //$this->title = Yii::t('app', 'Contact-Us');
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/contact-us/']); 
+
+
+
 ?>
 
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/about.jpg';  ?>">

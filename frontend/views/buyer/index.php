@@ -5,6 +5,7 @@ use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/buyer/']); 
 
 
 ?>
