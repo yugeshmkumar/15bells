@@ -15,7 +15,7 @@ class AboutusController extends \yii\web\Controller
 
          //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = '15Bells Blogs - Revolution in Real Estate Technology ';
+		$title =  \Yii::$app->view->title = '15Bells - Revolution in Real Estate Technology ';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			

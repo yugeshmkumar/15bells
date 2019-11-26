@@ -18,6 +18,9 @@ class TermsController extends Controller {
         return $this->render('privacy-policy');
     }
 
+    public function actionRefundcancellation() {
+        return $this->render('refund');
+    }
     
 
 }

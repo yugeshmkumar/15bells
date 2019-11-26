@@ -47,7 +47,7 @@ class ContactUsController extends Controller
 		$this->layout = "homeLayout";
            //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = '15Bells Blogs - Contact us for all your property deals';
+		$title =  \Yii::$app->view->title = '15Bells - Contact us for all your property deals';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
