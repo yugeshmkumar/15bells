@@ -173,6 +173,7 @@ NewDesignAsset::register($this);
 				<ul class="fotter_lst">
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms']) ?>" class="list_lnk">Terms and Conditions</a></li>
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/privacypolicy']) ?>" class="list_lnk">Privacy Policy</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/refund']) ?>" class="list_lnk">Refund & Cancellation</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 col-xs-6">
