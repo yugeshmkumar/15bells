@@ -119,7 +119,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 				<div class="col-md-12 no_pad">
 				<?php foreach ($arrarticle_attachment as $article_attachment) { ?>				
 					
-					<img alt="<?php echo Html::encode($country->slug) ?>" src="<?= Yii::getAlias('@archiveUrl') . '/blogimages/' . $article_attachment->name; ?>" alt="..." title="..." class="img-responsive blog_fullimage">				
+					<img alt="<?php echo Html::encode($country->slug) ?>" src="<?php echo $article_attachment->base_url.'/'.$article_attachment->path; ?>" alt="..." title="..." class="img-responsive blog_fullimage">				
 				<?php } ?>
 				</div>
 			</div>
