@@ -88,29 +88,26 @@ return [
     ],
 
     [
-        'label' => 'Followup Comment',
-        'attribute' => 'followup_comment',        
-          'format' => 'raw',
+        'label' => 'Created date',
+        'attribute' => 'created_date',
+        'filter' => \yii\jui\DatePicker::widget([
+            'language' => 'en',
+            'dateFormat' => 'yyyy-MM-dd',
+            'model' => $searchModel,
+            'attribute' => 'created_date',
+              ]),
+          'format' => 'html',
 
-        // 'options' => ['style' => 'width:90px;'],
+            // 'options' => ['style' => 'width:90px;'],
         
              'value' => function($model) {
-
-                $followup_comment = "'$model->followup_comment'";
-                $shortfollowup_comment = $model->followup_comment;
-
-                if (strlen($shortfollowup_comment) >= 20) {
-                   $newstring = substr($shortfollowup_comment, 0, 5). " ... " . substr($shortfollowup_comment, -5);
-                }
-                
-                else {
-                    $newstring =   $shortfollowup_comment;
-                }
              
-                return   $newstring;
+                return   date("d M Y", strtotime($model->created_date));
 
              }
     ],
+
+    
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'Owner_name',
@@ -288,6 +285,32 @@ return [
     //     'class'=>'\kartik\grid\DataColumn',
     //     'attribute'=>'completion_in_percentage',
     // ],
+
+
+    [
+        'label' => 'Followup Comment',
+        'attribute' => 'followup_comment',        
+          'format' => 'raw',
+
+        // 'options' => ['style' => 'width:90px;'],
+        
+             'value' => function($model) {
+
+                $followup_comment = "'$model->followup_comment'";
+                $shortfollowup_comment = $model->followup_comment;
+
+                if (strlen($shortfollowup_comment) >= 20) {
+                   $newstring = substr($shortfollowup_comment, 0, 5). " ... " . substr($shortfollowup_comment, -5);
+                }
+                
+                else {
+                    $newstring =   $shortfollowup_comment;
+                }
+             
+                return   $newstring;
+
+             }
+    ],
 
     [
         'label' => 'No of properties',

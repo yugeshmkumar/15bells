@@ -551,6 +551,8 @@ class AddpropertyOnepageFormController extends Controller
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
+
+              //  echo 'hi11';die;
                 return [
                     'title'=> "Create new AddpropertyOnepageForm",
                     'content'=>$this->renderAjax('create', [
@@ -560,7 +562,13 @@ class AddpropertyOnepageFormController extends Controller
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+
+                date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+                $model->created_date = $date;
+                  if($model->save()){
+               // echo 'hi22';die;
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new AddpropertyOnepageForm",
@@ -569,7 +577,9 @@ class AddpropertyOnepageFormController extends Controller
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
-            }else{           
+            } }else{    
+                
+               //echo 'hi33';die;
                 return [
                     'title'=> "Create new AddpropertyOnepageForm",
                     'content'=>$this->renderAjax('create', [
