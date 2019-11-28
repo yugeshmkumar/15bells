@@ -109,13 +109,14 @@ NewDesignAsset::register($this);
 				<ul class="fotter_lst">
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms']) ?>" class="list_lnk">Terms and Conditions</a></li>
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/privacypolicy']) ?>" class="list_lnk">Privacy Policy</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/refundcancellation']) ?>" class="list_lnk">Refund & Cancellation</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 col-xs-6">
 				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
+					<li class=""><a href="#" class="list_lnk">+91 6209-15-15-15</a></li>
 					<li class=""><a href="href="mailto:info@15bells.com"" class="list_lnk">info@15bells.com</a></li>
 				</ul>
 				</div>
