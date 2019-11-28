@@ -16,9 +16,35 @@ use yii\widgets\ActiveForm;
 NewDesignAsset::register($this);
 
 ?>
-<?php $this->beginContent('@frontend/views/layouts/baserole.php'); ?>
+<?php $this->beginContent('@frontend/views/layouts/base11.php'); ?>
+
+<!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
 
 
+<!-- Load Facebook SDK for JavaScript -->
+<!-- <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v4.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      Your customer chat code
+       <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="100312244664763"
+  theme_color="#44bec7">
+      </div> -->
 
 
 		
@@ -29,51 +55,33 @@ NewDesignAsset::register($this);
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header col-md-4 logo_div">
 						<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="scroll_menu" width="25">
-							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false">
+							<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
+							<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/w_menu.svg';  ?>" onclick="openNav()" class="mobile_mnu" width="25">
 							</button>
 							<a class="navbar-brand site-logo one" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo1.png';  ?>" width="80"></a>
 							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="70"></a>
 							 <div class="form-group locality_grp">
-								<span class="location_drop">Gurgaon</span>
+								<span class="location_drop">Select City</span>
 								<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="23" class="svg_drop">
 								</span>
 							  </div>
 						</div>
 						
 						<div class="collapse navbar-collapse navbar-right  header-right-menu" id="navbar-primary-collapse">
-								<ul class="nav navbar-nav role_nav">
-									<li>
-										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>" id="project-menu">Buy</a>
-									</li>
-									<li>
-										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>" id="project-menu">Sell</a>
-									</li>
-									<li>
-										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>" id="project-menu">Lease in</a>
-									</li>
-									<li>
-										<a class="menu_a animated slideInDown" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>" id="project-menu">Lease out</a>
-									</li>
-
-                       <?php if(yii::$app->user->isGuest) { ?>
+								<ul class="nav navbar-nav">
+								<?php if(yii::$app->user->isGuest) { ?>
 									<li>
 										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']).'?ifs=menu1' ?>" id="contact-menu">Sign Up</a>
 									</li>
 									<li>
 										<a class="menu_a" href="<?php echo yii::$app->urlManager->createUrl(['user/sign-in/signup']) ?>" id="project-menu">Sign In</a>
 									</li>
-				 	 <?php } else { ?> 				
-						            <li>
+									<?php } else { ?> 	
+										<li>
 										<a class="menu_a sign_up" href="<?php echo yii::$app->urlManager->createUrl(['site/userdash']) ?>" id="contact-menu">Dashboard</a>
-									</li>
-
-					   <?php } ?>
-
-
+										</li>
+									   <?php } ?>
 								</ul>
 						</div><!-- /.navbar-collapse -->
 					</div>
@@ -113,8 +121,36 @@ NewDesignAsset::register($this);
 							</div>
 						</div>
 			</section>
-			
-			<div class="loaderContainer">
+			<div class="container-fluid dot_div">
+				<div class="absolute lines_main_container">
+						<div class="lines_container">
+							<div class="lines"></div>
+							<div class="slide_lines"></div>
+						</div>
+						<div class="lines_container">
+							<div class="lines"></div>
+							<div class="slide_lines"></div>
+						</div>
+						<div class="lines_container">
+							<div class="lines small_border"></div>
+							<div class="slide_lines"></div>
+						</div>
+						<div class="lines_container small_hide">
+							<span class="internal_line">&nbsp;</span>
+							<div class="slide_lines"></div>
+							<div class="lines"></div>
+						</div>
+						<div class="lines_container small_hide">
+							<div class="lines"></div>
+							<div class="slide_lines"></div>
+						</div>
+						<div class="lines_container small_hide">
+							<div class="lines"></div>
+							<div class="slide_lines"></div>
+						</div>
+				</div>
+            </div>
+			 <div class="loaderContainer">
             <div class="loader"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/loader.gif';  ?>"></div>
         </div>	
 		
@@ -122,7 +158,7 @@ NewDesignAsset::register($this);
 			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			  <div class="col-md-12">
 				
-			  <ul class="sliding_menu main_menu">
+					<ul class="sliding_menu main_menu">
 							<li class="trst_act"><a class="menu_link trust_clck" href="<?php echo yii::$app->urlManager->createUrl(['buyer']) ?>">Search for Sale	</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessee']) ?>">Search for Lease</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['seller']) ?>">Sell your Property</a></li>
@@ -133,7 +169,6 @@ NewDesignAsset::register($this);
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
 							
 					</ul>
-					
 					
 				
 			 </div>
@@ -155,12 +190,10 @@ NewDesignAsset::register($this);
 <?php echo $content ?>
 
 
-	
 <div class="container-fluid footer_banner">
 	<div class="container">
 		<div class="row">
 			<p class="copy_rt">2019 © 15 Bells </p>
-			
 			<div class="col-md-3 col-xs-6">
 				<h4 class="footer_typ">Resources</h4>
 				<ul class="fotter_lst">
@@ -185,45 +218,91 @@ NewDesignAsset::register($this);
 				</ul>
 				</div>
 			</div>
-			
 			<div class="col-md-3 col-xs-6">
 				<h4 class="footer_typ">Follow us</h4>
-				<p><span><a target="_blank" href="https://www.instagram.com/15bells/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
+					<p><span><a target="_blank" href="https://www.instagram.com/15bells/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
 					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
+				<div classs="row">
+
+				
+					<!-- Begin Mailchimp Signup Form -->
+<!-- <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style>
+.form_subscribe{
+	text-align:left !important;
+}
+.email_input{
+	float:left;
+	width:70%;
+}
+.sub_buttn{
+	border-color: #c4984f !important;
+    background: #c4984f;
+    color: #ffffff !important;
+    border-radius: 0;
+    outline: none;
+    font-size: 15px;
+    padding: 10px 9px;
+    margin-top: 7px;
+    border: 0;
+}
+</style>
+<div id="mc_embed_signup">
+<form action="https://15bells.us3.list-manage.com/subscribe/post?u=ab39867f2e4b25303dc58ccfd&amp;id=d3c5892067" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form_subscribe" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<input type="email" value="" name="EMAIL" id="mce-EMAIL" class="form-control input_desgn email_input" placeholder="email address" required>
+     real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ab39867f2e4b25303dc58ccfd_d3c5892067" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="sub_buttn"></div>
+    </div>
+</form>
+</div> -->
+
+<!--End mc_embed_signup-->
+
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"ab39867f2e4b25303dc58ccfd","lid":"d3c5892067","uniqueMethods":true}) })</script>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>
+     
 
 
 
        
        <?php $this->endContent(); ?>
-	   
+	   <!-- <script>
+  window.fcWidget.init({
+    token: "ebc8f91e-d61d-4c7b-a141-153392459204",
+    host: "https://wchat.freshchat.com"
+  });
+</script> -->
 
 	<script>// Check document is loaded
+$(document).ready(function(){
 
-	$(document).ready(function(){
 		$('.main_menu li a').click(function(){
     $('.main_menu li a').removeClass("active");
     $(this).addClass("active");
 		});
-$(".location_pick").click(function(){
-
-  var city = this.id;
-$(".location_drop").html(city);
-$(".city_section").slideUp("slow");
-});
+	$(".location_pick").click(function(){
+		
+		  var city = this.id;
+	  $(".location_drop").html(city);
+	  $(".city_section").slideUp("slow");
+	});
 });
 $(".property_image1").click(function () {
-	$(".property_image1").removeClass("border_yellow1");
-	// $(".tab").addClass("active"); // instead of this do the below 
-	$(this).addClass("border_yellow1");
-
-});
-
-
+			$(".property_image1").removeClass("border_yellow1");
+			// $(".tab").addClass("active"); // instead of this do the below 
+			$(this).addClass("border_yellow1");
+     
+		});
 document.onreadystatechange = function () {
+
+	  
 	
 		$(".locality_grp").click(function(){
 	  $(".city_section").slideDown("slow");
@@ -302,7 +381,8 @@ $(window).scroll(function() {
 		$('.one').show();
 			$('.two').hide();
     }
-	if($(this).scrollTop()>200) {
+
+	 if($(this).scrollTop()>200) {
 		$('.img_menu').hide(400);
 			$('.scroll_menu').show(400);
     } else {
@@ -319,6 +399,7 @@ document.getElementById("mySidenav").style.width = "300px";
 function closeNav() {
 document.getElementById("mySidenav").style.width = "0";
 }
+
 </script>
 
  

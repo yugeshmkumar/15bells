@@ -1506,7 +1506,7 @@ foreach($arraddresses as $id => $key3) {
 
 
     public function actionIndex() {
-		$this->layout="homeLayout";
+		$this->layout="homeindexLayout";
 		//    meta tags description starts here  
 
 		$title =  \Yii::$app->view->title = '15Bells - Commercial Property Investment, Sale & Lease in NCR';
