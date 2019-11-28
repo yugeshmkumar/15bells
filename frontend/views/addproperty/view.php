@@ -16,8 +16,9 @@ $proptypeurl = strtolower($_GET['proptype']);
 $localityurl = strtolower($_GET['locality']); 
 $viewid = $_GET['id'];   
 
+$this->title = '15bells-'.$proptypeurl.'|'.$localityurl;
 
-$this->title = $cityurl.'/'.$proptypeurl.'/'.$localityurl.'/'.$model->id;
+// $this->title = $cityurl.'/'.$proptypeurl.'/'.$localityurl.'/'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Addproperties', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
