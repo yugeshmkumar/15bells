@@ -16,7 +16,10 @@ $this->title = 'Request Site Visits';
 $this->params['breadcrumbs'][] = $this->title;
 
 $datas =  $dataProvider->query->all();
+$counts = $dataProvider->getCount();
 
+
+if($counts > 0 ){
 ?>
 
 
@@ -140,6 +143,9 @@ $datas =  $dataProvider->query->all();
                 <?php   } } ?>
 			</div>
   		</div>
+
+
+
 
 
 		<div id="visit_rating" class="modal fade" role="dialog">
@@ -275,6 +281,16 @@ $datas =  $dataProvider->query->all();
   </div>
   
 </div>
+
+<?php  } else {  ?>
+
+<div class="col-md-9">
+<h2 class="dashboard_head search_head text-center">No Site Visit </h2>
+
+<img class="blankimage-width" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/site_visit.svg';  ?>">
+</div>
+
+<?php } ?>
 
 
 <?php 

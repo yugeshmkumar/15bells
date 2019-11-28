@@ -3,9 +3,31 @@
 //$tittle = $this->title = Yii::t('app', '15Bells');
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\web\View;
 
 $urlsd =   Yii::getAlias('@frontendUrl');
+
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com']); 
+
+// $options = [
+//     '@context' => "https://schema.org",
+//     '@type' => "Organization",
+//     'name' => "15bells",
+//     'contactPoint' => "{$options1}",
+//     // ...
+// ];
+
+// $this->registerJs(
+// 	\yii\helpers\Json::htmlEncode($options),
+// 	View::POS_HEAD,
+// 	//"type"::"text/label",
+//     'yiiOptions'
+// );
+
+
 ?>
+
+
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/banner.jpg';  ?>">
 			
 			<div class="container-fluid header_bg no_pad div_header"  id="banner_cont">
