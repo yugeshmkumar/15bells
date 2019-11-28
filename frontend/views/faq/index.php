@@ -143,9 +143,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     .
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script type="text/javascript">
         $("#country").autocomplete({
