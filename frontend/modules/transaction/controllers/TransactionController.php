@@ -418,14 +418,16 @@ $loggedin=Yii::$app->user->identity->id;
 $connection = Yii::$app->getDb();
 $command = $connection->createCommand($sql);
 $result = $command->queryAll();
-foreach($result as $row)
-{
+// foreach($result as $row)
+// {
 
-$user=$row['user'];
-echo $user."-".$row['message'];
-echo "<br/>";
+// $user=$row['user'];
+// echo $user."-".$row['message'];
+// echo "<br/>";
 
-} exit();
+// } exit();
+
+return json_encode($result);
 }
 	
 	
