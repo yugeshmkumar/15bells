@@ -19,7 +19,7 @@ class TransactionController extends Controller {
     /**
      * @inheritdoc
      */
-	  public $layout = 'homeLayout';
+	  public $layout = 'transactionLayout';
     public function behaviors() {
         return [
             'verbs' => [
@@ -110,7 +110,7 @@ $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
    public function actionCreate() {
         $model = new Transaction();
 
-
+        $this->layout = "transactionLayout";
         $model->product_id = "1";
         $model->buyer_id = Yii::$app->user->identity->id;
 
@@ -122,7 +122,7 @@ $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
 
             return $this->redirect(['create', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
+            return $this->render('creates', [
                         'model' => $model,
             ]);
         }
