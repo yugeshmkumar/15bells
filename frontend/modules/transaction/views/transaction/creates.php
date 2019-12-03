@@ -487,7 +487,7 @@ label{color:#ffffff;}
 	
             <div class="panel panel-primary chat_section">
                 <div class="panel-heading" id="accordion">
-                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <span class="glyphicon glyphicon-comment"></span> Chat To Moderator
                     <div class="btn-group pull-right">
                         <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -496,62 +496,22 @@ label{color:#ffffff;}
                 </div>
             <div class="panel-collapse collapse" id="collapseOne">
                 <div class="panel-body">
-                    <ul class="chat">
-                        <li class="left clearfix">
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix">
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
+                    <ul class="chat" id="comment">
+                        
+                       
+                       
+                        
                     </ul>
+                    
                 </div>
                 <div class="panel-footer">
+               
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                    
+                        <input id="msg_sent" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                      
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                            <button class="btn btn-warning btn-sm" id="b1">
                                 Send</button>
                         </span>
                     </div>
@@ -567,6 +527,8 @@ label{color:#ffffff;}
         $script = <<< JS
 $.noConflict();
 $(document).ready(function(){
+
+    
 setInterval(userleft, 1000);
 setInterval(ajaxtimer, 1000);
 setInterval(notification, 1000);
@@ -843,6 +805,9 @@ $("#bid").val(res[0]);
 	  
 	  
    function chatdisplay(){
+
+     var  sum='';
+     
      $.ajax({
          
          url: 'dynamic?id=$pid',
@@ -851,7 +816,32 @@ $("#bid").val(res[0]);
 var length = Object.keys(data).length;
 
 
-      $('#comment').html(data);
+     // $('#comment').html(data);
+      var obj = $.parseJSON(data);
+            
+            
+			$.each(obj, function (index) {
+
+                  sum += '<li class="left clearfix">'+
+                            '<div class="chat-body clearfix">'+
+                                '<div class="header">'+
+                                    '<strong class="primary-font">'+this.user+'</strong>'+ 
+                                '</div>'+
+                                '<p>'+this.message+'</p>'+
+                            '</div>'+
+                        '</li>';
+                       
+			
+                       
+                        $('#comment').html(sum);
+
+			});
+           
+            $('.panel-body').scrollTop($('.panel-body li:last-child').position().top);
+            
+
+       
+   
          }
      });
  }
@@ -876,11 +866,26 @@ $('#comment').html(data);
 
 
                 
- $("#msg_sent").keyup(function(event){
-    if(event.keyCode == 13){
-        sendmessage();
-    }
-});            
+//  $("#msg_sent").keyup(function(event){
+//      alert('aya');
+//     if(event.keyCode == 13){
+//         alert('aya2');
+//         sendmessage();
+//     }
+// });    
+
+$('#msg_sent').keyup(function(e) { 
+
+   
+                if(e.keyCode == 13) { 
+                    $(this).trigger("enterKey"); 
+                } 
+            });          
+            $('#msg_sent').on("enterKey", function(e){ 
+
+                 sendmessage();
+               
+            });   
                 
                 
    
