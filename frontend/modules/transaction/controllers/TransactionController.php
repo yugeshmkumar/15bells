@@ -19,7 +19,7 @@ class TransactionController extends Controller {
     /**
      * @inheritdoc
      */
-	  public $layout = 'transactionLayout';
+    public $layout = 'transactionLayout';
     public function behaviors() {
         return [
             'verbs' => [
@@ -36,7 +36,7 @@ class TransactionController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'update', 'index', 'create', 'view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
+                        'actions' => ['logout', 'update', 'index', 'create','creates', 'view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -110,7 +110,30 @@ $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
    public function actionCreate() {
         $model = new Transaction();
 
-        $this->layout = "transactionLayout";
+       
+        $model->product_id = "1";
+        $model->buyer_id = Yii::$app->user->identity->id;
+
+         //echo $this->$attribute;die;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash('success', "Bid Placed Sucessfully");
+
+            return $this->redirect(['create', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                        'model' => $model,
+            ]);
+        }
+    }
+
+
+
+    public function actionCreates() {
+        $model = new Transaction();
+
+       
         $model->product_id = "1";
         $model->buyer_id = Yii::$app->user->identity->id;
 
@@ -216,11 +239,20 @@ return $result['cid'];
 		
 		if($bid>$r_res1)
 		{
-		return $r="Current Bid-".$bid;
+       // return $r="Current Bid-".$bid;
+            $data['text'] =  'Current Bid';
+            $data['price'] =  $bid;
+            header('Content-Type: application/json');
+            return json_encode($data,JSON_PRETTY_PRINT);
 		}
 		else
 		{
-			return $r="Reserved Price-".$r_res1;
+            $data['text'] =  'Reserved Price';
+            $data['price'] =  $r_res1;
+            header('Content-Type: application/json');
+            return json_encode($data,JSON_PRETTY_PRINT);
+
+			//return $r="Reserved Price-".$r_res1;
 		}
     }
 
@@ -296,25 +328,26 @@ $sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcip
         $query = $command_get->queryAll();
         $countrow = count($query);
         if ($countrow > 0) {
-            echo "<table style=color:white;width:210px; border='1' >
-<tr>
-<td align=center> <b>User Name</b></td>
-<td align=center><b>Bid Amount</b></td>";
-            for ($i = 0; $i < $countrow; $i++) {
-                $bidamount = $query[$i]['bidder'];
-				$alis=$query[$i]['aliasname'];
-		$partp_id=$query[$i]['partcipantID'];
-if($partp_id==$loggedin){
-$alis='Me';
-}
+//             echo "<table style=color:white;width:210px; border='1' >
+// <tr>
+// <td align=center> <b>User Name</b></td>
+// <td align=center><b>Bid Amount</b></td>";
+//             for ($i = 0; $i < $countrow; $i++) {
+//                 $bidamount = $query[$i]['bidder'];
+// 				$alis=$query[$i]['aliasname'];
+// 		$partp_id=$query[$i]['partcipantID'];
+// if($partp_id==$loggedin){
+// $alis='Me';
+// }
 
-                echo "<tr>";
-                echo "<td align=center>$alis</td>";
-                echo "<td align=center>$bidamount</td>";
+//                 echo "<tr>";
+//                 echo "<td align=center>$alis</td>";
+//                 echo "<td align=center>$bidamount</td>";
 
-                echo "</tr>";
-            }
-            echo "</table>";die;
+//                 echo "</tr>";
+//             }
+//             echo "</table>";die;
+        return json_encode($query);
         }
     }
 
