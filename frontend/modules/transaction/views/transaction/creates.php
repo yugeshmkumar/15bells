@@ -1,3 +1,39 @@
+
+<?php 
+
+
+use yii\helpers\Html;
+use yii\widgets\Pjax;
+use backend\modules\transaction\models\Transaction;
+if (Yii::$app->session->hasFlash('success')):
+ endif; 
+
+$connection = Yii::$app->getDb();
+
+ $model =new Transaction();
+ $vr_setup = \common\models\VrSetup::find()->where(['secret_code'=>$_GET['id'],'status'=>"published",'isactive'=>1])->one();
+if($vr_setup){
+ $time=$model->gettime($vr_setup->propertyID);
+   $bid = $model->getBidtime($vr_setup->propertyID);
+ 
+           $currenttime = $model->getCurrenttime();
+
+        if ($currenttime > $bid && $currenttime < $time) {
+            
+            
+        }
+ else {
+
+            echo" <h1>Bid Ended</h1>";
+        die;
+        }
+
+		$pid = $vr_setup->propertyID;
+?>
+<h2 style="color:green;" id="notif"></h2>
+
+
+
 <style>
 
 body{
@@ -6,7 +42,7 @@ body{
 	font-family: 'Nunito Sans', sans-serif;
 }
 .revers_bg{
-	background-image: url(http://localhost/15Bells/new15bells/newimg/6b.jpg);
+	background-image: url(<?= Yii::getAlias('@frontendUrl') ?>/newimg/6b.jpg);
     top: 50%;
     left: 50%;
     min-width: 100%;
@@ -306,32 +342,34 @@ label{color:#ffffff;}
 						
 					</div>
 					<div class="col-md-8">
-						<div class="clock" style="margin:2em;"></div>
+						<div id="future_date" style="margin:2em;">00:00:00</div>
 					</div>
 				</div>
-				
+				<div class="row">
+				<div class="reserved_price text-center" id="bidstatus"></div>
+				</div>
 				<div class="row no_margn input_row">
 					<div class="col-md-12">
 						<div class="col-md-6">
 							 <label for="usr">Place Bid:</label>
-							<input type="text" class="form-control bid_amnt">
+							<input id="bid" onkeyup="word.innerHTML=convertNumberToWords(this.value)" type="text" class="form-control bid_amnt">
 							<!--<span class="plus_i"><img src="plus.svg" width="30"></span><span class="plus_i"><img src="minus.svg" width="30"></span>-->
 						</div>
 						<div class="col-md-4">
 							<label for="usr">Minimum Raise:</label>
-							<input type="text" class="form-control min_raise">
+							<input id="min" type="text" class="form-control min_raise">
 						</div>
 						<div class="col-md-2">
-							<button type="button" class="btn btn_raise">Raise</button>
+							<button id="raise" type="button" class="btn btn_raise">Raise</button>
 						</div>
 						
 					</div>
 					<div class="col-md-12" style="padding:10px 0;">
 						<div class="col-md-10">
-							<p class="amount_word">Ten Lakh Ninety Two Thousand Five Hundres Sixty Seven Only</p>
+							<p id="word" class="amount_word"></p>
 						</div>
 						<div class="col-md-2">
-							<button type="button" class="btn btn_submit">Submit</button>
+							<button id="submit" type="button" class="btn btn_submit">Submit</button>
 						</div>
 						
 					</div>
@@ -341,7 +379,7 @@ label{color:#ffffff;}
 				<div class="row no_margn">
 					<div class="reserved_price text-center">
 						<p class="reserve_hed">Reserved Price</p>
-						<p class="reserv_price">2785544523434</p>
+						<p id="current_price" class="reserv_price"><?php $model->getMaxprice($pid);?></p>
 					</div>
 				</div>		
 	 <div id="mySidenav" class="sidenav">
@@ -355,32 +393,22 @@ label{color:#ffffff;}
 				<div class="row">
 					<div class="col-md-12">
 						<div class="active_user col-md-6 no_pad">Propert Id: </div>
-						<div class="active_user col-md-6"><span class="white_clr">ABD12334</span></div>
+						<div class="active_user col-md-6"><span class="white_clr"><?php 
+						$haritid = 273*179-$vr_setup->propertyID;
+						$propsid = 'PR'.$haritid;
+		
+						echo $propsid ?></span></div>
 					</div>
 					<div class="col-md-12">
 					  <div class="active_user col-md-6 no_pad">Active Users: </div>
-						<div class="active_user col-md-6"><span class="white_clr">ABD12334</span></div>
+						<div id="active_users" class="active_user col-md-6"><span class="white_clr">0</span></div>
 					</div>
 				</div>
 				
 					<h2 class="active_user col-md-12 mt-2">Bid History</h2>
-			<div class="bid_history">
-					<div class="user_div">
-						<div class="col-md-6 bidr_name no_pad">Chirag </div>
-						<div class="col-md-6 bid_status"><span class="white_clr">Rs 10000000</span></div>
-					</div>
-					<div class="user_div">
-						<div class="col-md-6 bidr_name no_pad">Jitu </div>
-						<div class="col-md-6 bid_status"><span class="white_clr">Rs 12000000</span></div>
-					</div>
-					<div class="user_div">
-						<div class="col-md-6 bidr_name no_pad">Dev </div>
-						<div class="col-md-6 bid_status"><span class="white_clr">Rs 10000000</span></div>
-					</div>
-					<div class="user_div">
-						<div class="col-md-6 bidr_name no_pad">Chirag </div>
-						<div class="col-md-6 bid_status"><span class="white_clr">Rs 10000000</span></div>
-					</div>
+			<div id="bidgrid" class="bid_history">
+					
+					
 				</div>
 				
 				
@@ -403,5 +431,402 @@ label{color:#ffffff;}
 <div class="message1">
 	<p class="message_hed">Message</p>
 	<div class="message">
+	<div class="col-md-12">
+	<form id="chat_form">
+               <textarea id="msg_sent" type="text" placeholder="Type your message.." style="width:215px;height:77px;overflow-x:scroll;"> </textarea>
+			   
+            </form>  
+	</div>
 	</div>
 </div>	
+
+<?php
+
+
+        $script = <<< JS
+$.noConflict();
+$(document).ready(function(){
+setInterval(userleft, 1000);
+setInterval(ajaxtimer, 1000);
+setInterval(notification, 1000);
+ setInterval(ajaxcall, 5000);   
+setInterval(biduser, 5000);
+setInterval(checkstatus, 5000);
+ setInterval(startbid, 1000);
+setInterval(chatdisplay, 1000);
+setInterval(activeusers, 5000);
+setInterval(triggerLoc, 1000); 
+setInterval(Checksecond, 1000);
+ });
+
+
+
+    function userleft(){
+   $.ajax({		 
+         url: 'leavebrowser?id=$pid',
+         success: function(data) {	
+         }
+     });
+}
+ 
+ 
+
+
+
+function playsound(){
+document.getElementById('sound1').play();
+}
+
+function perminute(){
+  // playsound();
+}
+
+function Checksecond(){
+     $.ajax({
+		 
+         url: 'notificationtime?id=$pid',
+         success: function(data) {
+       var a=data/60;
+if(a % 1 === 0)
+{
+ // playsound();
+}
+         }
+     });
+}
+
+
+
+var appliedData;
+
+function triggerLoc() {
+
+    $.ajax({
+    
+      url : "customsound?id=$pid",                
+      success : function(data) {
+
+           // Check applied data on DOM with new data is same
+
+           if ( appliedData != data ) {
+
+               appliedData = data;
+         // playsound();
+
+           } else {
+
+           
+
+           }
+
+         
+
+      }
+
+})}
+ function ajaxcall(){
+     $.ajax({
+		 
+         url: 'bid?id=$pid',
+         success: function(data) {
+          var obj = JSON.parse(data);
+		var text = obj.text;
+		var price = obj.price;
+		$('.reserve_hed').html(text);
+		$('.reserv_price').html(price);
+
+ //$('#current_price').html(data);
+         }
+     });
+ }
+
+    function activeusers()
+{
+   $.ajax({
+		 
+         url: 'getactiveuser?id=$pid',
+         success: function(data) {
+			
+            // console.log(data);
+            
+            $('#active_users').html(data);
+         }
+     });
+}
+ 
+ 
+         function ajaxtimer()
+{
+   $.ajax({
+		 
+         url: 'test1?id=$pid',
+         success: function(data) {
+           
+           $('#future_date').html(data);
+
+         }
+     });
+}
+               
+                
+                
+ function notification(){
+     $.ajax({
+		 
+         url: 'notificationtime?id=$pid',
+         success: function(data) {
+        if( (data=='5') || (data=='10')){
+var txt=data +" Seconds Left";
+ $('#notif').html(txt);
+}
+ 
+
+else if((data<5) &&(data>-5) ){ 
+
+	window.location.href='endbid?id=$pid';
+   } 
+
+
+
+       else{
+           }
+         }
+     });
+ }
+function biduser()
+{
+	$('#bidgrid').html('');
+   $.ajax({
+		 
+         url: 'maxbidders?id=$pid',
+         success: function(data) {
+
+			  var obj = $.parseJSON(data);
+            
+            // $('#bidgrid').html(data);
+			// $('#bidgrid1').html(data);
+			$.each(obj, function (index) {
+				$('#bidgrid').append('<div class="user_div">'+
+						'<div class="col-md-6 bidr_name no_pad">'+this.aliasname+'</div>'+
+						'<div class="col-md-6 bid_status"><span class="white_clr">Rs '+this.bidder+'</span></div>'+
+					'</div>');
+
+
+			});
+         }
+     });
+}
+        
+         function priceconversion(){
+     $.ajax({
+		 
+         url: 'showamount?id=$pid',
+         success: function(data) {
+             console.log(data);
+           // $('#words').html(data);
+         }
+     });
+ }
+
+        
+        
+				function checkstatus(){
+				$.ajax({		 
+				url: 'checkstatus?id=$pid',
+				success: function(data) {
+				$('#bidstatus').html(data);      
+				}
+				});
+				}
+
+					function startbid(){
+					$.ajax({		 
+					url: 'starttime?id=$pid',
+					success: function(data) {
+					if(data=="false")
+					{
+					$("#future_date").hide();
+					$("#submit").hide();
+					$("#raise").hide();
+					}  
+
+					else
+					{
+					$("#future_date").show();
+					$("#submit").show();
+					$("#raise").show();
+					}        
+					}
+					});
+					}
+
+
+	  
+$(document).ready(function(){
+$("#submit").click(function(){
+
+var bid = $("#bid").val();
+var dataString = 'bid='+ bid;
+if(bid=='' )
+{
+alert("Please Add Bid");
+}
+
+else
+{
+
+if(!$.isNumeric(bid)) {
+   alert("Please Enter Valid Amount");
+}else{
+// AJAX Code To Submit Form.
+$.ajax({
+type: "POST",
+url: "insertajax?id=$pid",
+data: dataString,
+cache: false,
+success: function(result){
+alert(result);
+}
+});
+}
+}
+
+
+});
+});
+	  
+	
+
+$(document).ready(function(){
+$('#msg_sent').val('');
+
+
+$("#raise").click(function(){
+
+$.ajax({
+type: "POST",
+url: "minraise?id=$pid",
+cache: false,
+success: function(result){
+
+var res = result.split("+");
+
+$("#min").val(res[1]);
+$("#bid").val(res[0]);
+
+}
+});
+
+});
+});
+	  
+	  
+   function chatdisplay(){
+     $.ajax({
+         
+         url: 'dynamic?id=$pid',
+	ifModified: true,
+         success: function(data,status,xhr) {
+var length = Object.keys(data).length;
+
+
+      $('#comment').html(data);
+         }
+     });
+ }
+
+
+   function chatdisplay1(){
+var options={};
+options.url='dynamic?id=$pid';
+options.method="get";
+options.cache=true;
+options.ifModified=true;
+
+$.ajax(options).then(
+ function(data){
+
+$('#comment').html(data);
+});
+
+
+ }
+
+
+
+                
+ $("#msg_sent").keyup(function(event){
+    if(event.keyCode == 13){
+        sendmessage();
+    }
+});            
+                
+                
+   
+   $("#b1").click(function(){
+
+      sendmessage();
+});	  
+	  
+function  sendmessage(){
+    
+   //playsound();
+var chat = $("#msg_sent").val();
+
+$('#msg_sent').val('');
+
+if(chat==''){
+	alert("Please enter message");
+	return false;
+}else{
+var userid = $("#user option:selected").val();
+
+var dataString = 'chat='+ chat + '&id='+userid ;
+$.ajax({
+type: "POST",
+url: 'chat?pid=$pid',
+data: dataString,
+cache: false,
+success: function(result){
+
+}
+});
+}
+   
+   }	  
+	  
+	  
+JS;
+        $this->registerJs($script);
+        ?>
+
+
+
+
+
+
+
+
+		 
+
+
+        <?php
+        /* @var $this yii\web\View */
+        /* @var $model backend\modules\transaction\models\Transaction */
+
+        $this->title = 'Create Transaction';
+        $this->params['breadcrumbs'][] = ['label' => 'Transactions', 'url' => ['index']];
+        $this->params['breadcrumbs'][] = $this->title;
+        ?>
+
+        <div class="transaction-create">
+
+
+
+<?=
+$this->render('_form', [
+    'model' => $model,
+])
+?>
+
+<?php } ?>
