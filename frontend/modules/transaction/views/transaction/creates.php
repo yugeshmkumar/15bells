@@ -381,7 +381,17 @@ label{color:#ffffff;}
     bottom: 0;
 	margin:0;
 }
-
+.clock_div{
+    padding-left:50px;
+}
+.bid_status{
+    position: absolute;
+    bottom: 32%;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    color: #ffffff;
+}
 </style>
 
 
@@ -390,24 +400,23 @@ label{color:#ffffff;}
 <body class="revers_bg" id="asssssssssssssssssssssssssbcd">
 
 	<div class="container-fluid">
+    <div class="bid_status text-center" id="bidstatus"></div>
 		<div class="row">
 	<!--------Left Side Section------------------>
 			<div class="col-md-12">
 				<div class="row no_margn">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-8 clock_div">
 						<div class="clock" id="future_date" style="margin:2em;">00:00:00</div>
 					</div>
 				</div>
-				<div class="row">
-				<div class="reserved_price text-center" id="bidstatus"></div>
-				</div>
+				
 				<div class="row no_margn input_row">
 					<div class="col-md-12">
 						<div class="col-md-6">
-							 <label for="usr">Place Bid:</label>
+							 <label for="usr">Place Bid:(In ₹) </label>
 							<input id="bid" onkeyup="word.innerHTML=convertNumberToWords(this.value)" type="text" class="form-control bid_amnt">
 							<!--<span class="plus_i"><img src="plus.svg" width="30"></span><span class="plus_i"><img src="minus.svg" width="30"></span>-->
 						</div>
@@ -435,7 +444,7 @@ label{color:#ffffff;}
 				<div class="row no_margn">
 					<div class="reserved_price text-center">
 						<p class="reserve_hed">Reserved Price</p>
-						<p id="current_price" class="reserv_price"><?php $model->getMaxprice($pid);?></p>
+						<p id="current_price" class="reserv_price"> <?php $model->getMaxprice($pid);?></p>
 					</div>
 				</div>		
 	 <div id="mySidenav" class="sidenav">
