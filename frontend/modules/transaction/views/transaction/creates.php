@@ -388,8 +388,7 @@ label{color:#ffffff;}
 
 
 <body class="revers_bg" id="asssssssssssssssssssssssssbcd">
-<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/small.png';  ?>" class="right_bell"/>
-<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/small.png';  ?>" class="left_bell"/>
+
 	<div class="container-fluid">
 		<div class="row">
 	<!--------Left Side Section------------------>
