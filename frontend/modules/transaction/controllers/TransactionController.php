@@ -602,7 +602,7 @@ else
       
 
 
- public function actionTest() {
+    public function actionTest() {
         $model = new Transaction();
      
  $r= "<script>
@@ -632,30 +632,8 @@ return $r;
         
         $db=$r.$db.$r;
               
-         $r= "<script>
         
-        var countDownDate = new Date($db).getTime();
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000); 
-    document.getElementById('future_date').innerHTML =  hours + 'h ' + minutes + 'm ' + seconds + 's';
-    if (distance < 0) {
-    
-        clearInterval(x);
-  
-        document.getElementById('future_date').innerHTML = 'EXPIRED';
-     //   setTimeout(function() {  window.location = 'homepage.html';  }, 10000);
-     
-		}
-
-}, 1000);
-</script>"  ;
-         return $r;
+         return $db;
     }
 
 
