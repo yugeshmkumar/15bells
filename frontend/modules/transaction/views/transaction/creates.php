@@ -381,6 +381,7 @@ label{color:#ffffff;}
     bottom: 0;
 	margin:0;
 }
+
 </style>
 
 
@@ -398,7 +399,7 @@ label{color:#ffffff;}
 						
 					</div>
 					<div class="col-md-8">
-						<div id="future_date" style="margin:2em;">00:00:00</div>
+						<div class="clock" id="future_date" style="margin:2em;">00:00:00</div>
 					</div>
 				</div>
 				<div class="row">
@@ -645,10 +646,34 @@ function triggerLoc() {
 		 
          url: 'test1?id=$pid',
          success: function(data) {
-           
-           $('#future_date').html(data);
 
-         }
+            var countDownDate = new Date(data).getTime();
+
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor(distance  / 1000); 
+            var clock;
+
+clock = $('.clock').FlipClock({
+       clockFace: 'HourCounter',
+       autoStart: false,
+       callbacks: {
+        stop: function() {
+        //$('.message').html('The clock has stopped!')
+        }
+       }
+   });
+   
+   clock.setTime(seconds);
+   clock.setCountdown(true);
+   clock.start();
+
+}
+         
      });
 }
                
