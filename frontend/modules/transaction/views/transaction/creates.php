@@ -42,7 +42,7 @@ body{
 	font-family: 'Nunito Sans', sans-serif;
 }
 .revers_bg{
-	background-image: url(<?= Yii::getAlias('@frontendUrl') ?>/newimg/6b.jpg);
+	background-image: url(<?= Yii::getAlias('@frontendUrl') ?>/newimg/5b.jpg);
     top: 50%;
     left: 50%;
     min-width: 100%;
