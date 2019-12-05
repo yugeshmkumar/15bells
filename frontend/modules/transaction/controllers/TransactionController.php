@@ -36,7 +36,7 @@ class TransactionController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'update', 'index', 'create','creates', 'view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
+                        'actions' => ['logout', 'update', 'index', 'create','creates', 'getrank','view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -348,6 +348,8 @@ $sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcip
 //             }
 //             echo "</table>";die;
         return json_encode($query);
+        }else{
+            return 'no';
         }
     }
 
@@ -362,6 +364,31 @@ public function actionGetactiveuser(){
         $result_chk = $command_get->queryOne();
         return $r_res = $result_chk['active_users'];
 }
+
+
+public function actionGetrank(){
+
+	$connection = Yii::$app->getDb();
+       $pid = $_GET['id'];
+       $loggedin=Yii::$app->user->identity->id;
+
+      
+	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from transaction order by bid_amount desc, bid_date asc) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid limit 1";
+   
+    $command_get = $connection->createCommand($amt);
+        $result_chk = $command_get->queryAll();
+       if($result_chk){
+          
+    return $result_chk[0]['row_number'];
+
+       }else {
+           
+           return 0;
+       }
+        // where buyer_id= $loggedin and where propertyid=$pid" limit 1
+}
+
+
   
     public function actionWinnerscreen() {
         $connection = Yii::$app->getDb();

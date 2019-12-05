@@ -401,6 +401,9 @@ label{color:#ffffff;}
 
 	<div class="container-fluid">
     <div class="bid_status text-center" id="bidstatus"></div>
+    <div class="row">
+    <div class="bid_status text-center" >Your Rank is <span id="rank_user">0</span></div>
+    </div>
 		<div class="row">
 	<!--------Left Side Section------------------>
 			<div class="col-md-12">
@@ -550,6 +553,7 @@ setInterval(chatdisplay, 1000);
 setInterval(activeusers, 5000);
 setInterval(triggerLoc, 1000); 
 setInterval(Checksecond, 1000);
+setInterval(getrank, 1000);
  });
 
 
@@ -646,6 +650,24 @@ function triggerLoc() {
          }
      });
 }
+
+
+
+
+ function getrank()
+{
+   $.ajax({
+		 
+         url: 'getrank?id=$pid',
+         success: function(data) {
+			
+            
+            $('#rank_user').html(data);
+         }
+     });
+}
+
+
  
  
          function ajaxtimer()
@@ -718,6 +740,9 @@ function biduser()
          url: 'maxbidders?id=$pid',
          success: function(data) {
 
+
+             if(data != 'no'){
+
 			  var obj = $.parseJSON(data);
             
             // $('#bidgrid').html(data);
@@ -730,6 +755,7 @@ function biduser()
 
 
 			});
+         }
          }
      });
 }
@@ -863,15 +889,16 @@ var length = Object.keys(data).length;
                                 '</div>'+
                                 '<p>'+this.message+'</p>'+
                             '</div>'+
-                        '</li>';
-                       
+                        '</li>';                      
 			
                        
-                        $('#comment').html(sum);
-
+                       
 			});
+
+             $('#comment').html(sum);
+
            
-            $('.panel-body').scrollTop($('.panel-body li:last-child').position().top);
+           // $('.panel-body').scrollTop($('.panel-body li:last-child').position().top);
             
 
        
