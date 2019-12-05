@@ -548,7 +548,7 @@ setInterval(notification, 1000);
  setInterval(ajaxcall, 5000);   
 setInterval(biduser, 5000);
 setInterval(checkstatus, 5000);
- setInterval(startbid, 1000);
+//setInterval(startbid, 1000);
 setInterval(chatdisplay, 1000);
 setInterval(activeusers, 5000);
 setInterval(triggerLoc, 1000); 
