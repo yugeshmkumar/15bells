@@ -199,7 +199,7 @@ label{color:#ffffff;}
 }
 .reserved_price{
 	position:absolute;
-	top:45%;
+	top:47%;
 	width:40%;
 	left:30%;
 }
@@ -386,11 +386,20 @@ label{color:#ffffff;}
 }
 .bid_status{
     position: absolute;
-    bottom: 32%;
+    bottom: 29%;
     text-align: center;
     width: 100%;
     left: 0;
     color: #ffffff;
+}
+.bid_rank{
+    position: absolute;
+    bottom: 55%;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    color: #ffffff;
+    font-size:17px;
 }
 </style>
 
@@ -402,7 +411,7 @@ label{color:#ffffff;}
 	<div class="container-fluid">
     <div class="bid_status text-center" id="bidstatus"></div>
     <div class="row">
-    <div class="bid_status text-center" >Your Rank is <span id="rank_user">0</span></div>
+    <div class="bid_rank text-center" >Your Rank is <span id="rank_user">0</span></div>
     </div>
 		<div class="row">
 	<!--------Left Side Section------------------>
