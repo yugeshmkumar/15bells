@@ -426,8 +426,10 @@ $pid=$_GET['pid'];
 
 $chat=$_POST['chat'];
 $id=$_POST['id'];
+date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
 $send=Yii::$app->user->identity->id;
-  $sql="insert into chat_history(send_by,message,sent_to,property_id) values ($send,'$chat','$id','$pid')";
+  $sql="insert into chat_history(send_by,message,sent_to,sent_date,property_id) values ($send,'$chat','$id','$date',$pid')";
  $connection = Yii::$app->getDb();
 $command = $connection->createCommand($sql);
 $result = $command->query();
