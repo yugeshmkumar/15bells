@@ -560,7 +560,7 @@ setInterval(checkstatus, 5000);
 //setInterval(startbid, 1000);
 setInterval(chatdisplay, 1000);
 setInterval(activeusers, 5000);
-setInterval(triggerLoc, 1000); 
+//setInterval(triggerLoc, 1000); 
 setInterval(Checksecond, 1000);
 setInterval(getrank, 1000);
  });
