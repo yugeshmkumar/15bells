@@ -373,7 +373,7 @@ public function actionGetrank(){
        $loggedin=Yii::$app->user->identity->id;
 
       
-	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from transaction order by bid_amount desc, bid_date asc) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid limit 1";
+	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from transaction order by bid_amount desc, bid_date asc) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc limit 1";
    
     $command_get = $connection->createCommand($amt);
         $result_chk = $command_get->queryAll();
