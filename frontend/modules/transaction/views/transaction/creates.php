@@ -976,7 +976,7 @@ if(chat==''){
 	return false;
 }else{
 // var userid = $("#user option:selected").val();
-var userid = 822;
+var userid = '822';
 
 var dataString = 'chat='+ chat + '&id='+userid ;
 $.ajax({
