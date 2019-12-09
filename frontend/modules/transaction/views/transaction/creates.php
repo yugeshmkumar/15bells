@@ -753,13 +753,14 @@ function biduser()
              if(data != 'no'){
 
 			  var obj = $.parseJSON(data);
-            
+          
             // $('#bidgrid').html(data);
 			// $('#bidgrid1').html(data);
 			$.each(obj, function (index) {
+               // alert(this.bidder);
 				$('#bidgrid').append('<div class="user_div">'+
 						'<div class="col-md-6 bidr_name no_pad">'+this.aliasname+'</div>'+
-						'<div class="col-md-6 bid_status"><span class="white_clr">Rs '+this.bidder+'</span></div>'+
+						'<div class="col-md-6"><span class="white_clr">Rs '+this.bidder+'</span></div>'+
 					'</div>');
 
 

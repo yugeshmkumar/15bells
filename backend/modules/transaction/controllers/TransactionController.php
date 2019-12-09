@@ -131,6 +131,7 @@ echo "<br/>";
      * @return mixed
      */
     public function actionIndex() {
+
 			$checkmyrolemod = \backend\models\BackMode::checkrole(yii::$app->user->identity->id,"moderator");
 		$checkmyrolepm = \backend\models\BackMode::checkrole(yii::$app->user->identity->id,"property_manager");
         
@@ -148,7 +149,7 @@ echo "<br/>";
 		 }
         $model = new Transaction();
         $dataProvider = new ActiveDataProvider([
-            'query' => Transaction::find()->where(['product_id'=>$product])->orderBy(['id'=>SORT_DESC]),
+            'query' => Transaction::find()->where(['product_id'=>$product])->orderBy(['bid_amount'=>SORT_DESC,'bid_date'=>SORT_ASC]),
         ]);
         $dataProvider->pagination  = false;
         return $this->render('index', [

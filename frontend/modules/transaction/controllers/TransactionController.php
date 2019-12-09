@@ -499,111 +499,100 @@ return json_encode($result);
     }
 
     public function actionInsertajax() {
-        $connection = Yii::$app->getDb();
-         $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
 
-		 if($vr_setup){
-           $product = $vr_setup->propertyID;
-		 } else {
-			 $product =  1;
-		 }
-        $model = new Transaction();
-//New Added
-$id=$_GET['id'];
- $last_approved_buyer= $model->Checkcontionousbid($product);
-$current=Yii::$app->user->identity->id;
-if($last_approved_buyer==$current){
+            $connection = Yii::$app->getDb();
+            $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
 
-echo "You are the latest bidder";
-return false;
-}
+            if($vr_setup){
+            $product = $vr_setup->propertyID;
+            } else {
+            $product =  1;
+            }
+            $model = new Transaction();
+            //New Added
+            $id=$_GET['id'];
+            $last_approved_buyer= $model->Checkcontionousbid($product);
+            $current=Yii::$app->user->identity->id;
+            if($last_approved_buyer==$current){
 
- $minimumraise=$model->getMinamountraise($id);
+            echo "You are the latest bidder";die;
+            return false;
+            }
 
-//
+            $minimumraise=$model->getMinamountraise($id);     
 
+            $model->product_id = $id;
+            $model->buyer_id = Yii::$app->user->identity->id;
+            $model->bid_amount = $_POST['bid'];
+            $model->bid_date = $date;
+            $amt = $_POST['bid'];
 
-
-        $model->product_id = $id;
-        $model->buyer_id = Yii::$app->user->identity->id;
-        $model->bid_amount = $_POST['bid'];
-        $amt = $_POST['bid'];
-
-//262.5>263  --false
-if(($minimumraise>$amt))
-{
-echo "Minumum Raise is 5%";
-return false;
-}
-
-
-
-      
-        $dbtime = $model->getTime($id);
-        $currtime = $model->getCurrenttime();
+            //262.5>263  --false
+            if(($minimumraise>$amt))
+            {
+            echo "Minumum Raise is 5%";die;
+            return false;
+            }
 
 
-        if ($currtime > $dbtime) {
+
+            $dbtime = $model->getTime($id);
+            $currtime = $model->getCurrenttime();
+            if ($currtime > $dbtime) {
             echo "You cannot place bid now";
             die;
-        }
- $max_db_bid = $model->checkbid($product);
- 
- 
- if ($amt < $max_db_bid) {
-	  echo "Add Higher Bid";
-             die; 
- }
- 
+            }
 
-        $stat = $model->getuserstatus($id);
-	
-		if($stat==""){
+            $max_db_bid = $model->checkbid($product);
+            if ($amt < $max_db_bid) {
+            echo "Add Higher Bid";
+            die; 
+            }
 
-          
- if($model->save())
 
-{
-             return  "Bid Placed Successfully";
-            
-}
+            $stat = $model->getuserstatus($id);
+            if($stat==""){
+            if($model->save())
+            {
+            return  "Bid Placed Successfully";
+            }
+            else
+            {
+            return "Add Higher Bid";
+            }
+            }
 
-else
-{
-    return "Add Higher Bid";
-             
-}
 
-    }
-
-        if ($stat == "Approved") {
+            if ($stat == "Approved") {
 
             if ($model->save()) {
-                $stat = $model->getuserstatus($id);
-
-                return "Bid Placed Successfully";
+            $stat = $model->getuserstatus($id);
+            return "Bid Placed Successfully";
             } else {
-                return "Please add Higher Bid";
+            return "Please add Higher Bid";
             }
-        } 
-		
-		
-		else if($stat == "Pending")
-		{
-			return "Your previous Bid is Pending";
-			
-		}
-		
-		else {
+            } 
 
-  if ($amt > $max_db_bid) {
-                $model->save();
-                return "Bid Placed";
-                
+
+            else if($stat == "Pending")
+            {
+            return "Your previous Bid is Pending";
+            }
+
+
+            else {
+            if ($amt > $max_db_bid) {
+            $model->save();
+            return "Bid Placed";
             }
             return "Please Add Higher Bid than Current";
-        }
-    }
+            }
+
+
+
+            }
 
     /**
      * Deletes an existing Transaction model.
