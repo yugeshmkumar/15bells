@@ -564,10 +564,10 @@ setInterval(notification, 1000);
  setInterval(ajaxcall, 5000);   
 setInterval(biduser, 5000);
 setInterval(checkstatus, 5000);
- setInterval(startbid, 1000);
+//setInterval(startbid, 1000);
 setInterval(chatdisplay, 1000);
 setInterval(activeusers, 5000);
-setInterval(triggerLoc, 1000); 
+//setInterval(triggerLoc, 1000); 
 setInterval(Checksecond, 1000);
 setInterval(getrank, 1000);
  });
@@ -760,13 +760,14 @@ function biduser()
              if(data != 'no'){
 
 			  var obj = $.parseJSON(data);
-            
+          
             // $('#bidgrid').html(data);
 			// $('#bidgrid1').html(data);
 			$.each(obj, function (index) {
+               // alert(this.bidder);
 				$('#bidgrid').append('<div class="user_div">'+
 						'<div class="col-md-6 bidr_name no_pad">'+this.aliasname+'</div>'+
-						'<div class="col-md-6 "><span class="white_clr">Rs '+this.bidder+'</span></div>'+
+						'<div class="col-md-6"><span class="white_clr">Rs '+this.bidder+'</span></div>'+
 					'</div>');
 
 
@@ -982,7 +983,8 @@ if(chat==''){
 	alert("Please enter message");
 	return false;
 }else{
-var userid = $("#user option:selected").val();
+// var userid = $("#user option:selected").val();
+var userid = 822;
 
 var dataString = 'chat='+ chat + '&id='+userid ;
 $.ajax({
