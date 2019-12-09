@@ -129,22 +129,27 @@ body{
 	border-radius:0;
 }
 .btn_submit{
-	padding:7px 20px;
-	background:#c4984f;
-	border-radius:0;
-	border:1px solid #c4984f;
-	color:#ffffff !important;
-	margin: 5px 0 0 -10px;
+	padding: 6px 20px;
+    background: #c4984f;
+    border-radius: 0;
+    border: 1px solid #c4984f;
+    color: #ffffff !important;
+    margin-top: 24px;
+    font-size: 16px;
+    border-radius: 2px;
 }
 .btn_raise{
-	padding:7px 20px;
-	background:#c4984f;
-	border-radius:0;
-	border:1px solid #c4984f;
-	color:#ffffff !important;
-	margin-top:24px;
+	padding: 6px 20px;
+    background: #c4984f;
+    border-radius: 0;
+    border: 1px solid #c4984f;
+    color: #ffffff !important;
+    margin-top: 24px;
+    font-size: 16px;
+    border-radius: 2px;
+
 }
-label{color:#ffffff;}
+label{color:#ffffff;font-weight:400;}
 .current_bids{
 	border:1px solid #fff;
 }
@@ -398,8 +403,10 @@ label{color:#ffffff;}
     text-align: center;
     width: 100%;
     left: 0;
-    color: #ffffff;
-    font-size:17px;
+    color: #c4984f;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing:1px;
 }
 </style>
 
@@ -428,12 +435,12 @@ label{color:#ffffff;}
 				<div class="row no_margn input_row">
 					<div class="col-md-12">
 						<div class="col-md-6">
-							 <label for="usr">Place Bid:(In ₹) </label>
+							 <label for="usr">Place Bid: (In ₹) </label>
 							<input id="bid" onkeyup="word.innerHTML=convertNumberToWords(this.value)" type="text" class="form-control bid_amnt">
 							<!--<span class="plus_i"><img src="plus.svg" width="30"></span><span class="plus_i"><img src="minus.svg" width="30"></span>-->
 						</div>
 						<div class="col-md-4">
-							<label for="usr">Minimum Raise:</label>
+							<label for="usr">Minimum Raise: (In ₹) </label>
 							<input id="min" type="text" class="form-control min_raise">
 						</div>
 						<div class="col-md-2">
@@ -759,7 +766,7 @@ function biduser()
 			$.each(obj, function (index) {
 				$('#bidgrid').append('<div class="user_div">'+
 						'<div class="col-md-6 bidr_name no_pad">'+this.aliasname+'</div>'+
-						'<div class="col-md-6 bid_status"><span class="white_clr">Rs '+this.bidder+'</span></div>'+
+						'<div class="col-md-6 "><span class="white_clr">Rs '+this.bidder+'</span></div>'+
 					'</div>');
 
 
