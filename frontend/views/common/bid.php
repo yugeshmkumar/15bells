@@ -12,7 +12,7 @@ $this->title = 'Enter VR Room';
 $AuctionParticipants = \common\models\AuctionParticipants::find()->where(['partcipantID' => Yii::$app->user->identity->id, 'isactive' => 1])->one();
 if ($AuctionParticipants) {
     ?>
-    <style>.vvsambqwkstalkbubble { width: 100%; height: 250%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 250%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}
+    <style>.vvsambqwkstalkbubble { width: 100%; height: 250%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative;padding:20px; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 250%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}
 
         // property details CSS
 
@@ -176,24 +176,40 @@ if ($AuctionParticipants) {
             padding: 0px 10px 0px 2px;
         }
 
+        .text_warn{
+            color:#c4984f;
+            font-size:18px;
+            padding-left:15px;
+        }
+    .vr_button{
+        padding: 4px 15px;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    border-radius: 0;
+    background: #c4984f;
+    border-color: #c4984f !important;
+    }
+    .vr_button:hover{
+        font-size: 16px !important;
+    color: #ffffff !important;
+    border-radius: 0;
+    background: #c4984f;
+    border-color: #c4984f !important;
+    }
 
-
-
-    </style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
+    </style> 
+    
+    <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
 
     <div class="portlet light col-md-9">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="icon-speech"></i>
-                <span class="caption-subject bold uppercase"> Enter VR Room</span>
-                <span class="caption-helper"></span>
-            </div>
-            <div class="actions">
-            </div>
-        </div>
-        <div class="portlet-body">
-            <div class="note note-info">
-                <font color="red">*</font> Do not Refresh or back the Transaction Window after Entered
+    <div class="col-md-12">
+					<div class="col-md-6">
+						<h2 class="dashboard_head">Enter VR Room</h2>
+					</div>
+                    </div>
+        <div class="portlet-body col-md-12">
+            <div class="note note-info text_warn">
+                <font color="">*</font> Do not Refresh or back the Transaction Window after Entered
                 <b><i class="fa fa-thumbs-up"></i></b>
             </div>
             <div class="auction-participants-index">
@@ -224,7 +240,7 @@ if ($AuctionParticipants) {
                 'format' => 'raw',
                 'filter' => false,
                 'value' => function($data) {
-                    return '<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffmjkkl&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffmjkl&#39;).style.display=&#39;block&#39;,myfunction(' . $data->vr_roomID . ',' . $data->partcipantID . ')" class="btn btn-primary">Enter VR Room</a>';
+                    return '<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffmjkkl&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffmjkl&#39;).style.display=&#39;block&#39;,myfunction(' . $data->vr_roomID . ',' . $data->partcipantID . ')" class="btn btn-primary vr_button">Enter VR Room</a>';
                 }
             ],
             ['attribute' => 'vr_roomID',

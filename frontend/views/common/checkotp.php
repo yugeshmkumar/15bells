@@ -11,10 +11,14 @@ $userid = $_GET['uid'];
 $vrroomid = $_GET['id'];
 $user = \common\models\User::find()->where(['id' => $userid])->one();
 ?>
-
+<style>
+.head_hello{
+    font-size:18px;font-weight:600;color: #221d36;
+}
+</style>
 <div class="portlet box green">
     <div class="portlet-title">
-        <div class="caption">Hello ,<?php echo $user->email ?></div>
+        <div class="caption head_hello">Hello ,<?php echo $user->email ?></div>
         <div class="tools">
 
             <div style="padding-right:11px;">
@@ -30,7 +34,7 @@ $user = \common\models\User::find()->where(['id' => $userid])->one();
                     'options' => ['enctype' => 'multipart/form-data']
         ]);
         ?>
-        <div class="note note-info" style="font-size: 10px; height:50px">
+        <div class="note note-info" style="font-size: 14px; height:50px;color:#c4984f;">
             An OTP has been sent to you on your E-mail Address <b><i> <?php echo $user->email ?></i></b>. Please enter OTP to Continue.
         </div>
         <div class="form-group form-md-line-input form-md-floating-label" style="font-size: 12px;">
