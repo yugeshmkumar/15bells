@@ -558,7 +558,7 @@ $.noConflict();
 $(document).ready(function(){
 
     
-setInterval(userleft, 1000);
+//setInterval(userleft, 1000);
 setInterval(ajaxtimer, 1000);
 setInterval(notification, 1000);
  setInterval(ajaxcall, 5000);   
