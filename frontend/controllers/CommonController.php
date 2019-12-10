@@ -57,7 +57,7 @@ class CommonController extends Controller {
                     'options' => ['class' => 'alert-success']
                 ]);
                 if ($checkOTP->roleID == 15) {
-                    return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/create?id=' . $idid . '', 301)->send();
+                    return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/creates?id=' . $idid . '', 301)->send();
                 } else if ($checkOTP->roleID == 16) {
                     return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/createsel?id=' . $idid . '', 301)->send();
                 }
