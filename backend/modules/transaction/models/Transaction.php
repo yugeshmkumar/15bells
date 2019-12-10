@@ -236,7 +236,7 @@ public function startbid()
    $result = $command->queryOne();
      $buyer_id= $result['buyer_id'];
  $bidamount=$result['bid_amount'];
- $sql1="update transaction set status='Preapproved' where bid_amount<$bidamount and status='Pending' and product_id = $pid";
+ $sql1="update transaction set status='Preapproved' where bid_amount<=$bidamount and status='Pending' and product_id = $pid";
   $command = $connection->createCommand($sql1);
   $command->query();
 

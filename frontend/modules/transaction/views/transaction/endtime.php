@@ -48,8 +48,16 @@ $this->params['breadcrumbs'][] = $this->title;
                    return $data["bid_date"];
                }
            ],
+
+           [
+            'label' =>"Rank",
+            'attribute' => 'end_rank',
+            'value'=>function($data){
+                return $data["end_rank"];
+            }
+        ],
           
-   	[
+   	       [
                'label' =>"Status",
                'attribute' => 'status',
                'value'=>function($data){
