@@ -107,12 +107,13 @@ body{
     margin: 0 auto;
 }
 .input_row{
-	  position: fixed;
+    position: fixed;
     width: 50%;
-    bottom: 0%;
-    padding: 20px 20px 0;
+    bottom: 2%;
+    padding: 4px 20px 0;
     background: rgba(0, 0, 0, 0.71);
     left: 25%;
+    border-radius: 5px;
 }
 .bid_amnt{
 	background-color:#000 !important;
@@ -129,14 +130,19 @@ body{
 	border-radius:0;
 }
 .btn_submit{
-	padding: 6px 20px;
+    padding: 6px 20px 6px 15px;
     background: #c4984f;
     border-radius: 0;
     border: 1px solid #c4984f;
     color: #ffffff !important;
-    margin-top: 24px;
-    font-size: 16px;
+    margin-top: 15px;
+    font-size: 15px;
     border-radius: 2px;
+    position: relative;
+    bottom: 10px;
+    width: 77%;
+    text-align: center;
+    left: 6px;
 }
 .btn_raise{
 	padding: 6px 20px;
@@ -148,6 +154,9 @@ body{
     font-size: 16px;
     border-radius: 2px;
 
+}
+.no_pad{
+    padding:0;
 }
 label{color:#ffffff;font-weight:400;}
 .current_bids{
@@ -448,11 +457,11 @@ label{color:#ffffff;font-weight:400;}
 						</div>
 						
 					</div>
-					<div class="col-md-12" style="padding:10px 0;">
+					<div class="col-md-12" style="padding:10px 0 0;">
 						<div class="col-md-10">
 							<p id="word" class="amount_word"></p>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-2 no_pad">
 							<button id="submit" type="button" class="btn btn_submit">Submit</button>
 						</div>
 						
@@ -941,7 +950,16 @@ $('#comment').html(data);
 
  }
 
+// $(document).mouseup(function(e) 
+// {
+//     //var container = $(".sidenav");
 
+//     // if the target of the click isn't the container nor a descendant of the container
+//     if (!container.is(e.target) && container.has(e.target).length === 0) 
+//     {
+//         container.hide();
+//     }
+// });
 
                 
 //  $("#msg_sent").keyup(function(event){
