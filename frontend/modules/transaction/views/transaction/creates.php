@@ -766,9 +766,9 @@ var txt=data +" Seconds Left";
 		 
          url: 'saverank?id=$pid',
          success: function(data) {
-
+//alert(data);
              if(data == '1'){
-                window.location.href='endbid?id=$pid';
+             window.location.href='endbid?id=$pid';
              }else{
                  alert('No rank assign')
              }
