@@ -36,7 +36,7 @@ class TransactionController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'update', 'index', 'create','creates', 'getrank','view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
+                        'actions' => ['logout', 'update', 'index', 'create','saverank','creates', 'getrank','view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -274,7 +274,7 @@ $result = $command->query();
 union
 select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
 */
-$sql="select max(bid_amount) as bidder ,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";   
+$sql="select max(bid_amount) as bidder,t.end_rank,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";   
 
 $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
 
@@ -368,12 +368,12 @@ public function actionGetactiveuser(){
 
 public function actionGetrank(){
 
-	$connection = Yii::$app->getDb();
+	 $connection = Yii::$app->getDb();
        $pid = $_GET['id'];
        $loggedin=Yii::$app->user->identity->id;
 
       
-	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from transaction order by bid_amount desc, bid_date asc) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc limit 1";
+	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction order by bid_amount desc, bid_date asc ) as pub group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
    
     $command_get = $connection->createCommand($amt);
         $result_chk = $command_get->queryAll();
@@ -386,6 +386,35 @@ public function actionGetrank(){
            return 0;
        }
         // where buyer_id= $loggedin and where propertyid=$pid" limit 1
+}
+
+
+public function actionSaverank(){
+
+      $connection = Yii::$app->getDb();
+       $pid = $_GET['id'];
+       $loggedin=Yii::$app->user->identity->id;
+
+      
+	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction order by bid_amount desc, bid_date asc ) as pub group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
+   
+    $command_get = $connection->createCommand($amt);
+        $result_chk = $command_get->queryAll();
+       if($result_chk){
+          
+        $rank = $result_chk[0]['row_number'];
+
+        $amt = "update transaction set end_rank=$rank where buyer_id=$loggedin and product_id=$pid";
+        $command_gets = $connection->createCommand($amt);
+       if($command_gets->query()){
+           return 1;
+       }
+       }else {
+           
+           return 0;
+       }
+
+
 }
 
 
@@ -674,8 +703,12 @@ return $r;
         $model = new Transaction();
         $stat = $model->getuserstatus($_GET['id']);
             if($stat!=""){
+            if($stat=="Preapproved"){
+                return $statu = "Place Bid Higher";
+            } else{   
         return $statu = "Your Last Bid has been" . "-" . $stat;
-    }
+            }
+       }
     }
 
     public function actionTime() {

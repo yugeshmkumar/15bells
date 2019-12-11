@@ -1891,7 +1891,7 @@ proptype =  $('#proptypes').val();
                                                          
                                                        
                                                            
-                                                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                                            
                                                             var imaged = $.trim(this.featured_image);
                                                             var c = content.substr(0, showChar);
@@ -1908,7 +1908,7 @@ proptype =  $('#proptypes').val();
 					'<p><img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imaged)+'" class="img-responsive prop_img"></p>'+
 					'<div class="col-md-12">'+
 					
-					'<h5 class="prpr_hed mb-3">' +  this.typename +' availabale for sale in '+ this.city  + '</h5>'+
+					'<h5 class="prpr_hed mb-3">' +  this.typename +' availabale for sale in '+ this.town_name  + '</h5>'+
 					'<p class="pror_detl"><span class="lite_clr">Locality :</span> '+ this.locality +'</p>'+
 					'<p class="pror_detl"><span class="lite_clr">Highlight :</span> On Sale / ' + this.age_of_property + ' Years Old'+ (( this.furnished_status == '') ? '' : '/ '+ this.furnished_status)+ (( this.property_on_floor == null) ? '' : ' / ' + this. property_on_floor + 'th Floor') + (( this.total_floors == null) ? '' : ' (out of ' + this.total_floors +')')+'</p>'+
 					'<p class="pror_detl"><span class="lite_clr">Description: </span>'+ html +'</p>'+
@@ -2041,7 +2041,7 @@ proptype =  $('#proptypes').val();
                             count1 += 1; 
                         
                         
-                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                         
                         var imageds = $.trim(this.featured_image);
                         var c = content.substr(0, showChar);
@@ -2068,7 +2068,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2197,7 +2197,7 @@ proptype =  $('#proptypes').val();
                                                                // circle.setMap(null);
 
                                                              count2 += 1; 
-                                                             var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                                             var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                                            
                                                             var imageds = $.trim(this.featured_image);
                                                             var c = content.substr(0, showChar);
@@ -2225,7 +2225,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -2343,7 +2343,7 @@ proptype =  $('#proptypes').val();
                                     });
 
                                                              
-                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
 
                                 var imageds = $.trim(this.featured_image);
                                 var c = content.substr(0, showChar);
@@ -2373,7 +2373,7 @@ proptype =  $('#proptypes').val();
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3229,7 +3229,7 @@ function getPolygonCoords() {
                                
                               <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
                                      <?php  } ?>
@@ -3352,7 +3352,7 @@ function getPolygonCoords() {
                            count1 += 1; 
                        
                        
-                           var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                           var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                        
                        var imageds = $.trim(this.featured_image);
                        var c = content.substr(0, showChar);
@@ -3379,7 +3379,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3512,7 +3512,7 @@ function getPolygonCoords() {
                                                                    //circle.setMap(null);
    
                                                                 count2 += 1; 
-                                                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                                               
                                                                var imageds = $.trim(this.featured_image);
                                                                var c = content.substr(0, showChar);
@@ -3540,7 +3540,7 @@ function getPolygonCoords() {
  
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3654,7 +3654,7 @@ function getPolygonCoords() {
                                        });
    
                                                                 
-                                   var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.city + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                   var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
    
                                    var imageds = $.trim(this.featured_image);
                                    var c = content.substr(0, showChar);
@@ -3684,7 +3684,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -3966,7 +3966,7 @@ function getPolygonCoords() {
                                                    
                                                    
                                                        
-                                                   // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+                                                   // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
                                                     
                                                    var imageds = $.trim(this.featured_image);
                                                  //   var c = content.substr(0, showChar);
@@ -3991,7 +3991,7 @@ function getPolygonCoords() {
 
 <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.city.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+ '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
@@ -4135,7 +4135,7 @@ function getPolygonCoords() {
                                                             ((this.undercategory == 'Residential') ? 
                                                             content = this.furnished_status +' '+ this.typename +' on '+ this.property_for +' in '+ this.locality + ((this.buildup_area == null) ? ' - plot area : '+ this.total_plot_area +' sqft' : ' - super area : '+ this.buildup_area +' sqft ') + ' - furnishing specification :* bedrooms : '+ this.bedrooms+' * bathrooms : '+ this.bathrooms+' * balconies : '+ this.balconies+' * pooja room : '+ this.pooja_room +' * study_room * servant_room , For more details or Site Visit , please Contact Us..;'
                                                            :
-                                                            content =  'A very good '+ this.typename +' availabale for rent/lease in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ' )
+                                                            content =  'A very good '+ this.typename +' availabale for rent/lease in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ' )
                                                            
                                                             var imaged = $.trim(this.featured_image);
                                                             var c = content.substr(0, showChar);
@@ -4146,7 +4146,7 @@ function getPolygonCoords() {
                                         $('#getprop').append('<div class="col-md-6 serch_row">'+
                                         '<div class="col-md-12 property_main_div">'+
                                         '<div class="col-md-12 property_main_div_1" style="height:60px">'+
-                                        '<div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' +  this.typename +' availabale for sale in '+ this.city  + '</p></div>'+
+                                        '<div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' +  this.typename +' availabale for sale in '+ this.town_name  + '</p></div>'+
 
                                         '<div class="col-md-3 col-sm-3 col-xs-3"> <i class="fa fa-eye" aria-hidden="true"></i></div>'+
                                         '</div>'+
