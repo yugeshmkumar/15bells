@@ -809,7 +809,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		<div class="row">
 			<div class="col-md-6 no_pad">
 				<h6 class="trans_head_b">Brands that<br>trust us</h6>
-				<p class="brand_txt">At 15-Bells we are providing you the genuine clients with real-time assistance from our customes service representatives</p>
+				<p class="brand_txt">At 15-Bells we are providing you the genuine clients with real-time assistance from our customers service representatives</p>
 			</div>
 			
 		</div>
