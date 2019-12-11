@@ -567,7 +567,7 @@ $.noConflict();
 $(document).ready(function(){
 
     
-setInterval(userleft, 1000);
+//setInterval(userleft, 1000);
 setInterval(ajaxtimer, 1000);
 setInterval(notification, 1000);
  setInterval(ajaxcall, 5000);   
@@ -745,9 +745,11 @@ var txt=data +" Seconds Left";
 }
  
 
-else if((data<5) &&(data>-5) ){ 
+  else if((data<5) &&(data>-5) ){
 
-	window.location.href='endbid?id=$pid';
+    saverank() 
+
+	//window.location.href='endbid?id=$pid';
    } 
 
 
@@ -757,6 +759,25 @@ else if((data<5) &&(data>-5) ){
          }
      });
  }
+
+ function saverank(){
+
+    $.ajax({
+		 
+         url: 'saverank?id=$pid',
+         success: function(data) {
+
+             if(data == '1'){
+                window.location.href='endbid?id=$pid';
+             }else{
+                 alert('No rank assign')
+             }
+
+         }
+    })
+ }
+
+
 function biduser()
 {
 	$('#bidgrid').html('');
