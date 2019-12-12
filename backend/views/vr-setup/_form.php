@@ -98,7 +98,7 @@ $givezero = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => 
             $findcsrs = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted asc limit 1")->queryOne();  
 $findcsrsd = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted desc limit 1")->queryOne();            
             $getallots = $findcsrsd['alloted'];
-            $newid = $findcsrs['id'];
+            $newid = $findcsrs['userid'];
             $counters = $getallots + 1;
             
            
@@ -109,7 +109,7 @@ $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $c
             }else{
             
             $counter = $getallot + 1;
-            $newid = $findcsr['id']; 
+            $newid = $findcsr['userid']; 
 
        $updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter],'id = "'.$newid.'"')->execute();
 
