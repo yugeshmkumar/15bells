@@ -369,7 +369,7 @@ public function actionGetactiveuser(){
 public function actionGetrank(){
 
 	 $connection = Yii::$app->getDb();
-     echo   $pid = $_GET['id'];die;
+      $pid = $_GET['id'];
        $loggedin=Yii::$app->user->identity->id;
 
       
