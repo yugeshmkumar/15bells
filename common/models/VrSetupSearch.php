@@ -118,7 +118,8 @@ class VrSetupSearch extends VrSetup
 
 	 public function searchformoderator($params,$moderatorID,$status)
     {
-        $query = VrSetup::find()->where(['moderatorID'=>$moderatorID,'status'=>$status])->orderBy('id desc');
+        // $query = VrSetup::find()->where(['moderatorID'=>$moderatorID,'status'=>$status])->orderBy('id desc');
+        $query = VrSetup::find()->where(['moderatorID'=>$moderatorID])->orderBy('id desc');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

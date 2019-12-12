@@ -115,7 +115,8 @@ if($assigndash->item_name == "sales_supply_lessor"){
     public function actionView($id)
     {   
 	if(isset($_POST['savebuyers'])){
-		$arrbuyers = $_POST['usersbuyers'];
+        $arrbuyers = $_POST['usersbuyers'];
+       // echo '<pre>';print_r($_POST['usersbuyers']);die;
 		foreach($arrbuyers as $buyers){
 			$checkifalready = \common\models\AuctionParticipants::find()->where(['vr_roomID'=>$_GET['id'],'partcipantID'=>$buyers,'isactive'=>1])->one();
 			if(!$checkifalready){
@@ -209,6 +210,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
 				$secretcode = rand(1111,8949883);
 				$VrSetuptest = \common\models\VrSetuptest::find()->where(['id'=>$model->id])->one();
 				if($VrSetuptest){
+                    $VrSetuptest->approverID = Yii::$app->user->identity->id;
 					$VrSetuptest->secret_code = $secretcode;
 					$VrSetuptest->save();
 				}

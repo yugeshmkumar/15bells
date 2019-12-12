@@ -431,7 +431,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
                             }
                         ],
-                        [
+                        /* [
                             'label' => 'Link to View Doc',
                             'attribute' => 'id',
                             'filter' => false,
@@ -443,7 +443,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $property_id = $model->property_id;
                         $user_id = Yii::$app->user->identity->id;
 
-                        if ($payment_status == 'paid') {
+                        if ($payment_status == 'paid' || $payment_status == 'complimentry') {
                             return Html::a('<button class="btn btn-success" style="width:135px; border-color:white;border:1px solid;" onclick="viewdocs(' . $property_id . ')" >Click to view Docs</button>', $url = 'javascript:void(0)', []);
                         } else {
                             $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
@@ -454,6 +454,35 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
                             } else {
                                 return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
+                            }
+                        }
+                    }
+                        ], */
+
+
+                        [
+                            'label' => 'Link to View Doc',
+                            'attribute' => 'id',
+                            'filter' => false,
+                            'options' => ['style' => 'width:300px;'],
+                            'format' => 'raw',
+                            'value' => function($model) {
+                        $request_id = $model->id;
+                        $payment_status = $model->payment_status;
+                        $property_id = $model->property_id;
+                        $user_id = Yii::$app->user->identity->id;
+                        $userid = $model->user_id;
+
+                        if ($payment_status == 'paid' || $payment_status == 'complimentry') {
+                           
+                            $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
+                            $command = $query->createCommand();
+                            $data = $command->queryAll();
+
+                            if ($data) {
+                                return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
+                            } else {
+                                return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ',' . $userid . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
                             }
                         }
                     }
@@ -801,11 +830,11 @@ required
     </div>
     <script>
 
-        function movetoemd(propid, docshow) {
+        function movetoemd(propid, docshow,userid) {
 
             $.ajax({
-                url: 'documentshow/movetoemd',
-                data: {propid: propid, docshow: docshow},
+                url: 'movetoemd',
+                data: {propid: propid, docshow: docshow,userid:userid},
                 success: function (data) {
 
                     if (data == '1') {
@@ -856,7 +885,7 @@ required
             $('#draggable6').modal('show');
             $('#showpropdoc').html('');
             $.ajax({
-                url: 'documentshow/documentshow',
+                url: 'documentshow',
                 data: {id: id},
                 success: function (data) {
                     

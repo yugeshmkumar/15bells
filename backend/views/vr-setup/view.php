@@ -107,8 +107,18 @@ use yii\helpers\Url;
 											<?php } ?>
                                                </tbody></table></div>
 											     <div class="note note-info"> Setup More Buyers </div>
-												 <?php  $arrfindusers = \common\models\User::find()->join('LEFT OUTER JOIN','myprofile','myprofile.userID = user.id')->where('myprofile.isactive =:active',array(':active'=>1))->all();
-												              $data = yii\helpers\ArrayHelper::map($arrfindusers,'id','email');
+
+                                                 <?php 
+                                                //   $arrfindusers = \common\models\User::find()
+                                                //  ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
+                                                //  ->where('myprofile.isactive =:active',array(':active'=>1))
+                                                //  ->all();
+                                                 $arrfindusers = \common\models\User::find()
+                                                // ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
+                                                 ->where('status =:active',array(':active'=>1))
+                                                 ->andwhere('email <> :actives',array(':actives'=>''))
+                                                 ->all();
+												$data = yii\helpers\ArrayHelper::map($arrfindusers,'id','email');
 												?>
 												 <?php echo '<label class="control-label">Select E-mail Addresses </label>';
 echo Select2::widget([
