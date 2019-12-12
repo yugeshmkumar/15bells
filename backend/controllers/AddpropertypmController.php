@@ -328,9 +328,15 @@ public function actionDocumentshow() {
                          $requestid = \common\models\RequestSiteVisitbin::find()->where(['request_id' => $reqid])->one();
                          $user_id =  $requestid->user_id;
                          $property_id =  $requestid->property_id;
+                         $connection = Yii::$app->getDb();
+                         $amt="select count(*) as counts from request_document_show where request_id=$reqid and user_id=$user_id";
+                    
+                        $command_get = $connection->createCommand($amt);
+                        $result_chk = $command_get->queryAll();
+                        if($result_chk[0]['counts'] <= 0 ){
 
                          $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $reqid, 'user_id' => $user_id, 'property_id' => $property_id, 'created_date' => $date])->execute();
-
+                        }
 
 
                 }
@@ -373,6 +379,26 @@ public function actionDocumentshow() {
    
  
         return $this->render('p_shortlists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+ 
+     }
+
+
+
+     public function actionP_usershortlists()
+	 {
+
+        $propid = $_GET['propids'];
+
+	 $searchModel = new \common\models\ShortlistpropertySearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams,$_GET['id']);
+         $dataProvider = $searchModel->searchprop(Yii::$app->request->queryParams,$propid);
+   
+ 
+        return $this->render('p_usershortlists', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

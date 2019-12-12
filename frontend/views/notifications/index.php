@@ -14,7 +14,7 @@
         
         <?php 
         $userid = Yii::$app->user->identity->id;
-        $payments = \Yii::$app->db->createCommand("select * from notifications where item_id=$userid")->queryAll();
+        $payments = \Yii::$app->db->createCommand("select * from notifications where item_id=$userid order by id desc")->queryAll();
           
         foreach ($payments as $payment){
 

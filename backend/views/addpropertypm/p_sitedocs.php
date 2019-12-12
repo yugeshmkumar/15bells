@@ -366,7 +366,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     },       
                     'editableOptions' => [
                         'inputType' => Editable::INPUT_DROPDOWN_LIST,
-              'data' => ['complimentry' => 'Complimentry', 'paid' => 'Paid'],
+              /* 'data' => ['complimentry' => 'Complimentry', 'paid' => 'Paid'], */
+              'data' => ['complimentry' => 'Complimentry'],
+
               'header' => 'Payment Status',
                         'formOptions' => ['action' => ['p_sitedocs']],
                         'submitButton' => [
