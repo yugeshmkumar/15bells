@@ -46,7 +46,7 @@ class AddpropertyController extends Controller
                     [
                         'actions' => ['sitevisit','index','creategrouplessor','deleteimage','getpropstatus','lessor','view','sellor','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
-'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
+'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','setforauction','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -2495,6 +2495,16 @@ public function actionDocumentss() {
         return $this->redirect(Yii::$app->request->referrer);
     }
 
+    public function actionSetforauction($id)
+    {
+        $model =  $this->findModel($id);
+        $model->request_for = 'bid';
+        $model->save(false);
+
+       // return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+    
     
      public function actionDelete($id)
     {

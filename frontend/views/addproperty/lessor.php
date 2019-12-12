@@ -84,6 +84,17 @@ $datas =  $dataProvider->query->all();
                                 ])
                                 ?>
                            </li> 
+
+						    <li><?=
+                                Html::a('Set for Auction', ['setforauction', 'id' => $viewid], [
+                                'class' => 'btn btn-danger delete_prop',
+                                'data' => [
+                                'confirm' => 'Are you sure you want to set this property for Auction ?',
+                                'method' => 'post',
+                                ],
+                                ])
+                                ?>
+                           </li> 
                            
                         </ul>
                         </div>

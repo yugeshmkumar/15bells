@@ -315,7 +315,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-          //  'id',
+            'property_id',
            // 'user_id',
            ['attribute' => 'property_id',
                             'label' => 'Property ID',
@@ -358,7 +358,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         if ($model->payment_status == 'pay_now') {
 
 
-                            $emd = "'$model->id'";
+                            $emd = "'$model->user_id'";
                             $property_id = "'$model->property_id'";
                             $documentshow_id = "'$model->documentshow_id'";
                             return Html::a('<button class="btn btn-warning"  style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $emd . ','.$property_id.','.$documentshow_id.')">Pay Now</button>', $url = 'javascript:void(0)', [
@@ -704,41 +704,42 @@ required
 
                                            function showpropdet(id){
                                                               
-                                                                $('#myModal').modal('show'); 
-       
-                                                                $.ajax({
-                                                                 url: '<?= Yii::getAlias('@frontendUrl').'/addproperty/showpropdetails';  ?>',
-                                                                data: {id: id},
-                                                                success: function (data) {
-                                                                   var obj = $.parseJSON(data);
-                                                                    $.each(obj, function(element) {
-                                                                        
-                                                                   $('#property_for').html(this.property_for);
-                                                                   $('#typename').html(this.typename);
-                                                                   $('#locality').html(this.locality);
-                                                                   $('#total_plot_area').html(this.total_plot_area);
-                                                                   $('#asking_rental_price').html(this.asking_rental_price);
-                                                                   $('#price_sq_ft').html(this.price_sq_ft);
-                                                                   $('#maintenance_cost').html(this.maintenance_cost);
-                                                                   $('#availability').html(this.availability);
-                                                                   $('#available_from').html(this.available_from);
-                                                                   $('#possesion_by').html(this.possesion_by);
-                                                                   $('#buildup_area').html(this.buildup_area);
-                                                                   $('#carpet_area').html(this.carpet_area);
-                                                                   $('#furnished_status').html(this.furnished_status);
-                                                                    });
-                                                                    
-                                                                 
-                                                                  },
-                                                                });
+                                                              $('#myModal').modal('show'); 
+                                                              $.ajax({
+                                                              type: "POST",
+                                                              url: 'addpropertypm/showpropdetails',
+                                                              data: {id: id},
+                                                              success: function (data) {
+                                                                 var obj = $.parseJSON(data);
+                                                                  $.each(obj, function(element) {
+                                                                  $('#email').html(this.email);
+                 $('#phone').html(this.username);    
+                                                                 $('#property_for').html(this.property_for);
+                                                                 $('#typename').html(this.typename);
+                                                                 $('#locality').html(this.locality);
+                                                                 $('#total_plot_area').html(this.total_plot_area);
+                                                                 $('#asking_rental_price').html(this.asking_rental_price);
+                                                                 $('#price_sq_ft').html(this.price_sq_ft);
+                                                                 $('#maintenance_cost').html(this.maintenance_cost);
+                                                                 $('#availability').html(this.availability);
+                                                                 $('#available_from').html(this.available_from);
+                                                                 $('#possesion_by').html(this.possesion_by);
+                                                                 $('#buildup_area').html(this.buildup_area);
+                                                                 $('#carpet_area').html(this.carpet_area);
+                                                                 $('#furnished_status').html(this.furnished_status);
+                                                                  });
+                                                                  
+                                                               
+                                                                },
+                                                              });
 
-                                                        }
+                                                      }
 
 
                                       var properid = '';var visitypeid = ''; var emd_id ='';                         
-                            function paynowfunc(emd,id,documentshow_id) { 
+                            function paynowfunc(emd,propid,documentshow_id) { 
                                  
-                                        properid=id;
+                                        properid=propid;
                                         visitypeid=documentshow_id;
                                         emd_id = emd;
                                         $('#draggable4').modal('show');                                       

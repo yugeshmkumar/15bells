@@ -174,6 +174,8 @@ $bundle = BackendAsset::register($this);
                             'icon'=>'<i class="fa fa-file"></i>',
                             'options'=>['class'=>'treeview'],
                             'items'=>[
+                                ['label'=>Yii::t('backend', 'Shortlists'), 'url'=>['/addpropertypm/p_shortlists'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+
                                 ['label'=>Yii::t('backend', 'Site Visit'), 'url'=>['/addpropertypm/p_visits'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'Documents'), 'url'=>['/addpropertypm/p_sitedocs'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'EMD'), 'url'=>['/request-emd'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],

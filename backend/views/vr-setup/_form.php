@@ -143,7 +143,8 @@ $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $c
 
 
 	<div class="row"><div class="col-md-10">
-	 <?php $arrgetproperty = \common\models\Addpropertyforbid::find()->where(['is_active'=>"1",'status'=>"approved",'request_for'=>"bid"])->all();
+     <?php $arrgetproperty = \common\models\Addpropertyforbid::find()->where(['is_active'=>"1",'status'=>"approved",'request_for'=>"bid"])->all();
+               $propid = 273 * 179 - $data->property_id;
 	          $listproperty = ArrayHelper::map($arrgetproperty ,'id','id'); ?>
 	  <?= $form->field($model, 'propertyID')->widget(Select2::classname(), [
     'data' => $listproperty,

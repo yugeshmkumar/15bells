@@ -217,7 +217,7 @@ public function actionGetuserids($id) {
 		 
 	    }
 
-public function actionEmdpay($propids, $visitypeid) {
+public function actionEmdpay($propids, $visitypeid,$emd_id) {
 
         $user_id = Yii::$app->user->identity->id;
         date_default_timezone_set("Asia/Calcutta");
@@ -226,24 +226,27 @@ public function actionEmdpay($propids, $visitypeid) {
             
 
         $payments = \Yii::$app->db->createCommand("SELECT id from vr_setup where propertyID='$propids'")->queryAll(); 
-        //echo '<pre>';print_r($payments);die;
+          //echo '<pre>';print_r($payments);die;
         
-        if(!empty($payments)){
-        $finduser = \common\models\RequestEmd::find()->where(['id' => $visitypeid])->one();
+           if(!empty($payments)){
+        $finduser = \common\models\RequestEmd::find()->where(['user_id' => $emd_id])->andwhere(['property_id' => $propids])->one();
         if($finduser){
+            
             
             $finduser->payment_status = 'paid';
             $finduser->save(false);
-        }      
+        }   else{
+            echo 'nhi aya ';die;
+        }   
             
         $vr_id = $payments[0]['id'];
-        $trendingadd = \Yii::$app->db->createCommand()->insert('auction_participants', ['vr_roomID' => $vr_id, 'roleID' => '15', 'partcipantID' => $user_id, 'created_at' => $date])->execute();
+        $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $emd_id, 'propertyID' => $propids, 'userroleID' => 'lessee', 'request_for'=>'bid','created_at' => $date])->execute();
         if ($trendingadd) {
             return 1;die;
         } else {
             return 2;die;
         }   
-        }else{
+        } else{
             return 3;die;
         }
         

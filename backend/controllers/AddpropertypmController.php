@@ -8,6 +8,9 @@ use common\models\AddpropertypmSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\MediaFilesConfig;
+use common\models\MediaFiles;
+use yii\db\Query;
 
 
 /**
@@ -35,19 +38,19 @@ class AddpropertypmController extends Controller
 		
 		$this->layout="sales_supply_layout";
 		
-	}if($assigndash->item_name == "sales_head"){
+	}else if($assigndash->item_name == "sales_head"){
 		
 		$this->layout="sales_layout";
 		
-	}if($assigndash->item_name == "sales_demand_buyer"){
+	}else if($assigndash->item_name == "sales_demand_buyer"){
 		
 		$this->layout="sales_demand_layout";		
 	}
-if($assigndash->item_name == "sales_supply_seller"){
+else if($assigndash->item_name == "sales_supply_seller"){
 		
 		$this->layout="sales_buying_layout";		
 	}
-if($assigndash->item_name == "sales_supply_lessor"){
+else if($assigndash->item_name == "sales_supply_lessor"){
 		
 		$this->layout="sales_leasing_layout";		
 	}else{
@@ -116,7 +119,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
               $id = $_POST['id'];
 	       $payments = \Yii::$app->db->createCommand("SELECT a.* ,p.typename as typename,u.email as email,u.username as username from addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN user as u ON (u.id = a.user_id) where a.id='$id'")->queryAll();
 
-	         echo json_encode($payments);
+	         return json_encode($payments);
    }
 
 public function actionShowuserdetails(){
@@ -124,8 +127,49 @@ public function actionShowuserdetails(){
                $id = $_POST['id'];
 	       $payments = \Yii::$app->db->createCommand("SELECT * from user where id='$id'")->queryAll();
 
-	         echo json_encode($payments);
+	         return  json_encode($payments);
    }
+
+
+   public function actionMovetoemd() {
+
+    $propid = $_GET['propid'];
+    $docshow = $_GET['docshow'];
+    $userid = $_GET['userid'];
+    if ($propid != '' && $docshow != '') {
+        $user_id = Yii::$app->user->identity->id;
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        $insert = \Yii::$app->db->createCommand()->insert('request_emd', ['documentshow_id' => $docshow, 'user_id' => $userid, 'property_id' => $propid, 'created_date' => $date])->execute();
+        if ($insert) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+public function actionDocumentshow() {
+
+
+    $id = $_GET['id'];
+    $query = (new Query())->select('*')->from('media_files_config')->where(['property_id' => $id]);
+    $command = $query->createCommand();
+    $datas = $command->queryAll();
+
+    $ids = [];
+    for ($i = 0; $i <= count($datas) - 1; $i++) {
+        $ids[] = $datas[$i]['media_id'];
+    }
+    // print_r($ids);die;
+    $pic = [];
+
+
+    $docnames = MediaFiles::find()->where(['id' => $ids])->asArray()->all();
+
+
+    return json_encode($docnames);
+}
  
 
 	 public function actionP_sitedocs()
@@ -147,7 +191,8 @@ public function actionShowuserdetails(){
                  $getrq = \common\models\RequestDocumentShow::find()->where(['id' => $reqid])->one();
                 if ($getrq) {
                     
-                        $getrq->payment_status = $tagsdata;                    
+                        $getrq->payment_status = $tagsdata;   
+                        $getrq->status = 1;                    
                         
                          $getrq->save();
                 }
@@ -260,6 +305,9 @@ public function actionShowuserdetails(){
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams,$_GET['id']);
          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+         date_default_timezone_set("Asia/Calcutta");
+         $date = date('Y-m-d H:i:s');
+ 
          if (isset($_POST['hasEditable'])) {
            
             // use Yii's response format to encode output as JSON
@@ -273,10 +321,18 @@ public function actionShowuserdetails(){
                 $getrq = \common\models\RequestSiteVisitbin::find()->where(['request_id' => $reqid])->one();
                 if ($getrq) {
                     
-                        $getrq->request_status = $tagsdata;                    
+                        $getrq->request_status = $tagsdata;               
                         
                          $getrq->save(false);
                          $value = $getrq->request_status;
+                         $requestid = \common\models\RequestSiteVisitbin::find()->where(['request_id' => $reqid])->one();
+                         $user_id =  $requestid->user_id;
+                         $property_id =  $requestid->property_id;
+
+                         $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $reqid, 'user_id' => $user_id, 'property_id' => $property_id, 'created_date' => $date])->execute();
+
+
+
                 }
 
                 
@@ -302,7 +358,29 @@ public function actionShowuserdetails(){
         ]);
 
  
-	 }
+     }
+     
+
+
+
+
+     public function actionP_shortlists()
+	 {
+
+	 $searchModel = new \common\models\ShortlistpropertySearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams,$_GET['id']);
+         $dataProvider = $searchModel->searches(Yii::$app->request->queryParams);
+   
+ 
+        return $this->render('p_shortlists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+ 
+     }
+     
+
 
 
     
