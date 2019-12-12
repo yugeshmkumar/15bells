@@ -429,6 +429,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 }
                     ],
+
+                    [
+                        'label' => 'Rating',
+                        'attribute' => 'account_manager_rating',
+                        'filter' => false,
+                        'options' => ['style' => 'width:50px;'],
+                        'format' => 'raw',
+                        'value' => function($model) {
+                    
+if($model->account_manager_rating != 0){
+    $account_manager_rating = $model->account_manager_rating;
+}else{
+    $account_manager_rating = 0;
+}
+
+                    return Html::a('<button class="btn btn-danger" style="padding: 5px;width: 30px;border: 1px solid; !important;"   value = "10">'.$account_manager_rating.'</button>', $url = 'javascript:void(0)', []);
+                }
+                    ],
+
+
                     [
                         'label' => 'Remove',
                         'attribute' => 'request_id',
@@ -439,7 +459,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $request_id = "'$model->request_id'";
 
 
-                    return Html::a('<button class="btn btn-danger" onclick="remove(' . $request_id . ')" style="padding: 5px;width: 94px;border: 1px solid; !important;"   value = "10"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove</button>', $url = 'javascript:void(0)', []);
+                    return Html::a('<button class="btn btn-danger" onclick="remove(' . $request_id . ')" style="padding: 5px;width: 30px;border: 1px solid; !important;"   value = "10"><i class="fa fa-trash-o" aria-hidden="true"></i></button>', $url = 'javascript:void(0)', []);
                 }
                     ],
                 ],

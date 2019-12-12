@@ -48,7 +48,44 @@ class ShortlistpropertySearch extends RequestDocumentShow
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
         $assigned_id = $querys->id;
-        $query = Shortlistproperty::find()->orderBy('id desc')->where(['assigned_id'=>$assigned_id]);
+        $query = Shortlistproperty::find()->groupBy('property_id')->orderBy('id desc')->where(['assigned_id'=>$assigned_id]);
+        //$query = RequestDocumentShow::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'property_id' => $this->property_id,
+            
+            'created_date' => $this->created_date,
+        ]);
+
+        
+
+        return $dataProvider;
+    }
+
+
+    public function searchprop($params,$propid)
+    {
+        $user_id = Yii::$app->user->identity->id;
+        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+        $assigned_id = $querys->id;
+        $query = Shortlistproperty::find()->orderBy('id desc')->where(['assigned_id'=>$assigned_id])->andwhere(['property_id'=>$propid]);
         //$query = RequestDocumentShow::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
 
         // add conditions that should always apply here

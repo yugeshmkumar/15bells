@@ -352,7 +352,7 @@ $('.pay_later').hide();
 
 	$.ajax({
 											   type: "POST",
-											   url: 'request-sitevisit/offlinepickdropsave',
+											   url: 'offlinepickdropsave',
 											   data: {id: returnid,ratings:ratingValue},
 											   dataType: 'json',
 											   success: function (data) {
@@ -389,7 +389,7 @@ $('.pay_later').hide();
 	
 	$.ajax({
 											   type: "POST",
-											   url: 'request-sitevisit/onlinepickdropsave',
+											   url: 'onlinepickdropsave',
 											   data: {id: returnid,ratings:ratingValue},
 											   dataType: 'json',
 											   success: function (data) {
@@ -411,12 +411,12 @@ $('.pay_later').hide();
 		
 		$.ajax({
 											   type: "POST",
-											   url: 'request-sitevisit/submitfeedback',
+											   url: 'submitfeedback',
 											   data: {id: returnid,managerfeedback:managerfeedback ,propertyfeedback: propertyfeedback},
 											  // dataType: 'json',
 											   success: function (data) {
 
-													 alert(data);
+													 
 
 												  if(data == '1'){
 
@@ -453,7 +453,7 @@ if(buttonid == 'yes' || buttonid == 'may_be' || buttonid == 'no'){
 
           $.ajax({
 											   type: "POST",
-											   url: 'request-sitevisit/makeuseryes',
+											   url: 'makeuseryes',
 											   data: {id: returnid,buttonid: buttonid},
 											  // dataType: 'json',
 											   success: function (data) {
@@ -516,7 +516,7 @@ if(buttonid == 'pay_now'){
                                     
 									$.ajax({
 											   type: "POST",
-											   url: 'request-sitevisit/checkuserconfirmstatus',
+											   url: 'checkuserconfirmstatus',
 											   data: {id: 'ready'},
 											   dataType: 'json',
 											   success: function (data) {
@@ -537,12 +537,13 @@ if(buttonid == 'pay_now'){
 											//	alert(nowTime);
 												  returnid = data[0];
 												 var sale_name = data[2];
+												 var propid = data[5];
 												 var dates = data[3];
 												 var times = data[4];
 
 												
 
-												 var haritid = 273*179-returnid;
+												 var haritid = 273*179-propid;
 											     var propsid = 'PR'+ haritid;
 												 
 												   if (returnid != '0') {

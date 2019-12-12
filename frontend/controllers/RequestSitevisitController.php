@@ -530,21 +530,24 @@ return $this->render('indexes', [
         $user_id = Yii::$app->user->identity->id;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $no = 'yes';
+        $no = 'no';
         $payment_status = 'paid';
         $blank = '0000-00-00 00:00:00';
 
         if ($id == 'ready') {
-            $finduser = \common\models\RequestSiteVisit::find()->where('request_site_visit.user_id = :user_id', [':user_id' => $user_id])
-            ->leftJoin('request_document_show', 'request_document_show.request_id=request_site_visit.request_id')
-            ->andWhere('request_site_visit.scheduled_time <> :blank', [':blank' => $blank])
-            ->andWhere('request_site_visit.scheduled_time < :date', [':date' => $date])
-            ->andwhere('request_site_visit.visit_status_confirm = :no', [':no' => $no])
-            ->andwhere('request_site_visit.request_status = :payment_status', [':payment_status' => $payment_status])
-            ->orderBy(['request_site_visit.request_id' => SORT_DESC])->LIMIT(1)
+            $finduser = \common\models\RequestSiteVisit::find()->where('user_id = :user_id', [':user_id' => $user_id])
+           // ->leftJoin('request_document_show', 'request_document_show.request_id=request_site_visit.request_id')
+            ->andWhere('scheduled_time <> :blank', [':blank' => $blank])
+            ->andWhere('scheduled_time < :date', [':date' => $date])
+            ->andwhere('visit_status_confirm = :no', [':no' => $no])
+            ->andwhere('request_status = :payment_status', [':payment_status' => $payment_status])
+            //->orderBy(['request_id' => SORT_DESC])->LIMIT(1)
             ->one();
 
+           // print_r($finduser);die;
+
             if ($finduser) {
+                $propid = $finduser->property_id;
                 $reqst_id = $finduser->request_id;
                 $scheduled_time   = $finduser->scheduled_time;
                 $sales_id   = $finduser->sales_id;
@@ -562,7 +565,7 @@ return $this->render('indexes', [
                 $time = date("g:i A", strtotime($scheduled_time));
 
                 
-                $info = array($reqst_id,$scheduled_time,$name,$dates,$time);
+                $info = array($reqst_id,$scheduled_time,$name,$dates,$time,$propid);
                 return   json_encode($info);
                // return $scheduled_time;
             } else {
@@ -602,6 +605,7 @@ return $this->render('indexes', [
 
             $finduser->manager_feedback = $managerfeedback;
             $finduser->property_feedback = $propertyfeedback;
+            $finduser->visit_status_confirm = 'yes';
 
             if($finduser->save(false)){
                 return 1;

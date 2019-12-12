@@ -307,30 +307,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
                     ],
                     
-            ['attribute' => 'Interested buyers',
-                'label' => 'Property ID',
-                'format' => 'raw',
-               'width' => '50px',
-                'filter' => false,
-                
-                    'value' => function($model,$data) {
-
-        $totalCount = Yii::$app->db->createCommand('SELECT COUNT(*) FROM shortlistproperty  where property_id= "'.$model->property_id.'"')->queryScalar();      
-        
-         if ($totalCount > 0) {
-            return Html::a($totalCount.' Users','',['onclick' => "window.open ('".Url::toRoute(['p_usershortlists', 
-            'propids' => $model->property_id])."'); return false", 
-                'class' => 'btn btn-success center-block']);
-        } else {
-            return Html::a('<button class="btn btn-info" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd()" >'.$totalCount.' Users</button>', $url = 'javascript:void(0)', []);
-        }
-
-                    // $propid = 273 * 179 - $data->property_id;
-                    // return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet(' . $data->property_id . ')">PR' . $propid . '</button>', $url = 'javascript:void(0)', [
-                    //             'title' => Yii::t('yii', 'Click to View Property details'),
-                    // ]);
-                }
-                    ],
+            
                     
 
                 //     [
