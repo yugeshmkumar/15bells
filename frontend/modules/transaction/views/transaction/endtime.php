@@ -11,8 +11,8 @@ use yii\db\Query ;
 $this->title = 'Transactions';
 $this->params['breadcrumbs'][] = $this->title;
 
-$datas =  $dataProvider->query->all();
-print_r($dataProvider);die;
+$datas =  $dataProvider->getModels();
+//echo '<pre>';print_r($datas);die;
 
 ?>
 <style>
@@ -37,78 +37,43 @@ print_r($dataProvider);die;
 }
 </style>
 
+<?php 
+foreach ($datas as $data){
+    $loggedin=Yii::$app->user->identity->id;
 
- <div class="col-md-12 text-center winner_bg">
+if($data['buyer_id'] == $loggedin){
+
+    if($data['end_rank'] == 1){  ?>
+
+    <div class="col-md-12 text-center winner_bg">
       <div class="">
         <img src="<?= Yii::getAlias('@frontendUrl') ?>/newimg/winner.jpg">
       </div>
   </div> 
 
- <div class="col-md-12 text-center lose_bg">
+  <?php   }else{  ?>
+
+
+  <div class="col-md-12 text-center lose_bg">
       <div class="">
         <h2 class="lost_head">YOU LOSE</h2>
-        <img src="<?= Yii::getAlias('@frontendUrl') ?>/newimg/loser.jpg">
+        <img src="<?= Yii::getAlias('@frontendUrl') ?>/newimg/loser.jpg">your rank is <?php echo $data['end_rank']; ?>
       </div>
   </div> 
+
+
+   <?php } }  } ?>
+
+
+ 
+
+ 
 <div class="transaction-index">
 
     <!--<h1><?//= Html::encode($this->title) ?></h1>-->
 
  
 
-
-<?php
-
-
-
- Pjax::begin(['id'=>'m1']); ?>    <?= GridView::widget([
-
-        'dataProvider' => $dataProvider,
-        'columns' => [
-         
-           [
-               'label' =>"Username ",
-               'attribute' => 'username',
-               'value'=>function($data){
-                   return $data["username"];
-               }
-           ],
-       [
-               'label' =>"Bid Amount",
-               'attribute' => 'bid_amount',
-               'value'=>function($data){
-                   return $data["bidder"];
-               }
-           ],
-      
-
-[
-               'label' =>"Bid Date",
-               'attribute' => 'status',
-               'value'=>function($data){
-                   return $data["bid_date"];
-               }
-           ],
-
-           [
-            'label' =>"Rank",
-            'attribute' => 'end_rank',
-            'value'=>function($data){
-                return $data["end_rank"];
-            }
-        ],
-          
-   	       [
-               'label' =>"Status",
-               'attribute' => 'status',
-               'value'=>function($data){
-                   return $data["status"];
-               }
-           ],
-        
-        ],
-    ]); ?>
-<?php Pjax::end(); ?></div>
 
 <?php
 $script = <<< JS
