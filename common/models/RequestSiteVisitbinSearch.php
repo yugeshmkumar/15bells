@@ -47,7 +47,10 @@ class RequestSiteVisitbinSearch extends RequestSiteVisitbin
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
          $assigned_id = $querys->id;
-        $query = RequestSiteVisitbin::find()->where(['assigned_to_id'=>$assigned_id])->andwhere(['<>','status', '2']);
+        $query = RequestSiteVisitbin::find()->where(['assigned_to_id'=>$assigned_id])->andwhere(['<>','status', '2'])->orderBy([
+            'scheduled_time' => SORT_DESC
+            
+          ]);
        
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

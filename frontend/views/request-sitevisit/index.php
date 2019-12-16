@@ -58,7 +58,7 @@ $datas =  $dataProvider->query->all();
                 $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
                 $project_type_id = $addproperty->project_type_id;
                 $property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
-                $querys = CompanyEmp::find()->where(['id'=>$data->sales_id])->one();
+                $querys = CompanyEmp::find()->where(['id'=>$data->assigned_to_id])->one();
                  $assigned_id = $querys->userid;
 
                 $users = User::find()->where(['id'=>$assigned_id])->one();

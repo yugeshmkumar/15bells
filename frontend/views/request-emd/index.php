@@ -9,6 +9,8 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use kartik\editable\EditableAsset;
 use yii\db\Query;
+use common\models\CompanyEmp;
+use common\models\User;
 
 
 EditableAsset::register($this);
@@ -27,6 +29,8 @@ PopoverXAsset::register($this);
 
 $this->title = 'Request Emds';
 $this->params['breadcrumbs'][] = $this->title;
+$datas =  $dataProvider->query->all();
+
 ?>
 
 
@@ -34,104 +38,125 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
 
 
-<div class="col-md-12">
+<div class="col-md-9 content_dashboard no_pad">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<h2 class="dashboard_head">Auction EMD</h2>
+					</div>
+					
+			
 
-    <div class="portlet portlet-sortable sellr_proprty">
-        <div class="portlet-title">
-               <div class="caption font-green-sharp exp_titl">
-                                        
-                                        <span class="caption-subject bold uppercase exp_name">Request EMD</span>
-                                        <!--<span class="caption-helper">details...</span>-->
-                                    </div>
+				<div class="col-md-6 text-right addprop_button">
+						<div class="dropdown filter_drop">
+											<button id="dLabel" class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Filter
+											<span class="caret_filter"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="18" class="svg_drop"></span>
+											</button>
+                                            
+    
 
-        </div>
-        <div class="portlet-body">
+										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
+                                          <form method="post">
+																						<input name="progress" class="sort_list" type="submit" value="In Progress">
+                                            <input name="progress" class="sort_list" type="submit" value="Completed">
+                                          </form>
+											<!-- <li></li> -->
+										  </ul>
+                                         
+									</div>
+					</div>
+					</div>
+                <?php foreach ($datas as $data){ 
 
-            <div class="addpropertybackend-index ">
+                $viewid  =  $data->property_id;                
+                $haritid = 273*179-$viewid;
+                $propsid = 'PR'. $haritid;
 
-                <?php Pjax::begin(['id' => 'pjax-grid-view']); ?>   
-               <?php  
-          if($this->beginCache('emd',['variations'=>$searchModel->id])){     
-          echo GridView::widget([
-        'dataProvider' => $dataProvider,
-		'options' => ['class' => 'table_common'],
-       // 'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
+                $project_type_id = $addproperty->project_type_id;
+                $property_for = $addproperty->property_for;
+                $expected_price = $addproperty->expected_price;
+                $asking_rental_price = $addproperty->asking_rental_price;
 
-          //  'id',
-           // 'user_id',
-           ['attribute' => 'property_id',
-                            'label' => 'Property ID',
-                            'format' => 'raw',
-                            'width' => '200px',
-							
-                            'filter' => false,
-                            'value' => function($data) {
+                $reserve_price  =  ($property_for == 'rent' ? $asking_rental_price : $expected_price);
 
-                                $propid = 273 * 179 - $data->property_id;
-                               return Html::a('<button class="btn btn-default" id="emdpropdetails"   data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->property_id.')">PR'.$propid.'</button>', $url = 'javascript:void(0)', [
-                                                'title' => Yii::t('yii', 'Click to View Property details'),
-                                    ]);
-                            }
-                        ],
-           // 'payable_amount',
-            ['attribute' => 'payable_amount',
-                            'label' => 'Payable Amount',
-                            'format' => 'raw',
-                            'width' => '230px',
-                            'value' => function($data) {
-                                return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
-                            }
-                        ],
-             ['attribute' => 'escrow_account_id',
-                            'label' => 'Escrow account',
-                            'format' => 'raw',
-                            'width' => '230px',
-                            'value' => function($data) {
-                                return $data->escrow_account_id;
-                            }
-                        ],                   
-          //  'escrow_account_id',
-            
-                           [ 'label' => 'Payment Status',
-                            'attribute' => 'payment_status',
-                            'filter' => false,
-                            'options' => ['style' => 'width:200px;'],
-                            'format' => 'raw',
-                            'value' => function($model) {
-                        if ($model->payment_status == 'pay_now') {
+                
 
+                $property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
+                $querys = CompanyEmp::find()->where(['id'=>$data->assigned_to_id])->one();
+                 $assigned_id = $querys->userid;
 
-                            $request_id = "'$model->id'";
-                            $property_id = "'$model->property_id'";
-                            return Html::a('<button class="btn btn-warning"  id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $request_id . ','.$property_id.')">Pay Now</button>', $url = 'javascript:void(0)', [
-                                        'title' => Yii::t('yii', 'Click to Complete'),
-                            ]);
-                        } else if ($model->payment_status == 'pending') {
-                            return Html::a('<button class="btn btn-info" id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
-                        } else if ($model->payment_status == 'paid') {
-                            return Html::a('<button class="btn btn-success" id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
-                        } else {
-                            return Html::a('<button class="btn btn-success"  id="emdpaymentstatus" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
-                        }
-                    }
-                        ],
-            // 'payment_status',
-            // 'created_date',
-            // 'updated_date',
-            // 'status',
+                $users = User::find()->where(['id'=>$assigned_id])->one();
+                                    
+                    ?>
+				<div class="col-md-12 property_detail">
+					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
+					
+							<div class="col-md-12 visit_buyer">
+								<div class="row">
+									<div class="col-md-4 agent_det">
+											<div class="row">
+												<div class="col-md-5">
+													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+												</div>
+												
+												<div class="col-md-7 no_pad">
+												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
+												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+												</div>
+											</div>
+										<div class="row" style="margin-top:30px;">
+											<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->mobile; ?></p>
+											<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
 
-           // ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]);
-    Yii::trace('store emd table to log');
-    $this->endCache();
-    }
-     ?>
-                <?php Pjax::end(); ?>
+                      <div class="col-md-5">
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($created_date)); ?></p>
+                                            
+											</div>
+											<div class="col-md-7 no_pad">
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($created_date)); ?></p>
+												</div>	
+										
+										</div>
+										
+									</div>
+                                   
+									<div class="col-md-8">
+										
+										<div class="row">
+											<div class="col-md-6 company_overview property_manage">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
+											<p class="label_name"><?php echo $property_type->typename ?></p>
+										</div>
+										<div class="col-md-6 company_overview property_manage">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
+											<p class="label_name">J<?php echo $addproperty->locality ?></p>
+										</div>
+										<div class="col-md-6">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Reserve Price</p>
+											<div class="col-md-12">
+												<div class="col-md-5 no_pad"><button class="button_select active_butn"><?php echo $reserve_price; ?></button></div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Amount</p>
+											<div class="col-md-12">
+												<div class="col-md-4 no_pad"><button class="cash_butn active_butn"><?php echo $data->payable_amount; ?></button></div>
+											
+											</div>
+										</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
 
-            </div></div> </div>
+						
+				</div>
+                <?php } ?>
+			</div>
+  		</div>
 <div id="myModal" class="modal fade" role="dialog">
 				  <div class="modal-dialog seller_exp modal-lg">
 
