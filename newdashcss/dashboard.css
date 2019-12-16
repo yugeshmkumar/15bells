@@ -18,7 +18,10 @@ h1.page-header {
 .sidebar {
 	padding-left: 0;
 }
-
+.building_name{
+	float:right;
+	color:#c4984f;
+}
 .main-container { 
 	background: #FFF;
 	margin-top: 0px;
@@ -1619,4 +1622,17 @@ input[type=file]::-webkit-file-upload-button {
    .blankimage-width{
 
 	width:100%
+}
+.detail_s{
+	font-size:20px;
+	font-weight:500;
+	color:#221d36;
+}
+.confrimation_txt{
+	font-size:19px;
+	font-weight:500;
+	color:#c4984f;
+}
+.person_name{
+	font-size:15px;
 }

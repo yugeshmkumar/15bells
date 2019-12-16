@@ -550,6 +550,16 @@ if(currency == 'lacs'){
 
 });
 
+
+$(document).ready(function() {
+    setTimeout(function() {
+      $('html,body').animate({
+        scrollTop: $(".add_property").offset().top - 120},
+        'slow');   
+    }, 7000);
+});
+
+
     $("#dummypriceminimum").on("input", function(){       
               var dummyprice =  $(this).val();
               var currency =  $('#propminrupees').val();
