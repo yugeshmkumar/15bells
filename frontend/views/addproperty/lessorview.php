@@ -58,7 +58,7 @@ $datas =  $dataProvider->query->all();
                    
                     ?>
 				<div class="col-md-12 property_detail">
-					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
+					<p class="property_id">Property ID : <?php echo $propsid; ?><a href="#" class="emd_pay"><span class="building_name">Online</span></a></p>
 					
 							<div class="col-md-12 visit_buyer">
 								<div class="row">
@@ -157,13 +157,118 @@ $datas =  $dataProvider->query->all();
 
     </div>
 </div>
+<div id="emd_deposit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal_dialogue modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content draw_map no_pad">
+            <div class="">
+                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid user_viewed">
+                 <div class="row">
+                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR 250000000</span> in favour of<span class="detail_s"> Mr. Amit Kumar</span> as per the details.
+                 </div>
+                    <div class="row">
+                    <ul class="add_property nav nav-pills text-center">
+						<li class="active property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">UTR Details</a></li>
+						<li class="property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Demand Draft Details</a></li>
+					</ul>
+				<div class="tab-content">
+				
+				  <div id="home" class="tab-pane fade in active">
+                             <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">UTR No.</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="SBI"></p>
+										</div>
+									  </div>
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="07/09/1992"></p>
+										</div>
+									  </div>
+                                      <div class="col-md-12 save_profile text-right">
+								<a href="#" class="save_button">Save</a>
+                                        </div>
+							  
+                  </div>
+                  <div id="menu1" class="tab-pane fade in">	
+                  <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">DD No.</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="SBI"></p>
+										</div>
+									  </div>
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="New Delhi"></p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="07/09/1992"></p>
+										</div>
+									  </div>
+                                      
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Physically Sent <span class="person_name">(Person Name)</span></p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="Dhanush"></p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">By Courier <span class="person_name">(Tracking ID)</span></p>
+											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="ID12121212"></p>
+										</div>
+									  </div>
+                                      <div class="col-md-12 save_profile text-right">
+							 <a href="#" class="save_button">Save</a>
+                                <div>
+
+							  </div>
+                  </div>
+
+                </div>                                     
+
+
+
+
+
+                    </div>
+                   
+                   
+                </div>
+                </div><!-- panel-group -->
+
+            </div>
+            
+        </div>
+
+    </div>
 
 
 <?php 
 $script = <<< JS
 
 
-
+$(".emd_pay").click(function(){
+    $("#emd_deposit").modal('show');
+});
 
 $('.toglebid').click(function(){
  var propertyids =  $(this).attr('id');
