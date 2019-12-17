@@ -109,18 +109,18 @@ $datas =  $dataProvider->query->all();
 								if($model){
 
 										?>
-				  <a href="javascript:void(0)" onclick="emd_process(<?php echo $emdid; ?>)" ><span class="building_name">Emd-Processing</span></a>
+				  <a href="javascript:void(0)" onclick="emd_process(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-Processing</span></a>
 
 								<?php }else{ ?>
 								
-									<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>)" ><span class="building_name">Emd-details</span></a>
+									<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
 								
 								<?php }  } else if($payment_status == 'paid') { ?>
 
 										<a href="javascript:void(0)" ><span class="building_name">Emd-paid</span></a>
 								<?php }else { ?>
 
-							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>)" ><span class="building_name">Emd-details</span></a>
+							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
 								<?php } ?>
           </p>
 					
@@ -483,9 +483,10 @@ required
             
             <?php $form = ActiveForm::begin(['id' => $modeled->formName(),'action'=>"emd_details/create"]); ?>
             
-                <div class="container-fluid user_viewed">
+                <div class="container-fluid user_viewed">	
+													
                  <div class="row">
-                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR 250000000</span> in favour of<span class="detail_s"> Mr. Amit Kumar</span> as per the details.
+                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR <span id="emd_amount">250000000</span></span> in favour of <span class="detail_s" id="favour_of"> Mr. Amit Kumar</span> as per the details.
                  </div>
                  <?php echo $form->field($modeled, 'emd_id')->hiddenInput([])->label(false); ?>
 								 <?php echo $form->field($modeled, 'favour_of')->hiddenInput(['value'=>'utr'])->label(false); ?>
@@ -637,7 +638,7 @@ required
             
                 <div class="container-fluid user_viewed">
                  <div class="row">
-                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR 250000000</span> in favour of<span class="detail_s"> Mr. Amit Kumar</span> as per the details.
+								 <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR <span id="emd_amounts">250000000</span></span> in favour of <span class="detail_s" id="favour_ofs"> Mr. Amit Kumar</span> as per the details.
                  </div>
                  <?php echo $form->field($modeles, 'emd_id')->hiddenInput(['id'=>'updateid'])->label(false); ?>
 								 <?php echo $form->field($modeles, 'favour_of')->hiddenInput(['id'=>'updatefavourof','value'=>'utr'])->label(false); ?>
@@ -773,7 +774,7 @@ required
 <script>
 var updateemdid = '';
 
-  function emd_process(id){
+  function emd_process(id,propid){
     
 		updateemdid = id;
 
@@ -787,6 +788,8 @@ var updateemdid = '';
 											   data: {emdid: updateemdid},
 											   dataType: 'json',
 											   success: function (data) {
+
+													 getfavourofs(updateemdid,propid)
 												  
 											  var details = JSON.stringify(data);
 												var obj =   JSON.parse(details)
@@ -949,12 +952,61 @@ $this->registerJs($script);
     
     <script>
 
-    function emd_pay(id){
+    function emd_pay(id,propid){
     
       $('#emd_details-emd_id').val(id);
       $("#emd_deposit").modal('show');
 
+			$.ajax({
+											   type: "POST",
+											   url: 'emd_details/getfavour',
+											   data: {emdid: updateemdid,propid:propid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													var details = JSON.stringify(data);
+												
+											  	var obj =   JSON.parse(details);
+													var emd_amount = obj.Emd_amount;
+													var favour_of =  obj.favour_of;
+
+													$('#emd_amount').html(emd_amount);
+													$('#favour_of').html(favour_of);
+
+												 },
+
+
+			});
+
     }
+
+
+		function getfavourofs(updateemdid,propid){
+
+
+			$.ajax({
+											   type: "POST",
+											   url: 'emd_details/getfavour',
+											   data: {emdid: updateemdid,propid:propid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													var details = JSON.stringify(data);
+												
+											  	var obj =   JSON.parse(details);
+													var emd_amount = obj.Emd_amount;
+													var favour_of =  obj.favour_of;
+
+													$('#emd_amounts').html(emd_amount);
+													$('#favour_ofs').html(favour_of);
+
+												 },
+
+
+			});
+
+
+		}
 
 
 

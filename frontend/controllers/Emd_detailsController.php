@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use common\models\VrSetup;
 use common\models\Emd_details;
 use common\models\Emd_detailsSearch;
 use yii\web\Controller;
@@ -82,6 +83,25 @@ class Emd_detailsController extends Controller
 
         $querys = Emd_details::find()->where(['emd_id'=>$emdid])->one();
         return  $querys;
+    }
+
+    public function actionGetfavour()
+    {
+
+        $model = new VrSetup();  
+        $emdid =  $_POST['emdid'];
+        $propid =  $_POST['propid'];
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $querys = VrSetup::find()->where(['propertyID'=>$propid])->one();
+
+        if($querys){
+            return  $querys;
+        }else{
+            return 2;
+        }
+       
     }
 
 
