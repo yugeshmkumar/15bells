@@ -269,7 +269,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data) {
                     if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
                         $fullname = \common\models\User::findOne($data->user_id)->fullname;
-                        return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+                        return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
                                 'title' => Yii::t('yii', 'Click to View User details'),
                     ]);
                     } else {
@@ -432,17 +432,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     [
                         'label' => 'Rating',
-                        'attribute' => 'account_manager_rating',
+                        'attribute' => 'property_rating',
                         'filter' => false,
                         'options' => ['style' => 'width:50px;'],
                         'format' => 'raw',
                         'value' => function($model) {
-                    
-if($model->account_manager_rating != 0){
-    $account_manager_rating = $model->account_manager_rating;
-}else{
-    $account_manager_rating = 0;
-}
+                                    
+                if($model->property_rating != 0){
+                    $account_manager_rating = $model->property_rating;
+                }else{
+                    $account_manager_rating = 0;
+                }
 
                     return Html::a('<button class="btn btn-danger" style="padding: 5px;width: 30px;border: 1px solid; !important;"   value = "10">'.$account_manager_rating.'</button>', $url = 'javascript:void(0)', []);
                 }

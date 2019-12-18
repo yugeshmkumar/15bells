@@ -9,6 +9,10 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use kartik\editable\EditableAsset;
 use yii\db\Query;
+use common\models\CompanyEmp;
+use common\models\User;
+use common\models\Emd_details;
+
 
 
 EditableAsset::register($this);
@@ -27,6 +31,8 @@ PopoverXAsset::register($this);
 
 $this->title = 'Request Emds';
 $this->params['breadcrumbs'][] = $this->title;
+$datas =  $dataProvider->query->all();
+
 ?>
 
 
@@ -34,104 +40,154 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
 
 
-<div class="col-md-12">
+<div class="col-md-9 content_dashboard no_pad">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<h2 class="dashboard_head">Auction EMD</h2>
+					</div>
+					
+			
 
-    <div class="portlet portlet-sortable sellr_proprty">
-        <div class="portlet-title">
-               <div class="caption font-green-sharp exp_titl">
-                                        
-                                        <span class="caption-subject bold uppercase exp_name">Request EMD</span>
-                                        <!--<span class="caption-helper">details...</span>-->
-                                    </div>
+				<!-- <div class="col-md-6 text-right addprop_button">
+						<div class="dropdown filter_drop">
+											<button id="dLabel" class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Filter
+											<span class="caret_filter"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="18" class="svg_drop"></span>
+											</button>
+                                            
+    
 
-        </div>
-        <div class="portlet-body">
+										  <ul class="dropdown-menu User_role" aria-labelledby="dLabel">
+                                          <form method="post">
+																						<input name="progress" class="sort_list" type="submit" value="In Progress">
+                                            <input name="progress" class="sort_list" type="submit" value="Completed">
+                                          </form>
+											<!-- <li></li> -->
+										  <!-- </ul> -->
+                                         
+									<!-- </div> -->
+					<!-- </div> -->
+					</div>
+                <?php foreach ($datas as $data){ 
 
-            <div class="addpropertybackend-index ">
+								$viewid  =  $data->property_id; 
+								$payment_status  =  $data->payment_status;  
+								$emdid  =  $data->id;                
+								
+                $haritid = 273*179-$viewid;
+                $propsid = 'PR'. $haritid;
 
-                <?php Pjax::begin(['id' => 'pjax-grid-view']); ?>   
-               <?php  
-          if($this->beginCache('emd',['variations'=>$searchModel->id])){     
-          echo GridView::widget([
-        'dataProvider' => $dataProvider,
-		'options' => ['class' => 'table_common'],
-       // 'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
+                $project_type_id = $addproperty->project_type_id;
+                $property_for = $addproperty->property_for;
+                $expected_price = $addproperty->expected_price;
+                $asking_rental_price = $addproperty->asking_rental_price;
 
-          //  'id',
-           // 'user_id',
-           ['attribute' => 'property_id',
-                            'label' => 'Property ID',
-                            'format' => 'raw',
-                            'width' => '200px',
-							
-                            'filter' => false,
-                            'value' => function($data) {
+                $reserve_price  =  ($property_for == 'rent' ? $asking_rental_price : $expected_price);
 
-                                $propid = 273 * 179 - $data->property_id;
-                               return Html::a('<button class="btn btn-default" id="emdpropdetails"   data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->property_id.')">PR'.$propid.'</button>', $url = 'javascript:void(0)', [
-                                                'title' => Yii::t('yii', 'Click to View Property details'),
-                                    ]);
-                            }
-                        ],
-           // 'payable_amount',
-            ['attribute' => 'payable_amount',
-                            'label' => 'Payable Amount',
-                            'format' => 'raw',
-                            'width' => '230px',
-                            'value' => function($data) {
-                                return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
-                            }
-                        ],
-             ['attribute' => 'escrow_account_id',
-                            'label' => 'Escrow account',
-                            'format' => 'raw',
-                            'width' => '230px',
-                            'value' => function($data) {
-                                return $data->escrow_account_id;
-                            }
-                        ],                   
-          //  'escrow_account_id',
-            
-                           [ 'label' => 'Payment Status',
-                            'attribute' => 'payment_status',
-                            'filter' => false,
-                            'options' => ['style' => 'width:200px;'],
-                            'format' => 'raw',
-                            'value' => function($model) {
-                        if ($model->payment_status == 'pay_now') {
+                
+
+                $property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
+                $querys = CompanyEmp::find()->where(['id'=>$data->assigned_to_id])->one();
+                 $assigned_id = $querys->userid;
+
+                $users = User::find()->where(['id'=>$assigned_id])->one();
+                                    
+                    ?>
+				<div class="col-md-12 property_detail">
+					<p class="property_id">Property ID : <?php echo $propsid; ?>
 
 
-                            $request_id = "'$model->id'";
-                            $property_id = "'$model->property_id'";
-                            return Html::a('<button class="btn btn-warning"  id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $request_id . ','.$property_id.')">Pay Now</button>', $url = 'javascript:void(0)', [
-                                        'title' => Yii::t('yii', 'Click to Complete'),
-                            ]);
-                        } else if ($model->payment_status == 'pending') {
-                            return Html::a('<button class="btn btn-info" id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
-                        } else if ($model->payment_status == 'paid') {
-                            return Html::a('<button class="btn btn-success" id="emdpaymentstatus" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
-                        } else {
-                            return Html::a('<button class="btn btn-success"  id="emdpaymentstatus" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
-                        }
-                    }
-                        ],
-            // 'payment_status',
-            // 'created_date',
-            // 'updated_date',
-            // 'status',
+										<?php 
 
-           // ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]);
-    Yii::trace('store emd table to log');
-    $this->endCache();
-    }
-     ?>
-                <?php Pjax::end(); ?>
+										if($payment_status=='pay_now' || $payment_status=='pending'){
+					$model = new Emd_details();      
+									
 
-            </div></div> </div>
+					$model = Emd_details::find()->where(['emd_id'=>$emdid])->one();
+								if($model){
+
+										?>
+				  <a href="javascript:void(0)" onclick="emd_process(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-Processing</span></a>
+
+								<?php }else{ ?>
+								
+									<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
+								
+								<?php }  } else if($payment_status == 'paid') { ?>
+
+										<a href="javascript:void(0)" ><span class="building_name">Emd-paid</span></a>
+								<?php }else { ?>
+
+							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
+								<?php } ?>
+          </p>
+					
+							<div class="col-md-12 visit_buyer">
+								<div class="row">
+									<div class="col-md-4 agent_det">
+											<div class="row">
+												<div class="col-md-5">
+													<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+												</div>
+												
+												<div class="col-md-7 no_pad">
+												<h3 class="user_name"><?php echo $users->fullname; ?></h3>
+												<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+												</div>
+											</div>
+										<div class="row" style="margin-top:30px;">
+											<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->mobile; ?></p>
+											<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+
+                      <div class="col-md-5">
+                                            <p class="site_txt"><?php echo  date("g:i A", strtotime($created_date)); ?></p>
+                                            
+											</div>
+											<div class="col-md-7 no_pad">
+                                            <p class="site_txt"><?php echo  date("F d,Y", strtotime($created_date)); ?></p>
+												</div>	
+										
+										</div>
+										
+									</div>
+                                   
+									<div class="col-md-8">
+										
+										<div class="row">
+											<div class="col-md-6 company_overview property_manage">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
+											<p class="label_name"><?php echo $property_type->typename ?></p>
+										</div>
+										<div class="col-md-6 company_overview property_manage">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
+											<p class="label_name"><?php echo $addproperty->locality ?></p>
+										</div>
+										<div class="col-md-6">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Reserve Price</p>
+											<div class="col-md-12">
+												<div class="col-md-5 no_pad"><button class="button_select active_butn"><?php echo $reserve_price; ?></button></div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Amount</p>
+											<div class="col-md-12">
+												<div class="col-md-4 no_pad"><button class="cash_butn active_butn"><?php echo $data->payable_amount; ?></button></div>
+											
+											</div>
+										</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+
+						
+				</div>
+                <?php } ?>
+			</div>
+  		</div>
 <div id="myModal" class="modal fade" role="dialog">
 				  <div class="modal-dialog seller_exp modal-lg">
 
@@ -411,8 +467,548 @@ required
         </div>
     </div>
     
+
+   <div id="emd_deposit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal_dialogue modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content draw_map no_pad">
+            <div class="">
+                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+            
+            <?php $modeled = new \common\models\Emd_details(); ?>
+            
+            <?php $form = ActiveForm::begin(['id' => $modeled->formName(),'action'=>"emd_details/create"]); ?>
+            
+                <div class="container-fluid user_viewed">	
+													
+                 <div class="row">
+                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR <span id="emd_amount">250000000</span></span> in favour of <span class="detail_s" id="favour_of"> Mr. Amit Kumar</span> as per the details.
+                 </div>
+                 <?php echo $form->field($modeled, 'emd_id')->hiddenInput([])->label(false); ?>
+								 <?php echo $form->field($modeled, 'favour_of')->hiddenInput(['value'=>'utr'])->label(false); ?>
+
+                    <div class="row">
+                    <ul class="add_property nav nav-pills text-center">
+						<li class="active property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" id="utrclick" href="#home" class="categ_selec">UTR Details</a></li>
+						<li class="property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" href="#menu1" id="ddclick" class="categ_selec">Demand Draft Details</a></li>
+					</ul>
+				<div class="tab-content">
+				
+				  <div id="home" class="tab-pane fade in active">
+                             <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">UTR No.</p>
+											<p class="label_name">
+
+                      <?php echo $form->field($modeled, 'utr_no')->textInput(['maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'utr_bank_name')->textInput(['maxlength' => true, 'placeholder' => "SBI", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'utr_bank_branch_name')->textInput(['maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name">
+
+                      <?php echo $form->field($modeled, 'utr_date')->textInput(['maxlength' => true, 'placeholder' => "07/09/1992", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                     
+							  
+                  </div>
+                  <div id="menu1" class="tab-pane fade in">	
+                  <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">DD No.</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'dd_no')->textInput(['maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'dd_bank_name')->textInput(['maxlength' => true, 'placeholder' => "SBI", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                    <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'dd_bank_branch_name')->textInput(['maxlength' => true, 'placeholder' => "New Delhi", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'dd_date')->textInput(['maxlength' => true, 'placeholder' => "07/09/1992", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                      
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Physically Sent <span class="person_name">(Person Name)</span></p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'person_name')->textInput(['maxlength' => true, 'placeholder' => "Dhanush", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">By Courier <span class="person_name">(Tracking ID)</span></p>
+											<p class="label_name">
+                      <?php echo $form->field($modeled, 'tracking_id')->textInput(['maxlength' => true, 'placeholder' => "ID12121212", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                     
+
+							  </div>
+                  </div>
+
+                </div>                                     
+                <div class="col-md-12 save_profile text-right">
+                   <?= Html::submitButton('Save', ['class' => 'save_button']) ?>
+							 <!-- <a href="#" class="save_button">Save</a> -->
+                                </div>
+
+
+
+
+                    </div>
+                   
+                   
+                </div>
+                </div><!-- panel-group -->
+                
+                
+                <?php ActiveForm::end(); ?>
+
+            </div>
+            
+            
+            
+            
+        </div>
+
+    </div>
+    </div>
+
+
+
+ <div id="emd_depositprocess" class="modal fade" role="dialog">
+    <div class="modal-dialog modal_dialogue modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content draw_map no_pad">
+            <div class="">
+                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+            
+            <?php $modeles = new \common\models\Emd_details(); ?>
+            
+            <?php $form = ActiveForm::begin(['id' => 'updateform']); ?>
+            
+                <div class="container-fluid user_viewed">
+                 <div class="row">
+								 <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR <span id="emd_amounts">250000000</span></span> in favour of <span class="detail_s" id="favour_ofs"> Mr. Amit Kumar</span> as per the details.
+                 </div>
+                 <?php echo $form->field($modeles, 'emd_id')->hiddenInput(['id'=>'updateid'])->label(false); ?>
+								 <?php echo $form->field($modeles, 'favour_of')->hiddenInput(['id'=>'updatefavourof','value'=>'utr'])->label(false); ?>
+
+
+                    <div class="row">
+                    <ul class="add_property nav nav-pills text-center">
+						<li class="active property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" id="utrclicks" href="#homes" class="categ_selec">UTR Details</a></li>
+						<li class="property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" id="ddclicks" href="#menu1s" class="categ_selec">Demand Draft Details</a></li>
+					</ul>
+				<div class="tab-content">
+				
+				  <div id="homes" class="tab-pane fade in active">
+                             <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">UTR No.</p>
+											<p class="label_name">
+
+                      <?php echo $form->field($modeles, 'utr_no')->textInput(['id'=>'update_utrno','maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'utr_bank_name')->textInput(['id'=>'update_utrbank','maxlength' => true, 'placeholder' => "SBI", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'utr_bank_branch_name')->textInput(['id'=>'update_utrbranch','maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name">
+
+                      <?php echo $form->field($modeles, 'utr_date')->textInput(['id'=>'update_utrdate','maxlength' => true, 'placeholder' => "07/09/1992", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                     
+							  
+                  </div>
+                  <div id="menu1s" class="tab-pane fade in">	
+                  <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">DD No.</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'dd_no')->textInput(['id'=>'update_ddno','maxlength' => true, 'placeholder' => "999999999999", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'dd_bank_name')->textInput(['id'=>'update_ddbank','maxlength' => true, 'placeholder' => "SBI", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                    <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'dd_bank_branch_name')->textInput(['id'=>'update_ddbranchname','maxlength' => true, 'placeholder' => "New Delhi", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'dd_date')->textInput(['id'=>'update_dddate','maxlength' => true, 'placeholder' => "07/09/1992", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                      
+                                      <div class="row">
+										<div class="col-md-6  col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Physically Sent <span class="person_name">(Person Name)</span></p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'person_name')->textInput(['id'=>'update_personname','maxlength' => true, 'placeholder' => "Dhanush", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+										<div class="col-md-6 col-xs-6 company_overview">
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">By Courier <span class="person_name">(Tracking ID)</span></p>
+											<p class="label_name">
+                      <?php echo $form->field($modeles, 'tracking_id')->textInput(['id'=>'update_trackingid','maxlength' => true, 'placeholder' => "ID12121212", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                      </p>
+										</div>
+									  </div>
+                                     
+
+							  </div>
+                  </div>
+
+                </div>                                     
+                <div class="col-md-12 save_profile text-right">
+                   <?= Html::submitButton('Save', ['class' => 'save_button']) ?>
+							 <!-- <a href="#" class="save_button">Save</a> -->
+                                </div>
+
+
+
+
+                    </div>
+                   
+                   
+                </div>
+                </div><!-- panel-group -->
+                
+                
+                <?php ActiveForm::end(); ?>
+
+            </div>
+            
+            
+            
+            
+        </div>
+
+    </div>
+    </div>
+<script>
+var updateemdid = '';
+
+  function emd_process(id,propid){
+    
+		updateemdid = id;
+
+		
+	$('#updateid').val(updateemdid);
+	$("#emd_depositprocess").modal('show');
+
+	$.ajax({
+											   type: "POST",
+											   url: 'emd_details/getdetails',
+											   data: {emdid: updateemdid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													 getfavourofs(updateemdid,propid)
+												  
+											  var details = JSON.stringify(data);
+												var obj =   JSON.parse(details)
+
+												var emddetailsid =  obj.id;
+												var emddetailsemd_id =  obj.emd_id;
+												var emddetailsutr_no =  obj.utr_no;
+											
+												var emddetailsutr_bank_name =  obj.utr_bank_name;
+												var emddetailsutr_bank_branch_name =  obj.utr_bank_branch_name;
+												var emddetailsutr_date =  obj.utr_date;
+												var emddetailsdd_no =  obj.dd_no;
+												var emddetailsdd_bank_name =  obj.d_bank_name;
+												var emddetailsdd_bank_branch_name =  obj.dd_bank_branch_name;
+												var emddetailsdd_date =  obj.dd_date;
+												var emddetailsperson_name =  obj.person_name;
+												var emddetailstracking_id =  obj.tracking_id;
+
+                        
+												if(emddetailsutr_no !== null && emddetailsutr_no !== ''){
+													$('#update_utrno').val(emddetailsutr_no);
+												}
+
+												if(emddetailsutr_bank_name){
+													$('#update_utrbank').val(emddetailsutr_bank_name);
+												}
+												if(emddetailsutr_bank_branch_name){
+													$('#update_utrbranch').val(emddetailsutr_bank_branch_name);
+												}
+												if(emddetailsutr_date){
+													$('#update_utrdate').val(emddetailsutr_date);
+												}
+												if(emddetailsdd_no){
+													$('#update_ddno').val(emddetailsdd_no);
+												}
+												if(emddetailsdd_bank_name){
+													$('#update_ddbank').val(emddetailsdd_bank_name);
+												}
+												if(emddetailsdd_bank_branch_name){
+													$('#update_ddbranchname').val(emddetailsdd_bank_branch_name);
+												}
+												if(emddetailsdd_date){
+													$('#update_dddate').val(emddetailsdd_date);
+												}
+												if(emddetailsperson_name){
+													$('#update_personname').val(emddetailsperson_name);
+												}
+												if(emddetailstracking_id){
+													$('#update_trackingid').val(emddetailstracking_id);
+												}
+																				
+											                                                
+												  
+
+											   },
+										   });
+
+
+}
+
+</script>
+
+
+<?php 
+$script = <<< JS
+
+$('#utrclick').click(function(){
+$('#emd_details-favour_of').val('utr');
+});
+
+$('#ddclick').click(function(){
+$('#emd_details-favour_of').val('dd');
+});
+
+$('#utrclicks').click(function(){
+$('#updatefavourof').val('utr');
+});
+
+$('#ddclicks').click(function(){
+$('#updatefavourof').val('dd');
+});
+
+
+
+$('form#{$modeled->formName()}').on('beforeSubmit',function(e){
+ 
+ e.preventDefault();
+ e.stopImmediatePropagation();
+var form = $(this);
+$.post(
+ form.attr("action"),
+  form.serialize()
+
+).done(function(result){
+ 
+if(result == 1){
+
+
+	 $('#emd_deposit').modal('hide');
+	 $(form).trigger("reset");
+   toastr.success('Your details have been successfully saved','success');
+
+
+}else{
+
+	 $('#message').html('Something Wrong');  
+  }
+	   
+}).fail(function(){
+   console.log("server Error"); 
+
+});
+return false;
+
+}); 
+
+
+$('form#updateform').on('beforeSubmit',function(en){
+
+  
+ 
+ en.preventDefault();
+ en.stopImmediatePropagation();
+var form = $(this);
+$.post(
+	"emd_details/update?id="+updateemdid+"",
+  form.serialize()
+
+).done(function(result){
+ 
+if(result == 1){
+
+
+	 $('#emd_depositprocess').modal('hide');
+	 $(form).trigger("reset");
+   toastr.success('Your details have been successfully saved','success');
+
+
+}else{
+
+	 $('#message').html('Something Wrong');  
+  }
+	   
+}).fail(function(){
+   console.log("server Error"); 
+
+});
+return false;
+
+}); 
+
+
+
+
+
+
+JS;
+$this->registerJs($script);
+?>
     
     <script>
+
+    function emd_pay(id,propid){
+    
+      $('#emd_details-emd_id').val(id);
+      $("#emd_deposit").modal('show');
+
+			$.ajax({
+											   type: "POST",
+											   url: 'emd_details/getfavour',
+											   data: {emdid: updateemdid,propid:propid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													var details = JSON.stringify(data);
+												
+											  	var obj =   JSON.parse(details);
+													var emd_amount = obj.Emd_amount;
+													var favour_of =  obj.favour_of;
+
+													$('#emd_amount').html(emd_amount);
+													$('#favour_of').html(favour_of);
+
+												 },
+
+
+			});
+
+    }
+
+
+		function getfavourofs(updateemdid,propid){
+
+
+			$.ajax({
+											   type: "POST",
+											   url: 'emd_details/getfavour',
+											   data: {emdid: updateemdid,propid:propid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													var details = JSON.stringify(data);
+												
+											  	var obj =   JSON.parse(details);
+													var emd_amount = obj.Emd_amount;
+													var favour_of =  obj.favour_of;
+
+													$('#emd_amounts').html(emd_amount);
+													$('#favour_ofs').html(favour_of);
+
+												 },
+
+
+			});
+
+
+		}
+
+
 
         function viewdocs(id) {
 

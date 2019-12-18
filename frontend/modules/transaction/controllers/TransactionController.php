@@ -258,8 +258,8 @@ return $result['cid'];
 
     public function actionEndbid() {
         $model = new Transaction();
-$pid = $_GET['id'];
- $getwinnerid="select id from transaction where bid_amount = (select max(bid_amount) as bid_amount from transaction where status='Approved' and product_id='$pid') ";
+  $pid = $_GET['id'];
+  $getwinnerid="select id from transaction where bid_amount = (select max(bid_amount) as bid_amount from transaction where status='Approved' and product_id='$pid') ";
    $connection = Yii::$app->getDb();
 	$command = $connection->createCommand($getwinnerid);
 	$result = $command->queryOne();
