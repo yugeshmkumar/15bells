@@ -255,23 +255,47 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['style' => 'width:80px;'
                 ],
             ],
-            ['attribute' => 'user_id',
-                'label' => 'Name',
-               'width' => '200px',
+            ['attribute' => 'property_id',
+                'label' => 'Locality',
                 'format' => 'raw',
-                //  'contentOptions'=>['style'=>'width: 200px;'],
-                'filter' => true,
-                'value' => function($data) {
-                    if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
-                        $fullname = \common\models\User::findOne($data->user_id)->fullname;
-                        return Html::a('<button class="btn btn-default"    data-html="true"  style="width:200px;border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
-                                'title' => Yii::t('yii', 'Click to View User details'),
-                    ]);
-                    } else {
-                        return '';
-                    }
+               'width' => '100px',
+                'filter' => false,
+                
+                    'value' => function($model,$data) {
+
+        $totalCount = Yii::$app->db->createCommand('SELECT locality FROM addproperty  where id= "'.$model->property_id.'"')->queryOne();      
+        
+         if ($totalCount) {
+            return Html::a($totalCount['locality'],'');
+        } else {
+            return Html::a('<button class="btn btn-info" id="movetoemddocs" style="border-color:#0fd8da !important;border:1px solid;"  >'.$totalCount.'</button>', $url = 'javascript:void(0)', []);
+        }
+
+                    // $propid = 273 * 179 - $data->property_id;
+                    // return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet(' . $data->property_id . ')">PR' . $propid . '</button>', $url = 'javascript:void(0)', [
+                    //             'title' => Yii::t('yii', 'Click to View Property details'),
+                    // ]);
                 }
-            ],
+                    ],
+
+
+        //     ['attribute' => 'user_id',
+        //     'label' => 'Name',
+        //    'width' => '200px',
+        //     'format' => 'raw',
+        //     //  'contentOptions'=>['style'=>'width: 200px;'],
+        //     'filter' => true,
+        //     'value' => function($data) {
+        //         if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
+        //             $fullname = \common\models\User::findOne($data->user_id)->fullname;
+        //             return Html::a('<button class="btn btn-default"    data-html="true"  style="width:200px;border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+        //                     'title' => Yii::t('yii', 'Click to View User details'),
+        //         ]);
+        //         } else {
+        //             return '';
+        //         }
+        //     }
+        // ],
                     
             // ['attribute' => 'sales_id',
             //     'label' => 'Supply Name.',
@@ -307,8 +331,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
                     ],
                     
-            ['attribute' => 'Interested buyers',
-                'label' => 'Property ID',
+            ['attribute' => 'property_id',
+                'label' => 'Interested buyers',
                 'format' => 'raw',
                'width' => '50px',
                 'filter' => false,

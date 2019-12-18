@@ -39,8 +39,8 @@ class VrSetup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['auction_type', 'status', 'secret_code','name'], 'string'],
-            [['propertyID', 'moderatorID', 'isactive'], 'integer'],
+            [['auction_type', 'status', 'secret_code','name','favour_of'], 'string'],
+            [['propertyID', 'moderatorID','Emd_amount', 'isactive'], 'integer'],
             [['fromdatetime', 'todatetime'], 'required'],
             [['fromdatetime', 'todatetime', 'created_at', 'updated_at'], 'safe'],
         ];

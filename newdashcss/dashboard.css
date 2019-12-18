@@ -1045,7 +1045,7 @@ input[type=file]::-webkit-file-upload-button {
 	color:#c4984f;
 	font-size:18px;
 	transition:.4s;
-	width:100%;
+	
 	margin:10px 0;
 	background:transparent;
 }

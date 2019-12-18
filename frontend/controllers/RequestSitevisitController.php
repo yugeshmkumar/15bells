@@ -535,13 +535,21 @@ return $this->render('indexes', [
         $blank = '0000-00-00 00:00:00';
 
         if ($id == 'ready') {
-            $finduser = \common\models\RequestSiteVisit::find()->where('user_id = :user_id', [':user_id' => $user_id])
-           // ->leftJoin('request_document_show', 'request_document_show.request_id=request_site_visit.request_id')
-            ->andWhere('scheduled_time <> :blank', [':blank' => $blank])
-            ->andWhere('scheduled_time < :date', [':date' => $date])
-            ->andwhere('visit_status_confirm = :no', [':no' => $no])
-            ->andwhere('request_status = :payment_status', [':payment_status' => $payment_status])
-            //->orderBy(['request_id' => SORT_DESC])->LIMIT(1)
+        //     $finduser = \common\models\RequestSiteVisit::find()->where('user_id = :user_id', [':user_id' => $user_id])
+        //    // ->leftJoin('request_document_show', 'request_document_show.request_id=request_site_visit.request_id')
+        //     ->andWhere('scheduled_time <> :blank', [':blank' => $blank])
+        //     ->andWhere('scheduled_time < :date', [':date' => $date])
+        //     ->andwhere('visit_status_confirm = :no', [':no' => $no])
+        //     ->andwhere('request_status = :payment_status', [':payment_status' => $payment_status])
+        //     ->andWhere(['or',['request_status'=>1],['request_status'=>1]])
+        //     //->orderBy(['request_id' => SORT_DESC])->LIMIT(1)
+        //     ->one();
+
+            $finduser = \common\models\RequestSiteVisit::find()->where(['user_id'=>$user_id])
+            ->andwhere(['<>','scheduled_time', $blank])
+            ->andwhere(['<','scheduled_time' ,$date])
+            ->andwhere(['visit_status_confirm'=> $no])
+            ->andWhere(['or',['request_status'=>'paid'],['request_status'=>'complimentry']])
             ->one();
 
            // print_r($finduser);die;

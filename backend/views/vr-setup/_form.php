@@ -74,7 +74,22 @@ use yii\helpers\Url;
 	]
 ]);  ?>
 <input type="hidden" id="fromandto" name="fromandto" >
-	</div></div><div class="row"><div class="col-md-10">
+	</div></div>
+<div class="row">
+    <div class="col-md-5">
+<?= $form->field($model, 'Emd_amount')->textInput() ?>
+    
+</div>
+
+<div class="col-md-5">
+<?= $form->field($model, 'favour_of')->textInput(['value'=>'Stoneray technologies pvt ltd']) ?>
+    
+</div>
+</div>
+
+
+
+<div class="row"><div class="col-md-10">
 
          <?php
 $location = 'Gurgaon';
