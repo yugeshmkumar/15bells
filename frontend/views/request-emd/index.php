@@ -76,7 +76,12 @@ $datas =  $dataProvider->query->all();
 								$emdid  =  $data->id;                
 								
                 $haritid = 273*179-$viewid;
-                $propsid = 'PR'. $haritid;
+								$propsid = 'PR'. $haritid;
+								
+								$vrexist = \common\models\VrSetup::find()->where(['propertyID' => $viewid])->one();
+								$vrid = $vrexist->id;
+								$vridencode = base64_encode($vrid);
+							
 
                 $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
                 $project_type_id = $addproperty->project_type_id;
@@ -101,6 +106,8 @@ $datas =  $dataProvider->query->all();
 
 										<?php 
 
+                if($vrexist){
+
 										if($payment_status=='pay_now' || $payment_status=='pending'){
 					$model = new Emd_details();      
 									
@@ -113,14 +120,19 @@ $datas =  $dataProvider->query->all();
 
 								<?php }else{ ?>
 								
-									<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
+									<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
 								
 								<?php }  } else if($payment_status == 'paid') { ?>
 
-										<a href="javascript:void(0)" ><span class="building_name">Emd-paid</span></a>
+										<a href="<?php echo Yii::$app->urlManager->createUrl(['common/bid']) ?>"  target="_blank" ><span class="building_name">Enter Auction</span></a>
 								<?php }else { ?>
 
-							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details</span></a>
+							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
+								<?php }  } else { ?>
+
+					<a href="javascript:void(0)"  ><span class="building_name">Auction Not set</span></a>
+
+
 								<?php } ?>
           </p>
 					
