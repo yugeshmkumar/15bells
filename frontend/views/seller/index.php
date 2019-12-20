@@ -189,16 +189,15 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 											<h3 class="flow_heading">Let us know the expected price of your property</h3>
 
                                         <div class="col-md-8 col-xs-8 pad_left">
-                                        <input type="text" class="form-control input_desgn exp_price input_number" placeholder="Enter Amount" id="dummyexpectedprice">
+                                        <input type="text" name="Addproperty[expected_price]" class="form-control input_desgn exp_price input_number" placeholder="Enter Amount" id="addproperty-expected_price">
 
-                                        <?= $form->field($model, 'expected_price')->hiddenInput(['maxlength' => true])->label(false) ?>
                                         </div>
-                                        <div class="col-md-4 pad_right col-xs-4">
+                                        <!-- <div class="col-md-4 pad_right col-xs-4">
                                         <select id="expectedprice" class="form-control area_price">
                                         <option value="lacs">Lacs</option>
                                         <option value="crores">Crores</option>
                                         </select>
-                                        </div>										</div>
+                                        </div>										</div> -->
 									</div>
 							</div>
 							<div class="col-md-12 seperator_div"></div>
