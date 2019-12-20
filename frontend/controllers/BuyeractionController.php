@@ -565,7 +565,6 @@ class BuyeractionController extends Controller {
       
 
         // }
-
        }
       
         
