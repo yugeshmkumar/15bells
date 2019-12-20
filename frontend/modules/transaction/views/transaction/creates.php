@@ -13,13 +13,16 @@ $connection = Yii::$app->getDb();
  $model =new Transaction();
  $vr_setup = \common\models\VrSetup::find()->where(['secret_code'=>$_GET['id'],'status'=>"published",'isactive'=>1])->one();
 if($vr_setup){
+
+
  $time=$model->gettime($vr_setup->propertyID);
    $bid = $model->getBidtime($vr_setup->propertyID);
  
            $currenttime = $model->getCurrenttime();
 
         if ($currenttime > $bid && $currenttime < $time) {
-            
+
+                       
             
         }
  else {
@@ -28,7 +31,15 @@ if($vr_setup){
         die;
         }
 
-		$pid = $vr_setup->propertyID;
+        $pid = $vr_setup->propertyID;
+        $useridget = \common\models\Addproperty::find()->where(['id'=>$pid,'status'=>"approved"])->one();
+       
+
+        $ownerid = $useridget->user_id;
+        $loggedin=Yii::$app->user->identity->id;
+
+        
+
 ?>
 <h2 style="color:green;" id="notif"></h2>
 
@@ -427,7 +438,7 @@ label{color:#ffffff;font-weight:400;}
 	<div class="container-fluid">
     <div class="bid_status text-center" id="bidstatus"></div>
     <div class="row">
-    <div class="bid_rank text-center" >Your Rank is <span id="rank_user">0</span></div>
+    <div class="bid_rank text-center" style="<?php if($ownerid == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">Your Rank is <span id="rank_user">0</span></div>
     </div>
 		<div class="row">
 	<!--------Left Side Section------------------>
@@ -440,8 +451,8 @@ label{color:#ffffff;font-weight:400;}
 						<div class="clock" id="future_date" style="margin:2em;">00:00:00</div>
 					</div>
 				</div>
-				
-				<div class="row no_margn input_row">
+              
+				<div class="row no_margn input_row" style="<?php if($ownerid == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">
 					<div class="col-md-12">
 						<div class="col-md-6">
 							 <label for="usr">Place Bid: (In ₹) </label>
@@ -579,6 +590,7 @@ setInterval(activeusers, 5000);
 //setInterval(triggerLoc, 1000); 
 setInterval(Checksecond, 1000);
 setInterval(getrank, 1000);
+
  });
 
 
@@ -702,7 +714,9 @@ function triggerLoc() {
          url: 'test1?id=$pid',
          success: function(data) {
 
-            var countDownDate = new Date(data).getTime();
+             var d = JSON.parse(data);
+
+            var countDownDate = new Date(d).getTime();
 
     var now = new Date().getTime();
     var distance = countDownDate - now;

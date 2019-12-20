@@ -56,13 +56,22 @@ use yii\helpers\Url;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'id',
+            'id',
 			'name',
             'auction_type',
+            'propertyID',
             ['attribute'=>'propertyID',
 			'value'=>function($data){
 				return \common\models\Addproperty::findOne($data->propertyID)->project_name;
-			}],
+            }],
+            
+            ['attribute'=>'propertyID',
+            'label'=>'Owner email id',
+			'value'=>function($data){
+                $user_id =   \common\models\Addproperty::findOne(['id'=>$data->propertyID])->user_id;
+                 return  \common\models\User::findOne($user_id)->email;
+            }],
+            
 			 ['attribute'=>'moderatorID',
 			'value'=>function($data){
 				return \common\models\CompanyEmpb::findOne($data->moderatorID)->name;
