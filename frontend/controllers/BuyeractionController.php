@@ -554,9 +554,14 @@ class BuyeractionController extends Controller {
                        }
 
                        else{
-                      
-                        $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => 'blank', 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
 
+                      
+                      
+        //  $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'buyer','search_for'=>'text', 'type' => 'blank', 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+                       
+         $trendingaddd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type' => 'lessee','search_for'=>'text', 'type' => 'blank', 'user_id' => $user_id, 'location_name' => $locations, 'town' => $town, 'sector' => $sector, 'country' => $country, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax, 'property_auction_type' => 'Instant','created_date' => $date])->execute();
+
+         echo 'aya';die;
 
                                     }
 
