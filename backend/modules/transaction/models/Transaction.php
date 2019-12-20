@@ -38,7 +38,7 @@ class Transaction extends \yii\db\ActiveRecord
             [['buyer_id', 'product_id', 'bid_amount'], 'integer'],
             [['bid_date'], 'safe'],
             [['status'], 'string'],
-            [['buyer_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['buyer_id' => 'id']],
+           // [['buyer_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['buyer_id' => 'id']],
         ];
     }
 

@@ -42,7 +42,7 @@ class VrSetup extends \yii\db\ActiveRecord
             [['auction_type', 'status', 'secret_code','name','favour_of'], 'string'],
             [['propertyID', 'moderatorID','Emd_amount', 'isactive'], 'integer'],
             [['fromdatetime', 'todatetime'], 'required'],
-            [['fromdatetime', 'todatetime', 'created_at', 'updated_at'], 'safe'],
+            [['fromdatetime', 'todatetime', 'created_at', 'updated_at','propertyID'], 'safe'],
         ];
     }
 
