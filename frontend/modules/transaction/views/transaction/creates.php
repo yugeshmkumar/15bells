@@ -714,7 +714,9 @@ function triggerLoc() {
          url: 'test1?id=$pid',
          success: function(data) {
 
-            var countDownDate = new Date(data).getTime();
+             var d = JSON.parse(data);
+
+            var countDownDate = new Date(d).getTime();
 
     var now = new Date().getTime();
     var distance = countDownDate - now;

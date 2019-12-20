@@ -282,17 +282,28 @@ public function actionGetactiveuser(){
     public function actionEndbid() {
         $model = new Transaction();
 $pid = $_GET['id'];
+$findwinner =  "select id from transaction where status='Winner' and product_id='$pid'";
+$connections = Yii::$app->getDb();
+ $commands = $connections->createCommand($findwinner);
+ $results = $commands->queryOne();
+
+if(!($results)){
+
  $getwinnerid="select id from transaction where bid_amount = (select max(bid_amount) as bid_amount from transaction where status='Approved' and product_id='$pid') ";
-   $connection = Yii::$app->getDb();
-	$command = $connection->createCommand($getwinnerid);
-	$result = $command->queryOne();
+ $connection = Yii::$app->getDb();
+ $command = $connection->createCommand($getwinnerid);
+ $result = $command->queryOne();
 	 $id= $result['id'];
 if($id!=""){
  $sql = "update transaction set status='Winner' where id =$id";
 $command = $connection->createCommand($sql);
 $result = $command->query();
 }
-$sql="select max(bid_amount) as bidder ,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";     
+
+    }
+
+ $sql = "select * from  (select * from ( select * from transaction order by bid_amount desc) as pub group by buyer_id order by bid_amount desc ) as tub   where product_id='$pid'";   
+// $sql="select max(bid_amount) as bidder ,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";     
 //$sql="select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Winner' group by buyer_id
 //union
 //select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
