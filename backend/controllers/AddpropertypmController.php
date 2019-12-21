@@ -556,7 +556,7 @@ public function actionDocumentshow() {
       //  $mysqltime = date("Y-m-d H:i:s", strtotime($dates));
        
         $rbac->scheduled_time = $dates;
-        $rbac->visit_status_confirm = 'schedule';
+        //$rbac->visit_status_confirm = 'schedule';
         $rbac->save(false);
 	if($rbac){
 	return 1;die;

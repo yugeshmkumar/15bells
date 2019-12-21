@@ -76,14 +76,38 @@ class CommonController extends Controller {
             $auction_participants = \common\models\AuctionParticipants::find()->where(['partcipantID' => $getuser->id, 'vr_roomID' => $_GET['id'], 'isactive' => 1])->one();
             if ($auction_participants) {
                 $phonenum = $getuser->username;
-                $OTPval = 'OTP_for_Biding_Engine-' . $auction_participants->checkotp;
+                $emailid = $getuser->email;
+                // $OTPval = 'OTP_for_Biding_Engine-' . $auction_participants->checkotp;
 
-                //send OTP
-                // $url = "http://103.250.30.5/SendSMS/sendmsg.php?uname=metaitapi&pass=metait&send=METAIT&dest=$phonenum&msg=$OTPval";
-                // $ch = curl_init($url);
-                // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                // $curl_scraped_page = curl_exec($ch);
-                // curl_close($ch); 
+           
+            $activation =  $auction_participants->checkotp;
+
+            $authKey = "222784ARHZNXuXI5b334809";
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://control.msg91.com/api/sendmailotp.php?otp=$activation&authkey=$authKey&email=$emailid",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => "",
+              CURLOPT_SSL_VERIFYHOST => 0,
+              CURLOPT_SSL_VERIFYPEER => 0,
+            ));
+            
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
+            if ($err) {
+              //echo "cURL Error #:" . $err;
+            } else {
+             // echo $response;
+            }
             }
         }
         //end OTP
