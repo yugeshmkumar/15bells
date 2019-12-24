@@ -1211,7 +1211,10 @@ foreach($arraddresses as $id => $key3) {
 		\common\models\activemode::insert_to_my_profile_table(Yii::$app->user->identity->id,$new,$first_name,$getUserEmailconfig->emailid,                                                          
 		$getUserPhoneconfig->phoneid);
 		\common\models\activemode::update_my_profile_progress_status(Yii::$app->user->identity->id,"my_profile",'100','3');
-
+		
+		$Userdata = User::find()->where(['id'=>Yii::$app->user->identity->id])->one();
+					$Userdata->fullname= $first_name;					
+					$Userdata->save();
 
 					}if(isset($_POST['savecompanydata'])){
 						$request = Yii::$app->request->post();
