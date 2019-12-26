@@ -252,7 +252,7 @@ $propsid = 'PR'. $haritid;
 									<p class="text-left process_continue">
                                     <a href="javascript:void(0)" onclick="requestfor('Instant')" class="<?php echo ($request_for == 'Instant' ? 'property_process' : 'property_back step_locality') ?>">Instant</a>
                                     <a href="javascript:void(0)" onclick="requestfor('bid')" class="<?php echo ($request_for == 'bid' ? 'property_process' : 'property_back step_locality') ?>">Auction </a>
-                                    <input type="hidden" id="requestforclick">
+                                    <input type="hidden" id="requestforclick" value="Instant">
                                     </p>
 									
 								</div>
