@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\RequestSiteVisit;
 use common\models\Payments;
+use frontend\models\Checksum;
 use common\models\Invoice;
 use common\models\RequestSiteVisitSearch;
 use yii\web\Controller;
@@ -51,7 +52,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','buyer','lessee','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','posttozaakpay','buyer','lessee','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -351,25 +352,44 @@ return $this->render('indexes', [
 
     }
 
+
+    public function actionPosttozaakpay(){
+         $secret = '4b9300e1ab614616ab4d01eb25fd7944';
+
+	    $all = Checksum::getAllParams();
+        $checksum = Checksum::calculateChecksum($secret, $all);
+        
+        return $this->render('posttozaakpay', [
+            'checksum' => $checksum,
+         ]);
+    }
+
+    public function actionResponse(){
+        
+       return $this->render('response', [
+          // 'model' => $model,
+        ]);
+   }
+
     public function actionSessioncheckout(){
 
-         $ids = $_POST['id'];
-        $amount_payable = $_POST['amount_payable'];
+        $ids             =   $_POST['id'];
+        $amount_payable   =   $_POST['amount_payable'];
 
-        return 'done';
+       
 
-        // if(!isset($_SESSION)) 
-        // { 
-        //     session_start(); 
-        // } 
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
 
-        // $session = Yii::$app->session;
-        //     $session->set('requestids', $ids);
-        //     $session->set('amount_payable', $amount_payable);
+            $session = Yii::$app->session;
+            $session->set('requestids', $ids);
+            $session->set('amount_payable', $amount_payable);
 
         //    session_unset();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
-        //return $this->redirect(['onlinesitevisit']);
+        return $this->redirect(['onlinesitevisit']);
     }
 
     public function actionMakeuseryes(){
