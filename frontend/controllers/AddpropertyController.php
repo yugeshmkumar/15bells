@@ -401,6 +401,14 @@ public function actionShowpropdetails(){
           $super_area = $yiipost['Addproperty']['super_area'];
           $super_unit = $yiipost['Addproperty']['super_unit'];
           $interior_details = $yiipost['Addproperty']['interior_details'];
+          $property_on_floor = $yiipost['Addproperty']['property_on_floor'];
+          $ownership = $yiipost['Addproperty']['ownership'];
+
+          $LOAN_taken = $yiipost['Addproperty']['LOAN_taken'];
+
+          $FAR_approval = $yiipost['Addproperty']['FAR_approval'];
+
+          
          
   
           $lattitude = $yiipost['lat1'];
@@ -417,6 +425,11 @@ public function actionShowpropdetails(){
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
           $model->interior_details = $interior_details;
+          $model->property_on_floor = $property_on_floor;
+          $model->ownership = $ownership;
+          $model->LOAN_taken = $LOAN_taken;
+          $model->FAR_approval = $FAR_approval;
+
 
            if($sector != ''){
             $model->sector_name = $sector;
@@ -440,7 +453,7 @@ public function actionShowpropdetails(){
                 $rent_free = $yiipost['rent_free'];
 
                 $model1->user_id = $userid;
-                $model1->user_type = 'lessor';                 
+                $model1->user_type = 'seller';                 
                 $model1->property_id = $property_id;
                 $model1->lock_in_period = $locking_period;
                 $model1->lease_tenure = $tenures;
@@ -537,6 +550,12 @@ public function actionShowpropdetails(){
           $model->super_area = $super_area;
           $model->super_unit = $super_unit;
           $model->interior_details = $interior_details;
+          $property_on_floor = $yiipost['Addproperty']['property_on_floor'];
+          $ownership = $yiipost['Addproperty']['ownership'];
+
+          $LOAN_taken = $yiipost['Addproperty']['LOAN_taken'];
+
+          $FAR_approval = $yiipost['Addproperty']['FAR_approval'];
 
            if($sector != ''){
             $model->sector_name = $sector;
@@ -549,6 +568,10 @@ public function actionShowpropdetails(){
              $model->available_date = $available_date;  
           }
           $model->created_date = $date;
+          $model->property_on_floor = $property_on_floor;
+          $model->ownership = $ownership;
+          $model->LOAN_taken = $LOAN_taken;
+          $model->FAR_approval = $FAR_approval;
           
 
             if($model->save()){
@@ -629,37 +652,48 @@ public function actionShowpropdetails(){
         $model3 =  new Property_amenities();
         $userid = Yii::$app->user->identity->id;
 
-        $request_for =  HtmlPurifier::process($_POST['request_for']);
-        $ownerships =  HtmlPurifier::process($_POST['ownerships']);
-        $totalfloors =  HtmlPurifier::process($_POST['totalfloors']);
-        $prop_floors =  HtmlPurifier::process($_POST['prop_floors']);
-       $age_of_property =  HtmlPurifier::process($_POST['age_of_property']);
-        $facings =  HtmlPurifier::process($_POST['facings']);
-        $jurisdiction =  HtmlPurifier::process($_POST['jurisdiction']);
-        $annual_dues =  HtmlPurifier::process($_POST['annual_dues']);
-        $maintained_by =  HtmlPurifier::process($_POST['maintained_by']);
-      $loan_taken =  HtmlPurifier::process($_POST['loan_taken']);
-        $far_approveds =  HtmlPurifier::process($_POST['far_approveds']);
-        $revenue_layouts =  HtmlPurifier::process($_POST['revenue_layouts']);
-        $expected_rentals =  HtmlPurifier::process($_POST['expected_rentals']);
-        $availabilits =  HtmlPurifier::process($_POST['availabilits']);
-        $furnishings =  HtmlPurifier::process($_POST['furnishings']);
-        $possesions =  HtmlPurifier::process($_POST['possesions']);
-        $lock_in_periods =  HtmlPurifier::process($_POST['lock_in_periods']);
-        $lease_tenures =  HtmlPurifier::process($_POST['lease_tenures']);
-        $rent_free_periods =  HtmlPurifier::process($_POST['rent_free_periods']);
-        $nearbys =  HtmlPurifier::process($_POST['nearbys']);
-        $amenitiesicon =  HtmlPurifier::process($_POST['amenitiesicon']);
-        $viewid =  HtmlPurifier::process($_POST['viewid']);
+        $request_for =  HtmlPurifier::process(($_POST['request_for']) == '____' ? '':$_POST['request_for']);
+        $superarea =  HtmlPurifier::process(($_POST['superarea']) == '____' ? '':$_POST['superarea']);
+        $prices =  HtmlPurifier::process(($_POST['prices']) == '____' ? '':$_POST['prices']);
+        $ownerships =  HtmlPurifier::process(($_POST['ownerships']) == '____' ? '':$_POST['ownerships']);
+      $totalfloors =  HtmlPurifier::process(($_POST['totalfloors']) == '____' ? '':$_POST['totalfloors']);
+        $prop_floors = HtmlPurifier::process(($_POST['prop_floors']) == '____' ? '':$_POST['prop_floors']);
+       $age_of_property =  HtmlPurifier::process(($_POST['age_of_property']) == '____' ? '':$_POST['age_of_property']);
+        $facings =  HtmlPurifier::process(($_POST['facings']) == '____' ? '':$_POST['facings']);
+        $jurisdiction = HtmlPurifier::process(($_POST['jurisdiction']) == '____' ? '':$_POST['jurisdiction']);
+        $annual_dues = HtmlPurifier::process(($_POST['annual_dues']) == '____' ? '':$_POST['annual_dues']);
+        $maintained_by =  HtmlPurifier::process(($_POST['maintained_by']) == '____' ? '':$_POST['maintained_by']);
+      $loan_taken =  HtmlPurifier::process(($_POST['loan_taken']) == '____' ? '':$_POST['loan_taken']);
+        $far_approveds =  HtmlPurifier::process(($_POST['far_approveds']) == '____' ? '':$_POST['far_approveds']);
+        $revenue_layouts =  HtmlPurifier::process(($_POST['revenue_layouts']) == '____' ? '':$_POST['revenue_layouts']);
+        $expected_rentals =  HtmlPurifier::process(($_POST['expected_rentals']) == '____' ? '':$_POST['expected_rentals']);
+        $availabilits = HtmlPurifier::process(($_POST['availabilits']) == '____' ? '':$_POST['availabilits']);
+        $furnishings =  HtmlPurifier::process(($_POST['furnishings']) == '____' ? '':$_POST['furnishings']);
+        $possesions =  HtmlPurifier::process(($_POST['possesions']) == '____' ? '':$_POST['possesions']);
+        $lock_in_periods = HtmlPurifier::process(($_POST['lock_in_periods']) == '____' ? '':$_POST['lock_in_periods']);
+        $lease_tenures = HtmlPurifier::process(($_POST['lease_tenures']) == '____' ? '':$_POST['lease_tenures']);
+        $rent_free_periods =  HtmlPurifier::process(($_POST['rent_free_periods']) == '____' ? '':$_POST['rent_free_periods']);
+        $nearbys =  HtmlPurifier::process(($_POST['nearbys']) == '____' ? '':$_POST['nearbys']);
+        $amenitiesicon =  HtmlPurifier::process(($_POST['amenitiesicon']) == '____' ? '':$_POST['amenitiesicon']);
+        $viewid =  HtmlPurifier::process(($_POST['viewid']) == '____' ? '':$_POST['viewid']);
 
         $getmodel = Addproperty::find()->where(['id'=>$viewid])->andwhere(['user_id'=>$userid])->one();
-
+        $role_id =  $getmodel->role_id;
        
         
         if(!empty($getmodel)){
 
            
             
+
+            $getmodel->super_area = $superarea;
+
+            if($role_id == 'seller'){
+            $getmodel->expected_price = $prices;
+               }else{
+            $getmodel->asking_rental_price = $prices;
+ 
+               }
 
             $getmodel->request_for = $request_for;
             $getmodel->ownership = $ownerships;
@@ -1277,9 +1311,9 @@ foreach($payment2 as $payments2){
             
             
 		$request = Yii::$app->request->post();          
-        
+    //    echo '<pre>';print_r($_FILES);die;
        if($_FILES){
-        $fileimage = $_FILES['Addproperty']['name']['featured_image'];
+        $fileimage = $_FILES['Addproperty']['name']['featured_image'][0];
         $filevideos = $_FILES['Addproperty']['name']['featured_video'];
         }
         if (!empty($request)) {                        
@@ -1302,7 +1336,7 @@ foreach($payment2 as $payments2){
                 $getmodel->featured_video = \yii\web\UploadedFile::getInstance($getmodel, 'featured_video'); 
                 $video = $getmodel->featured_video;
                 
-               // echo '<pre>';print_r($video);die;
+              
                 $vedioname =  $getmodel->featured_video->name;
                 $tempname = $getmodel->featured_video->tempName;
                 
@@ -1318,9 +1352,9 @@ foreach($payment2 as $payments2){
                 
             }
 
-           else if($fileimage !=''){ 
+         if(!empty($fileimage)){ 
 
-           
+           // echo '<pre>';print_r($fileimage);die;
 
 //image upload start
 
