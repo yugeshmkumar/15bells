@@ -153,7 +153,7 @@ $datas =  $dataProvider->query->all();
 										
 									</ul>
 								</div>
-								<div class="col-md-12 progress_bar">
+								<!-- <div class="col-md-12 progress_bar">
 									 <h4 class="text-right">70% Complete</h4>
 										  <div class="progress">
 											<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:70%">
@@ -161,7 +161,7 @@ $datas =  $dataProvider->query->all();
 											</div>
 										  </div>
 									
-								</div>
+								</div> -->
 										
 							</div>
 						</div>
