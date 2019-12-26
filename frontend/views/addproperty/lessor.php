@@ -139,11 +139,11 @@ $datas =  $dataProvider->query->all();
 										<p class="details_name"><?php echo $data0; ?></p>
 										</li>
 										<li class="site_visit col-md-3">
-										<p class="details_label">Site Visit</p>
+										<p class="details_label">Shortlisted</p>
 										<p class="details_name"><?php echo $data1; ?></p>
 										</li>
 										<li class="short_lists col-md-3">
-										<p class="details_label">Shortlisted</p>
+										<p class="details_label">Site Visit</p>
 										<p class="details_name"><?php echo $data2; ?></p>
 										</li>
 										<li class="online col-md-3">

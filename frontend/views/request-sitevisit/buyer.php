@@ -72,7 +72,7 @@ $datas =  $dataProvider->query->all();
                                     
                     ?>
 				<div class="col-md-12 property_detail">
-					<p class="property_id">Property ID : <?php echo $propsid; ?></p>
+					<p class="property_id">Property ID : <?php echo $propsid; ?><a href="https://live.15bells.com/" target="_blank"><span class="building_name">Online</span></a></p>
 					
 							<div class="col-md-12 visit_buyer">
 							<div class="row">
