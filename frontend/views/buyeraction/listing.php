@@ -757,6 +757,9 @@ $('#callsubmitbutton').hide();
 $('#hideotp').hide();
 $('#otphide').hide();
 $('#hidepassword').hide();
+$('#resendotp').hide();
+$('#resendotps').hide();
+$('#addusers').hide();
 
 $('#passwordit').click(function(){
 
@@ -764,6 +767,13 @@ $('#loginform-checkfield').val('password');
 
 $('#hideotp').hide();
 $('#hidepassword').show();
+
+});
+
+$('#callmenow').click(function(){
+
+$('#addusers').show();
+$('#callmenowdiv').hide();
 
 });
 
@@ -4059,7 +4069,7 @@ function getPolygonCoords() {
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
-                                                                            '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+                                                                        '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                                                         '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+
@@ -4105,170 +4115,170 @@ function getPolygonCoords() {
                                     }      
                                     
                                     
-                                    function bindButtonClick(obj){
+//                                     function bindButtonClick(obj){
                            
-                           $('.sortby').click(function(){
+//                            $('.sortby').click(function(){
 
                              
                              
-                            var ferit = 0;  
-                            var sortvar =  this.id; 
-                            var searchlat = $('#searchlats').val();
-                            var searchlng = $('#searchlngs').val();
+//                             var ferit = 0;  
+//                             var sortvar =  this.id; 
+//                             var searchlat = $('#searchlats').val();
+//                             var searchlng = $('#searchlngs').val();
                           
                             
-                            if(sortvar != ''){
+//                             if(sortvar != ''){
                                 
-                               if(sortvar == 'low'){
+//                                if(sortvar == 'low'){
                                    
-                                   obj.sort(function(a, b){
-                             return a.asking_rental_price - b.asking_rental_price;
-                             });
+//                                    obj.sort(function(a, b){
+//                              return a.asking_rental_price - b.asking_rental_price;
+//                              });
                                    
-                               }else if(sortvar == 'high'){
+//                                }else if(sortvar == 'high'){
                                    
-                                   obj.sort(function(a, b){
-                             return b.asking_rental_price - a.asking_rental_price;
-                             });
+//                                    obj.sort(function(a, b){
+//                              return b.asking_rental_price - a.asking_rental_price;
+//                              });
                              
-                               } 
-                               else if(sortvar == 'nearest'){
+//                                } 
+//                                else if(sortvar == 'nearest'){
                                 
-                                 ferit = 1;  
-                                  for ( i = 0; i < obj.length; i++) {
-obj[i]["distance"] = calculateDistance(searchlat,searchlng,obj[i]["latitude"],obj[i]["longitude"]);
-     }
+//                                  ferit = 1;  
+//                                   for ( i = 0; i < obj.length; i++) {
+// obj[i]["distance"] = calculateDistance(searchlat,searchlng,obj[i]["latitude"],obj[i]["longitude"]);
+//      }
 
-                             obj.sort(function(a, b) { 
-                                 return a.distance - b.distance;
-                                 });
+//                              obj.sort(function(a, b) { 
+//                                  return a.distance - b.distance;
+//                                  });
                              
-                               } 
+//                                } 
                                
-                             var countprop = Object.keys(obj).length; 
+//                              var countprop = Object.keys(obj).length; 
                             
-                             $('#getprop').html('');  
+//                              $('#getprop').html('');  
                              
-                             $.each(obj, function (index) {
+//                              $.each(obj, function (index) {
                                         
                                         
                                             
-                                        // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+//                                         // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
                                          
-                                        var imageds = $.trim(this.featured_image);
-                                      //   var c = content.substr(0, showChar);
-                                        // var h = content.substr(showChar-1, content.length - showChar);
-                                        // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+//                                         var imageds = $.trim(this.featured_image);
+//                                       //   var c = content.substr(0, showChar);
+//                                         // var h = content.substr(showChar-1, content.length - showChar);
+//                                         // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                                  
-                                         var haritid = 273*179-this.id;
-                                         var propsid = 'PR'+ haritid;
-                                         var commaNum = this.asking_rental_price;
+//                                          var haritid = 273*179-this.id;
+//                                          var propsid = 'PR'+ haritid;
+//                                          var commaNum = this.asking_rental_price;
                                               
-                                         $('#getprop').append('<div class="col-md-12 property_detail">'+
-                                                     '<p class="property_id">Property ID : '+propsid+'</p>'+
-                                                     '<div class="row single_property">'+
-                                                         '<div class="col-md-2 no_pad relative">'+
-                                                         <?php if(yii::$app->user->isGuest){  ?>
+//                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
+//                                                      '<p class="property_id">Property ID : '+propsid+'</p>'+
+//                                                      '<div class="row single_property">'+
+//                                                          '<div class="col-md-2 no_pad relative">'+
+//                                                          <?php if(yii::$app->user->isGuest){  ?>
 
-'<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
-'<div class="overlay_sign">'+
-'<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
-'</div>'+
+// '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
+// '<div class="overlay_sign">'+
+// '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+// '</div>'+
 
-<?php   }else{ ?>
+// <?php   }else{ ?>
 
- '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+//  '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
 
 
 
-<?php  } ?>
-                                                         '</div>'+
-                                                         '<div class="col-md-10">'+
-                                                             '<div class="row prop_detail">'+
-                                                                 '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Location</p>'+
-                                                                     '<p class="details_label">'+this.locality+'</p>'+
-                                                                 '</div>'+
-                                                                 '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Property for</p>'+
-                                                                     '<p class="details_label">'+this.request_for+'</p>'+
-                                                                 '</div>'+
-                                                             '</div>'+
-                                                             '<div class="row prop_detail">'+	
-                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Price</p>'+
-                                                                     '<p class="details_label">₹ '+commaNum+' psf</p>'+
-                                                                 '</div>'+
-                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Area</p>'+
-                                                                     '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
-                                                                 '</div>'+
-                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Verified</p>'+
-                                                                     '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
-                                                                 '</div>'+
-                                                                 '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
-                                                                     '<p class="label_name">Availability</p>'+
-                                                                     '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
-                                                                 '</div>'+
-                                                             '</div>'+
-                                                             '<div class="row prop_detail">'+
-                                                             '<div class="col-md-6 amenities_offered">'+
-                                                                 '<p class="label_name amenities">Amenities</p>'+
-                                                                 '<ul class="amenities_list">'+
-                                                                     '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
-                                                                     '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
-                                                                     '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
-                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
-                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
-                                                                     '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
-                                                                 '</ul>'+
-                                                             '</div>'+
-                                                             '<div class="col-md-6 shortlist_call">'+
-                                                                 '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
-                                                             '</div>'+
-                                                             '</div>'+
-                                                             '</div>'+
-                                                         '</div>'+
-                                                         '<div class="row">'+
+// <?php  } ?>
+//                                                          '</div>'+
+//                                                          '<div class="col-md-10">'+
+//                                                              '<div class="row prop_detail">'+
+//                                                                  '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Location</p>'+
+//                                                                      '<p class="details_label">'+this.locality+'</p>'+
+//                                                                  '</div>'+
+//                                                                  '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Property for</p>'+
+//                                                                      '<p class="details_label">'+this.request_for+'</p>'+
+//                                                                  '</div>'+
+//                                                              '</div>'+
+//                                                              '<div class="row prop_detail">'+	
+//                                                                  '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Price</p>'+
+//                                                                      '<p class="details_label">₹ '+commaNum+' psf</p>'+
+//                                                                  '</div>'+
+//                                                                  '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Area</p>'+
+//                                                                      '<p class="details_label">'+this.super_area+' Sq. ft.</p>'+
+//                                                                  '</div>'+
+//                                                                  '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Verified</p>'+
+//                                                                      '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
+//                                                                  '</div>'+
+//                                                                  '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
+//                                                                      '<p class="label_name">Availability</p>'+
+//                                                                      '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
+//                                                                  '</div>'+
+//                                                              '</div>'+
+//                                                              '<div class="row prop_detail">'+
+//                                                              '<div class="col-md-6 amenities_offered">'+
+//                                                                  '<p class="label_name amenities">Amenities</p>'+
+//                                                                  '<ul class="amenities_list">'+
+//                                                                      '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" class="amen_icon"></li>'+
+//                                                                      '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" class="amen_icon"></li>'+
+//                                                                      '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" class="amen_icon"></li>'+
+//                                                                      '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" class="amen_icon"></li>'+
+//                                                                      '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" class="amen_icon"></li>'+
+//                                                                      '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" class="amen_icon"></li>'+
+//                                                                  '</ul>'+
+//                                                              '</div>'+
+//                                                              '<div class="col-md-6 shortlist_call">'+
+//                                                                  '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button class="btn btn-default short_butn">Shortlist</button>'+
+//                                                              '</div>'+
+//                                                              '</div>'+
+//                                                              '</div>'+
+//                                                          '</div>'+
+//                                                          '<div class="row">'+
                                                    
-                                                         '</div>'+
-                                                 '</div>'); 
+//                                                          '</div>'+
+//                                                  '</div>'); 
                                         
                                                                                      
                                  
-                                                                                 });
+//                                                                                  });
                                              
-                             //   showPage(1);    
-                             //   var i;
-                             //   var totals = Math.ceil(countprop/6);
+//                              //   showPage(1);    
+//                              //   var i;
+//                              //   var totals = Math.ceil(countprop/6);
                                
-                             //    var dynamic = "";   
-                             //    for(i=1;i<=totals;i++){
+//                              //    var dynamic = "";   
+//                              //    for(i=1;i<=totals;i++){
                                   
-                             //     dynamic += '<li><a href="javascript:void(0)">'+i+'</a></li>';                                           
+//                              //     dynamic += '<li><a href="javascript:void(0)">'+i+'</a></li>';                                           
                                  
-                             //    }
+//                              //    }
 
                                  
-                             //    $('#paginater').html('');
-                             //    $('#paginater').html('<ol id="pagin" class="paginclass">'+ dynamic+  '</ol>'); 
-                             //     $("#pagin li a").first().addClass("current"); 
-                             //       $("#pagin li a").click(function() {
+//                              //    $('#paginater').html('');
+//                              //    $('#paginater').html('<ol id="pagin" class="paginclass">'+ dynamic+  '</ol>'); 
+//                              //     $("#pagin li a").first().addClass("current"); 
+//                              //       $("#pagin li a").click(function() {
                                    
-                             //     $("#pagin li a").removeClass("current");
-                             //     $(this).addClass("current");
+//                              //     $("#pagin li a").removeClass("current");
+//                              //     $(this).addClass("current");
                                 
-                             //     showPage(parseInt($(this).text())) 
-                             // });
+//                              //     showPage(parseInt($(this).text())) 
+//                              // });
                                              
-                                             }
+//                                              }
 
 
 
                          
-                                   });
-                         } 
+//                                    });
+//                          } 
                                         
                                         
                                         
