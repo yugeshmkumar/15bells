@@ -71,6 +71,9 @@ if($counts > 0 ){
 								$users = User::find()->where(['id'=>$assigned_id])->one();
 								$myprofile = \common\models\Myprofile::find()->where(['userID' => $assigned_id])->one();
 
+								$visit_type = "'$data->visit_type'";
+                $request_id = "'$data->request_id'";
+
                                     
                     ?>
 				<div class="col-md-12 property_detail">
@@ -128,7 +131,7 @@ if($counts > 0 ){
 										<div class="col-md-6">
 											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Mode</p>
 											<div class="col-md-12">
-												<div class="col-md-4 no_pad"><button class="cash_butn">Cash</button></div>
+												<div class="col-md-4 no_pad"><button  onclick="paynowfunc(<?php echo $visit_type . ','.$request_id ?>)" class="cash_butn">Cash</button></div>
 												<div class="col-md-4 no_pad"><button class="cash_butn active_butn">Bank</button></div>
 											</div>
 										</div>
@@ -144,6 +147,73 @@ if($counts > 0 ){
 			</div>
   		</div>
 
+
+<div class="modal fade" id="draggable4" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content data_model">
+                <div class="modal-header greenHeader">
+                    <h4 class="modal-title textShadowHeading" style="color:#ea5460;">Pay Online</h4>
+                </div>
+
+                <div class="modal-body">
+
+
+                    <form class="form-horizontal" id="registrationForm">   
+
+
+                        <div class="row row_pad">
+                            <div class="col-sm-3">
+                                <label class="control-label lab_form"  style="width: 100%;text-align: center;">Payable Amount:</label>
+                            </div>
+
+                            <div class="col-sm-9">
+                                <input type="text" id="accepts2"  value="1000" class="form-control" name="licence" readonly>
+                                <input type="hidden" id="acceptid" value="" class="form-control" name="licence">
+                            </div>
+                        </div>
+                    <div class="row row_pad">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-center">
+                            <label class="control-label lab_form">Terms of use</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <div style="border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;">
+                                    <p>Lorem ipsum dolor sit amet, veniam numquam has te. No suas nonumes recusabo mea, est ut graeci definitiones. His ne melius vituperata scriptorem, cum paulo copiosae conclusionemque at. Facer inermis ius in, ad brute nominati referrentur vis. Dicat erant sit ex. Phaedrum imperdiet scribentur vix no, ad latine similique forensibus vel.</p>
+                                    <p>Dolore populo vivendum vis eu, mei quaestio liberavisse ex. Electram necessitatibus ut vel, quo at probatus oportere, molestie conclusionemque pri cu. Brute augue tincidunt vim id, ne munere fierent rationibus mei. Ut pro volutpat praesent qualisque, an iisque scripta intellegebat eam.</p>
+                                    <p>Mea ea nonumy labores lobortis, duo quaestio antiopam inimicus et. Ea natum solet iisque quo, prodesset mnesarchum ne vim. Sonet detraxit temporibus no has. Omnium blandit in vim, mea at omnium oblique.</p>
+                                    <p>Eum ea quidam oportere imperdiet, facer oportere vituperatoribus eu vix, mea ei iisque legendos hendrerit. Blandit comprehensam eu his, ad eros veniam ridens eum. Id odio lobortis elaboraret pro. Vix te fabulas partiendo.</p>
+                                    <p>Natum oportere et qui, vis graeco tincidunt instructior an, autem elitr noster per et. Mea eu mundi qualisque. Quo nemore nusquam vituperata et, mea ut abhorreant deseruisse, cu nostrud postulant dissentias qui. Postea tincidunt vel eu.</p>
+                                    <p>Ad eos alia inermis nominavi, eum nibh docendi definitionem no. Ius eu stet mucius nonumes, no mea facilis philosophia necessitatibus. Te eam vidit iisque legendos, vero meliore deserunt ius ea. An qui inimicus inciderint.</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-offset-3 term_selct">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="agree" value="agree" style="position: relative;"/> Agree with the terms and conditions
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer" style="border-top:none !important;">
+                    <!--<a href="javascript:;" data-dismiss="modal" class="btn continueBtn1">Save</a>-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10" style="margin-top: 10px;">
+                            <input type="button"  onclick="proceedme()" id="sub" value="Proceed to pay" class="btn btn-success">
+                            <input type="button"  data-dismiss="modal"  value="Cancel" class="btn btn-danger">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -367,6 +437,9 @@ $('.pay_later').hide();
     
   });
 
+
+	
+
   $('#stars1 li').on('click', function(){
     var onStar = parseInt($(this).data('value'), 10); // The star currently selected
     var stars = $(this).parent().children('li.star');
@@ -480,34 +553,37 @@ if(buttonid == 'yes' || buttonid == 'may_be' || buttonid == 'no'){
  });
 
 
- $('.pay_now').click(function(){
-var buttonid =  $(this).attr('id');
 
-if(buttonid == 'pay_now'){
+
+
+//  $('.pay_now').click(function(){
+// var buttonid =  $(this).attr('id');
+
+// if(buttonid == 'pay_now'){
   
-                                    var amount_payable = 500;
+//                                     var amount_payable = 500;
                                    
 
-                                        $.ajax({
-						                       type: "POST",
-                                                url: 'documentshow/sessioncheckout',
-                                                data: {id: returnid,amount_payable:amount_payable},
-                                                success: function (data) {
+//                                         $.ajax({
+// 						                       type: "POST",
+//                                                 url: 'documentshow/sessioncheckout',
+//                                                 data: {id: returnid,amount_payable:amount_payable},
+//                                                 success: function (data) {
                                                  
-                                                 // alert(data);
+//                                                  // alert(data);
                                                    
 
-                                                },
-                                            }); 
+//                                                 },
+//                                             }); 
 
-}else{
+// }else{
 
-	$("#visit_rating").modal('hide');
+// 	$("#visit_rating").modal('hide');
 
-}
+// }
 
 
- });
+//  });
 
 
  
@@ -583,3 +659,54 @@ if(buttonid == 'pay_now'){
 JS;
 $this->registerJs($script);
 ?>
+
+<script>
+ function paynowfunc(visit_type,id) {
+                                   
+                                    
+																	 $('#acceptid').val(id);
+																	
+																//	if (visit_type == 'online') {
+																			$('#draggable4').modal('show');
+																			
+																	// } else if (visit_type == 'offline'){                                       
+																	// 		$('#draggable2').modal('show');
+																	// }else{
+																	// 	 toastr.error('Please Select Visit type', 'error'); 
+																	// }
+																	//alert(visit_type);
+
+															}
+
+
+															function proceedme() {
+                                    
+                                    var ids = $('#acceptid').val();
+                                    var amount_payable = $('#accepts2').val();
+                                    if ($('input[name="agree"]:checked').length > 0) {
+
+                                        $.ajax({
+						type: "POST",
+                                                url: '/request-sitevisit/sessioncheckout',
+                                                data: {id: ids,amount_payable:amount_payable},
+                                                success: function (data) {
+                                                 
+                                                  
+                                                    // if (data == '1') {
+                                                    //     toastr.success('Location Successfully Saved', 'success');
+                                                    //     $('#draggable4').modal('hide');
+                                                    //     $.pjax({container: '#pjax-grid-view'})
+                                                    // }                                                    
+                                                    // else {
+                                                    //     toastr.error('Internal Error', 'error');
+                                                    // }
+
+                                                },
+                                            }); 
+
+                                    } else {
+                                        toastr.error('Please Accept the Terms & Conditions', 'error');
+                                    }
+
+                                }
+</script>
