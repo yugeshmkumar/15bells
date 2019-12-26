@@ -3465,7 +3465,7 @@ $("#rantime").datepicker({
                                                        
                                                    // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
                                                     
-                                                   var imaged = $.trim(this.featured_image);
+                                                   var imageds = $.trim(this.featured_image);
                                                  //   var c = content.substr(0, showChar);
                                                    // var h = content.substr(showChar-1, content.length - showChar);
                                                    // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
