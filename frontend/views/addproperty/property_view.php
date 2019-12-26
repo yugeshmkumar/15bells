@@ -59,6 +59,7 @@ if($expectations){
 }
 
 
+$role_id = $property->role_id;
 $property_for = $property->property_for != '' ? $property->property_for : "____";
 $locality = $property->locality != '' ? $property->locality : "____";
 $price_acres = $property->price_acres != '' ? $property->price_acres : "____";
@@ -70,7 +71,7 @@ $expected_price = $property->expected_price != '' ? $property->expected_price : 
                 $annual_dues_payable = $property->annual_dues_payable != '' ? $property->annual_dues_payable : "____";
 $city = $property->city != '' ? $property->city : "____";
 $price_sq_ft = $property->price_sq_ft != '' ? $property->price_sq_ft : "____";
-                $expected_rental = $property->asking_rental_price != '' ? $property->asking_rental_price : "____";
+                $asking_rental_price = $property->asking_rental_price != '' ? $property->asking_rental_price : "____";
 $price_negotiable = $property->price_negotiable != '' ? $property->price_negotiable : "____";
 $expected_rental = $property->expected_rental != '' ? $property->expected_rental : "____";
 $shed_RCC = $property->shed_RCC != '' ? $property->shed_RCC : "____";
@@ -201,7 +202,7 @@ $propsid = 'PR'. $haritid;
 									<p class="label_name"><?php echo $locality; ?></p>
 								</div>
 								<div class="col-md-2">
-									<a href="javascript:void(0)" class="draw_map">Edit</a>
+									<a href="javascript:void(0)" class="edit_buttonarea draw_map">Edit</a>
 								</div>
 								<div class="col-md-12 unit_details">
 									<ul class="details_unit col-md-12">
@@ -211,11 +212,21 @@ $propsid = 'PR'. $haritid;
 										</li>
 										<li class="col-md-4">
 										<p class="details_label">Area</p>
-										<p class="details_name"><?php echo $super_area; ?></p>
+										<p class="details_name">
+										<?php// echo $super_area; ?>
+										<input type="text" id="superarea" class="form-control input_desgn myInputs" value="<?php echo $super_area; ?>" placeholder="" readonly>
+
+										</p>
 										</li>
 										<li class="col-md-4">
 										<p class="details_label">Price</p>
-										<p class="details_name"><?php echo $expected_price; ?></p>
+
+										<p class="details_name">
+										<?php //echo ($role_id == 'seller' ? $expected_price : $asking_rental_price); ?>
+										<input type="text" id="prices" class="form-control input_desgn myInputs" value="<?php  echo ($role_id == 'seller' ? $expected_price : $asking_rental_price); ?>" placeholder="" readonly>
+
+										
+										</p>
 										</li>
 										
 										
@@ -241,7 +252,7 @@ $propsid = 'PR'. $haritid;
 									<p class="text-left process_continue">
                                     <a href="javascript:void(0)" onclick="requestfor('Instant')" class="<?php echo ($request_for == 'Instant' ? 'property_process' : 'property_back step_locality') ?>">Instant</a>
                                     <a href="javascript:void(0)" onclick="requestfor('bid')" class="<?php echo ($request_for == 'bid' ? 'property_process' : 'property_back step_locality') ?>">Auction </a>
-                                    <input type="hidden" id="requestforclick">
+                                    <input type="hidden" id="requestforclick" value="Instant">
                                     </p>
 									
 								</div>
@@ -484,6 +495,19 @@ $propsid = 'PR'. $haritid;
  <script>
 	
 	$(document).ready(function(){
+
+
+     $(".edit_buttonarea").click(function(){
+		$(".myInputs").removeAttr('readonly');
+		$(".myInputs").each(function() {
+
+			if($(this).val() == '____'){
+			    $(this).val('');
+		}
+		});
+
+
+		});
 		$(".edit_button").click(function(){
 		$(".myInput").removeAttr('readonly');
 		$(".myInput").each(function() {
@@ -822,6 +846,8 @@ $propsid = 'PR'. $haritid;
 
 					   var request_for =   $('#requestforclick').val();
 					   var ownerships =   $('#ownerships').val();
+					   var superarea =   $('#superarea').val();
+					   var prices =      $('#prices').val();
 					   var totalfloors =   $('#totalfloors').val();
 					   var prop_floors =   $('#prop_floors').val();
 					   var age_of_property =   $('#age_of_property').val();
@@ -843,7 +869,7 @@ $propsid = 'PR'. $haritid;
 					   var amenitiesicon =   $('#amenitiesicon').val();
 					   var viewid =   $('#viewid').val();
 
-					   var ndata = {viewid:viewid,request_for:request_for,ownerships:ownerships,totalfloors:totalfloors,prop_floors:prop_floors,age_of_property:age_of_property,
+					   var ndata = {viewid:viewid,request_for:request_for,superarea:superarea,prices:prices,ownerships:ownerships,totalfloors:totalfloors,prop_floors:prop_floors,age_of_property:age_of_property,
 						facings:facings,annual_dues:annual_dues,jurisdiction:jurisdiction,maintained_by:maintained_by,loan_taken:loan_taken,
 						far_approveds:far_approveds,revenue_layouts:revenue_layouts,expected_rentals:expected_rentals,availabilits:availabilits,
 						furnishings:furnishings,possesions:possesions,lock_in_periods:lock_in_periods,lease_tenures:lease_tenures,rent_free_periods:rent_free_periods,
