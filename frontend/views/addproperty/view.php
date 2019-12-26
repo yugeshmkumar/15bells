@@ -569,7 +569,7 @@ $propsid = 'PR'. $haritid;
 			   $.ajax({
 
 					type: "POST",
-					url:  'requestaccess',
+					url:  '/addproperty/requestaccess',
 					data: {id : id},
 					success: function(data){
 					
