@@ -52,7 +52,7 @@ class RequestSitevisitController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','posttozaakpay','buyer','lessee','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
+                        'actions' => ['index','view','create','posttozaakpay','response','buyer','lessee','indexes','submitfeedback','makeuseryes','onlinepickdropsave','requestsitevisitindex','paymentgateway','sessioncheckout','getvisittype','setvisittype','addfeedback','showfeedback','removesite','confirmstat','checkuserconfirmstatus','offlinepickdropsave','update','delete','onlinesitevisit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
