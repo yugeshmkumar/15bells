@@ -171,7 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                                        echo '<pre>';print_r($ids);die;
                                 if (!empty($datas)) {
                                     $sum = array();
-                                    $docnames = MediaFiles::find()->where(['id' => $ids])->all();
+                                    $docnames = MediaFiles::find()->where(['id' => $ids])->andwhere(['<>','type','webp'])->all();
 
 
                                     foreach ($docnames as $request) {
@@ -743,8 +743,9 @@ $(document).ready(function() {
                                 var type1 = this.type;
                                         if (type1 != 'jpeg' && type1 != 'jpg' && type1 != 'png') {
                                        
+                 var showtype = "'"+this.type+"'";
                  var showmore = "'"+this.file_name+"'";
-                $('#showpropdoc').append('<button id="hidemodals" onclick="ajaraja('+showmore+')" class="btn btn-primary btn-lg btn_docs" data-toggle="modal" data-target="#myModal1" data-dismiss="modal">' + this.file_descr + '</button>');
+                $('#showpropdoc').append('<button id="hidemodals" onclick="ajaraja('+showmore+','+showtype+')" class="btn btn-primary btn-lg btn_docs" data-toggle="modal" data-target="#myModal1" data-dismiss="modal">' + this.file_descr + '</button>');
 
                             }
                     });
@@ -760,7 +761,9 @@ $(document).ready(function() {
         var properid = '';
         var visitypeid = '';
 
-        function ajaraja(data){
+        function ajaraja(data,type){
+
+            if(type != 'webp'){
 
             var urlget =  $('#urlget').val();
             var https =    urlget+'/encrypteddocuments/';
@@ -769,6 +772,7 @@ $(document).ready(function() {
             //alert(totalsrc);
             // https://staging.15bells.com/frontend/web/encrypteddocuments/aeb45c0116e7706661797533e023f097sec%2046%20registry.pdf#toolbar=0
             $('#exactiframe').attr('src', totalsrc)
+           }
         }
 
 

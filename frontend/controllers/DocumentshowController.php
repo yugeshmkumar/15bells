@@ -226,7 +226,7 @@ class DocumentshowController extends Controller {
         $pic = [];
 
 
-        $docnames = MediaFiles::find()->where(['id' => $ids])->asArray()->all();
+        $docnames = MediaFiles::find()->where(['id' => $ids])->andwhere(['<>','type','webp'])->asArray()->all();
 
         
 
