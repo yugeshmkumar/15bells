@@ -3876,11 +3876,11 @@ $("#rantime").datepicker({
                                                     $('#krequestids').val(id);
                                                     
                                                 toastr.success('Request for Site Visit has Successfully placed','success'); 
-                                                toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 500 Rs Along with you','warning');  
+                                               // toastr.warning('Your Free Site Visit Has Already Finished, Please Carry 500 Rs Along with you','warning');  
                                                 
                                                 if(visitmode == 'online'){
                                                 $('#acceptidnew').val(id);       
-                                                $("#proceedtopay").modal('show');
+                                               // $("#proceedtopay").modal('show');
 
                                             }
                                                 

@@ -374,7 +374,7 @@ return $this->render('indexes', [
     public function actionSessioncheckout(){
 
         $ids             =   $_POST['id'];
-        $amount_payable   =   $_POST['amount_payable'];
+        $amount_payable   =   $_POST['amount_payable'] * 100;
 
        
 
