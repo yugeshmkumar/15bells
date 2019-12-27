@@ -411,7 +411,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                                        echo '<pre>';print_r($ids);die;
                         if (!empty($datas)) {
                             $sum = array();
-                            $docnames = MediaFiles::find()->where(['id' => $ids])->all();
+                            $docnames = MediaFiles::find()->where(['id' => $ids])->andwhere(['<>','type','webp'])->all();
 
 
                             foreach ($docnames as $request) {
@@ -476,12 +476,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         $userid = $model->user_id;
 
                         if ($payment_status == 'paid' || $payment_status == 'complimentry') {
-                           
-                            $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
-                            $command = $query->createCommand();
-                            $data = $command->queryAll();
+                          
+                          $query = Yii::$app->db->createCommand("SELECT count('*') as counts from request_emd where user_id='$userid' and property_id='$property_id' and status='1' ")->queryAll();
 
-                            if ($data) {
+                            /* $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
+                            $command = $query->createCommand();
+                            $data = $command->queryAll(); */
+/* echo '<pre>';print_r($query);die; */
+                            if ($query[0]['counts'] > 0 ) {
                                 return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
                             } else {
                                 return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ',' . $userid . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
