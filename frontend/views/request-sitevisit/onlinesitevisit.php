@@ -28,10 +28,11 @@ if(isset($_SESSION['requestids'])){
     $amount_payable =  $_SESSION['amount_payable'];
 
 }else{
-	echo 'nhi aya';die;
+
+	return Yii::$app->response->redirect(['']);
 }
 
-//session_destroy();
+session_destroy();
 ?>
 
 <style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
@@ -91,49 +92,6 @@ if(isset($_SESSION['requestids'])){
 
 
 ?>
-	
-	<div class="col-md-9">
-		<div class="row">
-			<div class="offset-md-1 col-md-10">
-				<div class="row prop_list">
-					<div class="col-md-12 pt-5 pb-5 pl-0 pr-0 pl-4 brdr_btm">
-						<h5 class="prpr_hed m-3">Details</h5>
-						<input type="hidden" id="kname" value="<?php echo $name; ?>">
-						<input type="hidden" id="kemail" value="<?php echo $email; ?>">
-						<input type="hidden" id="kphonenumber" value="<?php echo $phonenumber; ?>">
-						<input type="hidden" id="kamount_payable" value="<?php echo $amount_payable; ?>">
-						<input type="hidden" id="krequestids" value="<?php echo $requestids; ?>">
-
-						<p class="pror_detl p-1 pl-3"><span class="lite_clr">Name :</span> <?php echo $name; ?></p>
-						<p class="pror_detl p-1 pl-3"><span class="lite_clr">Email :</span><?php echo $email; ?></p>
-						<p class="pror_detl p-1 pl-3"><span class="lite_clr">Phone Number :</span> <?php echo $phonenumber; ?></p>
-					</div>
-					<div class="col-md-12 p-0">
-						<div class="row">
-							<div class="col-md-8 pt-5 pb-5 pl-4 pr-4 brdr_rite">
-								<div class="row">
-									<div class="col-md-6">
-										<p class="img_p"></p>
-									</div>
-									<div class="col-md-6">
-										<p class="p_txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 pt-5 pb-5 pl-4 pr-4">
-								<p class="pror_detl p-1 pl-3"><span class="lite_clr">Property ID : </span><?php echo $newproidname; ?></p>
-								<p class="pror_detl p-1 pl-3"><span class="lite_clr">Pricing : <i class="fa fa-inr pl-2 pr-1"></i></span><?php echo $amount_payable; ?></p>
-								<p class="pror_detl p-1 pl-3"><span class="lite_clr">Total : <i class="fa fa-inr pl-2 pr-1"></i></span><?php echo $amount_payable; ?></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 sbmt_div text-right">
-						<button type="button" id="rzp-button1" class="btn btn-info place_bid">Confirm</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 <!--CHECKOUT DESIGN ENDS-->
 
@@ -141,7 +99,7 @@ if(isset($_SESSION['requestids'])){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Zaakpay's dummy merchant site</title>
+<title>15bells Site visit payment</title>
 </head>
 <script>
 
@@ -172,24 +130,26 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 .boxes a:hover {text-decoration:none !important;}
 </style>
 
+
+
 <body onload="autoPop();">
+<div class="col-md-9">
 
 <div class="center">
 <div class="ecssing">
 
 <?php $form = ActiveForm::begin(['method' => "POST",'action'=>"posttozaakpay"]); ?>
 
-<h2>Pay Now to see how Zaakpay will work on your website.</h2>
-<p>Note: This page behaves like a shopping cart or checkout page on a website.</p>
+
 <table width="650px;">
 <tr>
 	<td colspan="2" align="center" valign="middle"></td>
 	
 </tr>
-<tr>	
-	<td width="50%" align="right" valign="middle">Merchant Identifier</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="merchantIdentifier" value="30dfb06e9d39473190a5cc4197f7e2e6" /></td>
-</tr>
+	
+	
+	<input type="hidden" name="merchantIdentifier" value="30dfb06e9d39473190a5cc4197f7e2e6" />
+
 <tr>	
 	<td width="50%" align="right" valign="middle">Order Id</td>
 	<td width="50%" align="center" valign="middle"><input type="text" id="orderId" name="orderId" /></td>
@@ -198,156 +158,143 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 	<td width="50%" align="right" valign="middle">return url(Optional)</td>
 	<td width="50%" align="center" valign="middle"><input type="text" name="returnUrl" value=""/></td>
 </tr> -->
-<tr>
-	 <td> <input type="hidden" name="returnUrl" value="https://www.15bells.com/request-sitevisit/response"/>></td> 
-</tr>
+
+	 <input type="hidden" name="returnUrl" value="https://www.15bells.com/request-sitevisit/response"/>
+
 <tr>	
 	<td width="50%" align="right" valign="middle">Buyer Email</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerEmail" value=""  /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="buyerEmail" value="<?php echo $email; ?>"  /> </td>
 </tr>
 <tr>	
 	<td width="50%" align="right" valign="middle">Buyer First Name</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerFirstName" value="" /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="buyerFirstName" value="<?php echo $name; ?>" /> </td>
 </tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer Last Name</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerLastName" value="" /> </td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer Address</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerAddress" value="" /> </td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer City</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerCity" value="" /></td>
-</tr>
-<tr>	
-	<td width="50%" align="right" valign="middle">Buyer State</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerState" value="" /></td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer Country</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerCountry" value="" /> </td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer Pincode</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerPincode" value="" /> </td>
-</tr>
+
+	<input type="hidden" name="buyerLastName" value="" />
+
+	<input type="hidden" name="buyerAddress" value="" />
+
+	<input type="hidden" name="buyerCity" value="" />
+
+
+	<input type="hidden" name="buyerState" value="" />
+
+
+	<input type="hidden" name="buyerCountry" value="" />
+
+
+	<input type="hidden" name="buyerPincode" value="" />
+
 <tr>
 	<td width="50%" align="right" valign="middle">Buyer Phone No</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerPhoneNumber" value="" /></td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="buyerPhoneNumber" value="<?php echo $phonenumber; ?>" /></td>
 </tr>
-<tr>	
-	<td width="50%" align="right" valign="middle">Txntype</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="txnType" value="1" /></td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Zppayoption</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="zpPayOption" value="1" /></td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Mode</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="mode" value="1" /> </td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Currency</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="currency" value="INR" /></td>
-</tr>
+	
+	
+	<input type="hidden" name="txnType" value="1" />
+
+
+	
+	<input type="hidden" name="zpPayOption" value="1" />
+
+
+	
+	<input type="hidden" name="mode" value="1" />
+
+
+	<input type="hidden" name="currency" value="INR" />
+
 <tr>	
 	<td width="50%" align="right" valign="middle">Amount In Paisa</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="amount" value="100" /> </td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="amount" value="<?php echo $amount_payable; ?>" /> </td>
 </tr>
-<tr>
-	<td width="50%" align="right" valign="middle">IPaddress</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="merchantIpAddress" value="127.0.0.1" /> </td>
-</tr>
-<tr>
-	<td width="50%" align="right" valign="middle">Purpose</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="purpose" value="1" /></td>
-</tr>
+
+	<input type="hidden" name="merchantIpAddress" value="127.0.0.1" />
+
+
+	<input type="hidden" name="purpose" value="1" />
 
 
 <tr>	
-	<td width="50%" align="right" valign="middle">Product Description</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="productDescription" value="Zaakpay subscription fee" /> </td>
+	<td width="50%" align="right" valign="middle">Property ID</td>
+	<td width="50%" align="center" valign="middle"><input type="text" name="productDescription" value="<?php echo $newproidname; ?>" /> </td>
 </tr>
 
-<tr>	
+<!-- <tr>	
 	<td width="50%" align="right" valign="middle">Product1 Description</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="product1Description" /> -->
 
-<tr>	
+<!-- <tr>	
 	<td width="50%" align="right" valign="middle">Product2 Description</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="product2Description" /> -->
 
-<tr>	
+<!-- <tr>	
 	<td width="50%" align="right" valign="middle">Product3 Description</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="product3Description" /> -->
 
-<tr>	
+<!-- <tr>	
 	<td width="50%" align="right" valign="middle">Product4 Description</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="product4Description" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To Address</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToAddress" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To City</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToCity" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To State</td>
 	<td width="50%" align="center" valign="middle"></td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToState" /> -->
 
-<tr>	
+<!-- <tr>	
 	<td width="50%" align="right" valign="middle">Ship To Country</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToCountry" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To Pincode</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToPincode" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To Phone Number</td>
 	<td width="50%" align="center" valign="middle"> </td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToPhoneNumber" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To Firstname</td>
 	<td width="50%" align="center" valign="middle"></td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToFirstname" /> -->
 
-<tr>
+<!-- <tr>
 	<td width="50%" align="right" valign="middle">Ship To Lastname</td>
 	<td width="50%" align="center" valign="middle"></td>
-</tr>
+</tr> -->
 <!-- Not mandatory <input type="hidden" name="shipToLastname" /> -->
 
-<tr>
-	<td width="50%" align="right" valign="middle">Transaction Date "YYYY-MM-DD"</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="txnDate" id="txnDate" /></td>
-</tr>
+
+	<input type="hidden" name="txnDate" id="txnDate" />
+
 <tr>
 	<td colspan="2" width="100%" align="center" valign="middle">
 		<div style="cursor:pointer; padding-top: 25px; padding-left: 230px;">	
@@ -366,6 +313,7 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 </div>
 
 		
-		
+</div>		
 </body>
+
 </html>

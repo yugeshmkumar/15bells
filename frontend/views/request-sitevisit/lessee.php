@@ -23,6 +23,15 @@ if($counts > 0 ){
 ?>
 
 
+<?php if (Yii::$app->session->hasFlash('success')): ?>
+  <div class="alert alert-success alert-dismissable">
+  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+  <h4><i class="icon fa fa-check"></i>Saved!</h4>
+  <?= Yii::$app->session->getFlash('success') ?>
+  </div>
+<?php endif; ?>
+
+
 <div class="col-md-9 content_dashboard no_pad">
 			<div class="row">
 				<div class="col-md-12">
@@ -54,8 +63,10 @@ if($counts > 0 ){
 					</div>
                 <?php foreach ($datas as $data){ 
 
-								$viewid  =  $data->property_id;  
-								$scheduled_time  =  $data->scheduled_time;                
+								$viewid  =  $data->property_id; 
+								$request_status  =  $data->request_status;  
+								$scheduled_time  =  $data->scheduled_time; 
+								$visit_types        =  $data->visit_type;        
                 $haritid = 273*179-$viewid;
                 $propsid = 'PR'. $haritid;
 
@@ -77,7 +88,11 @@ if($counts > 0 ){
                                     
                     ?>
 				<div class="col-md-12 property_detail">
-					<p class="property_id">Property ID : <?php echo $propsid; ?><a href="https://live.15bells.com/" target="_blank"><span class="building_name">Online</span></a></p>
+					<p class="property_id">Property ID : <?php echo $propsid; ?>
+<?php if(($visit_types == 'online' )  && ($request_status == 'paid' || $request_status == 'complimentry' )){ ?>
+					<a href="https://live.15bells.com/" target="_blank"><span class="building_name">Online Visit</span></a>
+<?php } ?>
+					</p>
 					
 							<div class="col-md-12 visit_buyer">
 							<div class="row">
@@ -129,10 +144,16 @@ if($counts > 0 ){
 											</div>
 										</div>
 										<div class="col-md-6">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Mode</p>
+											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Status</p>
 											<div class="col-md-12">
-												<div class="col-md-4 no_pad"><button  onclick="paynowfunc(<?php echo $visit_type . ','.$request_id ?>)" class="cash_butn">Cash</button></div>
-												<div class="col-md-4 no_pad"><button class="cash_butn active_butn">Bank</button></div>
+											<?php if($request_status == 'pay_now'){ ?>
+												<div class="col-md-4 no_pad"><button  onclick="paynowfunc(<?php echo $visit_type . ','.$request_id ?>)" class="cash_butn active_butn">Paynow</button></div>
+											<?php } else if($request_status == 'paid' || $request_status == 'complimentry' || $request_status == 'rejected' || $request_status == 'pending'){ ?>
+												<div class="col-md-4 no_pad"><button class="cash_butn"><?php echo $request_status; ?></button></div>
+											<?php }else { ?>
+													<div class="col-md-4 no_pad"><button  onclick="paynowfunc(<?php echo $visit_type . ','.$request_id ?>)" class="cash_butn active_butn">Paynow</button></div>
+
+											<?php } ?>
 											</div>
 										</div>
 										</div>
@@ -167,7 +188,7 @@ if($counts > 0 ){
                             </div>
 
                             <div class="col-sm-9">
-                                <input type="text" id="accepts2"  value="1000" class="form-control" name="licence" readonly>
+                                <input type="text" id="accepts2"  value="500" class="form-control" name="licence" readonly>
                                 <input type="hidden" id="acceptid" value="" class="form-control" name="licence">
                             </div>
                         </div>

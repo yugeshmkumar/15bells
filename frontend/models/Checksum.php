@@ -153,31 +153,48 @@ class Checksum extends Model{
 		return $sanitizedParam;
 	}
 	
-	static function outputResponse($bool) {
-		foreach($_POST as $key => $value) {
-			if ($bool == 0) {
-				if ($key == "responseCode") {
-					echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
-						<td width="50%" align="center" valign="middle"><font color=Red>***</font></td></tr>';
-				} else if ($key == "responseDescription") {
-					echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
-						<td width="50%" align="center" valign="middle"><font color=Red>This response is compromised.</font></td></tr>';
-				} else {
-					echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
-						<td width="50%" align="center" valign="middle">'.$value.'</td></tr>';
-				}
-			} else {
-				echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
-					<td width="50%" align="center" valign="middle">'.$value.'</td></tr>';
-			}
-		}
-		echo '<tr><td width="50%" align="center" valign="middle">Checksum Verified?</td>';
-		if($bool == 1) {
-			echo '<td width="50%" align="center" valign="middle">Yes</td></tr>';
-		}
-		else {
-			echo '<td width="50%" align="center" valign="middle"><font color=Red>No</font></td></tr>';
-		}
+	public function outputResponse($bool) {
+
+
+		$arrayval = array();
+		$responsecode =  $_POST['responseCode'];
+		$orderid =  $_POST['orderId'];
+		$checksum =   $_POST['checksum'];
+		$transaid =  $_POST['pgTransId'];
+		//$keys = array('responsecode', 'orderid', 'checksum', 'transaid');
+       
+		$responsearray =    array($responsecode,$orderid,$checksum,$transaid);
+
+		return $responsearray;
+		// $a = array_fill_keys($keys, $responsearray);
+		// echo '<pre>';print_r($responsearray);die;
+
+
+		// echo '<pre>';print_r($_POST);die;
+		// foreach($_POST as $key => $value) {
+		// 	if ($bool == 0) {
+		// 		if ($key == "responseCode") {
+		// 			echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
+		// 				<td width="50%" align="center" valign="middle"><font color=Red>***</font></td></tr>';
+		// 		} else if ($key == "responseDescription") {
+		// 			echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
+		// 				<td width="50%" align="center" valign="middle"><font color=Red>This response is compromised.</font></td></tr>';
+		// 		} else {
+		// 			echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
+		// 				<td width="50%" align="center" valign="middle">'.$value.'</td></tr>';
+		// 		}
+		// 	} else {
+		// 		echo '<tr><td width="50%" align="center" valign="middle">'.$key.'</td>
+		// 			<td width="50%" align="center" valign="middle">'.$value.'</td></tr>';
+		// 	}
+		// }
+		// echo '<tr><td width="50%" align="center" valign="middle">Checksum Verified?</td>';
+		// if($bool == 1) {
+		// 	echo '<td width="50%" align="center" valign="middle">Yes</td></tr>';
+		// }
+		// else {
+		// 	echo '<td width="50%" align="center" valign="middle"><font color=Red>No</font></td></tr>';
+		// }
 	}
 	static function getAllResponseParams() {
 		//ksort($_POST);
