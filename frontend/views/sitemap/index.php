@@ -97,8 +97,9 @@ foreach($getproperties as $getproperti)
         $typename  =  preg_replace("/[\s_]/", "-", $typename);
         $town_name = strtolower($getproperti['town_name']);
         $locality = $getproperti['locality'];
-         $arr = explode(",", $locality, 2);
-        $first = $arr[0];
+         $arr = explode(",", $locality, 3);
+        // echo '<pre>';print_r($arr);die;
+        $first = $arr[0].$arr[1];
         
         $second = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $first);
         $string = strtolower($second);
