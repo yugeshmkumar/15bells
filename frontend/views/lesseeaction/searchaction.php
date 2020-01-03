@@ -1490,7 +1490,7 @@ proptype =  $('#proptypes').val();
                   '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1642,7 +1642,7 @@ proptype =  $('#proptypes').val();
                                              '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1786,7 +1786,7 @@ proptype =  $('#proptypes').val();
                                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2639,7 +2639,7 @@ function getPolygonCoords() {
            '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2778,7 +2778,7 @@ function getPolygonCoords() {
                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-2 no_pad relative">'+
-                               '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                               '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //    '<div class="overlay_sign">'+
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
@@ -2928,7 +2928,7 @@ function getPolygonCoords() {
                                                 '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
-                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3063,7 +3063,7 @@ function getPolygonCoords() {
                                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
-                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3487,7 +3487,7 @@ $("#rantime").datepicker({
                                                     '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-2 no_pad relative">'+
-                                                                    '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(',')).replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                                                                    '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                                                         // '<div class="overlay_sign">'+
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
