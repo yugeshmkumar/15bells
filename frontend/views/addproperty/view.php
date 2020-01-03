@@ -12,11 +12,13 @@ use yii\db\Query;
 
 
 $cityurl = strtolower($_GET['city']); 
-$proptypeurl = strtolower($_GET['proptype']); 
-$localityurl = strtolower($_GET['locality']); 
+//$proptypeurl = strtolower($_GET['proptype']); 
+$proptypeurl =  ucwords(str_replace("-", " ", $_GET['proptype']));
+// $localityurl = strtolower($_GET['locality']); 
+$localityurl =  ucwords(str_replace("-", " ", $_GET['locality']));
 $viewid = $_GET['id'];   
 
-$this->title = '15bells-'.$proptypeurl.'|'.$localityurl;
+$this->title = '15bells - '.$proptypeurl.' | '.$localityurl;
 
 // $this->title = $cityurl.'/'.$proptypeurl.'/'.$localityurl.'/'.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Addproperties', 'url' => ['index']];
