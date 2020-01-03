@@ -192,13 +192,13 @@ if($counts > 0 ){
                                 <input type="hidden" id="acceptid" value="" class="form-control" name="licence">
                             </div>
                         </div>
-                    <div class="row row_pad">
+                    <div class="row row_pad" style="margin-top:20px">
                         <div class="form-group">
                             <div class="col-sm-3 text-center">
                             <label class="control-label lab_form">Terms of use</label>
                             </div>
-                            <div class="col-sm-9">
-                                <div style="border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;">
+                            <div class="col-sm-9" style="padding: 0 30px 0 20px;">
+                                <div style="border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;border-radius:5px;">
                                     <p>Lorem ipsum dolor sit amet, veniam numquam has te. No suas nonumes recusabo mea, est ut graeci definitiones. His ne melius vituperata scriptorem, cum paulo copiosae conclusionemque at. Facer inermis ius in, ad brute nominati referrentur vis. Dicat erant sit ex. Phaedrum imperdiet scribentur vix no, ad latine similique forensibus vel.</p>
                                     <p>Dolore populo vivendum vis eu, mei quaestio liberavisse ex. Electram necessitatibus ut vel, quo at probatus oportere, molestie conclusionemque pri cu. Brute augue tincidunt vim id, ne munere fierent rationibus mei. Ut pro volutpat praesent qualisque, an iisque scripta intellegebat eam.</p>
                                     <p>Mea ea nonumy labores lobortis, duo quaestio antiopam inimicus et. Ea natum solet iisque quo, prodesset mnesarchum ne vim. Sonet detraxit temporibus no has. Omnium blandit in vim, mea at omnium oblique.</p>
