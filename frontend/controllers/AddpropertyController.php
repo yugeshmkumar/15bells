@@ -1844,6 +1844,7 @@ echo 'hiiii333';die;
             $root = $_SERVER['DOCUMENT_ROOT'];
             $target_dir = $root . '/archive/web/uploadsthumbnails/';
             $target_dir1 = $root . '/pdfdocuments/';
+            $target_dir2 = $root . '/encrypteddocuments/';
 
               
             if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
@@ -1867,9 +1868,11 @@ echo 'hiiii333';die;
                         $finalfilename = basename($sendingitemContentMod . $_FILES["documentfiles" . "$rath"]["name"]);
                         $target_file = $target_dir . $finalfilename;
                         $target_file1 = $target_dir1 . $finalfilename;
+                        $target_file2 = $target_dir2 . $finalfilename;
 
                       //  move_uploaded_file($_FILES['documentfiles' . "$rath"]["tmp_name"], "$target_file");
                         move_uploaded_file($_FILES['documentfiles' . "$rath"]["tmp_name"], "$target_file1");
+                        copy($target_file1, $target_file2);
 
 
                          //$mpdffile = $target_dir1.'/'.
@@ -1890,7 +1893,7 @@ echo 'hiiii333';die;
                                  if($i % 2 != 0){
                  
                                      $import_page = $mpdf->ImportPage($i);
-                                     $mpdf->AddPage();
+                                 $mpdf->AddPage();
                                  $mpdf->UseTemplate($import_page);
                                  $mpdf->setFooter('{PAGENO}');
                                  //$mpdf->WriteHTML($pagecount);
@@ -1917,6 +1920,9 @@ echo 'hiiii333';die;
                      }
 
                     }
+
+
+                    
 
 
                         
