@@ -776,7 +776,6 @@ $(document).ready(function() {
         }
 
 
-
         function paynowfunc(visit_type, id,propid) {
 
            // properid = id;
