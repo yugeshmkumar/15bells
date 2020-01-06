@@ -149,8 +149,36 @@ class AddpropertyController extends Controller
     {
         $id = (int) Yii::$app->request->get('id');
         $city = Yii::$app->request->get('city');
-        $proptype = Yii::$app->request->get('proptype');
-        $locality = Yii::$app->request->get('locality');
+         $proptype = Yii::$app->request->get('proptype');
+         $localitys = Yii::$app->request->get('locality');
+
+    $property = \common\models\Addproperty::find()->where(['id' => $id])->one();
+    $project_type_id = $property->project_type_id;
+
+
+    $town_name = $property->town_name;
+    $town_name = strtolower($town_name);        
+     $town_name = preg_replace("/[\s_]/", "-", $town_name);
+
+     $locality = $property->locality;
+    $arr = explode(",", $locality, 3);
+    // echo '<pre>';print_r($arr);die;
+    $first = $arr[0].$arr[1];
+    $second = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $first);
+    $string = strtolower($second);
+      $string = preg_replace("/[\s_]/", "-", $string);
+
+
+    $property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
+    $typename = $property_type->typename;
+     $proptypeurl =  ucwords(str_replace(" ", "-", $typename));
+
+    //  echo strcasecmp($localitys, $string);die;
+   // if($city === $town_name && $locality === $string && $proptype ===$typename){    
+
+        if ((strcasecmp($city, $town_name) == 0) && (strcasecmp($localitys, $string) == 0) &&  (strcasecmp($proptype, $proptypeurl) == 0) ){
+           
+
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
         $model = $db->cache(function($db) use ($id){
@@ -161,6 +189,11 @@ class AddpropertyController extends Controller
             'model' => $model,
             //'key'   =>$secretKey,
         ]);
+
+      }else {
+        $this->redirect(array('site/error'));
+
+      }
     }
    
     public function actionSellorview()

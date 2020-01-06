@@ -105,7 +105,12 @@ foreach($getproperties as $getproperti)
         $id = $getproperti['id'];
         $typename = strtolower($getproperti['typename']);
         $typename  =  preg_replace("/[\s_]/", "-", $typename);
+
+        
         $town_name = strtolower($getproperti['town_name']);
+        
+        $town_names = preg_replace("/[\s_]/", "-", $town_name);
+
         $locality = $getproperti['locality'];
          $arr = explode(",", $locality, 3);
         // echo '<pre>';print_r($arr);die;
@@ -117,7 +122,7 @@ foreach($getproperties as $getproperti)
         echo '<url>'.PHP_EOL;
        // echo '<loc>'.Yii::getAlias('@frontendUrl') . '/'.$second.'?id='.$id.'</loc>'.PHP_EOL;
 
-        echo '<loc>'.Yii::getAlias('@frontendUrl') . '/'.$town_name.'/'.$typename.'/'.$string.'/'.$id.'</loc>'.PHP_EOL;
+        echo '<loc>'.Yii::getAlias('@frontendUrl') . '/'.$town_names.'/'.$typename.'/'.$string.'/'.$id.'</loc>'.PHP_EOL;
         echo '<changefreq>daily</changefreq>'.PHP_EOL;
         echo '</url>'.PHP_EOL;
   }
