@@ -16,58 +16,68 @@ $getblogs  =  Yii::$app->db->createCommand($query1)->queryAll();
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl').'</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/buyer</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/buyeraction/viewpropertys</loc>'.PHP_EOL;
+echo '<changefreq>weekly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/seller</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lessee</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys</loc>'.PHP_EOL;
+echo '<changefreq>weekly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lessor</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/contact-us</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
-echo '<loc>'.Yii::getAlias('@frontendUrl') . '/user/sign-in/login</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/user/sign-in/signup?ifs=menu1</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/user/sign-in/request-password-reset</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/user/sign-in/signup</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/site/userdash</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 
 echo '<url>'.PHP_EOL;
 echo '<loc>https://live.15bells.com</loc>'.PHP_EOL;
-echo '<changefreq>daily</changefreq>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 
