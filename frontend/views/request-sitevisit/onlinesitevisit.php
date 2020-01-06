@@ -35,7 +35,7 @@ if(isset($_SESSION['requestids'])){
 session_destroy();
 ?>
 
-<style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#fefefe; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
+<style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#ffffff; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
 <style>
 	.doc_pric{
 		font-family: 'Open Sans', sans-serif;
@@ -43,6 +43,11 @@ session_destroy();
 		padding:10px;
 		background:#0fd8da;
 		color:#ffffff;
+	}
+	.details_label{
+		text-align:left !important;
+		margin-top:20px;
+		margin:20px 0 0 !important;
 	}
 	.full_wdth{
 		width:100%;
@@ -118,7 +123,7 @@ function submitForm(){
 </script>
 <style type="text/css">
 .center{ width:800px; margin:0 auto;}
-.ecssing{width:790px;float:left;padding:15px 0 30px 10px;margin:10px 0 30px 0;background-color:#e9f0f2;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7fbfc', endColorstr='#e9f0f2'); /* for IE */background: -webkit-gradient(linear, left top, left bottom, from(#f7fbfc), to(#e9f0f2)); /* for webkit browsers */background: -moz-linear-gradient(top, #f7fbfc, #e9f0f2); /* for firefox 3.6+ */	-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+.ecssing{width:790px;float:left;padding:15px 0 30px 10px;margin:10px 0 30px 0;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7fbfc', endColorstr='#e9f0f2'); /* for IE */ /* for webkit browsers */ /* for firefox 3.6+ */	-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
 .ecssing h2 {padding:0px;margin:0px 0 10px 0;font:bold 30px Calibri, Arial, Helvetica, sans-serif;text-align:Center;color:#000000;}
 .ecssing p {padding:0px;margin:0px 0 20px 0;font:bold 14px  Arial, Helvetica, sans-serif;text-align:Center;	color:#000000;}
 label {padding:15px 0px 5px 0; margin:0px;width:225px; float:left;font:normal 14px Arial, Helvetica, sans-serif !important;text-align:left;color:#000000;}
@@ -141,19 +146,16 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 <?php $form = ActiveForm::begin(['method' => "POST",'action'=>"posttozaakpay"]); ?>
 
 
-<table width="650px;">
-<tr>
-	<td colspan="2" align="center" valign="middle"></td>
-	
-</tr>
+<div class="row">
+
 	
 	
 	<input type="hidden" name="merchantIdentifier" value="30dfb06e9d39473190a5cc4197f7e2e6" />
 
-<tr>	
-	<td width="50%" align="right" valign="middle">Order Id</td>
-	<td width="50%" align="center" valign="middle"><input type="text" id="orderId" name="orderId" /></td>
-</tr>
+<div class="col-md-6">	
+<p class="details_label text-left">Order Id</p>
+	<input type="text" class="input_desgn form-control" id="orderId" name="orderId" />
+</div>
 <!-- <tr>
 	<td width="50%" align="right" valign="middle">return url(Optional)</td>
 	<td width="50%" align="center" valign="middle"><input type="text" name="returnUrl" value=""/></td>
@@ -161,14 +163,14 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 
 	 <input type="hidden" name="returnUrl" value="https://www.15bells.com/request-sitevisit/response"/>
 
-<tr>	
-	<td width="50%" align="right" valign="middle">Buyer Email</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerEmail" value="<?php echo $email; ?>"  /> </td>
-</tr>
-<tr>	
-	<td width="50%" align="right" valign="middle">Buyer First Name</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerFirstName" value="<?php echo $name; ?>" /> </td>
-</tr>
+<div class="col-md-6">	
+<p class="details_label text-left">Buyer Email</p>
+	<input type="text" class="input_desgn form-control" name="buyerEmail" value="<?php echo $email; ?>"  />
+</div>
+<div class="col-md-6">	
+<p class="details_label text-left">Buyer First Name</p>
+<input type="text" class="input_desgn form-control" name="buyerFirstName" value="<?php echo $name; ?>" /> 
+</div>
 
 	<input type="hidden" name="buyerLastName" value="" />
 
@@ -185,10 +187,10 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 
 	<input type="hidden" name="buyerPincode" value="" />
 
-<tr>
-	<td width="50%" align="right" valign="middle">Buyer Phone No</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="buyerPhoneNumber" value="<?php echo $phonenumber; ?>" /></td>
-</tr>
+<div class="col-md-6">
+<p class="details_label text-left">Buyer Phone No</p>
+<input type="text" class="input_desgn form-control" name="buyerPhoneNumber" value="<?php echo $phonenumber; ?>" />
+</div>
 	
 	
 	<input type="hidden" name="txnType" value="1" />
@@ -204,10 +206,10 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 
 	<input type="hidden" name="currency" value="INR" />
 
-<tr>	
-	<td width="50%" align="right" valign="middle">Amount In Paisa</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="amount" value="<?php echo $amount_payable; ?>" /> </td>
-</tr>
+<div class="col-md-6">	
+<p class="details_label text-left">Amount In Paisa</p>
+<input type="text" class="input_desgn form-control" name="amount" value="<?php echo $amount_payable; ?>" /> 
+</div>
 
 	<input type="hidden" name="merchantIpAddress" value="127.0.0.1" />
 
@@ -215,10 +217,10 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 	<input type="hidden" name="purpose" value="1" />
 
 
-<tr>	
-	<td width="50%" align="right" valign="middle">Property ID</td>
-	<td width="50%" align="center" valign="middle"><input type="text" name="productDescription" value="<?php echo $newproidname; ?>" /> </td>
-</tr>
+<div class="col-md-6">	
+<p class="details_label text-left">Property ID</p>
+	<input type="text" class="input_desgn form-control" name="productDescription" value="<?php echo $newproidname; ?>" /> 
+</div>
 
 <!-- <tr>	
 	<td width="50%" align="right" valign="middle">Product1 Description</td>
@@ -295,17 +297,15 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 
 	<input type="hidden" name="txnDate" id="txnDate" />
 
-<tr>
-	<td colspan="2" width="100%" align="center" valign="middle">
-		<div style="cursor:pointer; padding-top: 25px; padding-left: 230px;">	
+</div>
+		<p class="" style="cursor:pointer; padding-top: 25px; ">	
 			<a class="boxes" onclick="javascript:submitForm()">Pay Now
 			</a>
-		</div>
-	</td>	
-</tr>
+		</p>
 
 
-</table>
+
+</div>
 
                 <?php ActiveForm::end(); ?>
 
