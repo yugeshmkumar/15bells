@@ -20,7 +20,7 @@ class LesseeController extends Controller {
 
         //    meta tags description starts here  
 
-		$title =  \Yii::$app->view->title = 'Lessee';
+		$title =  \Yii::$app->view->title = '15Bells - Commercial Property on Lease | Search Property on Rent';
 
 		Yii::$app->view->registerMetaTag([
 		'name' => 'viewport',			
