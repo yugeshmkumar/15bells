@@ -165,7 +165,7 @@ NewDesignAsset::register($this);
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['lessor']) ?>">Lease/ Rent your Property</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>">Blogs</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['aboutus']) ?>">About Us</a></li>
-
+							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['coworking']) ?>">Co Working Space</a></li>
 							<li class="trans_act"><a class="menu_link" href="<?php echo yii::$app->urlManager->createUrl(['contact-us']) ?>">Contact Us</a></li>
 							
 					</ul>
