@@ -19,15 +19,13 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
 <head>
     
   
-
-
-    <meta charset="<?php echo Yii::$app->charset ?>">
+<meta charset="<?php echo Yii::$app->charset ?>">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <?php echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="shortcut icon" href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>favicon.ico" />
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -37,8 +35,10 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-120052176-1');
+  gtag('config', 'UA-153152050-1');
 </script>
+
+
 
 
 

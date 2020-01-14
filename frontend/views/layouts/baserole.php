@@ -37,7 +37,7 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-120052176-1');
+  gtag('config', 'UA-153152050-1');
 </script>
 
 
