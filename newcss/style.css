@@ -4070,3 +4070,68 @@ color: #c4984f;
 	font-weight:500;
 	color:#221d36;
 }
+
+.project_details img{
+	width:100%;
+}
+.project_details {
+    width: 100%;
+    float: left;
+    border: 1px solid #efefef;
+    padding: 7px;
+	background:#ffffff;
+	margin-bottom:15px;
+	position:relative;
+	overflow:hidden;
+}
+.project_details p{
+	margin:0;
+}
+.img_project{
+	transform:scale(1);
+	transition:.8s;
+}
+.img_project:hover{
+	transform:scale(1.1);
+	transition:.8s;
+}
+.badge_feature{
+	padding:4px 15px;
+	background:#005ad4;
+	color:#ffffff;
+	font-size:13px;
+	border-radius:1px;
+	margin-right:25px;
+}
+.badge_image{
+	position:absolute;
+	bottom:20px;
+	bottom: 25px;
+    width: 100%;
+}
+.grey_color{
+	background-color: #11ab7c;
+}
+.orange_bg{
+	background-color: #f5b759;
+}
+.location_txt{
+	font-size: 20px;
+    padding: 15px 3px 10px;
+    color: #c4984f;
+}
+.feature_txt{
+	font-size: 15px;
+    padding: 10px 3px 10px;
+    color: #221d36;
+}
+.padd_contact{
+	padding:20px 0;
+}
+.pad_50{
+	padding:50px;
+}
+.send_messgae{
+	padding:7px 21px;
+	font-size:17px;	
+}
