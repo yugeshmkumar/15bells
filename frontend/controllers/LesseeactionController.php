@@ -222,6 +222,79 @@ class LesseeactionController extends Controller {
     public function actionViewpropertys() {
 
         // echo '<pre>';print_r($_POST);die;
+
+        $title =  \Yii::$app->view->title = 'Commercial Properties for Lease | Delhi/NCR | Office Rent in Gurgaon.';
+
+        Yii::$app->view->registerMetaTag([
+            'name' => 'viewport',			
+            'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+            ]);
+            \Yii::$app->view->registerMetaTag([
+            'name' => 'description',			
+            'content' => 'Search Commercial Real Estate property in Gurgaon and Delhi/NCR. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease.'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'keywords',			
+            'content' => '15Bells'
+            ]);
+            Yii::$app->view->registerMetaTag([
+                'name' => 'Owner',			
+                'content' => '15bells.com'
+                ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'Copyright',			
+            'content' => '15bells.com'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'classification',			
+            'content' => 'Real Estate Property Search'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'distribution',			
+            'content' => 'India'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'rating',			
+            'content' => 'General'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'subject',			
+            'content' => 'Search Property for lease And Rent, Search offices, commercial space, Builders And Property in Gurgaon, Delhi/NCR.'
+            ]);
+            Yii::$app->view->registerMetaTag([
+            'name' => 'audience',			
+            'content' => 'All'
+            ]);
+
+            //  og tags 
+    
+            Yii::$app->view->registerMetaTag([
+            'property' => 'og:title',			
+            'content' => $title
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+            'property' => 'og:type',			
+            'content' => 'website'
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+            'property' => 'og:url',			
+            'content' => Yii::getAlias('@frontendUrl').'/lesseeaction/viewpropertys',
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+            'property' => 'og:image',			
+            'content' => 'https://staging.15bells.com/newimg/logo.png'
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+                'property' => 'og:site_name',			
+                'content' => '15bells'
+                ]);  
+
+
+
  
          if(!isset($_SESSION)) 
          { 

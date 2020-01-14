@@ -9,7 +9,8 @@ use yii\bootstrap\Modal;
 use yii\web\View;
 use common\models\MyExpectationsajaxSearch;
 
-$this->title = 'Lessee Search';
+// $this->title = 'Lessee Search';
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::getAlias('@frontendUrl').'/lesseeaction/viewpropertys']); 
 
 
 if(!isset($_SESSION)) 
@@ -116,7 +117,7 @@ if(!isset($_SESSION))
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt locality_area"><span class="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt locality_area"><span class="locality_areas"><?php echo ($town != '' ? $town.' '.$sector : 'Location'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_type"><span class="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Area'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
@@ -1783,8 +1784,10 @@ proptype =  $('#proptypes').val();
     $('.prop_prices').text(pricemin+' - '+pricemax); 
  }
  
+ if(proptype != ''){
  var commercial_text = $('#'+proptype).text();
  $('.prop_types').text(commercial_text);
+}
 
  if(pacinput != ''){
    var getsearchlocation = pacinput;
@@ -3284,7 +3287,7 @@ function getPolygonCoords() {
                            '</div>'+
                            
                    '</div>'); 
-                     var x=3;
+                     var x=50;
                      $('.property_detail').hide();
                      $('#getprop .property_detail:lt('+x+')').show();  
 
