@@ -179,6 +179,79 @@ class AddpropertyController extends Controller
         if ((strcasecmp($city, $town_name) == 0) && (strcasecmp($localitys, $string) == 0) &&  (strcasecmp($proptype, $proptypeurl) == 0) ){
            
 
+            Yii::$app->view->registerMetaTag([
+                'name' => 'viewport',			
+                'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+                ]);
+                \Yii::$app->view->registerMetaTag([
+                'name' => 'description',			
+                'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
+                ]);
+                Yii::$app->view->registerMetaTag([
+                'name' => 'keywords',			
+                'content' => '15Bells'
+                ]);
+                Yii::$app->view->registerMetaTag([
+                    'name' => 'Owner',			
+                    'content' => '15bells.com'
+                    ]);
+                    Yii::$app->view->registerMetaTag([
+                        'name' => 'Copyright',			
+                        'content' => '15bells.com'
+                        ]);
+                        Yii::$app->view->registerMetaTag([
+                            'name' => 'classification',			
+                            'content' => 'Real Estate Property listing'
+                            ]);
+                            Yii::$app->view->registerMetaTag([
+                                'name' => 'distribution',			
+                                'content' => 'India'
+                                ]);
+                                Yii::$app->view->registerMetaTag([
+                                    'name' => 'rating',			
+                                    'content' => 'General'
+                                    ]);
+                                    Yii::$app->view->registerMetaTag([
+                                        'name' => 'subject',			
+                                        'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
+                                        ]);
+                                        Yii::$app->view->registerMetaTag([
+                                            'name' => 'audience',			
+                                            'content' => 'All'
+                                            ]);
+
+                //  og tags 
+        
+                Yii::$app->view->registerMetaTag([
+                'property' => 'og:title',			
+                'content' => $title
+                ]);
+
+                Yii::$app->view->registerMetaTag([
+                'property' => 'og:type',			
+                'content' => 'website'
+                ]);
+
+                Yii::$app->view->registerMetaTag([
+                'property' => 'og:url',			
+                'content' => Yii::getAlias('@frontendUrl').'/'.$town_name.'/'.$proptypeurl.'/'.$string.'/'.$id,
+                ]);
+
+                Yii::$app->view->registerMetaTag([
+                'property' => 'og:image',			
+                'content' => 'https://staging.15bells.com/newimg/logo.png'
+                ]);
+
+                Yii::$app->view->registerMetaTag([
+                'property' => 'og:description',			
+                'content' => 'Strive to create a transparent and safe place for swift real estate transactions with disruptive technology.'
+                ]); 
+                Yii::$app->view->registerMetaTag([
+                    'property' => 'og:site_name',			
+                    'content' => '15bells'
+                    ]);  
+               
+
         $this->layout = "roleLayout";
         $db = Yii::$app->db;
         $model = $db->cache(function($db) use ($id){
