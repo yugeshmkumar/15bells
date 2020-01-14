@@ -24,6 +24,8 @@ $this->title = '15bells - '.$proptypeurl.' | '.$localityurl;
 $this->params['breadcrumbs'][] = ['label' => 'Addproperties', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::getAlias('@frontendUrl').'/'.$_GET['city'].'/'.$_GET['proptype'].'/'.$_GET['locality'].'/'.$viewid]); 
+
 
 ?>
 <style>
