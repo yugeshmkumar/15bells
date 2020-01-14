@@ -38,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
 	.view_property{
 		height:245px;
 	}
+	.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
 	</style>
 <?php
 $property = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
@@ -255,6 +261,12 @@ $propsid = 'PR'. $haritid;
 										
 									</ul>
 								</div>
+								
+								<div class="col-md-12 progress_bar">
+								<p class="details_label">Property Description</p>
+									<p class="details_name more">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+								</div>
+
 								<div class="col-md-12 progress_bar">
 									<p class="text-left process_continue">
                                     <a href="javascript:void(0)" onclick="requestfor('Instant')" class="<?php echo ($request_for == 'Instant' ? 'property_process' : 'property_back step_locality') ?>">Instant</a>
@@ -565,6 +577,45 @@ $propsid = 'PR'. $haritid;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  
  <script>
+
+		$(document).ready(function() {
+    // Configure/customize these variables.
+    var showChar = 120;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Read more";
+    var lesstext = "Read less";
+    
+
+    $('.more').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
+
+
 
 		function requestaccess(id){
 
