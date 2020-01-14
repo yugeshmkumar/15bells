@@ -440,6 +440,76 @@ class BuyeractionController extends Controller {
 
        // echo '<pre>';print_r($_POST);die;
 
+       $title =  \Yii::$app->view->title = 'Commercial Properties for Sale in Gurgaon | Buy Commercial Property in Delhi/NCR.';
+
+       Yii::$app->view->registerMetaTag([
+           'name' => 'viewport',			
+           'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+           ]);
+           \Yii::$app->view->registerMetaTag([
+           'name' => 'description',			
+           'content' => 'Search Properties for Sale in Gurgaon - Buy Best Commercial Properties in Delhi/NCR by Real Property owners, Dealers, Builders'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'keywords',			
+           'content' => '15Bells'
+           ]);
+           Yii::$app->view->registerMetaTag([
+               'name' => 'Owner',			
+               'content' => '15bells.com'
+               ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'Copyright',			
+           'content' => '15bells.com'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'classification',			
+           'content' => 'Real Estate Property Search'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'distribution',			
+           'content' => 'India'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'rating',			
+           'content' => 'General'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'subject',			
+           'content' => 'Search Property for Sale, Search New Projects, Builders And Property Dealers in Delhi/NCR.'
+           ]);
+           Yii::$app->view->registerMetaTag([
+           'name' => 'audience',			
+           'content' => 'All'
+           ]);
+
+           //  og tags 
+   
+           Yii::$app->view->registerMetaTag([
+           'property' => 'og:title',			
+           'content' => $title
+           ]);
+
+           Yii::$app->view->registerMetaTag([
+           'property' => 'og:type',			
+           'content' => 'website'
+           ]);
+
+           Yii::$app->view->registerMetaTag([
+           'property' => 'og:url',			
+           'content' => Yii::getAlias('@frontendUrl').'/buyeraction/viewpropertys',
+           ]);
+
+           Yii::$app->view->registerMetaTag([
+           'property' => 'og:image',			
+           'content' => 'https://staging.15bells.com/newimg/logo.png'
+           ]);
+
+           Yii::$app->view->registerMetaTag([
+               'property' => 'og:site_name',			
+               'content' => '15bells'
+               ]);  
+
         if(!isset($_SESSION)) 
         { 
             session_start(); 
@@ -1325,16 +1395,11 @@ class BuyeractionController extends Controller {
         }
 //   echo $sqlstr;die;
 
-        if ($sector == '' && $town == '') {
-            echo '1';
-            die;
-        } else {
-
-           
+        
 
             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
             return  json_encode($payments);
-        }
+        
     }
 
    
