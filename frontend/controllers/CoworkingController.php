@@ -61,7 +61,7 @@ class CoworkingController extends \yii\web\Controller
                 if($model->save()){
 
                     
-                    $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('coworking','1014','',$description,'$date')")->execute();
+                    $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('coworking','1061','',$description,'$date')")->execute();
                
                     if($payments){
 
