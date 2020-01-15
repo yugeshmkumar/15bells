@@ -1,15 +1,31 @@
 <?php
 
 $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/coworking/']); 
+use yii\widgets\ActiveForm;
+
+use yii\helpers\HtmlPurifier;
+use yii\helpers\Html;
+
+
 
 ?>
+
+
 
 <section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/cowork.jpg';  ?>">
 			
 			<div class="container-fluid no_pad div_header">
 			
-			
 				<div class="container" id="banner_cont">
+
+				<?php if (Yii::$app->session->hasFlash('success')): ?>
+  <div class="alert alert-success alert-dismissable">
+  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+  <h4><i class="icon fa fa-check"></i>Saved!</h4>
+  <?= Yii::$app->session->getFlash('success') ?>
+  </div>
+<?php endif; ?>
+
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
 						<h1 class="about_head">Need Co-working space?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
@@ -26,7 +42,8 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		</section>
 
 
-
+	
+			
 
 <div class="container-fluid team_banner">
 	<div class="">
@@ -125,6 +142,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 	</div>
 </div>
 
+<?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"coworking"]); ?>
 <div class="container-fluid pad_50 contact_enquiry">
 <div class="container">
 		<div class="row">
@@ -138,29 +156,35 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 			<div class="col-md-8">
 				<div class="row padd_contact">
 					<div class="col-md-6">
-						<input class="form-control input_desgn" placeholder="Full Name">
+						<?php echo $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => "Full Name", 'class'=>'form-control input_desgn'])->label(false); ?>
+
 					</div>
 					<div class="col-md-6">
-						<input class="form-control input_desgn" placeholder="Phone No">
+						<?php echo $form->field($model, 'phone')->textInput(['minlength' => 10,'maxlength' => 10,'maxlength' => true, 'placeholder' => "Phone No", 'class'=>'form-control input_desgn'])->label(false); ?>
+
 					</div>
 					
 				</div>
 				<div class="row padd_contact">
 					<div class="col-md-6">
-						<input class="form-control input_desgn" placeholder="Email">
+						<?php echo $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email", 'class'=>'form-control input_desgn'])->label(false); ?>
+
 					</div>
 					<div class="col-md-6">
-						<input class="form-control input_desgn" placeholder="No. Of Seats">
+						<?php echo $form->field($model, 'seats')->textInput(['maxlength' => true, 'placeholder' => "No. Of Seats", 'class'=>'form-control input_desgn'])->label(false); ?>
+
 					</div>
 				</div>
 				<div class="row padd_contact">
 					<div class="col-md-12">
-						<textarea class="form-control input_desgn" placeholder="Message"></textarea>
+						<?php echo $form->field($model, 'message')->textArea(['maxlength' => true, 'placeholder' => "Message", 'class'=>'form-control input_desgn'])->label(false); ?>
+
 					</div>
 				</div>
 				<div class="row padd_contact">
 					<div class="col-md-12">
-					<a class="send_messgae sign_up" href="#" id="contact-menu">Send Message</a>
+					 <?= Html::submitButton('Send Message', ['class' => 'send_messgae sign_up']) ?>
+
 					</div>
 				</div>
 				
@@ -169,6 +193,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		
 	</div>
 </div>
+<?php ActiveForm::end(); ?>
 
 <?php 
 $script = <<< JS
