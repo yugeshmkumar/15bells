@@ -886,121 +886,57 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 
 
 <!---- Lead Modal-------->
-<div id="emd_deposit" class="modal fade" role="dialog">
-    <div class="modal-dialog modal_dialogue modal-lg">
 
-        <!-- Modal content-->
-        <div class="modal-content draw_map no_pad">
-            <div class="">
-                <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
-                
-            </div>
-            <div class="modal-body">
-            
-            <?php $modeled = new \common\models\ChatContactUs(); ?>
-            
-            <?php $form = ActiveForm::begin(['id' => $modeled->formName(),'action'=>"chatcontactus/create"]); ?>
-            
-                <div class="container-fluid user_viewed">
-                 <div class="row">
-                    <p class="confrimation_txt">I have paid an amount of <span class="detail_s">INR 250000000</span> in favour of<span class="detail_s"> Mr. Amit Kumar</span> as per the details.
-                 </div>
-                    <div class="row">
-                    <ul class="add_property nav nav-pills text-center">
-						<li class="active property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" href="#home" class="categ_selec">UTR Details</a></li>
-						<li class="property_steps col-md-6 search_listing no_pad"><a data-toggle="pill" href="#menu1" class="categ_selec">Demand Draft Details</a></li>
-					</ul>
-				<div class="tab-content">
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map lead_auction">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body">
+		<div class="container-fluid">
+			<h1 class="modal_transac">We have built a revolutionary product that makes the commercial real estate deals easy.</h1>
+			<p class="auction_function">The Auction Technology is currently an invite-only functionality. </p>
+			<div class="row details_u">
+					<h3 class="details_user">Please provide your details to ask for early access.</h3>
+
+					<?php $modeled = new \common\models\ChatContactUs(); ?>
 				
-				  <div id="home" class="tab-pane fade in active">
-                             <div class="row">
-										<div class="col-md-6  col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">UTR No.</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
-										</div>
-										<div class="col-md-6 col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="SBI"></p>
-										</div>
-									  </div>
-                                      <div class="row">
-										<div class="col-md-6  col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
-										</div>
-										<div class="col-md-6 col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="07/09/1992"></p>
-										</div>
-									  </div>
-                                      <div class="col-md-12 save_profile text-right">
-								<a href="#" class="save_button">Save</a>
-                                        </div>
-							  
-                  </div>
-                  <div id="menu1" class="tab-pane fade in">	
-                  <div class="row">
-										<div class="col-md-6  col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">DD No.</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="999999999999"></p>
-										</div>
-										<div class="col-md-6 col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Bank</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="SBI"></p>
-										</div>
-									  </div>
-                                      <div class="row">
-										<div class="col-md-6  col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Branch Name</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="New Delhi"></p>
-										</div>
-										<div class="col-md-6 col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">Date</p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="07/09/1992"></p>
-										</div>
-									  </div>
-                                      
-                                      <div class="row">
-										<div class="col-md-6  col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/company.svg';  ?>">Physically Sent <span class="person_name">(Person Name)</span></p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="Dhanush"></p>
-										</div>
-										<div class="col-md-6 col-xs-6 company_overview">
-											<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/company/website.svg';  ?>">By Courier <span class="person_name">(Tracking ID)</span></p>
-											<p class="label_name"><input type="text" class="form-control input_desgn" placeholder="ID12121212"></p>
-										</div>
-									  </div>
-                                      <div class="col-md-12 save_profile text-right">
-							 <a href="#" class="save_button">Save</a>
-                                <div>
+            <?php $form = ActiveForm::begin(['id' => $modeled->formName(),'action'=>"chatcontactus/create"]); ?>
 
-							  </div>
-                  </div>
-
-                </div>                                     
-
-
-
-
-
-                    </div>
-                   
-                   
-                </div>
-                </div><!-- panel-group -->
-                
-                
-                <?php ActiveForm::end(); ?>
-
+<div class="col-md-4">
+            <?php echo $form->field($modeled, 'name')->textInput(['maxlength' => true, 'placeholder' => "Name", 'class'=>'form-control input_desgn','id' => 'chatname'])->label(false); ?>
             </div>
-            
-            
-            
-            
-        </div>
+			<div class="col-md-4">
+			<?php echo $form->field($modeled, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email",'class'=>'form-control input_desgn', 'id' => 'chatemail'])->label(false); ?>
+			</div>	
 
+<div class="col-md-4">
+            <?php echo $form->field($modeled, 'phone')->textInput(['placeholder' => "Phone Number", 'class'=>'form-control input_desgn','id' => 'Phone'])->label(false); ?>
+			</div>	
+
+          <p class="col-md-12 no_pad">  <?= Html::submitButton('Submit', ['class' => 'property_process submit_det']) ?></p>
+                    <?php ActiveForm::end(); ?>
+
+					<!-- <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Name">
+				 </div>
+				 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Phone">
+				 </div>
+				 <div class="col-md-4">
+                    <input type="text" class="form-control input_desgn" placeholder="Email">
+				 </div>
+				 <p class="col-md-12 no_pad"><a class="property_process submit_det" href="#">Submit</a></p> -->
+			</div>
+		</div>
+      </div>
+      
     </div>
-    </div>
+
+  </div>
+</div>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <?php 
