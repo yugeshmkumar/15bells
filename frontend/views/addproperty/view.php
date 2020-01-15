@@ -5,6 +5,8 @@ use yii\widgets\DetailView;
 use common\models\MediaFilesConfig;
 use common\models\MediaFiles;
 use yii\db\Query;
+use yii\widgets\ActiveForm;
+
 
 
 /* @var $this yii\web\View */
@@ -68,6 +70,7 @@ $data2=  $sitevisits[0]['totalsitevisit'];
 
 
 $property_for = $property->property_for != '' ? $property->property_for : "";
+$town_name = $property->town_name != '' ? $property->town_name : "";
 $locality = $property->locality != '' ? $property->locality : "";
 $price_acres = $property->price_acres != '' ? $property->price_acres : "";
 $request_for = $property->request_for != '' ? $property->request_for : "";
@@ -263,10 +266,13 @@ $propsid = 'PR'. $haritid;
 										
 									</ul>
 								</div>
-								
+								<?php 
+
+                                $description = "A very good $property_types availabale for rent in  $town_name  with Super area $super_area Sq ft , It is a $furnished_status  property suitable for any kind of $property_types, For more details or Site Visit , please <a href='https://api.whatsapp.com/send?phone=918130109696' target='_blank'> Contact Us.. </a> <a href='javascript:void(0)' onclick='openModal($viewid)'> Call me </a> ";
+								?>
 								<div class="col-md-12 progress_bar">
 								<p class="details_label">Property Description</p>
-									<p class="details_name more">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+									<p class="details_name more"><?php echo $description; ?></p>
 								</div>
 
 								<div class="col-md-12 progress_bar">
@@ -573,12 +579,230 @@ $propsid = 'PR'. $haritid;
 </div>
 
 
+<div id="call_modal" class="modal fade" role="dialog">
+  <div id="call_modal_child" class="modal-dialog modal-sm modal_dialogue modal_user" style="width:450px;">
+
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		
+		<div class="container-fluid no_pad">
+
+        <div class="col-md-12 call_me_butn">
+            <span class="call_icn"><i class="fa fa-phone"></i></span><span class="hot_no">9355-73-15-15</span>
+        </div>
+        <div class="col-md-12 text-center">
+        <span class="split_call">OR</span>
+        </div>
+     <div class="col-md-12 call_me_butn" id="callmenowdiv">
+         <button type="button" id="callmenow" class="btn btn-default btn_signin">Call me now</button>
+     </div>
+
+        <div class="col-md-12 text-left" id="addusers">
+				<h2 class="subuser_hed">Please Enter Phone Number</h2>
+
+			<?php $modelre = new \common\models\Callbuttonaction(); ?>
+
+				<?php $form = ActiveForm::begin(['id' => $modelre->formName(),
+			      //'enableAjaxValidation'   => true,
+
+				//'enableClientValidation' => false,
+				'action'=>\Yii::$app->urlManager->createUrl(['callbuttonaction/create'])]);
+
+				 ?>
+
+				
+
+              <?php date_default_timezone_set("Asia/Calcutta");
+              $dater = date('Y-m-d H:i:s');
+             
+
+             ?>
+			<?=$form->field($modelre, 'property_id')->hiddenInput()->label(false)?>
+            <?=$form->field($modelre, 'created_date')->hiddenInput(['value'=>$dater])->label(false)?>
+
+				<p class="user_Detail">
+				<?=$form->field($modelre, 'user_phone')->textInput([ 'placeholder' => "Phone Number" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				</p>
+
+                <div class="user_Detail" id="getotpdiv">
+				<?=$form->field($modelre, 'userOTP')->textInput([ 'placeholder' => "Enter OTP" , 'class' => 'form-control input_desgn input_location'])->label(false)?>
+				</div>
+                <?=$form->field($modelre, 'checkotp')->hiddenInput(['value'=>'error'])->label(false)?>
+
+				<p class="text-center">
+                <button type="button" id="otpcallbutton" class="btn btn-default btn_signin">Get OTP </button>
+				<?php echo Html::submitButton(Yii::t('frontend', 'Request Callback'), ['id'=>'callsubmitbutton','class' => 'btn btn-default btn_signin']) ?>
+				</p>
+				<?php ActiveForm::end(); ?>
+			</div>
+			
+			
+		</div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  
- <script>
+
+
+<?php
+$script = <<< JS
+
+$('#addusers').hide();
+
+$('#callmenow').click(function(){
+
+$('#addusers').show();
+$('#callmenowdiv').hide();
+
+});
+
+
+$('#otpcallbutton').click(function(){
+
+var userphone =  $('#callbuttonaction-user_phone').val();
+var newotp =  generateOTP();
+           var phoneno = /^\d{10}$/;
+		   if(userphone.match(phoneno))
+	{	
+
+    $('#getotpdiv').show();
+    $('#otpcallbutton').hide();
+    $('#callsubmitbutton').show();
+
+    $.ajax({
+							 type: "POST",
+							 url: '/user/sign-in/rgetotp',
+							 data: {phone : userphone,newotp:newotp},
+							 success: function (data) {
+								       
+							 },
+					 });
+
+    }
+});
+
+
+
+$('#callbuttonaction-userotp').keyup(function(){
+
+    
+
+var identity = $('#callbuttonaction-user_phone').val();
+var newotp = $('#callbuttonaction-userotp').val();
+var checkotp =  $('#callbuttonaction-checkotp').val()
+var type = 'phone';
+
+if(newotp != '' && newotp.length===4){
+   
+
+ $.ajax({
+                         type: "POST",
+                         url: '/user/sign-in/rverifyotp',
+                         data: {phone : identity,newotp:newotp,type:type},
+                         success: function (data) {
+
+
+                                $('#loginform-checkotp').val(data);	
+
+                                if(data == 'success'){
+                                    $('form#{$modelre->formName()}').on('submit', function(e){
+
+                                    e.preventDefault();
+
+                                    });
+                                }
+
+                             
+
+                                                
+                                  
+                         },
+                 });
+
+ }
+
+
+
+
+});
+
+
+
+$('form#{$modelre->formName()}').on('beforeSubmit', function(e) {
+
+var form = $(this);
+
+var formData = form.serialize();
+
+$.ajax({
+
+    url: form.attr("action"),
+
+    type: form.attr("method"),
+
+    beforeSend: function(){
+      //$(".loaderContainer").css("display","block");
+    // $(".loaderContainer").show();
+     //$("#loading0").hide();
+   },
+   complete: function(){
+    
+     
+   },
+
+    data: formData,
+
+    success: function (data) {
+
+if(data == 1){
+    $("#call_modal").modal('hide');
+    toastr.success('Your Query has been sent Successfully', 'success');
+}       
+
+
+    },
+
+    error: function () {
+
+        alert("Something went wrong");
+
+    }
+
+});
+
+});
+
+
+
+JS;
+$this->registerJs($script);
+?> 
+
+<script>
+
+
+function generateOTP() { 
+							
+							// Declare a digits variable 
+							// which stores all digits 
+							var digits = '0123456789'; 
+							let OTP = ''; 
+							for (let i = 0; i < 4; i++ ) { 
+									OTP += digits[Math.floor(Math.random() * 10)]; 
+							} 
+							return OTP; 
+					} 
+
 
 		$(document).ready(function() {
     // Configure/customize these variables.
@@ -673,6 +897,8 @@ $propsid = 'PR'. $haritid;
 			    $(this).val('');
 		}
 		});
+
+		
 
 
 		});
@@ -990,6 +1216,18 @@ $propsid = 'PR'. $haritid;
 		
 		
 	});
+
+
+					function openModal(id) {
+
+						$('#getotpdiv').hide();
+						$('#otpcallbutton').show();
+						$('#callsubmitbutton').hide();
+
+						$("#call_modal").modal('show');
+
+						$('#callbuttonaction-property_id').val(id);
+                  }
 	
 
 	                function requestfor(request){
