@@ -32,8 +32,9 @@ class AddpropertypmController extends Controller
     }
  public function __construct($id, $module, $config = array()) {
         parent::__construct($id, $module, $config);
+
         $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
-    
+   // echo $assigndash->item_name;die;
         if($assigndash->item_name == "sales_demand_lessee"){
 		
 		$this->layout="sales_supply_layout";
@@ -53,6 +54,10 @@ else if($assigndash->item_name == "sales_supply_seller"){
 else if($assigndash->item_name == "sales_supply_lessor"){
 		
 		$this->layout="sales_leasing_layout";		
+    }
+    else if($assigndash->item_name == "administrator"){
+		
+		$this->layout="common";		
 	}else{
 
         $this->layout="csr_head_layout";
