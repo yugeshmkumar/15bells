@@ -40,6 +40,11 @@ echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/coworking</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys</loc>'.PHP_EOL;
 echo '<changefreq>weekly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
