@@ -20,24 +20,80 @@ class CoworkingController extends \yii\web\Controller
 
          $model =  new CoworkingQuery();
 
-		$title =  \Yii::$app->view->title = '15Bells - Revolution in Real Estate Technology ';
+         $title =  \Yii::$app->view->title = 'Commercial Properties for Sale in Gurgaon | Buy Commercial Property in Delhi/NCR.Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
-		\Yii::$app->view->registerMetaTag([
-		'name' => 'description',			
-		'content' => 'For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!'
-		]);
-		Yii::$app->view->registerMetaTag([
-		'name' => 'author',			
-		'content' => '15Bells'
-		]);
-        Yii::$app->view->registerMetaTag([
-            'name' => 'robots',			
-            'content' => 'index, follow'
-            ]);
+         Yii::$app->view->registerMetaTag([
+             'name' => 'viewport',			
+             'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+             ]);
+             \Yii::$app->view->registerMetaTag([
+             'name' => 'description',			
+             'content' => 'Search Commercial Coworking property in Gurgaon and Delhi/NCR. Get Best Coworking Properties in Gurgaon, Delhi/NCR at best prcie, features and services on Lease'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'keywords',			
+             'content' => '15Bells'
+             ]);
+             Yii::$app->view->registerMetaTag([
+                 'name' => 'Owner',			
+                 'content' => '15bells.com'
+                 ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'Copyright',			
+             'content' => '15bells.com'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'classification',			
+             'content' => 'Coworking property Search'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'distribution',			
+             'content' => 'India'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'rating',			
+             'content' => 'General'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'subject',			
+             'content' => 'Search Commercial Coworking property in Gurgaon and Delhi/NCR. Get Best Coworking Properties in Gurgaon, Delhi/NCR at best prcie, features and services on Lease.'
+             ]);
+             Yii::$app->view->registerMetaTag([
+             'name' => 'audience',			
+             'content' => 'All'
+             ]);
+  
+             //  og tags 
+     
+             Yii::$app->view->registerMetaTag([
+             'property' => 'og:title',			
+             'content' => $title
+             ]);
+  
+             Yii::$app->view->registerMetaTag([
+             'property' => 'og:type',			
+             'content' => 'website'
+             ]);
+  
+             Yii::$app->view->registerMetaTag([
+             'property' => 'og:url',			
+             'content' => Yii::getAlias('@frontendUrl').'/coworking',
+             ]);
+  
+             Yii::$app->view->registerMetaTag([
+             'property' => 'og:image',			
+             'content' => 'https://www.15bells.com/newimg/img/banner.jpg'
+             ]);
+  
+             Yii::$app->view->registerMetaTag([
+                 'property' => 'og:site_name',			
+                 'content' => '15bells'
+                 ]);  
+
+        // Yii::$app->view->registerMetaTag([
+        //     'name' => 'robots',			
+        //     'content' => 'index, follow'
+        //     ]);
 
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
