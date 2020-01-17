@@ -19,7 +19,6 @@ NewDesignAsset::register($this);
 <?php $this->beginContent('@frontend/views/layouts/base11.php'); ?>
 
 <!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
-
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
