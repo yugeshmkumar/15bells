@@ -268,7 +268,7 @@ $propsid = 'PR'. $haritid;
 								</div>
 								<?php 
 
-                                $description = "A very good $property_types availabale for rent in  $town_name  with Super area $super_area Sq ft , It is a $furnished_status  property suitable for any kind of $property_types, For more details or Site Visit , please <a href='https://api.whatsapp.com/send?phone=918130109696' target='_blank'> Contact Us.. </a> <a href='javascript:void(0)' onclick='openModal($viewid)'> Call me </a> ";
+                                $description = "A very good $property_types availabale for rent in  $town_name  with Super area $super_area Sq ft , It is a $furnished_status  property suitable for any kind of $property_types, For more details or Site Visit , please <a href='https://api.whatsapp.com/send?phone=918130109696' target='_blank' class='hidden-lg hidden-md'> Contact Us.. </a> <a class='hidden-xs hidden-sm' href='javascript:void(0)' onclick='openModal($viewid)'> Call me </a> ";
 								?>
 								<div class="col-md-12 progress_bar">
 								<p class="details_label">Property Description</p>

@@ -49,10 +49,7 @@ class ContactUsController extends Controller
 
 		$title =  \Yii::$app->view->title = '15Bells - Contact us for all your property deals';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => 'Our team at the backend is all set you to guide you through your real estate buying cycle. Help us with your contact details and we will get back to you as soon as possible.'

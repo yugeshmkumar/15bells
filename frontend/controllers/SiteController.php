@@ -1514,10 +1514,7 @@ foreach($arraddresses as $id => $key3) {
 
 		$title =  \Yii::$app->view->title = '15Bells - Commercial Property Investment, Sale & Lease in NCR';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => 'With 15Bells.com, set your commercial property requirements once and then the platform will help you achieve the goal without any hassle — leverage Technology to get the best.'

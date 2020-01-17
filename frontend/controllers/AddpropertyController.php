@@ -154,6 +154,10 @@ class AddpropertyController extends Controller
 
     $property = \common\models\Addproperty::find()->where(['id' => $id])->one();
     $project_type_id = $property->project_type_id;
+    $super_area = $property->super_area != '' ? $property->super_area : "";
+    $furnished_status = $property->furnished_status != '' ? $property->furnished_status : "";
+
+
 
 
     $town_name = $property->town_name;
@@ -173,19 +177,18 @@ class AddpropertyController extends Controller
     $typename = $property_type->typename;
      $proptypeurl =  ucwords(str_replace(" ", "-", $typename));
 
+     $description = "A very good $typename availabale for rent in  $town_name  with Super area $super_area Sq ft , It is a $furnished_status  property suitable for any kind of $typename, For more details or Site Visit , please contact us at +91-8130109696";
+
     //  echo strcasecmp($localitys, $string);die;
    // if($city === $town_name && $locality === $string && $proptype ===$typename){    
 
         if ((strcasecmp($city, $town_name) == 0) && (strcasecmp($localitys, $string) == 0) &&  (strcasecmp($proptype, $proptypeurl) == 0) ){
            
 
-            Yii::$app->view->registerMetaTag([
-                'name' => 'viewport',			
-                'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-                ]);
+          
                 \Yii::$app->view->registerMetaTag([
                 'name' => 'description',			
-                'content' => 'We bet you will find the best commercial properties in Delhi, Gurgaon, Noida, Ghaziabad, Faridabad, and other NCR locations.'
+                'content' => $description
                 ]);
                 Yii::$app->view->registerMetaTag([
                 'name' => 'keywords',			
@@ -244,7 +247,7 @@ class AddpropertyController extends Controller
 
                 Yii::$app->view->registerMetaTag([
                 'property' => 'og:description',			
-                'content' => 'Strive to create a transparent and safe place for swift real estate transactions with disruptive technology.'
+                'content' => $description
                 ]); 
                 Yii::$app->view->registerMetaTag([
                     'property' => 'og:site_name',			
