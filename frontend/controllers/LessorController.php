@@ -22,10 +22,7 @@ class LessorController extends Controller {
 
 		$title =  \Yii::$app->view->title = '15Bells - Lease Your Commercial Property  | List property for Lease';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => 'Lease your commercial property space with ease. 15bells will find you verfied lessors at best price.'

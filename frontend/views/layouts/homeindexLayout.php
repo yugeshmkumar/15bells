@@ -20,31 +20,30 @@ NewDesignAsset::register($this);
 
 <!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
 
-
 <!-- Load Facebook SDK for JavaScript -->
-<!-- <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            xfbml            : true,
-            version          : 'v4.0'
-          });
-        };
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    xfbml            : true,
+    version          : 'v5.0'
+  });
+};
 
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-      Your customer chat code
-       <div class="fb-customerchat"
-        attribution=setup_tool
-        page_id="100312244664763"
-  theme_color="#44bec7">
-      </div> -->
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=install_email
+  page_id="251892915527127"
+  theme_color="#c4984f">
+</div>
 
 
 		

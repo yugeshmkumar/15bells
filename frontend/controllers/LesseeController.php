@@ -22,10 +22,7 @@ class LesseeController extends Controller {
 
 		$title =  \Yii::$app->view->title = '15Bells - Commercial Property on Lease | Search Property on Rent';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => '15Bells - Commercial Property on Lease | Search Property on Rent'

@@ -225,10 +225,7 @@ class LesseeactionController extends Controller {
 
         $title =  \Yii::$app->view->title = 'Commercial Properties for Lease | Delhi/NCR | Office Rent in Gurgaon.';
 
-        Yii::$app->view->registerMetaTag([
-            'name' => 'viewport',			
-            'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-            ]);
+        
             \Yii::$app->view->registerMetaTag([
             'name' => 'description',			
             'content' => 'Search Commercial Real Estate property in Gurgaon and Delhi/NCR. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease.'

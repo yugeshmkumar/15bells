@@ -23,10 +23,7 @@ class SellerController extends Controller {
 
 		$title =  \Yii::$app->view->title = '15Bells - Sell Your Commercial Property  | List property for Sale';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => 'Continue with listing your property at 15 Bells, we’ll get you verified buyers to sell your commercial property.'

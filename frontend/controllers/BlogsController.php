@@ -25,10 +25,7 @@ class BlogsController extends Controller {
 
 		$title =  \Yii::$app->view->title = '15Bells Blogs - Latest Real Estate News | Find the best of commercial real estate';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => '15bells blogs gives you insights about commercial real estate in india. Follow us and get the best news from industry'

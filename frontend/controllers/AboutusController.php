@@ -17,10 +17,7 @@ class AboutusController extends \yii\web\Controller
 
 		$title =  \Yii::$app->view->title = '15Bells - Revolution in Real Estate Technology ';
 
-		Yii::$app->view->registerMetaTag([
-		'name' => 'viewport',			
-		'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-		]);
+		
 		\Yii::$app->view->registerMetaTag([
 		'name' => 'description',			
 		'content' => 'For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!'

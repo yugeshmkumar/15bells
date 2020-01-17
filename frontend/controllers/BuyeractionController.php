@@ -442,10 +442,7 @@ class BuyeractionController extends Controller {
 
        $title =  \Yii::$app->view->title = 'Commercial Properties for Sale in Gurgaon | Buy Commercial Property in Delhi/NCR.';
 
-       Yii::$app->view->registerMetaTag([
-           'name' => 'viewport',			
-           'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
-           ]);
+       
            \Yii::$app->view->registerMetaTag([
            'name' => 'description',			
            'content' => 'Search Properties for Sale in Gurgaon - Buy Best Commercial Properties in Delhi/NCR by Real Property owners, Dealers, Builders'
