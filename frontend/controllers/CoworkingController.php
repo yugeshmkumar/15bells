@@ -20,7 +20,7 @@ class CoworkingController extends \yii\web\Controller
 
          $model =  new CoworkingQuery();
 
-         $title =  \Yii::$app->view->title = 'Commercial Properties for Sale in Gurgaon | Buy Commercial Property in Delhi/NCR.Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
+         $title =  \Yii::$app->view->title = 'Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
 
          Yii::$app->view->registerMetaTag([
              'name' => 'viewport',			
