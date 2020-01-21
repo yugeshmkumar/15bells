@@ -32,7 +32,7 @@ if(isset($_SESSION['requestids'])){
 	return Yii::$app->response->redirect(['']);
 }
 
-session_destroy();
+
 ?>
 
 <style>.vvsambqwkstalkbubble { width: 100%; height: 150%;  background:#ffffff; -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); border:1px solid #dedede; position: relative; } .vvsambqwkstalkbubble:before {  }</style> <style>.vvsambqwksukvveekmuzqtsblevbbff{display: none;position: fixed; top: 0%;left: 0%;width: 100%;height: 150%;z-index:1001; background-color:#ffffff; opacity:.30;filter: alpha(opacity=80);}.vvsambqwksukvveekmuzqtswhevbbff {display: none;position: fixed; -webkit-box-shadow: 2px 5px 80px rgba(0, 0, 0, 0.4); background-color:#fefefe;    right:25%;  left:35%; top:30%; bottom:30%; z-index:1015; overflow:hidden; overflow-x:hidden}</style> <div id="viewpsambqwksukvveekmuzqtsimaccffmjkl" class="vvsambqwksukvveekmuzqtsblevbbff" onClick="" ></div> <div id="viewpsambqwksukvveekmuzqtsimabbffmjkkl" class="vvsambqwksukvveekmuzqtswhevbbff"  > <div class="vvsambqwkstalkbubble" id="vpcobh2"></div> </div>
@@ -161,7 +161,7 @@ input {border:1px solid #848484; border-top:2px solid #848484;	background-color:
 	<td width="50%" align="center" valign="middle"><input type="text" name="returnUrl" value=""/></td>
 </tr> -->
 
-	 <input type="hidden" name="returnUrl" value="https://www.15bells.com/request-sitevisit/response"/>
+	 <input type="hidden" name="returnUrl" value="http://15bells.test/request-sitevisit/response"/>
 
 <div class="col-md-6">	
 <p class="details_label text-left">Buyer Email</p>
