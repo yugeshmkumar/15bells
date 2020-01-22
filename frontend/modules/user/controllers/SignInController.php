@@ -352,7 +352,7 @@ class SignInController extends \yii\web\Controller
             $message = $jsonObj->message;  
    
             
-            return $firstName;
+            return $jsonObj;
             }
 
         }else{
