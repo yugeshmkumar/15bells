@@ -137,14 +137,14 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'property_type_id',
     // // ],
-    // [
-    //     'class'=>'\kartik\grid\DataColumn',
-    //     'attribute'=>'Owner_name',
-    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'Owner_name',
+    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'primary_contact_no',
-        'width' => '150px',
+        //'width' => '150px',
     ],
     
     // [
