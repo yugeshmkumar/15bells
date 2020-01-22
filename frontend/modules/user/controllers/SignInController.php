@@ -323,7 +323,7 @@ class SignInController extends \yii\web\Controller
              $curl = curl_init();
 
             curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://control.msg91.com/api/verifyRequestOTP.php?authkey=$authKey&mobile=$phonenum&otp=$activation",
+            CURLOPT_URL => "https://api.msg91.com/api/v5/otp/verify?authkey=$authKey&mobile=$phonenum&otp=$activation",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -333,10 +333,7 @@ class SignInController extends \yii\web\Controller
             CURLOPT_POSTFIELDS => "",
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_HTTPHEADER => array(
-                "content-type: application/x-www-form-urlencoded"
-            ),
-            ));
+          ));
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
