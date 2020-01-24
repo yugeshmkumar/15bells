@@ -19,6 +19,7 @@ use frontend\modules\user\models\PasswordResetRequestForm;
 use frontend\modules\user\models\ResetPasswordForm;
 use frontend\modules\user\models\SignupForm;
 
+
 /**
  * AddpropertyOnepageFormController implements the CRUD actions for AddpropertyOnepageForm model.
  */
@@ -672,8 +673,17 @@ class AddpropertyOnepageFormController extends Controller
                     $primary_contact_no =  $post['AddpropertyOnepageForm']['primary_contact_no'];
                     $emailid =   $post['AddpropertyOnepageForm']['email_id'];
 
-                    $user = $modelajax->signup1($Owner_name,$primary_contact_no,$emailid);
-                    $userid =  $user->id;
+                    $model2 = User::find('id')->where(['username' => $primary_contact_no])->andwhere(['status' => '1'])->one();
+                   
+                    if($model2){
+                        $userid = $model2->id;
+
+                    }else{
+
+                        $user = $modelajax->signup1($Owner_name,$primary_contact_no,$emailid);
+                        $userid =  $user->id;
+                    }
+                    
 
                     $modeladd->user_id = $userid;
                     if($post['AddpropertyOnepageForm']['property_for'] == 'rent'){
