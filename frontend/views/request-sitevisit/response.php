@@ -25,7 +25,7 @@ use common\models\Invoice;
 <table width="500px;">
 	<?php //Checksum::outputResponse($checksum_check);
 
-            $krequestids =    $_SESSION['requestids'];
+             $krequestids =    $_SESSION['requestids'];
             $kamount_payable =    $_SESSION['amount_payable']/100;
 			$responsecode =  Checksum::outputResponse($checksum_check);
 
@@ -114,7 +114,7 @@ if($propdetails->property_for == 'rent'){
              
          }else{
 
-			Yii::$app->session->setFlash('success', "Payment not Done");
+			Yii::$app->session->setFlash('error', "Payment not Done");
 
 			if($propdetails->property_for == 'rent'){
 				return Yii::$app->response->redirect(['request-sitevisit/lessee']);
@@ -123,7 +123,10 @@ return Yii::$app->response->redirect(['request-sitevisit/buyer']);
 
 }
 		 }
-	 }     
+     }
+     
+     
+     session_destroy();
 	 
 
 	?>

@@ -63,6 +63,36 @@ return [
     ],
 
 
+    [
+        'label' => 'Remarks',
+        'attribute' => 'id',
+        'filter' => false,
+        'options' => ['style' => 'width:100px;'],
+        'format' => 'raw',
+        'value' => function($model) {
+
+            $visitid = $model->id;
+            $shortwrongcomment = $model->remarks;
+
+                    if (strlen($shortwrongcomment) >= 20) {
+                       $newstring = substr($shortwrongcomment, 0, 5). " ... " . substr($shortwrongcomment, -5);
+                    }
+                    else if (strlen($shortwrongcomment) == 0) {
+
+                        $newstring =   'Add remarks';
+                    }
+
+                    else {
+                        
+                        $newstring =   $shortwrongcomment;
+                    }
+
+            return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="addremarks('.$visitid.')" >'.$newstring.'</button>', $url = 'javascript:void(0)', []);
+
+          }
+    ],
+
+
 
     [
         'class' => 'yii\grid\ActionColumn',
