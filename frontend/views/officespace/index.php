@@ -1,6 +1,6 @@
 <?php
 
-$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/coworking/']); 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/officespace/']); 
 use yii\widgets\ActiveForm;
 
 use yii\helpers\HtmlPurifier;
@@ -19,7 +19,7 @@ use yii\helpers\Html;
 }
 </style>
 
-<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/cowork.jpg';  ?>">
+<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/office.jpg';  ?>">
 			
 			<div class="container-fluid no_pad div_header">
 			
@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
-						<h1 class="about_head">Need Co-working space?</h1>
+						<h1 class="about_head">Need Office space?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="javascript:void(0)">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
@@ -52,53 +52,56 @@ use yii\helpers\Html;
 	
 			
 
-<div class="container-fluid team_banner">
-	<div class="">
-		<div class="row">
-			<div class="col-md-6 no_pad">
-				<h1 class="trans_head">Workspace Solutions</h1>
-				<p class="brand_txt" style="color:#ffffff;">Whether you're an established enterprise or a scaling startup, your office should drive your business forward. Find the space that's right for you.</p>
+<div class="container-fluid padd_100">
+    <div class="row">
+			<div class="col-md-5 no_pad">
+                <div class="cabin_detail">
+				    <h1 class="trans_head_b">Personal Cabin</h1>
+				    <p class="brand_txt">The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy text using the starting sequence "Lorem ipsum". Fortunately</p>
+	    		</div>
+            </div>
+			<div class="col-md-7 text-left">
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/cabin.jpg';  ?>" class="img-responsive">
 			</div>
-			<div class="col-md-6 text-left">
-				
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-3">
-				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/1.jpg';  ?>" class="img_project"></p>
-					<p class="location_txt">Private Offices</p>
-					<p class="feature_txt">Proudly unveiling M3M Broadway! One stop destination for F&B, Retail & Entertainment. Sector 71, Golf Course Road Extn., Gurugram.</p>
-					<p class="call_cowork"><a href="tel:6209151515">Call Us</a></p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-3">
-				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/2.jpg';  ?>" class="img_project"></p>
-					<p class="location_txt">Offices Suites</p>
-					<p class="feature_txt">Proudly unveiling M3M Broadway! One stop destination for F&B, Retail & Entertainment. Sector 71, Golf Course Road Extn., Gurugram.</p>
-					<p class="call_cowork"><a href="tel:6209151515">Call Us</a></p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-3">
-				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/4.jpg';  ?>" class="img_project"></p>
-					<p class="location_txt">Shared Spaces</p>
-					<p class="feature_txt">Proudly unveiling M3M Broadway! One stop destination for F&B, Retail & Entertainment. Sector 71, Golf Course Road Extn., Gurugram.</p>
-					<p class="call_cowork"><a href="tel:6209151515">Call Us</a></p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-3">
-				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/2.jpg';  ?>" class="img_project"></p>
-					<p class="location_txt">Private Offices</p>
-					<p class="feature_txt">Proudly unveiling M3M Broadway! One stop destination for F&B, Retail & Entertainment. Sector 71, Golf Course Road Extn., Gurugram.</p>
-					<p class="call_cowork"><a href="tel:6209151515">Call Us</a></p>
-				</div>
-			</div>
-		</div>
-		
 	</div>
+    <div class="row second_sec">
+            <div class="col-md-7 text-left">
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/2.jpg';  ?>" class="img-responsive">
+			</div>
+			<div class="col-md-5 no_pad">
+                <div class="right_side">
+				    <h1 class="trans_head_b">Coworking desks</h1>
+				    <p class="brand_txt">The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy text using the starting sequence "Lorem ipsum". Fortunately</p>
+	    		</div>
+            </div>
+			
+	</div>
+
+	 <div class="row second_sec">
+			<div class="col-md-5 no_pad">
+                <div class="cabin_detail">
+				    <h1 class="trans_head_b">Metting space</h1>
+				    <p class="brand_txt">The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy text using the starting sequence "Lorem ipsum". Fortunately</p>
+	    		</div>
+            </div>
+			<div class="col-md-7 text-left">
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/meeting.jpg';  ?>" class="img-responsive">
+			</div>
+	</div>
+
+	<div class="row second_sec">
+            <div class="col-md-7 text-left">
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/eventt.jpg';  ?>" class="img-responsive">
+			</div>
+			<div class="col-md-5 no_pad">
+                <div class="right_side">
+				    <h1 class="trans_head_b">Events space</h1>
+				    <p class="brand_txt">The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy text using the starting sequence "Lorem ipsum". Fortunately</p>
+	    		</div>
+            </div>
+			
+	</div>
+
 </div>
 
 <div class="container-fluid our_mission">
@@ -142,12 +145,6 @@ use yii\helpers\Html;
 				<div class="project_details">
 					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/5.jpg';  ?>" class="img_project"></p>
 					<p class="badge_image text-right"><span class="badge_feature grey_color">Private Space</span></p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/cafeteria.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature orange_bg">Cafeteria</span></p>
 				</div>
 			</div>
 		</div>
