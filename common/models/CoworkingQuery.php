@@ -31,10 +31,13 @@ class CoworkingQuery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'email', 'phone', 'seats'], 'required'],
+           // [['name', 'email', 'phone', 'seats'], 'required'],
+            [['name', 'email', 'phone', 'seats'],'required','on'=>['coworking']],  
+            [['name', 'email', 'phone', 'area'],'required','on'=>['officespace']],  
             [['email'],'email'],
           //  [['phone'], 'number', 'min' => 9],
             [['seats'], 'integer'],
+            [['area'], 'integer'],
             [['message'], 'string'],
             [['created_date'], 'safe'],
             [['name'], 'string', 'max' => 200],

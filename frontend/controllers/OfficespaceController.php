@@ -19,6 +19,9 @@ class OfficespaceController extends \yii\web\Controller
          //    meta tags description starts here  
 
          $model =  new CoworkingQuery();
+         $model->scenario="officespace";
+         $this->layout = "homeLayout";
+
 
          $title =  \Yii::$app->view->title = 'Commercial Properties for Sale in Gurgaon | Buy Commercial Property in Delhi/NCR.Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
 
@@ -77,7 +80,7 @@ class OfficespaceController extends \yii\web\Controller
   
              Yii::$app->view->registerMetaTag([
              'property' => 'og:url',			
-             'content' => Yii::getAlias('@frontendUrl').'/coworking',
+             'content' => Yii::getAlias('@frontendUrl').'/officespace',
              ]);
   
              Yii::$app->view->registerMetaTag([
@@ -90,10 +93,7 @@ class OfficespaceController extends \yii\web\Controller
                  'content' => '15bells'
                  ]);  
 
-        // Yii::$app->view->registerMetaTag([
-        //     'name' => 'robots',			
-        //     'content' => 'index, follow'
-        //     ]);
+        
 
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -102,22 +102,23 @@ class OfficespaceController extends \yii\web\Controller
 
 
     
-                // echo '<pre>';print_r(Yii::$app->request->post());die;
+                //  echo '<pre>';print_r(Yii::$app->request->post());die;
                 $post = Yii::$app->request->post()['CoworkingQuery'];
                 
                 $name = $post['name'];
                 $phone = $post['phone'];
                 $email = $post['email'];
-                $seats = $post['seats'];
+                $area = $post['area'];
                 $message = $post['message'];
-            $description = "'Name = $name,  Phone = $phone,  Email = $email,  Seats = $seats,  Message = $message'";
-
+            $description = "'prop_type = officespace, Name = $name,  Phone = $phone,  Email = $email,  area = $area,  Message = $message'";
+              $model->prop_type = 'officespace';
+               $model->area = $area;
                 $model->created_date = $date;
                 
                 if($model->save()){
 
                     
-                    $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('coworking','1061','',$description,'$date')")->execute();
+                    $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('officespace','1061','',$description,'$date')")->execute();
                
                     if($payments){
 
@@ -134,10 +135,11 @@ class OfficespaceController extends \yii\web\Controller
                 }
     
             }
+            
 
 
 
-        $this->layout = "homeLayout";
+       
         return $this->render('index',[
         
                'model' => $model,
