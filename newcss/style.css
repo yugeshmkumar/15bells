@@ -500,6 +500,15 @@ div.mm-dropdown ul li img {
     color: #221d36;
 	margin-top:20px;
 }
+.second_head{
+	line-height: 35px;
+    font-size: 30px;
+    font-weight: 600;
+    border-left: 4px solid #c4984f;
+    padding-left: 20px;
+    color: #221d36;
+	margin-top:20px;
+}
 .transac_typ{
 	font-size:28px;
 	color:#ffffff;
@@ -4165,4 +4174,8 @@ color: #c4984f;
 }
 .second_sec{
 	margin-top:40px;	
+}
+
+.details_office{
+	height:460px;
 }
