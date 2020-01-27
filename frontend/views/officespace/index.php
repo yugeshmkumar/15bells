@@ -66,11 +66,11 @@ use yii\helpers\Html;
 	</div>
     <div class="row second_sec">
             <div class="col-md-7 text-left">
-				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/2.jpg';  ?>" class="img-responsive">
+				<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/work.jpg';  ?>" class="img-responsive">
 			</div>
 			<div class="col-md-5 no_pad">
                 <div class="right_side">
-				    <h1 class="trans_head_b">Coworking desks</h1>
+				    <h1 class="trans_head_b">Work Stations</h1>
 				    <p class="brand_txt">The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy text using the starting sequence "Lorem ipsum". Fortunately</p>
 	    		</div>
             </div>
@@ -118,33 +118,33 @@ use yii\helpers\Html;
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/1.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature">Office Space</span></p>
+					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/pc.jpg';  ?>" class="img_project"></p>
+					<p class="badge_image text-right"><span class="badge_feature">Personal Cabin</span></p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/2.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature grey_color">Coworking Space</span></p>
+					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/conference.jpg';  ?>" class="img_project"></p>
+					<p class="badge_image text-right"><span class="badge_feature grey_color">Meeting Room</span></p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/3.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature orange_bg">Meeting Space</span></p>
+					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/reception.jpg';  ?>" class="img_project"></p>
+					<p class="badge_image text-right"><span class="badge_feature orange_bg">Reception</span></p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/4.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature">Conference Room</span></p>
+					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/cfr.jpg';  ?>" class="img_project"></p>
+					<p class="badge_image text-right"><span class="badge_feature">Work Stations</span></p>
 				</div>
 			</div>
 			
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="project_details">
-					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/features/5.jpg';  ?>" class="img_project"></p>
-					<p class="badge_image text-right"><span class="badge_feature grey_color">Private Space</span></p>
+					<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/cafeteria.jpg';  ?>" class="img_project"></p>
+					<p class="badge_image text-right"><span class="badge_feature grey_color">Cafeteria</span></p>
 				</div>
 			</div>
 		</div>
@@ -181,7 +181,7 @@ use yii\helpers\Html;
 
 					</div>
 					<div class="col-md-6">
-						<?php echo $form->field($model, 'seats')->textInput(['maxlength' => true, 'placeholder' => "No. Of Seats", 'class'=>'form-control input_desgn'])->label(false); ?>
+						<?php echo $form->field($model, 'seats')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
 
 					</div>
 				</div>
