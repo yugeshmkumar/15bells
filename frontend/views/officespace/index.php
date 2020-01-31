@@ -152,7 +152,7 @@ use yii\helpers\Html;
 	</div>
 </div>
 
-<?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"coworking"]); ?>
+<?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespace"]); ?>
 <div class="container-fluid pad_50 contact_enquiry">
 <div class="container">
 		<div class="row">
@@ -181,7 +181,7 @@ use yii\helpers\Html;
 
 					</div>
 					<div class="col-md-6">
-						<?php echo $form->field($model, 'seats')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
+						<?php echo $form->field($model, 'area')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
 
 					</div>
 				</div>
