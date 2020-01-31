@@ -336,12 +336,12 @@ $(document).ready(function(){
     $('.main_menu li a').removeClass("active");
     $(this).addClass("active");
 		});
-	$(".location_pick").click(function(){
+	//$(".location_pick").click(function(){
 		
-		  var city = this.id;
-	  $(".location_drop").html(city);
-	  $(".city_section").slideUp("slow");
-	});
+	//	  var city = this.id;
+	 // $(".location_drop").html(city);
+	//  $(".city_section").slideUp("slow");
+	//});
 });
 $(".property_image1").click(function () {
 			$(".property_image1").removeClass("border_yellow1");
@@ -354,10 +354,10 @@ document.onreadystatechange = function () {
 	  
 	
 		$(".locality_grp").click(function(){
-	  $(".city_section").slideDown("slow");
+	//  $(".city_section").slideDown("slow");
 	});
 		$(".close_citydrop").click(function(){
-	  $(".city_section").slideUp("slow");
+	  //$(".city_section").slideUp("slow");
 	});
     setTimeout(function () {
         if (document.readyState == "complete") {
