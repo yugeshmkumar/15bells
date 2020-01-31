@@ -16,6 +16,32 @@ NewDesignAsset::register($this);
 ?>
 <?php $this->beginContent('@frontend/views/layouts/base10signup.php'); ?>
 
+<!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    xfbml            : true,
+    version          : 'v5.0'
+  });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=install_email
+  page_id="251892915527127"
+  theme_color="#c4984f">
+</div>
+
 
 
 <body>
@@ -147,8 +173,10 @@ NewDesignAsset::register($this);
 					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
 				<div classs="row">
 
-<span class="call_fixed text-center"> <a href="#" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>	
-	
+				<span class="call_fixed text-center hidden-lg hidden-md"> <a href="https://api.whatsapp.com/send?phone=916209151515" target="_blank" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>			
+
+<span class="call_fixed text-center hidden-xs hidden-sm"> <a href="https://web.whatsapp.com/send?phone=916209151515" target="_blank" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>			
+		
 		</div>
 	</div>
 </div>

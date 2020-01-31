@@ -144,8 +144,10 @@ window.fbAsyncInit = function() {
 					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
 				<div classs="row">
 
-<span class="call_fixed text-center"> <a href="#" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>	
-		</div>
+				<span class="call_fixed text-center hidden-lg hidden-md"> <a href="https://api.whatsapp.com/send?phone=916209151515" target="_blank" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>			
+
+<span class="call_fixed text-center hidden-xs hidden-sm"> <a href="https://web.whatsapp.com/send?phone=916209151515" target="_blank" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>			
+			</div>
 	</div>
 </div>
 </div>
