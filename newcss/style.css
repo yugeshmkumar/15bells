@@ -2266,6 +2266,9 @@ input.invalid {
 	.property_id{
 		font-size:15px;
 	}
+	.font_call{
+		font-size:18px;
+	}
 	.featured_links{
 		padding:0;
 	}
@@ -4208,7 +4211,7 @@ color: #c4984f;
 .call_fixed{
 	position: fixed;
     left: 4%;
-    bottom: 5%;
+    bottom: 3%;
     z-index: 9999;
 }
 
