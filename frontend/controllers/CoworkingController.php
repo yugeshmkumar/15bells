@@ -19,6 +19,7 @@ class CoworkingController extends \yii\web\Controller
          //    meta tags description starts here  
 
          $model =  new CoworkingQuery();
+         $model->scenario="coworking";
 
          $title =  \Yii::$app->view->title = 'Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
 
