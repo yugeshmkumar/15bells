@@ -40,7 +40,14 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
   gtag('config', 'UA-153152050-1');
 </script>
 
-
+<script type='text/javascript'>
+  window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+    })(document);
+    smartlook('init', '9dcb652eb6c987dddf65195047c6f189e1de77ce');
+</script>
 
 
 </head>
