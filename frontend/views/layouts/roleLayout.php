@@ -18,7 +18,7 @@ NewDesignAsset::register($this);
 ?>
 <?php $this->beginContent('@frontend/views/layouts/baserole.php'); ?>
 
-!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
+<!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
