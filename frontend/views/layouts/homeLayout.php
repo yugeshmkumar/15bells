@@ -61,10 +61,10 @@ NewDesignAsset::register($this);
 							</button>
 							<a class="navbar-brand site-logo one" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo1.png';  ?>" width="80"></a>
 							<a class="navbar-brand site-logo two" href="<?= Yii::$app->homeUrl ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/logo_y.png';  ?>" width="70"></a>
-							 <div class="form-group locality_grp">
-								<span class="location_drop">Select City</span>
-								<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="23" class="svg_drop">
-								</span>
+							<div class="form-group locality_grp">
+								 <span class="">Call Us anytime</span><br>
+								<span class="location_drop"><a href="tel:6209151515" class="list_lnk font_call">+91 6209-15-15-15</a></span>
+							
 							  </div>
 						</div>
 						
@@ -190,19 +190,36 @@ NewDesignAsset::register($this);
 		
 <?php echo $content ?>
 
+    <!--Footer Section------>
 
 <div class="container-fluid footer_banner">
 	<div class="container">
-		<div class="row">
+	<div class="row">
 			<p class="copy_rt">2019 © 15 Bells </p>
-			<div class="col-md-3 col-xs-6">
+			<div class="col-md-2 col-xs-6">
 				<h4 class="footer_typ">Resources</h4>
 				<ul class="fotter_lst">
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['blogs']) ?>" class="list_lnk">Blogs</a></li>
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['faq']) ?>" class="list_lnk">FAQ's</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-xs-6">
+			<div class="col-md-2 col-xs-6">
+				<h4 class="footer_typ"><a href="<?php echo yii::$app->urlManager->createUrl(['officespaces']) ?>" class="list_lnk">Office Spaces</a></h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms']) ?>" class="list_lnk">In Gurgaon</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/privacypolicy']) ?>" class="list_lnk">In Delhi</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/refundcancellation']) ?>" class="list_lnk">In Noida</a></li>
+				</ul>
+			</div>
+			<div class="col-md-2 col-xs-6">
+				<h4 class="footer_typ">Commercial Office Spaces</h4>
+				<ul class="fotter_lst">
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms']) ?>" class="list_lnk">In Gurgaon</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/privacypolicy']) ?>" class="list_lnk">In Delhi</a></li>
+					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/refundcancellation']) ?>" class="list_lnk">In Noida</a></li>
+				</ul>
+			</div>
+			<div class="col-md-2 col-xs-6">
 				<h4 class="footer_typ">Privacy</h4>
 				<ul class="fotter_lst">
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms']) ?>" class="list_lnk">Terms and Conditions</a></li>
@@ -210,20 +227,24 @@ NewDesignAsset::register($this);
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['terms/refundcancellation']) ?>" class="list_lnk">Refund & Cancellation</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-xs-6">
+			
+			<div class="col-md-2 col-xs-6">
 				<div class="col-md-12 no_pad">
 				<h4 class="footer_typ">Reach Out</h4>
 				<ul class="fotter_lst">
-					<li class=""><a href="#" class="list_lnk">+91 6209151515</a></li>
+					<li class=""><a href="tel:6209151515" class="list_lnk">+91 6209-15-15-15</a></li>
 					<li class=""><a href="#" class="list_lnk">info@15bells.com</a></li>
 				</ul>
 				</div>
 			</div>
-			<div class="col-md-3 col-xs-6">
+			<div class="col-md-2 col-xs-6">
 				<h4 class="footer_typ">Follow us</h4>
 					<p><span><a target="_blank" href="https://www.instagram.com/15bells/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/instagram-logo.svg';  ?>" class="insta_logo" width="17"></a></span>
 					<span><a href="https://www.linkedin.com/company/15bell/" target="_blank"><img class="linkedin_logo" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/linkedin.svg';  ?>" width="17"></a></span><span><a target="_blank" href="https://www.facebook.com/15bell/"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/facebook-logo.svg';  ?>" width="10"></a></span></p>
 				<div classs="row">
+
+<span class="call_fixed text-center"> <a href="#" class="whatsapp_no"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/whatsapp.png';  ?>" class="img_me" width="55"></a>	</span>	
+	
 
 				
 					<!-- Begin Mailchimp Signup Form -->

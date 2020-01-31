@@ -870,7 +870,7 @@ div.mm-dropdown ul li img {
 }
 .footer_typ{
 	color:#c4984f;
-	font-size:22px;
+	font-size:19px;
 	font-weight:800;
 	margin-bottom:20px;
 }
@@ -887,7 +887,7 @@ div.mm-dropdown ul li img {
 }
 .list_lnk{
 	color:#ffffff;
-	font-size:18px;
+	font-size:15px;
 	transition:.4s;
 }
 .list_lnk:hover{
@@ -1139,11 +1139,13 @@ form.example::after {
 }
 
 
-.locality_grp{
-	margin-top:20px;
-	cursor:pointer;
+.locality_grp {
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
 }
-
 
 .svg_drop {
  position: relative;
@@ -1179,6 +1181,10 @@ form.example::after {
 }
 .blog_filter{
 	padding:0 20px;
+}
+.resource_form{
+	padding:30px 20px;
+	background:#ffffff;
 }
 .blog_side{
 	list-style:none;
@@ -2573,6 +2579,9 @@ input.invalid {
 		bottom:18%;
 	}
 	.blog_filter{
+		margin-top:20px;
+	}
+	.resource_form{
 		margin-top:20px;
 	}
 	.post_cancel{
@@ -4178,4 +4187,31 @@ color: #c4984f;
 
 .details_office{
 	height:460px;
+}
+
+.call_no{
+	font-size: 19px;
+    border: 1px solid #c4984f;
+    padding: 10px;
+    width: 70%;
+	margin: 0 auto 20px;
+	background:#c4984f;
+	color:#ffffff;
+}
+.call_no img{
+	position:relative;
+	right:10px;
+}
+.border_form{
+	border:1px solid #dedede;
+}
+.call_fixed{
+	position: fixed;
+    left: 4%;
+    bottom: 5%;
+    z-index: 9999;
+}
+
+.font_call{
+	font-size:22px;
 }
