@@ -2267,7 +2267,7 @@ input.invalid {
 		font-size:15px;
 	}
 	.font_call{
-		font-size:18px;
+		font-size:18px !important;
 	}
 	.featured_links{
 		padding:0;
