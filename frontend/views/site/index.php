@@ -95,15 +95,15 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="banner_icon">
 								<p class="property_names">Office Space</p>
 							</div></a>
-							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys/retail-space','type'=>'retail-space']) ?>"><div class="col-md-3 col-xs-6 commer_retail">
+							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'retail-space']) ?>"><div class="col-md-3 col-xs-6 commer_retail">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/retail.svg';  ?>" class="banner_icon">
 								<p class="property_names">Retails Space</p>
 							</div></a>
-							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys/industrial-plots','type'=>'industrial-plots']) ?>"><div class="col-md-3 col-xs-6 commer_land">
+							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'industrial-plots']) ?>"><div class="col-md-3 col-xs-6 commer_land">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/industrial.svg';  ?>" class="banner_icon">
 								<p class="property_names">Industrial Plots</p>
 							</div></a>
-							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys/warehouse','type'=>'warehouse']) ?>"><div class="col-md-3 col-xs-6 ware_house">
+							<a href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'warehouse']) ?>"><div class="col-md-3 col-xs-6 ware_house">
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/warehouse.svg';  ?>" class="banner_icon">
 								<p class="property_names">Warehouse</p>
 							</div></a>

@@ -3938,14 +3938,53 @@ function getPolygonCoords() {
 
                                         $(document).ready(function () {                                       
 
+                                     var first = getUrlVars()["type"];
+
+                                     if(first == 'office-space'){                                        
+
+                                        $('#proptypes').val('11');
+
+                                     }
+
+                                        if(first == 'retail-space'){                                        
+
+                                        $('#proptypes').val('15');
+
+                                        }
+
+                                        if(first == 'industrial-plots'){                                        
+
+                                        $('#proptypes').val('22');
+
+                                        }
+
+                                        if(first == 'warehouse'){                                        
+
+                                        $('#proptypes').val('25');
+
+                                        }
                                         
                                           withoutshape();
+                                          
+
+                                    
                                             
 
                                                      });
 
 
-
+                            function getUrlVars()
+                                    {
+                                    var vars = [], hash;
+                                    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                                    for(var i = 0; i < hashes.length; i++)
+                                    {
+                                    hash = hashes[i].split('=');
+                                    vars.push(hash[0]);
+                                    vars[hash[0]] = hash[1];
+                                    }
+                                    return vars;
+                                    }
 
 
                                         
