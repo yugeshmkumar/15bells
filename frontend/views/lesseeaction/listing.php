@@ -131,8 +131,8 @@ if(!isset($_SESSION))
 			<div class="row">
 				
 				<div class="accordion_container">
-				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
-				  <div class="accordion_body" style="display: none;">
+				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">-</span></div>
+				  <div class="accordion_body" style="display: block;">
 					<div class="col-md-12 no_pad text-center">
                         <p class="sort_value">Price</p>
 									<div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
@@ -714,7 +714,7 @@ if(!isset($_SESSION))
 $script = <<< JS
 
 //$("#signup_modal").modal('show');
-
+$('[data-toggle="tooltip"]').tooltip();
 $('#getotpdiv').hide();
 $('#hideotp').hide();
 $('#callsubmitbutton').hide();
@@ -2110,12 +2110,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"  data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"  data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"  data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"  data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"  data-toggle="tooltip" title="Lift"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -2267,12 +2267,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"  data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"  data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"  data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"  data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"  data-toggle="tooltip" title="Lift"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -2415,12 +2415,12 @@ proptype =  $('#proptypes').val();
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -3271,12 +3271,12 @@ function getPolygonCoords() {
                                '<div class="col-md-6 amenities_offered">'+
                                    '<p class="label_name amenities">Amenities</p>'+
                                    '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>"  data-toggle="tooltip" title="Power" alt="power" class="amen_icon"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                    '</ul>'+
                                '</div>'+
                                '<div class="col-md-6 shortlist_call">'+
@@ -3421,12 +3421,12 @@ function getPolygonCoords() {
                                    '<div class="col-md-6 amenities_offered">'+
                                        '<p class="label_name amenities">Amenities</p>'+
                                        '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                    '</ul>'+
                                    '</div>'+
                                    '<div class="col-md-6 shortlist_call">'+
@@ -3585,12 +3585,12 @@ function getPolygonCoords() {
                                   '<div class="col-md-6 amenities_offered">'+
                                       '<p class="label_name amenities">Amenities</p>'+
                                       '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
+                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                         '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
@@ -3729,12 +3729,12 @@ function getPolygonCoords() {
                                   '<div class="col-md-6 amenities_offered">'+
                                       '<p class="label_name amenities">Amenities</p>'+
                                       '<ul class="amenities_list">'+
-                                         '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                         '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                         '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                         '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
+                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                         '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                         '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                         '</ul>'+
                                   '</div>'+
                                   '<div class="col-md-6 shortlist_call">'+
@@ -4038,12 +4038,12 @@ function getPolygonCoords() {
                                                                         '<div class="col-md-6 amenities_offered">'+
                                                                             '<p class="label_name amenities">Amenities</p>'+
                                                                             '<ul class="amenities_list">'+
-                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"></li>'+
+                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
+                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
+                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
+                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
