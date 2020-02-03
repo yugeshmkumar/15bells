@@ -89,6 +89,26 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 							
 						</div>
 					</div>
+				<div class="container">
+					<div class="col-md-12 property_typess">
+							<a href=""><div class="col-md-3 col-xs-6 commer_office">
+								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/office.svg';  ?>" class="banner_icon">
+								<p class="property_names">Office Space</p>
+							</div></a>
+							<a href=""><div class="col-md-3 col-xs-6 commer_retail">
+								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/retail.svg';  ?>" class="banner_icon">
+								<p class="property_names">Retails Space</p>
+							</div></a>
+							<a href=""><div class="col-md-3 col-xs-6 commer_land">
+								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/industrial.svg';  ?>" class="banner_icon">
+								<p class="property_names">Industrial Plots</p>
+							</div></a>
+							<a href=""><div class="col-md-3 col-xs-6 ware_house">
+								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/warehouse.svg';  ?>" class="banner_icon">
+								<p class="property_names">Warehouse</p>
+							</div></a>
+						</div>
+				</div>
 <!-- end of navbar-->
 		</div>
 		
@@ -841,27 +861,27 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det clint_sec">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/shiji.png';  ?>" width="110">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/ucb.jpg';  ?>" width="130" class="ucb_brnd">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 col-xs-4 pad_client text-center">
-				<div class="clients_det clint_sec">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/nexen.jpg';  ?>" width="100">
+				<div class="clients_det">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/carnival.webp';  ?>" width="130">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det clint_sec">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/beeta.jpg';  ?>" width="120">
+				<div class="clients_det">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/eyeq.png';  ?>" width="140">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det kalinga_pad">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/kalinga.webp';  ?>" width="100">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/skechers.png';  ?>" width="120">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
-				<div class="clients_det" style="padding-top:5px;">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/elite.jpg';  ?>" width="80">
+				<div class="clients_det" style="padding-top:25px;">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/pizza.png';  ?>" width="140">
 				</div>
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
@@ -871,7 +891,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 			</div>
 			<div class="col-md-2 col-xs-4 pad_client text-center">
 				<div class="clients_det" style="padding-top:5px;">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/virendra.png';  ?>" width="80">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/clients/vishal.png';  ?>" width="120">
 				</div>
 			</div>
 			
