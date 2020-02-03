@@ -227,6 +227,8 @@ if(!isset($_SESSION))
 
                 <div class="col-md-12 text-center">
                     <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                    <input type="hidden" id="startlib" value="0">
+                    <input type="hidden" id="lengthlib" value="20">
                 </div>
 
 
@@ -1750,6 +1752,14 @@ $("#dummypricemaximum").on("input", function(){
     });
 
 
+    $('#loadMore').click(function () {
+                        withoutshape();
+                        $('html,body').animate({
+        scrollTop: $(".property_requirment").offset().top - 100},
+        'slow'); 
+                    }); 
+
+
 
 
         <?php if(isset($getlocality)){  ?>
@@ -1793,6 +1803,9 @@ proptype =  $('#proptypes').val();
    var getsearchlocation = pacinput;
  }
 
+ $('#startlib').val(0);
+ $('#lengthlib').val(20);
+
  withoutshape();
 
  $("#myModal").modal('hide');
@@ -1804,7 +1817,7 @@ proptype =  $('#proptypes').val();
                               function getpolymy(){
 
 
-
+                                    $('#loadMore').hide();
                                     town  = $("#towns").val(); 
                                     sectore  = '';
                                     country  = $("#countrys").val();
@@ -1827,7 +1840,14 @@ proptype =  $('#proptypes').val();
                                         
                                         $('.prop_prices').text(pricemin+' - '+pricemax); 
                                     }
-                                    $('.prop_types').text($('#'+proptype).text());
+
+                                   // $('.prop_types').text($('#'+proptype).text());
+
+                                    if(proptype != ''){
+                                    var commercial_text = $('#'+proptype).text();
+                                    $('.prop_types').text(commercial_text);
+                                    }
+
 
                                     if(pacinput != ''){
                                     var getsearchlocation = pacinput;
@@ -3164,12 +3184,13 @@ function getPolygonCoords() {
 
                             function  withoutshape(){
 
-                                        var count1 =0;
+                                          var count1 =0;
                                           var count2 =0;
                                           var count3 =0;
                                          
-
-                               var types  = $('#type').val();
+                                   var types  = $('#type').val();
+                                   var start  = $('#startlib').val();
+                                   var length  = $('#lengthlib').val();
                                
                                     town  = $("#towns").val(); 
                                     sectore  = '';
@@ -3188,28 +3209,37 @@ function getPolygonCoords() {
 
                                  if(types == ''){
                                        
-                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length}; 
                                       
                                        $.ajax({
                                                type: "POST",
                                                url: 'withoutshape',
                                                data: ndata,
                                                success: function (data) {
-                                                   
+
+                                               // $.parseJSON(data.count);
+                                               
                                                if(data != '1'){
+
+                                                  
                                                    //toastr.success('Your Search Criteria has Successfully Saved', 'success');
                                                   // $('#search-pro').css("display","block");
                                                    var obj = $.parseJSON(data);
-                                                  // $(".serch_rslt").show();
-                                                   var countprop = Object.keys(obj).length;                                                        
-                                                   $('#countprop').html(countprop);
+                                                   
+                                                   
+                                                  // var countprop = Object.keys(obj).length;                                                        
+                                                   $('#countprop').html(obj.counts);
+
+                                                   var totalprops = obj.lengths;
+                                                   $('#startlib').val(parseInt(totalprops));
+                                                   $('#lengthlib').val(parseInt(totalprops) + 20);
                                                   
                                                   
                                                   // $('#getsearchlocation').html(sector);
                                                    
-                                                   bindButtonClick(obj);
+                                                   bindButtonClick(obj.datas);
    
-                                                   $.each(obj, function (index) {
+                                                   $.each(obj.datas, function (index) {
                                                   
           
            var haritid = 273*179-this.id;
@@ -3287,14 +3317,16 @@ function getPolygonCoords() {
                            '</div>'+
                            
                    '</div>'); 
-                     var x=50;
-                     $('.property_detail').hide();
-                     $('#getprop .property_detail:lt('+x+')').show();  
+                    //  var x=50;
+                    //  $('.property_detail').hide();
+                    //  $('#getprop .property_detail:lt('+x+')').show();  
 
-                    $('#loadMore').click(function () {
-                    x= (x+5 <= countprop) ? x+5 : countprop;
-                    $('#getprop .property_detail:lt('+x+')').show();
-                    }); 
+                    // $('#loadMore').click(function () {
+                    // x= (x+5 <= countprop) ? x+5 : countprop;
+                    // $('#getprop .property_detail:lt('+x+')').show();
+                    // }); 
+
+                   
 
                      
           
@@ -3302,17 +3334,24 @@ function getPolygonCoords() {
    
                                                    });
                                                    
-                                     
+            
    
                                                }else{
                                                toastr.warning('Please Enter Specific Locality', 'warning');
                                                } 
                                                
                                                },
+
+                                               
    
    
    
                                                    });
+
+
+
+                                 
+                                
 
                               }  if(types == 'polygon'){
 
@@ -3763,6 +3802,9 @@ function getPolygonCoords() {
                                                    });
                                                  
                                      } 
+
+
+                          
    
    
                                            } 
