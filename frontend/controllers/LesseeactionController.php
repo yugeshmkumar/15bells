@@ -1605,12 +1605,15 @@ return 2;
         $proptype = $_POST['proptype'];
         $propbid = $_POST['propbid'];
         $availabilitym = $_POST['availabilitym'];
+        $start = $_POST['start'];
+        $length = $_POST['length'];
     
     //     if (isset(Yii::$app->user->identity->id)){
     //   $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
       
     //     }
-          
+    $querycount = "SELECT count(*) as totalprop FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
+   
     $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
       
       $conditions = array();
@@ -1663,19 +1666,63 @@ return 2;
 
 
         $sqlstr = $query;
+        $sqlstrcount =  $querycount;
+
         if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
-            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+
+            $sqlstrcount .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)."";
+            $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
+            $totalprop  =  $paymentscount[0]['totalprop'];
+
+            if($totalprop < $length){
+
+                $length = $totalprop;
+            }
+        }
+
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id order By a.id asc limit $start,$length";
+
+        }
+
+
+
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+
+            $sqlstrcount .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END ";
+            $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
+            $totalprop  =  $paymentscount[0]['totalprop'];
+
+            if($totalprop < $length){
+
+                $length = $totalprop;
+            }
         }
 
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
-            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id order By a.id asc limit $start,$length";
+
         }
       
-      //echo $sqlstr;die;
+    //   echo $sqlstrcount;die;
       
-        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+        $payments['datas'] = \Yii::$app->db->createCommand($sqlstr)->queryAll();    
 
-        return json_encode($payments);
+        
+
+       
+        $payments['counts'] = $totalprop;
+
+        $payments['start']  = $_POST['start'];
+        $payments['lengths'] = $length;
+
+        // $nestedarray['count'] = $totalprop;
+        // $nestedarray['datas'] = $payments;
+
+        //  echo '<pre>';print_r($payments);die;
+
+       return json_encode($payments);
     }
          
          
@@ -1969,10 +2016,13 @@ return 2;
           $conditions[] = "property_for='rent' )";      
 
                         
+               if($proptype){
 
-                        if ($proptype != 'Property Type') {
+                        if ($proptype != 'Property Type' || $proptype != '') {
+                            
                          $conditions[] = "project_type_id = '$proptype'";
                         }
+                    }
                         if ($propbid != 'Select') {
                         $conditions[] = "a.request_for = '$propbid'";
                         }
@@ -2013,9 +2063,11 @@ return 2;
                             $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
                         }
               
-              
+            //   echo $sqlstr;die;
           
            $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+
+
 
             return json_encode($payments);
             
