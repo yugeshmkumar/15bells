@@ -1584,7 +1584,7 @@ return 2;
     
     public function actionWithoutshape() {
 
-
+        $length='';
     if(Yii::$app->user->getIsGuest()){
             $user_id = 0;
             
@@ -1681,6 +1681,9 @@ return 2;
         }
 
         if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+
+           
+          
             $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id order By a.id asc limit $start,$length";
 
         }
@@ -1688,6 +1691,8 @@ return 2;
 
 
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+
+            
 
             $sqlstrcount .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END ";
             $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
@@ -1700,12 +1705,13 @@ return 2;
         }
 
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+           
 
             $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id order By a.id asc limit $start,$length";
 
         }
       
-    //   echo $sqlstrcount;die;
+    //    echo $sqlstr;die;
       
         $payments['datas'] = \Yii::$app->db->createCommand($sqlstr)->queryAll();    
 
