@@ -161,7 +161,7 @@ a{text-decoration:none !important;}
 	color:#c4984f !important;
 }
 .brand_desp{
-	margin-top:180px;
+	margin-top:150px;
 }
 .brand_name{
 	font-size: 28px;
@@ -370,7 +370,7 @@ a{text-decoration:none !important;}
 .select_catg{
 	position:relative;
 	left:55px;
-	bottom:-170px;
+	bottom:-150px;
 }
 div.mm-dropdown {
   width: 100%;
@@ -2266,6 +2266,20 @@ input.invalid {
 	.property_id{
 		font-size:15px;
 	}
+	.property_names{
+		font-size:14px;
+	}
+	.property_typess{
+		bottom:0px;
+	}
+	.banner_icon{
+		width:50px !important;
+	}
+	.select_catg{
+		left:4px;
+		width:98%;
+		bottom:-160px;
+	}
 	.font_call{
 		font-size:18px !important;
 	}
@@ -2409,13 +2423,9 @@ input.invalid {
 		top:2px;
 	}
 	.brand_desp{
-		margin-top:170px;
+		margin-top:150px;
 	}
-	.select_catg{
-		left:4px;
-		width:98%;
-		bottom:-230px;
-	}
+
 	.read_more{
 		display:flex;
 		font-size:14px;
@@ -4220,4 +4230,23 @@ color: #c4984f;
 }
 .link_main{
 	color:#c4984f;
+}
+
+.banner_icon{
+	width:120px;
+}
+.property_names{
+	font-size:16px;
+	color:#ffffff;
+	margin-top:15px;
+}
+.property_typess{
+	position: absolute;
+    left: 5%;
+    bottom: 20px;
+	text-align: center;
+	width:90%;
+}
+.ucb_brnd{
+	margin-top:10px;
 }
