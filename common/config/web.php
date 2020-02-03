@@ -4,7 +4,8 @@ $config = [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'linkAssets' => false,
-            'appendTimestamp' => YII_ENV_DEV,
+            'appendTimestamp' => true,
+
         
 		
 
