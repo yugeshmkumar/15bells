@@ -3240,12 +3240,19 @@ function getPolygonCoords() {
                                                    bindButtonClick(obj.datas);
    
                                                    $.each(obj.datas, function (index) {
-                                                  
-          
-           var haritid = 273*179-this.id;
-           var propsid = 'PR'+ haritid;
-           var commaNum = this.asking_rental_price;
-           var imageds = $.trim(this.featured_image);
+
+                                    var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+                                    var c = content.substr(0, showChar);
+                                    var h = content.substr(showChar-1, content.length - showChar);
+                                    var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+
+
+                                    var haritid = 273*179-this.id;
+                                    var propsid = 'PR'+ haritid;
+                                    var commaNum = this.asking_rental_price;
+                                    var imageds = $.trim(this.featured_image);
                 
                        
            $('#getprop').append('<div class="col-md-12 property_detail">'+
@@ -3298,18 +3305,11 @@ function getPolygonCoords() {
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
-                               '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Amenities</p>'+
-                                   '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>"  data-toggle="tooltip" title="Power" alt="power" class="amen_icon"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                   '</ul>'+
+                               '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
-                               '<div class="col-md-6 shortlist_call">'+
+                               '<div class="col-md-4 shortlist_call">'+
                                    '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
