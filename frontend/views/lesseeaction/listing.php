@@ -3942,25 +3942,25 @@ function getPolygonCoords() {
 
                                      if(first == 'office-space'){                                        
 
-                                        $('#proptypes').val('11');
+                                        $('#proptypes').val('11,12,13,14');
 
                                      }
 
                                         if(first == 'retail-space'){                                        
 
-                                        $('#proptypes').val('15');
+                                        $('#proptypes').val('15,16,17,18');
 
                                         }
 
                                         if(first == 'industrial-plots'){                                        
 
-                                        $('#proptypes').val('22');
+                                        $('#proptypes').val('19,22,23,24');
 
                                         }
 
                                         if(first == 'warehouse'){                                        
 
-                                        $('#proptypes').val('25');
+                                        $('#proptypes').val('25,26');
 
                                         }
                                         

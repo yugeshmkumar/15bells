@@ -1631,7 +1631,7 @@ return 2;
       
         
         if ($proptype != '') {
-            $conditions[] = "project_type_id = '$proptype'";
+            $conditions[] = "project_type_id IN ($proptype)";
         }
         if ($areamin != '' && $areamax !='') {
            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
