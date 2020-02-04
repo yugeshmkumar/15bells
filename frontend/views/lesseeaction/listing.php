@@ -2064,13 +2064,15 @@ proptype =  $('#proptypes').val();
                             count1 += 1; 
                         
                         
-                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
-                        
+                            var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+
                         var imageds = $.trim(this.featured_image);
-                        var c = content.substr(0, showChar);
-            var h = content.substr(showChar-1, content.length - showChar);
-                        var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-    var haritid = 273*179-this.id;
+                        var haritid = 273*179-this.id;
                         var propsid = 'PR'+ haritid;
 
 
@@ -2127,18 +2129,11 @@ proptype =  $('#proptypes').val();
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
-                               '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Amenities</p>'+
-                                   '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"  data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"  data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"  data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"  data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"  data-toggle="tooltip" title="Lift"></li>'+
-                                   '</ul>'+
+                               '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
-                               '<div class="col-md-6 shortlist_call">'+
+                               '<div class="col-md-4 shortlist_call">'+
                                    '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
@@ -2220,13 +2215,15 @@ proptype =  $('#proptypes').val();
                                                                // circle.setMap(null);
 
                                                              count2 += 1; 
-                                                             var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
-                                                           
+                                                             var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+                       
                                                             var imageds = $.trim(this.featured_image);
-                                                            var c = content.substr(0, showChar);
-			                                    var h = content.substr(showChar-1, content.length - showChar);
-                                                            var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-								                            var haritid = 273*179-this.id;
+                                                               var haritid = 273*179-this.id;
                                                             var propsid = 'PR'+ haritid;
 
 
@@ -2284,18 +2281,11 @@ proptype =  $('#proptypes').val();
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
-                               '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Amenities</p>'+
-                                   '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon"  data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon"  data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon"  data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon"  data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon"  data-toggle="tooltip" title="Lift"></li>'+
-                                   '</ul>'+
+                               '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
-                               '<div class="col-md-6 shortlist_call">'+
+                               '<div class="col-md-4 shortlist_call">'+
                                    '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
@@ -2366,12 +2356,14 @@ proptype =  $('#proptypes').val();
                                     });
 
                                                              
-                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
 
                                 var imageds = $.trim(this.featured_image);
-                                var c = content.substr(0, showChar);
-                                var h = content.substr(showChar-1, content.length - showChar);
-                                var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                                 var haritid = 273*179-this.id;
                                 var propsid = 'PR'+ haritid;
 
@@ -2432,18 +2424,11 @@ proptype =  $('#proptypes').val();
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+
-                               '<div class="col-md-6 amenities_offered">'+
-                                   '<p class="label_name amenities">Amenities</p>'+
-                                   '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                   '</ul>'+
+                               '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
-                               '<div class="col-md-6 shortlist_call">'+
+                               '<div class="col-md-4 shortlist_call">'+
                                    '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
@@ -3394,13 +3379,15 @@ function getPolygonCoords() {
                            count1 += 1; 
                        
                        
-                           var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
-                       
+                           var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+
                        var imageds = $.trim(this.featured_image);
-                       var c = content.substr(0, showChar);
-           var h = content.substr(showChar-1, content.length - showChar);
-                       var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-   var haritid = 273*179-this.id;
+                        var haritid = 273*179-this.id;
                        var propsid = 'PR'+ haritid;
 
 
@@ -3456,19 +3443,12 @@ function getPolygonCoords() {
                                            '<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/verified.svg';  ?>" width="16"> 15 Bells</p>'+
                                        '</div>'+
                                    '</div>'+
-                                   '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 amenities_offered">'+
-                                       '<p class="label_name amenities">Amenities</p>'+
-                                       '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                   '</ul>'+
-                                   '</div>'+
-                                   '<div class="col-md-6 shortlist_call">'+
+                                '<div class="row prop_detail">'+
+                                   '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
+                               '</div>'+
+                                   '<div class="col-md-4 shortlist_call">'+
                                        '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                    '</div>'+
                                    '</div>'+
@@ -3557,13 +3537,15 @@ function getPolygonCoords() {
 
    
                                                                 count2 += 1; 
-                                                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
-                                                              
+                                                                var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+                          
                                                                var imageds = $.trim(this.featured_image);
-                                                               var c = content.substr(0, showChar);
-                                                   var h = content.substr(showChar-1, content.length - showChar);
-                                                               var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-                                                               var haritid = 273*179-this.id;
+                                                                var haritid = 273*179-this.id;
                                                                var propsid = 'PR'+ haritid;
    
    
@@ -3621,18 +3603,12 @@ function getPolygonCoords() {
                                       '</div>'+
                                   '</div>'+
                                   '<div class="row prop_detail">'+
-                                  '<div class="col-md-6 amenities_offered">'+
-                                      '<p class="label_name amenities">Amenities</p>'+
-                                      '<ul class="amenities_list">'+
-                                       '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
-                                       '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                       '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                       '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                        '</ul>'+
+                                  '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
+                               '</div>'+
                                   '</div>'+
-                                  '<div class="col-md-6 shortlist_call">'+
+                                  '<div class="col-md-4 shortlist_call">'+
                                       '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
@@ -3699,13 +3675,15 @@ function getPolygonCoords() {
                                        });
    
                                                                 
-                                   var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? 'with Plot area ' + this.total_plot_area + ' sqft,' : '' ) + ' with Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
-   
+                                       var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+var c = content.substr(0, showChar);
+var h = content.substr(showChar-1, content.length - showChar);
+var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+
                                    var imageds = $.trim(this.featured_image);
-                                   var c = content.substr(0, showChar);
-                                   var h = content.substr(showChar-1, content.length - showChar);
-                                   var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-                                   var haritid = 273*179-this.id;
+                                     var haritid = 273*179-this.id;
                                    var propsid = 'PR'+ haritid;
    
                                          rectangle.setMap(null);
@@ -3765,18 +3743,11 @@ function getPolygonCoords() {
                                       '</div>'+
                                   '</div>'+
                                   '<div class="row prop_detail">'+
-                                  '<div class="col-md-6 amenities_offered">'+
-                                      '<p class="label_name amenities">Amenities</p>'+
-                                      '<ul class="amenities_list">'+
-                                         '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon"  data-toggle="tooltip" title="Power"></li>'+
-                                          '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                         '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                         '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                          '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                        '</ul>'+
-                                  '</div>'+
-                                  '<div class="col-md-6 shortlist_call">'+
+                                  '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
+                               '</div>'+
+                                  '<div class="col-md-4 shortlist_call">'+
                                       '<button  href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
@@ -4055,13 +4026,15 @@ function getPolygonCoords() {
                                                    
                                                    
                                                        
-                                                   // var content =  'A very good '+ this.typename +' availabale for sale in '+ this.town_name + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
-                                                    
+                                                    var content = 'A very good ' + this.typename + ' availabale for rent in ' + this.town_name + ((this.total_plot_area != '0') ? ' with Super area ' + this.super_area + ' sqft,' : '' ) + ' and with Carpet area ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+                                                    var c = content.substr(0, showChar);
+                                                    var h = content.substr(showChar-1, content.length - showChar);
+                                                    var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
+
+                
                                                    var imageds = $.trim(this.featured_image);
-                                                 //   var c = content.substr(0, showChar);
-                                                   // var h = content.substr(showChar-1, content.length - showChar);
-                                                   // var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
-                                            
+                                                 
                                                     var haritid = 273*179-this.id;
                                                     var propsid = 'PR'+ haritid;
                                                     var commaNum = this.asking_rental_price;
@@ -4116,18 +4089,11 @@ function getPolygonCoords() {
                                                                             '</div>'+
                                                                         '</div>'+
                                                                         '<div class="row prop_detail">'+
-                                                                        '<div class="col-md-6 amenities_offered">'+
-                                                                            '<p class="label_name amenities">Amenities</p>'+
-                                                                            '<ul class="amenities_list">'+
-                                                                                '<li class=""><img width="18" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/power.svg';  ?>" alt="power" class="amen_icon" data-toggle="tooltip" title="Power"></li>'+
-                                                                                '<li class=""><img width="17" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/fire.svg';  ?>" alt="fire" class="amen_icon" data-toggle="tooltip" title="Fire"></li>'+
-                                                                                '<li class=""><img width="11" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/parking.svg';  ?>" alt="parking" class="amen_icon" data-toggle="tooltip" title="Parking"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/security.svg';  ?>" alt="security" class="amen_icon" data-toggle="tooltip" title="Security"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/wifi.svg';  ?>" alt="wifi" class="amen_icon" data-toggle="tooltip" title="Wifi"></li>'+
-                                                                                '<li class=""><img width="20" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/lift.svg';  ?>" alt="Lift" class="amen_icon" data-toggle="tooltip" title="Lift"></li>'+
-                                                                            '</ul>'+
-                                                                        '</div>'+
-                                                                        '<div class="col-md-6 shortlist_call">'+
+                                                                        '<div class="col-md-8 amenities_offered">'+
+                                   '<p class="label_name amenities">Description</p>'+
+                                    '<p class="more details_label">'+html+'</p>'+
+                               '</div>'+
+                                                                        '<div class="col-md-4 shortlist_call">'+
                                                                         '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                                                         '</div>'+
                                                                         '</div>'+
