@@ -126,22 +126,22 @@ if(!isset($_SESSION))
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt locality_area"><span class="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt locality_area"><span class="locality_areas"><?php echo ($town != '' ? $town.' '.$sector : 'Location'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_type"><span class="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Area'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Price'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
 	</div>
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-2 hidden-xs hidden-sm">
 			
         <div class="col-md-12 filt_ers">
 			
 			<div class="row">
 				
 				<div class="accordion_container">
-				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
-				  <div class="accordion_body" style="display: none;">
+				  <div class="accordion_head buyer_drop">Sort By<span class="plusminus">-</span></div>
+				  <div class="accordion_body" style="display: block;">
 					<div class="col-md-12 no_pad text-center">
                         <p class="sort_value">Price</p>
 									<div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
@@ -163,11 +163,43 @@ if(!isset($_SESSION))
 				  
 				</div>
 				
-
-				
 			</div>
 		</div>
 		</div>
+
+		<div class="col-md-2 hidden-lg hidden-md">
+			
+            <div class="col-md-12 filt_ers">
+                
+                <div class="row">
+                    
+                    <div class="accordion_container">
+                      <div class="accordion_head buyer_drop">Sort By<span class="plusminus">+</span></div>
+                      <div class="accordion_body" style="display: none;">
+                        <div class="col-md-12 no_pad text-center">
+                            <p class="sort_value">Price</p>
+                                        <div class="active col-md-12 no_pad"><button id="low" class="filter_butn sortby">Low to High</button></div>
+                                        <div class="col-md-12 no_pad"><button id="high" class="filter_butn sortby">High to Low</button></div>
+                        </div>
+                        <div class="col-md-12 no_pad text-center">
+                        <p class="sort_value">Selling Status</p>
+                                        <div class="active col-md-12 no_pad"><button id="Instant" class="filter_butn propsbid">Instant</button></div>
+                                        <div class="col-md-12 no_pad"><button id="bid" class="filter_butn propsbid">Auction</button></div>
+                                    </div>
+                                    <div class="col-md-12 no_pad text-center">
+                                    <p class="sort_value">Availability</p>
+                                        <div class="active col-md-12 no_pad"><button id="ready_to_move" class="filter_butn availabiltys">Ready to move in</button></div>
+                                        <div class="col-md-12 no_pad"><button id="after_1_month" class="filter_butn availabiltys">After 1 month</button></div>
+                                        <div class="col-md-12 no_pad"><button id="after_2_month" class="filter_butn availabiltys">After 2 month</button></div>
+                                        <div class="col-md-12 no_pad"><button id="under_construction" class="filter_butn availabiltys">Under Const.</button></div>
+                                    </div>
+                      </div>
+                      
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
 		<div class="col-md-10 buyer_listing no_pad">
 			<div class="row property_list">
                 <div id="getprop">
@@ -236,6 +268,8 @@ if(!isset($_SESSION))
 
                 <div class="col-md-12 text-center">
                     <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                    <input type="hidden" id="startlib" value="0">
+                    <input type="hidden" id="lengthlib" value="20">
                 </div>
 
 
@@ -1127,6 +1161,13 @@ $("#dummypricemaximum").on("input", function(){
                
     });
 
+    $('#loadMore').click(function () {
+                        withoutshape();
+                        $('html,body').animate({
+        scrollTop: $(".property_requirment").offset().top - 100},
+        'slow'); 
+                    });
+
 
 
 
@@ -1226,7 +1267,7 @@ proptype =  $('#proptypes').val();
                               function getpolymy(){
 
 
-
+                                $('#loadMore').hide();
                                     town  = $("#towns").val(); 
                                     sectore  = '';
                                     country  = $("#countrys").val();
@@ -2578,7 +2619,8 @@ function getPolygonCoords() {
                                        
 
                                var types  = $('#type').val();
-                               
+                               var start  = $('#startlib').val();
+                                   var length  = $('#lengthlib').val();
                                
                                     town  = $("#towns").val(); 
                                     sectore  = '';
@@ -2597,7 +2639,7 @@ function getPolygonCoords() {
 
                                  if(types == 'blank'){
                                        
-                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length}; 
                                       
                                        $.ajax({
                                                type: "POST",
@@ -2610,15 +2652,19 @@ function getPolygonCoords() {
                                                   // $('#search-pro').css("display","block");
                                                    var obj = $.parseJSON(data);
                                                   // $(".serch_rslt").show();
-                                                   var countprop = Object.keys(obj).length;                                                        
-                                                   $('#countprop').html(countprop);
+
+                                                  $('#countprop').html(obj.counts);
+
+                                                  var totalprops = obj.lengths;
+                                                  $('#startlib').val(parseInt(totalprops));
+                                                  $('#lengthlib').val(parseInt(totalprops) + 20);
                                                   
                                                   
                                                   // $('#getsearchlocation').html(sector);
                                                    
-                                                   bindButtonClick(obj);
+                                                   bindButtonClick(obj.datas);
    
-                                                   $.each(obj, function (index) {
+                                                   $.each(obj.datas, function (index) {
                                                   
           
            var haritid = 273*179-this.id;
@@ -2691,14 +2737,14 @@ function getPolygonCoords() {
                            '</div>'+
                            
                    '</div>'); 
-                     var x=3;
-                     $('.property_detail').hide();
-                     $('#getprop .property_detail:lt('+x+')').show();  
+                    //  var x=3;
+                    //  $('.property_detail').hide();
+                    //  $('#getprop .property_detail:lt('+x+')').show();  
 
-                    $('#loadMore').click(function () {
-                    x= (x+5 <= countprop) ? x+5 : countprop;
-                    $('#getprop .property_detail:lt('+x+')').show();
-                    }); 
+                    // $('#loadMore').click(function () {
+                    // x= (x+5 <= countprop) ? x+5 : countprop;
+                    // $('#getprop .property_detail:lt('+x+')').show();
+                    // }); 
 
                      
           
@@ -3542,13 +3588,13 @@ $("#rantime").datepicker({
                                                                     '</div>'+
                                                             '</div>'); 
                                                             var x=5;
-                     $('.property_detail').hide();
-                     $('#getprop .property_detail:lt('+x+')').show();  
+                    //  $('.property_detail').hide();
+                    //  $('#getprop .property_detail:lt('+x+')').show();  
 
-                    $('#loadMore').click(function () {
-                    x= (x+5 <= countprop) ? x+5 : countprop;
-                    $('#getprop .property_detail:lt('+x+')').show();
-                    });  
+                    // $('#loadMore').click(function () {
+                    // x= (x+5 <= countprop) ? x+5 : countprop;
+                    // $('#getprop .property_detail:lt('+x+')').show();
+                    // });  
                                                    
                                                                                                 
                                             
