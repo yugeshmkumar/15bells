@@ -138,10 +138,10 @@ if($getSaveID->type == 'blank'){
                                   
                                     ?>  
 		<ul class="users_search">
-			<li class="user_filt locality_area"><span class="locality_areas"><?php echo $town.' '.$sector; ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt locality_area"><span class="locality_areas"><?php echo ($town != '' ? $town.' '.$sector : 'Location'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_type"><span class="prop_types"><?php  echo ($data['typename'] != '' ? $data['typename'] : 'Property Type'); ?></span><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 			<li class="user_filt prop_area"><span class="prop_areas"><?php echo ($propareaminimum != '' ? $propareaminimum : 'Min Area'); ?> - <?php echo ($propareamaximum != '' ? $propareamaximum : 'Max Area'); ?> </span> Sq. ft.<span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
-			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Area'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
+			<li class="user_filt prop_price"><span class="prop_prices"><?php echo  ($proppriceminimum != '' ? $proppriceminimum : 'Min Price'); ?> - <?php echo ($proppricemaximum != '' ? $proppricemaximum : 'Max Price'); ?> </span> <i class="fa fa-inr"></i><span><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/down.svg';  ?>" width="17"></li>
 		</ul>
 	</div>
 	<div class="row">
@@ -248,6 +248,8 @@ if($getSaveID->type == 'blank'){
 
                 <div class="col-md-12 text-center">
                     <button class="btn btn-default load_mor" id="loadMore">Load More</button>
+                    <input type="hidden" id="startlib" value="0">
+                    <input type="hidden" id="lengthlib" value="20">
                 </div>
 
 
@@ -1132,6 +1134,13 @@ $("#dummypricemaximum").on("input", function(){
                
     });
 
+    $('#loadMore').click(function () {
+                        withoutshape();
+                        $('html,body').animate({
+        scrollTop: $(".property_requirment").offset().top - 100},
+        'slow'); 
+                    }); 
+
 
 
 
@@ -1231,7 +1240,7 @@ proptype =  $('#proptypes').val();
                               function getpolymy(){
 
 
-
+                                $('#loadMore').hide();
                                     town  = $("#towns").val(); 
                                     sectore  = '';
                                     country  = $("#countrys").val();
@@ -2582,6 +2591,10 @@ function getPolygonCoords() {
                                         var count1 =0;
                                           var count2 =0;
                                           var count3 =0;
+
+                                          var types  = $('#type').val();
+                                   var start  = $('#startlib').val();
+                                   var length  = $('#lengthlib').val();
                                          
 
                                var types  = $('#type').val();
@@ -2603,7 +2616,7 @@ function getPolygonCoords() {
 
                                  if(types == 'blank'){
                                        
-                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length}; 
                                       
                                        $.ajax({
                                                type: "POST",
@@ -2616,15 +2629,18 @@ function getPolygonCoords() {
                                                   // $('#search-pro').css("display","block");
                                                    var obj = $.parseJSON(data);
                                                   // $(".serch_rslt").show();
-                                                   var countprop = Object.keys(obj).length;                                                        
-                                                   $('#countprop').html(countprop);
+                                                  $('#countprop').html(obj.counts);
+
+                                                   var totalprops = obj.lengths;
+                                                   $('#startlib').val(parseInt(totalprops));
+                                                   $('#lengthlib').val(parseInt(totalprops) + 20);
                                                   
                                                   
                                                   // $('#getsearchlocation').html(sector);
                                                    
-                                                   bindButtonClick(obj);
+                                                   bindButtonClick(obj.datas);
    
-                                                   $.each(obj, function (index) {
+                                                   $.each(obj.datas, function (index) {
                                                   
           
            var haritid = 273*179-this.id;
@@ -2697,14 +2713,14 @@ function getPolygonCoords() {
                            '</div>'+
                            
                    '</div>'); 
-                     var x=3;
-                     $('.property_detail').hide();
-                     $('#getprop .property_detail:lt('+x+')').show();  
+                    //  var x=3;
+                    //  $('.property_detail').hide();
+                    //  $('#getprop .property_detail:lt('+x+')').show();  
 
-                    $('#loadMore').click(function () {
-                    x= (x+5 <= countprop) ? x+5 : countprop;
-                    $('#getprop .property_detail:lt('+x+')').show();
-                    }); 
+                    // $('#loadMore').click(function () {
+                    // x= (x+5 <= countprop) ? x+5 : countprop;
+                    // $('#getprop .property_detail:lt('+x+')').show();
+                    // }); 
 
                      
           
@@ -3388,16 +3404,58 @@ $("#rantime").datepicker({
 
 }
 
+$(document).ready(function () { 
 
 
-                                        $(document).ready(function () {                                       
+var first = getUrlVars()["type"];
 
-                                        
-                                          withoutshape();
-                                          $('#secondshow').hide();
-                                            
+if(first == 'office-space'){                                        
 
-                                                     });
+$('#proptypes').val('11,12,13,14');
+
+}
+
+if(first == 'retail-space'){                                        
+
+$('#proptypes').val('15,16,17,18');
+
+}
+
+if(first == 'industrial-plots'){                                        
+
+$('#proptypes').val('19,22,23,24');
+
+}
+
+if(first == 'warehouse'){                                        
+
+$('#proptypes').val('25,26');
+
+}                                      
+
+
+withoutshape();
+$('#secondshow').hide();
+
+
+         });
+
+
+
+         function getUrlVars()
+{
+var vars = [], hash;
+var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+for(var i = 0; i < hashes.length; i++)
+{
+hash = hashes[i].split('=');
+vars.push(hash[0]);
+vars[hash[0]] = hash[1];
+}
+return vars;
+}
+
+                                      
 
 
 
@@ -3547,14 +3605,14 @@ $("#rantime").datepicker({
                                                               
                                                                     '</div>'+
                                                             '</div>'); 
-                                                            var x=5;
-                     $('.property_detail').hide();
-                     $('#getprop .property_detail:lt('+x+')').show();  
+                    //                                         var x=5;
+                    //  $('.property_detail').hide();
+                    //  $('#getprop .property_detail:lt('+x+')').show();  
 
-                    $('#loadMore').click(function () {
-                    x= (x+5 <= countprop) ? x+5 : countprop;
-                    $('#getprop .property_detail:lt('+x+')').show();
-                    });  
+                    // $('#loadMore').click(function () {
+                    // x= (x+5 <= countprop) ? x+5 : countprop;
+                    // $('#getprop .property_detail:lt('+x+')').show();
+                    // });  
                                                    
                                                                                                 
                                             
