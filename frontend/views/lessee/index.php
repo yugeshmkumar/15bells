@@ -498,7 +498,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 </div>
 
 				 <?php ActiveForm::end(); ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7qv6Je2MNdMpTBTqlScwBGtQxBad7RE&v=3.exp&libraries=geometry,drawing,places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEuefpkgZlwt2EdlmUZHBVKZ4qdx6ACXA&v=3.exp&libraries=geometry,drawing,places"></script>
 
 
 <?php 
@@ -618,7 +618,7 @@ $("#dummypricemaximum").on("input", function(){
 
             if(dummyprice > 99.9){
 
-
+s
             alert('Pease select crores');
             $('#dummypricemaximum').val(
             function(index, value){
