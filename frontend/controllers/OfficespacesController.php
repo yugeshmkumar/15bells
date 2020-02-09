@@ -145,9 +145,39 @@ class OfficespacesController extends \yii\web\Controller
 
     }
 
+    public function actionDelhi()
 
+    {
+        $model =  new CoworkingQuery();
 
+        $this->layout = "homeLayout";
+        return $this->render('delhi',[
+        
+            'model' => $model,
+     ]);
+    }
+    public function actionNoida()
 
+    {
+         $model =  new CoworkingQuery();
+ 
+         $this->layout = "homeLayout";
+         return $this->render('noida',[
+         
+             'model' => $model,
+      ]);
+     }
+    public function actionGurugram()
+
+    {
+         $model =  new CoworkingQuery();
+ 
+         $this->layout = "homeLayout";
+         return $this->render('gurugram',[
+         
+             'model' => $model,
+      ]);
+     }
     public function actionCreate()
 
     {
