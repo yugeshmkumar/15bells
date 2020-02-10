@@ -36,7 +36,7 @@ use yii\helpers\Html;
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
 						<h1 class="about_head">Need Office space in Gurugram?</h1>
 						<p class="about_det animated slideInDown">in this article we are going to tell you about some best areas of Gurgaon for commercial Properties investment, office spaces on the lease, Office space on rent, Industrial plot, Industrial land and more. The following areas are the best locations of Gurgaon for commercial project view. Investment in these locations will give your business a better and productive future. </p>
-						<p class="find_mor"><a class="enquire_now" href="javascript:void(0)">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
+						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Gurugram']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					
 					
