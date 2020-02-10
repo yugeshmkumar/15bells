@@ -292,15 +292,33 @@ class LesseeactionController extends Controller {
 
 
 
+        
  
          if(!isset($_SESSION)) 
          { 
              session_start(); 
          } 
+
+         if ($_GET['type'] != '' && $_GET['type']== 'office-space'){
+
+            $proptype = '11,12,13,14';
+        }else if ($_GET['type'] != '' && $_GET['type']== 'retail-space'){
+
+            $proptype = '15,16,17,18';
+        }else if ($_GET['type'] != '' && $_GET['type']== 'industrial-plots'){
+
+            $proptype = '19,22,23,24';
+        }else if ($_GET['type'] != '' && $_GET['type']== 'warehouse'){
+
+            $proptype = '25,26';
+        }else{
+
+            $proptype = HtmlPurifier::process($_POST['proptype']);
+        }
  
         $locations = HtmlPurifier::process($_POST['locations']);
          $shaped = HtmlPurifier::process($_POST['shaped']);
-         $proptype = HtmlPurifier::process($_POST['proptype']);
+         
          $propcity = HtmlPurifier::process($_POST['propcity']);
          $serachlocality = HtmlPurifier::process($_POST['serachlocality']);
          $propnearby = HtmlPurifier::process($_POST['propnearby']);
