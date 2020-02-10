@@ -2131,6 +2131,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
 
                                                             
                   var commaNum = this.asking_rental_price;
+                  var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                 
                   $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -2154,13 +2156,17 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                            '</div>'+
                            '<div class="col-md-10">'+
                            '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2282,6 +2288,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                          
 
                                              var commaNum = this.asking_rental_price;
+                                             var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                 
                                              $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -2304,14 +2312,18 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
       <?php  } ?>
                            '</div>'+
                            '<div class="col-md-10">'+
-                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                           '<div class="row prop_detail">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2424,6 +2436,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        
                                       count3 += 1;                      
                                       var commaNum = this.asking_rental_price;
+                                      var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                 
                                       $('#getprop').append('<div class="col-md-12 property_detail">'+
                        '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -2447,13 +2461,17 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                            '</div>'+
                            '<div class="col-md-10">'+
                            '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -3289,6 +3307,8 @@ function getPolygonCoords() {
            var haritid = 273*179-this.id;
            var propsid = 'PR'+ haritid;
            var commaNum = this.asking_rental_price;
+           var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
            var imageds = $.trim(this.featured_image);
                 
                        
@@ -3314,13 +3334,17 @@ function getPolygonCoords() {
                            '</div>'+
                            '<div class="col-md-10">'+
                                '<div class="row prop_detail">'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Location</p>'+
                                        '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
-                                   '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Property for</p>'+
                                        '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -3444,6 +3468,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
 
                                                            
                  var commaNum = this.asking_rental_price;
+                 var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                
                $('#getprop').append('<div class="col-md-12">'+
                            '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3466,16 +3492,20 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
       <?php  } ?>
                                '</div>'+
                                '<div class="col-md-10">'+
-                                   '<div class="row prop_detail">'+
-                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                           '<p class="label_name">Location</p>'+
-                                           '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
-                                       '</div>'+
-                                       '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                           '<p class="label_name">Property for</p>'+
-                                           '<p class="details_label">'+this.request_for+'</p>'+
-                                       '</div>'+
+                               '<div class="row prop_detail">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Location</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
                                    '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                   '</div>'+
+                               '</div>'+
                                    '<div class="row prop_detail">'+	
                                        '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                            '<p class="label_name">Price</p>'+
@@ -3495,19 +3525,16 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '</div>'+
                                    '</div>'+
                                    '<div class="row prop_detail">'+
-                                   '<div class="col-md-8 amenities_offered">'+
+                               '<div class="col-md-8 amenities_offered">'+
                                    '<p class="label_name amenities">Description</p>'+
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                       '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
-                                   '</div>'+
-                                   '</div>'+
-                                   '</div>'+
+                                   '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
-                               '<div class="row">'+
-                                   
                                '</div>'+
+                               '</div>'+
+                           '</div>'+
                        '</div>'); 
                                                        }
                                                       
@@ -3602,6 +3629,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                             
    
                                                 var commaNum = this.asking_rental_price;
+                                                var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                    
                                                 $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3624,16 +3653,20 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
        <?php  } ?>
                               '</div>'+
                               '<div class="col-md-10">'+
-                                  '<div class="row prop_detail">'+
-                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                          '<p class="label_name">Location</p>'+
-                                          '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
-                                      '</div>'+
-                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                          '<p class="label_name">Property for</p>'+
-                                          '<p class="details_label">'+this.request_for+'</p>'+
-                                      '</div>'+
-                                  '</div>'+
+                              '<div class="row prop_detail">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Location</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                   '</div>'+
+                               '</div>'+
                                   '<div class="row prop_detail">'+	
                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
@@ -3740,6 +3773,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                           
                                          count3 += 1;                      
                                          var commaNum = this.asking_rental_price;
+                                         var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                    
                                          $('#getprop').append('<div class="col-md-12 property_detail">'+
                           '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -3762,16 +3797,20 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
       <?php  } ?>
                               '</div>'+
                               '<div class="col-md-10">'+
-                                  '<div class="row prop_detail">'+
-                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                          '<p class="label_name">Location</p>'+
-                                          '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
-                                      '</div>'+
-                                      '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                          '<p class="label_name">Property for</p>'+
-                                          '<p class="details_label">'+this.request_for+'</p>'+
-                                      '</div>'+
-                                  '</div>'+
+                              '<div class="row prop_detail">'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Location</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                   '</div>'+
+                               '</div>'+
                                   '<div class="row prop_detail">'+	
                                       '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                           '<p class="label_name">Price</p>'+
@@ -3790,18 +3829,18 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                           '<p class="details_label">'+this.availability.replace(/_/g,' ').charAt(0).toUpperCase() + this.availability.replace(/_/g,' ').slice(1)+'</p>'+
                                       '</div>'+
                                   '</div>'+
+                                 
                                   '<div class="row prop_detail">'+
-                                  '<div class="col-md-6 amenities_offered">'+
-                                  '<div class="col-md-8 amenities_offered">'+
+                               '<div class="col-md-8 amenities_offered">'+
                                    '<p class="label_name amenities">Description</p>'+
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                      '<button  href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
-                                  '</div>'+
-                                  '</div>'+
-                                  '</div>'+
-                              '</div>'+
+                                   '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                               '</div>'+
+                               '</div>'+
+                               '</div>'+
+                           '</div>'+
                               
                       '</div>'); 
            }
@@ -3827,7 +3866,41 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                           
    
    
-                                           } 
+                                           }
+
+
+
+
+                           function changeNumberFormat(number, decimals, recursiveCall) {
+
+                                        const decimalPoints = decimals || 2;
+                                        const noOfLakhs = number / 100000;
+                                        let displayStr;
+                                        let isPlural;
+
+                                        // Rounds off digits to decimalPoints decimal places
+                                        function roundOf(integer) {
+                                        return +integer.toLocaleString(undefined, {
+                                        minimumFractionDigits: decimalPoints,
+                                        maximumFractionDigits: decimalPoints,
+                                        });
+                                        }
+
+                                        if (noOfLakhs >= 1 && noOfLakhs <= 99) {
+                                        const lakhs = roundOf(noOfLakhs);
+                                        isPlural = lakhs > 1 && !recursiveCall;
+                                        displayStr = `${lakhs} Lakh${isPlural ? 's' : ''}`;
+                                        } else if (noOfLakhs >= 100) {
+                                        const crores = roundOf(noOfLakhs / 100);
+                                        const crorePrefix = crores >= 100000 ? changeNumberFormat(crores, decimals, true) : crores;
+                                        isPlural = crores > 1 && !recursiveCall;
+                                        displayStr = `${crorePrefix} Crore${isPlural ? 's' : ''}`;
+                                        } else {
+                                        displayStr = number;
+                                        }
+
+                                        return displayStr;
+                              } 
 
 
 
@@ -4084,6 +4157,8 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                                     var haritid = 273*179-this.id;
                                                     var propsid = 'PR'+ haritid;
                                                     var commaNum = this.asking_rental_price;
+                                                    var totalprice = commaNum * this.super_area;
+           var gettotalprice = changeNumberFormat(totalprice);
                                                          
                                                     $('#getprop').append('<div class="col-md-12 property_detail">'+
                                                                 '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
@@ -4107,15 +4182,19 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                                                     '</div>'+
                                                                     '<div class="col-md-10">'+
                                                                     '<div class="row prop_detail">'+
-                                                                          '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                                                              '<p class="label_name">Location</p>'+
-                                                                              '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
-                                                                            '</div>'+
-                                                                             '<div class="col-md-6 col-xs-6 company_overview property_manage">'+
-                                                                                '<p class="label_name">Property for</p>'+
-                                                                                 '<p class="details_label">'+this.request_for+'</p>'+
-                                                                              '</div>'+
-                                                                    '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Location</p>'+
+                                       '<p class="details_label">'+this.sector_name+' , '+this.town_name+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Property for</p>'+
+                                       '<p class="details_label">'+this.request_for+'</p>'+
+                                   '</div>'+
+                                   '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
+                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                   '</div>'+
+                               '</div>'+
                                                                         '<div class="row prop_detail">'+	
                                                                             '<div class="col-md-3 col-xs-6 company_overview property_manage">'+
                                                                                 '<p class="label_name">Price</p>'+
