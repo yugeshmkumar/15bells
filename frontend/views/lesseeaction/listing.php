@@ -1409,10 +1409,11 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
     }
   });
  $(".locality_area").click(function() {
+  
 	 $(".accordion_body").slideUp(300);
 	 $(".plusminus").text('+');
     if ($('.accordion_body').is(':visible')) {
-	
+      $(".location_body").show(300);
     } else {
       $(".location_body").slideDown(300);
       $('.location_hed').children(".plusminus").text('-');
@@ -1450,7 +1451,7 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
 	$(".accordion_body").slideUp(300);
 	$(".plusminus").text('+');
     if ($('.accordion_body').is(':visible')) {
-      
+      $(".property_body").show(300);
     } else {
       $(".property_body").slideDown(300);
       $('.property_hed').children(".plusminus").text('-');
@@ -1468,7 +1469,7 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
 	$(".accordion_body").slideUp(300);
 	$(".plusminus").text('+');
     if ($('.accordion_body').is(':visible')) {
-      
+      $(".area_body").show(300);
     } else {
       $(".area_body").slideDown(300);
       $('.area_hed').children(".plusminus").text('-');
@@ -1480,7 +1481,7 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
 	$(".accordion_body").slideUp(300);
 	$(".plusminus").text('+');
     if ($('.accordion_body').is(':visible')) {
-      
+      $(".price_bdy").show(300);
     } else {
       $(".price_bdy").slideDown(300);
       $('.price_hed').children(".plusminus").text('-');
