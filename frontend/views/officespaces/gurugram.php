@@ -35,7 +35,7 @@ use yii\helpers\Html;
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
 						<h1 class="about_head">Need Office space in Gurugram?</h1>
-						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
+						<p class="about_det animated slideInDown">in this article we are going to tell you about some best areas of Gurgaon for commercial Properties investment, office spaces on the lease, Office space on rent, Industrial plot, Industrial land and more. The following areas are the best locations of Gurgaon for commercial project view. Investment in these locations will give your business a better and productive future. </p>
 						<p class="find_mor"><a class="enquire_now" href="javascript:void(0)">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					
@@ -55,38 +55,37 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					<h2 class="blog_titl">How to Get an Office Space on lease</h2>
+					<h2 class="blog_titl">Best Locations for Office Space in Gurgaon</h2>
 
 
-					<p class="blog_txt">15 bells provide right Real estate consultation. We help you make a smart choice with your investment. With a great experience of over decades in the commercial properties consultation in Gurgaon, we offer the best realty consultation services to our clients. We offer creative and modern office spaces in Gurgaon. Our whole team does it all from conception to design to implement office solutions.  We are the reliable real estate developers in the commercial project business which includes a surfeit of services like leasing, buying, Renting and selling of the commercial buildings, office spaces, Retail shops, Retail space and more. </p>
-					<p class="blog_txt">We guide the real estate investors to take a good decision according to the scenario of real estate development, Investment size, and ROI. We and our whole team give you the right data of the real estate investment as well as we tell you about the future and the present of the property, we also tell you that the property in which you are going to invest in fruitful or not. If not, then what is the best possible solution for your investment.</p>
-                    <p class="blog_txt">We never misguide our customers and always guide them for a lucrative and better investment option. we will tell you about some important factors that will help you with leasing a new office space. </p>
-                <div class="col-md-12">
-                <h2 class="blog_titl">•	Length of the Term</h2>
-                <p class="blog_txt">Most of the office space on lease comes with a commitment of one year and goes up to 9 years. Landlords usually ask for the 5 to 9 year of lease terms but if you able to fulfill that commitment then the landlords provide you some flexible lease terms of a shorter period. </p>
-                <h2 class="blog_titl">•	Considering Price</h2>
-                <p class="blog_txt">Many startup businessmen invest a huge amount of money in getting huge office spaces. They don’t focus on the rent per square foot, they don’t determine the whole budget of the office rent as well as office amenities related costs like parking, utilities, relocation, maintenance, insurance, tenant improvements, furniture and others. So, always take care of the budget and choosing an office on rent which suits your budget. </p>
-                <h2 class="blog_titl">•	Proper Paper Work</h2>
-                <p class="blog_txt">The office on rent relates some paperwork also. If you are going to rent any office space, ensures properly that the seller has all the registration certificates or not. These certificates are ‘namely clearance to the Government’ Property tax receipts and transfer documents from the previous owner if any. If you don’t take proper care of the paperwork, maybe you have to face measures problems related to your office space leasing. </p>
-                <h2 class="blog_titl">•	Accurate Size</h2>
-                <p class="blog_txt">The size of the office space for rent should always be sufficient for the number of employees you are going to accommodate. If you rent any large area of office space then you will have to pay also for vacant and unused space. So you should have a very calculable data of the property size you need and then investing in the lease of office space. </p>
-                <h2 class="blog_titl">•	Location</h2>
-                <p class="blog_txt">Location is the most important factor whenever you take any office spaces on lease. Location affects your business productivity in a positive way or a negative way. If you choose the right location for your office space on rent then you will get the more. But choosing a renting office space depends on your budget and convenience also. 
-                    Better communication and lodging is a very important factor to decide any location for your business. Are your business is related to customer-facing startup? Then the location of the office is very important. If Buyers are a huge part of your business then you should be leasing a front-facing, ground floor office space, retail space or retail shop in a busy residential locality. 
-                    If your business is completely online and no need for client-facing then you should choose any peaceful and lower cost location for the office space rent. 
-                </p>
-                <h2 class="blog_titl">•	Amenities</h2>
-                <p class="blog_txt">Do you want an office with all the luxury and comfortability of kitchens, breakout zones, fancy bathrooms, find dining and Parking? Or only a basic office space with some basic amenities. Always keep in mind the amenities that you, your employee and your business really needs.</p>
-                <h2 class="blog_titl">•	Authorization of the Broker</h2>
-                <p class="blog_txt">If you are going to take the commercial office spaces through a broker, then always try to ask multiple questions related to their authorization. The Broker’s authenticity, reliability, terms and conditions are as important as the landlord’s. His level of intervention and commission for the property should be worked out beforehand. </p>
-                <h2 class="blog_titl">•	Design</h2>
-                <p class="blog_txt">When people looking for a new office space on rent or lease they always prefer to choose trendy and stylish office spaces in the design. But before this you should always take a look at your business type, if your business really requires these types of trendy design and style, you can go ahead for this. 
-If you want a business that can become a brand in the business then design and style are very important to exhibit the brand image from the initial days of the business. 
-</p>
-                <h2 class="blog_titl">•	Tech and Features of the Real Estate Portal</h2>
-                <p class="blog_txt">Nowadays Searching and booking any commercial properties, office spaces, office spaces on the lease, office space on rent is very convenient and reliable. The advancement of technology and real estate websites can smoothen the process of comparing, shortlisting and booking a property. With the help of the related property website, you can know their terms, conditions and past details of the deals. 
-Leasing an office space or any commercial property is not only an investment of time and money but also explores your business and their productivity. So, always make sure that you should have to start your entrepreneurial journey with the right decision, office space renting not only optimize your budget but it also represents your business, product and employees. 
-</p>
+					<p class="blog_txt">In this article we are going to tell you about some best areas of Gurgaon for commercial Properties investment, office spaces on the lease, Office space on rent, Industrial plot, Industrial land and more. The following areas are the best locations of Gurgaon for commercial project view. Investment in these locations will give your business a better and productive future.  </p>
+				 <div class="col-md-12">
+                <h2 class="blog_titl">Office Spaces for rent in Gurgaon on Golf Course Extension Road</h2>
+                <p class="blog_txt">If you are looking for office space in Gurgaon for rent near the metro station for better connectivity as well as the prime location for your company or business then the Golf course Extension Road will suit your requirements.  </p>
+                <p class="blog_txt">The golf course road is one of the most demanding locations for office space on lease in Gurgaon. The reason behind the high demand of the office space in this location is good tenants, reasonable rental cost, proximity to Golf Course Road, high-end infrastructure and good connectivity with metro and other part of Gurgaon and NCR like Delhi-Faridabad, Emaar Digital Greens, Cyberscape, Suncity Success Tower, M3M Cosmopolitan, Pioneer Urban Square, JMD Empire, Magnum tower, Spaze Business Park, Good Earth Business Bay, Vatika Professional Point, and AIPL Business Club. </p>
+                <p class="blog_txt">You will get the perfect office building on the Golf Course Road Gurgaon, where you can get a good office for rent or office spaces of the lease also. Some of the Tenant operational in Golf Course Extension Road (Gurgaon) are Snapdeal, Sona Koyo Steering, NTT DATA, Apollo Tyres and the residential projects like M3M Golf Estate, Marbella Villas and Trump Tower are also located on Golf Course Extension Road.  </p>
+                <h2 class="blog_titl">Office Space on Lease in M.G. Road (Gurgaon)</h2>
+                <p class="blog_txt">M.G. Road is one of the best locations for office space for lease in Gurgaon, it is close to metro station and Delhi. There are some best buildings on M. G. Road for office spaces are Global Business Park, Time Tower, DLF Corporate Park, Global Arcade, Sewa Corporate Suites, JMD Regent Plaza, Solitaire Plaza, Vipul Agora, Vatika First India Place, JMD Regent Square, Vatika City Point, Delta Square, Vatika Triangle, ABW Towers, DLF City Court, Central Mall Gurgaon, MGF Metropolitan, MGF Metropolis Mall, DLF City Centre, Sahara Mall, JMD Regent Arcade and Unitech Global Gateway. you can choose any one of them for the best office spaces on rent in M.G. Road (Gurgaon). </p>
+                <h2 class="blog_titl">Office for Startup in Gurgaon on Sohna Road</h2>
+                <p class="blog_txt">Are you looking for office spaces in Gurgaon? Then your search is completed here, Sohna Road is a well-connected location in Gurgaon, there are best offices for startup available in these buildings. </p>
+                <p class="blog_txt">Some best buildings for office startup on Sohna Road are JMD Megapolis, Spaze -i-Tech Park, IRIS Tech Park, Welldone Tech Park, Bestech Business Tower, Spaze Platinum Tower, Vatika Business Park, Vipul Trade Center, and Spaze Palazo. In these buildings, office spaces on lease are available on very reasonable rent. If you want commercial office space for a startup of an IT Company at an affordable rent then Sohna Road could be a great location for you. </p>
+                
+                <h2 class="blog_titl">Office Space on Lease in Gurgaon at Udyog Vihar</h2>
+                <p class="blog_txt">The demand for office spaces in Udyog Vihar is increasing continuously. We offer complete building as well as shared office space. In Udyog Vihar, we offer you a single floor plate office spaces from 2500 Sq. ft. to 20,000 Sq.ft. The office building is newly constructed with all the amenities like 100% power backup, 24*7 operational and huge parking space. Parking is one of the measurement issues in Udyog Vihar but we assure you that you will not face such types of things in our buildings. The proximity of IGI Airport and Delhi is a big advantage for you. And this is the measure reason for choosing office spaces or shared office spaces in Gurgaon at Udyog Vihar. </p>
+                <h2 class="blog_titl">Office Space on Lease in Sector 44 Gurgaon</h2>
+                <p class="blog_txt">Sector 44 is known as an institutional area and Health care area of Gurgaon. It is well connected with the metro station Huda City Center. Some Best Hospitals of Gurgaon such as Fortis Hospital, Paras Hospital, and Max Healthcare Hospital are in proximity.  </p>
+               <p class="blog_txt">For this reason, companies want their office space on lease in sector 44. We also provide the independent building and small office spaces, shared office spaces on rent or lease. </p>
+                <h2 class="blog_titl">Office Space on Rent in Cybercity (Gurgaon)</h2>
+                <p class="blog_txt">Cyber City is known as one of the biggest IT destinations in Gurgaon which is owned by DLF. Cybercity provides a world-class office environment. Cyber Hub, “the biggest food and entertainment area” is also located in Cybercity. It also gives the close vicinity to Delhi and IGI Airport.</p>
+                
+                <h2 class="blog_titl">Fully Furnished Office Space for Lease on NH-8 Gurgaon</h2>
+                <p class="blog_txt">NH-8 is known as a life vest of commercial Real-Estate for Gurgaon.  If you are looking for the fully furnished office spaces in Gurgaon then NH-8 is the best location for you. Many Commercial Buildings like BPTP Park Centra, Signature Tower, DLF Square, DLF Express Greens, JMD Pacific Square, DLF Star Tower, DLF Silokhera SEZ, MVL I-Park, Skyview Corporate Park and Enkay Tower provide office suites in NH-8. We also provide fully furnished office space on rent or lease. </p>
+                <h2 class="blog_titl">Office For Rent in IMT Manesar</h2>
+                <p class="blog_txt">We offer commercial offices spaces on a lease, commercial office space on rent, commercial shared office spaces, fully furnished office spaces, industrial plot, Industrial land on sale and lease in IMT Manesar, if you need, you can contact with us. </p>
+                <h2 class="blog_titl">Office for Rent in Info City Gurgaon</h2>
+                <p class="blog_txt">We deal in the commercial building, industrial land, industrial plots, office spaces on rent and lease in Info city Gurgaon. We also provide fully furnished commercial properties in Gurgaon with all the facilities of Spacious parking, cafeteria, garden area, and other basic amenities. </p>
+                <h2 class="blog_titl">Office for rent in Pace city Gurgaon</h2>
+                <p class="blog_txt">We provide commercial needs like office spaces, a complete commercial building on rent and lease in Pace City Gurgaon.</p>
                 </div>
                 </div>
 								
