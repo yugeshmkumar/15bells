@@ -309,10 +309,10 @@ if(!isset($_SESSION))
                             <div class="col-md-12">
                              
                                 <ul class="sub_categories">
-                                    <li class="<?php echo (($proptype =='11' || $proptype == '12'|| $proptype == '13'|| $proptype == '14') ? 'active' : ''); ?> commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
-                                    <li class="<?php echo (($proptype =='15' || $proptype == '16'|| $proptype == '17'|| $proptype == '18') ? 'active' : ''); ?> commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
-                                    <li class="<?php echo (($proptype =='19' || $proptype == '22'|| $proptype == '23'|| $proptype == '24') ? 'active' : ''); ?> commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
-                                    <li class="<?php echo (($proptype =='25' || $proptype == '26') ? 'active' : ''); ?> ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
+                                    <li class="<?php echo (($proptype =='11' || $proptype == '12'|| $proptype == '13'|| $proptype == '14' || $proptype == '11,12,13,14') ? 'active' : ''); ?> commer_office"><a href="javascript:void(0)" class="property_subtype">Commercial Office</a></li>
+                                    <li class="<?php echo (($proptype =='15' || $proptype == '16'|| $proptype == '17'|| $proptype == '18' || $proptype == '15,16,17,18') ? 'active' : ''); ?> commer_retail"><a href="javascript:void(0)" class="property_subtype ">Commercial Retails</a></li>
+                                    <li class="<?php echo (($proptype =='19' || $proptype == '22'|| $proptype == '23'|| $proptype == '24' || $proptype == '19,22,23,24') ? 'active' : ''); ?> commer_land"><a href="javascript:void(0)" class="property_subtype ">Industrial Land & Plots</a></li>
+                                    <li class="<?php echo (($proptype =='25' || $proptype == '26' || $proptype == '25,26') ? 'active' : ''); ?> ware_house"><a href="javascript:void(0)" class="property_subtype ">Warehouse</a></li>
                                 </ul>
                             </div>
                             
@@ -1396,6 +1396,7 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
 
 
  $(".accordion_head").click(function() {
+
     if ($('.accordion_body').is(':visible')) {
       $(".accordion_body").slideUp(300);
       $(".plusminus").text('+');
@@ -1407,7 +1408,10 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
       $(this).next(".accordion_body").slideDown(300);
       $(this).children(".plusminus").text('-');
     }
+    
   });
+
+
  $(".locality_area").click(function() {
   
 	 $(".accordion_body").slideUp(300);
@@ -1426,26 +1430,34 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
  $(".prop_type").click(function() {
     
 
-      if(proptype=='15' || proptype=='16' || proptype=='17' || proptype=='18'){
-                $('.commercial_o').hide();
+      if(proptype =='15' || proptype=='16' || proptype=='17' || proptype=='18' || proptype=='15,16,17,18'){
+
+        $('.commercial_o').hide();
 				$('.commercial_r').show();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
-      }else if(proptype=='11' || proptype=='12' || proptype=='13' || proptype=='14'){
-                $('.commercial_o').show();
+
+      }else if(proptype=='11' || proptype=='12' || proptype=='13' || proptype=='14' || proptype=='11,12,13,14'){
+
+        $('.commercial_o').show();
 				$('.commercial_r').hide();
 				$('.warehouse').hide();
 				$('.industrial_land').hide();
-      }else if(proptype=='19' || proptype=='22' || proptype=='23' || proptype=='24'){
-                $('.commercial_o').hide();
+
+      }else if(proptype=='19' || proptype=='22' || proptype=='23' || proptype=='24' || proptype=='19,22,23,24'){
+
+        $('.commercial_o').hide();
 				$('.commercial_r').hide();
 				$('.warehouse').hide();
 				$('.industrial_land').show();
+
       }else{
-                $('.commercial_o').hide();
+
+        $('.commercial_o').hide();
 				$('.commercial_r').hide();
 				$('.warehouse').show();
 				$('.industrial_land').hide();
+
            }
 
 	$(".accordion_body").slideUp(300);
@@ -1456,6 +1468,8 @@ geocoder.geocode({ 'address' : a}, function(results, status) {
       $(".property_body").slideDown(300);
       $('.property_hed').children(".plusminus").text('-');
     }
+
+
   });
 
 
