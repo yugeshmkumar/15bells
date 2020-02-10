@@ -19,7 +19,7 @@ use yii\helpers\Html;
 }
 </style>
 
-<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/office.jpg';  ?>">
+<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/gurugram.jpg';  ?>">
 			
 			<div class="container-fluid no_pad div_header">
 			
