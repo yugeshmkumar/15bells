@@ -22,6 +22,10 @@ return [
         //'addproperty/<id:\d+>' => 'addproperty/view',
 
         '<city:[A-Za-z0-9 -_.]+>/<proptype:[A-Za-z0-9 -_.]+>/<locality:[A-Za-z0-9 -_.]+>/<id:\d+>' => 'addproperty/view',
+        'office-spaces-gurugram' => 'officespaces/gurugram',
+        'office-spaces-delhi' => 'officespaces/delhi',
+        'office-spaces-noida' => 'officespaces/noida',
+        'office-spaces' => 'officespaces',
         
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
 

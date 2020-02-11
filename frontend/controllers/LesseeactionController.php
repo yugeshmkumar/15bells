@@ -315,6 +315,19 @@ class LesseeactionController extends Controller {
 
             $proptype = HtmlPurifier::process($_POST['proptype']);
         }
+
+
+        if ($_GET['location'] != '' && $_GET['location']== 'Noida'){            
+            $town = 'Noida';
+        }else if ($_GET['location'] != '' && $_GET['location']== 'Gurugram'){            
+            $town = 'Gurugram';
+        }else if ($_GET['location'] != '' && $_GET['location']== 'Delhi'){            
+            $town = 'Delhi';
+
+        }else{
+            $town = HtmlPurifier::process($_POST['town']);
+        }
+
  
         $locations = HtmlPurifier::process($_POST['locations']);
          $shaped = HtmlPurifier::process($_POST['shaped']);
@@ -327,7 +340,6 @@ class LesseeactionController extends Controller {
          $propareamaximum = HtmlPurifier::process($_POST['propareamaximum']);
          $proppriceminimum = HtmlPurifier::process($_POST['proppriceminimum']);
          $proppricemaximum = HtmlPurifier::process($_POST['proppricemaximum']);
-         $town = HtmlPurifier::process($_POST['town']);
          $sector = HtmlPurifier::process($_POST['sector']);
          $country = HtmlPurifier::process($_POST['country']);
          $searchlat = HtmlPurifier::process($_POST['searchlat']);
