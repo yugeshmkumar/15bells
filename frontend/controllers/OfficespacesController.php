@@ -151,10 +151,7 @@ class OfficespacesController extends \yii\web\Controller
         $model =  new CoworkingQuery();
 
         $this->layout = "homeLayout";
-        return $this->render('delhi',[
-        
-            'model' => $model,
-     ]);
+       
      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
 
      Yii::$app->view->registerMetaTag([
@@ -225,6 +222,10 @@ class OfficespacesController extends \yii\web\Controller
             'content' => '15bells'
             ]); 
 
+            return $this->render('delhi',[
+        
+                'model' => $model,
+         ]);
 
     }
     public function actionNoida()
@@ -233,10 +234,7 @@ class OfficespacesController extends \yii\web\Controller
          $model =  new CoworkingQuery();
  
          $this->layout = "homeLayout";
-         return $this->render('noida',[
          
-             'model' => $model,
-      ]);
 
       $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
 
@@ -309,6 +307,10 @@ class OfficespacesController extends \yii\web\Controller
              ]); 
 
 
+             return $this->render('noida',[
+         
+                'model' => $model,
+         ]);
      }
     public function actionGurugram()
 
@@ -316,10 +318,7 @@ class OfficespacesController extends \yii\web\Controller
          $model =  new CoworkingQuery();
  
          $this->layout = "homeLayout";
-         return $this->render('gurugram',[
          
-             'model' => $model,
-      ]);
 
 
             
@@ -394,7 +393,10 @@ class OfficespacesController extends \yii\web\Controller
              ]); 
 
 
-
+             return $this->render('gurugram',[
+         
+                'model' => $model,
+         ]);
 
      }
     public function actionCreate()
