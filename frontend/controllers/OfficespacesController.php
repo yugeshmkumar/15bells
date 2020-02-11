@@ -155,6 +155,77 @@ class OfficespacesController extends \yii\web\Controller
         
             'model' => $model,
      ]);
+     $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
+
+     Yii::$app->view->registerMetaTag([
+        'name' => 'viewport',			
+        'content' => 'width=device-width,  minimum-scale=1'
+        ]);
+        \Yii::$app->view->registerMetaTag([
+        'name' => 'description',			
+        'content' => 'Search Office space for rent / lease in New Delhi within your budget on 15bells.com. Get Best Commercial Properties in New Delhi by Real Property owners, Dealers, Builders on Lease'
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'keywords',			
+        'content' => '15Bells'
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name' => 'Owner',			
+            'content' => '15bells.com'
+            ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'Copyright',			
+        'content' => '15bells.com'
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'classification',			
+        'content' => 'Office Space Search'
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'distribution',			
+        'content' => 'India'
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'rating',			
+        'content' => 'General'
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'subject',			
+        'content' => '=" Search Office space for rent / lease in New Delhi within your budget on 15bells.com. Get Best Commercial Properties in New Delhi by Real Property owners, Dealers, Builders on Lease '
+        ]);
+        Yii::$app->view->registerMetaTag([
+        'name' => 'audience',			
+        'content' => 'All'
+        ]);
+
+        //  og tags 
+
+        Yii::$app->view->registerMetaTag([
+        'property' => 'og:title',			
+        'content' => $title
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+        'property' => 'og:type',			
+        'content' => 'website'
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+        'property' => 'og:url',			
+        'content' => Yii::getAlias('@frontendUrl').'/office-spaces-delhi',
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+        'property' => 'og:image',			
+        'content' => 'https://www.15bells.com/newimg/img/banner.jpg'
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+            'property' => 'og:site_name',			
+            'content' => '15bells'
+            ]); 
+
+
     }
     public function actionNoida()
 
@@ -166,6 +237,78 @@ class OfficespacesController extends \yii\web\Controller
          
              'model' => $model,
       ]);
+
+      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
+
+      Yii::$app->view->registerMetaTag([
+         'name' => 'viewport',			
+         'content' => 'width=device-width,  minimum-scale=1'
+         ]);
+         \Yii::$app->view->registerMetaTag([
+         'name' => 'description',			
+         'content' => 'Search Office space for rent / lease in Noida within your budget on 15bells.com. Get Best Commercial Properties in Noida by Real Property owners, Dealers, Builders on Lease'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'keywords',			
+         'content' => '15Bells'
+         ]);
+         Yii::$app->view->registerMetaTag([
+             'name' => 'Owner',			
+             'content' => '15bells.com'
+             ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'Copyright',			
+         'content' => '15bells.com'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'classification',			
+         'content' => 'Office Space Search'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'distribution',			
+         'content' => 'India'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'rating',			
+         'content' => 'General'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'subject',			
+         'content' => '="Search Office space for rent / lease in Noida within your budget on 15bells.com. Get Best Commercial Properties in Noida by Real Property owners, Dealers, Builders on Lease'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'audience',			
+         'content' => 'All'
+         ]);
+ 
+         //  og tags 
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:title',			
+         'content' => $title
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:type',			
+         'content' => 'website'
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:url',			
+         'content' => Yii::getAlias('@frontendUrl').'/office-spaces-noida',
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:image',			
+         'content' => 'https://www.15bells.com/newimg/img/banner.jpg'
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+             'property' => 'og:site_name',			
+             'content' => '15bells'
+             ]); 
+
+
      }
     public function actionGurugram()
 
@@ -177,6 +320,82 @@ class OfficespacesController extends \yii\web\Controller
          
              'model' => $model,
       ]);
+
+
+            
+      $title =  \Yii::$app->view->title = 'Office space for Lease | Office Space on Rent in Gurgaon';
+
+      Yii::$app->view->registerMetaTag([
+         'name' => 'viewport',			
+         'content' => 'width=device-width,  minimum-scale=1'
+         ]);
+         \Yii::$app->view->registerMetaTag([
+         'name' => 'description',			
+         'content' => 'Search Office space for rent / lease in within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, by Real Property owners, Dealers, Builders on Lease'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'keywords',			
+         'content' => '15Bells'
+         ]);
+         Yii::$app->view->registerMetaTag([
+             'name' => 'Owner',			
+             'content' => '15bells.com'
+             ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'Copyright',			
+         'content' => '15bells.com'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'classification',			
+         'content' => 'Office Space Search'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'distribution',			
+         'content' => 'India'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'rating',			
+         'content' => 'General'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'subject',			
+         'content' => '="Search Office space for rent / lease in within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, by Real Property owners, Dealers, Builders on Lease'
+         ]);
+         Yii::$app->view->registerMetaTag([
+         'name' => 'audience',			
+         'content' => 'All'
+         ]);
+ 
+         //  og tags 
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:title',			
+         'content' => $title
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:type',			
+         'content' => 'website'
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:url',			
+         'content' => Yii::getAlias('@frontendUrl').'/office-spaces-gurugram',
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+         'property' => 'og:image',			
+         'content' => 'https://www.15bells.com/newimg/img/banner.jpg'
+         ]);
+ 
+         Yii::$app->view->registerMetaTag([
+             'property' => 'og:site_name',			
+             'content' => '15bells'
+             ]); 
+
+
+
+
      }
     public function actionCreate()
 
