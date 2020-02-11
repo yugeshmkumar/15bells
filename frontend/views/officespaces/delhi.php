@@ -113,7 +113,7 @@ In Delhi, these commercial properties come in the form of office spaces, retail 
 		<div class="col-md-4 resource_form">
         
         <a href="tel:6209151515"><p class="call_no text-center"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/phone.svg';  ?>" width="17"> +91-6209-15-15-15</p></a>
-           <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"coworking"]); ?>
+        <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces/delhi"]); ?>
            <h3 class="side_head">Contact Us</h3>
                     <div class="row">
                         <div class="col-md-12 no_pad border_form">
@@ -134,7 +134,7 @@ In Delhi, these commercial properties come in the form of office spaces, retail 
 
                                 </div>
                                 <div class="col-md-6">
-                                    <?php echo $form->field($model, 'seats')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
+                                    <?php echo $form->field($model, 'area')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
 
                                 </div>
                             </div>
