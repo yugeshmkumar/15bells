@@ -25,6 +25,46 @@ echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/office-spaces</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/office-spaces-gurugram</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/office-spaces-delhi</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/office-spaces-noida</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys?type=warehouse</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys?type=office-space</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys?type=retail-space</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys?type=industrial-plots</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/buyeraction/viewpropertys</loc>'.PHP_EOL;
 echo '<changefreq>weekly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
