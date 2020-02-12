@@ -76,7 +76,15 @@ class SiteController extends Controller {
                         'roles' => ['@'],
                     ],
                 ],
-            ],
+			],
+			'httpCache' => [
+				'class' => 'yii\filters\HttpCache',
+				'lastModified' => function ($action, $params) {
+				return time();
+				},
+				'sessionCacheLimiter' => 'public',
+				//'cacheControlHeader' => 'public, max-age=3600', 
+			  ],
            
         ];
     }
