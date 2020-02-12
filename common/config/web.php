@@ -6,8 +6,6 @@ $config = [
             'linkAssets' => false,
             'appendTimestamp' => true,
 
-            'forceCopy' => YII_ENV_DEV ? true : false,
-
         
 		
 
