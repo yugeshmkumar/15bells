@@ -1,6 +1,6 @@
 <?php
 
-$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/officespaces/']); 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/office-spaces']); 
 use yii\widgets\ActiveForm;
 
 use yii\helpers\HtmlPurifier;
@@ -36,7 +36,7 @@ use yii\helpers\Html;
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
 						<h1 class="about_head">Need Office space?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
-						<p class="find_mor"><a class="enquire_now" href="javascript:void(0)">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
+						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'office-space']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					
 					
