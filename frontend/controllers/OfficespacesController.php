@@ -20,7 +20,7 @@ class OfficespacesController extends \yii\web\Controller
 
          $model =  new CoworkingQuery();
 
-         $title =  \Yii::$app->view->title = 'Coworking Space on Lease | Best Coworking in Gurgaon | Deals on Offices.';
+         $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office on Rent in Gurgaon';
 
          Yii::$app->view->registerMetaTag([
              'name' => 'viewport',			
@@ -28,7 +28,7 @@ class OfficespacesController extends \yii\web\Controller
              ]);
              \Yii::$app->view->registerMetaTag([
              'name' => 'description',			
-             'content' => 'Search Commercial Coworking property in Gurgaon and Delhi/NCR. Get Best Coworking Properties in Gurgaon, Delhi/NCR at best prcie, features and services on Lease'
+             'content' => 'Search Office space for rent / lease in Delhi / NCR within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'keywords',			
@@ -56,7 +56,7 @@ class OfficespacesController extends \yii\web\Controller
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'subject',			
-             'content' => 'Search Commercial Coworking property in Gurgaon and Delhi/NCR. Get Best Coworking Properties in Gurgaon, Delhi/NCR at best prcie, features and services on Lease.'
+             'content' => 'Search Office space for rent / lease in Delhi / NCR within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'audience',			
@@ -77,7 +77,7 @@ class OfficespacesController extends \yii\web\Controller
   
              Yii::$app->view->registerMetaTag([
              'property' => 'og:url',			
-             'content' => Yii::getAlias('@frontendUrl').'/coworking',
+             'content' => Yii::getAlias('@frontendUrl').'/office-spaces',
              ]);
   
              Yii::$app->view->registerMetaTag([
@@ -236,7 +236,7 @@ class OfficespacesController extends \yii\web\Controller
          $this->layout = "homeLayout";
          
 
-      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
+      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Noida';
 
       Yii::$app->view->registerMetaTag([
          'name' => 'viewport',			
