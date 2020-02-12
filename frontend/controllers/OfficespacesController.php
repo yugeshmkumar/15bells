@@ -19,12 +19,13 @@ class OfficespacesController extends \yii\web\Controller
          //    meta tags description starts here  
 
          $model =  new CoworkingQuery();
+         $model->scenario="officespace";
 
          $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office on Rent in Gurgaon';
 
          Yii::$app->view->registerMetaTag([
              'name' => 'viewport',			
-             'content' => 'width=device-width,  minimum-scale=1,  maximum-scale=1'
+             'content' => 'width=device-width,  minimum-scale=1'
              ]);
              \Yii::$app->view->registerMetaTag([
              'name' => 'description',			
@@ -94,46 +95,46 @@ class OfficespacesController extends \yii\web\Controller
         //     'name' => 'robots',			
         //     'content' => 'index, follow'
         //     ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
-                date_default_timezone_set("Asia/Calcutta");
-                $date = date('Y-m-d H:i:s'); 
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s'); 
 
 
-    
-                // echo '<pre>';print_r(Yii::$app->request->post());die;
-                $post = Yii::$app->request->post()['CoworkingQuery'];
+
+            //  echo '<pre>';print_r(Yii::$app->request->post());die;
+            $post = Yii::$app->request->post()['CoworkingQuery'];
+            
+            $name = $post['name'];
+            $phone = $post['phone'];
+            $email = $post['email'];
+            $area = $post['area'];
+            $message = $post['message'];
+        $description = "'prop_type = office-spaces, Name = $name,  Phone = $phone,  Email = $email,  area = $area,  Message = $message'";
+          $model->prop_type = 'office-spaces';
+           $model->area = $area;
+            $model->created_date = $date;
+            
+            if($model->save()){
+
                 
-                $name = $post['name'];
-                $phone = $post['phone'];
-                $email = $post['email'];
-                $seats = $post['seats'];
-                $message = $post['message'];
-            $description = "'Name = $name,  Phone = $phone,  Email = $email,  Seats = $seats,  Message = $message'";
-
-                $model->created_date = $date;
-                
-                if($model->save()){
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces','1061','',$description,'$date')")->execute();
+           
+                if($payments){
 
                     
-                    $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('coworking','1061','',$description,'$date')")->execute();
-               
-                    if($payments){
 
-                        
+                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
 
-                        Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
-
-
-                    }
-
-                }else{
-                    Yii::$app->session->setFlash('error', "Some database error occured");
 
                 }
-    
+
+            }else{
+                Yii::$app->session->setFlash('error', "Some database error occured");
+
             }
+
+        }
 
 
 
@@ -149,6 +150,49 @@ class OfficespacesController extends \yii\web\Controller
 
     {
         $model =  new CoworkingQuery();
+        $model->scenario="officespace";
+
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s'); 
+
+
+
+            //  echo '<pre>';print_r(Yii::$app->request->post());die;
+            $post = Yii::$app->request->post()['CoworkingQuery'];
+            
+            $name = $post['name'];
+            $phone = $post['phone'];
+            $email = $post['email'];
+            $area = $post['area'];
+            $message = $post['message'];
+        $description = "'prop_type = office-spaces-delhi, Name = $name,  Phone = $phone,  Email = $email,  area = $area,  Message = $message'";
+          $model->prop_type = 'office-spaces-delhi';
+           $model->area = $area;
+            $model->created_date = $date;
+            
+            if($model->save()){
+
+                
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-delhi','1061','',$description,'$date')")->execute();
+           
+                if($payments){
+
+                    
+
+                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+
+
+                }
+
+            }else{
+                Yii::$app->session->setFlash('error', "Some database error occured");
+
+            }
+
+        }
 
         $this->layout = "homeLayout";
        
@@ -228,10 +272,64 @@ class OfficespacesController extends \yii\web\Controller
          ]);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
     public function actionNoida()
 
     {
-         $model =  new CoworkingQuery();
+        $model =  new CoworkingQuery();
+        $model->scenario="officespace";
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s'); 
+
+
+
+            //  echo '<pre>';print_r(Yii::$app->request->post());die;
+            $post = Yii::$app->request->post()['CoworkingQuery'];
+            
+            $name = $post['name'];
+            $phone = $post['phone'];
+            $email = $post['email'];
+            $area = $post['area'];
+            $message = $post['message'];
+        $description = "'prop_type = office-spaces-noida, Name = $name,  Phone = $phone,  Email = $email,  area = $area,  Message = $message'";
+          $model->prop_type = 'office-spaces-noida';
+           $model->area = $area;
+            $model->created_date = $date;
+            
+            if($model->save()){
+
+                
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-noida','1061','',$description,'$date')")->execute();
+           
+                if($payments){
+
+                    
+
+                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+
+
+                }
+
+            }else{
+                Yii::$app->session->setFlash('error', "Some database error occured");
+
+            }
+
+        }
  
          $this->layout = "homeLayout";
          
@@ -312,10 +410,59 @@ class OfficespacesController extends \yii\web\Controller
                 'model' => $model,
          ]);
      }
+
+
+
+
+
+
+
     public function actionGurugram()
 
     {
-         $model =  new CoworkingQuery();
+        $model =  new CoworkingQuery();
+        $model->scenario="officespace";
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s'); 
+
+
+
+            //  echo '<pre>';print_r(Yii::$app->request->post());die;
+            $post = Yii::$app->request->post()['CoworkingQuery'];
+            
+            $name = $post['name'];
+            $phone = $post['phone'];
+            $email = $post['email'];
+            $area = $post['area'];
+            $message = $post['message'];
+        $description = "'prop_type = office-spaces-gurugram, Name = $name,  Phone = $phone,  Email = $email,  area = $area,  Message = $message'";
+          $model->prop_type = 'office-spaces-gurugram';
+           $model->area = $area;
+            $model->created_date = $date;
+            
+            if($model->save()){
+
+                
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-gurugram','1061','',$description,'$date')")->execute();
+           
+                if($payments){
+
+                    
+
+                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+
+
+                }
+
+            }else{
+                Yii::$app->session->setFlash('error', "Some database error occured");
+
+            }
+
+        }
  
          $this->layout = "homeLayout";
          
@@ -399,6 +546,10 @@ class OfficespacesController extends \yii\web\Controller
          ]);
 
      }
+
+
+
+     
     public function actionCreate()
 
     {
