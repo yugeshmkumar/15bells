@@ -43,7 +43,7 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
     var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
     c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
     })(document);
-    smartlook('init', '9dcb652eb6c987dddf65195047c6f189e1de77ce');
+    smartlook('init', '3ecf0527cc2bf98dd37e0cde5d58f51e1ebd1a61');
 </script>
 	
 </head>
