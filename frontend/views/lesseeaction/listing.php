@@ -2165,7 +2165,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -2322,7 +2322,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -2470,7 +2470,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -3343,7 +3343,7 @@ function getPolygonCoords() {
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -3502,7 +3502,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -3663,7 +3663,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -3807,7 +3807,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
@@ -4191,7 +4191,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                        '<p class="details_label">'+this.request_for+'</p>'+
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
-                                       '<p class="label_name">Total price</p>'+
+                                       '<p class="label_name">Rent per month</p>'+
                                        '<p class="details_label">'+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
