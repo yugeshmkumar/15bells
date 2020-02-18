@@ -2166,7 +2166,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2323,7 +2323,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -2471,7 +2471,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -3344,7 +3344,7 @@ function getPolygonCoords() {
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                '<div class="row prop_detail">'+	
@@ -3503,7 +3503,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                    '<div class="row prop_detail">'+	
@@ -3664,7 +3664,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                   '<div class="row prop_detail">'+	
@@ -3808,7 +3808,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                   '<div class="row prop_detail">'+	
@@ -4192,7 +4192,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                    '</div>'+
                                    '<div class="col-md-4 col-xs-4 company_overview property_manage">'+
                                        '<p class="label_name">Rent per month</p>'+
-                                       '<p class="details_label">'+gettotalprice+'</p>'+
+                                       '<p class="details_label">₹ '+gettotalprice+'</p>'+
                                    '</div>'+
                                '</div>'+
                                                                         '<div class="row prop_detail">'+	

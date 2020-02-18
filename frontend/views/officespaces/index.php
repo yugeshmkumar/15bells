@@ -19,7 +19,7 @@ use yii\helpers\Html;
 }
 </style>
 
-<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/office.jpg';  ?>">
+<section class="container-fluid header_bg parallax-window section office_form" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/office.jpg';  ?>">
 			
 			<div class="container-fluid no_pad div_header">
 			
@@ -33,12 +33,60 @@ use yii\helpers\Html;
   </div>
 <?php endif; ?>
 
-					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
+					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
 						<h1 class="about_head">Need Office space?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
-						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'office-space']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
+						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'office-space']) ?>">Search More Office Spaces <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
-					
+					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-lg hidden-md">
+                    <div class="col-md-12 resource_form hidden-lg hidden-md">
+        
+                        <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces"]); ?>
+                        <h2 class="side_head">Reach Us For Best Offers</h2>
+                                <div class="row">
+                                    <div class="col-md-12 no_pad border_form">
+                                        <div class="row">
+                                            <div class="col-md-6 mobile_pad_form">
+                                                <?php echo $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => "Full Name", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                            </div>
+                                            <div class="col-md-6 mobile_pad_form">
+                                                <?php echo $form->field($model, 'phone')->textInput(['minlength' => 10,'maxlength' => 10,'maxlength' => true, 'placeholder' => "Phone No", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mobile_pad_form">
+                                                <?php echo $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                            </div>
+                                            <div class="col-md-6 mobile_pad_form">
+                                                <?php echo $form->field($model, 'area')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                            </div>
+                                        </div>
+                                        <div class="row padd_contact">
+                                            <div class="col-md-12">
+                                                <?php echo $form->field($model, 'message')->textArea(['maxlength' => true, 'placeholder' => "Message", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                            </div>
+                                        </div>
+                                        <div class="row padd_contact">
+                                            <div class="col-md-12">
+                                            <?= Html::submitButton('Send Message', ['class' => 'send_messgae sign_up']) ?>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                            
+                        <?php ActiveForm::end(); ?>
+                    </div>
+
+					</div>
 					
 				</div>
 				
@@ -47,7 +95,7 @@ use yii\helpers\Html;
 			</div>
 	
 		</section>
-
+        
 
 <div class="container-fluid blog_bg">
 	<div class="row">
@@ -111,7 +159,7 @@ Leasing an office space or any commercial property is not only an investment of 
 			</div>-->
 		</div>
 	<!---Blog Side menu----->
-		<div class="col-md-4 resource_form">
+		<div class="col-md-4 resource_form hidden-xs hidden-sm">
         
         <a href="tel:6209151515"><p class="call_no text-center"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/phone.svg';  ?>" width="17"> +91-6209-15-15-15</p></a>
            <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces"]); ?>
