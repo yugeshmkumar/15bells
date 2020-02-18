@@ -123,9 +123,9 @@ class OfficespacesController extends \yii\web\Controller
                 if($payments){
 
                     
-
-                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
-
+                    
+                    //Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+                    return $this->redirect(['lesseeaction/viewpropertys','type'=>'office-space']);
 
                 }
 
@@ -180,9 +180,8 @@ class OfficespacesController extends \yii\web\Controller
            
                 if($payments){
 
-                    
-
-                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+                    return $this->redirect(['lesseeaction/viewpropertys','location'=>'Delhi']);
+                    //Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
 
 
                 }
@@ -318,8 +317,9 @@ class OfficespacesController extends \yii\web\Controller
                 if($payments){
 
                     
+                    return $this->redirect(['lesseeaction/viewpropertys','location'=>'Noida']);
 
-                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+                   // Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
 
 
                 }
@@ -451,8 +451,9 @@ class OfficespacesController extends \yii\web\Controller
                 if($payments){
 
                     
+                    return $this->redirect(['lesseeaction/viewpropertys','location'=>'Gurugram']);
 
-                    Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
+                   // Yii::$app->session->setFlash('success', "Query  has been Successfully Saved");
 
 
                 }
