@@ -19,7 +19,7 @@ use yii\helpers\Html;
 }
 </style>
 
-<section class="container-fluid header_bg parallax-window section" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/gurugram.jpg';  ?>">
+<section class="container-fluid header_bg parallax-window section office_form" data-parallax="scroll" data-image-src="<?= Yii::getAlias('@frontendUrl').'/newimg/office/gurugram.jpg';  ?>">
 			
 			<div class="container-fluid no_pad div_header">
 			
@@ -33,12 +33,59 @@ use yii\helpers\Html;
   </div>
 <?php endif; ?>
 
-					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr">
+					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
 						<h1 class="about_head">Need Office space in Gurugram?</h1>
 						<p class="about_det animated slideInDown">in this article we are going to tell you about some best areas of Gurgaon for commercial Properties investment, office spaces on the lease, Office space on rent, Industrial plot, Industrial land and more. The following areas are the best locations of Gurgaon for commercial project view. Investment in these locations will give your business a better and productive future. </p>
-						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Gurugram']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
-					</div>
-					
+						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Gurugram']) ?>">Search Office Spaces In Gurgaon <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-lg hidden-md">
+					<div class="col-md-12 resource_form">
+        
+         <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces/gurugram"]); ?>
+           <h3 class="side_head">Contact Us</h3>
+                    <div class="row">
+                        <div class="col-md-12 no_pad border_form">
+                            <div class="row padd_contact">
+                                <div class="col-md-6">
+                                    <?php echo $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => "Full Name", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <?php echo $form->field($model, 'phone')->textInput(['minlength' => 10,'maxlength' => 10,'maxlength' => true, 'placeholder' => "Phone No", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                </div>
+                                
+                            </div>
+                            <div class="row padd_contact">
+                                <div class="col-md-6">
+                                    <?php echo $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <?php echo $form->field($model, 'area')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                </div>
+                            </div>
+                            <div class="row padd_contact">
+                                <div class="col-md-12">
+                                    <?php echo $form->field($model, 'message')->textArea(['maxlength' => true, 'placeholder' => "Message", 'class'=>'form-control input_desgn'])->label(false); ?>
+
+                                </div>
+                            </div>
+                            <div class="row padd_contact">
+                                <div class="col-md-12">
+                                <?= Html::submitButton('Send Message', ['class' => 'send_messgae sign_up']) ?>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                
+            <?php ActiveForm::end(); ?>
+        </div>
+                </div>
 					
 				</div>
 				
@@ -110,30 +157,30 @@ use yii\helpers\Html;
 			</div>-->
 		</div>
 	<!---Blog Side menu----->
-		<div class="col-md-4 resource_form">
+		<div class="col-md-4 resource_form hidden-xs hidden-sm">
         
         <a href="tel:6209151515"><p class="call_no text-center"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/phone.svg';  ?>" width="17"> +91-6209-15-15-15</p></a>
         <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces/gurugram"]); ?>
            <h3 class="side_head">Contact Us</h3>
                     <div class="row">
                         <div class="col-md-12 no_pad border_form">
-                            <div class="row padd_contact">
-                                <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6 mobile_pad_form">
                                     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => "Full Name", 'class'=>'form-control input_desgn'])->label(false); ?>
 
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mobile_pad_form">
                                     <?php echo $form->field($model, 'phone')->textInput(['minlength' => 10,'maxlength' => 10,'maxlength' => true, 'placeholder' => "Phone No", 'class'=>'form-control input_desgn'])->label(false); ?>
 
                                 </div>
                                 
                             </div>
                             <div class="row padd_contact">
-                                <div class="col-md-6">
+                                <div class="col-md-6 mobile_pad_form">
                                     <?php echo $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => "Email", 'class'=>'form-control input_desgn'])->label(false); ?>
 
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mobile_pad_form">
                                     <?php echo $form->field($model, 'area')->textInput(['maxlength' => true, 'placeholder' => "Total Area", 'class'=>'form-control input_desgn'])->label(false); ?>
 
                                 </div>
