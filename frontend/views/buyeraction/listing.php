@@ -2095,7 +2095,7 @@ proptype =  $('#proptypes').val();
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -2251,7 +2251,7 @@ proptype =  $('#proptypes').val();
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -2399,7 +2399,7 @@ proptype =  $('#proptypes').val();
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -3257,7 +3257,7 @@ function getPolygonCoords() {
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -3407,7 +3407,7 @@ function getPolygonCoords() {
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -3568,7 +3568,7 @@ function getPolygonCoords() {
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -3712,7 +3712,7 @@ function getPolygonCoords() {
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
@@ -4019,7 +4019,7 @@ function getPolygonCoords() {
 
 '<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/blurr.jpg';  ?>" class="img-responsive image_property">'+                               
 '<div class="overlay_sign">'+
-    '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
+'<p class="sign_click">Property Not Uploaded By the Owner</p>'+
 '</div>'+
 
 <?php   }else{ ?>
