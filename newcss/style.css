@@ -2264,7 +2264,7 @@ input.invalid {
 /* For responsivness */
 @media(max-width:767px) {
 	.office_form{
-		height:150vh !important;
+		height:130vh !important;
 	}
 	.mobile_pad_form{
 		padding:7px 20px;
