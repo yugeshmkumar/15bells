@@ -107,7 +107,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 								<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/prop/warehouse.svg';  ?>" class="banner_icon">
 								<p class="property_names">Warehouse</p>
 							</div></a>
-						</div>
+					</div>
 				</div>
 <!-- end of navbar-->
 		</div>
