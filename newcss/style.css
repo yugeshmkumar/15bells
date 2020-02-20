@@ -371,6 +371,7 @@ a{text-decoration:none !important;}
 	position:relative;
 	left:55px;
 	bottom:-150px;
+	z-index:999;
 }
 div.mm-dropdown {
   width: 100%;
