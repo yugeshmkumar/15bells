@@ -4257,3 +4257,10 @@ color: #c4984f;
 .ucb_brnd{
 	margin-top:10px;
 }
+.noida_list li{
+	font-size: 18px;
+    color: #8f8f8f;
+    line-height: 26px;
+    text-align: justify;
+    font-weight: 400;
+}
