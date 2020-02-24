@@ -43,7 +43,6 @@ class NotificationsController extends \yii\web\Controller
            
            
         $itemid = $payment['item_id'];
-        $notifid = $payment['id'];
         $scheduletime = $payment['date'];
         $arrcheckrole = \common\models\User::find()->where(['id'=>$itemid])->one();
         $mobileNumber = $arrcheckrole->username;
@@ -114,12 +113,11 @@ if($emailuser != ''){
         ->send();
 
 }
-   Yii::$app->db->createCommand("UPDATE notifications SET is_seen=1 WHERE id=$notifid")
-   ->execute();
+
         
         }
 
-      //$model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
+      $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1])->execute();
  
     }
 
