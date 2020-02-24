@@ -34,14 +34,14 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-sm hidden-xs">
-						<h1 class="about_head">Need Office space in Delhi?</h1>
+						<h1 class="about_head">Need Commercial space in Delhi?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Delhi']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-lg hidden-md">
 
                     <div class="col-md-12 resource_form">
-                   <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces/delhi"]); ?>
+                   <?php $form = ActiveForm::begin(['id' => 'mobileform','action'=>"officespaces/delhi"]); ?>
                         <h3 class="side_head">Contact Us</h3>
                                     <div class="row">
                                         <div class="col-md-12 no_pad border_form">
@@ -103,38 +103,33 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					
-
-
-					<p class="blog_txt">15 bells is among the leading commercial real estate service providers in the Delhi and NCR. Our motto is to offer end-to-end commercial projects like office spaces on rent in Delhi, Office Space on Lease in Delhi, Industrial buildings, industrial plots and more to the real estate investors in Delhi so that they can bring a professional approach in the real estate industry. Quality, Transparency, Trust, and Integrity are our identification.  </p>
-					<p class="blog_txt">Nowadays, commercial investors not only looking for a shop or commercial building to invest in. They also want convenience, advanced technology and exclusivity which make the project value for money and we avail all of these. Our Experienced teams of professionals provide the best guidance with respect to commercial real estate investment. </p>
-                    <p class="blog_txt">15 bells always put client’s satisfaction at the core of its approach. Hard work of our whole team has given us the zenith position on the list of NCR’s leading real estate consultancy services. We have gotten a good reputation in the commercial real estate market of Delhi NCR owing to our partnership with some of the leading builders. </p>
-                <div class="col-md-12">
-                <h2 class="blog_titl">Commercial Office Spaces on Lease in Delhi</h2>
-                <p class="blog_txt">Delhi is not only known for the political capital and a historical city in India. It has become the biggest real estate hotspots of the country. The commercial properties' investment daily is growing at a fast pace and gives huge returns to the people. In a recent review by the world's known corporative magazine, Delhi has been the destination of the big reputated companies or industries. And it is also said that in a few years it will become the leading commercial real estate industrial city not only in India but in the whole world. </p>
-                
-                <p class="blog_txt">Connaught Place, Netaji Subhash Palace, Nehru Palace, Saket District Center, Jasola District Center and Chandni Chowk in old Delhi is always the center of the commercial real estate market. Even small businesses in these areas have enormous growth potential, investors always invest in the office spaces on rent or lease in these areas from India and abroad. 
-In Delhi, these commercial properties come in the form of office spaces, retail spaces, food stores, and beverage stores, shopping malls, multiplex and other commercial plots where you can invest. These commercial spaces especially office spaces in Delhi gives you huge returns. So, Delhi’s Commercial real estate projects have a lot of potentials and if you are thinking to invest in real estate, Delhi should be definitely be considered.
-</p>
-                <h2 class="blog_titl">Office Space for Rent in Connaught Place</h2>
-                <p class="blog_txt">Connaught Place is a premium business center in the heart of New Delhi.</p>
-                <p class="blog_txt">It is well connected to the metro station, and the nearest metro station is Rajiv Chowk. We provide office spaces on rent in Connaught Place. Our office spaces offer the best experience of a productive workday with a perfect balance of work and fun. In Connaught place, you will get a vibrant co-working community where big businesses, Individual freelancers, Startup companies work alongside each other in a shared environment. </p>
-                <p class="blog_txt">Office for rent, office space for rent, furnished office on the lease, office space on rent for a startup, Private cabins, workstations, virtual offices, meetings room and any other, whatever you need for the commercial property investment in Connaught place, we provide. All the amenities from basic to modern, we provide like Wi-fi, Open Pantry, Parking, IT/Admin Support and more. At our office spaces in Connaught Place, New Delhi, we are always a step ahead of what you want. Private cabins or workspace from 2 to 20 people with high-speed internet service, storage area with tea and coffee are available. If you are in search of meeting rooms then we also provide the fully-furnished meeting rooms with audio conferencing facilities, high-speed internet and unlimited tea and coffee. </p>
+				
+                <h2 class="blog_titl">Commercial Space in Delhi</h2>
+                <p class="blog_txt">Delhi has become the major destination for commercial spaces, especially the New Delhi area. We have delivered many commercial Projects in Delhi and NCR without any hurdle and litigations.  We have always delivered all our commercial space projects to the customer on time. We offer the best official space all over the city. Connaught Place in New Delhi is known as the best commercial space area. </p>
+                <p class="blog_txt">15bells is an online platform where commercial real estate properties are offered to the investors, buyers, businessman and others in a much faster and advance manner. We and our whole team not only help you in finding the best commercial space in Delhi and NCR but also ensure that the all procedure of investing, buying, leasing and renting properties are as smooth as it can be. </p>
+                <p class="blog_txt">We understand that only buying a commercial space in Delhi is not a big deal, there are a lot of factors to be taken into cogitation, like the location, area, budget, amenities and many more. 15bells are a one-stop destination where your searching related to the best commercial space on lease in Delhi is ended up. If you are looking for a leasing commercial property or renting commercial space and planning to start your business, retail shop, retail store anything else, you will get everything related to commercial spaces, commercial property and real estate at our portal. </p>
+                <p class="blog_txt">We offer commercial real estate spaces or property for sale, lease, and rent across the Delhi and NCR. If you want to invest your money in the best commercial projects in the top areas of Delhi, we provide the detailed information of various types of industrial or commercial properties on sale, lease and rent of reputed builders or developers. You can contact us for any type of commercial shops, shopping malls, retail spaces and retail stores in all over Delhi, Gurgaon, Noida and many more. </p>
+                <p class="blog_txt">In our portal, a wide variety of listings of commercial spaces are available which gives you an overview of all the property. So, if you are searching for a commercial property like commercial office space, commercial retail space, a commercial retail store for your business set up or investing, we will provide you the best commercial space property in the best locations of Delhi and NCR. </p>
+          
+                <h2 class="blog_titl">Best Commercial Spaces For Buy/Rent/Lease in Delhi</h2>
+                <p class="blog_txt">As you know that Delhi is the prime city for the real estate sector since the last few decades. The city is well connected with the airport, metro station, bus stand, and the railway station. And the best areas of the Delhi are Rohini, Dwarka, Connaught Place, Uttam Nagar and many others for investing, buying, renting and leasing commercial spaces. In these areas, many commercial projects are available which offers the best commercial spaces, commercial office spaces, Commercial retail shop, commercial shopping complex and more. Here we are going to mention some most productive business Commercial projects of Delhi.</p>
+                <h2 class="blog_titl">Aerocity</h2>
+                <p class="blog_txt">Aerocity is one of the best business districts in India and located in proximity to many commercial and residential areas in New Delhi. If you are looking for leasing commercial spaces or property in New Delhi, you will get the best deals at affordable prices in Aerocity. </p>
+                <p class="blog_txt">Aeocity is the destination of commercial spaces and retails properties. it is located in South Delhi and well connected to the Delhi Metro and IGI Airport. The commercial viability of the area offers an extensive range of opportunities for your business startup. </p>
+                <p class="blog_txt">All types of commercial spaces like Retail shops, Retail space, shopping complex, food courts, gym are equipped with all the modern and basic amenities which make it a perfect choice for your business. </p>
                
-                <h2 class="blog_titl">Flexi Desk Option for the Freelancer in Connaught Place</h2>
-                <p class="blog_txt">If you are a freelancer, bloggers, and other independent professionals, who don’t need a permanent office space in Connaught Place. So, For them, we have a Flexi desk option which acts as your office space, which is economical as well as a perfect fit for your needs.</p>
-                <p class="blog_txt">So whenever you need any type of office space for rent in Connaught Place, you can contact with us. </p>
-                <h2 class="blog_titl">Office Space on Lease in Chandni Chowk</h2>
-                <p class="blog_txt">Are you looking for office space on lease in Chandni Chowk? Then your search for any type of office space for lease or co-working office space on lease ends here. We provide new age coworking office spaces that refresh, engage and connect with the transport and residents.</p>
+                <h2 class="blog_titl">The Delhi Mall</h2>
+                <p class="blog_txt">Delhi Mall, located in Central Delhi on Pusa Road, a commercial building offers commercial spaces like showrooms, movie theatres, food court, retail shops, retail stores, commercial office spaces for start-up businesses. Being located in the Business district will provide your business with rapid productivity and growth. Delhi Mall has equipped with all the advanced amenities like Escalators, Elevators, multi-level car parking, public address system, central air conditioning and 24*7 hours security. </p>
+                <h2 class="blog_titl">DLF Prime Towers</h2>
+                <p class="blog_txt">if you have a thought to starting your new business or investing in commercial spaces in South Delhi then DLF Prime Towers is one of the best business hubs here. DLF Prime Towers is a commercial landmark that is designed to accommodate all the investor’s and buyer’s needs. This great project is located in Okhla Phase 1 have a great infrastructure and flexible commercial office spaces for every business needs. It is equipped with a central air-conditioning system, 100% power back-up, and hi-tech CCTV security. Here the maintenance charges are low and spacious parking for visitors and vehicles both. </p>
+                <h2 class="blog_titl">JMS Marine Square</h2>
+                <p class="blog_txt">JMS Marine Square 102 is the best upcoming projects in Delhi NCR by the JSM Group. If you are looking for a commercial space for the world-class shopping complex then this is the best. It is located in 6 acres of area with 6 floors with all the convenience, features and amenities. </p>
+                <p class="blog_txt">If you are considering to start any outdoor cafes, High street Food zone, Retail store, Retail Shops, and hypermarket, you can go with this commercial space project. It is well connected with the IGI Airport, Sun City Avenue 102, Heritage max and Gurgaon marines. </p>
+                <h2 class="blog_titl">Signum 95A</h2>
+                <p class="blog_txt">Signum 95A is one of the best upcoming commercial projects in Delhi. It is located in proximity to the airport, transport stand that makes it a satisfactory business commercial project opening. It’s a perfect blend of a sharp infrastructure, shops, and commercial office spaces. 24-hour video security makes it one of the best commercial space investment projects. </p>
+                <h2 class="blog_titl">M3M Corner Walk</h2>
+                <p class="blog_txt">M3M Corner Walk Sector 74 is considered as the best commercial project in all the upcoming projects in Delhi/NCR. It is located at the prime location, in 7.5 acres of land area, the whole complex is equipped with the Wi-fi facility. It’s a world-class multiplex in addition to a separate floor of the food court. M3M Corner Walk is easily connected to the major areas like BMW training center, DLF Corporate greens. This project is easily accessible to IGI Airport and Golf Course Extension Road. </p>
                 
-                <p class="blog_txt">Chandni Chowk, situated in old Delhi is the perfect destination for any business type. That’s the reason we provide the office space for lease in Chandni Chowk, Office Space on rent in Chandni Chowk, office space for a startup in Chandni Chowk at the prime business locations. So, choose us for amazing workspaces to customizable shared office space solutions, complete with everything you need to make your business run. </p>
-                
-                <h2 class="blog_titl">Office Space for Startup in Delhi</h2>
-                <p class="blog_txt">Are you starting any new business? Are you going to launch your innovative startup in Delhi But you don’t have the perfect office space solution for your startup? </p>
-                <p class="blog_txt">A start-up is an innovative constantly evolving company. And every start-up requires an adaptable office space or commercial buildings for the rapid growth and good reputation. We provide a flexible and comfortable workspace or office space for a startup in Delhi. Flexibility is very important for start-ups. We only suggest you start-up office spaces which is the most suitable for your business. </p>
-                
-                <p class="blog_txt">You can also invest in shared office spaces on rent start-ups in Delhi. This will give you easy and fast access to business premises while allowing to move quickly if your company runs out of space. So, contact the best Real estate agent in Delhi that is 15 bells escape you from taking any wrong step in choosing the best office space in Delhi for the startup</p>
-                </div>
                 </div>
 								
 			</div>
