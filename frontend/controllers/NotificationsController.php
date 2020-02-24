@@ -114,7 +114,7 @@ if($emailuser != ''){
         ->send();
 
 }
-   Yii::$app->db->createCommand('UPDATE notifications SET is_seen=1 WHERE id=$notifid')
+   Yii::$app->db->createCommand("UPDATE notifications SET is_seen=1 WHERE id=$notifid")
    ->execute();
         
         }
