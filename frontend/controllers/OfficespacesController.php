@@ -1,6 +1,6 @@
 <?php
-namespace frontend\controllers;
 
+namespace frontend\controllers;
 use yii\web\Controller;
 use common\models\CoworkingQuery;
 use Yii;
@@ -15,7 +15,6 @@ class OfficespacesController extends \yii\web\Controller
     public function actionIndex()
 
     {
-
          //    meta tags description starts here  
 
          $model =  new CoworkingQuery();
@@ -95,6 +94,8 @@ class OfficespacesController extends \yii\web\Controller
         //     'name' => 'robots',			
         //     'content' => 'index, follow'
         //     ]);
+        $this->layout = "homeLayout";
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             date_default_timezone_set("Asia/Calcutta");
@@ -118,7 +119,7 @@ class OfficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces','998','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -138,7 +139,6 @@ class OfficespacesController extends \yii\web\Controller
 
 
 
-        $this->layout = "homeLayout";
         return $this->render('index',[
         
                'model' => $model,
@@ -151,7 +151,7 @@ class OfficespacesController extends \yii\web\Controller
     {
         $model =  new CoworkingQuery();
         $model->scenario="officespace";
-
+        $this->layout = "homeLayout";
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -176,7 +176,7 @@ class OfficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-delhi','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-delhi','998','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -193,7 +193,7 @@ class OfficespacesController extends \yii\web\Controller
 
         }
 
-        $this->layout = "homeLayout";
+        
        
      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
 
@@ -288,6 +288,8 @@ class OfficespacesController extends \yii\web\Controller
     {
         $model =  new CoworkingQuery();
         $model->scenario="officespace";
+        $this->layout = "homeLayout";
+
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -312,7 +314,7 @@ class OfficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-noida','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-noida','998','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -331,7 +333,6 @@ class OfficespacesController extends \yii\web\Controller
 
         }
  
-         $this->layout = "homeLayout";
          
 
       $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Noida';
@@ -422,6 +423,8 @@ class OfficespacesController extends \yii\web\Controller
     {
         $model =  new CoworkingQuery();
         $model->scenario="officespace";
+        $this->layout = "homeLayout";
+
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -446,7 +449,7 @@ class OfficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-gurugram','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-gurugram','998','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -465,7 +468,6 @@ class OfficespacesController extends \yii\web\Controller
 
         }
  
-         $this->layout = "homeLayout";
          
 
 
