@@ -115,9 +115,10 @@ if($emailuser != ''){
 
 }
 
-   $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1], 'id = $notifyid')->execute();
+//    $model3 = Yii::$app->db->createCommand()->update('notifications', ['is_seen' => 1], 'id = $notifyid')->execute();
 
-
+   $model3 = Yii::$app->db->createCommand()->update('UPDATE notifications SET is_seen=1 WHERE id=$notifyid');
+   $model3->execute();
         
         }
 
