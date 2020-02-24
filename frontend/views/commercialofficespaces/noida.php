@@ -34,13 +34,13 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
-						<h1 class="about_head">Need Office space in Noida?</h1>
+						<h1 class="about_head">Need Commercial space in Noida?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Noida']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
 					<div class="col-md-6 col-md-offset-1  hidden-lg hidden-md text-left brand_desp about_bannr hidden-lg hidden-md">
                     <div class="col-md-12 resource_form">
-                        <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces/noida"]); ?>
+                        <?php $form = ActiveForm::begin(['id' => 'mobileform','action'=>"officespaces/noida"]); ?>
                         <h3 class="side_head">Contact Us</h3>
                                     <div class="row">
                                         <div class="col-md-12 no_pad border_form">
@@ -101,35 +101,48 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					<h2 class="blog_titl">Commercial Office Spaces in Noida </h2>
+					<h2 class="blog_titl">Commercial Space in Noida</h2>
 
 
-					<p class="blog_txt">Noida is the prime industrial hub of the NCT (National Capital Territory), Uttar Pradesh State. There are many multinational, IT/ITeS companies such as HCL, TCS, Tech Mahindra, Adobe and many others exist. You can get many small to big properties in low to high budget. Even MNCs are also planning to set up offices here, commercial properties in Noida is continuously growing.  </p>
-					<p class="blog_txt">Noida is well connected with Delhi and Ghaziabad. There are many expressways, underpasses, and flyovers which make good connectivity with the other parts of Uttar Pradesh, Delhi and NCR. And the upcoming plan of an airport in jewar makes it the perfect commercial real estate destination in the view of commercial property investors. The most recommendable locations of Noida for investing in office spaces for start-up or office spaces for businesses are sector 74-78,  sector 119, sector 120, sector 121, sector 150 and sector 152.</p>
-                    <p class="blog_txt">You can also invest in other localities like Noida Extension, Noida Expressway, and Greater Noida West. All types of commercial buildings in Noida are available for investment and for your own use. We are going to recommend some best locations for commercial properties or office spaces investment in Noida.</p>
+					<p class="blog_txt">If you are an investor, businessman, end-user or planning to start a new industry, office, company, retail store, retail shop, a shopping complex on lease or rent, then you are at the right place. 15bells share updated information related to Noida’s New launch commercial projects, Retail Shops, Retail Store, Retail Space, Assured Return Projects, Office Spaces, Service Apartments, Pre Leased Commercial Properties, Commercial space on lease and Resale Commercial Properties etc. </p>
+					<p class="blog_txt">We help you to get proper knowledge of commercial space in Noida as per your desired location. The Whole team of 15 bells has years of experience in the commercial market in Noida, Greater Noida, Noida Expressway, Central Noida, Noida Extension, Greater Noida West and others. We have the proper data of the leasing and renting commercial spaces all over Noida. </p>
+                    <p class="blog_txt">15bells is a web platform that offers investment opportunities and business startup offices to the end-user or investor in Noida and Greater Noida. We also help you to find and compare commercial properties such as retail shops, investment in shopping malls, food court space, preleased properties, office spaces, leasing and reselling the commercial space in Noida. </p>
                 
-                <h2 class="blog_titl">Coworking Space on Lease in Noida/ Shared office Spaces for rent in Noida</h2>
-                <p class="blog_txt">Nowadays Coworking Spaces or shared office spaces have become the first option of the start-up business as well as multinational companies, big industries, and enterprises. It offers professional networking, a supportive community, state-of-the-art facilities and infrastructure and a creative working environment with a unique entrepreneurial zest, booming shared office spaces are really expediting the co-working game. </p>
-                <p class="blog_txt">The main aim of providing coworking office space on lease in Noida is to collaborate with professionals for growing ideas, stories, work and play. The Shared Office Space in Noida on rent gives you the large networking, affordable and a full hassle-free workspace/office for teams of all sizes.  </p>
-                <p class="blog_txt">In our coworking spaces in Noida is adaptable to all professional needs. The Shared office space on lease is the best workspace solution for freelancers, home professionals, independent contractors, and other independent working people. We provide all the amenities from basic to advance. We have varieties of co-working solutions, you can choose any as per your need at the co-working space. </p>
-                <p class="blog_txt">In brief, the coworking office spaces for lease is the best option for any types of startups and investment, here you will get creative and collaborative office suits such as private cabins, comfortable workstations, conference rooms, recreational zones including unlimited tea and coffee. </p>
-                <h2 class="blog_titl">Office For Startup in Noida</h2>
-                <p class="blog_txt">The office spaces in Noida is like a hot cake for your business startup. And we offer trendy office spaces from ergonomically planned workspaces to intricately planned specifications that break away from traditional office norms. If you invest in the workspaces or office for a startup in Noida, a densely populated area, you will get a chance to make your startup business more productive. Our office spaces on rent in Noida have all the amenities, luxurious facilities as well as flexible sizes in office spaces, spacious parking, multiple, 24x7 security, high-speed internet facilities, and wi-fi settings. </p>
-                <h2 class="blog_titl">Some office space for a startup in Noida in your budget and ready to move</h2>
-                <p class="blog_txt">Here are some low-cost and pocket-friendly offices for startup on rent in Noida which are in budget and you are able to ready to move at any time, we are suggesting some commercial projects here, they are following</p>
-                <div class="col-md-12">
-                <h2 class="blog_titl">•	Spring House </h2>
-                <p class="blog_txt">Spring House Noida provides the shared office space for a startup, possessing a capacity of 150 seats. It also offers to you the option of working space like sunny-quaint spots as well. The interiors of this startup office space are unique and perfect to give a working environment.</p>
-                <h2 class="blog_titl">•	Advanced Navis, Sector 142 Noida </h2>
-                <p class="blog_txt">The Greater Noida Expressway is the hub of an IT-BPO company. That’s the reason the demand for good commercial office spaces for the startup is very high here. Here office spaces are limited because if you choose this area for your business startup then you will get huge returns in the future. </p>
-                <h2 class="blog_titl">•	Logix City Center, Sector 32 Noida</h2>
-                <p class="blog_txt">This Commercial project in Noida is located in the prime location. It is well connected to all types of public transport. The nearest metro station from this project is The Noida City Center Metro Station. It is surrounded by crowded residential areas. So, for a startup, it will be the best location.</p>
-                <h2 class="blog_titl">•	World Trade Tower, Sector 16 Noida </h2>
-                <p class="blog_txt">The world Trade Tower is the perfect location for investment and a new startup for those who are looking for ROI in the future. It is well connected to transport and civic amenities. This property is in front of sector 16 Metro station Noida. It is only one commercial building in Noida which is the closest to Delhi, it is only a 5-minute drive distance from New Delhi. If you choose this location for your office space for a startup in Noida, It will be proved an ultra-premium project location. </p>
-                <h2 class="blog_titl">•	iThum Sector 62 Noida </h2>
-                <p class="blog_txt">It is also a project which is very close to the metro station and well connected to other public transport too. So for the office space startup, it is a very impressive area. It is an IT-BPO company’s destination. This is also a perfect location for your office startup in the budget.</p>
-                <h2 class="blog_titl">•	The Corenthum, Sector 62 Noida </h2>
-                <p class="blog_txt">If you want an office space for a startup in Noida on the lease, you can choose The Corenthum, sector 62 Noida. After the metro facility starts here, the demand for this location is very high. This project is like a hot cake on sale, it is very high in demand because the possibilities of returns are huge in the future. So, if you are looking for any office space for a startup in Noida on Rent then you should choose this project. </p>
+                <h2 class="blog_titl">Looking For Buying/Renting/Leasing a Commercial Space In Noida?</h2>
+                <p class="blog_txt">Are you looking for a commercial space in Noida to buy, lease, rent or resell but you have no idea where and how to start from, Don’t worry, you are at the right place, we will help you with all your queries related to Industrial Space in Noida. 15bells always offer the best properties for investment and startups because we know the value of your hard-earned money. </p> 
+                <p class="blog_txt">We avail you the best Commercial leasing spaces in Noida, Noida Extension, Greater Noida and Yamuna Expressway. So, ready to move in commercial properties, preleased commercial properties in Noida, retail shops in Noida, Office space in Noida, Co-working office space in Noida. With us, you have the option to compare varieties of properties at one platform and choose the best one for you and your startups. </p> 
+                <h2 class="blog_titl">Some Best Commercial Space & Retail Space In Noida for leasing</h2>
+                <p class="blog_txt">15 bells deals in different types of commercial office spaces all over Noida which will give you the huge return and productivity in the present and future both. Here are some best commercial projects lists:-</p> 
+                <ul class="">
+                	<li>Gaur World Street Mall</li>
+                    <li>Bhutani Grantham</li>
+                    <li>Galaxy Diamond Plaza</li>
+                    <li>NX One Mall</li>
+                    <li>WTC CBD Noida</li>
+                    <li>Cyberthum</li>
+                    <li>Anthurium</li>
+                    <li>Paramount City Square</li>
+                    <li>Paramount Golf Mart Commercial</li>
+
+                </ul
+                
+                <h2 class="blog_titl">Gaur World Street Mall</h2>
+                <p class="blog_txt">The Developer of Gaur World Street Mall is one of the most promising and trusted real estate players in the commercial real estate business known for its best development. This mall offers Kiosks, food courts, Spacious retail shops, retail stores, commercial shops for investors and buyers on leasing or rent. It is well connected with the road and the metro. </p> 
+                <p class="blog_txt">Gaur World street offers trendy commercial spaces, retail shops as well as 1.5 acres space for parking purpose, you will also get designated rooms for storage, four sides entry, 24x7 security, high-speed elevators, and centralized air-conditioned shops. This commercial project is loaded with world-class amenities. </p> 
+                <h2 class="blog_titl">Bhutani Grandthum Noida Extension</h2>
+                <p class="blog_txt">This grand commercial project is just 2 minutes away from the metro station, located at plot No. 7, Sector Techzone 4, Greater Noida West. This project is designed keeping in mind all the needs of the investors, buyers, visitors, customers and owners. It offers retail & commercial spaces such as Pubs, Retail shops, 4-screen multiplex/cinema hall, food courts, shopping malls and others. You will get all amenities like 24 hours security, High-speed lifts, 24X7 power supply, fire suppression technologies and continuous water supply, ample parking space, rainwater harvesting and digitally monitored complex. </p> 
+                <h2 class="blog_titl">Galaxy Diamond Plaza commercial space</h2>
+                <p class="blog_txt">Galaxy Diamond Plaza has close connectivity with NH 91, NH 24, DND Flyway and Yamuna Expressway. It is also easily approachable to Delhi, Noida and Ghaziabad. You can find Hypermarket and 5 screen multiplex with a food court at Galaxy Grand Plaza Gaur City. It is one of the best commercial space options in the area. And the best thing is that the office spaces, retail shops, retail store and others are available at an affordable rate here</p> 
+                <h2 class="blog_titl">NX One Mall</h2>
+                <p class="blog_txt">It is located closer to the Gaur City and just 400 meters away from the proposed metro station. NX one office is the best option for established businesses or companies. You will get all types of amenities like 24*7 power backup, frequent power supply, jogging track, gymnasium, Yoga, Swimming Pool, Community hall, rainwater harvesting, earthquake resistance, children’s play area, Elevator, lift, utility store, restaurant and others. </p> 
+                <h2 class="blog_titl">Cyberthum in Sector 140A Noida</h2>
+                <p class="blog_txt">It is located in 25 acres of area with world-class amenities to attract the investors, buyers, visitors and customers. This is towering commercial development that offers commercial spaces such as retail shops, retail spaces and office space for your business needs. For further information, you can contact us.</p> 
+                <h2 class="blog_titl">Anthurium (sector-73, Noida)</h2>
+                <p class="blog_txt">If you want to enhance your business come to Anthurium Noida Commercial Spaces. It is located at sector 73, Noida with all the modern and basic amenities to enhance your business. If you are searching for a productive business destination this the best commercial space project to explore. </p> 
+                <h2 class="blog_titl">Paramount City Square commercial office Space and Shop at Noida Extension</h2>
+                <p class="blog_txt">Paramount city square is developed by the reputed developer of Paramount Group. This complex is spread over an area of 20,000 sqft. Which is a very good range of commercial office space and retail shops. This complex has open shopping areas, kiosks, restaurants, anchor stores and coffee shops. </p> 
+                <h2 class="blog_titl">Paramount Golf Mart Commercial Office Space and Shop at Greater Noida</h2>
+                <p class="blog_txt">It is also a great project of paramount Group developers, located at ZETA I, Greater Noida. It offers business shops and office spaces. It is fully furnished with every single and advanced amenities. Here you will get all commercial features like high-speed internet, Wi-Fi, Conference rooms, food courts, ATMs and banking facilities. </p>  
                 </div>
                 </div>
 								

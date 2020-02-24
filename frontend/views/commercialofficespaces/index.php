@@ -41,7 +41,7 @@ use yii\helpers\Html;
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-lg hidden-md">
                     <div class="col-md-12 resource_form hidden-lg hidden-md">
         
-                        <?php $form = ActiveForm::begin(['id' => $model->formName(),'action'=>"officespaces"]); ?>
+                        <?php $form = ActiveForm::begin(['id' => 'mobileform','action'=>"officespaces"]); ?>
                         <h2 class="side_head">Reach Us For Best Offers</h2>
                                 <div class="row">
                                     <div class="col-md-12 no_pad border_form">
