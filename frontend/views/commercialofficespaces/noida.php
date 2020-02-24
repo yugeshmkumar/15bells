@@ -113,7 +113,7 @@ use yii\helpers\Html;
                 <p class="blog_txt">We avail you the best Commercial leasing spaces in Noida, Noida Extension, Greater Noida and Yamuna Expressway. So, ready to move in commercial properties, preleased commercial properties in Noida, retail shops in Noida, Office space in Noida, Co-working office space in Noida. With us, you have the option to compare varieties of properties at one platform and choose the best one for you and your startups. </p> 
                 <h2 class="blog_titl">Some Best Commercial Space & Retail Space In Noida for leasing</h2>
                 <p class="blog_txt">15 bells deals in different types of commercial office spaces all over Noida which will give you the huge return and productivity in the present and future both. Here are some best commercial projects lists:-</p> 
-                <ul class="">
+                <ul class="noida_list">
                 	<li>Gaur World Street Mall</li>
                     <li>Bhutani Grantham</li>
                     <li>Galaxy Diamond Plaza</li>
@@ -124,7 +124,7 @@ use yii\helpers\Html;
                     <li>Paramount City Square</li>
                     <li>Paramount Golf Mart Commercial</li>
 
-                </ul
+                </ul>
                 
                 <h2 class="blog_titl">Gaur World Street Mall</h2>
                 <p class="blog_txt">The Developer of Gaur World Street Mall is one of the most promising and trusted real estate players in the commercial real estate business known for its best development. This mall offers Kiosks, food courts, Spacious retail shops, retail stores, commercial shops for investors and buyers on leasing or rent. It is well connected with the road and the metro. </p> 
@@ -143,7 +143,7 @@ use yii\helpers\Html;
                 <p class="blog_txt">Paramount city square is developed by the reputed developer of Paramount Group. This complex is spread over an area of 20,000 sqft. Which is a very good range of commercial office space and retail shops. This complex has open shopping areas, kiosks, restaurants, anchor stores and coffee shops. </p> 
                 <h2 class="blog_titl">Paramount Golf Mart Commercial Office Space and Shop at Greater Noida</h2>
                 <p class="blog_txt">It is also a great project of paramount Group developers, located at ZETA I, Greater Noida. It offers business shops and office spaces. It is fully furnished with every single and advanced amenities. Here you will get all commercial features like high-speed internet, Wi-Fi, Conference rooms, food courts, ATMs and banking facilities. </p>  
-                </div>
+               
                 </div>
 								
 			</div>
