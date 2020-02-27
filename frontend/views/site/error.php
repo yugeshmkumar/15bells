@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $exception Exception */
 
 $this->title = $name;
-Yii::$app->getResponse()->redirect([''])->send();
+ Yii::$app->getResponse()->redirect([''])->send();
 
 ?>
 <div class="site-error">
