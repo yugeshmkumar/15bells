@@ -8,7 +8,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Otherwise forward it to index.php
 RewriteRule . index.php
 
-
+# Hide a specific file
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
 
 <IfModule mod_expires.c>
   ExpiresActive on
