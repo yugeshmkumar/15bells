@@ -252,7 +252,7 @@ class CommercialofficespacesController extends \yii\web\Controller
 
         Yii::$app->view->registerMetaTag([
         'property' => 'og:url',			
-        'content' => Yii::getAlias('@frontendUrl').'/retail-spaces-delhi',
+        'content' => Yii::getAlias('@frontendUrl').'/commercial-retail-spaces-delhi',
         ]);
 
         Yii::$app->view->registerMetaTag([
@@ -391,7 +391,7 @@ class CommercialofficespacesController extends \yii\web\Controller
  
          Yii::$app->view->registerMetaTag([
          'property' => 'og:url',			
-         'content' => Yii::getAlias('@frontendUrl').'/office-spaces-noida',
+         'content' => Yii::getAlias('@frontendUrl').'/commercial-retail-spaces-noida',
          ]);
  
          Yii::$app->view->registerMetaTag([
@@ -527,7 +527,7 @@ class CommercialofficespacesController extends \yii\web\Controller
  
          Yii::$app->view->registerMetaTag([
          'property' => 'og:url',			
-         'content' => Yii::getAlias('@frontendUrl').'/retail-spaces-gurugram',
+         'content' => Yii::getAlias('@frontendUrl').'/commercial-retail-spaces-gurugram',
          ]);
  
          Yii::$app->view->registerMetaTag([

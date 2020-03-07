@@ -1,6 +1,6 @@
 <?php
 
-$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/office-spaces-gurugram']); 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/commercial-retail-spaces-gurugram']); 
 use yii\widgets\ActiveForm;
 
 use yii\helpers\HtmlPurifier;
