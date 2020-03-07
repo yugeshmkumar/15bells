@@ -26,6 +26,10 @@ return [
         'office-spaces-delhi' => 'officespaces/delhi',
         'office-spaces-noida' => 'officespaces/noida',
         'office-spaces' => 'officespaces',
+        'commercial-retail-spaces' => 'commercialofficespaces',
+        'commercial-retail-spaces-gurugram' => 'commercialofficespaces/gurugram',
+        'commercial-retail-spaces-noida' => 'commercialofficespaces/noida',
+        'commercial-retail-spaces-delhi' => 'commercialofficespaces/delhi',
         
         ['pattern'=>'page/<slug>', 'route'=>'page/view'],
 
