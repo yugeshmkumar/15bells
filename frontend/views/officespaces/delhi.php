@@ -1,6 +1,6 @@
 <?php
 
-$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/office-spaces-noida']); 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com/office-spaces']); 
 use yii\widgets\ActiveForm;
 
 use yii\helpers\HtmlPurifier;
