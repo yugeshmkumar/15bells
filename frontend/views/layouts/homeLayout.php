@@ -312,7 +312,7 @@ window.fbAsyncInit = function() {
 <!--End mc_embed_signup-->
 
 
-<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"ab39867f2e4b25303dc58ccfd","lid":"d3c5892067","uniqueMethods":true}) })</script>
+<!-- <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"ab39867f2e4b25303dc58ccfd","lid":"d3c5892067","uniqueMethods":true}) })</script> -->
 				</div>
 			</div>
 		</div>
