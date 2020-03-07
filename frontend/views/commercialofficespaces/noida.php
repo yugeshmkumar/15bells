@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
-						<h1 class="about_head">Need Commercial space in Noida?</h1>
+						<h1 class="about_head">Need Commercial Retail space in Noida?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Noida']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
@@ -101,7 +101,7 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					<h2 class="blog_titl">Commercial Space in Noida</h2>
+					<h2 class="blog_titl">Commercial Retail Space in Noida</h2>
 
 
 					<p class="blog_txt">If you are an investor, businessman, end-user or planning to start a new industry, office, company, retail store, retail shop, a shopping complex on lease or rent, then you are at the right place. 15bells share updated information related to Noida’s New launch commercial projects, Retail Shops, Retail Store, Retail Space, Assured Return Projects, Office Spaces, Service Apartments, Pre Leased Commercial Properties, Commercial space on lease and Resale Commercial Properties etc. </p>

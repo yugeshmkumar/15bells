@@ -1,11 +1,12 @@
 <?php
-
 namespace frontend\controllers;
 
 use yii\web\Controller;
 use common\models\CoworkingQuery;
 use Yii;
 use yii\db\Query;
+
+
 
 
 
@@ -20,7 +21,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          $model =  new CoworkingQuery();
          $model->scenario="officespace";
 
-         $title =  \Yii::$app->view->title = 'Commercial space for Lease | Delhi/NCR | Commercial Space  on Rent in Gurgaon';
+         $title =  \Yii::$app->view->title = 'Retail space for Lease | Commercial Space on Rent/Lease in Delhi/NCR';
 
          Yii::$app->view->registerMetaTag([
              'name' => 'viewport',			
@@ -28,7 +29,7 @@ class CommercialofficespacesController extends \yii\web\Controller
              ]);
              \Yii::$app->view->registerMetaTag([
              'name' => 'description',			
-             'content' => 'Search Office space for rent / lease in Delhi / NCR within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease'
+             'content' => 'Search Retail space for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties in Delhi/NCR, by Real Property owners, Dealers, Builders on Lease'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'keywords',			
@@ -44,11 +45,11 @@ class CommercialofficespacesController extends \yii\web\Controller
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'classification',			
-             'content' => 'Coworking property Search'
+             'content' => 'Retail Space Search'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'distribution',			
-             'content' => 'India'
+             'content' => 'Delhi/NCR'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'rating',			
@@ -56,7 +57,7 @@ class CommercialofficespacesController extends \yii\web\Controller
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'subject',			
-             'content' => 'Search Office space for rent / lease in Delhi / NCR within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, Delhi/NCR by Real Property owners, Dealers, Builders on Lease'
+             'content' => 'Search Retail space for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties in Delhi/NCR, by Real Property owners, Dealers, Builders on Lease'
              ]);
              Yii::$app->view->registerMetaTag([
              'name' => 'audience',			
@@ -77,7 +78,7 @@ class CommercialofficespacesController extends \yii\web\Controller
   
              Yii::$app->view->registerMetaTag([
              'property' => 'og:url',			
-             'content' => Yii::getAlias('@frontendUrl').'/office-spaces',
+             'content' => Yii::getAlias('@frontendUrl').'/commercial-retail-spaces',
              ]);
   
              Yii::$app->view->registerMetaTag([
@@ -194,7 +195,7 @@ class CommercialofficespacesController extends \yii\web\Controller
 
         $this->layout = "homeLayout";
        
-     $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Gurgaon';
+     $title =  \Yii::$app->view->title = 'Retail Space/Shop for Lease | Commercial Space on Rent/Lease in Delhi';
 
      Yii::$app->view->registerMetaTag([
         'name' => 'viewport',			
@@ -202,7 +203,7 @@ class CommercialofficespacesController extends \yii\web\Controller
         ]);
         \Yii::$app->view->registerMetaTag([
         'name' => 'description',			
-        'content' => 'Search Office space for rent / lease in New Delhi within your budget on 15bells.com. Get Best Commercial Properties in New Delhi by Real Property owners, Dealers, Builders on Lease'
+        'content' => 'Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Delhi, by Real Property owners, Dealers, Builders on Lease'
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'keywords',			
@@ -218,11 +219,11 @@ class CommercialofficespacesController extends \yii\web\Controller
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'classification',			
-        'content' => 'Office Space Search'
+        'content' => 'Retail Space Search'
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'distribution',			
-        'content' => 'India'
+        'content' => 'Delhi'
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'rating',			
@@ -230,7 +231,7 @@ class CommercialofficespacesController extends \yii\web\Controller
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'subject',			
-        'content' => '=" Search Office space for rent / lease in New Delhi within your budget on 15bells.com. Get Best Commercial Properties in New Delhi by Real Property owners, Dealers, Builders on Lease '
+        'content' => '="Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Delhi, by Real Property owners, Dealers, Builders on Lease'
         ]);
         Yii::$app->view->registerMetaTag([
         'name' => 'audience',			
@@ -251,7 +252,7 @@ class CommercialofficespacesController extends \yii\web\Controller
 
         Yii::$app->view->registerMetaTag([
         'property' => 'og:url',			
-        'content' => Yii::getAlias('@frontendUrl').'/office-spaces-delhi',
+        'content' => Yii::getAlias('@frontendUrl').'/retail-spaces-delhi',
         ]);
 
         Yii::$app->view->registerMetaTag([
@@ -333,7 +334,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          $this->layout = "homeLayout";
          
 
-      $title =  \Yii::$app->view->title = 'Office space for Lease | Delhi/NCR | Office Rent in Noida';
+      $title =  \Yii::$app->view->title = 'Retail Space/Shop for Lease | Commercial Space on Rent/Lease in Noida';
 
       Yii::$app->view->registerMetaTag([
          'name' => 'viewport',			
@@ -341,7 +342,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          \Yii::$app->view->registerMetaTag([
          'name' => 'description',			
-         'content' => 'Search Office space for rent / lease in Noida within your budget on 15bells.com. Get Best Commercial Properties in Noida by Real Property owners, Dealers, Builders on Lease'
+         'content' => 'Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Noida, by Real Property owners, Dealers, Builders on Lease'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'keywords',			
@@ -357,11 +358,11 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'classification',			
-         'content' => 'Office Space Search'
+         'content' => 'Retail Space Search'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'distribution',			
-         'content' => 'India'
+         'content' => 'Noida'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'rating',			
@@ -369,7 +370,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'subject',			
-         'content' => '="Search Office space for rent / lease in Noida within your budget on 15bells.com. Get Best Commercial Properties in Noida by Real Property owners, Dealers, Builders on Lease'
+         'content' => '="Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Noida, by Real Property owners, Dealers, Builders on Lease'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'audience',			
@@ -469,7 +470,7 @@ class CommercialofficespacesController extends \yii\web\Controller
 
 
             
-      $title =  \Yii::$app->view->title = 'Office space for Lease | Office Space on Rent in Gurgaon';
+      $title =  \Yii::$app->view->title = 'Retail Space/Shop for Lease | Commercial Space on Rent/Lease in Gurugram';
 
       Yii::$app->view->registerMetaTag([
          'name' => 'viewport',			
@@ -477,7 +478,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          \Yii::$app->view->registerMetaTag([
          'name' => 'description',			
-         'content' => 'Search Office space for rent / lease in within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, by Real Property owners, Dealers, Builders on Lease'
+         'content' => 'Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Gurugram, by Real Property owners, Dealers, Builders on Lease'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'keywords',			
@@ -493,11 +494,11 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'classification',			
-         'content' => 'Office Space Search'
+         'content' => 'Retail Space Search'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'distribution',			
-         'content' => 'India'
+         'content' => 'Gurugram'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'rating',			
@@ -505,7 +506,7 @@ class CommercialofficespacesController extends \yii\web\Controller
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'subject',			
-         'content' => '="Search Office space for rent / lease in within your budget on 15bells.com. Get Best Commercial Properties in Gurgaon, by Real Property owners, Dealers, Builders on Lease'
+         'content' => '="Search Retail space/shop  for rent/lease in within your budget on 15bells.com. Get Best Commercial Properties, shop, offices in Gurugram, by Real Property owners, Dealers, Builders on Lease'
          ]);
          Yii::$app->view->registerMetaTag([
          'name' => 'audience',			
@@ -526,7 +527,7 @@ class CommercialofficespacesController extends \yii\web\Controller
  
          Yii::$app->view->registerMetaTag([
          'property' => 'og:url',			
-         'content' => Yii::getAlias('@frontendUrl').'/office-spaces-gurugram',
+         'content' => Yii::getAlias('@frontendUrl').'/retail-spaces-gurugram',
          ]);
  
          Yii::$app->view->registerMetaTag([

@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
-						<h1 class="about_head">Need Office space?</h1>
+						<h1 class="about_head">Need Commercial Retail Space?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','type'=>'office-space']) ?>">Search More Office Spaces <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
@@ -103,7 +103,7 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					<h2 class="blog_titl">Commercial Space on Lease  </h2>
+					<h2 class="blog_titl">Commercial Retail Space on Lease  </h2>
 
 
 					<p class="blog_txt">Delhi NCR is one of the most important corporate and industrial hubs of India. You will get all types of commercial space on lease, not only for all big corporate companies but also for many small and medium companies. Delhi NCR is strategically developed and having varieties of options in commercial office space for rent. </p>
