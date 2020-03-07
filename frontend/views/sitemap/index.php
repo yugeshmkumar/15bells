@@ -45,6 +45,27 @@ echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
 
 echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/commercial-retail-spaces</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/commercial-retail-spaces-gurugram</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/commercial-retail-spaces-delhi</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+echo '<url>'.PHP_EOL;
+echo '<loc>'.Yii::getAlias('@frontendUrl') . '/commercial-retail-spaces-noida</loc>'.PHP_EOL;
+echo '<changefreq>monthly</changefreq>'.PHP_EOL;
+echo '</url>'.PHP_EOL;
+
+
+echo '<url>'.PHP_EOL;
 echo '<loc>'.Yii::getAlias('@frontendUrl') . '/lesseeaction/viewpropertys?type=warehouse</loc>'.PHP_EOL;
 echo '<changefreq>monthly</changefreq>'.PHP_EOL;
 echo '</url>'.PHP_EOL;
