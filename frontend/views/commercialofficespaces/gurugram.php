@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-xs hidden-sm">
-						<h1 class="about_head">Need Office space in Gurugram?</h1>
+						<h1 class="about_head">Need Commercial Retail space in Gurugram?</h1>
 						<p class="about_det animated slideInDown">in this article we are going to tell you about some best areas of Gurgaon for commercial Properties investment, office spaces on the lease, Office space on rent, Industrial plot, Industrial land and more. The following areas are the best locations of Gurgaon for commercial project view. Investment in these locations will give your business a better and productive future. </p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Gurugram']) ?>">Search Office Spaces In Gurgaon <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
                     </div>
@@ -94,7 +94,7 @@ use yii\helpers\Html;
 			</div>
 	
 		</section>
-
+ 
 
 <div class="container-fluid blog_bg">
 	<div class="row">
@@ -102,7 +102,7 @@ use yii\helpers\Html;
         <div class="row blog_repeat">
               
 				<div class="col-md-12 contnt_blg">
-					<h2 class="blog_titl">Commercial Space in Gurgaon</h2>
+					<h2 class="blog_titl">Commercial Retail Space in Gurgaon</h2>
 
 
 					<p class="blog_txt">Are you looking for any cost-effective commercial space in Gurgaon? Then, 15bells can deliver you the best options for commercial retail space for rent in Gurgaon. Our team experts have experience in this real estate commercial business from the last few decades. </p>

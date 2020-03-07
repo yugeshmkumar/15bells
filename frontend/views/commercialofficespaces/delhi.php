@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 					<div class="col-md-6 col-md-offset-1 text-left brand_desp about_bannr hidden-sm hidden-xs">
-						<h1 class="about_head">Need Commercial space in Delhi?</h1>
+						<h1 class="about_head">Need Commercial Retail space in Delhi?</h1>
 						<p class="about_det animated slideInDown">For the first time 15 Bells, a Commercial Real Estate company trades in real time. We proudly represent our self as the one-stop solution for all the commercial property needs – BUY, SELL or LEASE a commercial property in Delhi NCR Just within 15 Hours!!</p>
 						<p class="find_mor"><a class="enquire_now" href="<?php echo yii::$app->urlManager->createUrl(['lesseeaction/viewpropertys','location'=>'Delhi']) ?>">Find out more <img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/chevron.svg';  ?>"></a></p>
 					</div>
@@ -104,7 +104,7 @@ use yii\helpers\Html;
               
 				<div class="col-md-12 contnt_blg">
 				
-                <h2 class="blog_titl">Commercial Space in Delhi</h2>
+                <h2 class="blog_titl">Commercial Retail Space in Delhi</h2>
                 <p class="blog_txt">Delhi has become the major destination for commercial spaces, especially the New Delhi area. We have delivered many commercial Projects in Delhi and NCR without any hurdle and litigations.  We have always delivered all our commercial space projects to the customer on time. We offer the best official space all over the city. Connaught Place in New Delhi is known as the best commercial space area. </p>
                 <p class="blog_txt">15bells is an online platform where commercial real estate properties are offered to the investors, buyers, businessman and others in a much faster and advance manner. We and our whole team not only help you in finding the best commercial space in Delhi and NCR but also ensure that the all procedure of investing, buying, leasing and renting properties are as smooth as it can be. </p>
                 <p class="blog_txt">We understand that only buying a commercial space in Delhi is not a big deal, there are a lot of factors to be taken into cogitation, like the location, area, budget, amenities and many more. 15bells are a one-stop destination where your searching related to the best commercial space on lease in Delhi is ended up. If you are looking for a leasing commercial property or renting commercial space and planning to start your business, retail shop, retail store anything else, you will get everything related to commercial spaces, commercial property and real estate at our portal. </p>
