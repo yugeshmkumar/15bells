@@ -142,7 +142,7 @@ window.fbAsyncInit = function() {
 				</ul>
 			</div>
 			<div class="col-md-2 col-xs-6">
-				<h4 class="footer_typ"><a href="<?php echo yii::$app->urlManager->createUrl(['commercialofficespaces']) ?>" class="link_main">Commercial Office Spaces</a></h4>
+				<h4 class="footer_typ"><a href="<?php echo yii::$app->urlManager->createUrl(['commercialofficespaces']) ?>" class="link_main">Commercial Retail Spaces</a></h4>
 				<ul class="fotter_lst">
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['commercialofficespaces/gurugram']) ?>" class="list_lnk">In Gurgaon</a></li>
 					<li class=""><a href="<?php echo yii::$app->urlManager->createUrl(['commercialofficespaces/delhi']) ?>" class="list_lnk">In Delhi</a></li>
