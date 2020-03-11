@@ -162,6 +162,7 @@ a{text-decoration:none !important;}
 }
 .brand_desp{
 	margin-top:150px;
+	height:0;
 }
 .brand_name{
 	font-size: 28px;
