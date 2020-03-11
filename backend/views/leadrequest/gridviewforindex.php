@@ -6,6 +6,8 @@ use yii\bootstrap\Modal;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
 use kartik\editable\Editable;
+use yii\helpers\Url;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\LeadrequestSearch */
@@ -138,23 +140,23 @@ if($findcs['name']=='CSR Supply'){
              }
                         }else{
                             
-                     if($data->role_id == 5 || $data->role_id == 6){       
-                            return '<div class="btn-group">
-                                            <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
-                                                <span class="fa fa-angle-down"> </span>
-                                            </a><ul class="dropdown-menu pull-right">
+                    //  if($data->role_id == 5 || $data->role_id == 6){       
+                            // return '<div class="btn-group">
+                            //                 <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
+                            //                     <span class="fa fa-angle-down"> </span>
+                            //                 </a><ul class="dropdown-menu pull-right">
 											
-											<li>
-                                                  <a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffa&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffa&#39;).style.display=&#39;block&#39;,assignleaddemand(' . $data->id . ')">
+							// 				<li>
+                            //                       <a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbffa&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccffa&#39;).style.display=&#39;block&#39;,assignleaddemand(' . $data->id . ')">
 						   
-                                                        <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Re-Assign CSR
-                                                    </a>
-											</li>
+                            //                             <span class="label label-sm label-default"> <i class="fa fa-exchange"></i></span> Re-Assign CSR
+                            //                         </a>
+							// 				</li>
                                                                                         
                                            
 											
-												</ul></div>';
-                     }else{
+							// 					</ul></div>';
+                    //  }else{
                          
                          return '<div class="btn-group">
                                             <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
@@ -170,7 +172,7 @@ if($findcs['name']=='CSR Supply'){
 											</li>
 											
 												</ul></div>';
-                     }
+                    //  }
                         }
                         
                       }
@@ -230,26 +232,37 @@ if($findcs['name']=='CSR Supply'){
 //    </a>';
 //                    }],
                     ],
+                // [
+
+                //     'attribute' => 'user_id',
+                //     'label' => 'Email-Id',
+                //     'vAlign' => 'middle',
+                //     'filter' => true,
+                //     'format' => 'raw',
+                //     'width' => '250px',
+                //     'value' => function($data) {
+                //         $docsmain[] = '';
+                //         $docsmain[] = '<strong>&nbsp;<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbff&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccff&#39;).style.display=&#39;block&#39;,getuser_iddetails(' . $data->id . ')"></a>&nbsp;</strong>';
+                //        $getuser = \common\models\user::findOne($data->user_id);
+                //        if($getuser){
+                //            $user = $getuser->email;
+                //        }else{$user = 'User deleted';} 
+                         
+                //         return '<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbff&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccff&#39;).style.display=&#39;block&#39;,getuser_iddetails(' . $data->id . ')">' . $user . '</a>' . implode($docsmain) . '
+				// 		   ';
+                //     },
+                // ],
+
                 [
 
-                    'attribute' => 'user_id',
-                    'label' => 'Email-Id',
+
+                    'attribute' => 'email',
+                    'label' => 'Email id',
                     'vAlign' => 'middle',
-                    'filter' => true,
-                    'format' => 'raw',
-                    'width' => '250px',
-                    'value' => function($data) {
-                        $docsmain[] = '';
-                        $docsmain[] = '<strong>&nbsp;<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbff&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccff&#39;).style.display=&#39;block&#39;,getuser_iddetails(' . $data->id . ')"></a>&nbsp;</strong>';
-                       $getuser = \common\models\user::findOne($data->user_id);
-                       if($getuser){
-                           $user = $getuser->email;
-                       }else{$user = 'User deleted';} 
-                         
-                        return '<a onclick="document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimabbff&#39;).style.display=&#39;block&#39;;document.getElementById(&#39;viewpsambqwksukvveekmuzqtsimaccff&#39;).style.display=&#39;block&#39;,getuser_iddetails(' . $data->id . ')">' . $user . '</a>' . implode($docsmain) . '
-						   ';
-                    },
+                    'width' => '200px',
                 ],
+
+
                 [
 
 
@@ -324,6 +337,23 @@ if($findcs['name']=='CSR Supply'){
                             'format' => 'dd-M-yyyy'
                 ]]),
                     'value' => 'created_at'
+                ],
+
+                [
+                    'class' => 'kartik\grid\ActionColumn',
+                    'dropdown' => false,
+                    'vAlign'=>'middle',
+                    'urlCreator' => function($action, $model, $key, $index) { 
+                            return Url::to(['/leads/update','id'=>$key]);
+                    },
+                   // 'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
+                    'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
+                    // 'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
+                    //                   'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                    //                   'data-request-method'=>'post',
+                    //                   'data-toggle'=>'tooltip',
+                    //                   'data-confirm-title'=>'Are you sure?',
+                    //                   'data-confirm-message'=>'Are you sure want to delete this item'], 
                 ],
                           
 //                [

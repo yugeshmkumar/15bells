@@ -70,7 +70,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','index1','search','mapproperty2update','mapproperty1update','getpolymyupdate','searchaction','withoutshape','withoutshape','withoutshapebackend','saveprop','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','getpolymycsr','mapproperty1','mapproperty1csr','mapproperty2','mapproperty2csr','directitnow'],
+                        'actions' => ['index','index1','search','mapproperty2update','mapproperty1update','getpolymyupdate','searchaction','withoutshape','withoutshapebackend','saveprop','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','getpolymycsr','mapproperty1','mapproperty1csr','mapproperty2','mapproperty2csr','directitnow'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -759,7 +759,7 @@ $request_id = Yii::$app->db->lastInsertID;
 //      $total_area = $payments['usuable_area'];
     
 
-      $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
+      $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
       
       
           
@@ -802,7 +802,7 @@ $request_id = Yii::$app->db->lastInsertID;
        
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
         \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
-        echo json_encode($payments);
+        echo json_encode($payments);die;
     }
          
       
@@ -1032,7 +1032,7 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
         $date = date('Y-m-d H:i:s');
 
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
         
@@ -1123,7 +1123,7 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
 
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
         \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
-        echo json_encode($payments);
+        echo json_encode($payments);die;
     }
     
     
@@ -1366,7 +1366,7 @@ if($whichserch == 'client'){
         $date = date('Y-m-d H:i:s');
        
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
 //        if($whichserch == 'client'){
@@ -1456,7 +1456,7 @@ if($whichserch == 'client'){
           
           //echo $count;
           \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
-            echo json_encode($rows);
+            echo json_encode($rows);die;
            
            
         }else{
@@ -1507,7 +1507,7 @@ if($whichserch == 'client'){
           
            $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
            \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
-            echo json_encode($payments);
+            echo json_encode($payments);die;
             
         }
 
@@ -1778,7 +1778,7 @@ if($whichserch == 'client'){
         
         
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
 
@@ -1868,8 +1868,8 @@ if($whichserch == 'client'){
     
      
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-\common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
-        echo json_encode($payments);
+        \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+        echo json_encode($payments);die;
      
      
  }

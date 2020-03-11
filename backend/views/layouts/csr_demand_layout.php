@@ -168,12 +168,24 @@ $bundle = BackendAsset::register($this);
                           //  'badge'=> TimelineEvent::find()->today()->count(),
                           //  'badgeBgClass'=>'label-primary',
                         ],
-						[
+						// [
+                        //     'label'=>Yii::t('backend', 'Allocated Leads'),
+                        //     'icon'=>'<i class="fa fa-shopping-basket"></i>',
+                        //     'url'=>['/leadrequest/allotedindex?status=1'],
+                        //   //  'badge'=> TimelineEvent::find()->today()->count(),
+                        //   //  'badgeBgClass'=>'label-primary',
+                        // ],
+
+                        [
                             'label'=>Yii::t('backend', 'Allocated Leads'),
-                            'icon'=>'<i class="fa fa-shopping-basket"></i>',
-                            'url'=>['/leadrequest/allotedindex?status=1'],
-                          //  'badge'=> TimelineEvent::find()->today()->count(),
-                          //  'badgeBgClass'=>'label-primary',
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-file"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                ['label'=>Yii::t('backend', 'CSR Supply'), 'url'=>['/leadrequest/allotedindex?status=1&rol_ed=landsell'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ['label'=>Yii::t('backend', 'CSR Demand'), 'url'=>['/leadrequest/allotedindex?status=1&rol_ed=lessbuy'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+
+                             ]
                         ],
                        
                         [
