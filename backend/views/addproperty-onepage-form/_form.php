@@ -120,7 +120,7 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
-                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count','value' => $assigned_id])->label(false) ?>
+                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count'])->label(false) ?>
 
                 <div class="col-md-3">
                 <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
