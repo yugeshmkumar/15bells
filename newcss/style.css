@@ -2268,6 +2268,21 @@ input.invalid {
 	.office_form{
 		height:130vh !important;
 	}
+	.feature_logo{
+		width:100%;
+	}
+	.featured_links{
+		padding:0 !important;	
+	}
+	.featured_section {
+		padding: 20px 10px 40px !important;
+	}
+	.featured_section img{
+		margin-top:10px !important;
+	}
+	.clients_det{
+		padding:0 10px;
+	}
 	.mobile_pad_form{
 		padding:7px 20px;
 	}

@@ -809,13 +809,13 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		<div class="row featured_links">
 			<div class="col-md-3 col-xs-12 pad_client text-center">
 				<div class="clients_det">
-					<a target="_blank" href="https://m.dailyhunt.in/news/india/english/yourstory-epaper-yourstory/proptech+the+real+estate+underdog+taking+india+by+storm-newsid-135609202"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/daily.png';  ?>" width="190"></a>
+					<a target="_blank" href="https://m.dailyhunt.in/news/india/english/yourstory-epaper-yourstory/proptech+the+real+estate+underdog+taking+india+by+storm-newsid-135609202"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/daily.png';  ?>" width="190" class="feature_logo"></a>
 				</div>
 			</div>
 			
 			<div class="col-md-3 col-xs-12 pad_client text-center mobile_feature">
 				<div class="clients_det">
-					<a target="_blank" href="https://yourstory.com/mystory/proptech-the-real-estate-underdog-taking-india-by-"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/story.png';  ?>" width="190"></a>
+					<a target="_blank" href="https://yourstory.com/mystory/proptech-the-real-estate-underdog-taking-india-by-"><img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/story.png';  ?>" width="190" class="feature_logo"></a>
 				</div>
 			</div>
 		</div>
