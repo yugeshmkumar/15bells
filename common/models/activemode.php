@@ -409,9 +409,9 @@ public static function update_my_profile_progress_status($userid,$process_name,$
 }}
 public static function insert_to_my_profile_table($userid,$new,$FirstName,$Emailid,$Mobileid){
 		  
-	
+	echo 'aya';die;
 	$checkifalreadyexists = \common\models\Myprofilenew::find()->where(['userID'=>$userid,'isactive'=>1])->one();
-			//echo '<pre>';print_r($new);die;
+			echo '<pre>';print_r($checkifalreadyexists);die;
 			if(!$checkifalreadyexists){
 				
 
@@ -441,5 +441,96 @@ public static function insert_to_my_profile_table($userid,$new,$FirstName,$Email
 	        $checkifalreadyexists->save();	
 			}
 }
+
+
+public static function insert_to_my_profile_tables($userid,$Title,$FirstName,$middlename,$LastName,$Emailid,$Mobileid,$Dob,$Gender,$nationality,$hide,$MartialStatus,$Minor,$RelatnshpWithMinor,$GuardianName,$PanCardNo,$AdharCardNo,$CurrentCountry,$CurrentState
+,$CurrentCity,$CurrentPincode,$PermanentCountry,$PermanentState,$PermanentCity,$PermanentPincode,$currentaddress,$permanentaddress,$countryverificatn,$passportno,$ocinumber,$pionumber){
+	        $checkifalreadyexists = \common\models\Myprofilenew::find()->where(['userID'=>$userid,'isactive'=>1])->one();
+			//echo '<pre>';print_r($new);die;
+			if(!$checkifalreadyexists){
+				
+
+			$modelMyprofile = new \common\models\Myprofilenew();
+			$modelMyprofile->userID=$userid;
+		
+			// $modelMyprofile->logo=$new;
+	        $modelMyprofile->title = $Title;
+            $modelMyprofile->first_name=$FirstName;
+			$modelMyprofile->middlename=$middlename;
+            $modelMyprofile->last_name=$LastName;
+            $modelMyprofile->emailid=$Emailid;
+            $modelMyprofile->mobileid=$Mobileid;
+            $modelMyprofile->dob=$Dob;
+            $modelMyprofile->gender=$Gender;
+			$modelMyprofile->nationality=$nationality;
+			
+            $modelMyprofile->martial_status=$MartialStatus;
+            $modelMyprofile->isMinor=$Minor;
+            $modelMyprofile->relatnshp_with_minor=$RelatnshpWithMinor;
+            $modelMyprofile->guardian_name=$GuardianName;
+            $modelMyprofile->pan_card_no=$PanCardNo;
+            $modelMyprofile->adhar_card_no=$AdharCardNo;
+			$modelMyprofile->countryverificatn =$countryverificatn;
+			$modelMyprofile->pionumber=$pionumber;
+			$modelMyprofile->ocinumber=$ocinumber;
+			$modelMyprofile->passportno=$passportno;
+		    $modelMyprofile->current_country=$CurrentCountry;
+            $modelMyprofile->current_state=$CurrentState;
+            $modelMyprofile->current_city=$CurrentCity;
+            $modelMyprofile->current_pincode=$CurrentPincode;
+			$modelMyprofile->current_address=$currentaddress;
+            $modelMyprofile->permanent_country=$PermanentCountry;
+            $modelMyprofile->permanent_state=$PermanentState;
+            $modelMyprofile->permanent_city=$PermanentCity;
+            $modelMyprofile->permanent_pincode=$PermanentPincode;
+			$modelMyprofile->permanent_address=$permanentaddress;
+	        $modelMyprofile->save();
+			} else {
+
+			
+			$checkifalreadyexists->userID=$userid;
+			
+			// if($new !=''){
+			// $checkifalreadyexists->logo=$new;
+			// }
+	        $checkifalreadyexists->title = $Title;
+            $checkifalreadyexists->first_name=$FirstName;
+			$checkifalreadyexists->middlename=$middlename;
+            $checkifalreadyexists->last_name=$LastName;
+            $checkifalreadyexists->emailid=$Emailid;
+            $checkifalreadyexists->mobileid=$Mobileid;
+            $checkifalreadyexists->dob=$Dob;
+            $checkifalreadyexists->gender=$Gender;
+			$checkifalreadyexists->nationality=$nationality;
+            $checkifalreadyexists->hide=$hide;
+            $checkifalreadyexists->martial_status=$MartialStatus;
+            $checkifalreadyexists->isMinor=$Minor;
+            $checkifalreadyexists->relatnshp_with_minor=$RelatnshpWithMinor;
+            $checkifalreadyexists->guardian_name=$GuardianName;
+            $checkifalreadyexists->pan_card_no=$PanCardNo;
+            $checkifalreadyexists->adhar_card_no=$AdharCardNo;
+			$checkifalreadyexists->countryverificatn =$countryverificatn;
+			$checkifalreadyexists->pionumber=$pionumber;
+			$checkifalreadyexists->ocinumber=$ocinumber;
+			$checkifalreadyexists->passportno=$passportno;
+		    $checkifalreadyexists->current_country=$CurrentCountry;
+            $checkifalreadyexists->current_state=$CurrentState;
+            $checkifalreadyexists->current_city=$CurrentCity;
+            $checkifalreadyexists->current_pincode=$CurrentPincode;
+			$checkifalreadyexists->current_address=$currentaddress;
+            $checkifalreadyexists->permanent_country=$PermanentCountry;
+            $checkifalreadyexists->permanent_state=$PermanentState;
+            $checkifalreadyexists->permanent_city=$PermanentCity;
+            $checkifalreadyexists->permanent_pincode=$PermanentPincode;
+			$checkifalreadyexists->permanent_address=$permanentaddress;
+	        $checkifalreadyexists->save();	
+			}
+}
+
+
+
+
+
+
 }
 ?>

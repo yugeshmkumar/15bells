@@ -1742,13 +1742,49 @@ $(".price-range li").click(function() {
     var pathstr = '';
     var northlat = '';
     var centercord = '';
+    var latt;
+      var longg;
 
 
+
+    function changeNumberFormat(number, decimals, recursiveCall) {
+
+const decimalPoints = decimals || 2;
+const noOfLakhs = number / 100000;
+let displayStr;
+let isPlural;
+
+// Rounds off digits to decimalPoints decimal places
+function roundOf(integer) {
+return +integer.toLocaleString(undefined, {
+minimumFractionDigits: decimalPoints,
+maximumFractionDigits: decimalPoints,
+});
+}
+
+if (noOfLakhs >= 1 && noOfLakhs <= 99) {
+const lakhs = roundOf(noOfLakhs);
+isPlural = lakhs > 1 && !recursiveCall;
+displayStr = `${lakhs} Lakh${isPlural ? 's' : ''}`;
+} else if (noOfLakhs >= 100) {
+const crores = roundOf(noOfLakhs / 100);
+const crorePrefix = crores >= 100000 ? changeNumberFormat(crores, decimals, true) : crores;
+isPlural = crores > 1 && !recursiveCall;
+displayStr = `${crorePrefix} Crore${isPlural ? 's' : ''}`;
+} else {
+displayStr = number;
+}
+
+return displayStr;
+}
 
 
     function getpolymy() {
 
 
+        count1 =0;
+        count2 =0;
+        count3 =0;
 
         var getexpectationID = $('#expectid').val();
         var showChar = 100;
@@ -1810,7 +1846,7 @@ $(".price-range li").click(function() {
         // if(shapes != ''){          
 
 
-        if (getexpectationID != '') {
+        // if (getexpectationID != '') {
 
 
             if (town == '' && sector == '') {
@@ -1878,13 +1914,17 @@ $(".price-range li").click(function() {
                                         if (map.getZoom() > minZoomLevel)
                                             map.setZoom(minZoomLevel);
                                     });
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
+
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
@@ -1908,8 +1948,9 @@ $(".price-range li").click(function() {
                                             '</div>' +
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
-                                            '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + this.asking_rental_price + ' Psf </p></li>' +
+                                            '<li><p>₹  ' + gettotalprice + '</p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2033,13 +2074,37 @@ $(".price-range li").click(function() {
                                         if (map.getZoom() > minZoomLevel)
                                             map.setZoom(minZoomLevel);
                                     });
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+
+                                    var lati = this.latitude;
+                                                        var long = this.longitude;
+                                                        var curPosition = new google.maps.LatLng(lati,long);
+                                                        var triangleCoords = JSON.parse(pathstr);
+                               
+                                                        bermudaTriangle = new google.maps.Polygon({
+                                                        paths: triangleCoords,
+                                                        strokeOpacity: 0.8,
+                                                        strokeWeight: 2,
+                                                        fillColor: '#FF0000',
+                                                        fillOpacity: 0.35,
+                                                        editable: true,
+                                                        draggable: true,
+                                                        });  
+
+                                                        if(google.maps.geometry.poly.containsLocation(curPosition, bermudaTriangle)){ 
+
+                            count1 += 1;  
+
+                            var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
@@ -2063,8 +2128,9 @@ $(".price-range li").click(function() {
                                             '</div>' +
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
-                                            '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + this.asking_rental_price + ' Psf </p></li>' +
+                                            '<li><p>₹  ' + totalprice + ' Psf </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2093,12 +2159,17 @@ $(".price-range li").click(function() {
                                             '</div>' +
                                             '</div>' +
                                             '</div>');
+                                }
 
                                 });
-
+                                if(count1 ==0){
+                                                            $('#countprop').html(0);
+                                                        }else{
+                                                        $('#countprop').html(count1);
+                                                        }
                                 showPage(1);
                                 var i;
-                                var totals = Math.ceil(countprop / 6);
+                                var totals = Math.ceil(count1 / 6);
 
                                 var dynamic = "";
                                 for (i = 1; i <= totals; i++) {
@@ -2119,10 +2190,15 @@ $(".price-range li").click(function() {
                                     showPage(parseInt($(this).text()))
                                 });
 
+                                
+
                             },
                         });
                     }
                     if (shapes == 'circle') {
+
+                        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        var labelIndex = 0;
 
                         var latcenter = centercoordinates.substr(0, centercoordinates.indexOf(','));
                         var longcenter = centercoordinates.substr(centercoordinates.indexOf(",") + 1);
@@ -2152,7 +2228,7 @@ $(".price-range li").click(function() {
                                         new google.maps.Marker({
                                             position: pos,
                                             map: map,
-                                            icon: "http://maps.google.com/mapfiles/marker" + letter + ".png",
+                                            label: labels[labelIndex++ % labels.length],
                                             animation: google.maps.Animation.DROP
 
                                         });
@@ -2169,13 +2245,49 @@ $(".price-range li").click(function() {
                                             map.setZoom(minZoomLevel);
                                     });
 
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+                                                            var lati = this.latitude;
+                                                            var long = this.longitude;
+                                                            
+                                                            var curPosition = new google.maps.LatLng(lati,long);
+                                                           
+
+                
+                                                            var radius =  parseInt(totalradius);              
+                                                            var townCenter = new google.maps.LatLng(latt,longg);
+
+                                                     var circleOptions = {
+                                                            strokeColor: '#FF0000',
+                                                            strokeOpacity: 0.8,
+                                                            strokeWeight: 2,
+                                                            fillColor: '#FF0000',
+                                                            fillOpacity: 0.25,
+                                                            map: map,
+                                                            center: townCenter,
+                                                            editable: true,
+                                                            // draggable: true,
+                                                            radius: radius
+                                                            };
+                                                            
+                                                            circle = new google.maps.Circle(circleOptions);
+                                                            circle.setMap(null);
+
+                                                            if(circle.getBounds().contains(curPosition)){
+                                                               // circle.setMap(null);
+
+                                                             count2 += 1; 
+
+                                var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
+
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
@@ -2199,8 +2311,9 @@ $(".price-range li").click(function() {
                                             '</div>' +
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
-                                            '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + this.asking_rental_price + ' Psf</p></li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2230,11 +2343,19 @@ $(".price-range li").click(function() {
                                             '</div>' +
                                             '</div>');
 
+                                }
+
                                 });
+
+                                if(count2 ==0){
+                                                            $('#countprop').html(0);
+                                                        }else{
+                                                        $('#countprop').html(count2);
+                                                        }
 
                                 showPage(1);
                                 var i;
-                                var totals = Math.ceil(countprop / 6);
+                                var totals = Math.ceil(count2 / 6);
 
                                 var dynamic = "";
                                 for (i = 1; i <= totals; i++) {
@@ -2884,11 +3005,11 @@ $(".price-range li").click(function() {
 
 
             }
-        } else {
+        // } else {
 
-            toastr.warning('Please Fill Your Expectation for this search', 'warning');
+        //     toastr.warning('Please Fill Your Expectation for this search', 'warning');
 
-        }
+        // }
 
 
 
@@ -2960,6 +3081,8 @@ $(".price-range li").click(function() {
         if (typeof selectedShape.getCenter == 'function') {
             cntrstr = "" + selectedShape.getCenter().toUrlValue();
             centercoordinates = selectedShape.getCenter().toUrlValue();
+            latt = selectedShape.getCenter().lat();
+                 longg = selectedShape.getCenter().lng();
         }
 
 //        
@@ -3372,7 +3495,7 @@ $(".price-range li").click(function() {
          food = getParameterByName('id');
           foodlead = getParameterByName('l_id');
 
-alert(food);
+// alert(food);
         if (food == null) {
             $('#search-pro').css("display", "none");
             $('#similiarrow').hide();

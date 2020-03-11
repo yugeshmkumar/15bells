@@ -600,7 +600,24 @@ if ($err) {
                     
                     if($user){
         
-                            $user_id = $user->id;
+                            $user_id = $user->id;                  
+
+                            if($user->email != ''){
+                                     $useremail =   $user->email;
+                                 }else {
+                                     $useremail =   '';
+                                 }
+         
+                            if($user->user_login_as != ''){
+                                     $user_login_as =   $user->user_login_as;
+                                 }else {
+                                     $user_login_as =   '';
+                                 }
+                            
+                  
+                           $location ="Gurgaon";
+                           $model->addnewlead($user->fullname,$user_id,$useremail,'+91',$user->username,$location,$user_login_as);
+                     
                         
                 
                     if (Yii::$app->user->login($user)) {
@@ -891,18 +908,33 @@ if ($err) {
 			// 	 $AgreementLog->accept_date = date('y-m-d h:i:s');
 			// 	 $AgreementLog->role_id =3;
 			// 	 $AgreementLog->save();
-			// }  } }
+            // }  } }
+            
              if($user){
  
-                   $user_id = $user->id;
+                   $user_id   =   $user->id;
+                  
+
+                   if($user->email != ''){
+                            $useremail =   $user->email;
+                        }else {
+                            $useremail =   '';
+                        }
+
+                   if($user->user_login_as != ''){
+                            $user_login_as =   $user->user_login_as;
+                        }else {
+                            $user_login_as =   '';
+                        }
+                   
               
             // if($location !=''){
 			// 	  $model->addnewlead($user->fullname,$user->id,$user->email,$user->countrycode,$user->username,$location);
             //       // $model->assignCSR($user_id,$location);
 
             //   } else {
-			// 	  $location ="Gurgaon";
-			// 	  $model->addnewlead($user->fullname,$user->id,$user->email,$user->countrycode,$user->username,$location);
+				  $location ="Gurgaon";
+				  $model->addnewlead($user->fullname,$user_id,$useremail,'+91',$user->username,$location,$user_login_as);
 			//   }
                  
             //        $model->sendmail($user_id);

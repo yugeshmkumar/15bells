@@ -109,9 +109,19 @@ $rbac = \common\models\RbacAuthAssignment::find()->where(['user_id' => yii::$app
                 <?php
                 $searchModel = new \common\models\LeadsSearch();
                 if ($rbac->item_name == "csr_head") {
+                   
                     $dataProvider = $searchModel->searchbystatus_forhead(Yii::$app->request->queryParams, $_GET['status']);
                 } else {
-                    $dataProvider = $searchModel->searchbystatusalloted(Yii::$app->request->queryParams, $_GET['status']);
+
+                    if($_GET['rol_ed'] == 'landsell'){
+                        $dataProvider = $searchModel->searchbystatusalloted(Yii::$app->request->queryParams, $_GET['status'],'landsell');
+
+                    }else if($_GET['rol_ed'] == 'lessbuy'){
+
+                        $dataProvider = $searchModel->searchbystatusalloted(Yii::$app->request->queryParams, $_GET['status'],'lessbuy');
+
+                    }
+                    // $dataProvider = $searchModel->searchbystatusalloted(Yii::$app->request->queryParams, $_GET['status']);
 
                 }
                 ?>
