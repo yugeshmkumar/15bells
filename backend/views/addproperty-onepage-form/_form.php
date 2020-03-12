@@ -10,6 +10,20 @@ $user_id = Yii::$app->user->identity->id;
 $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
 $assigned_id = $querys->id;
 
+
+$assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
+    
+$rolename =  $assigndash->item_name;
+
+// if($assigndash->item_name == "csr_supply"){
+
+//     return $this->redirect(['csrindex']);                        
+// }else{
+   
+// return $this->redirect(['csrhead']);                        
+
+// }
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\AddpropertyOnepageForm\AddpropertyOnepageForm */
 /* @var $form yii\widgets\ActiveForm */
@@ -120,8 +134,14 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'Owner_name')->textInput(['class' => 'form-control count','maxlength' => true]) ?>
                 </div>
-                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count'])->label(false) ?>
 
+<?php if ($rolename == 'csr_head'){ ?>
+                <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count'])->label(false) ?>
+    <?php }else { ?>
+      <?= $form->field($model, 'company_employee_id')->hiddenInput(['class' => 'form-control count','value'=>$assigned_id])->label(false) ?>
+
+
+    <?php } ?>
                 <div class="col-md-3">
                 <?= $form->field($model, 'primary_contact_no')->textInput(['class' => 'form-control count'])?>
                 </div>
