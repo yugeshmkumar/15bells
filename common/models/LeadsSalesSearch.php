@@ -154,7 +154,7 @@ class LeadsSalesSearch extends LeadsSales
 	
         $query = LeadsSales::find()->join('LEFT OUTER JOIN','leadcurrentstatus_sales','leadcurrentstatus_sales.leadid = leads_sales.id')
 		->join('LEFT OUTER JOIN','leadassignment_sales','leadassignment_sales.leadid = leads_sales.id')
-                ->join('LEFT OUTER JOIN','save_search','save_search.id = leads_sales.product_id')                
+                ->join('LEFT OUTER JOIN','save_searches','save_searches.id = leads_sales.product_id')                
 
 		->where('leadcurrentstatus_sales.statusid =:sid and leadcurrentstatus_sales.isactive =:actv and leadassignment_sales.assigned_toID =:loginuserid',array(':sid'=>$statusid ,':actv'=>1,':loginuserid'=>$emp->id))->orderBy(['leads_sales.id' => SORT_DESC]);
 

@@ -945,7 +945,7 @@ if ($checkrole->item_name == "Company_user") {
             </div>
             <div class="col-md-4 text-cente filter_s text-center">
                 <span class="exp_ect">
-<?= Html::button('Create Expectations', ['value' => Url::to('https://www.15bells.com/backend/web/lessor-expectations/creates?userid='.$_GET['id'].''), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+<?= Html::button('Create Expectations', ['value' => Url::to(['lessor-expectations/creates','userid' => $_GET['id']]), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
                     <!--<button onclick = "changeAccept()" class="activeLink" id="addexpectations">Add Expectations</button>-->
                     <input type="hidden" id="expectid"> </span> 
             </div>
@@ -1846,7 +1846,7 @@ return displayStr;
         // if(shapes != ''){          
 
 
-        // if (getexpectationID != '') {
+        if (getexpectationID != '') {
 
 
             if (town == '' && sector == '') {
@@ -2461,14 +2461,43 @@ return displayStr;
                                             map.setZoom(minZoomLevel);
                                     });
 
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+
+                                    var lati = this.latitude;
+                                        var long = this.longitude;
+                                        var curPosition = new google.maps.LatLng(lati,long);  
+
+                 var rectanglecoordinates = '{"north": '+northlat+',"south":'+ southlat+',"east": '+northlng+',"west": '+southlng+' }';
+                 var newkuma = JSON.parse(rectanglecoordinates);
+                                  
+                                  var   rectangle = new google.maps.Rectangle({
+                                    strokeColor: '#FF0000',
+                                    strokeOpacity: 0.8,
+                                    strokeWeight: 2,
+                                    fillColor: '#FF0000',
+                                    fillOpacity: 0.35,
+                                    editable: true,
+                                    //draggable: true,
+                                    map: map,
+                                    bounds: newkuma
+                                    });
+
+                                    rectangle.setMap(null); 
+
+
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
-
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
+                                    if(rectangle.getBounds().contains(curPosition)){
+               
+                                       
+               count3 += 1; 
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
@@ -2492,7 +2521,9 @@ return displayStr;
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
                                             '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
+                                          
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2522,11 +2553,22 @@ return displayStr;
                                             '</div>' +
                                             '</div>');
 
-                                });
+                                        }
+                                                            
+                                                              
+                                                            
+
+                                                        });
+                                                        
+                                                        if(count3 ==0){
+                                                            $('#countprop').html(0);
+                                                        }else{
+                                                        $('#countprop').html(count3);
+                                                        }
 
                                 showPage(1);
                                 var i;
-                                var totals = Math.ceil(countprop / 6);
+                                var totals = Math.ceil(count3 / 6);
 
                                 var dynamic = "";
                                 for (i = 1; i <= totals; i++) {
@@ -3005,11 +3047,11 @@ return displayStr;
 
 
             }
-        // } else {
+        } else {
 
-        //     toastr.warning('Please Fill Your Expectation for this search', 'warning');
+            toastr.warning('Please Fill Your Expectation for this search', 'warning');
 
-        // }
+        }
 
 
 

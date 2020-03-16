@@ -404,15 +404,15 @@ use common\models\PropertyType;
 					<div class="col-md-6" id="plot_sec">
 						<div class="col-md-8" id="plot_areas">
 							<div class="form-group">
-								<label class="control-label">Plot Area *</label>   
-								<?= $form->field($model, 'total_plot_area')->textInput()->label(false) ?>
+								<label class="control-label">Super Area *</label>   
+								<?= $form->field($model, 'super_area')->textInput()->label(false) ?>
 							</div>
 						</div>
 
 						<div class="col-md-4" id="plot_uits">
 							<div class="form-group">
 								<label class="control-label"> Unit *</label>              
-								<?= $form->field($model, 'plot_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'plot_uit'])->label(false) ?>
+								<?= $form->field($model, 'super_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'plot_uit'])->label(false) ?>
 							</div>
 						</div>
 					</div>

@@ -110,7 +110,9 @@ if($assigndash->item_name == "sales_supply_lessor"){
         $userid = $food;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-
+        $user_id = Yii::$app->user->identity->id;
+        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+        $assigned_id = $querys->id;
         $payments = \Yii::$app->db->createCommand("SELECT * FROM shortlistproperty where user_id='$userid' and property_id ='$hardam'")->queryAll();
 
 
@@ -118,7 +120,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
             echo '1';
         } else {
 
-            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'expectation_id'=>$expectation_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
+            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'expectation_id'=>$expectation_id, 'property_id' => $hardam,'assigned_id'=>$assigned_id, 'created_date' => $date])->execute();
             echo '2';
         }
 
@@ -759,7 +761,7 @@ $request_id = Yii::$app->db->lastInsertID;
 //      $total_area = $payments['usuable_area'];
     
 
-      $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
+      $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['type'=>'blank','role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location, 'expectation_id' => $area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
       
       
           
@@ -1015,7 +1017,7 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
 }
 
 
-	echo json_encode($data);
+	echo json_encode($data);die;
 
 
     }
@@ -1032,7 +1034,7 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
         $date = date('Y-m-d H:i:s');
 
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
         
@@ -1366,7 +1368,7 @@ if($whichserch == 'client'){
         $date = date('Y-m-d H:i:s');
        
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
 //        if($whichserch == 'client'){
@@ -1778,7 +1780,7 @@ if($whichserch == 'client'){
         
         
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
 
@@ -1953,7 +1955,7 @@ if($whichserch == 'client'){
 
             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-            echo json_encode($payments);
+            echo json_encode($payments);die;
       
     }
 
@@ -2070,7 +2072,7 @@ if($whichserch == 'client'){
      
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-        echo json_encode($payments);
+        echo json_encode($payments);die;
      
      
  }

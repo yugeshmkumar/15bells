@@ -199,9 +199,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'width'=>'250px',
          'value' => function($data) {
                        
-                       $getuser = \common\models\SaveSearch::findOne($data->product_id);
+                       $getuser = \common\models\SaveSearches::findOne($data->product_id);
+                   //   print_r($getusers);die;
+
                        if($getuser){
-                           $user = $getuser->expectation_id;
+
+                          $user = $getuser->expectation_id;
+
+                           if($user){
+
+
 						   if($data->role_id =='7'){
                    $getuser1 = \common\models\SellorExpectations::findOne($user);
 				   if($getuser1){
@@ -224,34 +231,109 @@ $this->params['breadcrumbs'][] = $this->title;
                                    ]); }
 
                       
+                        }else{
+
+                            $getusers = \common\models\SaveSearches::findOne($data->product_id);
+                            $names = $getusers->location_name;
+
+                           // print_r($names);die;
+                            $split = explode(',', $names,2);
+                            
+                             $name = $split[0];
+                            if($data->role_id =='7'){
+                
+                            return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.','.$data->id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+                                                'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+                                    ]); 
+    
+                    }else if($data->role_id =='4'){
+                    
+                    return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.','.$data->id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+                                                'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+                                    ]); 
+                        }else{$name = 'No Expectation';
+                        return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+                                                'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+                                    ]); }
+    
+                        
+                            
+                            
+                            
+                        
+                            
+                            }
 						   
 						   
-						   
-                       }else{$user = 'No Expectation';} 
+                       } 
                       
                    }
      ], 
 
-       [
+
+
+
+    //  [
        
-        'attribute' => 'product_id',
-        //'pageSummary' => 'Page Total',
-        'vAlign'=>'middle',
-	'format'=>'raw',
-	'label' => 'Shortlist',	
-        'width'=>'250px',
-         'value' => function($data) {
+    //     'attribute' => 'product_id',
+    //     //'pageSummary' => 'Page Total',
+    //     'vAlign'=>'middle',
+	// 'format'=>'raw',
+	// 'label' => 'Expectation Name',	
+    //     'width'=>'250px',
+    //      'value' => function($data) {
                        
-                       $getuser = \common\models\SaveSearch::findOne($data->product_id);
-                       if($getuser){
-                   $user = $getuser->expectation_id;
-                 $getuser1 = \common\models\Shortlistproperty::find()->where("user_id = '$data->user_id' and expectation_id='$user'")->count();
+    //                    $getuser = \common\models\SaveSearches::findOne($data->product_id);
+    //                    if($getuser){
+    //                        $names = $getuser->location_name;
+    //                        $split = explode(',', $names,2);
+                           
+    //                        $name = $split[0];
+	// 					   if($data->role_id =='7'){
+                
+	// 					   return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.','.$data->id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+    //                                            'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+    //                                ]); 
+
+    //                }else if($data->role_id =='4'){
+				   
+	// 			   return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.','.$data->id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+    //                                            'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+    //                                ]); 
+    //                     }else{$name = 'No Expectation';
+	// 					return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.')">'.$name.'</button>', $url = 'javascript:void(0)', [
+    //                                            'title' => Yii::t('yii', 'Click to View Saved Expectation'),
+    //                                ]); }
+
+                      
+						   
+						   
+						   
+    //                    }else{$user = 'No Expectation';} 
+                      
+    //                }
+    //  ], 
+
+    //    [
+       
+    //     'attribute' => 'product_id',
+    //     //'pageSummary' => 'Page Total',
+    //     'vAlign'=>'middle',
+	// 'format'=>'raw',
+	// 'label' => 'Shortlist',	
+    //     'width'=>'250px',
+    //      'value' => function($data) {
+                       
+    //                    $getuser = \common\models\SaveSearches::findOne($data->product_id);
+    //                    if($getuser){
+    //                $user = $getuser->expectation_id;
+    //              $getuser1 = \common\models\Shortlistproperty::find()->where("user_id = '$data->user_id' and expectation_id='$user'")->count();
 
                    
-                       }else{$getuser1 = 'No Shortlist';} 
+    //                    }else{$getuser1 = 'No Shortlist';} 
 
-                      return '<a href="javascript:void(0):" onclick = "getshortlist('.$data->role_id.','.$data->user_id.','.$data->product_id.')" >'.$getuser1.'</a>'; }
-     ], 
+    //                   return '<a href="javascript:void(0):" onclick = "getshortlist('.$data->role_id.','.$data->user_id.','.$data->product_id.')" >'.$getuser1.'</a>'; }
+    //  ], 
 	
    
    

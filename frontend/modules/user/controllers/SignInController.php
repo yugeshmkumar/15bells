@@ -615,7 +615,7 @@ if ($err) {
                                  }
                             
                   
-                           $location ="Gurgaon";
+                           $location ="Gurugram";
                            $model->addnewlead($user->fullname,$user_id,$useremail,'+91',$user->username,$location,$user_login_as);
                      
                         
@@ -933,7 +933,7 @@ if ($err) {
             //       // $model->assignCSR($user_id,$location);
 
             //   } else {
-				  $location ="Gurgaon";
+				  $location ="Gurugram";
 				  $model->addnewlead($user->fullname,$user_id,$useremail,'+91',$user->username,$location,$user_login_as);
 			//   }
                  
