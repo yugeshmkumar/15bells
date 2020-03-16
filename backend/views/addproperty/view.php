@@ -383,12 +383,12 @@ $viewid = $_GET['id'];
                $locality = $property->locality !='' ? $property->locality : "_________";
                $price_acres = $property->price_acres !='' ? $property->price_acres : "_________";
                $request_for = $property->request_for !='' ? $property->request_for : "_________";
-               $total_plot_area = $property->total_plot_area !='' ? $property->total_plot_area : "_________";
+               $total_plot_area = $property->super_area !='' ? $property->super_area : "_________";
                $maintenance_cost = $property->maintenance_cost !='' ? $property->maintenance_cost : "_________";
                $featured_imaged = $property->featured_image !='' ? $property->featured_image : "_________";
                $expected_price = $property->expected_price !='' ? $property->expected_price : "_________";
                $annual_dues_payable = $property->annual_dues_payable !='' ? $property->annual_dues_payable : "_________";
-               $city = $property->city !='' ? $property->city : "_________";
+               $city = $property->town_name !='' ? $property->town_name : "_________";
                $price_sq_ft = $property->price_sq_ft !='' ? $property->price_sq_ft : "_________";
                $expected_rental = $property->asking_rental_price !='' ? $property->asking_rental_price : "_________";
                $price_negotiable = $property->price_negotiable !='' ? $property->price_negotiable : "_________";
@@ -423,13 +423,13 @@ $viewid = $_GET['id'];
                if($undercategory == 'Residential'){
                $content = $furnished_status .' '.$property_types .' on '. $property_for .' in '. $locality . (( $buildup_area == null) ? ' - plot area : '. $total_plot_area .' sqft' : ' - super area : '. $buildup_area .' sqft ') . ' - furnishing specification :* bedrooms : '. $bedrooms.' * bathrooms : '. $bathrooms.' * balconies : '. $balconies.' * pooja room : '. $pooja_room .' * study_room * servant_room , For more details or Site Visit , please Contact Us..';
                }else{
-               $content =  'A very good '.$property_types .' availabale for rent/lease in '.$city . ' with Plot area '.$total_plot_area .' sqft, Superbuiltup '.$buildup_area .' sqft, It is a '.$furnished_status .' property suitable for any kind of '.$property_types .', For more details or Site Visit , please Contact Us..';
+               $content =  'A very good '.$property_types .' availabale for rent/lease in '.$city . ' with Super area '.$total_plot_area .' sqft, Carpet area '.$carpet_area .' sqft, It is a '.$furnished_status .' property suitable for any kind of '.$property_types .', For more details or Site Visit , please Contact Us..';
                }
             ?>
                    
                    
             <h2> <?php echo $property_types. ' for ' .$property_for.' in '.$city ; ?></h2>
-                       <span> <?php echo  $property->expected_price != '' ? $expected_price  : $expected_rental ?> Rs @  <?php echo $price_sq_ft; ?> per sqft</span>
+                       <span> Rs <?php echo $total_plot_area * $expected_rental; ?> @  <?php echo  $property->expected_price != '' ? $expected_price  : $expected_rental ?> per sqft</span>
              <p> <?php echo $content; ?>.</p>
              
                </div>

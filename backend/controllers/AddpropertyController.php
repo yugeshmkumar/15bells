@@ -303,7 +303,7 @@ public function actionShowpropdetails($id){
     public function actionCreate()
     {
        
-         $model = new Addproperty(['scenario' => 'create']);
+         $model = new Addproperty();
          
          $userid = $_GET['id'];
          date_default_timezone_set("Asia/Calcutta");
@@ -313,18 +313,24 @@ public function actionShowpropdetails($id){
         if ($model->load(Yii::$app->request->post()) && $model->validate() ) {
             
            
-           // echo '<pre>';print_r(Yii::$app->request->post());die;
+            // echo '<pre>';print_r(Yii::$app->request->post());die;
            
             $yiipost = Yii::$app->request->post();
             $available_date = $yiipost['Addproperty']['available_date'];
-            $total_plot_area = $yiipost['Addproperty']['total_plot_area'];
-            $buildup_area = $yiipost['Addproperty']['buildup_area'];
+            $total_plot_area = $yiipost['Addproperty']['super_area'];
+            $buildup_area = $yiipost['Addproperty']['carpet_area'];
+            $super_unit = $yiipost['Addproperty']['super_unit'];
+            $carpet_unit = $yiipost['Addproperty']['carpet_unit'];
 
-            if($total_plot_area == ''){
+           
 
-               $model->total_plot_area = $buildup_area;
+               $model->super_area = $total_plot_area;
+               $model->carpet_area = $buildup_area;
 
-             }
+               $model->super_unit = $super_unit;
+               $model->carpet_unit = $carpet_unit;
+
+            
 
             $lattitude = $yiipost['lat1'];
             $longitude = $yiipost['long1'];
@@ -349,17 +355,20 @@ public function actionShowpropdetails($id){
             }
             $model->created_date = $date;
             
-            if($buildup_area !=''){
+            
             
             
             if($model->save()){
               \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','5');
-               return $this->redirect(['lessor-expectations/create', 'id' => $model->id]);
+            //    return $this->redirect(['lessor-expectations/create', 'id' => $model->id]);
+               return $this->redirect(['addproperty/additional', 'idm' => $model->id]);
+
+
             }else{
                 print_r($model->getErrors());die;
             }
           
-        }
+        
             
         } else {
             return $this->render('create', [
@@ -417,7 +426,9 @@ public function actionShowpropdetails($id){
               if($model->save()){
 
 	  \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','6');
-              return $this->redirect(['sellor-expectations/create', 'id' => $model->id]);
+            //   return $this->redirect(['sellor-expectations/create', 'id' => $model->id]);
+              return $this->redirect(['addproperty/additionals', 'idm' => $model->id]);
+
             }else{
 				//echo 'hi33';die;
                 print_r($model->getErrors());die;
@@ -1354,33 +1365,36 @@ public function actionDocumentss() {
     public function actionUpdateinlessor($id)
     {
         $model = $this->findModel($id);
-        $getmodel = LessorExpectations::find()->where(['property_id'=>$id])->andwhere(['user_type'=>'lessor'])->one();
-        if(!empty($getmodel)){
+        //$getmodel = LessorExpectations::find()->where(['property_id'=>$id])->andwhere(['user_type'=>'lessor'])->one();
+        // if(!empty($getmodel)){
            
-            $expecid = $getmodel->id;
+           // $expecid = $getmodel->id;
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
              
-           return $this->redirect(['lessor-expectations/updateinlessor','id'=>$expecid]);
-          }else {
-            return $this->render('update', [
+        //    return $this->redirect(['lessor-expectations/updateinlessor','id'=>$expecid]);
+                     return $this->redirect(Yii::$app->request->referrer);
+
+        }else {
+            return $this->render('updateb', [
                 'model' => $model,
             ]);
         }
-        }else{
+        // }
+        // else{
            
                 
-           if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //    if ($model->load(Yii::$app->request->post()) && $model->save()) {
                
-           return $this->redirect(['lessor-expectations/create','id'=>$id]);
-           // return $this->redirect(Yii::$app->request->referrer);
-            } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        //    return $this->redirect(['lessor-expectations/create','id'=>$id]);
+        //    // return $this->redirect(Yii::$app->request->referrer);
+        //     } else {
+        //     return $this->render('update', [
+        //         'model' => $model,
+        //     ]);
+        // }
 
          
-        }
+        // }
         
        
         

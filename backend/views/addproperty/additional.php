@@ -106,14 +106,7 @@ if(!empty($property)){
                 <div class="mt-step-content font-grey-cascade"><!--Sell / Rent /PG Accomodation--></div>
             </div></a>
         
-        <a href="<?php echo Yii::$app->urlManager->createUrl(['lessor-expectations/updateinlessor','id'=>$lessorid]) ?>">
-
-            <div class="col-md-3 bg-grey mt-step-col sell_add">
-               <div class="bg-white font-grey add_no">2</div>
-                <div class="mt-step-title uppercase font-grey-cascade add_det"><font size="3dp">Expectations</font></div>
-                <div class="mt-step-content font-grey-cascade"><!--Complete your property check--></div>
-            </div>
-        </a>
+        
         <a href="javascript:void();">
             <div class="col-md-3 bg-grey mt-step-col active sell_add">
                 <div class="bg-white font-grey add_no">3</div>

@@ -72,7 +72,7 @@ class LessorExpectations extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'user_type', 'save_search_as','site_approval','interest_security','interest_negotiable','agreement','agreement_negotiable','lease_tenure','tenure_negotiable', 'created_date'], 'required'],
+            [['user_id', 'user_type', 'save_search_as','interest_security','interest_negotiable','agreement','agreement_negotiable','lease_tenure','tenure_negotiable', 'created_date'], 'required'],
             //['interest_negotiable', 'required', 'requiredValue' => '', 'message' => 'my test message'],
            
             [['user_id', 'user_type', 'save_search_as', 'created_date'], 'required', 'on' => 'creates'],

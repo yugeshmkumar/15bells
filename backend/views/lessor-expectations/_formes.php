@@ -118,13 +118,14 @@ use yii\widgets\ActiveForm;
                         <label class="control-label">Dedicated car parkings</label>
 
                         <?= $form->field($model, 'car_parking')->textInput()->label(false) ?>
+						<?= $form->field($model, 'user_id')->hiddenInput(['value'=>$_GET['userid']])->label(false) ?>
 
                     </div>                                
                 </div> 
                     <!--<div class="form-group">
                         <label class="control-label">Select Auto Cad drawing</label>
 
-                        <?= $form->field($model, 'auto_cad_drawing')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], ['prompt' => 'Select'])->label(false) ?>
+                        <//?= //$form->field($model, 'auto_cad_drawing')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], ['prompt' => 'Select'])->label(false) ?>
 
                     </div>                                
                 </div> -->
@@ -136,7 +137,7 @@ use yii\widgets\ActiveForm;
                     <div class="form-group">
                         <label class="control-label">Is the Site Approved for Commercial </label>
 
-                        <?= $form->field($model, 'site_approval')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], ['prompt' => 'Select'])->label(false) ?>
+                        <?//= //$form->field($model, 'site_approval')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], ['prompt' => 'Select'])->label(false) ?>
 
                     </div>                                
                 </div> 

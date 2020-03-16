@@ -1,8 +1,18 @@
 <?php
+
+
 namespace common\models;
+
+use Yii;
 
 use yii\db\ActiveRecord;
 use common\models\Banknew;
+use common\models\Leadrequest;
+use common\models\Leads;
+use common\models\LeadsSales;
+use common\models\LeadcurrentstatusSales;
+use common\models\LeadassignmentSales;
+
 ?>
 <?php 
 
@@ -407,11 +417,168 @@ public static function update_my_profile_progress_status($userid,$process_name,$
 		 $myprofilestatus->save();
 		 
 }}
+
+
+public static function assignsaleslead($userid){
+	
+	$findleadrequest = \common\models\Leads::find()->where(['user_id' => $userid])->one();
+	$leadid = $findleadrequest->id;
+	 $location = $findleadrequest->location;
+	$role_id = $findleadrequest->role_id;
+	$user_id = $findleadrequest->user_id;
+
+	if ($role_id == '7') {
+		$salestype = 'sales demand buyer';
+	} else if ($role_id == '4') {
+		$salestype = 'sales demand lessee';
+	} else {
+		$salestype = 'sales head';
+	}
+	$employecount = \Yii::$app->db->createCommand("SELECT count(*) from company_emp where name='$salestype' and location='$location'")->queryAll();
+	$findcsr = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted asc limit 1")->queryOne();
+	$findcsrst = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted desc limit 1")->queryOne();
+	$count = $employecount['0']['count(*)'];
+
+	$getallot = $findcsrst['alloted'];
+
+
+
+
+	if ($getallot == $count) {
+
+
+		$givezero = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => '0'], 'name = "' . $salestype . '" AND location="' . $location . '"')->execute();
+
+		$findcsrs = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted asc limit 1")->queryOne();
+		$findcsrsd = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted desc limit 1")->queryOne();
+		$getallots = $findcsrsd['alloted'];
+		$newid = $findcsrs['id'];
+		$counters = $getallots + 1;
+
+
+		$update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counters], 'id = "' . $newid . '"')->execute();
+	} else {
+
+
+
+		$counter = $getallot + 1;
+		$newid = $findcsr['id'];
+
+		$updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter], 'id = "' . $newid . '"')->execute();
+	}
+
+
+	return (['employee_id'=>$newid,'leadid'=>$leadid]);
+
+
+}
+
+
+
+
+
+public static function assignleadsalesactionfrontend($employee,$leadid,$meaasge) {
+
+	// $leadid =  $_GET['leadid'];
+	// $employee =  $_GET['employee'];
+	// $meaasge =  $_GET['meaasge'];
+	   $changeleadstatus = \common\models\Leads::find()->where(['id' => $leadid])->one();
+
+	  
+	   $changeleadstatus->move_to_alloted = 3;
+	   $changeleadstatus->save();
+
+	   $user_id = $changeleadstatus->user_id;
+	   $email = $changeleadstatus->email;
+	   $location = $changeleadstatus->location;
+	   $role_id = $changeleadstatus->role_id;
+	   $name = $changeleadstatus->name;
+	   $number = $changeleadstatus->number;
+	   $user_id = $changeleadstatus->user_id;
+
+	   $changeleadstatus1 = \common\models\SaveSearches::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
+
+	   if ($changeleadstatus1) {
+		   $searchid = $changeleadstatus1->id;
+	   } else {
+		   $searchid = 0;
+	   }
+
+
+	   $checkleadsalesid = \common\models\LeadsSales::find()->where(['user_id' => $user_id])->one();
+
+	   if(!$checkleadsalesid){
+		   
+	   $Assignleadtoemployee1 = new LeadsSales;
+	   $Assignleadtoemployee1->user_id = $user_id;
+	   $Assignleadtoemployee1->lead_id = $leadid;
+	   $Assignleadtoemployee1->email = $email;
+	   $Assignleadtoemployee1->location = $location;
+	   $Assignleadtoemployee1->role_id = $role_id;
+	   $Assignleadtoemployee1->name = $name;
+	   $Assignleadtoemployee1->number = $number;
+	   $Assignleadtoemployee1->product_id = $searchid;
+	   $Assignleadtoemployee1->save();
+
+	   
+	   $Assignleadtoemployee2 = new LeadcurrentstatusSales;
+	   $Assignleadtoemployee2->leadid = $Assignleadtoemployee1->id;
+	   $Assignleadtoemployee2->role_id = $role_id;
+	   $Assignleadtoemployee2->statusid = '1';
+	   $Assignleadtoemployee2->leadactionstatus = '8';
+	   $Assignleadtoemployee2->save();
+
+	   
+	   $getsecondlastid = LeadsSales::find()->orderBy(['id' => SORT_DESC])->offset(1)->one();
+	   $olduser_id = $getsecondlastid->user_id;
+	   
+	   if($olduser_id === $user_id){
+		   $lastassigmentid = LeadassignmentSales::find()->where(['leadid' => $getsecondlastid->id])->one();
+		   $oldassigned_toID = $lastassigmentid->assigned_toID;
+		   
+		   $Assignleadtoemployee3 = new LeadassignmentSales;
+		   $Assignleadtoemployee3->leadid = $Assignleadtoemployee1->id;
+		   $Assignleadtoemployee3->lead_current_status_ID = $Assignleadtoemployee2->id;
+		   $Assignleadtoemployee3->assigned_toID = $oldassigned_toID;
+		   $Assignleadtoemployee3->assigned_at = date('Y-m-d h:i:s');
+		   $Assignleadtoemployee3->save();
+		   
+		   $changeleadstatusemployee = \common\models\CompanyEmp::find()->where(['id' => $employee])->one();
+		   $changeleadstatusemployee->alloted = 0;
+		   $changeleadstatusemployee->save();
+
+		//$sitevisitallot = \common\models\RequestSiteVisitbin::find()->where(['user_id' => $user_id,'lead_id'=>$leadid])->one();
+		   //$sitevisitallot->assigned_to_id = $oldassigned_toID;
+		   //$sitevisitallot->save(false);
+
+		   
+		   
+	   }else{
+	   $Assignleadtoemployee3 = new LeadassignmentSales;
+	   $Assignleadtoemployee3->leadid = $Assignleadtoemployee1->id;
+	   $Assignleadtoemployee3->lead_current_status_ID = $Assignleadtoemployee2->id;
+	   $Assignleadtoemployee3->assigned_toID = $employee;
+	   $Assignleadtoemployee3->assigned_at = date('Y-m-d h:i:s');
+	   $Assignleadtoemployee3->save();
+
+	  // $sitevisitallot = \common\models\RequestSiteVisitbin::find()->where(['user_id' => $user_id,'lead_id'=>$leadid])->one();
+		  // $sitevisitallot->assigned_to_id = $employee;
+		  // $sitevisitallot->save(false);
+			}
+
+
+		   }
+
+
+			
+   }
+
+
 public static function insert_to_my_profile_table($userid,$new,$FirstName,$Emailid,$Mobileid){
 		  
-	echo 'aya';die;
+	
 	$checkifalreadyexists = \common\models\Myprofilenew::find()->where(['userID'=>$userid,'isactive'=>1])->one();
-			echo '<pre>';print_r($checkifalreadyexists);die;
+			
 			if(!$checkifalreadyexists){
 				
 

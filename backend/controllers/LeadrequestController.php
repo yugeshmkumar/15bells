@@ -878,7 +878,7 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
         $number = $changeleadstatus->number;
         $user_id = $changeleadstatus->user_id;
 
-        $changeleadstatus1 = \common\models\SaveSearch::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
+        $changeleadstatus1 = \common\models\SaveSearches::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
 
         if ($changeleadstatus1) {
             $searchid = $changeleadstatus1->id;
@@ -943,7 +943,28 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
            // $sitevisitallot->assigned_to_id = $employee;
            // $sitevisitallot->save(false);
              }
+
+
+             
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function actionUpdate($id) {
         $id = $_GET['id'];

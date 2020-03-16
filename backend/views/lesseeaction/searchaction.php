@@ -12,34 +12,44 @@ use common\models\MyExpectationsajaxSearch;
 
 $userid = $_GET['id'];
 $expectID = $_GET['e_id'];
-$getSaveID1 = \common\models\SaveSearch::find()->where(['id' => $expectID])->one();
-$newexpectation_id = $getSaveID1->expectation_id;
-$getSaveID = \common\models\SaveSearch::find()->where(['expectation_id' => $newexpectation_id])->orderBy([
+// $getSaveID1 = \common\models\SaveSearch::find()->where(['id' => $expectID])->one();
+// $newexpectation_id = $getSaveID1->expectation_id;
+$getSaveID = \common\models\SaveSearches::find()->where(['id' => $expectID])->orderBy([
     'id' => SORT_DESC,
 ])->limit(1)->one();
+
+if($getSaveID->expectation_id){
+
+ $expectationID = $getSaveID->expectation_id;
+
+}else{
+
+    $expectationID = '';
+
+}
  
 if($getSaveID){
  $savesearchid = $getSaveID->id;
-if($getSaveID->type == ''){
+if($getSaveID->type == '' || $getSaveID->type == 'blank' || $getSaveID->type == NULL){
     
     $getlocality = $getSaveID->location_name ? $getSaveID->location_name : '';
-    $expectationID = $getSaveID->expectation_id;
+    
     $newtown = $getSaveID->town;
     $newsector = $getSaveID->sector;
     $newcountry = $getSaveID->country;
     $newlattitude = $getSaveID->lat;
-    $newlongitude = $getSaveID->long;
+    $newlongitude = $getSaveID->lng;
      $type = $getSaveID->type;
      $geometry = $getSaveID->geometry ? $getSaveID->geometry : (int)('');
      $radius =$getSaveID->radius ? $getSaveID->radius : '';
 }else{
     $getlocality = $getSaveID->location_name ? $getSaveID->location_name : '';
-    $expectationID = $getSaveID->expectation_id;
+    
     $newtown = $getSaveID->town;
     $newsector = $getSaveID->sector;
     $newcountry = $getSaveID->country;
     $newlattitude = $getSaveID->lat;
-    $newlongitude = $getSaveID->long;
+    $newlongitude = $getSaveID->lng;
      $type = $getSaveID->type;
     if($type == 'polygon'){
 
@@ -52,13 +62,20 @@ if($getSaveID->type == ''){
     }
     else if($type == 'rectangle'){
 
-        $geometry =$getSaveID->geometry;
+     $geometry =$getSaveID->geometry;
+     $prints =  json_decode($geometry);
+     $northlat  = $prints->{'north'};
+     $southlat  = $prints->{'south'};
+     $northlng  = $prints->{'east'};
+     $southlng  = $prints->{'west'};
        
     }
      
     $radius = $getSaveID->radius ? $getSaveID->radius : 0;
 }
 }
+
+
 
 
 ?>
@@ -1004,6 +1021,13 @@ if($getSaveID->type == ''){
 		</div>
 </div>
 
+<input type="hidden" id="northlat" value="<?php  echo ($northlat != '' ? $northlat : ''); ?>">
+<input type="hidden" id="southlat" value="<?php  echo ($southlat != '' ? $southlat : ''); ?>">
+
+<input type="hidden" id="northlng" value="<?php  echo ($northlng != '' ? $northlng : ''); ?>">
+
+<input type="hidden" id="southlng" value="<?php  echo ($southlng != '' ? $southlng : ''); ?>">
+
 
 <!--Radio group-->
         <div class="row row_upper_search">
@@ -1044,9 +1068,20 @@ if ($checkrole->item_name == "Company_user") {
             </div>
             <div class="col-md-4 text-cente filter_s text-center">
                 <span class="exp_ect">
-<?= Html::button('Create Expectations', ['value' => Url::to('https://www.15bells.com/backend/web/lessor-expectations/updated?id='.$expectationID.''), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+
+                <?php if($expectationID){ ?>
+<?= Html::button('Create Expectations', ['value' => Url::to(['lessor-expectations/updated','id' => $expectationID]), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+               
+<input type="hidden" id="expectid" value="<?php echo $expectationID; ?>"> </span> 
+
+                <?php }else{ ?>
+
+<?= Html::button('Create Expectations', ['value' => Url::to(['lessor-expectations/creates','userid' => $_GET['id']]), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+<input type="hidden" id="expectid"> </span> 
+
+                <?php } ?>
+
                     <!--<button onclick = "changeAccept()" class="activeLink" id="addexpectations">Add Expectations</button>-->
-                    <input type="hidden" id="expectid" value="<?php echo $expectationID; ?>"> </span> 
             </div>
             <div class="col-md-4">
                 <div class="form-group" style="margin-bottom: 2px;">
@@ -2412,7 +2447,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
         // if(shapes != ''){          
 
 
-        if (getexpectationID != '') {
+        
 
 
             if (town == '' && sector == '') {
@@ -2431,7 +2466,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                     toastr.success('Your Search Criteria has Successfully Saved', 'success');
 
 
-                    if (shapes == '') {
+                    if (type == 'blank') {
 
 
 
@@ -2575,7 +2610,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
 
                     }
 
-                    if (shapes == 'polygon') {
+                    if (type == 'polygon') {
 
 
                         var maxi = xcoordinates.reduce(function (a, b) {
@@ -2728,7 +2763,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                             },
                         });
                     }
-                    if (shapes == 'circle') {
+                    if (type == 'circle') {
 
                         var latcenter = centercoordinates.substr(0, centercoordinates.indexOf(','));
                         var longcenter = centercoordinates.substr(centercoordinates.indexOf(",") + 1);
@@ -2868,9 +2903,17 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                     }
 
 
-                    if (shapes == 'rectangle') {
+                    if (type == 'rectangle') {
 
+                        var northlat  = $('#northlat').val();
+                        var northlng  = $('#northlat').val();
+                        var southlat  = $('#northlat').val();
+                        var southlng  = $('#northlat').val();
 
+// alert(northlat);
+// alert(northlng);
+// alert(southlat);
+// alert(southlng);
                         var xc = (northlat + southlat) / 2;
                         var yc = (northlng + southlng) / 2;    // Center point
                         var xd = (northlat - southlat) / 2;
@@ -3496,11 +3539,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
 
 
             }
-        } else {
-
-            toastr.warning('Please Fill Your Expectation for this search', 'warning');
-
-        }
+            
+      
 
 
 
