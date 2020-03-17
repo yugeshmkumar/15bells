@@ -598,7 +598,12 @@ class LesseeactionController extends Controller {
            $newid =  $assignleadsalesid['employee_id'];
            $leadid =  $assignleadsalesid['leadid'];
 
-           $assignlead  =  \common\models\activemode::assignleadsalesactionfrontend($newid,$leadid,'Automatic send from frontend');
+
+           if($leadid != ''  && $newid != ''){            
+
+            $assignlead  =  \common\models\activemode::assignleadsalesactionfrontend($newid,$leadid,'Automatic send from frontend');
+
+           }
 
 
  
