@@ -427,7 +427,9 @@ if($findcs['name']=='CSR Supply'){
             // set your toolbar
             'toolbar' => [
                 ['content' =>
+                    Html::a('<i class="fa fa-user"></i>', ['user/create'], ['class' => 'btn btn-circle btn-icon-only btn-default toggler tooltips', 'data-container' => "body", 'data-placement' => "left", 'data-html' => "true", 'data-original-title' => "Add new Lead"]) . '' .
                     Html::a('<i class="fa fa-plus"></i>', ['leads/create'], ['class' => 'btn btn-circle btn-icon-only btn-default toggler tooltips', 'data-container' => "body", 'data-placement' => "left", 'data-html' => "true", 'data-original-title' => "Add new Lead"]) . '' .
+
                     '<a class="btn btn-circle btn-icon-only btn-default toggler tooltips" href="javascript:;" data-container="body" data-placement="left" data-html="true" data-original-title="Send Email">
                                             <i class="fa fa-envelope"></i>
                                         </a>
