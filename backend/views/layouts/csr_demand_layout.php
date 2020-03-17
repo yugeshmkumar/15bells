@@ -189,9 +189,9 @@ $bundle = BackendAsset::register($this);
                         ],
                        
                         [
-                            'label'=>Yii::t('backend', 'Property Messages'),
+                            'label'=>Yii::t('backend', 'Contact Us'),
                             'icon'=>'<i class="fa fa-envelope"></i>',
-                            'url'=>['/property-messages'],
+                            'url'=>['/contactus'],
                           //  'badge'=> TimelineEvent::find()->today()->count(),
                           //  'badgeBgClass'=>'label-primary',
                         ],
