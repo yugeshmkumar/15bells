@@ -839,7 +839,7 @@ $request_id = Yii::$app->db->lastInsertID;
             $conditions[] = "project_type_id = '$proptype'";
         }
         if ($areamin != '' && $areamax !='') {
-            $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax";
+            $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax";
         }
         
         if ($pricemin != '' && $pricemax !='') {
@@ -912,8 +912,8 @@ foreach($payment as $payments){
         $row_array['facing']=$payments['facing'];
         $row_array['FAR_approval']=$payments['FAR_approval'];
         $row_array['LOAN_taken']=$payments['LOAN_taken'];
-        $row_array['buildup_area']=$payments['buildup_area'];
-        $row_array['build_unit']=$payments['build_unit'];
+        $row_array['super_area']=$payments['super_area'];
+        $row_array['super_unit']=$payments['super_unit'];
         $row_array['carpet_area']=$payments['carpet_area'];
         $row_array['carpet_unit']=$payments['carpet_unit'];
         $row_array['total_floors']=$payments['total_floors'];
