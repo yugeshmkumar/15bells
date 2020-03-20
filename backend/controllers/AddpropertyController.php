@@ -360,8 +360,8 @@ public function actionShowpropdetails($id){
             
             if($model->save()){
               \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','5');
-            //    return $this->redirect(['lessor-expectations/create', 'id' => $model->id]);
-               return $this->redirect(['addproperty/additional', 'idm' => $model->id]);
+               return $this->redirect(['lessor-expectations/create', 'id' => $model->id]);
+              // return $this->redirect(['addproperty/additional', 'idm' => $model->id]);
 
 
             }else{
@@ -426,8 +426,8 @@ public function actionShowpropdetails($id){
               if($model->save()){
 
 	  \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','6');
-            //   return $this->redirect(['sellor-expectations/create', 'id' => $model->id]);
-              return $this->redirect(['addproperty/additionals', 'idm' => $model->id]);
+               return $this->redirect(['sellor-expectations/create', 'id' => $model->id]);
+             // return $this->redirect(['addproperty/additionals', 'idm' => $model->id]);
 
             }else{
 				//echo 'hi33';die;
