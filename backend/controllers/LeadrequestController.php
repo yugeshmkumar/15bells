@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Leadrequest;
+use common\models\Leads;
 use common\models\LeadsSales;
 use common\models\LeadcurrentstatusSales;
 use common\models\LeadassignmentSales;
@@ -17,37 +18,42 @@ use yii\filters\VerbFilter;
  */
 class LeadrequestController extends Controller {
 
-    public $layout = "csr_layout";
+  //  public $layout = "csr_layout";
 
 
     public function __construct($id, $module, $config = array()) {
         parent::__construct($id, $module, $config);
         $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
     
+        
         if($assigndash->item_name == "sales_demand_lessee"){
 		
 		$this->layout="sales_supply_layout";
 		
-	}if($assigndash->item_name == "sales_head"){
+	}else if($assigndash->item_name == "sales_head"){
 		
 		$this->layout="sales_layout";
 		
-	}if($assigndash->item_name == "sales_demand_buyer"){
+	}else if($assigndash->item_name == "sales_demand_buyer"){
 		
 		$this->layout="sales_demand_layout";		
 	}
-if($assigndash->item_name == "sales_supply_seller"){
+else if($assigndash->item_name == "sales_supply_seller"){
 		
 		$this->layout="sales_buying_layout";		
 	}
-if($assigndash->item_name == "sales_supply_lessor"){
+else if($assigndash->item_name == "sales_supply_lessor"){
 		
 		$this->layout="sales_leasing_layout";		
     }
-    if($assigndash->item_name == "csr_supply"){
+    else if($assigndash->item_name == "csr_supply"){
 		
 		$this->layout="csr_supply_layout";		
-	}else{
+    }else if($assigndash->item_name == "csr_demand"){
+		
+		$this->layout="csr_demand_layout";		
+	}
+    else{
 
         $this->layout="csr_head_layout";
     }
@@ -872,7 +878,7 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
         $number = $changeleadstatus->number;
         $user_id = $changeleadstatus->user_id;
 
-        $changeleadstatus1 = \common\models\SaveSearch::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
+        $changeleadstatus1 = \common\models\SaveSearches::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
 
         if ($changeleadstatus1) {
             $searchid = $changeleadstatus1->id;
@@ -937,13 +943,34 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
            // $sitevisitallot->assigned_to_id = $employee;
            // $sitevisitallot->save(false);
              }
+
+
+             
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function actionUpdate($id) {
         $id = $_GET['id'];
         $model = $this->findModel($id);
         $getcompanyid = \common\models\Leadcurrentstatus::find()->where(['leadid' => $id, 'isactive' => 1])->one();
-        $leadRequestID = \common\models\Leadrequest::find()->where(['leadRequestID' => $id])->one();
+        $leadRequestID = \common\models\Leads::find()->where(['leadRequestID' => $id])->one();
         $newModel1 = \common\models\Leadsproduct::find()->where(['id' => $getcompanyid->productid])->one();
         $newModel2 = \common\models\Company::find()->where(['id' => $leadRequestID->company])->one();
         $model2 = $this->findModel1($getcompanyid->productid);
@@ -1079,8 +1106,10 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
      * @return Leadrequest the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
-        if (($model = Leadrequest::findOne($id)) !== null) {
+    public function findModel($id) {
+        
+        if (($model = \common\models\Leads::findOne($id)) !== null) {
+            
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -1088,7 +1117,7 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
     }
 
     protected function findModel1($id) {
-        if (($model2 = \common\models\Leadsproduct::findOne($id)) !== null) {
+        if (($model2 = \common\models\Leads::findOne($id)) !== null) {
             return $model2;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -81,16 +81,65 @@ class ContactUs extends \yii\db\ActiveRecord
 	
 	public static function send_email_to_contact($role_name,$day_noon,$fullname,$email,$number,$message){
      
-		$savehere = new ContactUs();
-        $savehere->role_name = $role_name;
-        $savehere->day_noon = $day_noon;
-        $savehere->full_name = $fullname;
-        $savehere->email = $email;  
-        $savehere->contact_number = $number;     
-        $savehere->message= $message;
-        $savehere->save();
+ 
+        $employecount = \Yii::$app->db->createCommand("SELECT count(*) from company_emp where csr_name='CSR'")->queryAll();
+        $findcsr = \Yii::$app->db->createCommand("SELECT * from company_emp where csr_name='CSR' order by alloted asc limit 1")->queryOne();
+        $findcsrst = \Yii::$app->db->createCommand("SELECT * from company_emp where csr_name='CSR' order by alloted desc limit 1")->queryOne(); 
+       $count = $employecount['0']['count(*)'];
 
+        $getallot = $findcsrst['alloted'];
+        
+        
+        
        
+        if($getallot == $count){
+        
+        
+$givezero = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => '0'],'csr_name = "CSR"')->execute();            
+        
+        $findcsrs = \Yii::$app->db->createCommand("SELECT * from company_emp where csr_name='CSR' order by alloted asc limit 1")->queryOne();  
+$findcsrsd = \Yii::$app->db->createCommand("SELECT * from company_emp where csr_name='CSR' order by alloted desc limit 1")->queryOne();            
+        $getallots = $findcsrsd['alloted'];
+        $newids = $findcsrs['id'];
+        $counters = $getallots + 1;
+        
+       
+$update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counters],'id = "'.$newids.'"')->execute();
+        
+
+    $savehere = new ContactUs();
+    $savehere->role_name = $role_name;
+    $savehere->day_noon = $day_noon;
+    $savehere->full_name = $fullname;
+    $savehere->email = $email;  
+    $savehere->contact_number = $number; 
+    $savehere->comp_emp_id = $newids;     
+    $savehere->message= $message;
+
+    $savehere->save();
+
+        }else{
+        
+        $counter = $getallot + 1;
+        $newid = $findcsr['id']; 
+
+   $updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter],'id = "'.$newid.'"')->execute();
+
+
+   $savehere = new ContactUs();
+   $savehere->role_name = $role_name;
+   $savehere->day_noon = $day_noon;
+   $savehere->full_name = $fullname;
+   $savehere->email = $email;  
+   $savehere->contact_number = $number; 
+   $savehere->comp_emp_id = $newid;     
+   $savehere->message= $message;
+
+   $savehere->save();
+
+        
+
+        }
 
 
           $html = '<html>

@@ -100,11 +100,16 @@ echo GridView::widget([
 												</ul></div>';
                         } else {
 
+$findleadsales = \Yii::$app->db->createCommand("SELECT id from leads_sales where user_id=$data->user_id ")->queryOne();
+
+if(!$findleadsales){
 $findcsrs = \Yii::$app->db->createCommand("SELECT assigned_toID from leadassignment where leadid=$data->id ")->queryOne();
 $cpeployeid = $findcsrs['assigned_toID'];
 $findcs = \Yii::$app->db->createCommand("SELECT name from company_emp where id=$cpeployeid ")->queryOne();
 
 if($findcs['name']=='CSR Supply'){
+
+    
      if($userpf && $userprop){
                             return '<div class="btn-group">
                                             <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
@@ -134,7 +139,7 @@ if($findcs['name']=='CSR Supply'){
            }
      }else{
          
-         if($userpf && $my_search){
+         if($userpf && $my_search || $userprop){
          
                             return '<div class="btn-group">
                                             <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
@@ -164,6 +169,19 @@ if($findcs['name']=='CSR Supply'){
 												</ul></div>';
          }
                             }
+
+                        }else{
+                            return '<div class="btn-group"><a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><i class="fa fa-list"></i>
+                                                <span class="fa fa-angle-down"> </span>
+                                            </a><ul class="dropdown-menu pull-right">
+											
+                                                                                        
+                                                  <li>
+                                                  Already sent to sales
+											</li>
+											
+												</ul></div>';
+                        }
                         
                     }
                     }else{

@@ -405,7 +405,7 @@ public function actionPostlogin(){
 		  $model->isMinor = $_POST['isMinor'];
 		 
 		 $request = Yii::$app->request->post(); if(!empty($request)){ // put all request data  to a variable
-			//echo '<pre>';print_r($request);die;
+			// echo '<pre>';print_r($request);die;
            $modelreq=$request['Myprofile'];
 		   $title=$modelreq['title'];
 		   $first_name=$modelreq['first_name'];
@@ -488,10 +488,10 @@ public function actionPostlogin(){
 		$getuseraddress = \common\models\UserAddressconfig::find()->where(['userid'=>$useridtwo ,'isdefault'=>1])->one();
 		
        //update status
-			 \common\models\activemode::insert_to_my_profile_table($useridtwo,$title,$first_name,$middlename,$last_name,$getUserEmailconfig->emailid,                                                          
+			 \common\models\activemode::insert_to_my_profile_tables($useridtwo,$title,$first_name,$middlename,$last_name,$getUserEmailconfig->emailid,                                                          
 			 $getUserPhoneconfig->phoneid,$dob,$gender,$nationality,$hide,$martial_status,$minor,"","",$pan_card_no,$adhar_card_no,$corr_country,$corr_state,$corr_city,$corr_pincode,$country,$state,$city,$pincode,$corressaddress,$permanaddress,$countryverificatn,$passportno,$ocinumber,$pionumber);
 			 \common\models\activemode::update_my_profile_progress_status($useridtwo,"my_profile",'100','3');
-			  \common\models\Myprofile::addnewleads_sales($first_name,$useridtwo,$emailnumbersprim,$phonecodetypeprim,$phonenumbersprim,$corr_city);
+			//   \common\models\Myprofile::addnewleads_sales($first_name,$useridtwo,$emailnumbersprim,$phonecodetypeprim,$phonenumbersprim,$corr_city);
 			  Yii::$app->session->setFlash('alert', [
                 'options' => ['class'=>'alert-success'],
                 'body' => Yii::t('frontend', 'Lead profile has been successfully saved')

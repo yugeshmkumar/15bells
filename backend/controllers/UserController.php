@@ -66,7 +66,9 @@ class UserController extends Controller
         $model = new UserForm();
         $model->setScenario('create');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+
+           // echo Yii::$app->request->urlReferrer;die;
+            return $this->redirect(['leads/create']);
         }
 
         return $this->render('create', [

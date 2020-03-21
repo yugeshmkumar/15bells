@@ -23,8 +23,8 @@ use common\models\User;
 
 	<?php
 	$arrCountries = \common\models\User::find()->all();
-	//echo '<pre>';print_r($arrCountries);die;
-	$Countries = ArrayHelper::map($arrCountries ,'id','email');
+	// echo '<pre>';print_r($arrCountries);die;
+	$Countries = ArrayHelper::map($arrCountries ,'id','username');
 
 	?>
    
@@ -40,7 +40,7 @@ use common\models\User;
      </div>
                        
 
-    <?php echo $form->field($model, 'email')->hiddenInput(['rows' => 3])->label(false); ?>
+    <?php echo $form->field($model, 'email')->textInput(['rows' => 3]); ?>
 
     <?php echo $form->field($model, 'location')->textarea(['rows' => 3]) ?>
 

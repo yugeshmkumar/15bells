@@ -103,6 +103,48 @@ class RequestSiteVisitbin extends \yii\db\ActiveRecord
       }
 
 
+
+      public static function getsalesidshortlist($request_id,$user_id,$role_id,$propid,$newroleid){
+
+        //echo $request_id .','.$user_id.','.$role_id .','.$propid .','.$newroleid;die;
+       
+        $picleadID = LeadsSales::find()->where(['user_id' => $user_id])->andwhere(['role_id'=>$role_id])->one();
+        $sales_ids = LeadsSales::find()->where(['user_id' => $propid])->andwhere(['role_id'=>$newroleid])->one();
+
+         if($picleadID){
+       $leadid = $picleadID->id;
+           $getassignedID = LeadassignmentSales::find()->where(['leadid' => $leadid])->one();
+           if($getassignedID){
+  
+            $assigned_to_id = $getassignedID->assigned_toID;
+             
+            if($sales_ids){
+                $newleadid = $sales_ids->id;
+                $getassignedIDnew = LeadassignmentSales::find()->where(['leadid' => $newleadid])->one();
+                $assigned_to_idnew = $getassignedIDnew->assigned_toID; 
+           
+              $arrfindallstatus = \common\models\Shortlistproperty::find()->where(['id'=>$request_id])->one();
+              $arrfindallstatus->assigned_id = $assigned_to_id;
+              //$arrfindallstatus->lead_id = $leadid;
+              $arrfindallstatus->sales_id = $assigned_to_idnew;
+              $arrfindallstatus->save(false);
+        }else{
+
+            $arrfindallstatus = \common\models\Shortlistproperty::find()->where(['id'=>$request_id])->one();
+              $arrfindallstatus->assigned_id = $assigned_to_id;
+             // $arrfindallstatus->lead_id = $leadid;              
+              $arrfindallstatus->save(false);
+        }
+                         
+                  }
+          }
+  
+  
+  
+  
+      }
+
+
       public static function getsalesidreqvisit($request_id,$user_id,$role_id){
 
         $picleadID = LeadsSales::find()->where(['user_id' => $user_id])->andwhere(['role_id'=>$role_id])->one();
