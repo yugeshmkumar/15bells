@@ -2265,6 +2265,19 @@ input.invalid {
 }
 /* For responsivness */
 @media(max-width:767px) {
+	.ucb_brnd_100{
+		width:100%;
+	}
+	.property_back{
+		padding: 6px 12px !important;
+		font-size:16px !important;
+	}
+	.sliding_menu {
+		list-style: none;
+		padding-left: 0;
+		height: 400px;
+		overflow-y: scroll;
+	} 
 	.office_form{
 		height:130vh !important;
 	}
@@ -2287,7 +2300,7 @@ input.invalid {
 		padding:7px 20px;
 	}
 	.property_id{
-		font-size:15px;
+		font-size:15px !important;
 	}
 	.property_names{
 		font-size:14px;
@@ -2304,7 +2317,7 @@ input.invalid {
 		bottom:-160px;
 	}
 	.font_call{
-		font-size:18px !important;
+		font-size:16px !important;
 	}
 	.featured_links{
 		padding:0;
@@ -2573,7 +2586,7 @@ input.invalid {
     padding: 0px 10px 0 0px!important;
 	}
 	.location_drop{
-		font-size:18px !important;
+		font-size:16px !important;
 		margin-right:10px;
 	}
 	.svg_drop{
@@ -3678,8 +3691,12 @@ float:left;
 
 .accordion_container {
 	width: 100%;
+	float:left;
   }
-  
+  .apply_buttn_sec{
+	width: 100%;
+	float:left;
+  }
   .accordion_head {
 	background-color: #ffffff;
 	color: #c4984f;
