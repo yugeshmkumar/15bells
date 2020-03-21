@@ -389,7 +389,7 @@ if(!isset($_SESSION))
 							</div>
 				  </div>
                 </div>
-                <div class="col-md-12 text-right" style="padding:20px 0;">
+                <div class="col-md-12 text-right apply_buttn_sec" style="padding:20px 0;">
                     <button class="btn btn-default call_butn" onclick="applyfilters()">Apply</button>
 					</div>
 		</div>
