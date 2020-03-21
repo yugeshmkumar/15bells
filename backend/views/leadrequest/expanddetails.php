@@ -100,7 +100,7 @@ $rbac = \common\models\RbacAuthAssignment::find()->where(['user_id'=>$assgnid])-
 				
 				<?php $userexp = \common\models\activemode::checkprofilestats($findleadrequest->user_id,"my_expectations"); ?>
 				<?php $usersearch = \common\models\activemode::checkprofilestats($findleadrequest->user_id,"my_search"); ?>
-               <?php if($rbac->item_name == "csr_demand"){ ?>
+               <?php if($rolesid == 4 || $rolesid == 7){ ?>
 				<tr>
                    <td >4</td>
 					<td><?php echo \common\models\User::findOne($assgnid)->email ?></td>
@@ -135,7 +135,7 @@ $rbac = \common\models\RbacAuthAssignment::find()->where(['user_id'=>$assgnid])-
                                         </td>
                 </tr> 
 			   <?php } ?>
-			   <?php if($rbac->item_name == "csr_supply"){ ?>
+			   <?php if($rolesid == 5 || $rolesid == 6){ ?>
 				<tr>
                     <td >4</td>
                     <?php $add_property = \common\models\activemode::checkprofilestats($findleadrequest->user_id,"add_property"); ?>

@@ -797,10 +797,10 @@ $this->SendHTMLMail($to,$subject,$content);
 		 $employeedetails = \common\models\Employee::find()->where(['idEmployee'=>$employee])->one();
 		 $subject="A new lead has been assigned to you.";	
 
-$content=" <table width='52%' border='0' cellspacing='0' cellpadding='0'> <tr> <td width='48%'><a href='http://www.encriss.com' title='15Bells'>
-    <img src='../web/img/logo.png' width='96' height='85' longdesc='http://www.encriss.com' /></a></td></tr> </table>
+$content=" <table width='52%' border='0' cellspacing='0' cellpadding='0'> <tr> <td width='48%'><a href='http://www.15bells.com' title='15Bells'>
+    <img src='../web/img/logo.png' width='96' height='85' longdesc='http://www.15bells.com' /></a></td></tr> </table>
 
-<br><br> <div align='center'> <table width='52%' border='0' cellspacing='0' cellpadding='0'> <tr> <td width='81%'>Dear info@encriss.com ,<br> <p>
+<br><br> <div align='center'> <table width='52%' border='0' cellspacing='0' cellpadding='0'> <tr> <td width='81%'>Dear info@15bells.com ,<br> <p>
 A new lead has been assigned to you. Kindly follow up as soon as possible.
 </p>  </td> </tr> <tr> <td>&nbsp;</td> </tr> </table> </div> <br><br>
   
@@ -809,9 +809,12 @@ A new lead has been assigned to you. Kindly follow up as soon as possible.
 </td> </tr> <tr> <td>&nbsp;</td> </tr> </table> </div> <br><br>
  ";
 
-$to="info@encriss.com";
+$to="info@15bells.com";
 $this->SendHTMLMail($to,$subject,$content);	
 	 }
+
+
+	 
     public function actionUpdate($id)
     {
 		$id = $_GET['id'];

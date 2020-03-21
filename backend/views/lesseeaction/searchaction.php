@@ -12,34 +12,44 @@ use common\models\MyExpectationsajaxSearch;
 
 $userid = $_GET['id'];
 $expectID = $_GET['e_id'];
-$getSaveID1 = \common\models\SaveSearch::find()->where(['id' => $expectID])->one();
-$newexpectation_id = $getSaveID1->expectation_id;
-$getSaveID = \common\models\SaveSearch::find()->where(['expectation_id' => $newexpectation_id])->orderBy([
+// $getSaveID1 = \common\models\SaveSearch::find()->where(['id' => $expectID])->one();
+// $newexpectation_id = $getSaveID1->expectation_id;
+$getSaveID = \common\models\SaveSearches::find()->where(['id' => $expectID])->orderBy([
     'id' => SORT_DESC,
 ])->limit(1)->one();
+
+if($getSaveID->expectation_id){
+
+ $expectationID = $getSaveID->expectation_id;
+
+}else{
+
+    $expectationID = '';
+
+}
  
 if($getSaveID){
  $savesearchid = $getSaveID->id;
-if($getSaveID->type == ''){
+if($getSaveID->type == '' || $getSaveID->type == 'blank' || $getSaveID->type == NULL){
     
     $getlocality = $getSaveID->location_name ? $getSaveID->location_name : '';
-    $expectationID = $getSaveID->expectation_id;
+    
     $newtown = $getSaveID->town;
     $newsector = $getSaveID->sector;
     $newcountry = $getSaveID->country;
     $newlattitude = $getSaveID->lat;
-    $newlongitude = $getSaveID->long;
+    $newlongitude = $getSaveID->lng;
      $type = $getSaveID->type;
      $geometry = $getSaveID->geometry ? $getSaveID->geometry : (int)('');
      $radius =$getSaveID->radius ? $getSaveID->radius : '';
 }else{
     $getlocality = $getSaveID->location_name ? $getSaveID->location_name : '';
-    $expectationID = $getSaveID->expectation_id;
+    
     $newtown = $getSaveID->town;
     $newsector = $getSaveID->sector;
     $newcountry = $getSaveID->country;
     $newlattitude = $getSaveID->lat;
-    $newlongitude = $getSaveID->long;
+    $newlongitude = $getSaveID->lng;
      $type = $getSaveID->type;
     if($type == 'polygon'){
 
@@ -52,13 +62,20 @@ if($getSaveID->type == ''){
     }
     else if($type == 'rectangle'){
 
-        $geometry =$getSaveID->geometry;
+     $geometry =$getSaveID->geometry;
+     $prints =  json_decode($geometry);
+     $northlat  = $prints->{'north'};
+     $southlat  = $prints->{'south'};
+     $northlng  = $prints->{'east'};
+     $southlng  = $prints->{'west'};
        
     }
      
     $radius = $getSaveID->radius ? $getSaveID->radius : 0;
 }
 }
+
+
 
 
 ?>
@@ -1004,6 +1021,13 @@ if($getSaveID->type == ''){
 		</div>
 </div>
 
+<input type="hidden" id="northlat" value="<?php  echo ($northlat != '' ? $northlat : ''); ?>">
+<input type="hidden" id="southlat" value="<?php  echo ($southlat != '' ? $southlat : ''); ?>">
+
+<input type="hidden" id="northlng" value="<?php  echo ($northlng != '' ? $northlng : ''); ?>">
+
+<input type="hidden" id="southlng" value="<?php  echo ($southlng != '' ? $southlng : ''); ?>">
+
 
 <!--Radio group-->
         <div class="row row_upper_search">
@@ -1044,9 +1068,20 @@ if ($checkrole->item_name == "Company_user") {
             </div>
             <div class="col-md-4 text-cente filter_s text-center">
                 <span class="exp_ect">
-<?= Html::button('Create Expectations', ['value' => Url::to('https://www.15bells.com/backend/web/lessor-expectations/updated?id='.$expectationID.''), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+
+                <?php if($expectationID){ ?>
+<?= Html::button('Create Expectations', ['value' => Url::to(['lessor-expectations/updated','id' => $expectationID]), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+               
+<input type="hidden" id="expectid" value="<?php echo $expectationID; ?>"> </span> 
+
+                <?php }else{ ?>
+
+<?= Html::button('Create Expectations', ['value' => Url::to(['lessor-expectations/creates','userid' => $_GET['id']]), 'class' => 'btn btn-success expectation_div_button', 'id' => 'modalButton']) ?>
+<input type="hidden" id="expectid"> </span> 
+
+                <?php } ?>
+
                     <!--<button onclick = "changeAccept()" class="activeLink" id="addexpectations">Add Expectations</button>-->
-                    <input type="hidden" id="expectid" value="<?php echo $expectationID; ?>"> </span> 
             </div>
             <div class="col-md-4">
                 <div class="form-group" style="margin-bottom: 2px;">
@@ -1904,7 +1939,6 @@ var whichserch ='';
 
     function getpolymynew(){
 
-  
   $('#getprop').html(''); 
 var savesearchid =  $('#savesearchid').val();
 
@@ -1926,6 +1960,154 @@ var savesearchid =  $('#savesearchid').val();
                 //}, 2000);
                 scrollTop: $(window).scrollTop() + 400
             }, 1000);
+
+            if (type == 'blank') {
+
+
+
+ndata = {whichserch:whichserch,location: getsearchlocation, area: savesearchid, town: town, sector: sector, areamin: areamin, areamax: areamax, pricemin: pricemin, pricemax: pricemax, proptype: proptype, propbid: propbid,food:food,foodexpectid:foodexpectid,whichserch:whichserch};
+
+$.ajax({
+    url: 'withoutshapebackend',
+    data: ndata,
+    success: function (data) {
+
+       
+        $('#search-pro').css("display", "block");
+        var obj = $.parseJSON(data);
+       // alert(obj.fruits);
+        $(".serch_rslt").show();
+        var countprop = Object.keys(obj.animals).length;
+        $('#countprop').html(countprop);
+
+        bindButtonClick(obj.animals);
+        // filterButtonClick(obj);
+
+        $.each(obj.animals, function (index) {
+
+
+            if (this.latitude != '')
+            {
+                var letter = String.fromCharCode("A".charCodeAt(0) + index);
+                var pos = new google.maps.LatLng(this.latitude, this.longitude);
+
+                new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    icon: "http://maps.google.com/mapfiles/marker" + letter + ".png",
+                    animation: google.maps.Animation.DROP
+
+                });
+                google.maps.event.addListenerOnce(map, 'idle', function () {
+                                    google.maps.event.trigger(map, 'resize');
+                                    });
+            }
+            else
+            {
+                alert('Server Error');
+            }
+            google.maps.event.addListener(map, 'zoom_changed', function () {
+                if (map.getZoom() > minZoomLevel)
+                    map.setZoom(minZoomLevel);
+            });
+            var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+            var imaged = $.trim(this.featured_image);
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar - 1, content.length - showChar);
+            var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
+            var haritid = 273 * 179 - this.id;
+            var propsid = 'PR' + haritid;
+            var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
+
+
+            $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
+                    '<div class="col-md-12 property_main_div">' +
+                    '<div class="col-md-12 property_main_div_1" style="height:60px">' +
+                    '<a onclick="viewproperty1(' + this.id + ')" href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '" target="_blank"><div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' + this.typename + ' availabale for sale in ' + this.city + '&nbsp; &nbsp; (ID - ' + propsid + ') <span style="color:brown;">&nbsp;('+ this.percent +')</span></p></div></a>' +
+                    ((this.countyview > 0 ? '<div class="col-md-3 col-sm-3 col-xs-3"> <i class="fa fa-eye" aria-hidden="true"></i></div>' : '')) +
+                    '</div>' +
+                    '<div class="col-md-12 property_main_div_2">' +
+                    '<div class="row">' +
+                    '<div class="col-md-6 property_main_div_2_inner_1">' +
+                    '<div class="img_prop"><img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/'; ?>' + ((this.featured_image == null) ? 'not.jpg' : imaged) + '" class="img-responsive"></div>' +
+                    '</div>' +
+                    '<div class="col-md-6 property_main_div_2_inner_2">' +
+                    '<p style="color: #ffeb3b;"><b>Locality :</b> ' + this.locality + '</p>' +
+                    '<p style="color: #ffba00;"><b>Highlights:</b>  On Rent / ' + this.age_of_property + ' Years Old' + ((this.furnished_status == '') ? '' : '/ ' + this.furnished_status) + ((this.property_on_floor == null) ? '' : ' / ' + this.property_on_floor + 'th Floor') + ((this.total_floors == null) ? '' : '(out of ' + this.total_floors + ')') + '</p>' +
+                    '<p><b>Description:</b> ' + html + '</p>' +
+                    '<a class="btn btn-default" onclick="viewproperty(' + this.id + ')" href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '" target="_blank" role="button">More Details <i class="fa fa-caret-right" aria-hidden="true"></i></a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-12 property_main_div_2_inner_p">' +
+                    '<ul class="list_li">' +
+                    '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
+                    '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
+                    // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
+                    // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
+                    '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
+                    '</ul>' +
+                    '</div>' +
+                    '<div class="col-md-12 property_main_div_3">' +
+                    '<div class="col-md-5 text-center property_main_div_3_inner1">' +
+                    ((this.request_for == 'Instant') ?
+                            '<a href="javascript:void(0)" onclick="directitnow(' + this.id + ')" class="appr_cursr">' +
+                            'Instant Approach</a>'
+                            :
+                            ((this.request_for == 'bid') ?
+                                    '<a href="javascript:void(0)" onclick="bititnow(' + this.id + ')">' +
+                                    'Bid it Now</a>'
+                                    : ''
+                                    )) +
+                    '</div>' +
+                    '<div class="col-md-3 text-center property_main_div_3_inner1">'+
+                '<a href="javascript:void(0)" id="' + this.id + '" onclick="getchecki(this.id)"><i style="padding-right: 5px;"class="fa fa-thumbs-o-up" aria-hidden="true"></i>'+
+                 (this.countyshortlist > 0 ? 'Shorlisted': 'Shorlist') +
+                 '</a>'+
+                '</div>'+
+                    '<div class="col-md-4 text-center property_main_div_3_inner1">' +
+                    '<a href="javascript:void(0)" id="' + this.id + '" onclick="getfreevisit(this.id)">' +
+                    (this.county > 0 ? 'Site Visited' : 'Book Site Visit') +
+                    '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>');
+
+        });
+
+        showPage(1);
+        var i;
+        var totals = Math.ceil(countprop / 6);
+
+        var dynamic = "";
+        for (i = 1; i <= totals; i++) {
+
+            dynamic += '<li><a href="javascript:void(0)">' + i + '</a></li>';
+
+        }
+
+
+        $('#paginater').html('');
+        $('#paginater').html('<ol id="pagin" class="paginclass">' + dynamic + '</ol>');
+        $("#pagin li a").first().addClass("current");
+        $("#pagin li a").click(function () {
+
+            $("#pagin li a").removeClass("current");
+            $(this).addClass("current");
+
+            showPage(parseInt($(this).text()))
+        });
+
+
+    },
+});
+
+
+}
     if(type == 'polygon'){
 
 if(pathstr){
@@ -1967,7 +2149,7 @@ if(pathstr){
 
                                              count1 += 1; 
                                              
-                                           var  content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+                                             var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                            
                                             var imaged = $.trim(this.featured_image);
                                             var c = content.substr(0, showChar);
@@ -1975,7 +2157,9 @@ if(pathstr){
                                             var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                       var haritid = 273*179-this.id;
                                             var propsid = 'PR'+ haritid;
-
+                                            var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                          
                         $('#getprop').append('<div class="col-md-6 serch_row chirag">'+
@@ -2001,7 +2185,8 @@ if(pathstr){
                         '<div class="col-md-12 property_main_div_2_inner_p">'+
                         '<ul class="list_li">'+
                         '<li><p>₹  ' + this.expected_price + ' </p></li>'+
-                        '<li><i class="fa fa-building" aria-hidden="true"></i>  '+ ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) +' sqft</li>'+
+                        '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                          ((this.undercategory == 'Residential') ?
                                                     '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>' +
                                                     ' <li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'  : '') +
@@ -2103,7 +2288,7 @@ ndata = {whichserch:whichserch,location:getsearchlocation,center:centercoordinat
 
                              count1 += 1; 
                              
-                           var  content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+                             var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                            
                             var imaged = $.trim(this.featured_image);
                             var c = content.substr(0, showChar);
@@ -2111,7 +2296,9 @@ ndata = {whichserch:whichserch,location:getsearchlocation,center:centercoordinat
                             var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
       var haritid = 273*179-this.id;
                             var propsid = 'PR'+ haritid;
-
+                            var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                  
         $('#getprop').append('<div class="col-md-6 serch_row chirag">'+
@@ -2137,7 +2324,8 @@ ndata = {whichserch:whichserch,location:getsearchlocation,center:centercoordinat
         '<div class="col-md-12 property_main_div_2_inner_p">'+
         '<ul class="list_li">'+
         '<li><p>₹  ' + this.expected_price + ' </p></li>'+
-        '<li><i class="fa fa-building" aria-hidden="true"></i>  '+ ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) +' sqft</li>'+
+        '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
          ((this.undercategory == 'Residential') ?
                                     '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>' +
                                     ' <li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'  : '') +
@@ -2237,7 +2425,7 @@ ndata = {whichserch:whichserch,northlat:northlat,southlat:southlat,northlng:nort
 
                                             count1 += 1; 
                                            
-                                          var  content =  'A very good '+ this.typename +' availabale for sale in '+ this.city + ' with Plot area '+ this.total_plot_area +' sqft, Superbuiltup '+ this.buildup_area +' sqft, It is a '+ this.furnished_status +' property suitable for any kind of '+ this.typename +', For more details or Site Visit , please Contact Us.. ';
+                                            var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                           
                                            var imaged = $.trim(this.featured_image);
                                            var c = content.substr(0, showChar);
@@ -2245,7 +2433,9 @@ ndata = {whichserch:whichserch,northlat:northlat,southlat:southlat,northlng:nort
                                            var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_'+ this.id +'" class="morelinks ">' + moretext + '</a></span>';
                      var haritid = 273*179-this.id;
                                            var propsid = 'PR'+ haritid;
-
+                                           var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                           
                        $('#getprop').append('<div class="col-md-6 serch_row chirag">'+
@@ -2271,7 +2461,8 @@ ndata = {whichserch:whichserch,northlat:northlat,southlat:southlat,northlng:nort
                        '<div class="col-md-12 property_main_div_2_inner_p">'+
                        '<ul class="list_li">'+
                        '<li><p>₹  ' + this.expected_price + ' </p></li>'+
-                       '<li><i class="fa fa-building" aria-hidden="true"></i>  '+ ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) +' sqft</li>'+
+                       '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                         ((this.undercategory == 'Residential') ?
                                                    '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>' +
                                                    ' <li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'  : '') +
@@ -2348,6 +2539,38 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
 }
 
 
+function changeNumberFormat(number, decimals, recursiveCall) {
+
+const decimalPoints = decimals || 2;
+const noOfLakhs = number / 100000;
+let displayStr;
+let isPlural;
+
+// Rounds off digits to decimalPoints decimal places
+function roundOf(integer) {
+return +integer.toLocaleString(undefined, {
+minimumFractionDigits: decimalPoints,
+maximumFractionDigits: decimalPoints,
+});
+}
+
+if (noOfLakhs >= 1 && noOfLakhs <= 99) {
+const lakhs = roundOf(noOfLakhs);
+isPlural = lakhs > 1 && !recursiveCall;
+displayStr = `${lakhs} Lakh${isPlural ? 's' : ''}`;
+} else if (noOfLakhs >= 100) {
+const crores = roundOf(noOfLakhs / 100);
+const crorePrefix = crores >= 100000 ? changeNumberFormat(crores, decimals, true) : crores;
+isPlural = crores > 1 && !recursiveCall;
+displayStr = `${crorePrefix} Crore${isPlural ? 's' : ''}`;
+} else {
+displayStr = number;
+}
+
+return displayStr;
+}
+
+
     function getpolymy() {
 
 
@@ -2412,7 +2635,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
         // if(shapes != ''){          
 
 
-        if (getexpectationID != '') {
+        
 
 
             if (town == '' && sector == '') {
@@ -2431,7 +2654,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                     toastr.success('Your Search Criteria has Successfully Saved', 'success');
 
 
-                    if (shapes == '') {
+                    if (type == 'blank') {
 
 
 
@@ -2480,14 +2703,16 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                         if (map.getZoom() > minZoomLevel)
                                             map.setZoom(minZoomLevel);
                                     });
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
-
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
@@ -2511,7 +2736,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
                                             '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2575,7 +2801,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
 
                     }
 
-                    if (shapes == 'polygon') {
+                    if (type == 'polygon') {
 
 
                         var maxi = xcoordinates.reduce(function (a, b) {
@@ -2637,14 +2863,16 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                         if (map.getZoom() > minZoomLevel)
                                             map.setZoom(minZoomLevel);
                                     });
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
-
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
@@ -2668,7 +2896,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
                                             '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2728,7 +2957,7 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                             },
                         });
                     }
-                    if (shapes == 'circle') {
+                    if (type == 'circle') {
 
                         var latcenter = centercoordinates.substr(0, centercoordinates.indexOf(','));
                         var longcenter = centercoordinates.substr(centercoordinates.indexOf(",") + 1);
@@ -2775,14 +3004,16 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             map.setZoom(minZoomLevel);
                                     });
 
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
-
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
@@ -2806,7 +3037,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
                                             '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -2868,9 +3100,17 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                     }
 
 
-                    if (shapes == 'rectangle') {
+                    if (type == 'rectangle') {
 
+                        var northlat  = $('#northlat').val();
+                        var northlng  = $('#northlat').val();
+                        var southlat  = $('#northlat').val();
+                        var southlng  = $('#northlat').val();
 
+// alert(northlat);
+// alert(northlng);
+// alert(southlat);
+// alert(southlng);
                         var xc = (northlat + southlat) / 2;
                         var yc = (northlng + southlng) / 2;    // Center point
                         var xd = (northlat - southlat) / 2;
@@ -2948,14 +3188,16 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             map.setZoom(minZoomLevel);
                                     });
 
-                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Plot area ' + this.total_plot_area + ' sqft, Superbuiltup ' + this.buildup_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
+                                    var content = 'A very good ' + this.typename + ' availabale for rent/lease in ' + this.city + ' with Super area ' + this.super_area + ' sqft, Carpet ' + this.carpet_area + ' sqft, It is a ' + this.furnished_status + ' property suitable for any kind of ' + this.typename + ', For more details or Site Visit , please Contact Us..';
                                     var imaged = $.trim(this.featured_image);
                                     var c = content.substr(0, showChar);
                                     var h = content.substr(showChar - 1, content.length - showChar);
                                     var html = '<span onclick="propdetails(' + this.id + ')">' + c + '</span><span class="moreellipses" style="display:inline">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span onclick="propdetails(' + this.id + ')" class="ajamore" style="display:none">' + h + '</span>&nbsp;&nbsp;<a onclick="getmoredata(this.id)" href="javascript:;" id="morelinks_' + this.id + '" class="morelinks ">' + moretext + '</a></span>';
                                     var haritid = 273 * 179 - this.id;
                                     var propsid = 'PR' + haritid;
-
+                                    var commaNum = this.asking_rental_price;
+                                    var totalprice = commaNum * this.super_area;
+                                    var gettotalprice = changeNumberFormat(totalprice);
 
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
@@ -2979,7 +3221,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
                                             '<div class="col-md-12 property_main_div_2_inner_p">' +
                                             '<ul class="list_li">' +
                                             '<li><p>₹  ' + this.asking_rental_price + ' </p></li>' +
-                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.total_plot_area == null) ? this.buildup_area : this.total_plot_area) + ' sqft</li>' +
+                                            '<li><p>₹  ' + gettotalprice + ' </p></li>' +
+                                            '<li><i class="fa fa-building" aria-hidden="true"></i>  ' + ((this.super_area == null) ? this.carpet_area : this.super_area) + ' sqft</li>' +
                                             // '<li><i class="fa fa-bed" aria-hidden="true"></i> '+ this.bedrooms +'</li>'+
                                             // '<li><i class="fa fa-bath" aria-hidden="true"></i> '+ this.bathrooms +'</li>'+
                                             '<li><i class="fa fa-users" aria-hidden="true"></i> ' + this.county1 + '</li>' +
@@ -3496,11 +3739,8 @@ toastr.warning('You have not changed any coordinates in your shape', 'warning');
 
 
             }
-        } else {
-
-            toastr.warning('Please Fill Your Expectation for this search', 'warning');
-
-        }
+            
+      
 
 
 
@@ -3920,7 +4160,7 @@ function getPolygonCoords() {
             map: map
         });
 
-         drawingManager.setMap(null);
+         drawingManager.setMap(map);
 
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
             //~ if (e.type != google.maps.drawing.OverlayType.MARKER) {

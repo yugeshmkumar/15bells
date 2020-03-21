@@ -570,12 +570,12 @@ if(isset($_GET['id'])){
                 </div>
             </div> -->
             
-            <div class="row bordr_bottm">
+            <!-- <div class="row bordr_bottm">
                 <div class="col-md-6 bordr_right">
                     <div class="form-group">
                         <label class="control-label">Rent</label>
 
-                        <?= $form->field($model, 'rent')->textInput()->input('text', ['placeholder' => "In Rs."])->label(false) ?>
+                        <?//= //$form->field($model, 'rent')->textInput()->input('text', ['placeholder' => "In Rs."])->label(false) ?>
 
                     </div>                                
                 </div> 
@@ -583,10 +583,10 @@ if(isset($_GET['id'])){
                     <div class="form-group">
                         <label class="control-label">Rent Unit</label>
 
-                        <?= $form->field($model, 'rent_unit')->dropDownList([ 'per_sq_ft' => 'Per sq ft', 'per_sq_mtr' => 'Per sq mtr', 'per_sq_yards' => 'Per sq yards',], ['prompt' => 'Select'])->label(false) ?>
+                        <?//= //$form->field($model, 'rent_unit')->dropDownList([ 'per_sq_ft' => 'Per sq ft', 'per_sq_mtr' => 'Per sq mtr', 'per_sq_yards' => 'Per sq yards',], ['prompt' => 'Select'])->label(false) ?>
 
                     </div>                                
-                </div> 
+                </div>  -->
 				<div class="col-md-3 pad_fild">
 					<label class="control-label"> </label>
 						<!--<label class="checkbox-inline"><input type="checkbox" value="">Negotiable</label>-->

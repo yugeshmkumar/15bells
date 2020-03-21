@@ -1,8 +1,18 @@
 <?php
+
+
 namespace common\models;
+
+use Yii;
 
 use yii\db\ActiveRecord;
 use common\models\Banknew;
+use common\models\Leadrequest;
+use common\models\Leads;
+use common\models\LeadsSales;
+use common\models\LeadcurrentstatusSales;
+use common\models\LeadassignmentSales;
+
 ?>
 <?php 
 
@@ -407,11 +417,168 @@ public static function update_my_profile_progress_status($userid,$process_name,$
 		 $myprofilestatus->save();
 		 
 }}
+
+
+public static function assignsaleslead($userid){
+	
+	$findleadrequest = \common\models\Leads::find()->where(['user_id' => $userid])->one();
+	$leadid = $findleadrequest->id;
+	 $location = $findleadrequest->location;
+	$role_id = $findleadrequest->role_id;
+	$user_id = $findleadrequest->user_id;
+
+	if ($role_id == '7') {
+		$salestype = 'sales demand buyer';
+	} else if ($role_id == '4') {
+		$salestype = 'sales demand lessee';
+	} else {
+		$salestype = 'sales head';
+	}
+	$employecount = \Yii::$app->db->createCommand("SELECT count(*) from company_emp where name='$salestype' and location='$location'")->queryAll();
+	$findcsr = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted asc limit 1")->queryOne();
+	$findcsrst = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted desc limit 1")->queryOne();
+	$count = $employecount['0']['count(*)'];
+
+	$getallot = $findcsrst['alloted'];
+
+
+
+
+	if ($getallot == $count) {
+
+
+		$givezero = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => '0'], 'name = "' . $salestype . '" AND location="' . $location . '"')->execute();
+
+		$findcsrs = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted asc limit 1")->queryOne();
+		$findcsrsd = \Yii::$app->db->createCommand("SELECT * from company_emp where name='$salestype' and location='$location' order by alloted desc limit 1")->queryOne();
+		$getallots = $findcsrsd['alloted'];
+		$newid = $findcsrs['id'];
+		$counters = $getallots + 1;
+
+
+		$update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counters], 'id = "' . $newid . '"')->execute();
+	} else {
+
+
+
+		$counter = $getallot + 1;
+		$newid = $findcsr['id'];
+
+		$updates = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $counter], 'id = "' . $newid . '"')->execute();
+	}
+
+
+	return (['employee_id'=>$newid,'leadid'=>$leadid]);
+
+
+}
+
+
+
+
+
+public static function assignleadsalesactionfrontend($employee,$leadid,$meaasge) {
+
+	// $leadid =  $_GET['leadid'];
+	// $employee =  $_GET['employee'];
+	// $meaasge =  $_GET['meaasge'];
+	   $changeleadstatus = \common\models\Leads::find()->where(['id' => $leadid])->one();
+
+	  
+	   $changeleadstatus->move_to_alloted = 3;
+	   $changeleadstatus->save();
+
+	   $user_id = $changeleadstatus->user_id;
+	   $email = $changeleadstatus->email;
+	   $location = $changeleadstatus->location;
+	   $role_id = $changeleadstatus->role_id;
+	   $name = $changeleadstatus->name;
+	   $number = $changeleadstatus->number;
+	   $user_id = $changeleadstatus->user_id;
+
+	   $changeleadstatus1 = \common\models\SaveSearches::find()->where(['user_id' => $user_id])->orderBy(['id' => SORT_DESC])->limit(1)->one();
+
+	   if ($changeleadstatus1) {
+		   $searchid = $changeleadstatus1->id;
+	   } else {
+		   $searchid = 0;
+	   }
+
+
+	   $checkleadsalesid = \common\models\LeadsSales::find()->where(['user_id' => $user_id])->one();
+
+	   if(!$checkleadsalesid){
+		   
+	   $Assignleadtoemployee1 = new LeadsSales;
+	   $Assignleadtoemployee1->user_id = $user_id;
+	   $Assignleadtoemployee1->lead_id = $leadid;
+	   $Assignleadtoemployee1->email = $email;
+	   $Assignleadtoemployee1->location = $location;
+	   $Assignleadtoemployee1->role_id = $role_id;
+	   $Assignleadtoemployee1->name = $name;
+	   $Assignleadtoemployee1->number = $number;
+	   $Assignleadtoemployee1->product_id = $searchid;
+	   $Assignleadtoemployee1->save();
+
+	   
+	   $Assignleadtoemployee2 = new LeadcurrentstatusSales;
+	   $Assignleadtoemployee2->leadid = $Assignleadtoemployee1->id;
+	   $Assignleadtoemployee2->role_id = $role_id;
+	   $Assignleadtoemployee2->statusid = '1';
+	   $Assignleadtoemployee2->leadactionstatus = '8';
+	   $Assignleadtoemployee2->save();
+
+	   
+	   $getsecondlastid = LeadsSales::find()->orderBy(['id' => SORT_DESC])->offset(1)->one();
+	   $olduser_id = $getsecondlastid->user_id;
+	   
+	   if($olduser_id === $user_id){
+		   $lastassigmentid = LeadassignmentSales::find()->where(['leadid' => $getsecondlastid->id])->one();
+		   $oldassigned_toID = $lastassigmentid->assigned_toID;
+		   
+		   $Assignleadtoemployee3 = new LeadassignmentSales;
+		   $Assignleadtoemployee3->leadid = $Assignleadtoemployee1->id;
+		   $Assignleadtoemployee3->lead_current_status_ID = $Assignleadtoemployee2->id;
+		   $Assignleadtoemployee3->assigned_toID = $oldassigned_toID;
+		   $Assignleadtoemployee3->assigned_at = date('Y-m-d h:i:s');
+		   $Assignleadtoemployee3->save();
+		   
+		   $changeleadstatusemployee = \common\models\CompanyEmp::find()->where(['id' => $employee])->one();
+		   $changeleadstatusemployee->alloted = 0;
+		   $changeleadstatusemployee->save();
+
+		//$sitevisitallot = \common\models\RequestSiteVisitbin::find()->where(['user_id' => $user_id,'lead_id'=>$leadid])->one();
+		   //$sitevisitallot->assigned_to_id = $oldassigned_toID;
+		   //$sitevisitallot->save(false);
+
+		   
+		   
+	   }else{
+	   $Assignleadtoemployee3 = new LeadassignmentSales;
+	   $Assignleadtoemployee3->leadid = $Assignleadtoemployee1->id;
+	   $Assignleadtoemployee3->lead_current_status_ID = $Assignleadtoemployee2->id;
+	   $Assignleadtoemployee3->assigned_toID = $employee;
+	   $Assignleadtoemployee3->assigned_at = date('Y-m-d h:i:s');
+	   $Assignleadtoemployee3->save();
+
+	  // $sitevisitallot = \common\models\RequestSiteVisitbin::find()->where(['user_id' => $user_id,'lead_id'=>$leadid])->one();
+		  // $sitevisitallot->assigned_to_id = $employee;
+		  // $sitevisitallot->save(false);
+			}
+
+
+		   }
+
+
+			
+   }
+
+
 public static function insert_to_my_profile_table($userid,$new,$FirstName,$Emailid,$Mobileid){
 		  
 	
 	$checkifalreadyexists = \common\models\Myprofilenew::find()->where(['userID'=>$userid,'isactive'=>1])->one();
-			//echo '<pre>';print_r($new);die;
+			
 			if(!$checkifalreadyexists){
 				
 
@@ -441,5 +608,96 @@ public static function insert_to_my_profile_table($userid,$new,$FirstName,$Email
 	        $checkifalreadyexists->save();	
 			}
 }
+
+
+public static function insert_to_my_profile_tables($userid,$Title,$FirstName,$middlename,$LastName,$Emailid,$Mobileid,$Dob,$Gender,$nationality,$hide,$MartialStatus,$Minor,$RelatnshpWithMinor,$GuardianName,$PanCardNo,$AdharCardNo,$CurrentCountry,$CurrentState
+,$CurrentCity,$CurrentPincode,$PermanentCountry,$PermanentState,$PermanentCity,$PermanentPincode,$currentaddress,$permanentaddress,$countryverificatn,$passportno,$ocinumber,$pionumber){
+	        $checkifalreadyexists = \common\models\Myprofilenew::find()->where(['userID'=>$userid,'isactive'=>1])->one();
+			//echo '<pre>';print_r($new);die;
+			if(!$checkifalreadyexists){
+				
+
+			$modelMyprofile = new \common\models\Myprofilenew();
+			$modelMyprofile->userID=$userid;
+		
+			// $modelMyprofile->logo=$new;
+	        $modelMyprofile->title = $Title;
+            $modelMyprofile->first_name=$FirstName;
+			$modelMyprofile->middlename=$middlename;
+            $modelMyprofile->last_name=$LastName;
+            $modelMyprofile->emailid=$Emailid;
+            $modelMyprofile->mobileid=$Mobileid;
+            $modelMyprofile->dob=$Dob;
+            $modelMyprofile->gender=$Gender;
+			$modelMyprofile->nationality=$nationality;
+			
+            $modelMyprofile->martial_status=$MartialStatus;
+            $modelMyprofile->isMinor=$Minor;
+            $modelMyprofile->relatnshp_with_minor=$RelatnshpWithMinor;
+            $modelMyprofile->guardian_name=$GuardianName;
+            $modelMyprofile->pan_card_no=$PanCardNo;
+            $modelMyprofile->adhar_card_no=$AdharCardNo;
+			$modelMyprofile->countryverificatn =$countryverificatn;
+			$modelMyprofile->pionumber=$pionumber;
+			$modelMyprofile->ocinumber=$ocinumber;
+			$modelMyprofile->passportno=$passportno;
+		    $modelMyprofile->current_country=$CurrentCountry;
+            $modelMyprofile->current_state=$CurrentState;
+            $modelMyprofile->current_city=$CurrentCity;
+            $modelMyprofile->current_pincode=$CurrentPincode;
+			$modelMyprofile->current_address=$currentaddress;
+            $modelMyprofile->permanent_country=$PermanentCountry;
+            $modelMyprofile->permanent_state=$PermanentState;
+            $modelMyprofile->permanent_city=$PermanentCity;
+            $modelMyprofile->permanent_pincode=$PermanentPincode;
+			$modelMyprofile->permanent_address=$permanentaddress;
+	        $modelMyprofile->save();
+			} else {
+
+			
+			$checkifalreadyexists->userID=$userid;
+			
+			// if($new !=''){
+			// $checkifalreadyexists->logo=$new;
+			// }
+	        $checkifalreadyexists->title = $Title;
+            $checkifalreadyexists->first_name=$FirstName;
+			$checkifalreadyexists->middlename=$middlename;
+            $checkifalreadyexists->last_name=$LastName;
+            $checkifalreadyexists->emailid=$Emailid;
+            $checkifalreadyexists->mobileid=$Mobileid;
+            $checkifalreadyexists->dob=$Dob;
+            $checkifalreadyexists->gender=$Gender;
+			$checkifalreadyexists->nationality=$nationality;
+            $checkifalreadyexists->hide=$hide;
+            $checkifalreadyexists->martial_status=$MartialStatus;
+            $checkifalreadyexists->isMinor=$Minor;
+            $checkifalreadyexists->relatnshp_with_minor=$RelatnshpWithMinor;
+            $checkifalreadyexists->guardian_name=$GuardianName;
+            $checkifalreadyexists->pan_card_no=$PanCardNo;
+            $checkifalreadyexists->adhar_card_no=$AdharCardNo;
+			$checkifalreadyexists->countryverificatn =$countryverificatn;
+			$checkifalreadyexists->pionumber=$pionumber;
+			$checkifalreadyexists->ocinumber=$ocinumber;
+			$checkifalreadyexists->passportno=$passportno;
+		    $checkifalreadyexists->current_country=$CurrentCountry;
+            $checkifalreadyexists->current_state=$CurrentState;
+            $checkifalreadyexists->current_city=$CurrentCity;
+            $checkifalreadyexists->current_pincode=$CurrentPincode;
+			$checkifalreadyexists->current_address=$currentaddress;
+            $checkifalreadyexists->permanent_country=$PermanentCountry;
+            $checkifalreadyexists->permanent_state=$PermanentState;
+            $checkifalreadyexists->permanent_city=$PermanentCity;
+            $checkifalreadyexists->permanent_pincode=$PermanentPincode;
+			$checkifalreadyexists->permanent_address=$permanentaddress;
+	        $checkifalreadyexists->save();	
+			}
+}
+
+
+
+
+
+
 }
 ?>

@@ -113,6 +113,9 @@ class LesseeactionController extends Controller {
         $hardam = $_POST['hardam'];
         $expectation_id = $_POST['expectation_id'];
 
+        $propuserids = Addpropertypm::find('user_id')->where(['id' => $hardam])->andwhere(['status' => 'approved'])->one();
+        $propuserid  =  $propuserids->user_id;
+
         $payments = \Yii::$app->db->createCommand("SELECT * FROM shortlistproperty where user_id='$userid' and property_id ='$hardam'")->queryAll();
 
 
@@ -124,6 +127,10 @@ class LesseeactionController extends Controller {
         } else {
 
             $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+            $request_id = Yii::$app->db->lastInsertID;
+            
+            $objlocation = \common\models\RequestSiteVisitbin::getsalesidshortlist($request_id,$userid,4,$propuserid,5);
+
             return '2';
         }
 
@@ -442,11 +449,18 @@ class LesseeactionController extends Controller {
 
                                      }
 
-      //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
-                     
-       
 
-        // }
+            \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+            $assignleadsalesid  =  \common\models\activemode::assignsaleslead($user_id);
+
+             $newid =  $assignleadsalesid['employee_id'];
+             $leadid =  $assignleadsalesid['leadid'];
+
+             if($leadid != ''  && $newid != ''){            
+
+             $assignlead  =  \common\models\activemode::assignleadsalesactionfrontend($newid,$leadid,'Automatic send from frontend');
+
+            }
 
         }
        
@@ -575,6 +589,23 @@ class LesseeactionController extends Controller {
  
  
                                       }
+
+          \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+
+           $assignleadsalesid  =  \common\models\activemode::assignsaleslead($user_id);
+           $assignleadsalesid  =  \common\models\activemode::assignsaleslead($user_id);
+
+           $newid =  $assignleadsalesid['employee_id'];
+           $leadid =  $assignleadsalesid['leadid'];
+
+
+           if($leadid != ''  && $newid != ''){            
+
+            $assignlead  =  \common\models\activemode::assignleadsalesactionfrontend($newid,$leadid,'Automatic send from frontend');
+
+           }
+
+
  
        //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
                       
@@ -592,9 +623,15 @@ class LesseeactionController extends Controller {
             $totalcount = $payments[0]['counts'];
           
    if ($totalcount == 0){
+
+        $propuserids = Addpropertypm::find('user_id')->where(['id' => $propidpost])->andwhere(['status' => 'approved'])->one();
+        $propuserid  =  $propuserids->user_id;
   
       $doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'property_id'=>$propidpost, 'created_date' => $date, 'active' => '1'])->execute();
-  
+      $request_id = Yii::$app->db->lastInsertID;
+     
+      $objlocation = \common\models\RequestSiteVisitbin::getsalesidshortlist($request_id,$userid,4,$propuserid,5);
+
    }
          }
 

@@ -178,7 +178,6 @@ $form = ActiveForm::begin([
         var message = $('#message').val();
 
 
-
         $.ajax({
             type: "GET",
             url: "<?php echo Yii::$app->urlManager->createUrl(["leadrequest/assignleadsalesaction"]) ?>?leadid=" + str + "&employeeid=" + employeeid + "&message=" + message,

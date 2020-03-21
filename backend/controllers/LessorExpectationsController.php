@@ -139,7 +139,7 @@ class LessorExpectationsController extends Controller
              
            //echo '<pre>';print_r(Yii::$app->request->post());die; 
             $post = Yii::$app->request->post();
-            $model->user_id = $userid;
+            //$model->user_id = $userid;
             $model->user_type = 'lessee';
             $model->stamp_duty_lessee='50';
             $model->stamp_duty_lessor='50';
@@ -153,6 +153,8 @@ class LessorExpectationsController extends Controller
                  echo $model->id;
                  
              }else{
+
+                //print_r($model->getErrors());die;
                  echo '0';    
              }
              

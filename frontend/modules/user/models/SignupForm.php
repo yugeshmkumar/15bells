@@ -279,16 +279,32 @@ return true;
 
     }
 
-    public function addnewlead($name,$userid,$email,$countrycode,$number,$location)
+    public function addnewlead($name,$userid,$email,$countrycode,$number,$location,$user_login_as)
 
-    {            
+    {
+        
+     if($user_login_as == 'buyer'){
+         $role_id = 7;
+     }else if($user_login_as == 'seller'){
+        $role_id = 6;
+    }else if($user_login_as == 'lessor'){
+        $role_id = 5;
+    }else if($user_login_as == 'lessee'){
+        $role_id = 4;
+    }else{
+        $role_id = 3;
+    } 
+    
+    
      $checkifalready = \common\models\Leads::find()->where(['user_id'=>$userid,'email'=>$email,'number'=>$number,'countrycode'=>$countrycode,'role_id'=>"3",'name'=>$name,'location'=>$location])->one();
-                if(!$checkifalready){
+              
+     if(!$checkifalready){
+
                 $addnewlead = new \common\models\Leads();
-            $addnewlead->user_id = $userid;
+                $addnewlead->user_id = $userid;
                 $addnewlead->email =$email;
                 $addnewlead->location =$location;
-                $addnewlead->role_id ="3";
+                $addnewlead->role_id = $role_id;
                 $addnewlead->name =$name;
                 $addnewlead->countrycode =$countrycode;
                 $addnewlead->number =$number;
@@ -296,7 +312,7 @@ return true;
                 
                 $Leadcurrentstatus = new \common\models\Leadcurrentstatus();
                 $Leadcurrentstatus->leadid =$addnewlead->id;
-                $Leadcurrentstatus->role_id = "3";
+                $Leadcurrentstatus->role_id = $role_id;
                 $Leadcurrentstatus->statusid =1;
                 $Leadcurrentstatus->leadactionstatus =8;
                 $Leadcurrentstatus->special ="yes";

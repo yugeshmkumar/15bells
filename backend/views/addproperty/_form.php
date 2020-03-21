@@ -392,32 +392,32 @@ use kartik\widgets\Typeahead;
 			<div class="col-md-12">
                 <div class="col-md-4" id="plot_areas">
                     <div class="form-group">
-                        <label class="control-label">Plot Area *</label>   
-                        <?= $form->field($model, 'total_plot_area')->textInput()->label(false) ?>
+                        <label class="control-label">Super Area *</label>   
+                        <?= $form->field($model, 'super_area')->textInput()->label(false) ?>
                     </div>
                 </div>
 
                 <div class="col-md-2" id="plot_uits">
                     <div class="form-group">
                         <label class="control-label"> Unit</label>              
-                        <?= $form->field($model, 'plot_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'plot_uit'])->label(false) ?>
+                        <?= $form->field($model, 'super_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'plot_uit'])->label(false) ?>
                     </div>
                 </div>
 
-                <div class="col-md-4" id="Super_builts">
+                <!-- <div class="col-md-4" id="Super_builts">
                     <div class="form-group">
                         <label class="control-label">Super Built Up Area *</label>
-                        <?= $form->field($model, 'buildup_area')->textInput()->label(false) ?>
+                        <?//= $form->field($model, 'buildup_area')->textInput()->label(false) ?>
                     </div>
                 </div>
                 <div class="col-md-2" id="superbuilt_uits">
                     <div class="form-group">
                         <label class="control-label">Unit *</label>
-                        <?= $form->field($model, 'build_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'superbuilt_uit'], ['onchange'=>'selectionchange();'])->label(false) ?>
+                        <?//= $form->field($model, 'build_unit')->dropDownList([ 'sq_feets' => 'Sq.Ft', 'sq_yards' => 'Sq.Yards', 'sq_meters' => 'Sq.Meter',], ['prompt' => 'Select Unit', 'id' => 'superbuilt_uit'], ['onchange'=>'selectionchange();'])->label(false) ?>
 					
 				   </div>
                 </div>
-			</div>
+			</div> -->
 			<div class="col-md-12">
                 <div class="col-md-4" id="carpet_areas">
                     <div class="form-group">
@@ -480,7 +480,7 @@ use kartik\widgets\Typeahead;
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Asking Rental Price *</label>
-                        <?= $form->field($model, 'asking_rental_price')->textInput(['maxlength' => true])->input('text', ['placeholder' => "In Rs."])->label(false) ?>
+                        <?= $form->field($model, 'price_sq_ft')->textInput(['maxlength' => true])->input('text', ['placeholder' => "In Rs."])->label(false) ?>
                     </div>
                 </div>
                 <div class="col-md-6" id="negotiables">
@@ -494,7 +494,7 @@ use kartik\widgets\Typeahead;
 					<div class="col-md-6" id="price_sq_fts">
 						<div class="form-group">
 							<label class="control-label">Price per sq. <span id="changeft">Ft </span>*</label>                
-							<?= $form->field($model, 'price_sq_ft')->textInput(['id' => 'price_sq_ft'])->label(false) ?>
+							<?= $form->field($model, 'asking_rental_price')->textInput(['id' => 'price_sq_ft'])->label(false) ?>
 						</div>
 					</div>
 					<div class="col-md-6" id="price_acress">
@@ -796,11 +796,12 @@ var dates = $("#addproperty-available_date").datepicker({
 
         });
 		
-	$('#addproperty-asking_rental_price,#addproperty-buildup_area,#addproperty-total_plot_area').on('change keyup click', function() {
+	$('#addproperty-asking_rental_price,#addproperty-carpet_area,#addproperty-super_area').on('change keyup click', function() {
  
-  var plot = $('#addproperty-total_plot_area').val();
-  var superb = $('#addproperty-buildup_area').val();
-  var rental = $('#addproperty-asking_rental_price').val();
+  var plot = $('#addproperty-total_super_area').val();
+  var superb = $('#addproperty-carpet_area').val();
+  //var rentals = $('#addproperty-asking_rental_price').val();
+  var rental = $('#price_sq_ft').val();
    var price = '';
    var priceacre = '';
   
@@ -816,7 +817,7 @@ var dates = $("#addproperty-available_date").datepicker({
   }
 
   if(!isNaN(price) && priceacre != 'Infinity'){
-  $('#price_sq_ft').val(price);
+  $('#addproperty-asking_rental_price').val(price);
 }
   //$('#price_acres').val(priceacre);
   if(!isNaN(priceacre) && priceacre != 'Infinity'){
@@ -842,7 +843,7 @@ var dates = $("#addproperty-available_date").datepicker({
     function gettype(val) {
 
         // alert(val);
-        makegettype(val);  
+      //  makegettype(val);  
 		
     }
  

@@ -72,12 +72,12 @@ class LessorExpectations extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'user_type', 'save_search_as','site_approval','interest_security','interest_negotiable','agreement','agreement_negotiable','lease_tenure','tenure_negotiable', 'created_date'], 'required'],
+            [['user_id', 'user_type', 'save_search_as','interest_security','interest_negotiable','agreement','agreement_negotiable','lease_tenure','tenure_negotiable', 'created_date'], 'required'],
             //['interest_negotiable', 'required', 'requiredValue' => '', 'message' => 'my test message'],
            
             [['user_id', 'user_type', 'save_search_as', 'created_date'], 'required', 'on' => 'creates'],
-            [['user_id', 'property_id', 'interest_security', 'rent', 'escalation_value', 'escalation_month', 'maintenance_value', 'last_date_rent', 'fit_out_period', 'present_electricity_load', 'car_parking', 'stamp_duty_lessor', 'stamp_duty_lessee', 'usuable_area_length', 'usuable_area_breadth','lease_tenure','lock_in_period','usuable_area'], 'integer','message' => '{attribute} is invalid.'],
-            [['user_type', 'auto_cad_drawing', 'site_approval', 'wet_points', 'interest_negotiable', 'agreement', 'agreement_negotiable', 'tenure_negotiable', 'lock_negotiable', 'rent_unit', 'rent_negotiable', 'escalation_negotiable', 'maintenance_unit', 'maintenance_hours', 'maintenance_subject_change', 'last_date_negotiable', 'fit_out_negotiable', 'canBeIncreased_electricity', 'clarity_on_meter', 'power_backup', 'power_can_be_discussed', 'seperate_space', 'motor_water_supply', 'water_supply_part_maintenance', 'working_restriction', 'washroom_provision', 'is_active'], 'string'],
+            [['user_id', 'property_id', 'interest_security', 'escalation_value', 'escalation_month', 'maintenance_value', 'last_date_rent', 'fit_out_period', 'present_electricity_load', 'car_parking', 'stamp_duty_lessor', 'stamp_duty_lessee', 'usuable_area_length', 'usuable_area_breadth','lease_tenure','lock_in_period','usuable_area'], 'integer','message' => '{attribute} is invalid.'],
+            [['user_type', 'auto_cad_drawing', 'site_approval', 'wet_points', 'interest_negotiable', 'agreement', 'agreement_negotiable', 'tenure_negotiable', 'lock_negotiable', 'rent_negotiable', 'escalation_negotiable', 'maintenance_unit', 'maintenance_hours', 'maintenance_subject_change', 'last_date_negotiable', 'fit_out_negotiable', 'canBeIncreased_electricity', 'clarity_on_meter', 'power_backup', 'power_can_be_discussed', 'seperate_space', 'motor_water_supply', 'water_supply_part_maintenance', 'working_restriction', 'washroom_provision', 'is_active'], 'string'],
             [['created_date'], 'safe'],
             ['save_search_as', 'filter', 'filter' => function ($value) {
                 return \yii\helpers\HtmlPurifier::process($value);
@@ -111,8 +111,8 @@ class LessorExpectations extends \yii\db\ActiveRecord
             'tenure_negotiable' => 'Tenure Negotiable',
             'lock_in_period' => 'Lock In Period',
             'lock_negotiable' => 'Lock Negotiable',
-            'rent' => 'Rent',
-            'rent_unit' => 'Rent Unit',
+            // 'rent' => 'Rent',
+            // 'rent_unit' => 'Rent Unit',
             'rent_negotiable' => 'Rent Negotiable',
             'escalation_value' => 'Escalation Value',
             'escalation_month' => 'Escalation Month',
