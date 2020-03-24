@@ -63,6 +63,9 @@ $this->title = 'Dashboard';
                                         echo 'UID'.$userids * 23 * 391;?></p>
 										<p class="user_detail"><i class="fa fa-phone"></i> <?php echo  ucfirst($user->username);  ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo  ucfirst($user->email);  ?></p>
+									
+									
+									
 									</div>
 								</div>
 								<div class="row">
