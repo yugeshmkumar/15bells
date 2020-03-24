@@ -508,6 +508,7 @@ h1.page-header {
 	border:1px solid #c4984f;
 	color:#c4984f;
 	font-size:18px;
+	float:left;
 }
 .profile_edit{
 		margin-top:20px;
@@ -1267,12 +1268,12 @@ input[type=file]::-webkit-file-upload-button {
 		font-size:16px;
 		line-height:20px;
 	}
-	.add_bttn{
+	/* .add_bttn{
 		position:relative;
 		top:25px;
 		float:right;
 		right:-25px;
-	}
+	} */
 	.user_id {
     color: #8f8f8f;
     font-size: 14px;
@@ -1644,7 +1645,5 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 .add_bttn{
-	position:relative;
-	top:45px;
-	float:right;
+	margin-left:10px;
 }
