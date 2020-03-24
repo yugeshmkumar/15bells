@@ -788,6 +788,7 @@ We regret to inform that we are unable to help you with your request at this poi
 //			 $mvstatus = 3;
 //		 }
 //		 
+
 //		 $leadid = $_GET['leadid'];
 //		 $arrfindallstatus = \common\models\Leadcurrentstatus::find()->where(['leadid'=>$leadid])->all();
 //			foreach($arrfindallstatus as $findallstatus){

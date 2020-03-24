@@ -417,7 +417,7 @@ public function actionEmdpay($propids, $visitypeid) {
         if ($paymentsm['newcount'] == 0) {
         $trendingadd = \Yii::$app->db->createCommand()->insert('request_document_show', ['user_id' => $user_id, 'property_id' => $property_id, 'status' => 0, 'created_date' => $date])->execute();
 
-        if(trendingadd){
+        if($trendingadd){
 
             return 1;
         }else{

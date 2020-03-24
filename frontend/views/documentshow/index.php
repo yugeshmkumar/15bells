@@ -210,20 +210,40 @@ $this->params['breadcrumbs'][] = $this->title;
 
                               //  if ($payment_status == 'paid') {
                                     return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid #c4984f;background:#c4984f !important;border-radius:0;" onclick="viewdocs(' . $property_id . ')" >Click to view Docs</button>', $url = 'javascript:void(0)', []);
-                              //  } 
-                                // else {
-                                //     $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
-                                //     $command = $query->createCommand();
-                                //     $data = $command->queryAll();
-
-                                //     if ($data) {
-                                //         return Html::a('<button class="btn btn-default" style="border-color:#0fd8da !important;border:1px solid;" >Moved to EMD</button>', $url = 'javascript:void(0)', []);
-                                //     } else {
-                                //         return Html::a('<button class="btn btn-info" style="border-color:#0fd8da !important;border:1px solid;" onclick="movetoemd(' . $property_id . ',' . $request_id . ')" >Move to EMD</button>', $url = 'javascript:void(0)', []);
-                                //     }
-                                // }
+                              
                             }
                                 ],
+
+
+                                [
+                                    'label' => 'Arrange Meeting',
+                                    'attribute' => 'id',
+                                    'filter' => false,
+                                    'options' => ['style' => 'width:200px;'],
+                                    'format' => 'raw',
+                                    'value' => function($model) {
+                                $request_id = $model->id;                                
+                                $property_id = $model->property_id;
+                                $user_id = Yii::$app->user->identity->id;
+                                $userid = $model->user_id;
+
+                                $query = Yii::$app->db->createCommand("SELECT count('*') as counts from sales_f_2_f where buyer_id='$userid' and property_id='$property_id' ")->queryAll();
+
+                                
+                                if ($query[0]['counts'] > 0 ) {
+                                    return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to F2F</button>', $url = 'javascript:void(0)', []);
+                                } else {
+                                    return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetof2f(' . $property_id . ',' . $userid . ')" >Move to F2F</button>', $url = 'javascript:void(0)', []);
+                                }
+
+
+
+                                   // return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid #c4984f;background:#c4984f !important;border-radius:0;" onclick="arrangemeeting(' . $property_id . ')" >Arrange Meeting</button>', $url = 'javascript:void(0)', []);
+                              
+                            }
+                                ],
+
+
                             //     [
                             //         'label' => 'Move to EMD',
                             //         'attribute' => 'id',
@@ -686,6 +706,25 @@ $(document).ready(function() {
                         },
                     });
                 }
+
+                
+
+                function movetof2f(propid,userid) {
+
+$.ajax({
+    url: '/documentshow/movetof2f',
+    data: {propid: propid ,userid:userid},
+    success: function (data) {
+
+        if (data == '1') {
+            toastr.success('Successfully moved to F2F', 'success');
+            $.pjax({container: '#pjax-grid-view'});
+        } else {
+            toastr.error('Cannot Move, Some Internal Error', 'error');
+        }
+    },
+});
+}
 
                 function showpropdet(id) {
 

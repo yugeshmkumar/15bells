@@ -1173,7 +1173,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                   $('#myModaluser').modal('show');   
                                                         $.ajax({
                                                         type: "POST",
-                                                        url: 'https://www.15bells.com/backend/web/addpropertypm/showuserdetails',
+                                                        url: '/backend/web/addpropertypm/showuserdetails',
                                                         data: {id: id},
                                                         success: function (data) {
                                                         var obj = $.parseJSON(data);

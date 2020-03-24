@@ -7,6 +7,8 @@ use yii\helpers\ArrayHelper;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use common\models\User;
+use common\models\CompanyEmp;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Leads */
@@ -24,7 +26,7 @@ use common\models\User;
 	<?php
 	$arrCountries = \common\models\User::find()->all();
 	// echo '<pre>';print_r($arrCountries);die;
-	$Countries = ArrayHelper::map($arrCountries ,'id','username');
+	$Countries = ArrayHelper::map($arrCountries ,'id','email');
 
 	?>
    
@@ -42,7 +44,9 @@ use common\models\User;
 
     <?php echo $form->field($model, 'email')->textInput(['rows' => 3]); ?>
 
-    <?php echo $form->field($model, 'location')->textarea(['rows' => 3]) ?>
+    <?php
+    echo $form->field($model, 'location')->dropDownList(['Gurugram' => 'Gurugram', 'Delhi' => 'Delhi', 'Faridabad' => 'Faridabad', 'Noida' => 'Noida', 'Gaziabad' => 'Gaziabad'],['prompt'=>'Select location']);
+    ?>
 
     <?php 
 
@@ -57,6 +61,23 @@ use common\models\User;
     <?php echo $form->field($model, 'countrycode')->textarea(['rows' => 3]) ?>
 
     <?php echo $form->field($model, 'number')->textarea(['rows' => 3]) ?>
+
+    <?php echo $form->field($model, 'facebook_id')->textarea(['rows' => 3]) ?>
+
+    <?php echo $form->field($model, 'linkedin_id')->textarea(['rows' => 3]) ?>
+
+
+  <?php   $countries=CompanyEmp::find()->where(['name'=>'sales demand lessee'])->all();
+
+//use yii\helpers\ArrayHelper;
+$listData=ArrayHelper::map($countries,'id','employee_email');
+
+echo $form->field($model, 'sales_id')->dropDownList(
+        $listData,
+        ['prompt'=>'Select Sales Executive']
+        );
+
+        ?>
 
    
 

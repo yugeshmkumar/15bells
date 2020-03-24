@@ -154,6 +154,29 @@ public function actionShowuserdetails(){
     }
 }
 
+
+public function actionMovetof2f() {
+
+    $propid = $_GET['propid'];
+    $userid = $_GET['userid'];
+    $user_id = Yii::$app->user->identity->id;
+    $querys = \common\models\CompanyEmpb::find()->where(['userid'=>$user_id])->one();
+     $assigned_id = $querys->id;
+
+    $model = $this->findModel($propid);
+    $sellor_id = $model->user_id;
+    if ($propid != '' && $userid != '') {
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        $insert = \Yii::$app->db->createCommand()->insert('sales_f_2_f', ['buyer_id' => $userid, 'sellor_id' => $sellor_id, 'property_id' => $propid,'sales_executive_id'=>$assigned_id, 'created_date' => $date])->execute();
+        if ($insert) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+
 public function actionDocumentshow() {
 
 
@@ -193,6 +216,7 @@ public function actionDocumentshow() {
                 $reqid = $_POST['editableKey'];
                 $editableIndex = $_POST['editableIndex'];
                  $tagsdata = $_POST['RequestDocumentShow'][$editableIndex]['payment_status'];
+
                  $getrq = \common\models\RequestDocumentShow::find()->where(['id' => $reqid])->one();
                 if ($getrq) {
                     
@@ -204,8 +228,9 @@ public function actionDocumentshow() {
 
                      $value = $getrq->payment_status;
                 
+                     return $this->redirect(['p_sitedocs']);
 
-                return ['output' => $value, 'message' => ''];
+               // return ['output' => $value, 'message' => ''];
 
 
 

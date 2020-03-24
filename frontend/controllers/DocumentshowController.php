@@ -46,7 +46,7 @@ class DocumentshowController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index', 'view', 'create','indexes', 'documentshow', 'movetoemd','documentshowindex','paymentgateway','onlinesitevisit', 'update','sessioncheckout', 'delete'],
+                        'actions' => ['index', 'view', 'create','indexes', 'movetof2f','documentshow', 'movetoemd','documentshowindex','paymentgateway','onlinesitevisit', 'update','sessioncheckout', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -249,6 +249,32 @@ class DocumentshowController extends Controller {
             }
         }
     }
+
+
+    public function actionMovetof2f() {
+
+        $propid = $_GET['propid'];
+        $userid = $_GET['userid'];
+        $user_id = Yii::$app->user->identity->id;
+        // $querys = \common\models\CompanyEmpb::find()->where(['userid'=>$user_id])->one();
+        //  $assigned_id = $querys->id;
+        $assigned_id = '29';
+    
+         $propname = \common\models\Addproperty::find()->where(['id'=>$propid])->one();
+         $sellor_id = $propname->user_id;
+        if ($propid != '' && $userid != '') {
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
+            $insert = \Yii::$app->db->createCommand()->insert('sales_f_2_f', ['buyer_id' => $userid, 'sellor_id' => $sellor_id, 'property_id' => $propid,'sales_executive_id'=>$assigned_id, 'created_date' => $date])->execute();
+            if ($insert) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
+
 
     /**
      * Updates an existing RequestDocumentShow model.

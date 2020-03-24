@@ -175,7 +175,13 @@ $bundle = BackendAsset::register($this);
                             'url'=>['/addpropertypm'],
                             'badge'=> \common\models\Addpropertybackend::find()->count(),
                             'badgeBgClass'=>'label-primary',
-                        ],
+                        ],[
+                            'label'=>Yii::t('backend', 'Site Visit'),
+                            'icon'=>'<i class="fa fa-key"></i>',
+                            'url'=>['request-sitevisit/index'],
+                          //  'badge'=> TimelineEvent::find()->today()->count(),
+                          //  'badgeBgClass'=>'label-primary',
+                        ]
 						
                     ]
                 ]) ?>

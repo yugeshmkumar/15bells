@@ -22,7 +22,7 @@ class RequestSiteVisitbinSearch extends RequestSiteVisitbin
     {
         return [
             [['request_id', 'property_id', 'company_id'], 'integer'],
-            [['request_status', 'reason','user_id', 'scheduled_time', 'confirm', 'created_date','visit_type','visit_status_confirm'], 'safe'],
+            [['request_status', 'reason','user_id', 'scheduled_time', 'buy_property','confirm', 'created_date','visit_type','visit_status_confirm'], 'safe'],
         ];
     }
 
@@ -75,7 +75,7 @@ class RequestSiteVisitbinSearch extends RequestSiteVisitbin
 
         $query->andFilterWhere(['like', 'request_status', $this->request_status])
            
-            ->andFilterWhere(['like', 'feedback', $this->feedback])
+           ->andFilterWhere(['like', 'buy_property', $this->buy_property])
             ->andFilterWhere(['like', 'visit_status_confirm', $this->visit_status_confirm]);
            
         $query->andWhere('scheduled_time LIKE "'.$this->scheduled_time . '%" ');

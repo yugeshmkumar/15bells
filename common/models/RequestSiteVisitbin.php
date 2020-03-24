@@ -38,7 +38,7 @@ class RequestSiteVisitbin extends \yii\db\ActiveRecord
         return [
             [['user_id', 'property_id', 'scheduled_time', 'created_date'], 'required'],
             [['user_id', 'property_id', 'company_id'], 'integer'],
-            [['request_status', 'reason', 'confirm'], 'string'],
+            [['request_status', 'reason', 'confirm','buy_property'], 'string'],
             [['scheduled_time', 'created_date'], 'safe'],
         ];
     }
@@ -57,6 +57,7 @@ class RequestSiteVisitbin extends \yii\db\ActiveRecord
             'reason' => Yii::t('app', 'Reason'),
             'scheduled_time' => Yii::t('app', 'Scheduled Time'),
             'confirm' => Yii::t('app', 'Confirm'),
+            'buy_property' => Yii::t('app', 'buy_property'),
             'created_date' => Yii::t('app', 'Created Date'),
         ];
     }

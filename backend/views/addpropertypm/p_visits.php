@@ -365,6 +365,35 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                     ],
+
+
+
+                    [
+                        'class' => 'kartik\grid\EditableColumn',
+                        'format' => 'raw',
+                        'width' => '200px',
+                        'filter' => array("may_be" => "May be", "yes" => "Yes", "no" => "No"),
+                        'attribute' => 'buy_property',
+                        'label' => 'Buying Status',
+                        'value' => function ($data) {
+                    $statusd = $data->buy_property;
+                    if ($statusd == 'pay_now') {
+                        return 'Pending';
+                    } else {
+                        return $statusd;
+                    }
+                },
+                
+                    ],
+
+
+
+
+
+
+
+
+
                     [
                         'label' => 'Scheduled time',
                         'attribute' => 'scheduled_time',

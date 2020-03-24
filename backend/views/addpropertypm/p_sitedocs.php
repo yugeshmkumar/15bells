@@ -314,26 +314,44 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'request_id',
                         //'user_id',
                         //'property_id',
-						['attribute'=>'user_id',
-						 'label'=>'User Email',
-                         'contentOptions'=>['style'=>'width: 300px;'],
-						 'value'=>function($data)
-							{
-							if(isset(\common\models\User::findOne($data->user_id)->email)){
-							return \common\models\User::findOne($data->user_id)->email; }
-							else { return '' ;}
-							}
-						],
-						['attribute'=>'user_id',
-						 'label'=>'Phone no.',
-                         'contentOptions'=>['style'=>'width: 300px;'],
-						 'value'=>function($data)
-			              {
-                            if(isset(\common\models\User::findOne($data->user_id)->username)){
-							return \common\models\User::findOne($data->user_id)->username; }
-							else { return '' ;}
-							}
-						],
+						// ['attribute'=>'user_id',
+						//  'label'=>'User Email',
+            //              'contentOptions'=>['style'=>'width: 300px;'],
+						//  'value'=>function($data)
+						// 	{
+						// 	if(isset(\common\models\User::findOne($data->user_id)->email)){
+						// 	return \common\models\User::findOne($data->user_id)->email; }
+						// 	else { return '' ;}
+						// 	}
+						// ],
+						// ['attribute'=>'user_id',
+						//  'label'=>'Phone no.',
+            //              'contentOptions'=>['style'=>'width: 300px;'],
+						//  'value'=>function($data)
+			      //         {
+            //                 if(isset(\common\models\User::findOne($data->user_id)->username)){
+						// 	return \common\models\User::findOne($data->user_id)->username; }
+						// 	else { return '' ;}
+						// 	}
+            // ],
+            
+            ['attribute' => 'user_id',
+                'label' => 'Name',
+                'width' => '200px',
+                'format' => 'raw',
+                //  'contentOptions'=>['style'=>'width: 200px;'],
+                'filter' => true,
+                'value' => function($data) {
+                    if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
+                        $fullname = \common\models\User::findOne($data->user_id)->fullname;
+                        return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+                                'title' => Yii::t('yii', 'Click to View User details'),
+                    ]);
+                    } else {
+                        return '';
+                    }
+                }
+            ],
                         ['attribute' => 'property_id',
                             'label' => 'Property ID',
                             'format' => 'raw',
@@ -362,7 +380,6 @@ $this->params['breadcrumbs'][] = $this->title;
                          }else{
                            return $statusd;
                            }
-                        
                     },       
                     'editableOptions' => [
                         'inputType' => Editable::INPUT_DROPDOWN_LIST,
@@ -463,7 +480,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                         [
-                            'label' => 'Link to View Doc',
+                            'label' => 'Move to EMD',
                             'attribute' => 'id',
                             'filter' => false,
                             'options' => ['style' => 'width:300px;'],
@@ -491,6 +508,37 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     }
                         ],
+
+
+                        [
+                          'label' => 'Move to F2F',
+                          'attribute' => 'id',
+                          'filter' => false,
+                          'options' => ['style' => 'width:300px;'],
+                          'format' => 'raw',
+                          'value' => function($model) {
+                      $request_id = $model->id;
+                      $payment_status = $model->payment_status;
+                      $property_id = $model->property_id;
+                      $user_id = Yii::$app->user->identity->id;
+                      $userid = $model->user_id;
+
+                      if ($payment_status == 'paid' || $payment_status == 'complimentry') {
+                        
+                        $query = Yii::$app->db->createCommand("SELECT count('*') as counts from sales_f_2_f where buyer_id='$userid' and property_id='$property_id' ")->queryAll();
+
+                          /* $query = (new Query())->select('*')->from('request_emd')->where(['user_id' => $user_id])->andwhere(['property_id' => $property_id])->andwhere(['status' => 1]);
+                          $command = $query->createCommand();
+                          $data = $command->queryAll(); */
+/* echo '<pre>';print_r($query);die; */
+                          if ($query[0]['counts'] > 0 ) {
+                              return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to F2F</button>', $url = 'javascript:void(0)', []);
+                          } else {
+                              return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetof2f(' . $property_id . ',' . $userid . ')" >Move to F2F</button>', $url = 'javascript:void(0)', []);
+                          }
+                      }
+                  }
+                      ],
                         
                     // 'status',
                     // 'created_date',
@@ -501,6 +549,64 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php Pjax::end(); ?>
 
             </div></div> </div>
+
+            <div id="myModaluser" class="modal fade" role="dialog">
+            <div class="modal-dialog seller_exp modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">User Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+
+
+                            <div class="row">
+
+                                <div class="col-md-12 veiw_property_description_div">
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-sm-2"><img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/bullet_tick.png'; ?>"> </div>
+                                            <div class="col-sm-10 veiw_property_description_div_inner">
+                                                <b>Name</b><br>
+                                                <span id="username"><?php // echo $getlessorexpec->rent;   ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-sm-2"><img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/bullet_tick.png'; ?>"> </div>
+                                            <div class="col-sm-10 veiw_property_description_div_inner">
+                                                <b>Phone no.</b><br>
+                                                <span id="userphone"><?php // echo $getlessorexpec->rent;   ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-sm-2"><img src="<?= Yii::getAlias('@archiveUrl') . '/propertydefaultimg/bullet_tick.png'; ?>"> </div>
+                                            <div class="col-sm-10 veiw_property_description_div_inner">
+                                                <b>Email Id.</b><br>
+                                                <span id="useremail"><?php // echo $getlessorexpec->rent;   ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 <div id="myModal" class="modal fade" role="dialog">
 				  <div class="modal-dialog seller_exp modal-lg">
 
@@ -851,6 +957,24 @@ required
             });
         }
 
+
+        function movetof2f(propid,userid) {
+
+$.ajax({
+    url: 'movetof2f',
+    data: {propid: propid ,userid:userid},
+    success: function (data) {
+
+        if (data == '1') {
+            toastr.success('Successfully moved to F2F', 'success');
+            $.pjax({container: '#pjax-grid-view'});
+        } else {
+            toastr.error('Cannot Move, Some Internal Error', 'error');
+        }
+    },
+});
+}
+
      function showpropdet(id){
                                                               
                                                                 $('#myModal').modal('show'); 
@@ -954,6 +1078,28 @@ var properid = '';var visitypeid = '';
                                                                   },
                                                                 });
                                 }
+
+
+                                function showuser(id){
+     $('#myModaluser').modal('show');   
+     $.ajax({
+            type: "POST",
+            url: 'showuserdetails',
+            data: {id: id},
+            success: function (data) {
+                var obj = $.parseJSON(data);
+                $.each(obj, function (element) {
+
+                    $('#useremail').html(this.email);
+                    $('#userphone').html(this.username);
+                    $('#username').html(this.fullname);
+                    
+                });
+
+
+            },
+        });   
+    }
 
 
     </script>
