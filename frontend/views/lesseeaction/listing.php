@@ -420,7 +420,7 @@ if(!isset($_SESSION))
 							</div>
 				  </div>
                 </div>
-                <div class="col-md-12 text-right" style="padding:20px 0;">
+                <div class="col-md-12 text-right apply_buttn_sec" style="padding:20px 0;">
                     <button class="btn btn-default call_butn" onclick="applyfilters()">Apply</button>
 					</div>
 		</div>
@@ -447,7 +447,7 @@ if(!isset($_SESSION))
 		<div class="container-fluid no_pad">
 
         <div class="col-md-12 call_me_butn">
-            <span class="call_icn"><i class="fa fa-phone"></i></span><span class="hot_no">9355-73-15-15</span>
+            <span class="call_icn"><i class="fa fa-phone"></i></span><span class="hot_no">6209-15-15-15</span>
         </div>
         <div class="col-md-12 text-center">
         <span class="split_call">OR</span>
@@ -2193,7 +2193,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:6209151515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2350,7 +2350,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:6209151515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -2498,7 +2498,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<button href="tel:6209151515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3371,7 +3371,7 @@ function getPolygonCoords() {
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:6209151515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3530,7 +3530,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:6209151515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -3691,7 +3691,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                      '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                      '<button href="tel:6209151515" onclick="openModal('+this.id+')" class="btn btn-default call_butn back_call">Call</button><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                   '</div>'+
                                   '</div>'+
                                   '</div>'+
@@ -3836,7 +3836,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                     '<p class="more details_label">'+html+'</p>'+
                                '</div>'+
                                '<div class="col-md-4 shortlist_call">'+
-                                   '<a href="tel:9355731515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                   '<a href="tel:6209151515" class="btn btn-default call_butn" onclick="openModal('+this.id+')">Call</a><button onclick="shortlistpropertiesready('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                '</div>'+
                                '</div>'+
                                '</div>'+
@@ -4226,7 +4226,7 @@ var html = '<span onclick="propdetails(' + this.id + ')">'+ c + '</span><span cl
                                                                             '</ul>'+
                                                                         '</div>'+
                                                                         '<div class="col-md-6 shortlist_call">'+
-                                                                        '<button href="tel:9355731515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
+                                                                        '<button href="tel:6209151515" onclick="openModal('+this.id+')" class="btn btn-default call_butn">Call</button><button onclick="shortlistproperties('+this.id+');" class="btn btn-default short_butn">Shortlist</button>'+
                                                                         '</div>'+
                                                                         '</div>'+
                                                                         '</div>'+
