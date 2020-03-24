@@ -19,6 +19,8 @@ use Razorpay\Api\Api;
 use common\models\CompanyEmp;
 use common\models\User;
 use yii\helpers\HtmlPurifier;
+use yii\db\Query;
+
 
 
 
@@ -397,6 +399,27 @@ return $this->render('indexes', [
         $krequestids =  $_POST['id'];
         $buttonid =  $_POST['buttonid'];
         $finduser = \common\models\RequestSiteVisit::find()->where(['request_id' => $krequestids])->one();
+
+        if($buttonid == 'yes' || $buttonid == 'may_be'){
+        $property_id =  $finduser->property_id;
+        $date = date('Y-m-d H:i:s');
+        $user_id = Yii::$app->user->identity->id;
+
+        $querys = new Query;
+        $querys->select('COUNT(*) as newcount')
+                ->from('request_document_show')
+                ->where(['property_id' => $property_id])
+                ->andwhere(['user_id' => $user_id]);
+
+        $commands = $querys->createCommand();
+        $paymentsm = $commands->queryOne();
+
+        if ($paymentsm['newcount'] == 0) {
+        $trendingadd = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id'=>$krequestids,'user_id' => $user_id, 'property_id' => $property_id, 'status' => 0, 'created_date' => $date])->execute();
+        }
+
+    }
+
         if($finduser){
             $finduser->visit_status_confirm = 'useryes';
             $finduser->buy_property = $buttonid;
@@ -555,15 +578,7 @@ return $this->render('indexes', [
         $blank = '0000-00-00 00:00:00';
 
         if ($id == 'ready') {
-        //     $finduser = \common\models\RequestSiteVisit::find()->where('user_id = :user_id', [':user_id' => $user_id])
-        //    // ->leftJoin('request_document_show', 'request_document_show.request_id=request_site_visit.request_id')
-        //     ->andWhere('scheduled_time <> :blank', [':blank' => $blank])
-        //     ->andWhere('scheduled_time < :date', [':date' => $date])
-        //     ->andwhere('visit_status_confirm = :no', [':no' => $no])
-        //     ->andwhere('request_status = :payment_status', [':payment_status' => $payment_status])
-        //     ->andWhere(['or',['request_status'=>1],['request_status'=>1]])
-        //     //->orderBy(['request_id' => SORT_DESC])->LIMIT(1)
-        //     ->one();
+        
 
             $finduser = \common\models\RequestSiteVisit::find()->where(['user_id'=>$user_id])
             ->andwhere(['<>','scheduled_time', $blank])
@@ -576,9 +591,18 @@ return $this->render('indexes', [
 
             if ($finduser) {
                 $propid = $finduser->property_id;
+                $propname = \common\models\Addproperty::find()->where(['id'=>$propid])->one();
+
+                //print_r($propname);die;
+                $locality = $propname->locality;
+
+                $arr  = explode(",", $locality, 2);
+
+                $firstlocal = $arr[0];
+
                 $reqst_id = $finduser->request_id;
                 $scheduled_time   = $finduser->scheduled_time;
-                $sales_id   = $finduser->sales_id;
+                $sales_id   = $finduser->assigned_to_id;
 
                 if($sales_id){
                     
@@ -593,7 +617,8 @@ return $this->render('indexes', [
                 $time = date("g:i A", strtotime($scheduled_time));
 
                 
-                $info = array($reqst_id,$scheduled_time,$name,$dates,$time,$propid);
+                $info = array($reqst_id,$scheduled_time,$name,$dates,$time,$propid,$firstlocal);
+
                 return   json_encode($info);
                // return $scheduled_time;
             } else {

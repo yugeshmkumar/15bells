@@ -41,7 +41,14 @@ class SalesF2FSearch extends SalesF2F
      */
     public function search($params)
     {
-        $query = SalesF2F::find();
+
+
+        $user_id = Yii::$app->user->identity->id;
+        $querys = \common\models\CompanyEmpb::find()->where(['userid'=>$user_id])->one();
+         $assigned_id = $querys->id;
+
+
+        $query = SalesF2F::find()->where(['sales_executive_id'=>$assigned_id]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

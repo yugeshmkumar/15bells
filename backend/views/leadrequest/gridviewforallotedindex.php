@@ -231,11 +231,9 @@ if($findcs['name']=='CSR Supply'){
     </div></div>
     </ul>
     </div>' . '<br/><br/>
-        <a class="btn btn-circle btn-icon-only btn-default toggler tooltips" href="javascript:;" data-container="body" data-placement="left" data-html="true" data-original-title="View Timeline">
-    <i class="fa fa-safari"></i>
-    </a>' . '<a class="btn btn-circle btn-icon-only btn-info toggler tooltips" href="javascript:;" data-container="body" data-placement="left" data-html="true" data-original-title="facebook">
+       <a class="btn btn-circle btn-icon-only btn-info toggler tooltips" href="'. $data->facebook_id . '" target="_blank" data-container="body" data-placement="left" data-html="true" data-original-title="facebook">
     <i class="fa fa-facebook-official"></i>
-    </a>' . '<a class="btn btn-circle btn-icon-only btn-info toggler tooltips" href="javascript:;" data-container="body" data-placement="left" data-html="true" data-original-title="linkedin">
+    </a>' . '<a class="btn btn-circle btn-icon-only btn-info toggler tooltips" href="'. $data->linkedin_id . '" target="_blank" data-container="body" data-placement="left" data-html="true" data-original-title="linkedin">
     <i class="fa fa-linkedin"></i>
     </a>';
                     }],

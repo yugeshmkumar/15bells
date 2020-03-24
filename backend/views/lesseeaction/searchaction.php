@@ -3202,7 +3202,7 @@ return displayStr;
                                     $('#getprop').append('<div class="col-md-6 serch_row chirag" style="">' +
                                             '<div class="col-md-12 property_main_div">' +
                                             '<div class="col-md-12 property_main_div_1" style="height:60px">' +
-                                            '<a onclick="viewproperty1(' + this.id + ')" href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '" target="_blank"><div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' + this.typename + ' availabale for sale in ' + this.city + '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (ID - ' + propsid + ')</p></div></a>' +
+                                            '<a onclick="viewproperty1(' + this.id + ')" href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"><div class="col-md-9 col-sm-9 col-xs-9" style="padding: 0;"><p> ' + this.typename + ' availabale for sale in ' + this.city + '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (ID - ' + propsid + ')</p></div></a>' +
                                             ((this.countyview > 0 ? '<div class="col-md-3 col-sm-3 col-xs-3"> <i class="fa fa-eye" aria-hidden="true"></i></div>' : '')) +
                                             '</div>' +
                                             '<div class="col-md-12 property_main_div_2" >' +
@@ -5285,10 +5285,9 @@ function getPolygonCoords() {
     }
 
     function propdetails(id) {
-        //alert(id);
-        // window.location(<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>'+id+'");
-        //window.open(<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']); ?>);
-        window.open('https://www.15bells.com/backend/web/addproperty/viewsearch?id=' + id+'&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid, '_blank');
+
+      var urld =   '<?= Yii::getAlias('@backendUrl').'/addproperty/viewsearch';  ?>';
+    window.open(+ urld + '?id=' + id+'&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid, '_blank');
 
     }
 

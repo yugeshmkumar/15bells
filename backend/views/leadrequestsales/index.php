@@ -47,7 +47,7 @@ $rbac = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->
 	$arrgetleadtype = \common\models\Leadsbuckets::find()->where(['isactive'=>1])->all();
 	
 	?>
-	<div class="row">
+	<!-- <div class="row">
 	<div class="col-md-5">
 	<select onChange="changestatus()"id ="leadstatus" name="leadstatus" class="form-control">
 	
@@ -70,7 +70,7 @@ $rbac = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->
 	<?php } ?>
 	</select>
 	</div>
-	
+	 -->
                                     </div></div>
                                 </div>
                                 <div class="portlet-body">

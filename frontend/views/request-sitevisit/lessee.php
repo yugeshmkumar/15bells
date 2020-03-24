@@ -282,7 +282,7 @@ if($counts > 0 ){
 					
 				</div>
 				<div class="col-md-12 text-center">
-					<h2 class="star_rating">Rate your visit of property location JMD Megapolis</h2>
+					<h2 class="star_rating">Rate your visit of property location <span id="locationid"></span></h2>
 					 <!-- Rating Stars Box -->
 						  <div class='rating-stars text-center'>
 							<ul id='stars1'>
@@ -325,11 +325,11 @@ if($counts > 0 ){
 			<div class="row text-center pay_section pay_later">
 				
 				<div class="col-md-12 text-center">
-					<h2 class="star_rating">Would you like to buy this property? ?</h2>
+					<h2 class="star_rating">Would you like to proceed further on this deal ?</h2>
 					<ul class="sub_categories buy_prop">
 								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
 								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
-								<li class=""><a href="javascript:void(0)"  id="later" class="property_subtype buyproperty">Later</a></li>
+								<li class=""><a href="javascript:void(0)"  id="no" class="property_subtype buyproperty">No</a></li>
 							</ul>
 				</div>
 			</div>
@@ -635,6 +635,7 @@ if(buttonid == 'yes' || buttonid == 'may_be' || buttonid == 'no'){
 												  returnid = data[0];
 												 var sale_name = data[2];
 												 var propid = data[5];
+												 var locality = data[6];
 												 var dates = data[3];
 												 var times = data[4];
 
@@ -653,6 +654,7 @@ if(buttonid == 'yes' || buttonid == 'may_be' || buttonid == 'no'){
 														$('#appendtime').html(times);
 														$('#appendid').html(propsid);
 														$('#appendsale').html(sale_name);  
+														$('#locationid').html(locality);  
 														$("#visit_rating").modal('show');
 
 

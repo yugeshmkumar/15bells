@@ -405,7 +405,9 @@ public static function insert_correspondence_addresses($userid,$corr_country,$co
 public static function update_my_profile_progress_status($userid,$process_name,$count,$roleid){
 	
 	 $myprofilestatus =\common\models\MyProfileProgressStatus::find()->where(['user_id'=>$userid,'process_name'=>$process_name])->one();
-			if($myprofilestatus){
+		
+	 
+	 if($myprofilestatus){
 		$myprofilestatus->process_status=$count;
 		$myprofilestatus->save();
 			 } else{

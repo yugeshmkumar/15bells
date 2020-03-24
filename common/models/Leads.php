@@ -33,11 +33,14 @@ class Leads extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $sales_id;
+
     public function rules()
     {
         return [
-            [['user_id', 'product_id', 'role_id', 'isactive'], 'integer'],
-            [['email', 'location', 'name', 'countrycode', 'number'], 'string'],
+            [['user_id', 'product_id', 'role_id','sales_id', 'isactive'], 'integer'],
+            [['email', 'location', 'name', 'countrycode', 'number','linkedin_id','facebook_id'], 'string'],
             [['created_at', 'updated_at','tags'], 'safe'],
         ];
     }
