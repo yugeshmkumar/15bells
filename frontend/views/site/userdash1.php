@@ -65,10 +65,7 @@ $this->title = 'Dashboard';
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo  ucfirst($user->email);  ?></p>
 									
 									<div class="col-md-12 no_pad">
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessee']) ?>" id="lessee_serch" class="edit_profile sub_users add_bttn lessee_serch">Search Property</a>
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['buyer']) ?>" id="buyer_serch" class="edit_profile sub_users add_bttn buyer_serch">Search Property</a>
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" id="lesproperty" class="edit_profile sub_users add_bttn lesproperty">Add Property</a>
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['seller']) ?>" id="selproperty" class="edit_profile sub_users add_bttn selproperty">Add property</a>
+									
 
 									
 									</div>
@@ -85,8 +82,11 @@ $this->title = 'Dashboard';
 
 								<?php } ?>
 								
-								<a href="<?php echo yii::$app->urlManager->createUrl(['site/postlogin']) ?>" class="edit_profile">Edit Profile</a></p>
-								
+								<a href="<?php echo yii::$app->urlManager->createUrl(['site/postlogin']) ?>" class="edit_profile">Edit Profile</a>
+								<a href="<?php echo Yii::$app->urlManager->createUrl(['lessee']) ?>" id="lessee_serch" class="edit_profile add_bttn lessee_serch">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['buyer']) ?>" id="buyer_serch" class="edit_profile add_bttn buyer_serch">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" id="lesproperty" class="edit_profile  add_bttn lesproperty">Add Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['seller']) ?>" id="selproperty" class="edit_profile add_bttn selproperty">Add property</a></p>
 								</div>
 							</div>
 							<div class="col-md-4 no_pad">
