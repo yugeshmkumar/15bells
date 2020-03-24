@@ -67,8 +67,8 @@ $this->title = 'Dashboard';
 									<div class="col-md-12 no_pad">
 									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessee']) ?>" id="lessee_serch" class="edit_profile sub_users add_bttn lessee_serch">Search Property</a>
 									<a href="<?php echo Yii::$app->urlManager->createUrl(['buyer']) ?>" id="buyer_serch" class="edit_profile sub_users add_bttn buyer_serch">Search Property</a>
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" id="lesproperty" class="edit_profile sub_users add_bttn lesproperty">Search Property</a>
-									<a href="<?php echo Yii::$app->urlManager->createUrl(['seller']) ?>" id="selproperty" class="edit_profile sub_users add_bttn selproperty">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" id="lesproperty" class="edit_profile sub_users add_bttn lesproperty">Add Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['seller']) ?>" id="selproperty" class="edit_profile sub_users add_bttn selproperty">Add property</a>
 
 									
 									</div>
