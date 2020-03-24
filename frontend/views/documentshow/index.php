@@ -231,9 +231,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 
                                 if ($query[0]['counts'] > 0 ) {
-                                    return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Moved to F2F</button>', $url = 'javascript:void(0)', []);
+                                    return Html::a('<button class="btn btn-default" style="width:135px; border-color:white;border:1px solid;" >Already Sent</button>', $url = 'javascript:void(0)', []);
                                 } else {
-                                    return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetof2f(' . $property_id . ',' . $userid . ')" >Move to F2F</button>', $url = 'javascript:void(0)', []);
+                                    return Html::a('<button class="btn btn-info" style="width:135px; border-color:white;border:1px solid;" onclick="movetof2f(' . $property_id . ',' . $userid . ')" >Send Request</button>', $url = 'javascript:void(0)', []);
                                 }
 
 
