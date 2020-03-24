@@ -64,7 +64,9 @@ $this->title = 'Dashboard';
 										<p class="user_detail"><i class="fa fa-phone"></i> <?php echo  ucfirst($user->username);  ?></p>
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo  ucfirst($user->email);  ?></p>
 									
-									
+									<div class="col-md-12 no_pad">
+									<a href="#" class="edit_profile sub_users add_bttn buyer_serch">Search Property</a>
+									</div>
 									
 									</div>
 								</div>
