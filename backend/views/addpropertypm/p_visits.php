@@ -278,23 +278,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
                     
-            ['attribute' => 'sales_id',
-                'label' => 'Supply Name.',
-                'width' => '250px',               
-                'value' => function($data) {
-                if(!empty($data->sales_id)){
+            // ['attribute' => 'sales_id',
+            //     'label' => 'Supply Name.',
+            //     'width' => '250px',               
+            //     'value' => function($data) {
+            //     if(!empty($data->sales_id)){
                 
-                $employee = \common\models\CompanyEmp::findOne($data->sales_id)->userid;
-                    if (isset($employee)) {
-                        return \common\models\User::findOne($employee)->fullname;
-                    } else {
-                        return '';
-                    }
-                }else{
-                    return '';
-                }
-                }
-            ],
+            //     $employee = \common\models\CompanyEmp::findOne($data->sales_id)->userid;
+            //         if (isset($employee)) {
+            //             return \common\models\User::findOne($employee)->fullname;
+            //         } else {
+            //             return '';
+            //         }
+            //     }else{
+            //         return '';
+            //     }
+            //     }
+            // ],
                     
             ['attribute' => 'property_id',
                 'label' => 'Property ID',
