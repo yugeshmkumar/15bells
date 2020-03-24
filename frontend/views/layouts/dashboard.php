@@ -294,6 +294,11 @@ function setuserloginas(){
                                                           $(".lessee").hide();
                                                           $(".buyer").show();
 														  $("#buyer").addClass('active');
+
+															$('#buyer_serch').css("display","block");
+															$('#lessee_serch').css("display","none");
+															$('#lesproperty').css("display","none");
+															$('#selproperty').css("display","none");
                                                        }
                                                        if(data == 'seller'){
                                                            
@@ -302,6 +307,10 @@ function setuserloginas(){
                                                            $(".lessee").hide(); 
                                                            $(".buyer").hide(); 
 														   $("#seller").addClass('active');
+															$('#buyer_serch').css("display","none");
+															$('#lessee_serch').css("display","none");
+															$('#lesproperty').css("display","none");
+															$('#selproperty').css("display","block");
                                                         }
                                                         if(data == 'lessor'){
                                                            
@@ -310,6 +319,10 @@ function setuserloginas(){
                                                            $(".lessee").hide(); 
                                                            $(".buyer").hide(); 
 														   $("#lessor").addClass('active');
+															$('#buyer_serch').css("display","none");
+															$('#lessee_serch').css("display","none");
+															$('#lesproperty').css("display","block");
+															$('#selproperty').css("display","none");
                                                         }
                                                         if(data == 'lessee'){
                                                            
@@ -318,6 +331,10 @@ function setuserloginas(){
                                                            $(".lessee").show();
                                                            $(".buyer").hide();  
 														   $("#lessee").addClass('active');
+															$('#buyer_serch').css("display","none");
+															$('#lessee_serch').css("display","block");
+															$('#lesproperty').css("display","none");
+															$('#selproperty').css("display","none");
                                                         }
       
                                                        },

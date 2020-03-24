@@ -65,7 +65,12 @@ $this->title = 'Dashboard';
 										<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo  ucfirst($user->email);  ?></p>
 									
 									<div class="col-md-12 no_pad">
-									<a href="#" class="edit_profile sub_users add_bttn buyer_serch">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessee']) ?>" id="lessee_serch" class="edit_profile sub_users add_bttn lessee_serch">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['buyer']) ?>" id="buyer_serch" class="edit_profile sub_users add_bttn buyer_serch">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['lessor']) ?>" id="lesproperty" class="edit_profile sub_users add_bttn lesproperty">Search Property</a>
+									<a href="<?php echo Yii::$app->urlManager->createUrl(['seller']) ?>" id="selproperty" class="edit_profile sub_users add_bttn selproperty">Search Property</a>
+
+									
 									</div>
 									
 									</div>
@@ -367,6 +372,31 @@ $(".sub_users").click(function() {
 		$("#lessee").removeClass('active');    
 		
 		$("#"+user).addClass('active');  
+
+		if(user == 'buyer'){
+			$('#buyer_serch').css("display","block");
+			$('#lessee_serch').css("display","none");
+			$('#lesproperty').css("display","none");
+			$('#selproperty').css("display","none");
+		}
+		if(user == 'lessee'){
+			$('#buyer_serch').css("display","none");
+			$('#lessee_serch').css("display","block");
+			$('#lesproperty').css("display","none");
+			$('#selproperty').css("display","none");
+		}
+		if(user == 'seller'){
+			$('#buyer_serch').css("display","none");
+			$('#lessee_serch').css("display","none");
+			$('#lesproperty').css("display","none");
+			$('#selproperty').css("display","block");
+		}
+		if(user == 'lessor'){
+			$('#buyer_serch').css("display","none");
+			$('#lessee_serch').css("display","none");
+			$('#lesproperty').css("display","block");
+			$('#selproperty').css("display","none");
+		}
 
         toastr.success('Successfully Saved ','success');
 		location.reload();    
