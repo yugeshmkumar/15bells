@@ -513,13 +513,13 @@ $this->params['breadcrumbs'][] = $this->title;
             echo '<label>Start Date/Time</label>';
             echo DateTimePicker::widget([
                 'name' => 'datetime_10',
-                //'value' => '2018-02-12 08:17:19',
+               // 'value' => '12/31/2010 05:10:20',
                 'options' => ['placeholder' => 'Select operating time ...'],
                 'convertFormat' => true,
                 'pluginOptions' => [
                      'autoclose'=>true,
-                    'format' => 'yyyy-MM-dd hh:i:00',
-                    'startDate' => '01-Mar-2014 12:00 AM',
+                    'format' => 'yyyy-MM-dd HH:i:00',
+                   // 'startDate' => '01-Mar-2014 12:00 AM',
                     'todayHighlight' => true
                 ]
             ]);
@@ -934,7 +934,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     function onlinesave() {
 
-      // alert( $( "input[name$='datetime_10']" ).val());
+    //    alert( $( "input[name$='datetime_10']" ).val());
         var newdates = $( "input[name$='datetime_10']" ).val();
         var newsiteid = $('#scheduleid').val();
 

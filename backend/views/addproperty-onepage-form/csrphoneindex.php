@@ -112,7 +112,7 @@ CrudAsset::register($this);
         'pluginOptions' => [
 
         'autoclose'=>true,
-        'format' => 'yyyy-mm-dd hh:i:00',    
+        'format' => 'yyyy-MM-dd HH:i:00',
         'todayHighlight' => true
         ]
         ]);
