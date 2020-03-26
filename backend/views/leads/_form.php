@@ -58,13 +58,36 @@ use common\models\CompanyEmp;
 
     <?php echo $form->field($model, 'name')->textarea(['rows' => 3]) ?>
 
-    <?php echo $form->field($model, 'countrycode')->textarea(['rows' => 3]) ?>
+    <?php //echo// $form->field($model, 'countrycode')->textarea(['rows' => 3]) ?>
+
+    <?php
+$arrCountries = \common\models\Countries::find()->all();
+// echo '<pre>';print_r($arrCountries);die;
+$Countries = ArrayHelper::map($arrCountries ,'phonecode','namecode');
+?>
+   
+                  
+	 <?php echo $form->field($model, 'countrycode')->widget(Select2::classname(), [
+    'data' => $Countries,
+    'options' => ['placeholder' => 'Please Select ...','class'=>'form-control'],
+    'pluginOptions' => [
+         'allowClear' => true
+    ],
+])->label(false); ?>
 
     <?php echo $form->field($model, 'number')->textarea(['rows' => 3]) ?>
 
     <?php echo $form->field($model, 'facebook_id')->textarea(['rows' => 3]) ?>
 
     <?php echo $form->field($model, 'linkedin_id')->textarea(['rows' => 3]) ?>
+
+    <?php 
+
+      echo $form->field($model, 'source')->dropDownList(
+            ['signup' => 'Signup', 'Referral' => 'Referral', 'EmailCampaign' => 'Email Campaign', 'Advertisement' => 'Advertisement', 'SalesProspecting' => 'Sales Prospecting', 'MarketingResearch' => 'Marketing Research', 'InboundPhoneCall' => 'Inbound Phone Call', 'PaidSearch' => 'Paid Search']
+        );
+
+       ?>
 
 
   <?php   $countries=CompanyEmp::find()->where(['name'=>'sales demand lessee'])->all();

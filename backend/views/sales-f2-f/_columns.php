@@ -1,6 +1,14 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
+use kartik\widgets\Select2;
+use kartik\editable\Editable;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap\ActiveForm;
+use kartik\editable\EditableAsset;
+
+
+
 
 
 return [
@@ -79,14 +87,31 @@ return [
     //     'class'=>'\kartik\grid\DataColumn',
     //     'attribute'=>'sales_executive_id',
     // ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'status',
+    // ],
+
+    [
+        'class' => 'kartik\grid\EditableColumn',
+        'label' => 'Status',
+        'attribute' => 'status',
+        'filter'=>array("IN_PROGRESS"=>"IN_PROGRESS","ON_HOLD"=>"ON_HOLD","COMPLETED"=>"COMPLETED","REJECTED"=>"REJECTED"),
+        'options' => ['style' => 'width:200px;'],
+        'format' => 'raw',
+        'value' => function ($data) {
+     $statusd = $data->status;
+   
+       return $statusd;
+       
+},       
+    ],
+
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'meeting_date_time',
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'status',
-    // ],
+    
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'comment',

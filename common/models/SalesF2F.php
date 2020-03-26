@@ -36,7 +36,7 @@ class SalesF2F extends \yii\db\ActiveRecord
             [['buyer_id', 'sellor_id', 'property_id', 'sales_executive_id', 'meeting_date_time', 'comment', 'created_date'], 'required'],
             [['buyer_id', 'sellor_id', 'property_id', 'sales_executive_id'], 'integer'],
             [['meeting_date_time', 'created_date'], 'safe'],
-            [['status', 'comment'], 'string'],
+            [['status', 'comment','location'], 'string'],
         ];
     }
 

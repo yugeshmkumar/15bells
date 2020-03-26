@@ -94,7 +94,7 @@ class LeadsController extends Controller {
 
             $trendingadd = \Yii::$app->db->createCommand()->insert('leadassignment', ['leadid' => $newleadid, 'lead_current_status_ID' => $newleadstatus, 'assigned_toID' => $assigned_id, 'assigned_at' => $date])->execute();
            if($trendingadd){
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['leadrequest/index', 'status' => '1']);
             }
 
         }else{
@@ -153,7 +153,7 @@ class LeadsController extends Controller {
            
            
             if($trendingadd){
-            return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['leadrequest/index', 'status' => '1']);
             }
 
         }
