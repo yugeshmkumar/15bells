@@ -32,7 +32,7 @@ use kartik\datetime\DateTimePicker;
             'convertFormat' => true,
             'pluginOptions' => [
                 'autoclose'=>true,
-                    'format' => 'yyyy-MM-dd hh:i:00',
+                    'format' => 'yyyy-MM-dd HH:i:00',
                 'startDate' => '01-Mar-2020 12:00 AM',
                 'todayHighlight' => true
             ]
@@ -42,7 +42,9 @@ use kartik\datetime\DateTimePicker;
         ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'IN_PROGRESS' => 'IN PROGRESS', 'ON_HOLD' => 'ON HOLD', 'COMPLETED' => 'COMPLETED', 'REJECTED' => 'REJECTED', ], ['prompt' => '']) ?>
-
+    <?php
+    echo $form->field($model, 'location')->dropDownList(['Gurugram' => 'Gurugram', 'Delhi' => 'Delhi', 'Faridabad' => 'Faridabad', 'Noida' => 'Noida', 'Gaziabad' => 'Gaziabad'],['prompt'=>'Select location']);
+    ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'created_date')->hiddenInput()->label(false) ?>

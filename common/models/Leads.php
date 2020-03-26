@@ -40,7 +40,7 @@ class Leads extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'product_id', 'role_id','sales_id', 'isactive'], 'integer'],
-            [['email', 'location', 'name', 'countrycode', 'number','linkedin_id','facebook_id'], 'string'],
+            [['email', 'location', 'name', 'countrycode', 'number','linkedin_id','facebook_id','source'], 'string'],
             [['created_at', 'updated_at','tags'], 'safe'],
         ];
     }

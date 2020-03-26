@@ -65,7 +65,7 @@ padding:0;
 
 <!-- HTML -->
 <div class="container-fluid">
-    <div class="row">
+    <!-- <div class="row">
 
         <div class="col-lg-3 col-md-6">
               <div class="card">
@@ -115,8 +115,7 @@ padding:0;
                </div>
 
       </div>
-</div>
-<div class="container-fluid pad50">
+</div> -->
     <!-- <div class="col-md-5" style="padding-left:0;">
         <div id="chartdiv2"></div>
     </div> -->
@@ -124,21 +123,22 @@ padding:0;
         <div id="chartdiv"></div>
     </div>
     
-</div>
+
 <div class="container-fluid p-0">
 <div class="col-sm-12 p-0">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title m-b-0">New Product List</h5>
+                                <h5 class="card-title m-b-0">order List</h5>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Products</th>
-                                                <th>Popularity</th>
-                                                <th>Sales</th>
-                                                <th>Sales</th>
+                                                <th>Total Amount</th>
+                                                <th>Payment recieved</th>
+                                                <th>Property ID</th>
+                                                <th>Client</th>
+                                                <th>Owner</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -148,12 +148,14 @@ padding:0;
                                                 <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,-3,-2,-4,-5,-4,-3,-2,-5,-1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 0.5 0 0.5 13.333333333333334 23.9 26.666666666666668 16.1 40 31.7 53.333333333333336 39.5 66.66666666666667 31.7 80 23.9 93.33333333333334 16.1 106.66666666666667 39.5 120 8.299999999999997 120 0.5"></polygon><polyline fill="none" points="0 0.5 13.333333333333334 23.9 26.666666666666668 16.1 40 31.7 53.333333333333336 39.5 66.66666666666667 31.7 80 23.9 93.33333333333334 16.1 106.66666666666667 39.5 120 8.299999999999997" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Air Conditioner</td>
                                                 <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,-1,-1,-2,-3,-1,-2,-3,-1,-2</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 0.5 0 0.5 13.333333333333334 13.5 26.666666666666668 13.5 40 26.5 53.333333333333336 39.5 66.66666666666667 13.5 80 26.5 93.33333333333334 39.5 106.66666666666667 13.5 120 26.5 120 0.5"></polygon><polyline fill="none" points="0 0.5 13.333333333333334 13.5 26.666666666666668 13.5 40 26.5 53.333333333333336 39.5 66.66666666666667 13.5 80 26.5 93.33333333333334 39.5 106.66666666666667 13.5 120 26.5" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
                                                 <td><span class="text-warning text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 8.55%</span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                             </tr>
                                             <tr>
@@ -162,21 +164,26 @@ padding:0;
                                                 <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
                                                 <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                             </tr>
+
                                             <tr>
                                                 <td>4</td>
+                                                <td>RC Cars</td>
+                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
                                                 <td>Down Coat</td>
                                                 <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
                                                 <td><span class="text-info text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Down Coat</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-info text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
                                                 <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
                                             </tr>
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -206,38 +213,29 @@ var chart = am4core.create("chartdiv", am4charts.XYChart);
 
 
 // Add data
-chart.data = [{
-  "year": "2016",
-  "europe": 2.5,
-  "namerica": 2.5,
-  "asia": 2.1,
-  "lamerica": 0.3,
-  "meast": 0.2,
-  "africa": 0.1
-}, {
-  "year": "2017",
-  "europe": 2.6,
-  "namerica": 2.7,
-  "asia": 2.2,
-  "lamerica": 0.3,
-  "meast": 0.3,
-  "africa": 0.1
-}, {
-  "year": "2018",
-  "europe": 3.8,
-  "namerica": 4.4,
-  "lamerica": 0.3  
-  
-},
+chart.data = [
 {
-  "year": "2019",
-  "europe": 2.8,
-  "namerica": 2.9,
-  "asia": 2.4,
-  "lamerica": 0.3,
-  "meast": 0.3,
-  "africa": 0.1
-}];
+  "year": "Suspect",
+  "shortlist": 60,
+  "client": 10,
+}, {
+  "year": "Prospect",
+  "sitevisit": 40,
+  "client": 8,
+  
+},{
+  "year": "Analyse",
+  "EMD": 2,
+  "F2F": 4,
+  "client": 6
+},{
+  "year": "Closure",
+  "EMD": 1,
+  "F2F": 3,
+  "client": 4,
+   "revenue": 50.9
+}
+];
 
 // Create axes
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -272,16 +270,17 @@ function createSeries(field, name) {
   labelBullet.label.text = "{valueY}";
   labelBullet.locationY = 0.5;
   labelBullet.label.hideOversized = true;
-  
+  chart.scrollbarX = new am4core.Scrollbar();
+
   return series;
 }
+createSeries("client", "Client");
 
-createSeries("europe", "Europe");
-createSeries("namerica", "North America");
-createSeries("asia", "Asia-Pacific");
-createSeries("lamerica", "Latin America");
-createSeries("meast", "Middle-East");
-createSeries("africa", "Africa");
+createSeries("shortlist", "Shortlist");
+createSeries("sitevisit", "Site visit");
+createSeries("EMD", "EMD");
+createSeries("F2F", "F2F");
+createSeries("revenue", "Revenue");
 
 // Legend
 chart.legend = new am4charts.Legend();
