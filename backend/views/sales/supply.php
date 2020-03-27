@@ -1,7 +1,3 @@
-
-
-
-
 <style>
 #chartdiv1 {
   width: 100%;
@@ -198,11 +194,30 @@ padding:0;
 <!-- Chart code -->
 <!-- Chart code -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 
 
 <!-- Chart code -->
 <script>
-am4core.ready(function() {
+
+
+
+
+
+var backenddata = "";
+
+
+getsalesdata();
+
+
+
+
+  am4core.ready(function(){
+
+   
+
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
@@ -213,29 +228,32 @@ var chart = am4core.create("chartdiv", am4charts.XYChart);
 
 
 // Add data
-chart.data = [
-{
-  "year": "Suspect",
-  "shortlist": 60,
-  "client": 10,
-}, {
-  "year": "Prospect",
-  "sitevisit": 40,
-  "client": 8,
+chart.data = backenddata;
+
+
+// chart.data = [
+// {
+//   "year": "Suspect",
+//   "shortlist": 60,
+//   "client": 10,
+// }, {
+//   "year": "Prospect",
+//   "sitevisit": 40,
+//   "client": 8,
   
-},{
-  "year": "Analyse",
-  "EMD": 2,
-  "F2F": 4,
-  "client": 6
-},{
-  "year": "Closure",
-  "EMD": 1,
-  "F2F": 3,
-  "client": 4,
-   "revenue": 50.9
-}
-];
+// },{
+//   "year": "Analyse",
+//   "EMD": 2,
+//   "F2F": 4,
+//   "client": 6
+// },{
+//   "year": "Closure",
+//   "EMD": 1,
+//   "F2F": 3,
+//   "client": 4,
+//    "revenue": 50.9
+// }
+// ];
 
 // Create axes
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -286,6 +304,30 @@ createSeries("revenue", "Revenue");
 chart.legend = new am4charts.Legend();
 
 }); // end am4core.ready()
+
+
+function getsalesdata(){
+
+$.ajax({
+          type: "GET",
+          url: 'getsalesdata',
+          data: {yes:'yes'},
+          //dataType: 'json',
+          success: function (data) { 
+
+            backenddata = $.parseJSON(data); 
+
+          // alert(backenddata); 
+
+            
+          }
+});
+
+
+
+}
+
+
 </script>
 
 
