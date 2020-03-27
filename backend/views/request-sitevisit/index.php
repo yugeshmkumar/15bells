@@ -264,13 +264,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                        ['attribute' => 'sales_id',
                 'label' => 'Sales Name.',
-                'width' => '200px',               
+                'width' => '200px', 
+                'format' => 'raw',
+              
                 'value' => function($data) {
                 if(!empty($data->sales_id)){
                 
                 $employee = \common\models\CompanyEmp::findOne($data->assigned_to_id)->userid;
                     if (isset($employee)) {
-                        return \common\models\User::findOne($employee)->fullname;
+                        $fullname=  \common\models\User::findOne($employee)->fullname;
+                        return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $employee . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+                          'title' => Yii::t('yii', 'Click to View User details'),
+              ]);
+
                     } else {
                         return '';
                     }
@@ -279,6 +285,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
                 }
             ],
+
+
+            
 
                         [
                             'label' => 'Visit Type',
