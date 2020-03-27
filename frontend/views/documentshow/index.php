@@ -717,7 +717,7 @@ $.ajax({
     success: function (data) {
 
         if (data == '1') {
-            toastr.success('Successfully moved to F2F', 'success');
+            toastr.success('Successfully Sent meeting request', 'success');
             $.pjax({container: '#pjax-grid-view'});
         } else {
             toastr.error('Cannot Move, Some Internal Error', 'error');
