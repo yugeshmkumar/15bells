@@ -18,38 +18,32 @@ use yii\bootstrap\ActiveForm;
 }
 </style>
 <div class="portlet portlet-sortable sellr_proprty">
-        <div class="portlet-title">
-                                    <div class="caption font-green-sharp exp_titl">
-                                        
-                                        <span class="caption-subject bold uppercase exp_name">Add Sub User Details</span>
-                                        <!--<span class="caption-helper">details...</span>-->
-                                    </div>
-                                    </div>
+     
 <div class="user-form">
 
     <?php $form = ActiveForm::begin(); ?>
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-4 pt-2">
-                    <?php echo $form->field($model, 'fullname')->textInput(['class' => 'one_inpt form-control', 'placeholder' => "First Name"]) ->label(false)?>
+                <div class="col-md-6 pt-2 date_select">
+                    <?php echo $form->field($model, 'fullname')->textInput(['class' => 'input_desgn form-control', 'placeholder' => "First Name"]) ->label(false)?>
                 </div>
-                <div class="col-md-4 pt-2">
-                    <?php echo $form->field($model, 'lastname')->textInput(['class' => 'one_inpt form-control', 'placeholder' => "Last Name"]) ->label(false) ?>
+                <div class="col-md-6 pt-2 date_select">
+                    <?php echo $form->field($model, 'lastname')->textInput(['class' => 'input_desgn form-control', 'placeholder' => "Last Name"]) ->label(false) ?>
                 </div>
-                <div class="col-md-4 pt-2">
-                    <?php echo $form->field($model, 'username')->textInput(['class' => 'one_inpt form-control', 'placeholder' => "Phone Number"]) ->label(false) ?>
+                <div class="col-md-6 pt-2 date_select">
+                    <?php echo $form->field($model, 'username')->textInput(['class' => 'input_desgn form-control', 'placeholder' => "Phone Number"]) ->label(false) ?>
                 </div>
-                <div class="col-md-4 pt-2">
-                    <?php echo $form->field($model, 'email')->textInput(['class' => 'one_inpt form-control', 'placeholder' => "Email"]) ->label(false) ?>
+                <div class="col-md-6 pt-2 date_select">
+                    <?php echo $form->field($model, 'email')->textInput(['class' => 'input_desgn form-control', 'placeholder' => "Email"]) ->label(false) ?>
                 </div>
-                <div class="col-md-4 pt-2">
-                    <?php echo $form->field($model, 'password')->passwordInput()->textInput(['class' => 'one_inpt form-control', 'placeholder' => "Password"]) ->label(false) ?>
+                <div class="col-md-6 pt-2 date_select">
+                    <?php echo $form->field($model, 'password')->passwordInput()->textInput(['class' => 'input_desgn form-control', 'placeholder' => "Password"]) ->label(false) ?>
                 </div>
-                <div class="col-md-4 pt-3">
+                <div class="col-md-6 pt-3 date_select">
                     <?php echo $form->field($model, 'status')->label(Yii::t('backend', 'Active'))->checkbox() ?>
                  </div>   
                     <div class="form-group col-md-12 text-center pt-4">
-                        <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary edit_butn', 'name' => 'signup-button']) ?>
+                        <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary save_button', 'name' => 'signup-button']) ?>
                     </div>
             </div>
         </div>

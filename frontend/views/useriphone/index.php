@@ -11,23 +11,25 @@ use yii\grid\GridView;
 $this->title = Yii::t('backend', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="portlet portlet-sortable sellr_proprty">
-        <div class="portlet-title">
-                                    <div class="caption font-green-sharp exp_titl">
-                                        
-                                        <span class="caption-subject bold uppercase exp_name">Add Sub Users</span>
-                                        <!--<span class="caption-helper">details...</span>-->
-                                    </div>
-                                    </div>
+<div class="col-md-9">
+            <div class="row">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<h2 class="dashboard_head">Add Subuser</h2>
+					</div>
+					<div class="col-md-6 text-right addprop_button">
+                    <p class="text-right">
+                            <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
+                        'modelClass' => 'User',
+                    ]), ['create'], ['class' => 'btn btn-success edit_butn add_button']) ?>
+                        </p>
+					</div>
+				</div>
+                </div>
 <div class="user-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p class="text-right">
-        <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'User',
-]), ['create'], ['class' => 'btn btn-success edit_butn']) ?>
-    </p>
 
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -62,5 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+</div>
 </div>
 </div>
