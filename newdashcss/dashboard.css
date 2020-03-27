@@ -1305,10 +1305,10 @@ input[type=file]::-webkit-file-upload-button {
 		padding:0 !important;
 	}
 	.edit_profile {
-    padding: 4px 12px;
+    padding: 4px 6px;
     border: 1px solid #c4984f;
     color: #c4984f;
-    font-size: 15px;
+    font-size: 12px;
 	}
 	.navbar-brand {
     float: left;
@@ -1646,4 +1646,8 @@ input[type=file]::-webkit-file-upload-button {
 
 .add_bttn{
 	margin-left:10px;
+}
+
+.sellor_proprty{
+	padding:50px 20px;
 }
