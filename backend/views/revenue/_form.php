@@ -26,7 +26,16 @@ $user_id = Yii::$app->user->identity->id;
 
 
 ?>
-
+<style>
+.select2{
+    width:100% !important;
+   
+}
+.select2-selection{
+    height:35px !important;
+    border-radius:0 !important;
+}
+</style>
 <div class="revenue-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -109,3 +118,16 @@ $user_id = Yii::$app->user->identity->id;
     <?php ActiveForm::end(); ?>
     
 </div>
+<script>
+$(document).ready(function() {
+//    // $("#revenue-client_id").select2();
+//    $('#revenue-client_id').select2({
+// dropdownParent: $('#ajaxCrudModal')
+// });
+$('select:not(.normal)').each(function () {
+                $(this).select2({
+                    dropdownParent: $(this).parent()
+                });
+            });
+});
+</script>

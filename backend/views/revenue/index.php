@@ -16,6 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 CrudAsset::register($this);
 
 ?>
+<style>
+span.select2-container {
+    z-index:10050;
+}
+</style>
 <div class="revenue-index">
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([
@@ -60,6 +65,20 @@ CrudAsset::register($this);
 </div>
 <?php Modal::begin([
     "id"=>"ajaxCrudModal",
+    'options' => ['tabindex' => ''],
     "footer"=>"",// always need it for jquery plugin
 ])?>
 <?php Modal::end(); ?>
+<script>
+$(document).ready(function() {
+//    // $("#revenue-client_id").select2();
+//    $('#revenue-client_id').select2({
+// dropdownParent: $('#ajaxCrudModal')
+// });
+$('select:not(.normal)').each(function () {
+                $(this).select2({
+                    dropdownParent: $(this).parent()
+                });
+            });
+});
+</script>
