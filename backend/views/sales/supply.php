@@ -1,3 +1,11 @@
+<?php 
+
+use yii\db\Query;
+use common\models\CompanyEmp;
+
+?>
+
+
 <style>
 #chartdiv1 {
   width: 100%;
@@ -137,49 +145,48 @@ padding:0;
                                                 <th>Owner</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Milk Powder</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,-3,-2,-4,-5,-4,-3,-2,-5,-1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 0.5 0 0.5 13.333333333333334 23.9 26.666666666666668 16.1 40 31.7 53.333333333333336 39.5 66.66666666666667 31.7 80 23.9 93.33333333333334 16.1 106.66666666666667 39.5 120 8.299999999999997 120 0.5"></polygon><polyline fill="none" points="0 0.5 13.333333333333334 23.9 26.666666666666668 16.1 40 31.7 53.333333333333336 39.5 66.66666666666667 31.7 80 23.9 93.33333333333334 16.1 106.66666666666667 39.5 120 8.299999999999997" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Air Conditioner</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,-1,-1,-2,-3,-1,-2,-3,-1,-2</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 0.5 0 0.5 13.333333333333334 13.5 26.666666666666668 13.5 40 26.5 53.333333333333336 39.5 66.66666666666667 13.5 80 26.5 93.33333333333334 39.5 106.66666666666667 13.5 120 26.5 120 0.5"></polygon><polyline fill="none" points="0 0.5 13.333333333333334 13.5 26.666666666666668 13.5 40 26.5 53.333333333333336 39.5 66.66666666666667 13.5 80 26.5 93.33333333333334 39.5 106.66666666666667 13.5 120 26.5" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-warning text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 8.55%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>RC Cars</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                            </tr>
 
+                                        <?php 
+
+                                        $user_id = Yii::$app->user->identity->id;
+                                        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+                                        $assigned_id = $querys->id;
+                                         $getclient12 = new Query;
+                                         $getclient12->select('*')
+                                                     ->from('revenue')                    
+                                                     ->where(['sales_executive_id' => $assigned_id]);
+                                         $commandf2frevenue = $getclient12->createCommand();
+                                         $paymentf2frevenue = $commandf2frevenue->queryAll();                           
+                                 
+                                 
+                                        
+                                        
+                                        ?>
+
+
+                                        <tbody>
+
+                                        <?php 
+                                        $count = 0;
+                                         foreach($paymentf2frevenue  as $paymentf2frevenues){
+
+                                          $clientname = common\models\User::findOne($paymentf2frevenues['client_id'])->fullname;
+                                          $ownername = common\models\User::findOne($paymentf2frevenues['owner_id'])->fullname;
+
+                                        $count += 1;
+                                        ?>
                                             <tr>
-                                                <td>4</td>
-                                                <td>RC Cars</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 20 26.666666666666668 0.5 40 33 53.333333333333336 26.5 66.66666666666667 13.5 80 0.5 93.33333333333334 20 106.66666666666667 26.5 120 33" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Down Coat</td>
-                                                <td><span class="peity-line" data-width="120" data-peity="{ &quot;fill&quot;: [&quot;#13dafe&quot;], &quot;stroke&quot;:[&quot;#13dafe&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="120"><polygon fill="#13dafe" points="0 39.5 0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858 120 39.5"></polygon><polyline fill="none" points="0 39.5 13.333333333333334 22.78571428571429 26.666666666666668 6.0714285714285765 40 17.214285714285715 53.333333333333336 11.642857142857142 66.66666666666667 17.214285714285715 80 0.5 93.33333333333334 22.78571428571429 106.66666666666667 17.214285714285715 120 28.357142857142858" stroke="#13dafe" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                <td><span class="text-info text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
-                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                <td><?php echo $count; ?></td>
+                                                <td><?php echo $paymentf2frevenues['client_total_amount'] + $paymentf2frevenues['owner_total_amount']; ?></td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> <?php echo ($paymentf2frevenues['client_total_amount'] - $paymentf2frevenues['client_pending_amount']) + ($paymentf2frevenues['owner_total_amount'] - $paymentf2frevenues['owner_pending_amount']); ?></span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> <?php echo $paymentf2frevenues['property_id']; ?></span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> <?php echo $clientname; ?></span> </td>
+                                                <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> <?php echo $ownername; ?></span> </td>
                                             </tr>
                                            
+                                           <?php 
+                                           }
+                                           ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -207,7 +214,7 @@ padding:0;
 
 
 var backenddata = "";
-
+var getunitglobal = "";
 
 getsalesdata();
 
@@ -298,7 +305,16 @@ createSeries("shortlist", "Shortlist");
 createSeries("sitevisit", "Site visit");
 createSeries("EMD", "EMD");
 createSeries("F2F", "F2F");
-createSeries("revenue", "Revenue");
+
+if(getunitglobal  == 'K'){
+createSeries("revenue", "Revenue( In Thousands)");
+  }
+  if(getunitglobal  == 'Lacs'){
+createSeries("revenue", "Revenue( In Lacs)");
+  }
+  if(getunitglobal  == 'Cr'){
+createSeries("revenue", "Revenue( In Cr)");
+  }
 
 // Legend
 chart.legend = new am4charts.Legend();
@@ -315,8 +331,15 @@ $.ajax({
           //dataType: 'json',
           success: function (data) { 
 
-            backenddata = $.parseJSON(data); 
+          var  removeditems =  $.parseJSON(data).splice(0,1);
 
+          var  removeditemss =  $.parseJSON(data).splice(1,4);
+          var myJSONs = JSON.stringify(removeditemss);
+
+          var getunit =  removeditems[0].amounttowords;
+
+          backenddata = removeditemss; 
+          getunitglobal =  getunit;
           // alert(backenddata); 
 
             
