@@ -35,6 +35,8 @@ $user_id = Yii::$app->user->identity->id;
 
     <?= $form->field($model, 'sales_executive_id')->hiddenInput(['value'=>$assigned_id])->label(false) ?>
 
+    <?=  $form->field($model, 'revenue_type')->dropDownList(['EMD' => 'EMD', 'F2F' => 'F2F'],['prompt'=>'Select Revenue type']); ?>
+
 
     <div class="form-group">
 	<?= $form->field($model, 'client_id')->widget(Select2::classname(), [
@@ -43,7 +45,7 @@ $user_id = Yii::$app->user->identity->id;
 	'pluginOptions' => [
 	'allowClear' => true
 	],
-	])->label(false); ?>
+	]); ?>
      </div>
 
     <?= $form->field($model, 'client_total_amount')->textInput() ?>
@@ -71,7 +73,17 @@ $user_id = Yii::$app->user->identity->id;
         
         ?>
 
-    <?= $form->field($model, 'owner_id')->textInput() ?>
+
+    <div class="form-group">
+	<?= $form->field($model, 'owner_id')->widget(Select2::classname(), [
+	'data' => $Countries,
+	'options' => ['placeholder' => 'Please Select ...','class'=>'form-control'],
+	'pluginOptions' => [
+	'allowClear' => true
+	],
+	]); ?>
+     </div>
+    
 
     <?= $form->field($model, 'owner_total_amount')->textInput() ?>
 
@@ -109,3 +121,18 @@ $user_id = Yii::$app->user->identity->id;
     <?php ActiveForm::end(); ?>
     
 </div>
+
+
+<script>
+$(document).ready(function() {
+//    // $("#revenue-client_id").select2();
+//    $('#revenue-client_id').select2({
+// dropdownParent: $('#ajaxCrudModal')
+// });
+$('select:not(.normal)').each(function () {
+                $(this).select2({
+                    dropdownParent: $(this).parent()
+                });
+            });
+});
+</script>
