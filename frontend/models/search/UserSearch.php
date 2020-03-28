@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\User;
-use common\models\Company_Subusers_Record;
+use common\models\CompanyUsers;
 
 /**
  * UserSearch represents the model behind the search form about `common\models\User`.
@@ -42,7 +42,7 @@ class UserSearch extends User
 
         $subuser_ids = array();
         $user_id = Yii::$app->user->identity->id;
-        $querys = Company_Subusers_Record::find()->where(['master_id'=>$user_id])->all();
+        $querys = CompanyUsers::find()->where(['admin_user_id'=>$user_id])->all();
         foreach ($querys as $queryst){
 
             $subuser_ids[] = $queryst->subuser_id;

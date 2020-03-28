@@ -118,7 +118,7 @@ class RequestSitevisitController extends Controller {
 
            if($sites == 'Completed'){
                
-               $filter = 'yes';
+               $filter = 'useryes';
 
            }else{
                $filter = 'no';
@@ -156,7 +156,7 @@ public function actionLessee() {
 
        if($sites == 'Completed'){
            
-           $filter = 'yes';
+           $filter = 'useryes';
 
        }else{
            $filter = 'no';

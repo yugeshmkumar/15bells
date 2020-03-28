@@ -94,7 +94,25 @@ class SalesController extends Controller
                     ->groupBy('user_id');
         $commandsitevisitclient = $getclient3->createCommand();
         $paymentsitevisitclient = $commandsitevisitclient->execute();
+
+
+
+        $getclient2 = new Query;
+        $getclient2->select('*')
+                    ->from('request_site_visit')
+                    ->where(['assigned_to_id' => $assigned_id]);
+        $commandsitevisit = $getclient2->createCommand();
+        $paymentsitevisit = $commandsitevisit->execute();
+
+        $getclient3 = new Query;
+        $getclient3->select('*')
+                    ->from('request_site_visit')                        
+                    ->where(['assigned_to_id' => $assigned_id])
+                    ->groupBy('user_id');
+        $commandsitevisitclient = $getclient3->createCommand();
+        $paymentsitevisitclient = $commandsitevisitclient->execute();
         
+
         $arr = array ( 
       
             // Every array will be converted 
