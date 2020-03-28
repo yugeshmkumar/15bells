@@ -187,14 +187,28 @@ class SalesController extends Controller
         $commandf2frevenue = $getclient12->createCommand();
         $paymentf2frevenue = $commandf2frevenue->queryAll();
 
+
+
+        
+
         $client_total_amount = $paymentf2frevenue[0]['client_total_amount'];
         $owner_total_amount = $paymentf2frevenue[0]['owner_total_amount'];
 
          $totalamount =  $paymentf2frevenue[0]['client_total_amount'] + $paymentf2frevenue[0]['owner_total_amount'];
 
+        
+
          $Arraycheck = array("4"=>"K","5"=>"K","6"=>"Lacs","7"=>"Lacs","8"=>"Cr","9"=>"Cr");
          // define decimal values
           $numberLength = strlen($totalamount);//count the length of numbers
+
+          foreach ($Arraycheck as $Arraychecks=>$unitval){
+              if($numberLength == $Arraychecks){
+                 $rannumber  = $unitval;
+              }
+
+          }
+
           $getnumber  =  \common\models\activemode::notowords($totalamount);
 
         //   print_r($getnumber);die;
@@ -204,6 +218,12 @@ class SalesController extends Controller
       
             // Every array will be converted 
             // to an object 
+
+            array( 
+                
+                "amounttowords" => $rannumber
+            ), 
+
             array( 
                 "year" => "Suspect", 
                 "shortlist" => $paymentshortlst,
