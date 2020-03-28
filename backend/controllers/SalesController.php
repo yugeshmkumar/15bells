@@ -97,20 +97,84 @@ class SalesController extends Controller
 
 
 
-        $getclient2 = new Query;
-        $getclient2->select('*')
-                    ->from('request_site_visit')
-                    ->where(['assigned_to_id' => $assigned_id]);
-        $commandsitevisit = $getclient2->createCommand();
-        $paymentsitevisit = $commandsitevisit->execute();
+        $getclient4 = new Query;
+        $getclient4->select('*')
+                    ->from('request_emd')
+                    ->where(['status' => 1])
+                    ->andwhere(['assigned_to_id' => $assigned_id]);
+        $commandemd = $getclient4->createCommand();
+        $paymentemd = $commandemd->execute();
 
-        $getclient3 = new Query;
-        $getclient3->select('*')
-                    ->from('request_site_visit')                        
-                    ->where(['assigned_to_id' => $assigned_id])
+        $getclient5 = new Query;
+        $getclient5->select('*')
+                    ->from('request_emd')                        
+                    ->where(['status' => 1])
+                    ->andwhere(['assigned_to_id' => $assigned_id])
                     ->groupBy('user_id');
-        $commandsitevisitclient = $getclient3->createCommand();
-        $paymentsitevisitclient = $commandsitevisitclient->execute();
+        $commandemdclient = $getclient5->createCommand();
+        $paymentemdclient = $commandemdclient->execute();
+
+
+
+        $getclient6 = new Query;
+        $getclient6->select('*')
+                    ->from('sales_f_2_f')
+                    ->where(['status' => 'IN_PROGRESS'])
+                    ->andwhere(['sales_executive_id' => $assigned_id]);
+        $commandf2f = $getclient6->createCommand();
+        $paymentf2f = $commandf2f->execute();
+
+        $getclient7 = new Query;
+        $getclient7->select('*')
+                    ->from('sales_f_2_f') 
+                    ->where(['status' => 'IN_PROGRESS'])                       
+                    ->andwhere(['sales_executive_id' => $assigned_id])
+                    ->groupBy('buyer_id');
+        $commandf2fclient = $getclient7->createCommand();
+        $paymentf2fclient = $commandf2fclient->execute();
+
+
+
+        //  closure //
+
+
+
+        $getclient8 = new Query;
+        $getclient8->select('*')
+                    ->from('request_emd')
+                    ->where(['status' => 1])
+                    ->andwhere(['payment_status' => 'paid'])
+                    ->andwhere(['assigned_to_id' => $assigned_id]);
+        $commandemdclose = $getclient8->createCommand();
+        $paymentemdclose = $commandemdclose->execute();
+
+        $getclient9 = new Query;
+        $getclient9->select('*')
+                    ->from('request_emd')                        
+                    ->where(['status' => 1])
+                    ->andwhere(['assigned_to_id' => $assigned_id])
+                    ->groupBy('user_id');
+        $commandemdclientclose = $getclient9->createCommand();
+        $paymentemdclientclose = $commandemdclientclose->execute();
+
+
+
+        $getclient10 = new Query;
+        $getclient10->select('*')
+                    ->from('sales_f_2_f')
+                    ->where(['status' => 'COMPLETED'])
+                    ->andwhere(['sales_executive_id' => $assigned_id]);
+        $commandf2fclose = $getclient10->createCommand();
+        $paymentf2fclose = $commandf2fclose->execute();
+
+        $getclient11 = new Query;
+        $getclient11->select('*')
+                    ->from('sales_f_2_f') 
+                    ->where(['status' => 'COMPLETED'])                       
+                    ->andwhere(['sales_executive_id' => $assigned_id])
+                    ->groupBy('buyer_id');
+        $commandf2fclientclose = $getclient11->createCommand();
+        $paymentf2fclientclose = $commandf2fclientclose->execute();
         
 
         $arr = array ( 
@@ -129,15 +193,15 @@ class SalesController extends Controller
             ),
             array( 
                 "year" => "Analyse", 
-                "EMD" => $paymentshortlst,
-                "F2F"=> 4,
-                "client"  => $paymentsm
+                "EMD" => $paymentemd,
+                "F2F"=> $paymentf2f,
+                "client"  => $paymentemdclient + $paymentf2fclient
             ),
             array( 
                 "year" => "Closure", 
-                "EMD" => $paymentshortlst,
-                "F2F"=> 4,
-                "client"  => $paymentsm,
+                "EMD" => $paymentemdclose,
+                "F2F"=> $paymentf2fclose,
+                "client"  => $paymentemdclientclose + $paymentf2fclientclose,
                 "revenue"  => $paymentsm
             )
         ); 

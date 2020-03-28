@@ -181,6 +181,7 @@ $bundle = BackendAsset::register($this);
                                 ['label'=>Yii::t('backend', 'EMD'), 'url'=>['/request-emd'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'VR'), 'url'=>['/vr-setup/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'F2F Meeting'), 'url'=>['/sales-f2-f'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ['label'=>Yii::t('backend', 'Revenue'), 'url'=>['/revenue'], 'icon'=>'<i class="fa fa-money"></i>'],
                              ]
                         ],
 						
