@@ -195,7 +195,6 @@ class SalesController extends Controller
          $Arraycheck = array("4"=>"K","5"=>"K","6"=>"Lacs","7"=>"Lacs","8"=>"Cr","9"=>"Cr");
          // define decimal values
           $numberLength = strlen($totalamount);//count the length of numbers
-          
           $getnumber  =  \common\models\activemode::notowords($totalamount);
 
         //   print_r($getnumber);die;
