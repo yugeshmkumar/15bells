@@ -36,7 +36,7 @@ class Revenue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['property_id', 'sales_executive_id', 'client_id', 'owner_id', 'created_date'], 'required'],
+            [['property_id', 'sales_executive_id', 'client_id','revenue_type', 'owner_id', 'created_date'], 'required'],
             [['property_id', 'sales_executive_id', 'client_id', 'client_total_amount', 'client_pending_amount', 'owner_id', 'owner_total_amount', 'owner_pending_amount'], 'integer'],
             [['client_pending_amount_date', 'owner_pending_amount_date', 'created_date'], 'safe'],
         ];

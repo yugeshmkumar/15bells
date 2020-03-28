@@ -576,6 +576,50 @@ public static function assignleadsalesactionfrontend($employee,$leadid,$meaasge)
    }
 
 
+
+   public static function notowords($amount){
+	   
+	$Arraycheck = array("4"=>"K","5"=>"K","6"=>"Lacs","7"=>"Lacs","8"=>"Cr","9"=>"Cr");
+	// define decimal values
+ 	$numberLength = strlen($amount);//count the length of numbers
+	if ($numberLength > 3) {
+	   foreach ($Arraycheck as $Lengthnum=>$unitval) {
+		   if ($numberLength == $Lengthnum) {
+			  if ($Lengthnum % 2 == 0) {
+				 $RanNumber = substr($amount,1,2);
+				 $NmckGtZer = ($RanNumber[0]+$RanNumber[1]);
+				 if ($NmckGtZer < 1) { 
+					 $RanNumber = "0";
+				 } else {
+					if ($RanNumber[1] == 0) {
+					   $RanNumber[1] = "0";
+				 } 
+			}
+	 $amount = substr($amount,0,$numberLength-$Lengthnum+1) . "." . $RanNumber;
+   } else {
+		$RanNumber = substr($amount,2,2);
+		$NmckGtZer = ($RanNumber[0]+$RanNumber[1]);
+		if ($NmckGtZer < 1) { 
+		   $RanNumber  = 0;
+	   } else {
+		   if ($RanNumber[1] == 0)  {
+			   $RanNumber[1] = "0";
+		   }   
+	   }
+		$amount = substr($amount,0,$numberLength-$Lengthnum+2) . ".". $RanNumber;   
+	  }
+	}
+}
+} else {
+	$amount . "Rs";    
+}
+
+return $amount;
+}
+   
+   
+
+
 public static function insert_to_my_profile_table($userid,$new,$FirstName,$Emailid,$Mobileid){
 		  
 	
