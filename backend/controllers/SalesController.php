@@ -177,6 +177,30 @@ class SalesController extends Controller
         $paymentf2fclientclose = $commandf2fclientclose->execute();
         
 
+        //  closure  revenue //
+
+
+        $getclient12 = new Query;
+        $getclient12->select('client_total_amount,owner_total_amount')
+                    ->from('revenue')                    
+                    ->where(['sales_executive_id' => $assigned_id]);
+        $commandf2frevenue = $getclient12->createCommand();
+        $paymentf2frevenue = $commandf2frevenue->queryAll();
+
+        $client_total_amount = $paymentf2frevenue[0]['client_total_amount'];
+        $owner_total_amount = $paymentf2frevenue[0]['owner_total_amount'];
+
+         $totalamount =  $paymentf2frevenue[0]['client_total_amount'] + $paymentf2frevenue[0]['owner_total_amount'];
+
+         $Arraycheck = array("4"=>"K","5"=>"K","6"=>"Lacs","7"=>"Lacs","8"=>"Cr","9"=>"Cr");
+         // define decimal values
+          $numberLength = strlen($totalamount);//count the length of numbers
+          
+          $getnumber  =  \common\models\activemode::notowords($totalamount);
+
+        //   print_r($getnumber);die;
+
+
         $arr = array ( 
       
             // Every array will be converted 
@@ -202,7 +226,7 @@ class SalesController extends Controller
                 "EMD" => $paymentemdclose,
                 "F2F"=> $paymentf2fclose,
                 "client"  => $paymentemdclientclose + $paymentf2fclientclose,
-                "revenue"  => $paymentsm
+                "revenue"  => $getnumber
             )
         ); 
           
@@ -211,6 +235,17 @@ class SalesController extends Controller
 
 
     }
+
+
+
+
+
+    
+
+
+
+
+    
 	
 
 }
