@@ -91,7 +91,14 @@ class SaveSearchesSearch extends SaveSearches
     public function searchles($params)
     {
 
-        $user_id = Yii::$app->user->identity->id; 
+         if(isset($_GET['idfms'])){
+
+            $user_id = $_GET['idfms'];
+         }else{
+
+            $user_id = Yii::$app->user->identity->id; 
+
+         }
         $query = SaveSearches::find()->where(['user_id' => $user_id])->andwhere(['role_type'=>'lessee']);
 
         // add conditions that should always apply here
@@ -142,8 +149,15 @@ class SaveSearchesSearch extends SaveSearches
     public function searchbuy($params)
     {
        
-        $user_id = Yii::$app->user->identity->id; 
-        $query = SaveSearches::find()->where(['user_id' => $user_id])->andwhere(['role_type'=>'buyer']);
+if(isset($_GET['idfms'])){
+
+            $user_id = $_GET['idfms'];
+         }else{
+             
+            $user_id = Yii::$app->user->identity->id; 
+
+         }
+                 $query = SaveSearches::find()->where(['user_id' => $user_id])->andwhere(['role_type'=>'buyer']);
 
         // add conditions that should always apply here
 

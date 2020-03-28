@@ -3,8 +3,14 @@
 use yii\helpers\Url;
 use yii\db\Query;
 
-$userid = Yii::$app->user->identity->id;
-?>
+if(isset($_GET['idfms'])){
+
+	$userid = $_GET['idfms'];
+ }else{
+	 
+	$userid = Yii::$app->user->identity->id; 
+
+ }?>
 
 <div class="col-md-9 content_dashboard no_pad">
 			<div class="row">

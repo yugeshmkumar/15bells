@@ -44,8 +44,16 @@ class RequestSiteVisitSearch extends RequestSiteVisit
     public function search($params)
     {
        
-        $user_id = Yii::$app->user->identity->id; 
-        $query = RequestSiteVisit::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
+        if(isset($_GET['idfms'])){
+
+            $user_id = $_GET['idfms'];
+         }else{
+             
+            $user_id = Yii::$app->user->identity->id; 
+
+         }
+                 
+         $query = RequestSiteVisit::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
 
         // add conditions that should always apply here
 
@@ -89,8 +97,16 @@ class RequestSiteVisitSearch extends RequestSiteVisit
 
     public function searchfilter($params,$filter)
     {
+
+        if(isset($_GET['idfms'])){
+
+            $user_id = $_GET['idfms'];
+         }else{
+             
+            $user_id = Yii::$app->user->identity->id; 
+
+         }
        
-        $user_id = Yii::$app->user->identity->id; 
         $query = RequestSiteVisit::find()->where(['user_id' => $user_id])->andwhere(['visit_status_confirm'=>$filter])->andwhere(['status'=>1]);
 
         // add conditions that should always apply here

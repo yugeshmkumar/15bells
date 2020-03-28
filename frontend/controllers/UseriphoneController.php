@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-//use common\models\User;
+use common\models\User;
 use frontend\models\UserForm;
 use frontend\models\search\UserSearch;
 use yii\helpers\ArrayHelper;
