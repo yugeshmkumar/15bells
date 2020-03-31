@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
 use yii\web\View;
 use common\models\MyExpectationsajaxSearch;
 
-$this->title = 'Lessee Search';
+// $this->title = 'Lessee Search';
 
 
 $userid = Yii::$app->user->identity->id;
@@ -122,11 +122,11 @@ if($getSaveID->type == 'blank'){
 <div class="container-fluid no_pad">
 
 <label class="col-md-6 check_box">Client Search
-							  <input type="radio" checked="checked" name="radio">
+							  <input type="radio"  id="client_search" value="client"  name="example">
 							  <span class="checkmark"></span>
 							</label>
 							<label class="col-md-6 check_box">Universal Search
-							  <input type="radio" name="radio">
+							  <input type="radio" id="universal_search" value="universal" checked="checked" name="example">
 							  <span class="checkmark"></span>
 							</label>
 </label>
@@ -1168,6 +1168,28 @@ $('.scheduletime').on('click', function() {
     }
     
     });
+
+
+    $('input[type=radio][name=example]').change(function() {
+
+if (this.value == 'client') {
+    var result = confirm("Are you Sure You Want to Change Client Expectations ?");
+    if (result) {
+        whichserch = this.value;
+    }else{
+       // alert(this.value);
+  var uni_serch =   $('#universal_search').parent().addClass('checked');
+  var cli_serch =   $('#client_search').parent().removeClass('checked');
+    //  alert(uni_serch);  
+    
+}
+}
+else if (this.value == 'universal') {
+    whichserch = this.value;
+    
+}
+
+  });
     
     
     $("#setsessions").on("click", function(e){
@@ -1237,6 +1259,7 @@ proptype =  $('#proptypes').val();
  if(pacinput != ''){
    var getsearchlocation = pacinput;
  }
+ $('#type').val('blank')
 
  withoutshape();
 
@@ -1321,7 +1344,7 @@ proptype =  $('#proptypes').val();
                                           
                                            $.ajax({
                                                     type: "POST",
-                                                    url: 'withoutshape',
+                                                    url: 'withoutshapebackend',
                                                     data: ndata,
                                                     success: function (data) {
                                                       
@@ -1508,7 +1531,7 @@ proptype =  $('#proptypes').val();
                   '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1660,7 +1683,7 @@ proptype =  $('#proptypes').val();
                                              '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -1804,7 +1827,7 @@ proptype =  $('#proptypes').val();
                                       '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2624,11 +2647,11 @@ function getPolygonCoords() {
 
                                  if(types == 'blank'){
                                        
-                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length}; 
+                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length,food:food}; 
                                       
                                        $.ajax({
                                                type: "POST",
-                                               url: 'withoutshape',
+                                               url: 'withoutshapebackend',
                                                data: ndata,
                                                success: function (data) {
                                                    
@@ -2663,7 +2686,7 @@ function getPolygonCoords() {
            '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                        '<div class="row single_property">'+
                            '<div class="col-md-2 no_pad relative">'+
-                           '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                           '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                             //    '<div class="overlay_sign">'+
                             //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                             //    '</div>'+
@@ -2750,7 +2773,7 @@ function getPolygonCoords() {
 
                               }  if(types == 'polygon'){
 
-                                ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:geometry,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+                                ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:geometry,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food}; 
                                           
                                           $.ajax({
                                                    type: "POST",
@@ -2802,7 +2825,7 @@ function getPolygonCoords() {
                '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                            '<div class="row single_property">'+
                                '<div class="col-md-2 no_pad relative">'+
-                               '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                               '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //    '<div class="overlay_sign">'+
                                 //        '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //    '</div>'+
@@ -2895,7 +2918,7 @@ function getPolygonCoords() {
                                                 $.ajax({
                                                        type: "POST",
                                                        url: 'mapproperty1',
-                                                       data: {location:getsearchlocation,center:geometry,totalradius:totalradiuss,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym},
+                                                       data: {location:getsearchlocation,center:geometry,totalradius:totalradiuss,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food},
                                                        success: function (data) {
                                                        
                                                    
@@ -2952,7 +2975,7 @@ function getPolygonCoords() {
                                                 '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
-                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3033,7 +3056,7 @@ function getPolygonCoords() {
                                                 $.ajax({
                                                        type: "POST",
                                                        url: 'mapproperty2',
-                                                       data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym},
+                                                       data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food},
                                                        success: function (data) {
                                                     
                                                          // $('#search-pro').css("display","block");
@@ -3086,7 +3109,7 @@ function getPolygonCoords() {
                                          '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                           '<div class="row single_property">'+
                               '<div class="col-md-2 no_pad relative">'+
-                              '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                              '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                 //   '<div class="overlay_sign">'+
                                 //       '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                 //   '</div>'+
@@ -3349,7 +3372,7 @@ var imgElement = $('#test').attr('src');
             $.ajax({
                                                type: "POST",
                                              url: 'saveprop',
-                                             data: {hardam: id},
+                                             data: {hardam: id,food:food},
                                              success: function (data) {
                                            
                                              if(data == '1'){
@@ -3411,6 +3434,12 @@ $("#rantime").datepicker({
 
 }
 
+
+var food;
+ var foodexpectid;
+ var foodlead;
+ var whichserch ='universal';
+
 $(document).ready(function () { 
 
 
@@ -3439,6 +3468,12 @@ if(first == 'warehouse'){
 $('#proptypes').val('25,26');
 
 }                                      
+
+ food = getUrlVars()["id"];
+ foodexpectid = getUrlVars()["e_id"];
+ foodlead = getUrlVars()["l_id"];
+
+
 
 
 withoutshape();
@@ -3552,7 +3587,7 @@ return vars;
                                                     '<p class="property_id">Property ID : '+propsid+' <span class="building_name">'+this.locality.substr(0,this.locality.indexOf(','))+'</span></p>'+
                                                                 '<div class="row single_property">'+
                                                                     '<div class="col-md-2 no_pad relative">'+
-                                                                    '<a href="<?php echo Yii::getAlias('@frontendUrl')."/" ?>'+this.town_name.replace(/ /g,"-").toLowerCase()+'/'+this.typename.replace(/ /g,"-").toLowerCase()+'/'+this.locality.substr(0, this.locality.indexOf(",", this.locality.indexOf(",") + 1)).replace(/,/g,"").replace(/ /g,"-").toLowerCase()+'/'+this.id+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
+                                                                    '<a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/viewsearch?id=']) ?>' + this.id + '&user_id='+food+'&l_id='+foodlead+'&e_id='+foodexpectid+'" target="_blank"> <img src="<?= Yii::getAlias('@archiveUrl').'/propertydefaultimg/';  ?>'+((this.featured_image == null) ? 'not.jpg' : imageds)+'" class="img-responsive image_property"></a>'+
                                                                         // '<div class="overlay_sign">'+
                                                                         //     '<p class="sign_click"><span class="color_orange">Login</span> or <span class="color_orange">Sign</span> up to view this property</p>'+
                                                                         // '</div>'+
@@ -3929,7 +3964,7 @@ $.ajax({
 
     type: "POST",
     url: 'getfreevisit',
-    data: {hardam: id,rantime:rantime,visitmode:visitmode},
+    data: {hardam: id,rantime:rantime,visitmode:visitmode,food:food},
     success: function (data) {
   
     $('#sitevisitremove_'+id).html('Already Scheduled');
