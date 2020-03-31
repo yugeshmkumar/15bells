@@ -1714,6 +1714,7 @@ if (!empty($media_ids)) {
 
 
                                         $.ajax({
+                                            type: "POST",
                                             url: "/backend/web/lesseeaction/getfreevisit",
                                             data: {hardam: id,food:food,foodlead:foodlead},
                                             success: function (data) {
@@ -1749,13 +1750,14 @@ if (!empty($media_ids)) {
                                     function getchecki(id) {
 
                                         $.ajax({
+                                            type: "POST",
                                             url: "/backend/web/lesseeaction/saveprop",
                                             data: {hardam: id,food:food,expectation_id:foodexpectid},
                                             success: function (data) {
 
                                                 if (data == '1') {
 
-                                                    toastr.error('This Property is Already Shortlisted', 'error');
+                                                    toastr.warning('This Property Removed from  Shortlisted', 'warning');
                                                 } else {
                                                     toastr.success('Property Shortlisted Successfully', 'success');
                                                 }

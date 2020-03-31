@@ -104,10 +104,11 @@ if($assigndash->item_name == "sales_supply_lessor"){
         return $this->render('schedulevisit');
     }
 
-    public function actionSaveprop($hardam,$food,$expectation_id) {
+    public function actionSaveprop() {
 
         //$userid = Yii::$app->user->identity->id;
-        $userid = $food;
+        $hardam = $_POST['hardam'];
+        $userid = $_POST['food'];
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         $user_id = Yii::$app->user->identity->id;
@@ -117,11 +118,13 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
 
         if ($payments) {
-            echo '1';
+            $insert1 = \Yii::$app->db->createCommand()->delete('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam])->execute();
+
+            return  '1';
         } else {
 
-            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'expectation_id'=>$expectation_id, 'property_id' => $hardam,'assigned_id'=>$assigned_id, 'created_date' => $date])->execute();
-            echo '2';
+            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam,'assigned_id'=>$assigned_id, 'created_date' => $date])->execute();
+            return '2';
         }
 
 //        $delete = \Yii::$app->db->createCommand()->delete('shortlistProperty', ['user_id' => $userid])->execute();
@@ -334,11 +337,18 @@ if($assigndash->item_name == "sales_supply_lessor"){
         }
     }
 
-    public function actionGetfreevisit($hardam,$food,$foodlead) {
+
+
+    
+
+    public function actionGetfreevisit() {
 
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $userid = $food;
+        $hardam = $_POST['hardam'];
+         $rantime = $_POST['rantime'];
+         $visitmode = $_POST['visitmode'];
+        $userid = $_POST['food'];
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
         $assigned_id = $querys->id;
@@ -356,6 +366,23 @@ if($assigndash->item_name == "sales_supply_lessor"){
         $commands = $querys->createCommand();
         $paymentsm = $commands->queryOne();
 
+
+
+        $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+
+
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+           }
        
         if ($paymentsm['newcount'] == 0) {
             // echo 'aya';die;
@@ -388,11 +415,11 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         $my_profile_progress_status->save();
 
 
+                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'company_id' => $company_id, 'created_date' => $date])->execute();
   $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,5);
+  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
 
                 echo 1;
                 die;
@@ -408,10 +435,10 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'company_id' => $company_id, 'created_date' => $date])->execute();
- $request_id = Yii::$app->db->lastInsertID;
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,5);
+                        $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
 
                 echo 2;
                 die;
@@ -440,10 +467,11 @@ $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
                         $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
+                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
+
 $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,5);
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
                 echo 1;
                 die;
             } else {
@@ -458,11 +486,11 @@ $request_id = Yii::$app->db->lastInsertID;
                         $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
-$request_id = Yii::$app->db->lastInsertID;
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,5);
-                echo 2;
+                        $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
+                        echo 2;
                 die;
             }
        }
@@ -812,12 +840,9 @@ $request_id = Yii::$app->db->lastInsertID;
     public function actionWithoutshapebackend() {
 
         $length='';
-    if(Yii::$app->user->getIsGuest()){
-            $user_id = 0;
-            
-        }else{
-            $user_id = Yii::$app->user->identity->id;
-        }
+    
+            $user_id = $_POST['food'];
+        
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         
@@ -911,7 +936,7 @@ $request_id = Yii::$app->db->lastInsertID;
 
            
           
-            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id order By a.id asc limit $start,$length";
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id order By a.id asc";
 
         }
 
@@ -921,7 +946,7 @@ $request_id = Yii::$app->db->lastInsertID;
 
             
 
-            $sqlstrcount .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END ";
+            $sqlstrcount .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND (CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END )";
             $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
             $totalprop  =  $paymentscount[0]['totalprop'];
 
@@ -934,11 +959,11 @@ $request_id = Yii::$app->db->lastInsertID;
         if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
            
 
-            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id order By a.id asc limit $start,$length";
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END ) GROUP BY a.id order By a.id asc limit $start,$length";
 
         }
       
-    //    echo $sqlstr;die;
+        // echo $sqlstr;die;
       
         $payments['datas'] = \Yii::$app->db->createCommand($sqlstr)->queryAll();    
 
@@ -1352,11 +1377,9 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
     public function actionGetpolymy() {
 
 
-        if (isset(Yii::$app->user->identity->id)){
-            $user_id = Yii::$app->user->identity->id;
-     }else{
-        $user_id = 0;
-     }
+        
+        $user_id = $_POST['food'];
+     
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
 
@@ -1864,11 +1887,8 @@ if($whichserch == 'client'){
     
            
            
-            if (isset(Yii::$app->user->identity->id)){
-                $user_id = Yii::$app->user->identity->id;
-         }else{
-            $user_id = 0;
-         }
+            $user_id = $_POST['food'];
+
             $range = $totalradius;
             date_default_timezone_set("Asia/Calcutta");
             $date = date('Y-m-d H:i:s');
@@ -2322,11 +2342,7 @@ if($whichserch == 'client'){
       
     }
 
-    public function beforeAction($action) {
-        // if($action->id == "getpolymyupdate")
-            $this->enableCsrfValidation = false;
-            return parent::beforeAction($action);
-    }
+    
 
 
 
@@ -2336,11 +2352,8 @@ if($whichserch == 'client'){
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
 
-        if (isset(Yii::$app->user->identity->id)){
-        $user_id = Yii::$app->user->identity->id;
-        }else{
-        $user_id = 0;
-        }
+        $user_id = $_POST['food'];
+
        
         $northlat     =     $_POST['northlat'];
         $southlat     = $_POST['southlat'];
@@ -2453,7 +2466,7 @@ if($whichserch == 'client'){
 
 
 
-    
+
 
     public function actionMapproperty22() {
         
@@ -2694,6 +2707,13 @@ if($whichserch == 'client'){
 
 
         
+    }
+
+
+    public function beforeAction($action) {
+        // if($action->id == "getpolymyupdate")
+            $this->enableCsrfValidation = false;
+            return parent::beforeAction($action);
     }
     
     

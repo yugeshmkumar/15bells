@@ -1229,6 +1229,9 @@ proptype =  $('#proptypes').val();
    var getsearchlocation = pacinput;
  }
 
+ $('#type').val('blank')
+
+
  withoutshape();
 
  $("#myModal").modal('hide');
@@ -2592,7 +2595,8 @@ function getPolygonCoords() {
                                           var count2 =0;
                                           var count3 =0;
 
-                                          var types  = $('#type').val();
+                                    var types  = $('#type').val();
+
                                    var start  = $('#startlib').val();
                                    var length  = $('#lengthlib').val();
                                          
