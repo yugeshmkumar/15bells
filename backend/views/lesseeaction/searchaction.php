@@ -119,7 +119,19 @@ if($getSaveID->type == 'blank'){
    <input type="hidden" id="searchlngs" value="<?php  echo ($searchlng != '' ? $searchlng : ''); ?>">
    <input type="hidden" id="radius" value="<?php  echo ($radius != '' ? $radius : ''); ?>">
 
+<div class="container-fluid no_pad">
 
+<label class="col-md-6 check_box">Client Search
+							  <input type="radio" checked="checked" name="radio">
+							  <span class="checkmark"></span>
+							</label>
+							<label class="col-md-6 check_box">Universal Search
+							  <input type="radio" name="radio">
+							  <span class="checkmark"></span>
+							</label>
+</label>
+
+</div>
    <div class="container-fluid no_pad buyer_result">
 	<div class="row property_requirment text-center">
         
@@ -142,9 +154,9 @@ if($getSaveID->type == 'blank'){
 		</ul>
 	</div>
 	<div class="row">
-		<!-- <div class="col-md-2">
+		<div class="col-md-2 no_pad">
 			
-        <div class="col-md-12 filt_ers">
+        <div class="col-md-12 filt_ers no_pad">
 			
 			<div class="row">
 				
@@ -176,8 +188,8 @@ if($getSaveID->type == 'blank'){
 				
 			</div>
 		</div>
-		</div> -->
-		<div class="col-md-12 buyer_listing no_pad">
+		</div>
+		<div class="col-md-10 buyer_listing no_pad">
 			<div class="row property_list">
                 <div id="getprop">
 				<!-- <div class="col-md-12 property_detail">

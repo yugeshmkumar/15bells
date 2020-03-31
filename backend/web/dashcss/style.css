@@ -1013,7 +1013,7 @@ p.codrops-demos a.current-demo:hover{
     cursor:pointer;
     }
     .draw_map{
-    padding:0;
+    padding:10px !important;
     border-radius:0;
     }
     .mark_map{
@@ -1117,6 +1117,182 @@ p.codrops-demos a.current-demo:hover{
     .prop_ids {
         color: #c4984f !important;
     }
+
+    .buyer_listing{
+        background:#f7f7f7;
+    }
+    .result_text{
+        font-size:24px;
+        font-weight:600;
+        color:#221d36;
+        margin: 10px 0 20px;
+    }
+    .buyer_drop{
+        background:transparent !important;
+        color:#c4984f !important;
+    }
+    .buyer_drop .more-less {
+        color: #c4984f !important;
+        font-size: 17px !important;
+    }
+    .panel_body{
+        background:#ffffff !important;
+        padding:10px 0;
+        border:0 !important;
+    }
+    .panel_body .col-md-12{
+        margin:10px 0;
+    }
+    .filter_butn {
+        padding: 6px 5px;
+        border: 1px solid #c4984f;
+        color: #c4984f;
+        font-size: 13px;
+        transition: .4s;
+        background: transparent;
+        width: 95%;
+        margin: 5px 0;
+    }
+    .filter_butn:hover{
+        color:#ffffff;
+        background:#c4984f;
+        transition:.4s;
+    }
+    .filter_style{
+        border:0px;
+            margin: 10px 0;
+        padding: 12px 0;
+    }
+    .filter_anchor{
+        font-size:23px !important;
+        font-weight:600;
+    }
+    .amenities_offered{
+        padding:0px 15px;
+    }
+    
+    .user_filt{
+        padding:8px 10px;
+        border:1px solid #ffffff;
+        color:#ffffff;
+        background:#c4984f;
+        font-size:14px;
+        margin:0 10px;
+        cursor:pointer;
+    }
+    .user_filt span{
+        margin-left:15px;
+    }
+    .users_search{
+        list-style:none;
+        display:inline-flex;
+    }
+    .property_requirment{
+        padding:10px 20px;
+        box-shadow: 0px 0px 1px #cfcfcf;
+        border-bottom: 1px solid #cfcfcf8c;
+    }
+.top_section{
+    position:relative;
+}
+
+.fadein { position:relative;}
+.fadein h1 { position:absolute; left:0; top:0; }
+/*new accordion css*/
+
+.accordion_container {
+	width: 100%;
+	float:left;
+  }
+  .apply_buttn_sec{
+	width: 100%;
+	float:left;
+  }
+  .accordion_head {
+	background-color: #ffffff;
+	color: #c4984f;
+	cursor: pointer;
+	font-size: 22px;
+	padding: 10px;
+	margin:15px 0;
+	font-weight:500;
+  }
+  
+  .accordion_body {
+	background: #ffffff;
+	padding:0 10px 20px;
+	width:100%;
+	float:left;
+  }
+  
+  
+  .plusminus {
+	float: right;
+    position: absolute;
+    right: 5%;
+  }
+  .popup_seprator{
+	  margin:25px 0;
+  }
+
+  /**Additional Css**/
+  .step_bells{
+	background-color: #c4984f;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px 20px;
+    margin: 4px 0;
+    font-weight: 300;
+  }
+  .step_mark{
+	  width:30px;
+	  height:30px;
+	  background: #c4984f;
+	  border: 1px solid #ffffff;
+	  border-radius: 50%;
+	  color: #ffffff;
+	  padding: 1px 6px;
+	  font-size: 13px;
+	  margin-right: 10px;
+	  position: relative;
+	  bottom: 2px;
+  }
+  .sort_value{
+	color:#c4984f;
+	font-size:15px;
+	text-align: left;
+    margin: 20px 0 0;
+}
+.edit_map{
+	color:#c4984f;
+font-size:18px;
+font-weight:600;
+margin-left:20px;
+border-bottom: 2px solid #c4984f !important;
+background: transparent;
+outline: none;
+box-shadow: none;
+border: 0;
+}
+.property_detail{
+	margin-bottom:30px;
+}
+.save_site{
+	margin-top:65px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:767px) {
 
     .ucb_brnd_100{
@@ -1646,3 +1822,71 @@ p.codrops-demos a.current-demo:hover{
 }
 
 }
+
+
+.check_box {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+        color: #221d36;
+      font-weight: 500;
+  }
+  
+  /* Hide the browser's default radio button */
+  .check_box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    height: 30px;
+    width: 30px;
+    background-color: #ffffff;
+    border-radius: 50% !important;
+    border:1px solid #afafaf;
+    
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .check_box:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .check_box input:checked ~ .checkmark {
+    background-color: #ffffff;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .check_box input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .check_box .checkmark:after {
+           top: 5px;
+      left: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #c4984f;
+  }
