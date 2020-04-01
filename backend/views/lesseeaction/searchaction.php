@@ -1257,7 +1257,7 @@ proptype =  $('#proptypes').val();
  $('.prop_types').text(commercial_text);
 
  if(pacinput != ''){
-   var getsearchlocation = pacinput;
+    getsearchlocation = pacinput;
  }
  $('#type').val('blank')
 
@@ -1298,7 +1298,7 @@ proptype =  $('#proptypes').val();
                                     $('.prop_types').text($('#'+proptype).text());
 
                                     if(pacinput != ''){
-                                    var getsearchlocation = pacinput;
+                                     getsearchlocation = pacinput;
                                     }
 
                                   
@@ -1473,7 +1473,7 @@ proptype =  $('#proptypes').val();
                                           // toastr.success('Your Search Criteria has Successfully Saved', 'success');
                                           
                                                   
-                                          ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:newpath,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym}; 
+                                          ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:newpath,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food}; 
                                           
                                            $.ajax({
                                                     type: "POST",
@@ -1621,7 +1621,7 @@ proptype =  $('#proptypes').val();
                                              $.ajax({
                                                     type: "POST",
                                                     url: 'mapproperty1',
-                                                    data: {location:getsearchlocation,center:centercoordinates,totalradius:totalradius,shapes:shapes,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym},
+                                                    data: {location:getsearchlocation,center:centercoordinates,totalradius:totalradius,shapes:shapes,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food},
                                                     success: function (data) {
                                                     
                                                 $('#search-pro').css("display","block");
@@ -1769,7 +1769,7 @@ proptype =  $('#proptypes').val();
                                              $.ajax({
                                                     type: "POST",
                                                     url: 'mapproperty2',
-                                                    data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,center:centercord,shapes:shapes,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym},
+                                                    data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,center:centercord,shapes:shapes,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food},
                                                     success: function (data) {
                                                  
                                                       // $('#search-pro').css("display","block");
@@ -2618,7 +2618,8 @@ function getPolygonCoords() {
 
                             function  withoutshape(){
 
-                               
+
+                                        
                                         var count1 =0;
                                           var count2 =0;
                                           var count3 =0;
@@ -2644,10 +2645,10 @@ function getPolygonCoords() {
                                     var geometry  = <?php echo $geometry; ?>;
                                   //  alert(types);alert(totalradiuss);
                                   $('#getprop').html('');
-
+                                  
                                  if(types == 'blank'){
                                        
-                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length,food:food}; 
+                                       ndata = {location:getsearchlocation,town:town,sector:sector,country:country,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,start:start,length:length,whichserch:whichserch,foodexpectid:foodexpectid,food:food}; 
                                       
                                        $.ajax({
                                                type: "POST",
@@ -2773,7 +2774,7 @@ function getPolygonCoords() {
 
                               }  if(types == 'polygon'){
 
-                                ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:geometry,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food}; 
+                                ndata = {location:getsearchlocation,town:town,sector:sectore,newpath:geometry,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food}; 
                                           
                                           $.ajax({
                                                    type: "POST",
@@ -2918,7 +2919,7 @@ function getPolygonCoords() {
                                                 $.ajax({
                                                        type: "POST",
                                                        url: 'mapproperty1',
-                                                       data: {location:getsearchlocation,center:geometry,totalradius:totalradiuss,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food},
+                                                       data: {location:getsearchlocation,center:geometry,totalradius:totalradiuss,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food},
                                                        success: function (data) {
                                                        
                                                    
@@ -3056,7 +3057,7 @@ function getPolygonCoords() {
                                                 $.ajax({
                                                        type: "POST",
                                                        url: 'mapproperty2',
-                                                       data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,food:food},
+                                                       data: {northlat:northlat,southlat:southlat,northlng:northlng,southlng:southlng,location:getsearchlocation,shapes:types,town:town,sector:sectore,areamin:areamin,areamax:areamax,pricemin:pricemin,pricemax:pricemax,proptype:proptype,propbid:propbid,availabilitym:availabilitym,whichserch:whichserch,foodexpectid:foodexpectid,food:food},
                                                        success: function (data) {
                                                     
                                                          // $('#search-pro').css("display","block");
@@ -3438,7 +3439,7 @@ $("#rantime").datepicker({
 var food;
  var foodexpectid;
  var foodlead;
- var whichserch ='universal';
+ var whichserch ='';
 
 $(document).ready(function () { 
 

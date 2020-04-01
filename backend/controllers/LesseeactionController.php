@@ -864,6 +864,18 @@ $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request
     //   $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
       
     //     }
+
+    $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+          $foodexpectid = $_POST['foodexpectid'];
+    
+    
+            if($whichserch == 'client'){
+    
+                $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'text','type'=>'blank','geometry'=>NULL,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+            }
+
+
     $querycount = "SELECT count(*) as totalprop FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
    
     $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
@@ -1403,6 +1415,17 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
         //             'created_date' => $date])->execute();
         
         // }
+        $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+            $foodexpectid = $_POST['foodexpectid'];
+    
+    
+            if($whichserch == 'client'){
+    
+                $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'polygon','geometry' => $newpath,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+    
+               
+            }
             
  
         $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
@@ -1893,14 +1916,18 @@ if($whichserch == 'client'){
             date_default_timezone_set("Asia/Calcutta");
             $date = date('Y-m-d H:i:s');
            
+
+            $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+            $foodexpectid = $_POST['foodexpectid'];
     
-    //  if (isset(Yii::$app->user->identity->id)){
-    //         $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-    //                     'created_date' => $date])->execute(); 
-    //  }          
-               
-                
-         
+    
+        if($whichserch == 'client'){
+
+            $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'circle','geometry' => '"'.$center.'"', 'radius' => $range,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+
+           
+        }
                 
         
               $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) "; 
@@ -2384,14 +2411,16 @@ if($whichserch == 'client'){
         $propbid  = $_POST['propbid'];
         $location = $_POST['location'];
         $availabilitym = $_POST['availabilitym'];
+        $whichserch = $_POST['whichserch'];
+        $foodexpectid = $_POST['foodexpectid'];
 
 
+        if($whichserch == 'client'){
 
-        // if (isset(Yii::$app->user->identity->id)){
-        // $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-        //             'created_date' => $date])->execute();
-        // }
+            $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'rectangle','geometry' => $newkuma,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
 
+           
+        }
      
          
        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
