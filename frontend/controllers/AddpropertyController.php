@@ -555,6 +555,8 @@ public function actionShowpropdetails(){
 
             if($model->save()){
                   
+                \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','6');
+
                 $property_id =  $model->id;
 
                 $locking_period = $yiipost['locking_period'];
@@ -685,6 +687,8 @@ public function actionShowpropdetails(){
 
             if($model->save()){
                   
+                \common\models\activemode::update_my_profile_progress_status($userid,"add_property",'100','5');
+ 
                 $property_id =  $model->id;
 
                 $locking_period = $yiipost['locking_period'];
