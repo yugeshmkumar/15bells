@@ -43,7 +43,7 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'status')->dropDownList([ 'IN_PROGRESS' => 'IN PROGRESS', 'ON_HOLD' => 'ON HOLD', 'COMPLETED' => 'COMPLETED', 'REJECTED' => 'REJECTED', ], ['prompt' => '']) ?>
     <?php
-    echo $form->field($model, 'location')->dropDownList(['Gurugram' => 'Gurugram', 'Delhi' => 'Delhi', 'Faridabad' => 'Faridabad', 'Noida' => 'Noida', 'Gaziabad' => 'Gaziabad'],['prompt'=>'Select location']);
+    echo $form->field($model, 'location')->textInput();
     ?>
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 

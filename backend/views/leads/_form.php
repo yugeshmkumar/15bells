@@ -67,7 +67,9 @@ $Countries = ArrayHelper::map($arrCountries ,'phonecode','namecode');
 ?>
    
                   
-	 <?php echo $form->field($model, 'countrycode')->widget(Select2::classname(), [
+     <?php
+     $model->countrycode ='91';
+     echo $form->field($model, 'countrycode')->widget(Select2::classname(), [
     'data' => $Countries,
     'options' => ['placeholder' => 'Please Select ...','class'=>'form-control'],
     'pluginOptions' => [
@@ -84,7 +86,7 @@ $Countries = ArrayHelper::map($arrCountries ,'phonecode','namecode');
     <?php 
 
       echo $form->field($model, 'source')->dropDownList(
-            ['signup' => 'Signup', 'Referral' => 'Referral', 'EmailCampaign' => 'Email Campaign', 'Advertisement' => 'Advertisement', 'SalesProspecting' => 'Sales Prospecting', 'MarketingResearch' => 'Marketing Research', 'InboundPhoneCall' => 'Inbound Phone Call', 'PaidSearch' => 'Paid Search']
+            ['signup' => 'Signup', 'facebook' => 'Facebook', 'linkedin' => 'Linkedin', 'inbound' => 'Inbound', 'outbound' => 'Outbound', 'referral' => 'Referral', 'google' => 'Google', 'blogs' => 'Blogs', 'advertisements' => 'Advertisements']
         );
 
        ?>

@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
         //'pageSummary' => 'Page Total',
         'vAlign'=>'middle',
 	'format'=>'raw',
-	'label' => 'Expectation Name',	
+	'label' => 'Saved Search',	
         'width'=>'250px',
          'value' => function($data) {
                        
