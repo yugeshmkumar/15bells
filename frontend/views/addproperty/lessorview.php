@@ -157,6 +157,47 @@ $datas =  $dataProvider->query->all();
 
     </div>
 </div>
+
+
+
+<div id="modal_lessor" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
+ 
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		<div class="container-fluid padding_rating">
+			<div class="col-md-12 text-center">
+				<p class="star_rating">This <span class="color_yell">Brand (Brand Name)</span> has shown interest in your Property <span class="color_yell">ID : <span id="appendid"></span></span>  </p>
+			</div>
+			
+			<div class="row text-center pay_section pay_later">
+				
+				<div class="col-md-12 text-center">
+                    <h2 class="star_rating">Would you like to proceed further on this deal ?</h2>
+					<ul class="sub_categories buy_prop">
+								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
+								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
+								<li class=""><a href="javascript:void(0)"  id="no" class="property_subtype buyproperty">No</a></li>
+							</ul>
+				</div>
+			</div>
+
+
+		</div>
+		
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+
+
 <div id="emd_deposit" class="modal fade" role="dialog">
     <div class="modal-dialog modal_dialogue modal-lg">
 
@@ -262,10 +303,16 @@ $datas =  $dataProvider->query->all();
     </div>
 
 
+
+
+   
+
 <?php 
 $script = <<< JS
 
-
+$(window).on('load',function(){
+        $('#modal_lessor').modal('show');
+    });
 $(".emd_pay").click(function(){
     $("#emd_deposit").modal('show');
 });
