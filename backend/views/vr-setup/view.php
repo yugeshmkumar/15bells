@@ -12,6 +12,9 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\VrSetup */
 /* @var $form yii\widgets\ActiveForm */
+
+$auctiontype = $model->auction_type;
+
 ?>
 
 <div class="vr-setup-form">
@@ -38,11 +41,28 @@ use yii\helpers\Url;
                                                 <div class="mt-step-title uppercase font-grey-cascade">Setup Moderator</div>
                                                 <div class="mt-step-content font-grey-cascade">Time Settings [100%]</div>
                                             </div>
-                                            <div class="col-md-4 mt-step-col active">
+                                            <?php 
+                                            if($auctiontype == 'forward_auction'){
+                                            ?>
+                                            <div class="col-md-4 mt-step-col">
                                                 <div class="mt-step-number bg-white font-grey">2</div>
-                                                <div class="mt-step-title uppercase font-grey-cascade">Setup Buyers / Lesse</div>
-                                                <div class="mt-step-content font-grey-cascade">Setup Buyers / Lesse</div>
+                                                <div class="mt-step-title uppercase font-grey-cascade">Setup Buyers/Lesse</div>
+                                                <div class="mt-step-content font-grey-cascade">Setup Buyers/Lesse</div>
                                             </div>
+
+                                            <?php 
+                                            } else {
+                                            ?>
+
+                                                <div class="col-md-4 mt-step-col">
+                                                <div class="mt-step-number bg-white font-grey">2</div>
+                                                <div class="mt-step-title uppercase font-grey-cascade">Setup Lessors/Lessee</div>
+                                                <div class="mt-step-content font-grey-cascade">Setup Lessors/Lessee</div>
+                                            </div>
+
+                                            <?php 
+                                            }
+                                            ?>
                                             <div class="col-md-4 mt-step-col">
                                                 <div class="mt-step-number bg-white font-grey">3</div>
                                                 <div class="mt-step-title uppercase font-grey-cascade">Publish Auction</div>
@@ -68,8 +88,12 @@ use yii\helpers\Url;
             ['attribute'=>'propertyID',
             'label'=>'Owner email id',
 			'value'=>function($data){
+                if($data->auction_type == 'forward_auction'){
                 $user_id =   \common\models\Addproperty::findOne(['id'=>$data->propertyID])->user_id;
                  return  \common\models\User::findOne($user_id)->email;
+              }else{
+                return  \common\models\User::findOne($data->brandID)->email;
+              }
             }],
             
 			 ['attribute'=>'moderatorID',
@@ -85,51 +109,59 @@ use yii\helpers\Url;
     ]) ?>
 
 </div> <?php $form = ActiveForm::begin(); ?>
-										  <div class="note note-info"> Interested Buyers </div>
-										   <div class="table-scrollable">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th> # </th>
-                                                    <th> First Name </th>
-                                                    <th> Last Name </th>
-                                                    <th> E-mail </th>
-                                                    <th> Action </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-											<?php 
-											$vrsetup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
-											$arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->propertyID,'isactive'=>1])->all(); ?>
-											<?php foreach($arrgetbuyers as $getbuyers) {
-												$findmyprofile = \common\models\Myprofile::find()->where(['userID'=>$getbuyers->userid])->one();
-												?>
-                                                <tr>
-                                                    <td> <input type="checkbox" id="selectedbyr<?php echo $getbuyers->id ?>" name="selectedbyr<?php echo $getbuyers->id ?>" value="<?php echo $getbuyers->userid ?>" checked> </td>
-                                                    <td><?php if($findmyprofile) { ?><?php echo $findmyprofile->first_name ?><?php } ?> </td>
-                                                    <td><?php if($findmyprofile) { ?><?php echo $findmyprofile->last_name ?><?php } ?> </td>
-                                                    <td><?php echo \common\models\User::findOne($getbuyers->userid)->email ?></td>
-                                                    <td>
-                                                        <span class="label label-sm label-success"><i class="fa fa-mail-forward"></i> View Details</span>
-                                                    </td>
-                                                </tr>
-											<?php } ?>
-                                               </tbody></table></div>
-											     <div class="note note-info"> Setup More Buyers </div>
+    <div class="note note-info"> Interested Buyers </div>
+    <div class="table-scrollable">
+    <table class="table table-hover">
+    <thead>
+    <tr>
+    <th> # </th>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> E-mail </th>
+    <th> Action </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php 
+    $vrsetup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+    
+     if($auctiontype == 'forward_auction'){        
+    $arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->propertyID,'isactive'=>1])->all();
+    }else{
+    $arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->brandID,'isactive'=>1,'request_for'=>'reverse'])->all(); 
+    }
+    
+    ?>
+    
+    <?php foreach($arrgetbuyers as $getbuyers) {
+    $findmyprofile = \common\models\Myprofile::find()->where(['userID'=>$getbuyers->userid])->one();
+    ?>
+    <tr>
+    <td> <input type="checkbox" id="selectedbyr<?php echo $getbuyers->id ?>" name="selectedbyr<?php echo $getbuyers->id ?>" value="<?php echo $getbuyers->userid ?>" checked> </td>
+    <td><?php if($findmyprofile) { ?><?php echo $findmyprofile->first_name ?><?php } ?> </td>
+    <td><?php if($findmyprofile) { ?><?php echo $findmyprofile->last_name ?><?php } ?> </td>
+    <td><?php echo \common\models\User::findOne($getbuyers->userid)->email ?></td>
+    <td>
+    <span class="label label-sm label-success"><i class="fa fa-mail-forward"></i> View Details</span>
+    </td>
+    </tr>
+    <?php } ?>
+    </tbody></table></div>
+    <div class="note note-info"> Setup More Buyers </div>
 
-                                                 <?php 
-                                                //   $arrfindusers = \common\models\User::find()
-                                                //  ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
-                                                //  ->where('myprofile.isactive =:active',array(':active'=>1))
-                                                //  ->all();
-                                                 $arrfindusers = \common\models\User::find()
-                                                // ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
-                                                 ->where('status =:active',array(':active'=>1))
-                                                 ->andwhere('email <> :actives',array(':actives'=>''))
-                                                 ->all();
-												$data = yii\helpers\ArrayHelper::map($arrfindusers,'id','email');
-												?>
-												 <?php echo '<label class="control-label">Select E-mail Addresses </label>';
+    <?php 
+    //   $arrfindusers = \common\models\User::find()
+    //  ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
+    //  ->where('myprofile.isactive =:active',array(':active'=>1))
+    //  ->all();
+    $arrfindusers = \common\models\User::find()
+    // ->join('LEFT JOIN','myprofile','myprofile.userID = user.id')
+    ->where('status =:active',array(':active'=>1))
+    ->andwhere('email <> :actives',array(':actives'=>''))
+    ->all();
+    $data = yii\helpers\ArrayHelper::map($arrfindusers,'id','email');
+    ?>
+    <?php echo '<label class="control-label">Select E-mail Addresses </label>';
 echo Select2::widget([
     'name' => 'usersbuyers',
 	'id'=>'usersbuyers',
