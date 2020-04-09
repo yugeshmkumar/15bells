@@ -9,6 +9,8 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\VrSetup */
 /* @var $form yii\widgets\ActiveForm */
+
+$auctiontype = $model->auction_type;
 ?>
 
 <div class="vr-setup-form">
@@ -35,17 +37,36 @@ use yii\helpers\Url;
                                                 <div class="mt-step-title uppercase font-grey-cascade">Setup Moderator</div>
                                                 <div class="mt-step-content font-grey-cascade">Time Settings</div>
                                             </div>
+
+                                            <?php 
+                                            if($auctiontype == 'forward_auction'){
+                                            ?>
                                             <div class="col-md-4 mt-step-col">
                                                 <div class="mt-step-number bg-white font-grey">2</div>
                                                 <div class="mt-step-title uppercase font-grey-cascade">Setup Buyers/Lesse</div>
                                                 <div class="mt-step-content font-grey-cascade">Setup Buyers/Lesse</div>
                                             </div>
+
+                                            <?php 
+                                            } else {
+                                            ?>
+
+                                                <div class="col-md-4 mt-step-col">
+                                                <div class="mt-step-number bg-white font-grey">2</div>
+                                                <div class="mt-step-title uppercase font-grey-cascade">Setup Lessors/Lessee</div>
+                                                <div class="mt-step-content font-grey-cascade">Setup Lessors/Lessee</div>
+                                            </div>
+
+                                            <?php 
+                                            }
+                                            ?>
                                             <div class="col-md-4 mt-step-col">
                                                 <div class="mt-step-number bg-white font-grey">3</div>
                                                 <div class="mt-step-title uppercase font-grey-cascade">Publish Auction</div>
                                                 <div class="mt-step-content font-grey-cascade">Publish Auction</div>
-                                            </div>
-                                        </div> </div>
+                                             </div>
+                                           </div> 
+                                        </div>
 										  <div class="portlet-body">
 										  <div class="note note-info"> Setup VR Room </div>
     <?php $form = ActiveForm::begin(); ?>
@@ -157,20 +178,61 @@ $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $c
 
 
 
-	<div class="row"><div class="col-md-10">
-     <?php $arrgetproperty = \common\models\Addpropertyforbid::find()->where(['is_active'=>"1",'status'=>"approved",'request_for'=>"bid"])->all();
-               $propid = 273 * 179 - $data->property_id;
-	          $listproperty = ArrayHelper::map($arrgetproperty ,'id','id'); ?>
+	<div class="row" id="auctionprop">
+    <div class="col-md-10">
+    <?php 
+
+    $arrgetproperty = \common\models\Addpropertyforbid::find()->where(['is_active'=>"1",'status'=>"approved",'request_for'=>"bid"])->all();
+
+
+    $listproperty = ArrayHelper::map($arrgetproperty ,'id','id'); 
+
+
+    ?>
+
 	  <?= $form->field($model, 'propertyID')->widget(Select2::classname(), [
     'data' => $listproperty,
 	
-    'options' => ['placeholder' => 'Select...'],
+    'options' => ['placeholder' => 'Select Property.','id' => 'vrpropselect'],
     'pluginOptions' => [
          'allowClear' => true
     ],
 ]); ?>
 
-	</div></div>
+
+
+
+
+	</div>
+    </div>
+
+
+
+    <div class="row" id="auctionuser">
+    <div class="col-md-10">
+    <?php 
+
+
+     $arrgetuser = \common\models\User::find()->where(['status'=>"1"])->all();
+
+    $listuser = ArrayHelper::map($arrgetuser ,'id','fullname'); 
+
+
+    ?>
+
+	  <?= $form->field($model, 'brandID')->widget(Select2::classname(), [
+    'data' => $listuser,
+	
+    'options' => ['placeholder' => 'Select Brand','id' => 'vruserselect'],
+    'pluginOptions' => [
+         'allowClear' => true
+    ],
+]); ?>
+
+
+
+	</div>
+    </div>
   
 
   
@@ -183,7 +245,50 @@ $update = Yii::$app->db->createCommand()->update('company_emp', ['alloted' => $c
     <?php ActiveForm::end(); ?>
     </div></div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+
+$(document).ready(function(){
+    var auctiontype = $('#vrsetup-auction_type').val();
+if(auctiontype == 'forward_auction'){
+
+    $('#auctionprop').show();
+    $('#auctionuser').hide();
+
+}else if(auctiontype == 'reverse_auction'){
+    
+    $('#auctionuser').show();
+    $('#auctionprop').hide();
+
+}else {
+
+    $('#auctionprop').show();
+     $('#auctionuser').show();
+}
+});
+
+
+
+$('#vrsetup-auction_type').change(function(){
+   if(this.value == 'forward_auction'){
+       $('#auctionprop').show();
+       $('#auctionuser').hide();
+   }
+
+  else if(this.value == 'reverse_auction'){
+       $('#auctionprop').hide();
+       $('#auctionuser').show();
+   }
+else{
+
+       $('#auctionprop').show();
+       $('#auctionuser').show();
+
+    }
+
+});
+
 function inputvaluetwo(str)
 
 {                           
@@ -203,3 +308,5 @@ jQuery.when(jQuery('#moderatorID').select2(select2_4c291099)).done(initS2Loading
 }
 
 </script>
+
+

@@ -178,7 +178,23 @@ $bundle = BackendAsset::register($this);
 
                                 ['label'=>Yii::t('backend', 'Site Visit'), 'url'=>['/addpropertypm/p_visits'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'Documents'), 'url'=>['/addpropertypm/p_sitedocs'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', 'EMD'), 'url'=>['/request-emd'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                               
+                               
+                                [
+                                    'label'=>Yii::t('backend', 'EMD'),
+                                    'url' => '#',
+                                    'icon'=>'<i class="fa fa-money"></i>',
+                                    'options'=>['class'=>'treeview'],
+                                   'items'=>[
+                                    ['label'=>Yii::t('backend', 'EMD'), 'url'=>['/request-emd'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', 'Forward'), 'url'=>['/request-emd/forward'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', 'Rverse'), 'url'=>['/request-emd/reverse'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+
+                                    ]
+                                ],
+                                
+                            
+                               
                                 ['label'=>Yii::t('backend', 'VR'), 'url'=>['/vr-setup/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'F2F Meeting'), 'url'=>['/sales-f2-f'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                 ['label'=>Yii::t('backend', 'Revenue'), 'url'=>['/revenue'], 'icon'=>'<i class="fa fa-money"></i>'],
