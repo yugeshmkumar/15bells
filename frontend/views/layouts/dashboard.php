@@ -162,7 +162,7 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 
 <li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lessor']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17"> Manage Properties</a></li>
 					<li  class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lesview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
-					<li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-emd']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17" >Auction</a></li>
+					<li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-emd/indexrev']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17" >Auction</a></li>
 
 
 					<li class="buyer"><a href="<?php echo Yii::$app->urlManager->createUrl(['invoice']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17"> My Invoices</a></li>
