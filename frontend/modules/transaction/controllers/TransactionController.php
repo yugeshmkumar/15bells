@@ -311,7 +311,7 @@ return $result['cid'];
 
 
        // $r_res1 = $result_chk1['bid_amount'];
-       
+       if($bid){
        if($bid<$r_res1)
        {
       // return $r="Current Bid-".$bid;
@@ -329,6 +329,15 @@ return $result['cid'];
 
            //return $r="Reserved Price-".$r_res1;
        }
+    }else{
+
+        $data['text'] =  'Reserved Price';
+        $data['price'] =  $r_res1;
+        header('Content-Type: application/json');
+        return json_encode($data,JSON_PRETTY_PRINT);
+    }
+
+       
    }
 
 
