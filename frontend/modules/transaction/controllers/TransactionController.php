@@ -906,13 +906,15 @@ public function actionDynamicrev() {
             }
 
             $max_db_bid = $model->checkbidrev($product,$id);
-            if ($amt > $max_db_bid) {
+
+
+            if ($max_db_bid && $amt > $max_db_bid) {
             echo "Add Lower Bid";
             die; 
             }
 
             $max_db_bid = $model->checkbidrev($product,$id);
-            if ($amt == $max_db_bid) {
+            if ($max_db_bid && $amt == $max_db_bid) {
             echo "Add Lower Bid";
             die; 
             }
@@ -949,11 +951,11 @@ public function actionDynamicrev() {
 
 
             else {
-            if ($amt > $max_db_bid) {
+            if ($max_db_bid && $amt < $max_db_bid) {
             $model->save();
             return "Bid Placed";
             }
-            return "Please Add Higher Bid than Current";
+            return "Please Add Smaller Bid than Current";
             }
 
 
