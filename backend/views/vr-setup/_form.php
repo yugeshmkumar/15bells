@@ -109,6 +109,15 @@ $auctiontype = $model->auction_type;
 </div>
 
 
+<div class="row">
+    <div class="col-md-10">
+<?= $form->field($model, 'reserved_price')->textInput() ?>
+    
+</div>
+
+</div>
+
+
 
 <div class="row"><div class="col-md-10">
 
