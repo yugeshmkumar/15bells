@@ -104,6 +104,7 @@ class Emd_detailsController extends Controller
        
     }
 
+    
 
     public function actionGetfavourrev()
     {
