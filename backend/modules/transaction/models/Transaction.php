@@ -100,6 +100,18 @@ $command_get = $connection->createCommand($amt);
 $result_chk = $command_get->queryOne();
 return $r_res=$result_chk['bid_amount'];
 		
+    }
+    
+
+    public function getMaxpricerev($str)
+	{
+		$connection = Yii::$app->getDb();
+		 $amt="select reserved_price from vr_setup where id=$str";
+$command_get = $connection->createCommand($amt);
+$result_chk = $command_get->queryOne();
+
+return $result_chk['reserved_price'];
+		
 	}
 
 
@@ -147,6 +159,17 @@ return $r_res=$result_chk['bid_amount'];
 	$result = $command->queryOne();
 	 $time= $result['todatetime'];
 	 return $time= str_replace("-","/",$time);
+    }
+    
+
+    public function getTimerev($str)
+	{
+	$sql="select todatetime from vr_setup where id=$str";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	 $time= $result['todatetime'];
+	 return $time= str_replace("-","/",$time);
 	}
         
         
@@ -154,6 +177,17 @@ return $r_res=$result_chk['bid_amount'];
         public function getBidtime($str)
 	{
 	$sql="select fromdatetime from vr_setup where propertyID=$str";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	 $time= $result['fromdatetime'];
+	 return $time= str_replace("-","/",$time);
+    }
+    
+
+    public function getBidtimerev($str)
+	{
+	$sql="select fromdatetime from vr_setup where brandID=$str";
 	$connection = Yii::$app->getDb();
 	$command = $connection->createCommand($sql);
 	$result = $command->queryOne();
@@ -392,6 +426,24 @@ public function getCurrentactivetime()
       //  $command_get = $connection->createCommand($updatetime);
      //    $command_get->query();
 	
+    }
+    
+
+    public function getMinusminutesrev($min,$pid)
+	{
+	$sql="select fromdatetime from vr_setup where id = $pid";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	 $time= $result['fromdatetime'];
+         $sel="select '$time' - INTERVAL $min MINUTE as t1";      
+         $command = $connection->createCommand($sel);
+         $sel= $command->queryOne();
+       return  $min= $sel['t1'];
+     //   $updatetime="update vr_setup set todatetime='$add'";
+      //  $command_get = $connection->createCommand($updatetime);
+     //    $command_get->query();
+	
 	}
         
         public function getWinner($pid) {
@@ -433,6 +485,21 @@ $sql="select todatetime from vr_setup where propertyID=$id";
   $current=strtotime(date("Y-m-d H:i:s"));
 return $lefttime=($time-$current);
 }
+
+
+
+public function getTimealertrev($id,$brandid)
+{
+$sql="select todatetime from vr_setup where id=$id";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	  $time= strtotime($result['todatetime']);
+  $current=strtotime(date("Y-m-d H:i:s"));
+return $lefttime=($time-$current);
+}
+
+
 
   public function getAliasname($id,$pid) {
 	  $vrroom = \common\models\VrSetup::find()->where(['propertyID'=>$pid,'isactive'=>1])->one();

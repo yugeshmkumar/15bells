@@ -140,6 +140,16 @@ if($assigndash->item_name == "sales_supply_lessor"){
             $model->for_auction = 'reverse';
 
             if ($model->save(false)) {
+
+                $propid =  $model->property_id;
+                date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+                $user_id =   \common\models\Addproperty::findOne(['id'=>$propid])->user_id;
+                $link  =     Yii::getAlias('@frontendUrl').'/addproperty/lesview';
+
+                $trendingadd = \Yii::$app->db->createCommand()->insert('notifications', ['item_name' => 'Auction Approval', 'item_id' => $user_id, 'link' => $link, 'description'=>'Your property required approval for reverse auction','date' => $date])->execute();
+
+
                 return 1;
             } else {
                 return 0;

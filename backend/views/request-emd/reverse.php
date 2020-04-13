@@ -383,12 +383,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
                             }
                         ],
-             ['attribute' => 'escrow_account_id',
-                            'label' => 'Escrow account',
+             ['attribute' => 'client_owner_confirmation',
+                            'label' => 'Client Approval',
                             'format' => 'raw',
                             'width' => '230px',
                             'value' => function($data) {
-                                return $data->escrow_account_id;
+                                return $data->client_owner_confirmation;
                             }
                         ],                   
           //  'escrow_account_id',
@@ -424,7 +424,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updated_date',
             // 'status',
 
-           // ['class' => 'yii\grid\ActionColumn'],
+           ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
                 <?php Pjax::end(); ?>

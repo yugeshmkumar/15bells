@@ -78,6 +78,45 @@ class RequestEmdSearch extends RequestEmd
 
 
 
+    public function searchrev($params)
+    {
+        
+        $user_id = Yii::$app->user->identity->id; 
+        $query = RequestEmd::find()->where(['for_auction' => 'reverse'])->andwhere(['client_owner_confirmation'=>'useryes'])->andwhere(['status'=>1]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'property_id' => $this->property_id,
+            'payable_amount' => $this->payable_amount,
+            'escrow_account_id' => $this->escrow_account_id,
+            'created_date' => $this->created_date,
+            'updated_date' => $this->updated_date,
+            'status' => $this->status,
+        ]);
+
+        $query->andFilterWhere(['like', 'payment_status', $this->payment_status]);
+
+        return $dataProvider;
+    }
+
+
+
       public function searches($params)
     {
         
