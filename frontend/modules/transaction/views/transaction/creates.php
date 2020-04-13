@@ -8,6 +8,7 @@ use backend\modules\transaction\models\Transaction;
 if (Yii::$app->session->hasFlash('success')):
  endif; 
 
+ 
 $connection = Yii::$app->getDb();
 
  $model =new Transaction();
