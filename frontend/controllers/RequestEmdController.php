@@ -39,7 +39,7 @@ class RequestEmdController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','update','delete','auction'],
+                        'actions' => ['index','indexrev','view','create','update','delete','auction','checkuserconfirmstatus','makeuseryes'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,11 +64,77 @@ class RequestEmdController extends Controller
     }
 
 
+    public function actionIndexrev()
+    {
+        $searchModel = new RequestEmdSearch();
+        $dataProvider = $searchModel->searchrev(Yii::$app->request->queryParams);
+
+        return $this->render('indexrev', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+
     public function actionAuction(){
 
         $this->layout = "dashboard";
         
         return $this->render('auction');
+
+    }
+
+
+    public function actionCheckuserconfirmstatus(){
+
+         $user_id = Yii::$app->user->identity->id;
+        $propid =   \common\models\Addproperty::find()->where(['user_id'=>$user_id])->all();
+// echo '<pre>';print_r($propid);die;
+        $proparray = [];
+        foreach($propid as $propids){
+
+
+          $finduser = \common\models\RequestEmd::find()->where(['property_id'=>$propids->id])       
+          ->andwhere(['client_owner_confirmation'=> 'noinput'])
+          ->one();
+
+          $brandname = \common\models\User::find()->where(['id'=>$finduser->user_id])       
+          ->andwhere(['status'=> 1])
+          ->one();
+        if($finduser && $brandname){
+
+            $proparray[] = $finduser->property_id;
+            $proparray[] = $brandname->fullname;
+            $proparray[] = $finduser->id;
+        }
+
+         }
+
+         return json_encode($proparray);
+
+    }
+
+
+
+    public function actionMakeuseryes(){
+
+           $returnid  =  $_POST['id'];
+           $buttonid  =  $_POST['buttonid'];
+
+         
+           if($returnid && $buttonid){
+            
+           $model = $this->findModel($returnid);
+
+           $model->client_owner_confirmation = $buttonid;
+           if($model->save(false)){
+               return 1;
+           }else{
+               return 2;
+           }
+
+          }
 
     }
 

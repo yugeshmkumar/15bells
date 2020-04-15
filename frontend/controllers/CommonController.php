@@ -51,16 +51,28 @@ class CommonController extends Controller {
 
             if ($checkOTP->checkotp == $getotp) {
                 $idid = $vrcode->secret_code;
+                $auction_type = $vrcode->auction_type;
                 //return true;
                 Yii::$app->getSession()->setFlash('alert', [
                     'body' => Yii::t('frontend', 'Successful.'),
                     'options' => ['class' => 'alert-success']
                 ]);
+
+                if($auction_type == 'forward_auction'){
+
                 if ($checkOTP->roleID == 15) {
                     return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/creates?id=' . $idid . '', 301)->send();
                 } else if ($checkOTP->roleID == 16) {
                     return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/createsel?id=' . $idid . '', 301)->send();
                 }
+
+            }else{
+                if ($checkOTP->roleID == 15) {
+                    return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/createrev?id=' . $idid . '', 301)->send();
+                } else if ($checkOTP->roleID == 16) {
+                    return Yii::$app->response->redirect(Yii::getAlias('@frontendUrl') . '/transaction/transaction/createsel?id=' . $idid . '', 301)->send();
+                }
+            }
             } else {
                 return '123';
             }

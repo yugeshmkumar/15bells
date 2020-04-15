@@ -2,7 +2,7 @@
 /**
  * @var $this yii\web\View
  */
-use backend\assets\BackendAsset;
+use backend\assets\AppAsset;
 use backend\widgets\Menu;
 use common\models\TimelineEvent;
 use yii\helpers\ArrayHelper;
@@ -10,9 +10,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
-$bundle = BackendAsset::register($this);
+$bundle = AppAsset::register($this);
 ?>
-<?php $this->beginContent('@backend/views/layouts/base.php'); ?>
+<?php $this->beginContent('@backend/modules/transaction/views/layouts/base.php'); ?>
     <div class="wrapper">
         <!-- header logo: style can be found in header.less -->
         <header class="main-header">
@@ -23,7 +23,7 @@ $bundle = BackendAsset::register($this);
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas"  role="button">
                     <span class="sr-only"><?php echo Yii::t('backend', 'Toggle navigation') ?></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -134,7 +134,7 @@ $bundle = BackendAsset::register($this);
                         <img src="<?php echo URL::to('@web/img') ?>/anonymous.png" class="img-circle" />
                     </div>
                     <div class="pull-left info">
-                        <p><?php echo Yii::t('backend', 'Hello moderator, {username}', ['username'=>Yii::$app->user->identity->username]) ?>
+                        <p><?php echo Yii::t('backend', 'Hello admin, {username}', ['username'=>Yii::$app->user->identity->username]) ?>
                        <br/> <a href="<?php echo Url::to(['/sign-in/profile']) ?>">
                             <i class="fa fa-circle text-success"></i>
                             <?php echo Yii::$app->formatter->asDatetime(time()) ?>

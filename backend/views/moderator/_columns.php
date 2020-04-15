@@ -30,9 +30,9 @@ return GridView::ROW_COLLAPSED;
 		'format'=>'raw',
 		'filter'=>false,
 		'label'=>'Actions',
-		'value'=>function($data,$model){
+		'value'=>function($data){
 			if($data->isactive == 1){
-			return '<a id="pulsate-regular" onclick=mybidfunct('.$data->id.');> <button class="btn btn-info">Enter VR Room</button></a>';
+			return '<a id="pulsate-regular" onclick=mybidfunct('.$data->id.',"'.$data->auction_type.'");> <button class="btn btn-info">Enter VR Room</button></a>';
 			}else {
 				return '<button class="btn btn-default">Run Report</button>';
 			}

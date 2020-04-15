@@ -36,7 +36,7 @@ class TransactionController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'update', 'index', 'create','saverank','creates', 'getrank','view', 'delete', 'virtual', 'bid', 'insertajax', 'grid', 'endbid', 'changestatus', 'time', 'showamount', 'checkstatus', 'showamount1','seller','maxbidders', 'minraise', 'starttime','ajaxtime','test','test1','chat','dynamic','winnerscreen','notificationtime','getactiveuser','customsound','property','leavebrowser'],
+                        'actions' => ['logout', 'update', 'index', 'create','saverank','createrev','creates', 'getrank','view', 'delete', 'virtual', 'bid','bidrev', 'insertajax','insertajaxrev', 'grid', 'endbid', 'endbidrev','changestatus', 'time', 'showamount', 'checkstatus','checkstatusrev', 'showamount1','seller','maxbidders', 'maxbiddersrev','minraise', 'minraiserev','starttime','ajaxtime','test','test1','test1rev','chat','chatrev','dynamic','dynamicrev','winnerscreen','notificationtime','notificationtimerev','getactiveuser','customsound','property','leavebrowser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -151,6 +151,28 @@ $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
         }
     }
 
+
+    public function actionCreaterev() {
+        $model = new Transaction();
+
+       
+        $model->product_id = "1";
+        $model->buyer_id = Yii::$app->user->identity->id;
+
+         //echo $this->$attribute;die;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash('success', "Bid Placed Sucessfully");
+
+            return $this->redirect(['createrev', 'id' => $model->id]);
+        } else {
+            return $this->render('createrev', [
+                        'model' => $model,
+            ]);
+        }
+    }
+
    
 
     /**
@@ -256,8 +278,82 @@ return $result['cid'];
 		}
     }
 
+
+
+
+
+    public function actionBidrev() {
+        $connection = Yii::$app->getDb();
+
+       $time = date("Y-m-d H:i:s");
+    $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+        if($vr_setup){
+          //$product = $vr_setup->propertyID;
+            
+
+        }
+                $product = $_GET['id'];
+                $brandid = $_GET['brandid'];
+       
+        $sql1="select min(bid_amount) as bid_amount from transaction where product_id='$brandid' and vr_id='$product' and status='Approved'";
+         $command_get = $connection->createCommand($sql1);
+       $result_chk = $command_get->queryOne();
+        $bid = $result_chk['bid_amount'];
+       
+        
+        $sql2="select reserved_price from vr_setup where id='$product'";		 
+       $command_get1 = $connection->createCommand($sql2);
+       $result_chk1 = $command_get1->queryOne();
+      
+
+               $r_res1 = $result_chk1['reserved_price'];
+            
+
+
+       // $r_res1 = $result_chk1['bid_amount'];
+       if($bid){
+       if($bid<$r_res1)
+       {
+      // return $r="Current Bid-".$bid;
+           $data['text'] =  'Current Bid';
+           $data['price'] =  $bid;
+           header('Content-Type: application/json');
+           return json_encode($data,JSON_PRETTY_PRINT);
+       }
+       else
+       {
+           $data['text'] =  'Reserved Price';
+           $data['price'] =  $r_res1;
+           header('Content-Type: application/json');
+           return json_encode($data,JSON_PRETTY_PRINT);
+
+           //return $r="Reserved Price-".$r_res1;
+       }
+    }else{
+
+        $data['text'] =  'Reserved Price';
+        $data['price'] =  $r_res1;
+        header('Content-Type: application/json');
+        return json_encode($data,JSON_PRETTY_PRINT);
+    }
+
+       
+   }
+
+
+
+
+
+
+
+
+
+
+
+
     public function actionEndbid() {
-        $model = new Transaction();
+
+  $model = new Transaction();
   $pid = $_GET['id'];
   $getwinnerid="select id from transaction where bid_amount = (select max(bid_amount) as bid_amount from transaction where status='Approved' and product_id='$pid') ";
    $connection = Yii::$app->getDb();
@@ -274,7 +370,7 @@ $result = $command->query();
 union
 select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
 */
-$sql="select max(bid_amount) as bidder,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";   
+$sql="select max(bid_amount) as bidder,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' and product_id=$pid group by buyer_id";   
 
 $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
 
@@ -282,6 +378,42 @@ $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
             'dataProvider' => $dataProvider,
         ]);
     }
+
+
+
+
+    public function actionEndbidrev() {
+
+        $model = new Transaction();
+        $pid = $_GET['id'];
+        $brandid = $_GET['brandid'];
+    //     $getwinnerid="select id from transaction where bid_amount = (select max(bid_amount) as bid_amount from transaction where status='Approved' and product_id='$pid') ";
+    //      $connection = Yii::$app->getDb();
+    //       $command = $connection->createCommand($getwinnerid);
+    //       $result = $command->queryOne();
+    //        $id= $result['id'];
+    //   if($id!=""){
+    //    $sql = "update transaction set status='Winner' where id =$id";
+    //   $command = $connection->createCommand($sql);
+    //   $result = $command->query();
+    //   }
+           
+      /*$sql="select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Winner' group by buyer_id
+      union
+      select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
+      */
+      $sql="select min(bid_amount) as bidder,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved'  and t.product_id=$brandid and t.vr_id=$pid group by t.buyer_id";   
+      
+      $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
+      
+        return $this->render('endtimerev', [
+                  'dataProvider' => $dataProvider,
+              ]);
+          }
+
+
+
+
 
     public function actionGrid() {
 
@@ -322,7 +454,7 @@ $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
 $loggedin=Yii::$app->user->identity->id;
         $model = new Transaction();
        // $sql = "select t.bid_amount as bidder,u.aliasname,u.partcipantID from transaction t inner join auction_participants u on u.partcipantID=t.buyer_id and u.vr_roomID =$vrID ";
-$sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcipantID from transaction t inner join activeuser_bid u on u.userid=t.buyer_id and u.propertyid =$pid";
+$sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcipantID from transaction t inner join activeuser_bid u on u.userid=t.buyer_id and u.propertyid=t.product_id where u.propertyid =$pid";
          $connection = Yii::$app->getDb();
         $command_get = $connection->createCommand($sql);
         $query = $command_get->queryAll();
@@ -353,6 +485,32 @@ $sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcip
         }
     }
 
+
+
+    public function actionMaxbiddersrev() {
+        $pid = $_GET['id'];
+        $brandid = $_GET['brandid'];
+          $vrroomID = \common\models\VrSetup::find()->where(['id'=>$pid ,'isactive'=>1])->one();
+          $vrID = $vrroomID->id;
+       $connection = Yii::$app->getDb();
+$loggedin=Yii::$app->user->identity->id;
+       $model = new Transaction();
+      // $sql = "select t.bid_amount as bidder,u.aliasname,u.partcipantID from transaction t inner join auction_participants u on u.partcipantID=t.buyer_id and u.vr_roomID =$vrID ";
+$sql="select t.bid_amount as bidder,u.aliasName as aliasname,u.userid as partcipantID from transaction t inner join activeuser_bid u on u.userid=t.buyer_id and u.propertyid=t.product_id where u.propertyid =$brandid and  u.vr_id =$pid";
+        $connection = Yii::$app->getDb();
+       $command_get = $connection->createCommand($sql);
+       $query = $command_get->queryAll();
+       $countrow = count($query);
+       if ($countrow > 0) {
+
+       return json_encode($query);
+       }else{
+           return 'no';
+       }
+   }
+
+
+
 public function actionGetactiveuser(){
 	$connection = Yii::$app->getDb();
        $pid = $_GET['id'];
@@ -373,7 +531,7 @@ public function actionGetrank(){
        $loggedin=Yii::$app->user->identity->id;
 
       
-	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction where product_id=$pid order by bid_amount desc, bid_date asc ) as pub group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
+	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction  where product_id=$pid order by bid_amount desc, bid_date asc ) as pub  group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
    
     $command_get = $connection->createCommand($amt);
         $result_chk = $command_get->queryAll();
@@ -396,11 +554,11 @@ public function actionSaverank(){
        $loggedin=Yii::$app->user->identity->id;
 
       
-	$amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction order by bid_amount desc, bid_date asc ) as pub group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
+       $amt="select * from (select (@row_number:=@row_number+1) AS row_number , id,buyer_id,bid_amount,bid_date,product_id from (select * from ( select * from transaction  where product_id=$pid order by bid_amount desc, bid_date asc ) as pub  group by buyer_id order by bid_amount desc, bid_date asc ) as tub, (SELECT @row_number:=0) AS t) as z   where buyer_id=$loggedin and product_id=$pid order by row_number asc";
    
-    $command_get = $connection->createCommand($amt);
-        $result_chk = $command_get->queryAll();
-       if($result_chk){
+       $command_get = $connection->createCommand($amt);
+           $result_chk = $command_get->queryAll();
+          if($result_chk){
           
         $rank = $result_chk[0]['row_number'];
 
@@ -467,6 +625,30 @@ $result = $command->query();
 
 
 
+
+    public function actionChatrev() {
+        $model = new Transaction();
+$pid=$_GET['pid'];
+$brandid=$_GET['brandid'];
+
+$chat=$_POST['chat'];
+$id=$_POST['id'];
+date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+$send=Yii::$app->user->identity->id;
+  $sql="insert into chat_history(send_by,message,sent_to,sent_date,property_id,vr_id) values ($send,'$chat','$id','$date','$brandid','$pid')";
+ $connection = Yii::$app->getDb();
+$command = $connection->createCommand($sql);
+$result = $command->query();
+     
+    }
+
+
+
+
+
+
+
 public function actionDynamic() {
 $id=$_GET['id'];
 $loggedin=Yii::$app->user->identity->id;
@@ -487,6 +669,41 @@ $result = $command->queryAll();
 
 return json_encode($result);
 }
+
+
+
+
+
+public function actionDynamicrev() {
+    $id=$_GET['id'];
+    $vrid=$_GET['vrid'];
+    $loggedin=Yii::$app->user->identity->id;
+            $model = new Transaction();
+     // $sql="select c.id,c.message ,u.username as user from chat_history c inner join user u  on  c.send_by=u.id where c.property_id=$id and sent_to='$loggedin' or sent_to='0';";
+         $sql="select * from (select c.id,c.message ,c.sent_date,u.username as user from chat_history c inner join user u  on  c.send_by=u.id where c.property_id=$vrid and c.vr_id='$id' and  c.send_by='$loggedin'
+         
+         Union
+         select c.id,c.message ,c.sent_date,u.username as user from chat_history c inner join user u  on  c.send_by=u.id where c.property_id=$vrid and c.vr_id='$id' and  c.sent_to='$loggedin' 
+         Union
+         select c.id,c.message ,c.sent_date,u.username as user from chat_history c inner join user u  on  c.send_by=u.id where c.property_id=$vrid and c.vr_id='$id' and  c.sent_to=0 
+         
+         )  
+         a  order by sent_date asc
+         ";
+    $connection = Yii::$app->getDb();
+    $command = $connection->createCommand($sql);
+    $result = $command->queryAll();
+    // foreach($result as $row)
+    // {
+    
+    // $user=$row['user'];
+    // echo $user."-".$row['message'];
+    // echo "<br/>";
+    
+    // } exit();
+    
+    return json_encode($result);
+    }
 	
 	
 
@@ -494,6 +711,17 @@ return json_encode($result);
         $model = new Transaction();		
 		$id=$_GET['id'];	
        return $minraise= $model->getMinraise($id);	  
+   //     $model->buyer_id = Yii::$app->user->identity->id;
+    //    $model->product_id = "1";
+       
+    }
+
+
+    public function actionMinraiserev() {
+        $model = new Transaction();		
+		$id=$_GET['id'];	
+		$brandid=$_GET['brandid'];	
+       return $minraise= $model->getMinraiserev($id,$brandid);	  
    //     $model->buyer_id = Yii::$app->user->identity->id;
     //    $model->product_id = "1";
        
@@ -527,7 +755,108 @@ return json_encode($result);
         }
     }
 
+
+
+
     public function actionInsertajax() {
+
+        $connection = Yii::$app->getDb();
+        $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+        
+        if($vr_setup){
+        $product = $vr_setup->propertyID;
+        } else {
+        $product =  1;
+        }
+        $model = new Transaction();
+        //New Added
+        $id=$_GET['id'];
+        $last_approved_buyer= $model->Checkcontionousbid($product);
+        $current=Yii::$app->user->identity->id;
+        if($last_approved_buyer==$current){
+        
+        echo "You are the latest bidder";die;
+        return false;
+        }
+        
+        $minimumraise=$model->getMinamountraise($id);     
+        
+        $model->product_id = $id;
+        $model->buyer_id = Yii::$app->user->identity->id;
+        $model->bid_amount = $_POST['bid'];
+        $model->bid_date = $date;
+        $amt = $_POST['bid'];
+        
+        //262.5>263  --false
+        if(($minimumraise>$amt))
+        {
+        echo "Minumum Raise is 5%";die;
+        return false;
+        }
+        
+        
+        
+        $dbtime = $model->getTime($id);
+        $currtime = $model->getCurrenttime();
+        if ($currtime > $dbtime) {
+        echo "You cannot place bid now";
+        die;
+        }
+        
+        $max_db_bid = $model->checkbid($product);
+        if ($amt < $max_db_bid) {
+        echo "Add Higher Bid";
+        die; 
+        }
+        
+        
+        $stat = $model->getuserstatus($id);
+        if($stat==""){
+        if($model->save())
+        {
+        return  "Bid Placed Successfully";
+        }
+        else
+        {
+        return "Add Higher Bid";
+        }
+        }
+        
+        
+        if ($stat == "Approved") {
+        
+        if ($model->save()) {
+        $stat = $model->getuserstatus($id);
+        return "Bid Placed Successfully";
+        } else {
+        return "Please add Higher Bid";
+        }
+        } 
+        
+        
+        else if($stat == "Pending")
+        {
+        return "Your previous Bid is Pending";
+        }
+        
+        
+        else {
+        if ($amt > $max_db_bid) {
+        $model->save();
+        return "Bid Placed";
+        }
+        return "Please Add Higher Bid than Current";
+        }
+        
+        
+        
+        }
+
+        
+
+    public function actionInsertajaxrev() {
 
             $connection = Yii::$app->getDb();
             $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
@@ -535,7 +864,7 @@ return json_encode($result);
             $date = date('Y-m-d H:i:s');
 
             if($vr_setup){
-            $product = $vr_setup->propertyID;
+            $product = $vr_setup->brandID;
             } else {
             $product =  1;
             }
@@ -552,10 +881,12 @@ return json_encode($result);
 
             $minimumraise=$model->getMinamountraise($id);     
 
-            $model->product_id = $id;
+            $model->product_id = $product;
+            $model->vr_id = $_GET['id'];
             $model->buyer_id = Yii::$app->user->identity->id;
             $model->bid_amount = $_POST['bid'];
             $model->bid_date = $date;
+            $model->status = 'Approved';
             $amt = $_POST['bid'];
 
             //262.5>263  --false
@@ -567,21 +898,29 @@ return json_encode($result);
 
 
 
-            $dbtime = $model->getTime($id);
+            $dbtime = $model->getTimerev($id);
             $currtime = $model->getCurrenttime();
             if ($currtime > $dbtime) {
             echo "You cannot place bid now";
             die;
             }
 
-            $max_db_bid = $model->checkbid($product);
-            if ($amt < $max_db_bid) {
-            echo "Add Higher Bid";
+            $max_db_bid = $model->checkbidrev($product,$id);
+
+
+            if ($max_db_bid && $amt > $max_db_bid) {
+            echo "Add Lower Bid";
+            die; 
+            }
+
+            $max_db_bid = $model->checkbidrev($product,$id);
+            if ($max_db_bid && $amt == $max_db_bid) {
+            echo "Add Lower Bid";
             die; 
             }
 
 
-            $stat = $model->getuserstatus($id);
+            $stat = $model->getuserstatusrev($product,$id);
             if($stat==""){
             if($model->save())
             {
@@ -597,7 +936,7 @@ return json_encode($result);
             if ($stat == "Approved") {
 
             if ($model->save()) {
-            $stat = $model->getuserstatus($id);
+            $stat = $model->getuserstatusrev($product,$id);
             return "Bid Placed Successfully";
             } else {
             return "Please add Higher Bid";
@@ -612,11 +951,11 @@ return json_encode($result);
 
 
             else {
-            if ($amt > $max_db_bid) {
+            if ($max_db_bid && $amt < $max_db_bid) {
             $model->save();
             return "Bid Placed";
             }
-            return "Please Add Higher Bid than Current";
+            return "Please Add Smaller Bid than Current";
             }
 
 
@@ -683,6 +1022,20 @@ return $r;
          return $db;
     }
 
+    public function actionTest1rev(){
+        $model = new Transaction();
+         $pid = $_GET['id'];
+     $time = $model->gettimerev($pid);
+    $db= date('F j, Y g:i:s A', strtotime($time));
+    $r='"';
+    
+    
+    $db=$r.$db.$r;
+          
+    
+     return $db;
+}
+
 
 
 
@@ -702,6 +1055,25 @@ return $r;
 		}
         $model = new Transaction();
         $stat = $model->getuserstatus($_GET['id']);
+            if($stat!=""){
+            if($stat=="Preapproved"){
+                return $statu = "Place Bid Higher";
+            } else{   
+        return $statu = "Your Last Bid has been" . "-" . $stat;
+            }
+       }
+    }
+
+
+    public function actionCheckstatusrev() {
+		$vrsetup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+		if($vrsetup){
+			$pid = $vrsetup->propertyID;
+		} else {
+			$pid = 1;
+		}
+        $model = new Transaction();
+        $stat = $model->getuserstatusrev($_GET['brandid'],$_GET['id']);
             if($stat!=""){
             if($stat=="Preapproved"){
                 return $statu = "Place Bid Higher";
@@ -768,6 +1140,13 @@ die;
         $pid = $_GET['id'];
         $model = new Transaction();
       return   $left = $model->getTimealert($pid);
+    }
+
+    public function actionNotificationtimerev() {
+        $pid = $_GET['id'];
+        $brandid = $_GET['brandid'];
+        $model = new Transaction();
+      return   $left = $model->getTimealertrev($pid,$brandid);
     }
 
 }

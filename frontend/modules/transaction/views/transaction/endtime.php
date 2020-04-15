@@ -12,7 +12,7 @@ $this->title = 'Transactions';
 $this->params['breadcrumbs'][] = $this->title;
 
 $datas =  $dataProvider->getModels();
-//echo '<pre>';print_r($datas);die;
+// echo '<pre>';print_r($datas);die;
 
 ?>
 <style>
@@ -78,9 +78,9 @@ if($data['buyer_id'] == $loggedin){
 <?php
 $script = <<< JS
 $(document).ready(function() {
-    setInterval(function() {     
-     $.pjax.reload({container:'#m1'});
-    }, 2000); 
+    // setInterval(function() {     
+    //  $.pjax.reload({container:'#m1'});
+    // }, 2000); 
 });
 JS;
 $this->registerJs($script);

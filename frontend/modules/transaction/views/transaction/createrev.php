@@ -8,21 +8,19 @@ use backend\modules\transaction\models\Transaction;
 if (Yii::$app->session->hasFlash('success')):
  endif; 
 
- 
 $connection = Yii::$app->getDb();
 
  $model =new Transaction();
  $vr_setup = \common\models\VrSetup::find()->where(['secret_code'=>$_GET['id'],'status'=>"published",'isactive'=>1])->one();
 if($vr_setup){
 
-
- $time=$model->gettime($vr_setup->propertyID);
-   $bid = $model->getBidtime($vr_setup->propertyID);
+    $time=$model->gettimerev($vr_setup->id);
+    $bid = $model->getBidtimerev($vr_setup->id);
  
-           $currenttime = $model->getCurrenttime();
+    $currenttime = $model->getCurrenttime();
+
 
         if ($currenttime > $bid && $currenttime < $time) {
-
                        
             
         }
@@ -32,7 +30,8 @@ if($vr_setup){
         die;
         }
 
-        $pid = $vr_setup->propertyID;
+        $pid = $vr_setup->id;
+        $brandID = $vr_setup->brandID;
         $useridget = \common\models\Addproperty::find()->where(['id'=>$pid,'status'=>"approved"])->one();
        
 
@@ -438,9 +437,9 @@ label{color:#ffffff;font-weight:400;}
 
 	<div class="container-fluid">
     <div class="bid_status text-center" id="bidstatus"></div>
-    <div class="row">
-    <div class="bid_rank text-center" style="<?php if($ownerid == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">Your Rank is <span id="rank_user">0</span></div>
-    </div>
+    <!-- <div class="row">
+    <div class="bid_rank text-center" style="<?php ///if($ownerid == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">Your Rank is <span id="rank_user">0</span></div>
+    </div> -->
 		<div class="row">
 	<!--------Left Side Section------------------>
 			<div class="col-md-12">
@@ -453,7 +452,7 @@ label{color:#ffffff;font-weight:400;}
 					</div>
 				</div>
               
-				<div class="row no_margn input_row" style="<?php if($ownerid == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">
+				<div class="row no_margn input_row" style="<?php if($brandID == $loggedin){echo 'display:none;';}else{echo 'display:block;';} ?>">
 					<div class="col-md-12">
 						<div class="col-md-6">
 							 <label for="usr">Place Bid: (In ₹) </label>
@@ -484,7 +483,7 @@ label{color:#ffffff;font-weight:400;}
 				<div class="row no_margn">
 					<div class="reserved_price text-center">
 						<p class="reserve_hed">Reserved Price</p>
-						<p id="current_price" class="reserv_price"> <?php $model->getMaxprice($pid);?></p>
+						<p id="current_price" class="reserv_price"> <?php $model->getMaxpricerev($pid);?></p>
 					</div>
 				</div>		
 	 <div id="mySidenav" class="sidenav">
@@ -590,7 +589,7 @@ setInterval(chatdisplay, 1000);
 setInterval(activeusers, 5000);
 //setInterval(triggerLoc, 1000); 
 setInterval(Checksecond, 1000);
-setInterval(getrank, 1000);
+//setInterval(getrank, 1000);
 
  });
 
@@ -662,7 +661,7 @@ function triggerLoc() {
  function ajaxcall(){
      $.ajax({
 		 
-         url: 'bid?id=$pid',
+         url: 'bidrev?id=$pid&brandid=$brandID',
          success: function(data) {
           var obj = JSON.parse(data);
 		var text = obj.text;
@@ -711,9 +710,8 @@ function triggerLoc() {
 {
    $.ajax({
 		 
-         url: 'test1?id=$pid',
+         url: 'test1rev?id=$pid',
          success: function(data) {
-
              var d = JSON.parse(data);
 
             var countDownDate = new Date(d).getTime();
@@ -751,7 +749,7 @@ clock = $('.clock').FlipClock({
  function notification(){
      $.ajax({
 		 
-         url: 'notificationtime?id=$pid',
+         url: 'notificationtimerev?id=$pid&brandid=$brandID',
          success: function(data) {
         if( (data=='5') || (data=='10')){
 var txt=data +" Seconds Left";
@@ -778,13 +776,12 @@ var txt=data +" Seconds Left";
 
     $.ajax({
 		 
-         url: 'saverank?id=$pid',
+         url: 'endbidrev?id=$pid&brandid=$brandID',
          success: function(data) {
-
-            if(data == '1'){
-             window.location.href='endbid?id=$pid';
+if(data){
+             window.location.href='endbidrev?id=$pid&brandid=$brandID';
              }else{
-                 alert('No rank assign')
+                 alert('No thankyou')
              }
 
          }
@@ -797,7 +794,7 @@ function biduser()
 	$('#bidgrid').html('');
    $.ajax({
 		 
-         url: 'maxbidders?id=$pid',
+         url: 'maxbiddersrev?id=$pid&brandid=$brandID',
          success: function(data) {
 
 
@@ -836,7 +833,7 @@ function biduser()
         
 				function checkstatus(){
 				$.ajax({		 
-				url: 'checkstatus?id=$pid',
+				url: 'checkstatusrev?id=$pid&brandid=$brandID',
 				success: function(data) {
 				$('#bidstatus').html(data);      
 				}
@@ -885,7 +882,7 @@ if(!$.isNumeric(bid)) {
 // AJAX Code To Submit Form.
 $.ajax({
 type: "POST",
-url: "insertajax?id=$pid",
+url: "insertajaxrev?id=$pid&brandid=$brandID",
 data: dataString,
 cache: false,
 success: function(result){
@@ -909,7 +906,7 @@ $("#raise").click(function(){
 
 $.ajax({
 type: "POST",
-url: "minraise?id=$pid",
+url: "minraiserev?id=$pid&brandid=$brandID",
 cache: false,
 success: function(result){
 
@@ -931,7 +928,7 @@ $("#bid").val(res[0]);
      
      $.ajax({
          
-         url: 'dynamic?id=$pid',
+         url: 'dynamicrev?id=$pid&vrid=$brandID',
 	ifModified: true,
          success: function(data,status,xhr) {
 var length = Object.keys(data).length;
@@ -1042,7 +1039,7 @@ var userid = 822;
 var dataString = 'chat='+ chat + '&id='+userid ;
 $.ajax({
 type: "POST",
-url: 'chat?pid=$pid',
+url: 'chatrev?pid=$pid&brandid=$brandID',
 data: dataString,
 cache: false,
 success: function(result){
