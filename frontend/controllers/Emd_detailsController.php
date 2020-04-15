@@ -104,6 +104,27 @@ class Emd_detailsController extends Controller
        
     }
 
+    
+
+    public function actionGetfavourrev()
+    {
+
+        $model = new VrSetup();  
+        $emdid =  $_POST['emdid'];
+        $propid =  $_POST['propid'];
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $querys = VrSetup::find()->where(['id'=>$propid])->one();
+
+        if($querys){
+            return  $querys;
+        }else{
+            return 2;
+        }
+       
+    }
+
 
     /**
      * Creates a new Emd_details model.

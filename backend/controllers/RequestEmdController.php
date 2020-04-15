@@ -20,7 +20,9 @@ class RequestEmdController extends Controller
     public function __construct($id, $module, $config = array()) {
         parent::__construct($id, $module, $config);
         $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
-	if($assigndash->item_name == "sales_demand_lessee"){
+
+
+        if($assigndash->item_name == "sales_demand_lessee"){
 		
 		$this->layout="sales_supply_layout";
 		
@@ -60,7 +62,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['index','view','create','update','delete','forward','reverse','movetoforward','movetoreverse'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -82,6 +84,77 @@ if($assigndash->item_name == "sales_supply_lessor"){
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function actionForward()
+    {
+        $searchModel = new RequestEmdSearch();
+        $dataProvider = $searchModel->searchforward(Yii::$app->request->queryParams);
+
+        return $this->render('forward', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+    public function actionReverse()
+    {
+        $searchModel = new RequestEmdSearch();
+        $dataProvider = $searchModel->searchreverse(Yii::$app->request->queryParams);
+
+        return $this->render('reverse', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+    public function actionMovetoforward() {
+
+        $requestid = $_GET['requestid'];
+        
+        if ($requestid != '') {
+            
+            $model = $this->findModel($requestid);
+
+            $model->for_auction = 'forward';
+
+            if ($model->save(false)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    public function actionMovetoreverse() {
+
+        $requestid = $_GET['requestid'];
+        
+        if ($requestid != '') {
+            
+            $model = $this->findModel($requestid);
+
+            $model->for_auction = 'reverse';
+
+            if ($model->save(false)) {
+
+                $propid =  $model->property_id;
+                date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+                $user_id =   \common\models\Addproperty::findOne(['id'=>$propid])->user_id;
+                $link  =     Yii::getAlias('@frontendUrl').'/addproperty/lesview';
+
+                $trendingadd = \Yii::$app->db->createCommand()->insert('notifications', ['item_name' => 'Auction Approval', 'item_id' => $user_id, 'link' => $link, 'description'=>'Your property required approval for reverse auction','date' => $date])->execute();
+
+
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 
     /**

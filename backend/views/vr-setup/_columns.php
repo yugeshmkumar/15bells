@@ -73,6 +73,23 @@ return GridView::ROW_COLLAPSED;
         'attribute'=>'todatetime',
     ],
 
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id',
+		'format'=>'raw',
+		'filter'=>false,
+		'label'=>'Result',
+		'value'=>function($data,$model){
+            
+			if($data->auction_type == 'forward_auction'){
+
+			return '<button onclick="seeresultforward('.$data->id.')"   class="btn btn-success">Result VR Room</button>';
+			}else {
+                return '<button onclick="seeresultreverse('.$data->id.','.$data->brandID.')"  class="btn btn-success">Result VR Room</button>';
+			}
+		}
+    ],
+
     // [
     //     'class' => 'kartik\grid\ActionColumn',
     //     'dropdown' => false,

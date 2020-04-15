@@ -118,7 +118,51 @@ $command_get = $connection->createCommand($amt);
 $result_chk = $command_get->queryOne();
 return $r_res=$result_chk['bid_amount'];
 		
+    }
+    
+
+
+
+
+
+    public function getMaxpricerev($str,$brand)
+	{
+
+        $connection = Yii::$app->getDb();
+        
+
+       
+        $amt="select min(bid_amount) as bid_amount
+        from 
+        (
+
+        select min(bid_amount) as bid_amount from transaction where product_id=$brand and vr_id=$str and status='Approved'
+        union all
+        select max(reserved_price) as bid_amount from vr_setup where id=$str
+        ) as p";
+
+        
+
+        $command_get = $connection->createCommand($amt);
+        $result_chk = $command_get->queryOne();
+        return $r_res=$result_chk['bid_amount'];
+		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -165,7 +209,23 @@ return $r_res=$result_chk['bid_amount'];
 	$result = $command->queryOne();
 	 $time= $result['todatetime'];
 	 return $time= str_replace("-","/",$time);
-	}
+    }
+
+
+    public function getTimerev($str)
+	{
+	$sql="select todatetime from vr_setup where id=$str";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	 $time= $result['todatetime'];
+	 return $time= str_replace("-","/",$time);
+    }
+
+    
+    
+
+    
         
         
         
@@ -277,6 +337,19 @@ $command = $connection->createCommand($s);
    $result = $command->queryOne();
     return $type= $result['status'];
 
+    }
+    
+
+
+    public function getUserstatusrev($product,$pid)
+	{
+     $chk_user=Yii::$app->user->identity->id; 
+   $sql="select status from transaction where buyer_id=$chk_user and product_id = $product and vr_id = $pid order by id desc limit 0,1";
+   $connection = Yii::$app->getDb();
+   $command = $connection->createCommand($sql);
+   $result = $command->queryOne();
+    return $type= $result['status'];
+
 	}
 
 
@@ -290,7 +363,20 @@ $command = $connection->createCommand($s);
    $result = $command->queryOne();
     return $type= $result['maxbid'];
 
-	}
+    }
+    
+
+    public function checkbidrev($str,$id)
+	{
+     $chk_user=Yii::$app->user->identity->id; 
+   $sql="select min(bid_amount) as maxbid from transaction where status='Approved' and product_id = $str and vr_id = $id";
+  $connection = Yii::$app->getDb();
+   $command = $connection->createCommand($sql);
+   $result = $command->queryOne();
+    return $type= $result['maxbid'];
+
+    }
+    
 
  public function preapproved($id)
 	{
@@ -502,9 +588,47 @@ if($propertyfor =='sale'){
 }
 
 
+
+
+public function getMinraiserev($id,$brandid){
+	$mod=new Transaction();
+	$connection = Yii::$app->getDb();
+ 	 $price=$mod->getMaxpricerev($id,$brandid);
+//
+$s="select reserved_price from vr_setup where  id='$id'";
+$command = $connection->createCommand($s);
+	$result = $command->queryOne();
+
+   $res = $result['reserved_price'];
+
+	//
+ $sql="select min_raise from vr_setup where  id='$id'";
+	$command1 = $connection->createCommand($sql);
+	$result1 = $command1->queryOne();
+	 $min= $result1['min_raise']; //5%
+ 	  $min_price=ceil(($min*$price)/100);//1250  
+	
+	return $reserved_price=$price-$min_price."+"."$min_price";	
+	//return $final=$price+$min_price;
+
+}
+
+
 public function getTimealert($id)
 {
 $sql="select todatetime from vr_setup where propertyID=$id";
+	$connection = Yii::$app->getDb();
+	$command = $connection->createCommand($sql);
+	$result = $command->queryOne();
+	  $time= strtotime($result['todatetime']);
+  $current=strtotime(date("Y-m-d H:i:s"));
+return $lefttime=($time-$current);
+}
+
+
+public function getTimealertrev($id,$brandid)
+{
+$sql="select todatetime from vr_setup where id=$id";
 	$connection = Yii::$app->getDb();
 	$command = $connection->createCommand($sql);
 	$result = $command->queryOne();

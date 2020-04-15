@@ -170,17 +170,16 @@ $datas =  $dataProvider->query->all();
       <div class="modal-body no_pad">
 		<div class="container-fluid padding_rating">
 			<div class="col-md-12 text-center">
-				<p class="star_rating">This <span class="color_yell">Brand (Brand Name)</span> has shown interest in your Property <span class="color_yell">ID : <span id="appendid"></span></span>  </p>
+				<p class="star_rating">This <span class="color_yell">Brand (<span id="appendbrand"></span>)</span> has shown interest in your Property <span class="color_yell">ID : <span id="appendid"></span></span>  </p>
 			</div>
 			
 			<div class="row text-center pay_section pay_later">
 				
 				<div class="col-md-12 text-center">
-                    <h2 class="star_rating">Would you like to proceed further on this deal ?</h2>
+                    <h2 class="star_rating">Would you like to put this property on Reverse Auction ?</h2>
 					<ul class="sub_categories buy_prop">
-								<li class="active"><a href="javascript:void(0)" id="yes" class="property_subtype buyproperty">Yes</a></li>
-								<li class=""><a href="javascript:void(0)" id="may_be" class="property_subtype buyproperty">May be</a></li>
-								<li class=""><a href="javascript:void(0)"  id="no" class="property_subtype buyproperty">No</a></li>
+								<li class="active"><a href="javascript:void(0)" id="useryes" class="property_subtype buyproperty">Yes</a></li>
+								<li class=""><a href="javascript:void(0)"  id="userno" class="property_subtype buyproperty">No</a></li>
 							</ul>
 				</div>
 			</div>
@@ -195,7 +194,34 @@ $datas =  $dataProvider->query->all();
   </div>
 </div>
 
+<div id="modal_lessor_done" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg modal_dialogue">
 
+    <!-- Modal content-->
+    <div class="modal-content draw_map no_pad">
+        <button type="button" class="close modal_close" data-dismiss="modal">&times;</button>
+      
+      <div class="modal-body no_pad">
+		
+		<div class="container-fluid padding_rating">
+			<div class="col-md-12 text-center">
+				<p class=""><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/success.svg';  ?>" width="100"></p>
+				<h2 class="visit_h">Feedback Submit Successful</h2>
+				<p class="visit_txt">Our Manager will contact you soon </p>
+				
+			</div>
+			<div class="col-md-12 text-center">
+							<ul class="sub_categories">
+							<li><a href="javascript:void(0)" data-dismiss="modal" class="property_subtype">Close</a></li>
+
+             </ul>
+			    	</div> 
+		</div>
+      </div>      
+    </div>
+  </div>
+  
+</div>
 
 
 <div id="emd_deposit" class="modal fade" role="dialog">
@@ -310,9 +336,10 @@ $datas =  $dataProvider->query->all();
 <?php 
 $script = <<< JS
 
-$(window).on('load',function(){
-        $('#modal_lessor').modal('show');
-    });
+var returnpropid;
+var returnid;
+
+checkuserconfirmstatus();
 $(".emd_pay").click(function(){
     $("#emd_deposit").modal('show');
 });
@@ -350,6 +377,38 @@ $.ajax({
 });
 
 });
+
+
+
+
+$('.buyproperty').click(function(){
+
+var buttonid =  $(this).attr('id');
+if(buttonid == 'useryes' || buttonid == 'userno'){
+
+          $.ajax({
+											   type: "POST",
+											   url: '/request-emd/makeuseryes',
+											   data: {id: returnid,buttonid: buttonid},
+											   dataType: 'json',
+											   success: function (data) {
+
+													// alert(data);
+
+												  if(data == 1){
+
+													$("#modal_lessor").modal('hide');
+													$("#modal_lessor_done").modal('show');
+												 }
+											                                                
+												  
+
+											   },
+										   });	
+
+                        }
+
+             });
 							
 
 
@@ -390,7 +449,39 @@ $.ajax({
 }
 
 
+                    function checkuserconfirmstatus(){
+                                    
+									$.ajax({
+											   type: "POST",
+											   url: '/request-emd/checkuserconfirmstatus',
+											   data: {id: 'ready'},
+											   dataType: 'json',
+											   success: function (data) {
+												 
+												var brandname =  data[1];
+												
+												  returnpropid = data[0];
+												  returnid = data[2];
+						
+												 var haritid = 273*179-returnpropid;
+											     var propsid = 'PR'+ haritid;
+												 
+												   if (returnpropid) {									  
+													 
+													
+														$('#appendid').html(propsid);
+														$('#appendbrand').html(brandname);  
+														
 
+                                                        $('#modal_lessor').modal('show');
+
+
+												   }                                                 
+												  
+
+											   },
+										   }); 
+								}
 
 
 

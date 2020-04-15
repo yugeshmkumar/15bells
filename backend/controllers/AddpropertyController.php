@@ -217,38 +217,65 @@ public function actionGetuserids($id) {
 		 
 	    }
 
-public function actionEmdpay($propids, $visitypeid,$emd_id) {
+public function actionEmdpay($propids, $visitypeid , $user_id ,$unique_id) {
 
-        $user_id = Yii::$app->user->identity->id;
+        //$user_id = Yii::$app->user->identity->id;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
 
             
-
+if($visitypeid != 'reverse'){
         $payments = \Yii::$app->db->createCommand("SELECT id from vr_setup where propertyID='$propids'")->queryAll(); 
           //echo '<pre>';print_r($payments);die;
         
            if(!empty($payments)){
-        $finduser = \common\models\RequestEmd::find()->where(['user_id' => $emd_id])->andwhere(['property_id' => $propids])->one();
+            $finduser = \common\models\RequestEmd::find()->where(['id' => $unique_id])->one();
+            if($finduser){
+            
+            
+            $finduser->payment_status = 'paid';
+            $finduser->save(false);
+
+            $vr_id = $payments[0]['id'];
+            $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $user_id, 'propertyID' => $propids, 'userroleID' => 'lessee', 'request_for'=>'bid','created_at' => $date])->execute();
+            if ($trendingadd) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }              
+          
+        } else{
+            return 3;
+        }
+
+    }else{
+      
+        $payments = \Yii::$app->db->createCommand("SELECT id from vr_setup where brandID='$propids' and auction_type='reverse_auction'")->queryAll(); 
+          //echo '<pre>';print_r($payments);die;
+        
+           if(!empty($payments)){
+
+        $finduser = \common\models\RequestEmd::find()->where(['id' => $unique_id])->one();
         if($finduser){
             
             
             $finduser->payment_status = 'paid';
             $finduser->save(false);
-        }   else{
-            echo 'nhi aya ';die;
-        }   
-            
-        $vr_id = $payments[0]['id'];
-        $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $emd_id, 'propertyID' => $propids, 'userroleID' => 'lessee', 'request_for'=>'bid','created_at' => $date])->execute();
-        if ($trendingadd) {
-            return 1;die;
-        } else {
-            return 2;die;
-        }   
+
+            $vr_id = $payments[0]['id'];
+            $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $user_id, 'propertyID' => $propids, 'userroleID' => 'lessor', 'request_for'=>'reverse','created_at' => $date])->execute();
+            if ($trendingadd) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }              
+          
         } else{
-            return 3;die;
+            return 3;
         }
+    }
         
         
     }
