@@ -41,26 +41,26 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		</div>
 		
 		<div class="row">
-			<div class="col-md-3 pad_trans">
+			<a href="#" target="_blank"><div class="col-md-3 pad_trans">
 				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/ankur.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Ankur Gupta</p>
-				<p class="membr_desig">Managing Director</p>
-			</div>
-			<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/akhilesh_1.jpg';  ?>" class="img-responsive"></p>
-				<p class="team_name">Akhilesh Sharma</p>
-				<p class="membr_desig">Managing Partner</p>
-			</div>
-			<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/subash.jpg';  ?>" class="img-responsive"></p>
-				<p class="team_name">Subash Das</p>
-				<p class="membr_desig">CEO</p>
-			</div>
-			<!--<div class="col-md-3 pad_trans">
-				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" class="img-responsive"></p>
-				<p class="team_name">Amit Kumar</p>
-				<p class="membr_desig">IT</p>
-			</div>-->
+				<p class="membr_desig">CEO & Director</p>
+			</div></a>
+			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/rajiv.ppt';  ?>" target="_blank"><div class="col-md-3 pad_trans">
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/rajeev.jpg';  ?>" class="img-responsive"></p>
+				<p class="team_name">Rajiv K Bansal</p>
+				<p class="membr_desig">Director</p>
+			</div></a>
+			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/hitesh.pdf';  ?>" target="_blank"><div class="col-md-3 pad_trans">
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/hitesh.jpg';  ?>" class="img-responsive"></p>
+				<p class="team_name">Hietesh Shridhar</p>
+				<p class="membr_desig">Executive Director</p>
+			</div></a>
+			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/rayan.pdf';  ?>" target="_blank"><div class="col-md-3 pad_trans">
+				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/rayy.jpg';  ?>" class="img-responsive"></p>
+				<p class="team_name">Rayan Singh</p>
+				<p class="membr_desig">Executive Director UK Firm</p>
+			</div></a>
 		</div>
 	</div>
 </div>
