@@ -268,10 +268,10 @@ echo "<br/>";
 
     public function actionChangestatus() {
 
-        $id = $_GET['check'];
+        $id = $_POST['check'];
         $connection = Yii::$app->getDb();
-        $status = $_GET['t1'];
-	 $pid= $_GET['pid'];
+        $status = $_POST['t1'];
+	 $pid= $_POST['pid'];
         if ($status == 'a') {
             $model = new Transaction();
             $sql = "update transaction set status='Approved' where id='$id' and product_id = $pid ";
