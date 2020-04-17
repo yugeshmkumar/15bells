@@ -59,7 +59,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/rayan.pdf';  ?>" target="_blank"><div class="col-md-3 pad_trans">
 				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/rayy.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Rayan Singh</p>
-				<p class="membr_desig">Executive Director UK Firm</p>
+				<p class="membr_desig">Executive Director UK Market</p>
 			</div></a>
 		</div>
 	</div>
