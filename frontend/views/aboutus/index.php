@@ -41,12 +41,12 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		</div>
 		
 		<div class="row">
-			<a href="#" target="_blank"><div class="col-md-3 pad_trans">
+			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/ankur.pdf';  ?>" target="_blank"><div class="col-md-3 pad_trans">
 				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/ankur.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Ankur Gupta</p>
 				<p class="membr_desig">CEO & Director</p>
 			</div></a>
-			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/rajiv.ppt';  ?>" target="_blank"><div class="col-md-3 pad_trans">
+			<a href="<?= Yii::getAlias('@frontendUrl').'/newimg/rajiv.pdf';  ?>" target="_blank"><div class="col-md-3 pad_trans">
 				<p class="img_s"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/rajeev.jpg';  ?>" class="img-responsive"></p>
 				<p class="team_name">Rajiv K Bansal</p>
 				<p class="membr_desig">Director</p>
