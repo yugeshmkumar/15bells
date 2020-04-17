@@ -161,6 +161,10 @@ function me()
      });
 }
 
+
+
+
+
 function biduser()
 {
 
@@ -52867,7 +52871,7 @@ bGmJysZsJzRhzK3NbGytrM0wNlus9qA16CD2ANCLjvLsmf8H1JviNw==
 		$pid= $model->product_id;
                         $label = ' <button onclick="me($id)">Approve</button> ';
                         return Html::a(
-                                        "<div><button srtyle=background-color: #4CAF50; onclick=me($id,'a',$pid)>Approve</button></div>", $url );
+                                        "<div><button srtyle=background-color: #4CAF50; onclick=mes($id,'a',$pid)>Approve</button></div>", $url );
                     },
                     'link' => function ($url, $model, $key) {
                         return Html::a('Action', $url);
@@ -52875,7 +52879,7 @@ bGmJysZsJzRhzK3NbGytrM0wNlus9qA16CD2ANCLjvLsmf8H1JviNw==
 					
 					'Reject' => function ($url, $model) {
                         $id= $model->id;$pid= $model->product_id;
-                                                                return Html::a( "<div><button onclick=me($id,'r',$pid)>Reject</button></div>", $url );
+                                                                return Html::a( "<div><button onclick=mes($id,'r',$pid)>Reject</button></div>", $url );
                                                             },
 					
 					
@@ -52899,3 +52903,23 @@ bGmJysZsJzRhzK3NbGytrM0wNlus9qA16CD2ANCLjvLsmf8H1JviNw==
 </div>
 
 <?php } ?>
+<script>
+
+function mes(id,a,pid){
+		 
+var dataString = 'check='+id + '&t1='+a + '&pid='+pid;
+
+$.ajax({
+type: "POST",
+url: "transaction/changestatus",
+data: dataString,
+cache: false,
+success: function(result){
+//alert(result);
+}
+});
+
+
+
+}
+</script>
