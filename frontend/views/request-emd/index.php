@@ -72,13 +72,21 @@ $datas =  $dataProvider->query->all();
                 <?php foreach ($datas as $data){ 
 
 								$viewid  =  $data->property_id; 
+								$brandid  =  $data->user_id; 
+								$for_auction  =  $data->for_auction; 
 								$payment_status  =  $data->payment_status;  
 								$emdid  =  $data->id;                
 								
                 $haritid = 273*179-$viewid;
 								$propsid = 'PR'. $haritid;
 								
+								if($for_auction == 'forward'){
+
 								$vrexist = \common\models\VrSetup::find()->where(['propertyID' => $viewid])->one();
+				              }else{
+								$vrexist = \common\models\VrSetup::find()->where(['brandID' => $brandid])->andwhere(['auction_type' => 'reverse_auction'])->one();
+
+							  }
 								$vrid = $vrexist->id;
 								$vridencode = base64_encode($vrid);
 							
