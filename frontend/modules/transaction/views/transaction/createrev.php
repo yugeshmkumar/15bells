@@ -428,6 +428,39 @@ label{color:#ffffff;font-weight:400;}
     font-weight: 600;
     letter-spacing:1px;
 }
+
+.message_alert{
+    position: absolute;
+    top: -30px;
+    right: 34px;
+}
+.speech-bubble::after {
+    border-right: 20px solid transparent;
+    border-top: 12px solid #efefef;
+    bottom: -11px;
+    content: "";
+    position: absolute;
+    left: 20px;
+
+}
+.speech-bubble {
+    background: #efefef;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    /* line-height: 1.3; */
+    /* margin: 0 auto 40px; */
+    /* max-width: 70px; */
+    padding: 6px 9px 6px;
+    position: relative;
+    width: 110px;
+    margin: 0;
+}
+
+.speech-bubble p {
+    color: #7b7878;
+    margin:0
+}
 </style>
 
 
@@ -533,15 +566,21 @@ label{color:#ffffff;font-weight:400;}
 		</div>
 	</div>
 
-	
+                    
             <div class="panel panel-primary chat_section">
-                <div class="panel-heading" id="accordion">
+                <div class="message_alert">
+                    <div class="speech-bubble">
+                        <p>New Message</p>
+                    </div>
+                </div>
+                <div class="panel-heading" id="accordion" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                     <span class="glyphicon glyphicon-comment"></span> Chat To Moderator
                     <div class="btn-group pull-right">
                         <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </a>
                     </div>
+                    
                 </div>
             <div class="panel-collapse collapse" id="collapseOne">
                 <div class="panel-body">
@@ -576,7 +615,9 @@ label{color:#ffffff;font-weight:400;}
         $script = <<< JS
 $.noConflict();
 $(document).ready(function(){
-
+$(".message_alert , .chat_section").click(function(){
+    $(".message_alert").hide();
+});
     
 //setInterval(userleft, 1000);
 setInterval(ajaxtimer, 1000);
