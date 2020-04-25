@@ -136,7 +136,7 @@ if($data['buyer_id'] == $loggedin){
   
 
    <?php  } if($data['product_id'] == $loggedin){  ?>
-
+   
 
 	<div class="container-fluid thanks_bg">
 			<div class="container">

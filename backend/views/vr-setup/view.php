@@ -86,12 +86,15 @@ $auctiontype = $model->auction_type;
             }],
             
             ['attribute'=>'propertyID',
-            'label'=>'Owner email id',
+            'label'=>'Email id',
 			'value'=>function($data){
                 if($data->auction_type == 'forward_auction'){
+
                 $user_id =   \common\models\Addproperty::findOne(['id'=>$data->propertyID])->user_id;
                  return  \common\models\User::findOne($user_id)->email;
+
               }else{
+
                 return  \common\models\User::findOne($data->brandID)->email;
               }
             }],
