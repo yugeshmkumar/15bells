@@ -7,21 +7,17 @@ use Yii;
 use common\models\Property;
 use common\models\MyExpectationsajax;
 use common\models\User;
+use common\models\Addpropertypm;
 use common\models\Company;
 use common\models\Companynew;
 use common\models\CompanyEmp;
 use yii\web\Response;
 use yii\db\Query;
 use yii\filters\AccessControl;
-use common\models\Addpropertypm;
 
 class BuyeractionController extends Controller {
 
-   // public function __construct($id, $module, $config = array()) {
-       // parent::__construct($id, $module, $config);
-       // $this->layout = "common";
-   // }
-   public function __construct($id, $module, $config = array()) {
+    public function __construct($id, $module, $config = array()) {
         parent::__construct($id, $module, $config);
         $assigndash = \common\models\RbacAuthAssignment::find()->where(['user_id'=>yii::$app->user->identity->id])->one();
 	if($assigndash->item_name == "csr_demand"){
@@ -38,7 +34,7 @@ class BuyeractionController extends Controller {
 		
 	}
 
-        if($assigndash->item_name == "sales_demand_lessee"){
+       if($assigndash->item_name == "sales_demand_lessee"){
 		
 		$this->layout="sales_supply_layout";
 		
@@ -48,7 +44,7 @@ class BuyeractionController extends Controller {
 		
 	}if($assigndash->item_name == "sales_demand_buyer"){
 		
-		$this->layout="sales_demand_layout";		
+		$this->layout="sales_supply_layout";		
 	}
 if($assigndash->item_name == "sales_supply_seller"){
 		
@@ -60,6 +56,9 @@ if($assigndash->item_name == "sales_supply_lessor"){
 	}
 	
     }
+
+
+
     public function behaviors()
     {
         return [
@@ -71,7 +70,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','search','getpolymyupdate','mapproperty1update','searchaction','withoutshape','withoutshapebackend','directitnow','saveprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','getpolymycsr','mapproperty1','mapproperty1csr','mapproperty2update','mapproperty2','mapproperty2csr'],
+                        'actions' => ['index','index1','search','mapproperty2update','mapproperty1update','getpolymyupdate','searchaction','withoutshape','withoutshapebackend','saveprop','deleteprop','viewproperty','petproperty','getfreevisit','bititnow','savemessages','similiarprop','getpolymy','getpolymycsr','mapproperty1','mapproperty1csr','mapproperty2','mapproperty2csr','directitnow'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -83,6 +82,10 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
     public function actionIndex() {
         return $this->render('index');
+    }
+
+     public function actionIndex1() {
+        return $this->render('index1');
     }
 
     public function actionMyescrow() {
@@ -101,27 +104,47 @@ if($assigndash->item_name == "sales_supply_lessor"){
         return $this->render('schedulevisit');
     }
 
-    public function actionSaveprop($hardam,$food,$expectation_id) {
+    public function actionSaveprop() {
 
-         $userid = $food;
+        //$userid = Yii::$app->user->identity->id;
+        $hardam = $_POST['hardam'];
+        $userid = $_POST['food'];
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-
+        $user_id = Yii::$app->user->identity->id;
+        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+        $assigned_id = $querys->id;
         $payments = \Yii::$app->db->createCommand("SELECT * FROM shortlistproperty where user_id='$userid' and property_id ='$hardam'")->queryAll();
 
 
         if ($payments) {
-            echo '1';
+            $insert1 = \Yii::$app->db->createCommand()->delete('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam])->execute();
+
+            return  '1';
         } else {
 
-            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid,'expectation_id'=>$expectation_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
-            echo '2';
+            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam,'assigned_id'=>$assigned_id, 'created_date' => $date])->execute();
+            return '2';
         }
 
 //        $delete = \Yii::$app->db->createCommand()->delete('shortlistProperty', ['user_id' => $userid])->execute();
 //        foreach ($newhar as $key => $rat) {
 //            $insert1 = \Yii::$app->db->createCommand()->insert('shortlistProperty', ['user_id' => $userid, 'property_id' => $rat, 'created_date' => $date])->execute();
 //        }
+    }
+
+
+
+      public function actionDeleteprop($propertyid) {
+
+        $userid = Yii::$app->user->identity->id;
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+
+            $insert1 = \Yii::$app->db->createCommand()->delete('shortlistproperty', ['user_id' => $userid, 'property_id' => $propertyid])->execute();
+            echo '1';
+         
     }
 
     public function actionSaveprop1($hardam, $userid) {
@@ -237,7 +260,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $userid = $food;       
+        $userid = $food;     
 
         $querys = new Query;
         $querys->select('COUNT(*) as newcount')
@@ -255,17 +278,16 @@ if($assigndash->item_name == "sales_supply_lessor"){
            }
         
     }
-    
-    
 
     public function actionSearch() {
 
-       // $this->layout = "newdashboard";
+//        $this->layout = "newdashboard";
         return $this->render('search');
     }
-     public function actionSearchaction() {
 
-       // $this->layout = "newdashboard";
+    public function actionSearchaction() {
+
+//        $this->layout = "newdashboard";
         return $this->render('searchaction');
     }
 
@@ -278,7 +300,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
         if ($id == 'hello') {
 
 
-       $payments = \Yii::$app->db->createCommand("SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where property_for = 'sale' and a.user_id <> '$user_id' GROUP BY a.id  order by id DESC")->queryAll();
+            $payments = \Yii::$app->db->createCommand("SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where property_for = 'sale' and a.user_id <> '$user_id' GROUP BY a.id  order by id DESC")->queryAll();
 
             echo json_encode($payments);
         } else {
@@ -304,29 +326,38 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
         if ($val == 'high') {
 
-            $payments = \Yii::$app->db->createCommand("SELECT * FROM addproperty where property_for = 'sale' order by expected_price DESC")->queryAll();
+            $payments = \Yii::$app->db->createCommand("SELECT * FROM addproperty order by expected_price DESC")->queryAll();
 
             echo json_encode($payments);
         } else if ($val == 'low') {
 
-            $payments = \Yii::$app->db->createCommand("SELECT * FROM addproperty where property_for = 'sale' order by expected_price ASC")->queryAll();
+            $payments = \Yii::$app->db->createCommand("SELECT * FROM addproperty order by expected_price ASC")->queryAll();
 
             echo json_encode($payments);
         }
     }
 
-    public function actionGetfreevisit($hardam,$food,$foodlead) {
+
+
+    
+
+    public function actionGetfreevisit() {
 
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $userid = $food;
-
+        $hardam = $_POST['hardam'];
+         $rantime = $_POST['rantime'];
+         $visitmode = $_POST['visitmode'];
+        $userid = $_POST['food'];
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
         $assigned_id = $querys->id;
+
         $propuserid = Addpropertypm::find('user_id')->where(['id' => $hardam])->andwhere(['status' => 'approved'])->one();
+
         $checkrole = \common\models\activemode::checkmyrole($userid);
-        $querys = new Query;
+        
+       $querys = new Query;
         $querys->select('COUNT(*) as newcount')
                 ->from('request_site_visit')
                 ->where(['property_id' => $hardam])
@@ -335,16 +366,32 @@ if($assigndash->item_name == "sales_supply_lessor"){
         $commands = $querys->createCommand();
         $paymentsm = $commands->queryOne();
 
-      
-        if ($paymentsm['newcount'] == 0) {
-            
 
+
+        $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+
+
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+           }
+       
+        if ($paymentsm['newcount'] == 0) {
+            // echo 'aya';die;
         if ($checkrole->item_name == "Company_user") {
 
 
             $model1 = CompanyEmp::find('companyid')->where(['userid' => $userid])->andwhere(['isactive' => '1'])->one();
 
-            $company_id = $model1->companyid;
+           $company_id = $model1->companyid;
             
 
             $model2 = Company::find('free_site_visit')->where(['id' => $company_id])->andwhere(['isactive' => '1'])->one();
@@ -359,20 +406,21 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
                 $model3 = Yii::$app->db->createCommand()->update('company', ['free_site_visit' => $new_free_visit], 'id = "' . $company_id . '"')->execute();
 
-              $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
                         $my_profile_progress_status->property_id = $hardam;
                         $my_profile_progress_status->user_id = $userid;
                         $my_profile_progress_status->process_name = 'site_visit_requested';
                         $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
 
+                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'company_id' => $company_id, 'created_date' => $date])->execute();
-$request_id = Yii::$app->db->lastInsertID;
+  $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,6);
+  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
+
                 echo 1;
                 die;
             } else {
@@ -384,28 +432,49 @@ $request_id = Yii::$app->db->lastInsertID;
                         $my_profile_progress_status->user_id = $userid;
                         $my_profile_progress_status->process_name = 'site_visit_requested';
                         $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'company_id' => $company_id, 'created_date' => $date])->execute();
-$request_id = Yii::$app->db->lastInsertID;
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,6);
+                        $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
 
                 echo 2;
                 die;
             }
         } else if ($checkrole->item_name == "user") {
-
+          
             $model2 = User::find('free_site_visit')->where(['id' => $userid])->andwhere(['status' => '1'])->one();
             if($model2){
+                
+           
             $free_visit = $model2->free_site_visit;
 
             $new_free_visit = $free_visit - 1;
-
+            
 
             if ($free_visit > 0) {
 
+
+                $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
+
+$my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                        $my_profile_progress_status->property_id = $hardam;
+                        $my_profile_progress_status->user_id = $userid;
+                        $my_profile_progress_status->process_name = 'site_visit_requested';
+                        $my_profile_progress_status->process_status = '100';
+                        $my_profile_progress_status->role_id = '4';
+                        $my_profile_progress_status->save();
+
+                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
+
+$request_id = Yii::$app->db->lastInsertID;
+
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
+                echo 1;
+                die;
+            } else {
 
                 $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
 
@@ -414,45 +483,29 @@ $request_id = Yii::$app->db->lastInsertID;
                         $my_profile_progress_status->user_id = $userid;
                         $my_profile_progress_status->process_name = 'site_visit_requested';
                         $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
-$request_id = Yii::$app->db->lastInsertID;
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'assigned_to_id'=>$assigned_id,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,6);
-
-                echo 1;
-                die;
-            } else {
-
-                $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
-
-                $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
-                        $my_profile_progress_status->property_id = $hardam;
-                        $my_profile_progress_status->user_id = $userid;
-                        $my_profile_progress_status->process_name = 'site_visit_requested';
-                        $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
-                        $my_profile_progress_status->save();
-
-                $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid,'lead_id'=>$foodlead,'assigned_to_id'=>$assigned_id, 'property_id' => $hardam, 'created_date' => $date])->execute();
-$request_id = Yii::$app->db->lastInsertID;
-
-  $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id,$propuserid,6);
-
-                echo 2;
+                        $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,4,$propuserid,5);
+                        echo 2;
                 die;
             }
-}else{echo 7;
-                die;}
-        }
+       }
+                            else{
+                            echo 7;die;
+                            } 
+                                }
+                                }
+                                else{
+
+                                echo 5;
+
+                                }
         
-        }else{
-        
-        echo 5;
-        
-         }
+       
     }
 
     public function actionMyexpectations($id) {
@@ -465,7 +518,7 @@ $request_id = Yii::$app->db->lastInsertID;
         $propertype = $model1->property_type;
         $location = $model1->location;
         $deposit = $model1->deposit;
-        $rent = $model1->rent;
+        $sale = $model1->sale;
         $maintenance = $model1->maintenance;
 
         $query = new Query;
@@ -477,8 +530,8 @@ $request_id = Yii::$app->db->lastInsertID;
                 ->andFilterWhere([ 'or', ['like', 'deposite_amount', $deposit],
                     ['<', 'deposite_amount', $deposit],
                 ])
-                ->andFilterWhere([ 'or', ['like', 'expected_price', $rent],
-                    ['<', 'expected_price', $rent],
+                ->andFilterWhere([ 'or', ['like', 'expected_price', $sale],
+                    ['<', 'expected_price', $sale],
                 ])
                 ->andFilterWhere([ 'or', ['like', 'maintainces_charges', $maintenance],
                     ['<', 'maintainces_charges', $maintenance],
@@ -495,6 +548,7 @@ $request_id = Yii::$app->db->lastInsertID;
 
     public function actionBititnow($propertyid,$food) {
 
+       // $userid = Yii::$app->user->identity->id;
         $userid = $food;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
@@ -553,10 +607,10 @@ $request_id = Yii::$app->db->lastInsertID;
                         $my_profile_progress_status->user_id = $userid;
                         $my_profile_progress_status->process_name = 'requested_for_biding';
                         $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                        $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $userid, 'propertyID' => $propertyid, 'userroleID' => 'buyer', 'request_for' => 'bid',
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $userid, 'propertyID' => $propertyid, 'userroleID' => 'lessee', 'request_for' => 'bid',
                                     'created_at' => $date])->execute();
 
                         echo '4';
@@ -623,15 +677,15 @@ $request_id = Yii::$app->db->lastInsertID;
                     echo '3';
                 } else {
 
-                   $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                     $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
                         $my_profile_progress_status->property_id = $propertyid;
                         $my_profile_progress_status->user_id = $userid;
                         $my_profile_progress_status->process_name = 'requested_for_direct';
                         $my_profile_progress_status->process_status = '100';
-                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->role_id = '4';
                         $my_profile_progress_status->save();
 
-                    $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $userid, 'propertyID' => $propertyid, 'userroleID' => 'buyer', 'request_for' => 'direct',
+                    $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $userid, 'propertyID' => $propertyid, 'userroleID' => 'lessee', 'request_for' => 'direct',
                                 'created_at' => $date])->execute();
 
                     echo '4';
@@ -644,9 +698,9 @@ $request_id = Yii::$app->db->lastInsertID;
          echo '5';
           }
     }
-    
-    
-     public function actionSavemessages($propid,$textarew,$food){
+
+
+    public function actionSavemessages($propid,$textarew,$food){
         
         
         $user_id = $food;
@@ -663,7 +717,7 @@ $request_id = Yii::$app->db->lastInsertID;
 
 
 
-   public function actionSimiliarprop($location,$town,$sector,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid) {
+    public function actionSimiliarprop($location,$town,$sector,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid) {
 
     
         $user_id = Yii::$app->user->identity->id;
@@ -687,20 +741,20 @@ $request_id = Yii::$app->db->lastInsertID;
         }
         
         if ($pricemin != '' && $pricemax !='') {
-            $conditions[] = "a.asking_rental_price BETWEEN '$pricemin' AND '$pricemax'";
+            $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
         }
         
         if ($propbid != 'Select') {
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name != '$sector'";
+            $conditions[] = "a.sector_name != '$sector'";
         }
 
-//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+//where property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
         $sqlstr = $query;
         if (count($conditions) > 0) {
             $sqlstr .= " WHERE " . implode(' AND ', $conditions)." GROUP BY a.id";
@@ -712,36 +766,46 @@ $request_id = Yii::$app->db->lastInsertID;
 
         echo json_encode($payments);
     }
-
-
-
-
     
     
-    public function actionWithoutshape($location, $area,$town,$sector,$country,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+    public function actionWithoutshape($location, $area,$town,$sector,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
 
-
-        $user_id = $food;
+    
+       // $user_id = Yii::$app->user->identity->id;
+       $user_id = $food;
+       
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-     
+        
+//        $query = new Query;
+//        $query->select(['usuable_area'])
+//                ->from('lessor_expectations')
+//                ->where(['id' => $area])
+//                ->andwhere(['is_active' => '1']);
+//
+//        $command = $query->createCommand();
+//        $payments = $command->queryOne();
+//      
+//      $total_area = $payments['usuable_area'];
     
 
-      $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
+      $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['type'=>'blank','role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location, 'expectation_id' => $area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
       
-    
-         
-       $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
-    
+      
+          
+      $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";    
+      
       $conditions = array();
-      
-        $conditions[] = "property_for='sale'";        
-       
+        
+      $conditions[] = "property_for='sale'";        
+        
+      $conditions[] = "a.user_id <> '$user_id'";
+        
         if ($proptype != 'Select Property Type') {
             $conditions[] = "project_type_id = '$proptype'";
         }
         if ($areamin != '' && $areamax !='') {
-            $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
+            $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax";
         }
         
         if ($pricemin != '' && $pricemax !='') {
@@ -752,39 +816,203 @@ $request_id = Yii::$app->db->lastInsertID;
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' ";
+            $conditions[] = "a.sector_name='$sector' GROUP BY a.id";
         }
-       
-        $conditions[] = "a.user_id <> '$user_id' ";
 
-//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+//where property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
         $sqlstr = $query;
         if (count($conditions) > 0) {
-           $sqlstr .= " WHERE " . implode(' AND ', $conditions)."GROUP BY a.id";
+            $sqlstr .= " WHERE " . implode(' AND ', $conditions);
         }
-        
-        
-       if($sector == '' && $town == ''){
-           echo '1';die;
-           
-       }else{
-              \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-             echo json_encode($payments);
-       }
-    }
-    
-     public function actionWithoutshapebackend($location,$foodexpectid, $whichserch,$area,$town,$sector,$country,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
-
+      
+      
        
-        $user_id = $food;
+        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+        \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+        echo json_encode($payments);die;
+    }
+         
+      
+
+    public function actionWithoutshapebackend() {
+
+        $length='';
+    
+            $user_id = $_POST['food'];
+        
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         
-      if($whichserch == 'client'){
+        $location = $_POST['location'];
+      //  $area     = $_POST['area'];
+        $town     = $_POST['town'];
+        $sector   = $_POST['sector'];        
+        $areamin  = $_POST['areamin'];
+        $areamax  = $_POST['areamax'];
+        $pricemin = $_POST['pricemin'];
+        $pricemax = $_POST['pricemax'];        
+        $proptype = $_POST['proptype'];
+        $propbid = $_POST['propbid'];
+        $availabilitym = $_POST['availabilitym'];
+        $start = $_POST['start'];
+        $length = $_POST['length'];
+    
+    //     if (isset(Yii::$app->user->identity->id)){
+    //   $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,'created_date' => $date])->execute();
+      
+    //     }
+
+    $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+          $foodexpectid = $_POST['foodexpectid'];
+    
+    
+            if($whichserch == 'client'){
+    
+                $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'text','type'=>'blank','geometry'=>NULL,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+            }
+
+
+    $querycount = "SELECT count(*) as totalprop FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
+   
+    $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id  and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN shortlistproperty as sh ON (sh.property_id = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";
+      
+      $conditions = array();
+      $conditionsnew = array();
+      $conditionsprop = array();
+      $conditionsexact = array();
+        
+
+
+            $conditionsprop[] = "( property_for='both'";  
+            
+            $conditions[] = "property_for='sale' )";  
+            
+        
+      
+        
+        if ($proptype != '') {
+            $conditions[] = "project_type_id IN ($proptype)";
+        }
+        if ($areamin != '' && $areamax !='') {
+           // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+            $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+            $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+            $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+        }
+        
+        if ($pricemin != '' && $pricemax !='') {
+            $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";
+        }
+
+        if ($propbid != '') {
+            $conditions[] = "a.request_for = '$propbid'";
+        }
+        if ($availabilitym != '') {
+            $conditions[] = "a.availability  = '$availabilitym'";
+        }
+        
+       
+        if ($town != '') {
+            $conditions[] = "a.town_name = '$town'";
+        }
+        if ($sector != '') {
+            $conditions[] = "a.sector_name='$sector' ";
+        }
+
+        $conditions[] = "a.status='approved'";
+        $conditions[] = "a.user_id <> '$user_id' ";
+
+
+        $sqlstr = $query;
+        $sqlstrcount =  $querycount;
+
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+
+            $sqlstrcount .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." ";
+
+            // echo $sqlstrcount;die;
+            $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
+
+            $totalprop  =  $paymentscount[0]['totalprop'];
+
+            if($totalprop < $length){
+
+                $length = $totalprop;
+            }
+        }
+
+
+        // echo $sqlstrcount;die;
+
+        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+
+           
+          
+            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id order By a.id asc";
+
+        }
+
+
+
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+
+            
+
+            $sqlstrcount .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND (CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END )";
+
+            $paymentscount = \Yii::$app->db->createCommand($sqlstrcount)->queryAll();
+            $totalprop  =  $paymentscount[0]['totalprop'];
+
+            if($totalprop < $length){
+
+                $length = $totalprop;
+            }
+        }
+
+        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+           
+
+            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND ( CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END ) GROUP BY a.id order By a.id asc";
+
+        }
+      
+        // echo $sqlstr;die;
+      
+        $payments['datas'] = \Yii::$app->db->createCommand($sqlstr)->queryAll();    
+
+        
+
+       
+        $payments['counts'] = $totalprop;
+
+        $payments['start']  = $_POST['start'];
+        $payments['lengths'] = $length;
+
+        // $nestedarray['count'] = $totalprop;
+        // $nestedarray['datas'] = $payments;
+
+        //  echo '<pre>';print_r($payments);die;
+
+       return json_encode($payments);
+    }
+
+
+
+     public function actionWithoutshapebackend1($location,$foodexpectid, $whichserch, $area,$town,$sector,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+
+    
+       // $user_id = Yii::$app->user->identity->id;
+         $user_id = $food;
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+         
+        if($whichserch == 'client'){
        $trendingadd = \common\models\SaveSearch::find()->where(['id' => $foodexpectid])->one();
         
         $trendingadd->location_name = $location;
@@ -793,20 +1021,20 @@ $request_id = Yii::$app->db->lastInsertID;
         $trendingadd->updated_date = $date;
         $trendingadd->save();
       }
-         
-$query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";    
-       $conditions = array();
+        
+      $query = "SELECT a.*,p.typename as typename,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) ";    
       
-        if($sector == '' && $town == ''){
-           echo '1';die;
-           
-       }      
-       
+      $conditions = array();
+        
+      $conditions[] = "property_for='sale'";        
+        
+      $conditions[] = "a.user_id <> '$user_id'";
+        
         if ($proptype != 'Select Property Type') {
             $conditions[] = "project_type_id = '$proptype'";
         }
         if ($areamin != '' && $areamax !='') {
-            $conditions[] = "a.total_plot_area BETWEEN '$areamin' AND '$areamax'";
+            $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax";
         }
         
         if ($pricemin != '' && $pricemax !='') {
@@ -817,30 +1045,25 @@ $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistprope
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' ";
+            $conditions[] = "a.sector_name='$sector' GROUP BY a.id";
         }
-       if($user_id != ''){
-         $conditions[] = "a.user_id <> '$user_id' ";
-         $conditions[] = "property_for='sale'";
-        }
-        
-          
-//where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
+
+//where property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
         $sqlstr = $query;
 
         if (count($conditions) > 0) {
-           $sqlstr .= " WHERE " . implode(' AND ', $conditions)."GROUP BY a.id";
+            $sqlstr .= " WHERE " . implode(' AND ', $conditions);
         }
-        //echo $sqlstr;die;
+      
+      
         $payment = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-       
         $data = array();
-       
+        
 foreach($payment as $payments){
-     $blues = 0;
+    $blues = 0;
         $row_array['id']=$payments['id'];
         $row_array['user_id']=$payments['user_id'];
         $row_array['role_id']=$payments['role_id'];
@@ -860,7 +1083,7 @@ foreach($payment as $payments){
         $row_array['total_plot_area']=$payments['total_plot_area'];
         $row_array['plot_unit']=$payments['plot_unit'];
         $row_array['expected_price']=$payments['expected_price'];
-        $row_array['asking_rental_price']=$payments['asking_rental_price'];
+        $row_array['expected_price']=$payments['expected_price'];
         $row_array['price_sq_ft']=$payments['price_sq_ft'];
         $row_array['price_acres']=$payments['price_acres'];
         $row_array['price_negotiable']=$payments['price_negotiable'];
@@ -884,8 +1107,8 @@ foreach($payment as $payments){
         $row_array['facing']=$payments['facing'];
         $row_array['FAR_approval']=$payments['FAR_approval'];
         $row_array['LOAN_taken']=$payments['LOAN_taken'];
-        $row_array['buildup_area']=$payments['buildup_area'];
-        $row_array['build_unit']=$payments['build_unit'];
+        $row_array['super_area']=$payments['super_area'];
+        $row_array['super_unit']=$payments['super_unit'];
         $row_array['carpet_area']=$payments['carpet_area'];
         $row_array['carpet_unit']=$payments['carpet_unit'];
         $row_array['total_floors']=$payments['total_floors'];
@@ -910,76 +1133,110 @@ foreach($payment as $payments){
         $row_array['countyview']=$payments['countyview'];
         $row_array['countyshortlist']=$payments['countyshortlist'];
         //$row_array['percent']=$percent;
-$lessorexpec = \common\models\SellorExpectations::find()->where(['property_id' => $payments['id']])->andwhere(['user_id'=>$payments['user_id']])->one();
+$lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' => $payments['id']])->andwhere(['user_id'=>$payments['user_id']])->one();
        if($lessorexpec){
-        $rate_negotiable = $lessorexpec->rate_negotiable;
-        $payment_time = $lessorexpec->payment_time;
-        $loan_to_be_applied = $lessorexpec->loan_to_be_applied;
-        $vastu_facing = $lessorexpec->vastu_facing;
-        
-        $lesseeexpec = \common\models\SellorExpectations::find()->where(['id' => $area])->one();
+        $interest_security = $lessorexpec->interest_security;
+        $agreement = $lessorexpec->agreement;
+        $lease_tenure = $lessorexpec->lease_tenure;
+        $lock_in_period = $lessorexpec->lock_in_period;
+        $escalation_value = $lessorexpec->escalation_value;
+        $escalation_month = $lessorexpec->escalation_month;
+        $stamp_duty_lessor = $lessorexpec->stamp_duty_lessor;
+        $stamp_duty_lessee = $lessorexpec->stamp_duty_lessee;
+        $lesseeexpec = \common\models\LessorExpectations::find()->where(['id' => $area])->one();
          if($lesseeexpec){
-         $rate_negotiable1 = $lessorexpec->rate_negotiable;
-        $payment_time1 = $lessorexpec->payment_time;
-        $loan_to_be_applied1 = $lessorexpec->loan_to_be_applied;
-        $vastu_facing1 = $lessorexpec->vastu_facing;
+        $interest_security1 = $lesseeexpec->interest_security;
+        $agreement1 = $lesseeexpec->agreement;
+        $lease_tenure1 = $lesseeexpec->lease_tenure;
+        $lock_in_period1 = $lesseeexpec->lock_in_period;
+        $escalation_value1= $lesseeexpec->escalation_value;
+        $escalation_month1 = $lesseeexpec->escalation_month;
+        $stamp_duty_lessor1 = $lesseeexpec->stamp_duty_lessor;
+        $stamp_duty_lessee1 = $lesseeexpec->stamp_duty_lessee;
         
         
-        if($rate_negotiable != '' && $rate_negotiable1 !=''){
-            if($rate_negotiable == $rate_negotiable1){
+        if($interest_security != '' && $interest_security1 !=''){
+            if($interest_security == $interest_security1){
                 $blues = $blues + 1;
             }
         }
-        if($payment_time != '' && $payment_time1 !=''){
-            if($payment_time == $payment_time1){
+        if($agreement != '' && $agreement1 !=''){
+            if($agreement == $agreement1){
                 $blues = $blues + 1;
             }
         }
-        if($loan_to_be_applied != '' && $loan_to_be_applied1 !=''){
-            if($loan_to_be_applied == $loan_to_be_applied1){
+        if($lease_tenure != '' && $lease_tenure1 !=''){
+            if($lease_tenure == $lease_tenure1){
                 $blues = $blues + 1;
             }
         }
-        if($vastu_facing != '' && $vastu_facing1 !=''){
-            if($vastu_facing == $vastu_facing1){
+        if($lock_in_period != '' && $lock_in_period1 !=''){
+            if($lock_in_period == $lock_in_period1){
                 $blues = $blues + 1;
             }
-        }     
+        }
+        if($escalation_value != '' && $escalation_value1 !=''){
+            if($escalation_value == $escalation_value1){
+                $blues = $blues + 1;
+            }
+        }
+        if($escalation_month != '' && $escalation_month1 !=''){
+            if($escalation_month == $escalation_month1){
+                $blues = $blues + 1;
+            }
+        }
+        if($stamp_duty_lessor != '' && $stamp_duty_lessor1 !=''){
+            if($stamp_duty_lessor == $stamp_duty_lessor1){
+                $blues = $blues + 1;
+            }
+        }
+        if($stamp_duty_lessee != '' && $stamp_duty_lessee1 !=''){
+            if($stamp_duty_lessee == $stamp_duty_lessee1){
+                $blues = $blues + 1;
+            }
+        } 
+     
         
         //$new_width = ($totalblues / 100) * $totaloutof;
         //$percent = round($new_width);        
         
-                }
+        
+        
+        }
 
     } 
         $totalblues = $blues;
-        $totaloutof = 4;
-        $row_array['percent']= $totalblues.' Out of '.$totaloutof;
+        $totaloutof = 8;
+        $row_array['percent']= $totalblues.' Out of '.$totaloutof.' Match';
         $data['animals'][] = $row_array;
 }
 
 
-	echo json_encode($data);
-     
-       
-    }
-    
+	echo json_encode($data);die;
 
-    public function actionGetpolymycsr($maxi, $mini, $maxiy, $miniy, $shapes, $town,$sector, $newpath, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
-        
+
+    }
+
+  
+         
+         
+         
+    public function actionGetpolymycsr($location,$maxi, $mini, $maxiy, $miniy, $shapes, $town,$sector, $newpath, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+
 
         $user_id = $food;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $newpath, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-                    'created_date' => $date])->execute();
-       
 
-if($town == ''){
-    
-     $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
-     
+
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
+                    'created_date' => $date])->execute();
+        
+        
+        if($town == ''){
+            
+           
+           $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
            
                         $conditions = array();
 
@@ -1010,19 +1267,25 @@ if($town == ''){
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
 
-     
-}else{
+            
+        }else{
+            
+       
+            
+//        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where ( property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area') OR
+//                    (property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area' AND latitude BETWEEN '" . $mini . "' AND '" . $maxi . "' AND  
+//                     longitude BETWEEN '" . $miniy . "' AND '" . $maxiy . "') GROUP BY a.id"; 
+        $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
         
-     $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";  
-     
-     
-      $conditions = array();
+        
+                  $conditions = array();
 
-                        $conditions[] = "property_for='sale'";      
+                        $conditions[] = "property_for='sale'";        
 
+                        $conditions[] = "a.user_id <> '$user_id'";
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1039,26 +1302,25 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
-                        }      
-                        
-                        $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
+                        $conditions[] = "a.sector_name='$sector'";
+                        }                       
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-    
-}
-
+            
+            
+         
+        }
 
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-\common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-        echo json_encode($payments);
+        \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+        echo json_encode($payments);die;
     }
     
     
@@ -1129,24 +1391,134 @@ if($town == ''){
     }
 
 
-    public function actionGetpolymy($location,$maxi, $mini, $maxiy, $miniy,$foodexpectid, $whichserch, $shapes, $town,$sector, $newpath, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+
+         
+    public function actionGetpolymy() {
+
+
         
+        $user_id = $_POST['food'];
+     
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+       
+       
+        $town  = $_POST['town'];
+        $sector  = $_POST['sector'];
+        $newpath = $_POST['newpath'];
+        $area = $_POST['area'];        
+        $areamin = $_POST['areamin'];
+        $areamax  = $_POST['areamax'];
+        $pricemin  = $_POST['pricemin'];
+        $pricemax  = $_POST['pricemax'];
+        $proptype  = $_POST['proptype'];
+        $propbid  = $_POST['propbid'];
+        $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
+
+        // if (isset(Yii::$app->user->identity->id)){
+        // $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => 'polygon', 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        //             'created_date' => $date])->execute();
+        
+        // }
+        $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+            $foodexpectid = $_POST['foodexpectid'];
+    
+    
+            if($whichserch == 'client'){
+    
+                $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'polygon','geometry' => $newpath,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+    
+               
+            }
+            
+ 
+        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)"; 
+        
+        
+        $conditions = array();
+        $conditionsnew = array();
+        $conditionsprop = array();
+        $conditionsexact = array();
+
+          
+                        
+            $conditionsprop[] = "( property_for='both'";  
+            
+            $conditions[] = "property_for='sale' )";        
+
+                        
+
+                        if ($proptype != 'Property Type') {
+                         $conditions[] = "project_type_id = '$proptype'";
+                        }
+                        if ($propbid != 'Select') {
+                        $conditions[] = "a.request_for = '$propbid'";
+                        }
+                        if ($areamin != '' && $areamax !='') {
+                            $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                            $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                            $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+                        }
+
+                        if ($pricemin != '' && $pricemax !='') {
+                         $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";    
+                         }
+                         
+                         if ($town != '') {
+                        $conditions[] = "a.town_name = '$town'";
+                        }
+                        if ($sector != '') {
+                        $conditions[] = "a.sector_name='$sector'";
+                        }   
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        }         
+
+                        $conditions[] = "a.status='approved'";
+                        $conditions[] = "a.user_id <> '$user_id'";
+
+                        $sqlstr = $query;
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+                        }
+            
+            
+         
+        
+
+        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+
+        return json_encode($payments);
+    }
+    
+    public function actionGetpolymy12($location,$maxi, $mini, $maxiy, $miniy,$foodexpectid, $whichserch, $shapes, $town,$sector, $newpath, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+
 
         $user_id = $food;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        
-//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $newpath, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-//                    'created_date' => $date])->execute();
-        if($whichserch == 'client'){
-            $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'buyer', 'type' => $shapes, 'geometry' => $newpath, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
-            'created_date' => $date])->execute();
-      }
 
-if($town == ''){
-    
-     $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
-     
+
+//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newpath, 'user_id' =>$user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+//                    'created_date' => $date])->execute();
+if($whichserch == 'client'){
+    $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'lessee', 'type' => $shapes, 'geometry' => $newpath, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
+    'created_date' => $date])->execute();
+}
+        
+        
+        if($town == ''){
+            
+           
+           $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
            
                         $conditions = array();
 
@@ -1177,19 +1549,25 @@ if($town == ''){
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
 
-     
-}else{
+            
+        }else{
+            
+       
+            
+//        $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where ( property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area') OR
+//                    (property_for = 'sale' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area' AND latitude BETWEEN '" . $mini . "' AND '" . $maxi . "' AND  
+//                     longitude BETWEEN '" . $miniy . "' AND '" . $maxiy . "') GROUP BY a.id"; 
+        $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
         
-     $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";  
-     
-     
-      $conditions = array();
+        
+                  $conditions = array();
 
-                        $conditions[] = "property_for='sale'";      
+                        $conditions[] = "property_for='sale'";        
 
+                        $conditions[] = "a.user_id <> '$user_id'";
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1206,25 +1584,24 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
-                        }      
-                        
-                        $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
+                        $conditions[] = "a.sector_name='$sector'";
+                        }                       
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-    
-}
-
+            
+            
+         
+        }
 
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-
+       
         echo json_encode($payments);
     }
 
@@ -1243,38 +1620,7 @@ if($town == ''){
         echo json_encode($payments);
     }
 
-    public function actionResidfilter($residlocation, $restype, $resprice, $restypename) {
-
-
-
-        $query = "SELECT property.*,property_type.typename FROM property left join property_type on 'property_type.id = property.projectypeid' ";
-        $conditions = array();
-
-        if ($residlocation != "") {
-            $conditions[] = "location='$residlocation'";
-        }
-        if ($restype != 'Select') {
-            $conditions[] = "property_for='$restype'";
-        }
-        if ($resprice != 'Price') {
-            $conditions[] = "expected_price='$resprice'";
-        }
-        if ($restypename != 'Property Type') {
-            $conditions[] = "typename='$restypename'";
-        }
-
-
-        $sql = $query;
-        if (count($conditions) > 0) {
-            $sql .= " WHERE " . implode(' AND ', $conditions);
-        }
-
-        $payments = \Yii::$app->db->createCommand($sql)->queryAll();
-
-
-
-        echo json_encode($payments);
-    }
+    
 
     public function actionResidfilter1($commlocation, $commtype, $commprice, $commtypename) {
 
@@ -1308,21 +1654,35 @@ if($town == ''){
         echo json_encode($payments);
     }
 
-    public function actionMapproperty1csr($center, $shapes, $town,$sector, $northeast, $southwest, $latcenter, $longcenter, $totalradius, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+    public function actionMapproperty1csr($location,$center, $shapes, $town,$sector, $northeast, $southwest, $latcenter, $longcenter, $totalradius, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
 
-
+//       $objlocation = \common\models\Property::getlatlang($newlocation);
+//
+//        $latitude = $objlocation->lat;
+//        $longitude = $objlocation->lng;
+        
+       
         $latitudeTo = strtok($center, ','); 
         $longitudeTo = substr($center, strpos($center, ",") + 1);
-        $user_id = $food;
+         $user_id = $food;
         $range = $totalradius;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        
+       
 
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $center, 'radius' => $range, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
-
+//        if($whichserch == 'client'){
+//       $trendingadd = \common\models\SaveSearch::find()->where(['id' => $foodexpectid])->one();
+//        
+//        $trendingadd->location_name = $location;
+//        $trendingadd->town = $town;
+//        $trendingadd->sector = $sector;
+//        $trendingadd->updated_date = $date;
+//        $trendingadd->save();
+//      }
+           
             // Find Max - Min Lat / Long for Radius and zero point and query  
             $lat_range = $range / 69.172;
             $lon_range = abs($range / (cos($latcenter) * 69.172));
@@ -1331,14 +1691,14 @@ if($town == ''){
             $min_lon = number_format($longcenter - $lon_range, "4", ".", "");
             $max_lon = number_format($longcenter + $lon_range, "4", ".", "");
             
-          if($town == ''){           
+            
+            
+       if($town == ''){
            
-          $rows = array();
+           
+           $rows = array();
+           $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
           
-//          $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)  where 
-//           ( property_for = 'sale' AND a.user_id <> '$user_id' AND expected_price <='$expected_rate' AND latitude BETWEEN '" . $min_lat . "' AND '" . $max_lat . "' AND  
-//           longitude BETWEEN '" . $min_lon . "' AND '" . $max_lon . "') GROUP BY a.id ";
-          $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
           
            $conditions = array();
 
@@ -1369,12 +1729,11 @@ if($town == ''){
                          $sqlstr .= " WHERE " . implode(' AND ', $conditions);
                         }
           
-          
-          
-          
-           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll(); 
+           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();        
+           
            $count = 0;
            
+          
           foreach($payments  as $payment ){
               
               
@@ -1388,8 +1747,8 @@ if($town == ''){
                    
                    $count += 1;
                     
-           $sqlstr = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id) where 
-                       a.id='$propid'";
+           $sqlstr = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id) where 
+                       a.id='$propid' GROUP BY a.id";
           
            $paymentst = \Yii::$app->db->createCommand($sqlstr)->queryOne();
                    
@@ -1397,21 +1756,27 @@ if($town == ''){
                }
               
           }
-          \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-            echo json_encode($rows);
+          
+          
+          //echo $count;
+          \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+            echo json_encode($rows);die;
            
            
-            }  else{
-                
-                
-        
-                
-             $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";   
-                
-             $conditions = array();
+        }else{
+            
+          
+              
+//          $sqlstr = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where ( property_for = 'sale' AND town_name = '$town' AND sector_name='$sector' AND a.user_id <> '$user_id' AND total_plot_area <='$total_area') OR
+//           (property_for = 'sale' AND town_name = '$town' AND sector_name='$sector' AND a.user_id <> '$user_id' AND total_plot_area <='$total_area' AND latitude BETWEEN '" . $min_lat . "' AND '" . $max_lat . "' AND  
+//           longitude BETWEEN '" . $min_lon . "' AND '" . $max_lon . "') GROUP BY a.id ";    
+          $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
+          
+                        $conditions = array();
 
-                        $conditions[] = "property_for='sale'";      
+                        $conditions[] = "property_for='sale'";        
 
+                        
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1428,10 +1793,10 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }  
                         
                         $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
@@ -1441,17 +1806,21 @@ if($town == ''){
                         if (count($conditions) > 0) {
                          $sqlstr .= " WHERE " . implode(' AND ', $conditions);
                         }
+              
+              
+          
+           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+           \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+            echo json_encode($payments);die;
+            
+        }
 
-            $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-\common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-            echo json_encode($payments);
+
             
-            
-            }
         
     }
-
-
+    
+    
 
     public function actionMapproperty1update() {
 
@@ -1527,27 +1896,151 @@ if($town == ''){
         
         }
 
+        public function actionMapproperty1() {
+
+
+            $center = $_POST['center'];
+            $shapes     = $_POST['shapes'];
+            $town     = $_POST['town'];
+            $sector   = $_POST['sector'];
+           
+            $totalradius = $_POST['totalradius'];        
+            $area = $_POST['area'];
+            $areamin  = $_POST['areamin'];
+            $areamax  = $_POST['areamax'];
+            $pricemin  = $_POST['pricemin'];
+            $pricemax  = $_POST['pricemax'];
+            $proptype  = $_POST['proptype'];
+            $propbid  = $_POST['propbid'];
+            $location = $_POST['location'];
+            $availabilitym = $_POST['availabilitym'];
+    
+           
+           
+            $user_id = $_POST['food'];
+
+            $range = $totalradius;
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
+           
+
+            $availabilitym = $_POST['availabilitym'];
+            $whichserch = $_POST['whichserch'];
+            $foodexpectid = $_POST['foodexpectid'];
+    
+    
+        if($whichserch == 'client'){
+
+            $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'circle','geometry' => '"'.$center.'"', 'radius' => $range,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+
+           
+        }
+                
+        
+              $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) "; 
+              
+              $conditions = array();
+              $conditionsnew = array();
+              $conditionsprop = array();
+              $conditionsexact = array();
+    
+                
+              
+              $conditionsprop[] = "( property_for='both'";  
+                
+              $conditions[] = "property_for='sale' )";      
+    
+                            
+                   if($proptype){
+    
+                            if ($proptype != 'Property Type' || $proptype != '') {
+                                
+                             $conditions[] = "project_type_id = '$proptype'";
+                            }
+                        }
+                            if ($propbid != 'Select') {
+                            $conditions[] = "a.request_for = '$propbid'";
+                            }
+                            if ($areamin != '' && $areamax !='') {
+                                // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+                     
+                                 $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                                 $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                                 $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+    
+                             }
+    
+                            if ($pricemin != '' && $pricemax !='') {
+                             $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";    
+                             }
+                             
+                             if ($town != '') {
+                            $conditions[] = "a.town_name = '$town'";
+                            }
+    
+                            if ($availabilitym != '') {
+                                $conditions[] = "a.availability  = '$availabilitym'";
+                            }
+                            if ($sector != '') {
+                            $conditions[] = "a.sector_name='$sector'";
+                            }  
+                            $conditions[] = "a.status='approved'";
+                            
+                            $conditions[] = "a.user_id <> '$user_id'";
+                            
+    
+                            $sqlstr = $query;
+                            if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                                $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                            }
+                    
+                            if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                                $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+                            }
+                  
+                //   echo $sqlstr;die;
+              
+               $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+    
+    
+    
+                return json_encode($payments);
+                
+            
+    
+    
+                
+            
+        }
 
 
 
-    public function actionMapproperty1($location,$center, $shapes, $town,$sector,$foodexpectid, $whichserch, $northeast, $southwest, $latcenter, $longcenter, $totalradius, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+    
+     public function actionMapproperty12($location,$center, $shapes,$foodexpectid, $whichserch, $town,$sector, $northeast, $southwest, $latcenter, $longcenter, $totalradius, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
 
-
+//       $objlocation = \common\models\Property::getlatlang($newlocation);
+//
+//        $latitude = $objlocation->lat;
+//        $longitude = $objlocation->lng;
+        
+       
         $latitudeTo = strtok($center, ','); 
         $longitudeTo = substr($center, strpos($center, ",") + 1);
-        $user_id = $food;
+         $user_id = $food;
         $range = $totalradius;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        
+       
 
-//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $center, 'radius' => $range, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $center, 'radius' => $range, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
 //                    'created_date' => $date])->execute();
-        if($whichserch == 'client'){
-            $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'buyer', 'type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
-            'created_date' => $date])->execute();
-      }
+        
+if($whichserch == 'client'){
 
+    $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'lessee', 'type' => $shapes, 'geometry' => '"'.$center.'"', 'radius' => $range, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
+    'created_date' => $date])->execute();
+}
+           
             // Find Max - Min Lat / Long for Radius and zero point and query  
             $lat_range = $range / 69.172;
             $lon_range = abs($range / (cos($latcenter) * 69.172));
@@ -1556,14 +2049,14 @@ if($town == ''){
             $min_lon = number_format($longcenter - $lon_range, "4", ".", "");
             $max_lon = number_format($longcenter + $lon_range, "4", ".", "");
             
-          if($town == ''){           
+            
+            
+       if($town == ''){
            
-          $rows = array();
+           
+           $rows = array();
+           $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
           
-//          $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)  where 
-//           ( property_for = 'sale' AND a.user_id <> '$user_id' AND expected_price <='$expected_rate' AND latitude BETWEEN '" . $min_lat . "' AND '" . $max_lat . "' AND  
-//           longitude BETWEEN '" . $min_lon . "' AND '" . $max_lon . "') GROUP BY a.id ";
-          $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
           
            $conditions = array();
 
@@ -1594,12 +2087,11 @@ if($town == ''){
                          $sqlstr .= " WHERE " . implode(' AND ', $conditions);
                         }
           
-          
-          
-          
-           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll(); 
+           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();        
+           
            $count = 0;
            
+          
           foreach($payments  as $payment ){
               
               
@@ -1613,8 +2105,8 @@ if($town == ''){
                    
                    $count += 1;
                     
-           $sqlstr = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id) where 
-                       a.id='$propid'";
+           $sqlstr = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id) where 
+                       a.id='$propid' GROUP BY a.id";
           
            $paymentst = \Yii::$app->db->createCommand($sqlstr)->queryOne();
                    
@@ -1623,20 +2115,26 @@ if($town == ''){
               
           }
           
+          
+          //echo $count;
+         
             echo json_encode($rows);
            
            
-            }  else{
-                
-                
-        
-                
-             $query = "SELECT a.*,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,p.typename as typename,p.undercategory as undercategory,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";   
-                
-             $conditions = array();
+        }else{
+            
+          
+              
+//          $sqlstr = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) where ( property_for = 'sale' AND town_name = '$town' AND sector_name='$sector' AND a.user_id <> '$user_id' AND total_plot_area <='$total_area') OR
+//           (property_for = 'sale' AND town_name = '$town' AND sector_name='$sector' AND a.user_id <> '$user_id' AND total_plot_area <='$total_area' AND latitude BETWEEN '" . $min_lat . "' AND '" . $max_lat . "' AND  
+//           longitude BETWEEN '" . $min_lon . "' AND '" . $max_lon . "') GROUP BY a.id ";    
+          $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
+          
+                        $conditions = array();
 
-                        $conditions[] = "property_for='sale'";      
+                        $conditions[] = "property_for='sale'";        
 
+                        
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1653,10 +2151,10 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }  
                         
                         $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
@@ -1666,32 +2164,51 @@ if($town == ''){
                         if (count($conditions) > 0) {
                          $sqlstr .= " WHERE " . implode(' AND ', $conditions);
                         }
-
-            $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-
+              
+              
+          
+           $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+          
             echo json_encode($payments);
             
+        }
+
+
             
-            }
         
     }
+    
+    
+    
 
-    public function actionMapproperty2csr($newkuma, $center, $shapes, $town,$sector, $maxim, $minim, $maximy, $minimy, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
-
-
+    public function actionMapproperty2csr($northlat,$southlat,$northlng,$southlng,$location,$newkuma, $center, $shapes, $town,$sector, $maxim, $minim, $maximy, $minimy, $area,$x,$y,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+        
+        $rectanglecoordinates = '{
+            "north": '.$northlat.',
+            "south": '.$southlat.',
+            "east": '.$northlng.',
+            "west": '.$southlng.'
+         }';
+       
+         $newkuma1 = $rectanglecoordinates;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         $user_id = $food;
-       
-        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        
+        
+
+        $trendingadd = \Yii::$app->db->createCommand()->insert('save_searches', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id' => $area,'town'=>$town,'sector'=>$sector,
                     'created_date' => $date])->execute();
         
 
-  if($town == ''){
-      
-     $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
+ if($town == ''){
      
-        $conditions = array();
+       $rows = array();
+
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
+       
+       
+       $conditions = array();
 
                         $conditions[] = "property_for='sale'"; 
 
@@ -1713,31 +2230,33 @@ if($town == ''){
                         
                         $conditions[] = "latitude BETWEEN '$minim' AND '$maxim'";
                         
-                        $conditions[] = "longitude BETWEEN '$minimy' AND '$maximy'  GROUP BY a.id"; 
+                         $conditions[] = "longitude BETWEEN '$minimy' AND '$maximy'  GROUP BY a.id"; 
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-
-
-        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-\common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-        echo json_encode($payments); 
-      
-      
-  }else{
-      
-      
-     
-       $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
        
-       $conditions = array();
+       
+       
+       
+       $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();  
+   \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+            echo json_encode($payments);
+       
+       
+       
+ }else{
+     
+         
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";   
+         
+      $conditions = array();
 
                         $conditions[] = "property_for='sale'";        
 
-                        
+                        $conditions[] = "a.user_id <> '$user_id'";
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1754,28 +2273,33 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
-                        }     
-                        
-                        $conditions[] = "a.user_id <> '$user_id' GROUP BY a.id ";
+                        $conditions[] = "a.sector_name='$sector'";
+                        }                       
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-      
-
+    
+     
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-\common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','7');
-        echo json_encode($payments);
+        \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+        echo json_encode($payments);die;
+     
+     
+ }
+
+
         
-  }
     }
     
+    
+    
+
     public function actionMapproperty2update() {
 
 
@@ -1848,14 +2372,262 @@ if($town == ''){
 
             $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-            echo json_encode($payments);
+            echo json_encode($payments);die;
       
     }
+
     
-    
-    public function actionMapproperty2($northlat,$southlat,$northlng,$southlng,$location,$newkuma, $center, $shapes,$foodexpectid, $whichserch, $town,$sector, $maxim, $minim, $maximy, $minimy, $area,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
 
 
+
+    public function actionMapproperty2() {
+        
+        
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+        $user_id = $_POST['food'];
+
+       
+        $northlat     =     $_POST['northlat'];
+        $southlat     = $_POST['southlat'];
+        $northlng     = $_POST['northlng'];
+        $southlng     =   $_POST['southlng'];
+
+     $rectanglecoordinates = '{
+             "north": '.$northlat.',
+             "south": '.$southlat.',
+             "east": '.$northlng.',
+             "west": '.$southlng.'
+          }';
+        
+        $newkuma = $rectanglecoordinates;
+        
+       // $center     = $_POST['center'];
+        $shapes     = $_POST['shapes'];
+        $town   = $_POST['town'];
+        $sector  = $_POST['sector'];
+            
+        $area = $_POST['area'];
+       
+        $areamin  = $_POST['areamin'];
+        $areamax  = $_POST['areamax'];
+        $pricemin  = $_POST['pricemin'];
+        $pricemax  = $_POST['pricemax'];
+        $proptype  = $_POST['proptype'];
+        $propbid  = $_POST['propbid'];
+        $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
+        $whichserch = $_POST['whichserch'];
+        $foodexpectid = $_POST['foodexpectid'];
+
+
+        if($whichserch == 'client'){
+
+            $model3 = Yii::$app->db->createCommand()->update('save_searches', ['search_for'=>'google','type'=>'rectangle','geometry' => $newkuma,'location_name'=>$location,'town'=>$town,'sector'=>$sector, 'property_type' => $proptype, 'min_area' => $areamin, 'area' => $areamax, 'min_prices' => $pricemin, 'max_prices' => $pricemax,'created_date'=>$date], 'id = "' . $foodexpectid . '"')->execute();
+
+           
+        }
+     
+         
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
+         
+       $conditions = array();
+       $conditionsnew = array();
+       $conditionsprop = array();
+       $conditionsexact = array();
+
+
+       
+       $conditionsprop[] = "( property_for='both'";  
+            
+       $conditions[] = "property_for='sale' )";        
+
+                        
+
+                        if ($proptype != 'Property Type') {
+                         $conditions[] = "project_type_id = '$proptype'";
+                        }
+                        if ($propbid != 'Select') {
+                        $conditions[] = "a.request_for = '$propbid'";
+                        }
+                        if ($areamin != '' && $areamax !='') {
+                            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+                 
+                             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+                         }
+
+                        if ($pricemin != '' && $pricemax !='') {
+                         $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";    
+                         }
+                         
+                         if ($town != '') {
+                        $conditions[] = "a.town_name = '$town'";
+                        }
+                        if ($sector != '') {
+                        $conditions[] = "a.sector_name='$sector'";
+                        }    
+                                                
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        } 
+                        
+                        $conditions[] = "a.status='approved'";
+                        $conditions[] = "a.user_id <> '$user_id'";
+                        
+
+                        $sqlstr = $query;
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+                        }
+   // echo $sqlstr;die;
+     
+        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+
+        return json_encode($payments);
+     
+     
+ 
+
+
+        
+    }
+
+
+
+
+
+    public function actionMapproperty22() {
+        
+       
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+        if (isset(Yii::$app->user->identity->id)){
+        $user_id = Yii::$app->user->identity->id;
+        }else{
+        $user_id = 0;
+        }
+       
+        $northlat     =     $_POST['northlat'];
+        $southlat     = $_POST['southlat'];
+        $northlng     = $_POST['northlng'];
+        $southlng     =   $_POST['southlng'];
+
+     $rectanglecoordinates = '{
+             "north": '.$northlat.',
+             "south": '.$southlat.',
+             "east": '.$northlng.',
+             "west": '.$southlng.'
+          }';
+        
+        $newkuma = $rectanglecoordinates;
+        
+       // $center     = $_POST['center'];
+        $shapes     = $_POST['shapes'];
+        $town   = $_POST['town'];
+        $sector  = $_POST['sector'];
+            
+        $area = $_POST['area'];
+       
+        $areamin  = $_POST['areamin'];
+        $areamax  = $_POST['areamax'];
+        $pricemin  = $_POST['pricemin'];
+        $pricemax  = $_POST['pricemax'];
+        $proptype  = $_POST['proptype'];
+        $propbid  = $_POST['propbid'];
+        $location = $_POST['location'];
+        $availabilitym = $_POST['availabilitym'];
+
+
+
+        // if (isset(Yii::$app->user->identity->id)){
+        // $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+        //             'created_date' => $date])->execute();
+        // }
+
+     
+         
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id)";   
+         
+       $conditions = array();
+       $conditionsnew = array();
+       $conditionsprop = array();
+       $conditionsexact = array();
+
+
+       
+       $conditionsprop[] = "( property_for='both'";  
+            
+       $conditions[] = "property_for='sale' )";        
+
+                        
+
+                        if ($proptype != 'Property Type') {
+                         $conditions[] = "project_type_id = '$proptype'";
+                        }
+                        if ($propbid != 'Select') {
+                        $conditions[] = "a.request_for = '$propbid'";
+                        }
+                        if ($areamin != '' && $areamax !='') {
+                            // $conditions[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+                 
+                             $conditionsnew[] = "'$areamin' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsnew[] = "'$areamax' BETWEEN a.min_super_area AND a.super_area";
+                             $conditionsexact[] = "a.super_area BETWEEN '$areamin' AND '$areamax'";
+
+                         }
+
+                        if ($pricemin != '' && $pricemax !='') {
+                         $conditions[] = "a.expected_price BETWEEN '$pricemin' AND '$pricemax'";    
+                         }
+                         
+                         if ($town != '') {
+                        $conditions[] = "a.town_name = '$town'";
+                        }
+                        if ($sector != '') {
+                        $conditions[] = "a.sector_name='$sector'";
+                        }    
+                                                
+                        if ($availabilitym != '') {
+                            $conditions[] = "a.availability  = '$availabilitym'";
+                        } 
+                        
+                        $conditions[] = "a.status='approved'";
+                        $conditions[] = "a.user_id <> '$user_id'";
+                        
+
+                        $sqlstr = $query;
+                        if ((count($conditions) > 0) && (count($conditionsnew) == 0)) {
+                            $sqlstr .= " WHERE " . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." GROUP BY a.id";
+                        }
+                
+                        if ((count($conditions) > 0) && (count($conditionsnew) > 0)) {
+                            $sqlstr .= " WHERE "  . implode(' AND ', $conditionsprop)." OR ". implode(' AND ', $conditions)." AND CASE WHEN a.min_super_area IS NOT NULL THEN ( ".implode(' OR ', $conditionsnew).") ELSE (". implode(' AND ', $conditionsexact).") END GROUP BY a.id";
+                        }
+   // echo $sqlstr;die;
+     
+        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
+
+        return json_encode($payments);
+     
+     
+ 
+
+
+        
+    }
+    
+     public function actionMapproperty21($northlat,$southlat,$northlng,$southlng,$location,$newkuma, $center,$foodexpectid, $whichserch, $shapes, $town,$sector, $maxim, $minim, $maximy, $minimy, $area,$x,$y,$areamin,$areamax,$pricemin,$pricemax,$proptype,$propbid,$food) {
+        
+        
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         $user_id = $food;
@@ -1867,20 +2639,24 @@ if($town == ''){
          }';
        
          $newkuma1 = $rectanglecoordinates;
-       
-//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'buyer','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
-//                    'created_date' => $date])->execute();
-        if($whichserch == 'client'){
-            $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'buyer', 'type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
-            'created_date' => $date])->execute();
-           
-      }
+        
 
-  if($town == ''){
-      
-     $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
+//        $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type'=>'lessee','type' => $shapes, 'geometry' => $newkuma, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $town,'expectation_id'=>$area,'town'=>$town,'sector'=>$sector,
+//                    'created_date' => $date])->execute();
+if($whichserch == 'client'){
+    $trendingadd = \Yii::$app->db->createCommand()->insert('save_search', ['role_type' => 'lessee', 'type' => $shapes, 'geometry' => $newkuma1, 'radius' => $center, 'user_id' => $user_id, 'location_name' => $location, 'expectation_id' => $area, 'town' => $town, 'sector' => $sector,
+    'created_date' => $date])->execute();
+   
+}
+
+ if($town == ''){
      
-        $conditions = array();
+       $rows = array();
+
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id)  LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";
+       
+       
+       $conditions = array();
 
                         $conditions[] = "property_for='sale'"; 
 
@@ -1902,31 +2678,33 @@ if($town == ''){
                         
                         $conditions[] = "latitude BETWEEN '$minim' AND '$maxim'";
                         
-                        $conditions[] = "longitude BETWEEN '$minimy' AND '$maximy'  GROUP BY a.id"; 
+                         $conditions[] = "longitude BETWEEN '$minimy' AND '$maximy'  GROUP BY a.id"; 
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-
-
-        $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
-
-        echo json_encode($payments); 
-      
-      
-  }else{
-      
-      
-     
-       $query = "SELECT a.*,p.typename as typename,p.undercategory as undercategory,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)"; 
        
-       $conditions = array();
+       
+       
+       
+       $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();  
+   
+            echo json_encode($payments);
+       
+       
+       
+ }else{
+     
+         
+       $query = "SELECT a.*,p.typename as typename,(select count(*) from shortlistproperty where property_id= a.id and user_id='$user_id') as countyshortlist,(select count(*) from request_site_visit where user_id='$user_id' and property_id= a.id) as county,(select count(*) from requested_biding_users where propertyID= a.id and request_for='bid' and isactive='1') as county1 ,(select count(*) from user_view_properties where property_id= a.id and user_id='$user_id') as countyview FROM addproperty as a LEFT JOIN property_type as p ON (p.id = a.project_type_id) LEFT JOIN request_site_visit as r ON (r.property_id = a.id) LEFT JOIN requested_biding_users as r1 ON (r1.propertyID = a.id) LEFT JOIN user_view_properties as v1 ON (v1.property_id = a.id) LEFT JOIN shortlistproperty as z ON (z.property_id = a.id)";   
+         
+      $conditions = array();
 
                         $conditions[] = "property_for='sale'";        
 
-                        
+                        $conditions[] = "a.user_id <> '$user_id'";
 
                         if ($proptype != 'Select Property Type') {
                          $conditions[] = "project_type_id = '$proptype'";
@@ -1943,29 +2721,36 @@ if($town == ''){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
-                        }     
-                        
-                        $conditions[] = "a.user_id <> '$user_id' GROUP BY a.id ";
+                        $conditions[] = "a.sector_name='$sector'";
+                        }                       
                         
 
                         $sqlstr = $query;
                         if (count($conditions) > 0) {
-                         $sqlstr .= " WHERE " . implode(' AND ', $conditions);
+                         $sqlstr .= " WHERE " . implode(' AND ', $conditions). "GROUP BY a.id";
                         }
-      
-
+    
+     
         $payments = \Yii::$app->db->createCommand($sqlstr)->queryAll();
 
-        echo json_encode($payments);
+        echo json_encode($payments);die;
+     
+     
+ }
+
+
         
-  }
     }
-    
-    
+
+
+    public function beforeAction($action) {
+        // if($action->id == "getpolymyupdate")
+            $this->enableCsrfValidation = false;
+            return parent::beforeAction($action);
+    }
     
     
 

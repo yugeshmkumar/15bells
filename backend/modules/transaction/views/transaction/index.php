@@ -307,7 +307,7 @@ url: 'transaction/chat?pid=$pid',
 data: dataString,
 cache: false,
 success: function(result){
-alert(result);
+// alert(result);
 }
 });
 
