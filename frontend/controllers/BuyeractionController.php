@@ -1909,10 +1909,10 @@ class BuyeractionController extends Controller {
             $conditions[] = "a.availability  = '$availabilitym'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' ";
+            $conditions[] = "a.sector_name='$sector' ";
         }
 
         $conditions[] = "a.status='approved'";
