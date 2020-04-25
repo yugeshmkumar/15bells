@@ -496,13 +496,13 @@ public function actionShowpropdetails(){
         $date = date('Y-m-d H:i:s');
        
         $model = new Addproperty();
-        $model1 =  new LessorExpectations();
+        $model1 =  new SellorExpectations();
         $model2 =  new Property_nearby_places();
         $model3 =  new Property_amenities();
 
        if ($model->load(Yii::$app->request->post()) && $model->validate() ) {           
           
-    //   echo '<pre>';print_r(Yii::$app->request->post());die;
+    //    echo '<pre>';print_r(Yii::$app->request->post());die;
 
           $yiipost = Yii::$app->request->post();
           $available_date = $yiipost['Addproperty']['available_date'];
@@ -516,6 +516,7 @@ public function actionShowpropdetails(){
           $LOAN_taken = $yiipost['Addproperty']['LOAN_taken'];
 
           $FAR_approval = $yiipost['Addproperty']['FAR_approval'];
+          $facing = $yiipost['Addproperty']['facing'];
 
           
          
@@ -559,16 +560,15 @@ public function actionShowpropdetails(){
 
                 $property_id =  $model->id;
 
-                $locking_period = $yiipost['locking_period'];
-                $tenures = $yiipost['tenures'];
-                $rent_free = $yiipost['rent_free'];
+               
 
                 $model1->user_id = $userid;
-                $model1->user_type = 'seller';                 
+                $model1->user_type = 'sellor';                 
                 $model1->property_id = $property_id;
-                $model1->lock_in_period = $locking_period;
-                $model1->lease_tenure = $tenures;
-                $model1->rent_free_period = $rent_free;          
+                $model1->save_search_as = 'Frontend Automatic';              
+                $model1->vastu_facing = $facing;              
+
+
                 $model1->created_date = $date;
                 $model1->save(false);
 
