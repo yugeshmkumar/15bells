@@ -629,7 +629,17 @@ class BuyeractionController extends Controller {
 
      //$doshortlist = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $user_id,'property_id'=>$propid, 'created_date' => $date, 'active' => '1'])->execute();
                     
-      
+     \common\models\activemode::update_my_profile_progress_status($user_id,"my_search",'100','4');
+     $assignleadsalesid  =  \common\models\activemode::assignsaleslead($user_id);
+
+      $newid =  $assignleadsalesid['employee_id'];
+      $leadid =  $assignleadsalesid['leadid'];
+
+      if($leadid != ''  && $newid != ''){            
+
+      $assignlead  =  \common\models\activemode::assignleadsalesactionfrontend($newid,$leadid,'Automatic send from frontend');
+
+     }
 
         // }
 
