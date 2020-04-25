@@ -82,7 +82,7 @@ class RequestEmdSearch extends RequestEmd
     {
         
         $user_id = Yii::$app->user->identity->id; 
-        $query = RequestEmd::find()->where(['for_auction' => 'reverse'])->andwhere(['client_owner_confirmation'=>'useryes'])->andwhere(['status'=>1]);
+        $query = RequestEmd::find()->where(['for_auction' => 'reverse'])->andwhere(['lessor_id' => $user_id])->andwhere(['client_owner_confirmation'=>'useryes'])->andwhere(['status'=>1]);
 
         // add conditions that should always apply here
 
@@ -123,7 +123,7 @@ class RequestEmdSearch extends RequestEmd
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
          $assigned_id = $querys->id;
-        $query = RequestEmd::find()->orderBy('id desc')->where(['assigned_to_id'=>$assigned_id]);
+        $query = RequestEmd::find()->orderBy('id desc')->where(['assigned_to_id'=>$assigned_id])->andWhere(['brandid' => NULL]);
 
        // $query = RequestEmd::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
 
@@ -210,7 +210,57 @@ class RequestEmdSearch extends RequestEmd
         $user_id = Yii::$app->user->identity->id;
         $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
          $assigned_id = $querys->id;
-        $query = RequestEmd::find()->orderBy('id desc')->where(['assigned_to_id'=>$assigned_id])->andwhere(['for_auction'=>'reverse']);
+        $query = RequestEmd::find()->orderBy('id desc')->where(['assigned_to_id'=>$assigned_id])->andwhere(['for_auction'=>'reverse'])->groupBy(['sector_name','town_name']);
+
+       // $query = RequestEmd::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'user_id' => $this->user_id,
+            'property_id' => $this->property_id,
+            'payable_amount' => $this->payable_amount,
+            'escrow_account_id' => $this->escrow_account_id,
+            'created_date' => $this->created_date,
+            'updated_date' => $this->updated_date,
+            'status' => $this->status,
+        ]);
+
+        $query->andFilterWhere(['like', 'payment_status', $this->payment_status]);
+
+        return $dataProvider;
+    }
+
+
+
+
+
+
+    public function searchreversebybrand($params)
+    {
+        $town_name = $_GET['town_name'];
+        $sector_name = $_GET['sector_name'];
+        $user_id = Yii::$app->user->identity->id;
+        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
+         $assigned_id = $querys->id;
+        $query = RequestEmd::find()->orderBy('id desc')->where(['assigned_to_id'=>$assigned_id])
+        ->andwhere(['for_auction'=>'reverse'])
+        ->andwhere(['town_name'=>$town_name])
+        ->andwhere(['sector_name'=>$sector_name]);
 
        // $query = RequestEmd::find()->where(['user_id' => $user_id])->andwhere(['status'=>1]);
 

@@ -208,8 +208,21 @@ if($assigndash->item_name == "sales_supply_lessor"){
             */
             if ($model->load($request->post()) && $model->save()) {
 				$secretcode = rand(1111,8949883);
-				$VrSetuptest = \common\models\VrSetuptest::find()->where(['id'=>$model->id])->one();
+                $VrSetuptest = \common\models\VrSetuptest::find()->where(['id'=>$model->id])->one();
+                
 				if($VrSetuptest){
+
+                    $auction_type = $VrSetuptest->auction_type;
+
+                    if($auction_type == 'reverse_auction'){
+                    $propertyID = $VrSetuptest->propertyID;
+                    $brandID =  \common\models\Addproperty::find()->where(['id'=>$propertyID])->one();
+                    $VrSetuptest->town_name = $brandID->town_name;
+                    $VrSetuptest->sector_name = $brandID->sector_name;
+                }
+
+
+
                     $VrSetuptest->approverID = Yii::$app->user->identity->id;
 					$VrSetuptest->secret_code = $secretcode;
 					$VrSetuptest->save();

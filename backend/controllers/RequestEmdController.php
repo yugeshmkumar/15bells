@@ -62,7 +62,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index','view','create','update','delete','forward','reverse','movetoforward','movetoreverse'],
+                        'actions' => ['index','view','create','update','delete','forward','reverse','reversebybrand','movetoforward','movetoreverse'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -111,6 +111,18 @@ if($assigndash->item_name == "sales_supply_lessor"){
     }
 
 
+    public function actionReversebybrand()
+    {
+        $searchModel = new RequestEmdSearch();
+        $dataProvider = $searchModel->searchreversebybrand(Yii::$app->request->queryParams);
+
+        return $this->render('reversebybrand', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
     public function actionMovetoforward() {
 
         $requestid = $_GET['requestid'];
@@ -132,16 +144,43 @@ if($assigndash->item_name == "sales_supply_lessor"){
     public function actionMovetoreverse() {
 
         $requestid = $_GET['requestid'];
+        $propid = $_GET['propid'];
+        $user_id =   \common\models\Addproperty::findOne(['id'=>$propid])->user_id;
+        $town_name =   \common\models\Addproperty::findOne(['id'=>$propid])->town_name;
+        $sector_name =   \common\models\Addproperty::findOne(['id'=>$propid])->sector_name;
         
         if ($requestid != '') {
             
             $model = $this->findModel($requestid);
+            $data = $this->findModel($requestid)->attributes;
 
             $model->for_auction = 'reverse';
+            $model->lessor_id = $user_id;
+            $model->town_name = $town_name;
+            $model->sector_name = $sector_name;
 
-            if ($model->save(false)) {
+            if ($model->save(false)) {  
+                
+                
+        $findbrandid =   \common\models\RequestEmd::find()->where(['brandid'=>$model->user_id])->andwhere(['town_name'=>$town_name])->andwhere(['sector_name'=>$sector_name])->one();
 
-                $propid =  $model->property_id;
+if(!$findbrandid){
+
+                // echo '<pre>';print_r($data);die;              
+                $anotherModel = new RequestEmd();                
+                $anotherModel->setAttributes($data);
+                //$anotherModel->property_id= NULL;
+                $anotherModel->brandid= $model->user_id;;
+                $anotherModel->lessor_id= NULL;
+                $anotherModel->town_name= $town_name;
+                $anotherModel->sector_name= $sector_name;
+               $anotherModel->for_auction= 'reverse';
+
+               
+               if($anotherModel->save(false)){
+                   
+
+               // $propid =  $model->property_id;
                 date_default_timezone_set("Asia/Calcutta");
                 $date = date('Y-m-d H:i:s');
                 $user_id =   \common\models\Addproperty::findOne(['id'=>$propid])->user_id;
@@ -151,6 +190,29 @@ if($assigndash->item_name == "sales_supply_lessor"){
 
 
                 return 1;
+               }else {
+
+                return 0;
+            }
+
+        }else{
+
+
+            date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+                $user_id =   \common\models\Addproperty::findOne(['id'=>$propid])->user_id;
+                $link  =     Yii::getAlias('@frontendUrl').'/addproperty/lesview';
+
+                $trendingadd = \Yii::$app->db->createCommand()->insert('notifications', ['item_name' => 'Auction Approval', 'item_id' => $user_id, 'link' => $link, 'description'=>'Your property required approval for reverse auction','date' => $date])->execute();
+
+
+                return 1;
+        }
+
+
+
+
+
             } else {
                 return 0;
             }

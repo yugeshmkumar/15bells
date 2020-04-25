@@ -63,7 +63,7 @@ $datas =  $dataProvider->query->all();
 																						<input name="progress" class="sort_list" type="submit" value="In Progress">
                                             <input name="progress" class="sort_list" type="submit" value="Completed">
                                           </form>
-											<!-- <li></li> -->
+											<!- <li></li> -->
 										  <!-- </ul> -->
                                          
 									<!-- </div> -->
@@ -83,10 +83,7 @@ $datas =  $dataProvider->query->all();
 								if($for_auction == 'forward'){
 
 								$vrexist = \common\models\VrSetup::find()->where(['propertyID' => $viewid])->one();
-				              }else{
-								$vrexist = \common\models\VrSetup::find()->where(['brandID' => $brandid])->andwhere(['auction_type' => 'reverse_auction'])->one();
-
-							  }
+				              
 								$vrid = $vrexist->id;
 								$vridencode = base64_encode($vrid);
 							
@@ -205,7 +202,159 @@ $datas =  $dataProvider->query->all();
 
 						
 				</div>
-                <?php } ?>
+                <?php }  } ?>
+
+
+
+
+				<?php foreach ($datas as $data){ 
+
+$viewid  =  $data->property_id; 
+$brandiduserid = Yii::$app->user->identity->id;
+$for_auction  =  $data->for_auction; 
+$brandid  =  $data->brandid; 
+$payment_status  =  $data->payment_status;  
+$emdid  =  $data->id;                
+
+$haritid = 273*179-$viewid;
+$propsid = 'PR'. $haritid;
+
+if($for_auction == 'reverse' && $brandid ==  $brandiduserid){
+
+
+$addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
+$town_name = $addproperty->town_name;
+$sector_name = $addproperty->sector_name;
+
+$vrexist = \common\models\VrSetup::find()->where(['brandID' => $brandid])->andwhere(['town_name' => $town_name])->andwhere(['sector_name' => $sector_name])->andwhere(['auction_type' => 'reverse_auction'])->one();
+
+$vrid = $vrexist->id;
+$vridencode = base64_encode($vrid);
+
+
+$project_type_id = $addproperty->project_type_id;
+$property_for = $addproperty->property_for;
+$expected_price = $addproperty->expected_price;
+$asking_rental_price = $addproperty->asking_rental_price;
+
+$reserve_price  =  ($property_for == 'rent' ? $asking_rental_price : $expected_price);
+
+
+
+$property_type = \common\models\PropertyType::find()->where(['id' => $project_type_id])->one();
+$querys = CompanyEmp::find()->where(['id'=>$data->assigned_to_id])->one();
+$assigned_id = $querys->userid;
+
+$users = User::find()->where(['id'=>$assigned_id])->one();
+	
+?>
+<div class="col-md-12 property_detail">
+<p class="property_id">Property ID : <?php echo $propsid; ?>
+
+
+		<?php 
+
+if($vrexist){
+
+		if($payment_status=='pay_now' || $payment_status=='pending'){
+$model = new Emd_details();      
+	
+
+$model = Emd_details::find()->where(['emd_id'=>$emdid])->one();
+if($model){
+
+		?>
+<a href="javascript:void(0)" onclick="emd_processrev(<?php echo $emdid; ?>,<?php echo $vrid; ?>)" ><span class="building_name">Emd-Processing</span></a>
+
+<?php }else{ ?>
+
+	<a href="javascript:void(0)" onclick="emd_payrev(<?php echo $emdid; ?>,<?php echo $vrid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
+
+<?php }  } else if($payment_status == 'paid') { ?>
+
+		<a href="<?php echo Yii::$app->urlManager->createUrl(['common/bid']) ?>"  target="_blank" ><span class="building_name">Enter Auction</span></a>
+<?php }else { ?>
+
+<a href="javascript:void(0)" onclick="emd_payrev(<?php echo $emdid; ?>,<?php echo $vrid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
+<?php }  } else { ?>
+
+<a href="javascript:void(0)"  ><span class="building_name">Auction Not set</span></a>
+
+
+<?php } ?>
+</p>
+
+<div class="col-md-12 visit_buyer">
+<div class="row">
+	<div class="col-md-4 agent_det">
+			<div class="row">
+				<div class="col-md-5">
+					<img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/team/t2.jpg';  ?>" width="60">
+				</div>
+				
+				<div class="col-md-7 no_pad">
+				<h3 class="user_name"><?php echo $users->fullname; ?></h3>
+				<p class="user_id" style="margin:0;">UID<?php echo $assigned_id * 23 * 391; ?></p>
+				</div>
+			</div>
+		<div class="row" style="margin-top:30px;">
+			<p class="user_detail"><i class="fa fa-phone"></i> +91-<?php echo $users->mobile; ?></p>
+			<p class="user_detail"><i class="fa fa-envelope"></i> <?php echo $users->email; ?></p>
+
+<div class="col-md-5">
+			<p class="site_txt"><?php echo  date("g:i A", strtotime($created_date)); ?></p>
+			
+			</div>
+			<div class="col-md-7 no_pad">
+			<p class="site_txt"><?php echo  date("F d,Y", strtotime($created_date)); ?></p>
+				</div>	
+		
+		</div>
+		
+	</div>
+   
+	<div class="col-md-8">
+		
+		<div class="row">
+			<div class="col-md-6 company_overview property_manage">
+			<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/building.svg';  ?>" width="16">Type of property</p>
+			<p class="label_name"><?php echo $property_type->typename ?></p>
+		</div>
+		<div class="col-md-6 company_overview property_manage">
+			<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/site-visit.svg';  ?>" width="16">Location</p>
+			<p class="label_name"><?php echo $addproperty->locality ?></p>
+		</div>
+		<div class="col-md-6">
+			<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Reserve Price</p>
+			<div class="col-md-12">
+				<div class="col-md-5 no_pad"><button class="button_select active_butn"><?php echo $reserve_price; ?></button></div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<p class="details_label"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/icons/watch.svg';  ?>" width="20">Payment Amount</p>
+			<div class="col-md-12">
+				<div class="col-md-4 no_pad"><button class="cash_butn active_butn"><?php echo $data->payable_amount; ?></button></div>
+			
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+</div>
+<?php }  } ?>
+
+
+
+
+
+
+
+
+
 			</div>
   		</div>
 <div id="myModal" class="modal fade" role="dialog">
@@ -870,6 +1019,87 @@ var updateemdid = '';
 
 }
 
+
+
+
+
+
+function emd_processrev(id,propid){
+    
+	updateemdid = id;
+
+	
+$('#updateid').val(updateemdid);
+$("#emd_depositprocess").modal('show');
+
+$.ajax({
+										   type: "POST",
+										   url: 'emd_details/getdetails',
+										   data: {emdid: updateemdid},
+										   dataType: 'json',
+										   success: function (data) {
+
+												 getfavourofs(updateemdid,propid)
+											  
+										  var details = JSON.stringify(data);
+											var obj =   JSON.parse(details)
+
+											var emddetailsid =  obj.id;
+											var emddetailsemd_id =  obj.emd_id;
+											var emddetailsutr_no =  obj.utr_no;
+										
+											var emddetailsutr_bank_name =  obj.utr_bank_name;
+											var emddetailsutr_bank_branch_name =  obj.utr_bank_branch_name;
+											var emddetailsutr_date =  obj.utr_date;
+											var emddetailsdd_no =  obj.dd_no;
+											var emddetailsdd_bank_name =  obj.d_bank_name;
+											var emddetailsdd_bank_branch_name =  obj.dd_bank_branch_name;
+											var emddetailsdd_date =  obj.dd_date;
+											var emddetailsperson_name =  obj.person_name;
+											var emddetailstracking_id =  obj.tracking_id;
+
+					
+											if(emddetailsutr_no !== null && emddetailsutr_no !== ''){
+												$('#update_utrno').val(emddetailsutr_no);
+											}
+
+											if(emddetailsutr_bank_name){
+												$('#update_utrbank').val(emddetailsutr_bank_name);
+											}
+											if(emddetailsutr_bank_branch_name){
+												$('#update_utrbranch').val(emddetailsutr_bank_branch_name);
+											}
+											if(emddetailsutr_date){
+												$('#update_utrdate').val(emddetailsutr_date);
+											}
+											if(emddetailsdd_no){
+												$('#update_ddno').val(emddetailsdd_no);
+											}
+											if(emddetailsdd_bank_name){
+												$('#update_ddbank').val(emddetailsdd_bank_name);
+											}
+											if(emddetailsdd_bank_branch_name){
+												$('#update_ddbranchname').val(emddetailsdd_bank_branch_name);
+											}
+											if(emddetailsdd_date){
+												$('#update_dddate').val(emddetailsdd_date);
+											}
+											if(emddetailsperson_name){
+												$('#update_personname').val(emddetailsperson_name);
+											}
+											if(emddetailstracking_id){
+												$('#update_trackingid').val(emddetailstracking_id);
+											}
+																			
+																						
+											  
+
+										   },
+									   });
+
+
+}
+
 </script>
 
 
@@ -999,6 +1229,36 @@ $this->registerJs($script);
 			});
 
     }
+
+
+
+	function emd_payrev(id,propid){
+    
+	$('#emd_details-emd_id').val(id);
+	$("#emd_deposit").modal('show');
+
+		  $.ajax({
+											 type: "POST",
+											 url: '/emd_details/getfavourrev',
+											 data: {emdid: updateemdid,propid:propid},
+											 dataType: 'json',
+											 success: function (data) {
+
+												  var details = JSON.stringify(data);
+											  
+												var obj =   JSON.parse(details);
+												  var emd_amount = obj.Emd_amount;
+												  var favour_of =  obj.favour_of;
+
+												  $('#emd_amount').html(emd_amount);
+												  $('#favour_of').html(favour_of);
+
+											   },
+
+
+		  });
+
+  }
 
 
 		function getfavourofs(updateemdid,propid){

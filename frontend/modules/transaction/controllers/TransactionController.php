@@ -402,7 +402,7 @@ $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
       union
       select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
       */
-      $sql="select min(bid_amount) as bidder,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved'  and t.product_id=$brandid and t.vr_id=$pid group by t.buyer_id";   
+      $sql="select min(bid_amount) as bidder,t.buyer_id,t.product_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved'  and t.product_id=$brandid and t.vr_id=$pid group by t.buyer_id";   
       
       $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
       

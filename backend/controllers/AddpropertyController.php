@@ -257,6 +257,10 @@ if($visitypeid != 'reverse'){
            if(!empty($payments)){
 
         $finduser = \common\models\RequestEmd::find()->where(['id' => $unique_id])->one();
+
+        $town_name = $finduser->town_name;
+        $sector_name = $finduser->sector_name;
+
         if($finduser){
             
             
@@ -264,7 +268,7 @@ if($visitypeid != 'reverse'){
             $finduser->save(false);
 
             $vr_id = $payments[0]['id'];
-            $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $user_id, 'propertyID' => $propids, 'userroleID' => 'lessor', 'request_for'=>'reverse','created_at' => $date])->execute();
+            $trendingadd = \Yii::$app->db->createCommand()->insert('requested_biding_users', ['userid' => $user_id, 'propertyID' => $propids, 'userroleID' => 'lessor', 'request_for'=>'reverse', 'town_name'=>$town_name, 'sector_name'=>$sector_name,'created_at' => $date])->execute();
             if ($trendingadd) {
                 return 1;
             } else {

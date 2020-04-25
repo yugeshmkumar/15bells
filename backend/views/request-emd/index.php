@@ -314,7 +314,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-         //  'id',
+           'id',
            // 'user_id',
 
            ['attribute' => 'user_id',
@@ -408,7 +408,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         if ($query[0]['counts'] > 0 ) {
                             return Html::a('<button class="btn btn-default" style="border-color:white;border:1px solid;" >Moved to reverse</button>', $url = 'javascript:void(0)', []);
                         } else {
-                            return Html::a('<button class="btn btn-info" style="border-color:white;border:1px solid;" onclick="movetoreverse(' . $request_id . ')" >Move to Reverse</button>', $url = 'javascript:void(0)', []);
+                            return Html::a('<button class="btn btn-info" style="border-color:white;border:1px solid;" onclick="movetoreverse(' . $request_id . ','.$property_id.')" >Move to Reverse</button>', $url = 'javascript:void(0)', []);
                         }
 
                       }else{
@@ -893,12 +893,12 @@ required
                       }
 
 
-                          function movetoreverse(requestid) {
+                          function movetoreverse(requestid,propid) {
 
                                 $.ajax({
 
                                 url: 'request-emd/movetoreverse',
-                                data: {requestid: requestid},
+                                data: {requestid: requestid,propid:propid},
                                 success: function (data) {
 
                                 if (data == '1') {

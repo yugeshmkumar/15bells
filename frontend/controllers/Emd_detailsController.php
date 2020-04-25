@@ -85,11 +85,26 @@ class Emd_detailsController extends Controller
         return  $querys;
     }
 
+
+    public function actionGetdetailsrev()
+    {
+
+        $model = new Emd_details();  
+        $emdid =  $_POST['emdid'];
+        $vrid =  $_POST['vrid'];
+        $brandid =  $_POST['brandid'];
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $querys = Emd_details::find()->where(['emd_id'=>$emdid])->andwhere(['vr_id'=>$vrid])->andwhere(['brandID'=>$brandid])->one();
+        return  $querys;
+    }
+
+
+
     public function actionGetfavour()
     {
 
         $model = new VrSetup();  
-        $emdid =  $_POST['emdid'];
         $propid =  $_POST['propid'];
 
         Yii::$app->response->format = Response::FORMAT_JSON;
