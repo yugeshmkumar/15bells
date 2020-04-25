@@ -1869,10 +1869,10 @@ return 2;
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }   
                         if ($availabilitym != '') {
                             $conditions[] = "a.availability  = '$availabilitym'";
@@ -2113,14 +2113,14 @@ return 2;
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
 
                         if ($availabilitym != '') {
                             $conditions[] = "a.availability  = '$availabilitym'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }  
                         $conditions[] = "a.status='approved'";
                         
@@ -2237,10 +2237,10 @@ return 2;
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }    
                                                 
                         if ($availabilitym != '') {
