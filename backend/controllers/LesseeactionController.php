@@ -748,10 +748,10 @@ $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name != '$sector'";
+            $conditions[] = "a.sector_name != '$sector'";
         }
 
 //where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
@@ -816,10 +816,10 @@ $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' GROUP BY a.id";
+            $conditions[] = "a.sector_name='$sector' GROUP BY a.id";
         }
 
 //where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
@@ -919,10 +919,10 @@ $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request
         
        
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' ";
+            $conditions[] = "a.sector_name='$sector' ";
         }
 
         $conditions[] = "a.status='approved'";
@@ -1038,10 +1038,10 @@ $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request
             $conditions[] = "a.request_for = '$propbid'";
         }
         if ($town != '') {
-            $conditions[] = "town_name = '$town'";
+            $conditions[] = "a.town_name = '$town'";
         }
         if ($sector != '') {
-            $conditions[] = "sector_name='$sector' GROUP BY a.id";
+            $conditions[] = "a.sector_name='$sector' GROUP BY a.id";
         }
 
 //where property_for = 'rent' AND a.user_id <> '$user_id' AND town_name = '$town' AND sector_name='$sector' AND total_plot_area <='$total_area'  GROUP BY a.id
@@ -1295,10 +1295,10 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }                       
                         
 
@@ -1462,10 +1462,10 @@ $lessorexpec = \common\models\LessorExpectations::find()->where(['property_id' =
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }   
                         if ($availabilitym != '') {
                             $conditions[] = "a.availability  = '$availabilitym'";
@@ -1577,10 +1577,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }                       
                         
 
@@ -1786,10 +1786,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }  
                         
                         $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
@@ -1968,14 +1968,14 @@ if($whichserch == 'client'){
                              }
                              
                              if ($town != '') {
-                            $conditions[] = "town_name = '$town'";
+                            $conditions[] = "a.town_name = '$town'";
                             }
     
                             if ($availabilitym != '') {
                                 $conditions[] = "a.availability  = '$availabilitym'";
                             }
                             if ($sector != '') {
-                            $conditions[] = "sector_name='$sector'";
+                            $conditions[] = "a.sector_name='$sector'";
                             }  
                             $conditions[] = "a.status='approved'";
                             
@@ -2144,10 +2144,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }  
                         
                         $conditions[] = "a.user_id <> '$user_id'  GROUP BY a.id";
@@ -2266,10 +2266,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }                       
                         
 
@@ -2458,10 +2458,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }    
                                                 
                         if ($availabilitym != '') {
@@ -2583,10 +2583,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }    
                                                 
                         if ($availabilitym != '') {
@@ -2714,10 +2714,10 @@ if($whichserch == 'client'){
                          }
                          
                          if ($town != '') {
-                        $conditions[] = "town_name = '$town'";
+                        $conditions[] = "a.town_name = '$town'";
                         }
                         if ($sector != '') {
-                        $conditions[] = "sector_name='$sector'";
+                        $conditions[] = "a.sector_name='$sector'";
                         }                       
                         
 
