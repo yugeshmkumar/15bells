@@ -286,8 +286,8 @@ $('#vrsetup-auction_type').change(function(){
    }
 
   else if(this.value == 'reverse_auction'){
-       $('#auctionprop').hide();
-       $('#auctionuser').show();
+      $('#auctionprop').show();
+      $('#auctionuser').show();
    }
 else{
 

@@ -9,8 +9,6 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 use kartik\editable\EditableAsset;
 use yii\db\Query;
-use yii\helpers\Url;
-
 
 
 EditableAsset::register($this);
@@ -317,134 +315,146 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'property_id',
+            'property_id',
 
             
 
 
-        ['attribute' => 'user_id',
-                'label' => 'Client Name',
-               // 'width' => '200px',
-                'format' => 'raw',
-                //  'contentOptions'=>['style'=>'width: 200px;'],
-                'filter' => true,
-                'value' => function($data) {
-                    if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
-                        $fullname = \common\models\User::findOne($data->user_id)->fullname;
-                        return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
-                                'title' => Yii::t('yii', 'Click to View User details'),
-                    ]);
-                    } else {
-                        return '';
-                    }
-                }
-            ],
-
-
-        //     ['attribute' => 'property_id',
-        //     'label' => 'Owner Name',
-        //    // 'width' => '200px',
-        //     'format' => 'raw',
-        //     //  'contentOptions'=>['style'=>'width: 200px;'],
-        //     'filter' => true,
-        //     'value' => function($data) {
-
-        //         $ownerid = common\models\Addproperty::find()->where(['id'=>$data->property_id])->one();
-
-        //         if (isset(\common\models\User::findOne($ownerid->user_id)->fullname)) {
-        //             $fullname = \common\models\User::findOne($ownerid->user_id)->fullname;
-        //             return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $ownerid->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
-        //                     'title' => Yii::t('yii', 'Click to View User details'),
-        //         ]);
-        //         } else {
-        //             return '';
+        // ['attribute' => 'user_id',
+        //         'label' => 'Client Name',
+        //        // 'width' => '200px',
+        //         'format' => 'raw',
+        //         //  'contentOptions'=>['style'=>'width: 200px;'],
+        //         'filter' => true,
+        //         'value' => function($data) {
+        //             if (isset(\common\models\User::findOne($data->user_id)->fullname)) {
+        //                 $fullname = \common\models\User::findOne($data->user_id)->fullname;
+        //                 return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $data->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+        //                         'title' => Yii::t('yii', 'Click to View User details'),
+        //             ]);
+        //             } else {
+        //                 return '';
+        //             }
         //         }
-        //     }
-        // ],
+        //     ],
 
 
-        ['attribute' => 'property_id',
-            'label' => 'Locality',
+            ['attribute' => 'property_id',
+            'label' => 'Owner & client Name',
            // 'width' => '200px',
             'format' => 'raw',
             //  'contentOptions'=>['style'=>'width: 200px;'],
             'filter' => true,
             'value' => function($data) {
 
+                $clientid = $data->brandid;
+                
+                if($clientid){
+
+
+                    if (isset(\common\models\User::findOne($clientid)->fullname)) {
+                        $fullname = \common\models\User::findOne($clientid)->fullname;
+                        return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $clientid . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+                                'title' => Yii::t('yii', 'Click to View User details'),
+                    ]);
+                    } else {                   
+                       
+                        return '';
+                    }
+
+                }else{
+
                 $ownerid = common\models\Addproperty::find()->where(['id'=>$data->property_id])->one();
 
-                return $ownerid->locality;
+                if (isset(\common\models\User::findOne($ownerid->user_id)->fullname)) {
+                    $fullname = \common\models\User::findOne($ownerid->user_id)->fullname;
+                    return Html::a('<button class="btn btn-default"    data-html="true"  style="border-color:white;border:1px solid;"  onclick = "showuser(' . $ownerid->user_id . ')">'. $fullname . '</button>', $url = 'javascript:void(0)', [
+                            'title' => Yii::t('yii', 'Click to View User details'),
+                ]);
+                } else {                   
+                   
+                    return '';
+                }
+
+               }
             }
         ],
 
-        
-
 
            ['attribute' => 'property_id',
-                            'label' => 'View All',
+                            'label' => 'Property ID',
                             'format' => 'raw',
                            // 'width' => '200px',
                             'filter' => false,
                             'value' => function($data) {
 
-                                $sector_name = $data->sector_name;
-                                $town_name = $data->town_name;
-                                return Html::a(' View all Owners','',['onclick' => "window.open ('".Url::toRoute(['reversebybrand', 
-                                'town_name' => $town_name,'sector_name' => $sector_name])."'); return false", 
-                                    'class' => 'btn btn-success center-block']);
+                              if($data->property_id){
+                                $propid = 273 * 179 - $data->property_id;
+                               return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->property_id.')">PR'.$propid.'</button>', $url = 'javascript:void(0)', [
+                                                'title' => Yii::t('yii', 'Click to View Property details'),
+                                    ]);
+                               }
                             }
                         ],
            // 'payable_amount',
-            // ['attribute' => 'payable_amount',
-            //                 'label' => 'Payable Amount',
-            //                 'format' => 'raw',
-            //                // 'width' => '230px',
-            //                 'value' => function($data) {
-            //                     return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
-            //                 }
-            //             ],
-            //  ['attribute' => 'client_owner_confirmation',
-            //                 'label' => 'Client Approval',
-            //                 'format' => 'raw',
-            //                 'width' => '230px',
-            //                 'value' => function($data) {
-            //                     return $data->client_owner_confirmation;
-            //                 }
-            //             ],                   
+            ['attribute' => 'payable_amount',
+                            'label' => 'Payable Amount',
+                            'format' => 'raw',
+                           // 'width' => '230px',
+                            'value' => function($data) {
+                                return $data->payable_amount . ' <i class="fa fa-inr" aria-hidden="true"></i>';
+                            }
+                        ],
+             ['attribute' => 'client_owner_confirmation',
+                            'label' => 'Client Approval',
+                            'format' => 'raw',
+                            'width' => '230px',
+                            'value' => function($data) {
+                                return $data->client_owner_confirmation;
+                            }
+                        ],                   
           //  'escrow_account_id',
             
-                    //        [ 'label' => 'Payment Status',
-                    //         'attribute' => 'payment_status',
-                    //         'filter' => false,
-                    //        // 'options' => ['style' => 'width:200px;'],
-                    //         'format' => 'raw',
-                    //         'value' => function($model) {
-                    //     if ($model->payment_status == 'pay_now') {
+                           [ 'label' => 'Payment Status',
+                            'attribute' => 'payment_status',
+                            'filter' => false,
+                           // 'options' => ['style' => 'width:200px;'],
+                            'format' => 'raw',
+                            'value' => function($model) {
+                        if ($model->payment_status == 'pay_now') {
 
-                    //         $ownerid = common\models\Addproperty::find()->where(['id'=>$model->property_id])->one();
-                    //         $emd = "'$ownerid->user_id'";
+                            $ownerid = common\models\Addproperty::find()->where(['id'=>$model->property_id])->one();
 
-                    //         $property_id = "'$model->user_id'";
-                    //         $uniqueid = "'$model->id'";
-                    //         $documentshow_id = "'$model->documentshow_id'";
-                    //         return Html::a('<button class="btn btn-warning"  style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $emd . ','.$property_id.','.$documentshow_id.','.$uniqueid.')">Pay Now</button>', $url = 'javascript:void(0)', [
-                    //                     'title' => Yii::t('yii', 'Click to Complete'),
-                    //         ]);
-                    //     } else if ($model->payment_status == 'pending') {
-                    //         return Html::a('<button class="btn btn-info" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
-                    //     } else if ($model->payment_status == 'paid') {
-                    //         return Html::a('<button class="btn btn-success" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
-                    //     } else {
-                    //         return Html::a('<button class="btn btn-success" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
-                    //     }
-                    // }
-                    //     ],
+                            if($model->brandid){
+
+                              $emd = "'$model->brandid'";
+                            }else{
+
+                          $emd = "'$ownerid->user_id'";
+
+                        }
+
+                            $property_id = "'$model->user_id'";
+                            $uniqueid = "'$model->id'";
+                            $documentshow_id = "'$model->documentshow_id'";
+                            return Html::a('<button class="btn btn-warning"  style="width:90px;border-color:white;border:1px solid;"  onclick = "paynowfunc(' . $emd . ','.$property_id.','.$documentshow_id.','.$uniqueid.')">Pay Now</button>', $url = 'javascript:void(0)', [
+                                        'title' => Yii::t('yii', 'Click to Complete'),
+                            ]);
+                        } else if ($model->payment_status == 'pending') {
+                            return Html::a('<button class="btn btn-info" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Pending</button>', $url = 'javascript:void(0)', []);
+                        } else if ($model->payment_status == 'paid') {
+                            return Html::a('<button class="btn btn-success" style="width:90px;border-color:white;border:1px solid;"   value = "10" >Paid</button>', $url = 'javascript:void(0)', []);
+                        } else {
+                            return Html::a('<button class="btn btn-success" style="width:90px; border-color:white;border:1px solid; background-color: #FF0000;"   value = "10" >Rejected</button>', $url = 'javascript:void(0)', []);
+                        }
+                    }
+                        ],
             // 'payment_status',
             // 'created_date',
             // 'updated_date',
             // 'status',
 
-          //  ['class' => 'yii\grid\ActionColumn'],
+           ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
                 <?php Pjax::end(); ?>
@@ -827,9 +837,6 @@ required
                 },
             });
         }
-
-
-        
 
 
 

@@ -75,16 +75,19 @@ $datas =  $dataProvider->query->all();
 								$brandid  =  $data->user_id; 
 								$payment_status  =  $data->payment_status;  
 								$emdid  =  $data->id;                
-								
+								$addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
+								$town_name = $addproperty->town_name;
+								$sector_name = $addproperty->sector_name;
+
                 $haritid = 273*179-$viewid;
 								$propsid = 'PR'. $haritid;
 								
-				$vrexist = \common\models\VrSetup::find()->where(['brandID' => $brandid])->andwhere(['auction_type' => 'reverse_auction'])->one();
+	$vrexist = \common\models\VrSetup::find()->where(['brandID' => $brandid])->andwhere(['town_name' => $town_name])->andwhere(['sector_name' => $sector_name])->andwhere(['auction_type' => 'reverse_auction'])->one();
 								$vrid = $vrexist->id;
 								$vridencode = base64_encode($vrid);
 							
                                 $ownerid = Yii::$app->user->identity->id; 
-                $addproperty = \common\models\Addproperty::find()->where(['id' => $viewid])->one();
+               
                 $user_id = $addproperty->user_id;
 
                   if($user_id == $ownerid){
@@ -132,7 +135,7 @@ $datas =  $dataProvider->query->all();
 										<a href="<?php echo Yii::$app->urlManager->createUrl(['common/bid']) ?>"  target="_blank" ><span class="building_name">Enter Auction</span></a>
 								<?php }else { ?>
 
-							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $viewid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
+							<a href="javascript:void(0)" onclick="emd_pay(<?php echo $emdid; ?>,<?php echo $vrid; ?>)" ><span class="building_name">Emd-details to pay</span></a>
 								<?php }  } else { ?>
 
 					<a href="javascript:void(0)"  ><span class="building_name">Auction Not set</span></a>

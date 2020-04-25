@@ -128,7 +128,7 @@ $auctiontype = $model->auction_type;
      if($auctiontype == 'forward_auction'){        
     $arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->propertyID,'isactive'=>1])->all();
     }else{
-    $arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->brandID,'isactive'=>1,'request_for'=>'reverse'])->all(); 
+    $arrgetbuyers = \common\models\RequestedBidingUsers::find()->where(['propertyID'=>$vrsetup->brandID,'town_name'=>$vrsetup->town_name,'sector_name'=>$vrsetup->sector_name,'isactive'=>1,'request_for'=>'reverse'])->all(); 
     }
     
     ?>

@@ -34,8 +34,8 @@ class RequestEmd extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'property_id', 'payable_amount', 'escrow_account_id', 'created_date', 'updated_date'], 'required'],
-            [['user_id', 'property_id', 'payable_amount', 'escrow_account_id', 'status'], 'integer'],
-            [['payment_status'], 'string'],
+            [['user_id', 'property_id','lessor_id','brandid', 'payable_amount', 'escrow_account_id', 'status'], 'integer'],
+            [['payment_status','town_name','sector_name'], 'string'],
             [['created_date', 'updated_date'], 'safe'],
         ];
     }

@@ -12,7 +12,7 @@ $this->title = 'Transactions';
 $this->params['breadcrumbs'][] = $this->title;
 
 $datas =  $dataProvider->getModels();
-//echo '<pre>';print_r($datas);die;
+// echo '<pre>';print_r($datas);die;
 
 ?>
 <style>
@@ -101,7 +101,10 @@ $datas =  $dataProvider->getModels();
 </style>
 
 <?php 
+
+
 foreach ($datas as $data){
+
     $loggedin=Yii::$app->user->identity->id;
 
 if($data['buyer_id'] == $loggedin){
@@ -132,7 +135,32 @@ if($data['buyer_id'] == $loggedin){
 
   
 
-   <?php  }  } ?>
+   <?php  } if($data['product_id'] == $loggedin){  ?>
+
+
+	<div class="container-fluid thanks_bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center success_msg">
+						<p><img src="https://anayarealm.com/success.svg" class="succes_img"></p>
+						<h1 class="mt-2">Thank you!</h1>
+						<p class="submision_p mt-2">Your Quotation is received and Your Account manager will contact you soon</p>
+						<div class="contact_us mt-2">
+							<div class="col-md-4 orange_clr text-right">You can reach us-</div>
+							<div class="col-md-4 white_clr"><span class=""><img src="https://anayarealm.com/phone.svg" width="20"></span> 6209-151515</div>
+							<div class="col-md-4 white_clr text-left"><span class=""><img src="https://anayarealm.com/email.svg" width="20"></span> enquiry@15bells.com</div>
+							<div class="white_clr more_properties col-md-12 mt-3">
+								Search more properties at <a href="https://www.15bells.com/" class="link_new">15bells</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+
+
+
+<?php  } }?>
 
 
  

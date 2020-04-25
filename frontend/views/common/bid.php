@@ -223,18 +223,48 @@ if ($AuctionParticipants) {
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
+           
             ['attribute' => 'vr_roomID',
                 'label' => 'Property Id',
                 'format' => 'raw',
                 'filter' => false,
                 'value' => function($data) {
+
+                    $auction_type =  \common\models\VrSetup::findOne($data->vr_roomID)->auction_type;
+
+                    if($auction_type == 'forward_auction'){
                     $property = \common\models\VrSetup::findOne($data->vr_roomID)->propertyID;
+                    
                     $propid = 273 * 179 - $property;
                     return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;"  onclick = "showpropdet(' . $property . ')">PR' . $propid . '</button>', $url = 'javascript:void(0)', [
                                 'title' => Yii::t('yii', 'Click to View Property details'),
                     ]);
+                   }
                 }
             ],
+
+
+            ['attribute' => 'vr_roomID',
+                'label' => 'Brand Name',
+                'format' => 'raw',
+                'filter' => false,
+                'value' => function($data) {
+
+                    $auction_type =  \common\models\VrSetup::findOne($data->vr_roomID)->auction_type;
+                    $brandID =  \common\models\VrSetup::findOne($data->vr_roomID)->brandID;
+
+                    if($auction_type == 'reverse_auction'){
+
+                    $property = \common\models\User::findOne($brandID)->fullname;
+                    
+                    return Html::a('<button class="btn btn-default"    data-html="true"  style="width:90px;border-color:white;border:1px solid;" >'.$property . '</button>', $url = 'javascript:void(0)', [
+                                'title' => Yii::t('yii', 'Click to View Property details'),
+                    ]);
+                   }
+                }
+            ],
+
+
             ['attribute' => 'vr_roomID',
                 'label' => 'Actions',
                 'format' => 'raw',
