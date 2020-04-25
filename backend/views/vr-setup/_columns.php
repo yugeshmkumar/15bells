@@ -38,6 +38,11 @@ return GridView::ROW_COLLAPSED;
 			}
 		}
     ],
+
+    
+
+
+
     [
          'class' => \common\grid\EnumColumn::className(),
         'attribute'=>'auction_type',
@@ -71,6 +76,26 @@ return GridView::ROW_COLLAPSED;
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'todatetime',
+    ],
+
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'todatetime',
+        'label'=>'VR Status',
+		'format'=>'raw',
+		'filter'=>false,
+		'label'=>'Result',
+		'value'=>function($data,$model){
+            date_default_timezone_set("Asia/Calcutta");
+            $date = date('Y-m-d H:i:s');
+
+			if($data->todatetime < $date){
+
+			return '<button  class="btn btn-success">VR Ended</button>';
+			}else {
+                return $data->todatetime;
+			}
+		}
     ],
 
     [
