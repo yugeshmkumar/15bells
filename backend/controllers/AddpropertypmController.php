@@ -45,7 +45,7 @@ class AddpropertypmController extends Controller
 		
 	}else if($assigndash->item_name == "sales_demand_buyer"){
 		
-		$this->layout="sales_demand_layout";		
+		$this->layout="sales_supply_layout";		
 	}
 else if($assigndash->item_name == "sales_supply_seller"){
 		
@@ -145,7 +145,11 @@ public function actionShowuserdetails(){
         $user_id = Yii::$app->user->identity->id;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $insert = \Yii::$app->db->createCommand()->insert('request_emd', ['documentshow_id' => $docshow, 'user_id' => $userid, 'property_id' => $propid, 'created_date' => $date])->execute();
+        $assigned_id = Yii::$app->user->identity->id;
+        $querys = \common\models\CompanyEmp::find()->where(['userid'=>$assigned_id])->one();
+        $assigned_ids = $querys->id;
+
+        $insert = \Yii::$app->db->createCommand()->insert('request_emd', ['documentshow_id' => $docshow, 'user_id' => $userid,'assigned_to_id'=>$assigned_ids, 'property_id' => $propid, 'created_date' => $date])->execute();
         if ($insert) {
             return 1;
         } else {
@@ -357,6 +361,11 @@ public function actionDocumentshow() {
                          $value = $getrq->request_status;
                          $requestid = \common\models\RequestSiteVisitbin::find()->where(['request_id' => $reqid])->one();
                          $user_id =  $requestid->user_id;
+                         $assigned_id = Yii::$app->user->identity->id;
+                         $querys = \common\models\CompanyEmp::find()->where(['userid'=>$assigned_id])->one();
+                         $assigned_ids = $querys->id;
+
+
                          $property_id =  $requestid->property_id;
                          $connection = Yii::$app->getDb();
                          $amt="select count(*) as counts from request_document_show where request_id=$reqid and user_id=$user_id";
@@ -365,7 +374,7 @@ public function actionDocumentshow() {
                         $result_chk = $command_get->queryAll();
                         if($result_chk[0]['counts'] <= 0 ){
 
-                         $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $reqid, 'user_id' => $user_id, 'property_id' => $property_id, 'created_date' => $date])->execute();
+                         $insert = \Yii::$app->db->createCommand()->insert('request_document_show', ['request_id' => $reqid, 'user_id' => $user_id,'assigned_to_id'=>$assigned_ids, 'property_id' => $property_id, 'created_date' => $date])->execute();
                         }
 
 

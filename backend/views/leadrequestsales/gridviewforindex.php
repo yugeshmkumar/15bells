@@ -234,12 +234,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         }else{
 
                             $getusers = \common\models\SaveSearches::findOne($data->product_id);
+                            
                             $names = $getusers->location_name;
 
                            // print_r($names);die;
                             $split = explode(',', $names,2);
                             
                              $name = $split[0];
+
+
                             if($data->role_id =='7'){
                 
                             return Html::a('<button class="btn btn-default"    data-html="true"  style="width:140px;border-color:white;border:1px solid;"  onclick = "showpropdet('.$data->role_id.','.$data->user_id.','.$data->product_id.','.$data->id.')">'.$name.'</button>', $url = 'javascript:void(0)', [

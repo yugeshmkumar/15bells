@@ -39,8 +39,8 @@ class SalesController extends Controller
     }
 	public function actionDemand()
     {
-       $this->layout = "sales_demand_layout";
-        return $this->render('demand');
+       $this->layout = "sales_supply_layout";
+        return $this->render('supply');
     }
 	public function actionSupply()
     {

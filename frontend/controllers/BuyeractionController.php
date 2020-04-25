@@ -2,18 +2,21 @@
 
 namespace frontend\controllers;
 
+
 use yii\web\Controller;
 use Yii;
 use common\models\Property;
 use common\models\MyExpectationsajax;
 use common\models\User;
+use frontend\models\UserForm;
+use frontend\models\search\UserSearch;
+use common\models\Addpropertypm;
 use common\models\Company;
 use common\models\Companynew;
 use common\models\CompanyEmp;
 use yii\web\Response;
 use yii\db\Query;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\helpers\HtmlPurifier;
 
 
@@ -72,12 +75,15 @@ class BuyeractionController extends Controller {
 
     public function actionSaveprop() {
 
-        
         $userid = Yii::$app->user->identity->id;
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         $hardam = $_POST['hardam'];
-       
+        $expectation_id = $_POST['expectation_id'];
+
+        $propuserids = Addpropertypm::find('user_id')->where(['id' => $hardam])->andwhere(['status' => 'approved'])->one();
+        $propuserid  =  $propuserids->user_id;
+
         $payments = \Yii::$app->db->createCommand("SELECT * FROM shortlistproperty where user_id='$userid' and property_id ='$hardam'")->queryAll();
 
 
@@ -89,9 +95,14 @@ class BuyeractionController extends Controller {
         } else {
 
             $insert1 = \Yii::$app->db->createCommand()->insert('shortlistproperty', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+            $request_id = Yii::$app->db->lastInsertID;
+            
+            $objlocation = \common\models\RequestSiteVisitbin::getsalesidshortlist($request_id,$userid,7,$propuserid,5);
+
             return '2';
         }
-    
+
+
     }
 
     public function actionSaveprop1($hardam, $userid) {
@@ -913,20 +924,24 @@ class BuyeractionController extends Controller {
         }
     }
 
+
+
     public function actionGetfreevisit() {
 
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
-        $hardam = $_POST['hardam'];
-        $rantime = $_POST['rantime'];
+         $hardam = $_POST['hardam'];
+         $rantime = $_POST['rantime'];
          $visitmode = $_POST['visitmode'];
-        $getexpectationID = $_POST['getexpectationID'];
-        if(Yii::$app->user->getIsGuest()){
+         //$getexpectationID = $_POST['getexpectationID'];
+         if(Yii::$app->user->getIsGuest()){
             return 'nouseractive';
         }else{
         $userid = Yii::$app->user->identity->id;
         $checkrole = \common\models\activemode::checkmyrole($userid);
-        $querys = new Query;
+        $propuserids = Addpropertypm::find('user_id')->where(['id' => $hardam])->andwhere(['status' => 'approved'])->one();
+        $propuserid  =  $propuserids->user_id;
+       $querys = new Query;
         $querys->select('COUNT(*) as newcount')
                 ->from('request_site_visit')
                 ->where(['property_id' => $hardam])
@@ -934,121 +949,140 @@ class BuyeractionController extends Controller {
 
         $commands = $querys->createCommand();
         $paymentsm = $commands->queryOne();
+       // echo '<pre>';print_r($paymentsm);die;
 
+
+       $querysd = new Query;
+        $querysd->select('COUNT(*) as newcountd')
+                ->from('user_view_properties')
+                ->where(['property_id' => $hardam])
+                ->andwhere(['user_id' => $userid]);
+
+        $commandsd = $querysd->createCommand();
+        $paymentsmd = $commandsd->queryOne();
+        
+        if ($paymentsmd['newcountd'] == 0) {
+            
+            $insert1 = \Yii::$app->db->createCommand()->insert('user_view_properties', ['user_id' => $userid, 'property_id' => $hardam, 'created_date' => $date])->execute();
+   
+           }
 
         if ($paymentsm['newcount'] == 0) {
+            //echo 'aya';die;
+
+        if ($checkrole->item_name == "Company_user") {
 
 
-            if ($checkrole->item_name == "Company_user") {
+            $model1 = CompanyEmp::find('companyid')->where(['userid' => $userid])->andwhere(['isactive' => '1'])->one();
+
+           $company_id = $model1->companyid;
+            
+
+            $model2 = Company::find('free_site_visit')->where(['id' => $company_id])->andwhere(['isactive' => '1'])->one();
+
+            $free_visit = $model2->free_site_visit;
+
+            $new_free_visit = $free_visit - 1;
 
 
-                $model1 = CompanyEmp::find('companyid')->where(['userid' => $userid])->andwhere(['isactive' => '1'])->one();
-
-                $company_id = $model1->companyid;
+            if ($free_visit > 0) {
 
 
-                $model2 = Company::find('free_site_visit')->where(['id' => $company_id])->andwhere(['isactive' => '1'])->one();
+                $model3 = Yii::$app->db->createCommand()->update('company', ['free_site_visit' => $new_free_visit], 'id = "' . $company_id . '"')->execute();
 
-                $free_visit = $model2->free_site_visit;
-
-                $new_free_visit = $free_visit - 1;
-
-
-                if ($free_visit > 0) {
-
-
-                    $model3 = Yii::$app->db->createCommand()->update('company', ['free_site_visit' => $new_free_visit], 'id = "' . $company_id . '"')->execute();
-
-                    $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
-                    $my_profile_progress_status->property_id = $hardam;
-                    $my_profile_progress_status->user_id = $userid;
-                    $my_profile_progress_status->process_name = 'site_visit_requested';
-                    $my_profile_progress_status->process_status = '100';
-                    $my_profile_progress_status->role_id = '7';
-                    $my_profile_progress_status->save();
+                $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                        $my_profile_progress_status->property_id = $hardam;
+                        $my_profile_progress_status->user_id = $userid;
+                        $my_profile_progress_status->process_name = 'site_visit_requested';
+                        $my_profile_progress_status->process_status = '100';
+                        $my_profile_progress_status->role_id = '7';
+                        $my_profile_progress_status->save();
 
 
 
-                    $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
-                    $request_id = Yii::$app->db->lastInsertID;
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'company_id' => $company_id, 'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-                    $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id, $userid, 7);
-                   
-                    return 1;
-                    
-                } else {
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,7,$propuserid,5);
 
-                    $model3 = Yii::$app->db->createCommand()->update('company', ['free_site_visit' => $new_free_visit], 'id = "' . $company_id . '"')->execute();
+return 1;
+            } else {
 
-                    $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
-                    $my_profile_progress_status->property_id = $hardam;
-                    $my_profile_progress_status->user_id = $userid;
-                    $my_profile_progress_status->process_name = 'site_visit_requested';
-                    $my_profile_progress_status->process_status = '100';
-                    $my_profile_progress_status->role_id = '7';
-                    $my_profile_progress_status->save();
+                $model3 = Yii::$app->db->createCommand()->update('company', ['free_site_visit' => $new_free_visit], 'id = "' . $company_id . '"')->execute();
 
-                    $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam, 'visit_type'=>$visitmode,'scheduled_time'=>$rantime,'company_id' => $company_id ,'created_date' => $date])->execute();
-                    $request_id = Yii::$app->db->lastInsertID;
+                $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                        $my_profile_progress_status->property_id = $hardam;
+                        $my_profile_progress_status->user_id = $userid;
+                        $my_profile_progress_status->process_name = 'site_visit_requested';
+                        $my_profile_progress_status->process_status = '100';
+                        $my_profile_progress_status->role_id = '4';
+                        $my_profile_progress_status->save();
 
-                    $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id, $userid, 7);
-                    return 2;
-                    
-                }
-            } else if ($checkrole->item_name == "user") {
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam, 'visit_type'=>$visitmode,'scheduled_time'=>$rantime,'company_id' => $company_id ,'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
 
-                $model2 = User::find('free_site_visit')->where(['id' => $userid])->andwhere(['status' => '1'])->one();
-
-                $free_visit = $model2->free_site_visit;
-
-                $new_free_visit = $free_visit - 1;
-
-
-                if ($free_visit > 0) {
-
-
-                    $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
-
-                    $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
-                    $my_profile_progress_status->property_id = $hardam;
-                    $my_profile_progress_status->user_id = $userid;
-                    $my_profile_progress_status->process_name = 'site_visit_requested';
-                    $my_profile_progress_status->process_status = '100';
-                    $my_profile_progress_status->role_id = '7';
-                    $my_profile_progress_status->save();
-
-                    $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam, 'visit_type'=>$visitmode,'scheduled_time'=>$rantime,'created_date' => $date])->execute();
-                    $request_id = Yii::$app->db->lastInsertID;
-
-                    $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id, $userid, 7);
-                    return 1;
-                    
-                } else {
-
-                    $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
-
-                    $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
-                    $my_profile_progress_status->property_id = $hardam;
-                    $my_profile_progress_status->user_id = $userid;
-                    $my_profile_progress_status->process_name = 'site_visit_requested';
-                    $my_profile_progress_status->process_status = '100';
-                    $my_profile_progress_status->role_id = '7';
-                    $my_profile_progress_status->save();
-
-                    $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
-                    $request_id = Yii::$app->db->lastInsertID;
-
-                    $objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisit($request_id, $userid, 7);
-                    return 2;
-                    
-                }
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,7,$propuserid,5);
+return 2;
             }
-        } else {
+        } else if ($checkrole->item_name == "user") {
 
-            return 5;
+            //echo $checkrole->item_name;die;
+
+            $model2 = User::find('free_site_visit')->where(['id' => $userid])->andwhere(['status' => '1'])->one();
+
+            $free_visit = $model2->free_site_visit;
+
+         $new_free_visit = $free_visit - 1;
+
+
+            if ($free_visit > 0) {
+
+
+                $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
+
+$my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                        $my_profile_progress_status->property_id = $hardam;
+                        $my_profile_progress_status->user_id = $userid;
+                        $my_profile_progress_status->process_name = 'site_visit_requested';
+                        $my_profile_progress_status->process_status = '100';
+                        $my_profile_progress_status->role_id = '4';
+                        $my_profile_progress_status->save();
+
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam, 'visit_type'=>$visitmode,'scheduled_time'=>$rantime,'created_date' => $date])->execute();
+                        $request_id = Yii::$app->db->lastInsertID;
+
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,7,$propuserid,5);
+return 1;
+            } else {
+
+                $model3 = Yii::$app->db->createCommand()->update('user', ['free_site_visit' => $new_free_visit], 'id = "' . $userid . '"')->execute();
+                
+               $my_profile_progress_status = new \common\models\MyProfileProgressStatus();
+                        $my_profile_progress_status->property_id = $hardam;
+                        $my_profile_progress_status->user_id = $userid;
+                        $my_profile_progress_status->process_name = 'site_visit_requested';
+                        $my_profile_progress_status->process_status = '100';
+                        $my_profile_progress_status->role_id = '4';
+                        $my_profile_progress_status->save();
+                       
+
+                        $trendingadd = \Yii::$app->db->createCommand()->insert('request_site_visit', ['user_id' => $userid, 'property_id' => $hardam,'visit_type'=>$visitmode,'scheduled_time'=>$rantime, 'created_date' => $date])->execute();
+                
+ 
+               $request_id = Yii::$app->db->lastInsertID;
+
+$objlocation = \common\models\RequestSiteVisitbin::getsalesidreqvisited($request_id,$userid,7,$propuserid,5);
+return 2;
+            }
         }
-     }
+        
+        }else{
+        
+            return 5;
+        
+         }
     }
+}
 
     public function actionMyexpectations($id) {
 

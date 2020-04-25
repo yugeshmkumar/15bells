@@ -27,7 +27,7 @@ class LeadrequestsalesController extends Controller
 		
 	}if($assigndash->item_name == "sales_demand_buyer"){
 		
-		$this->layout="sales_demand_layout";		
+		$this->layout="sales_supply_layout";		
 	}
 if($assigndash->item_name == "sales_supply_seller"){
 		

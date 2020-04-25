@@ -188,7 +188,7 @@ $bundle = BackendAsset::register($this);
                                    'items'=>[
                                     ['label'=>Yii::t('backend', 'EMD'), 'url'=>['/request-emd'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                                     ['label'=>Yii::t('backend', 'Forward'), 'url'=>['/request-emd/forward'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                    ['label'=>Yii::t('backend', 'Rverse'), 'url'=>['/request-emd/reverse'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', 'Reverse'), 'url'=>['/request-emd/reverse'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
 
                                     ]
                                 ],
