@@ -784,7 +784,7 @@ var txt=data +" Seconds Left";
             if(data == '1'){
              window.location.href='endbid?id=$pid';
              }else{
-                 alert('No rank assign')
+                window.location.href='endbid?id=$pid';
              }
 
          }
