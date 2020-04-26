@@ -108,7 +108,7 @@ return GridView::ROW_COLLAPSED;
             
 			if($data->auction_type == 'forward_auction'){
 
-			return '<button onclick="seeresultforward('.$data->id.')"   class="btn btn-success">Result VR Room</button>';
+			return '<button onclick="seeresultforward('.$data->productID.')"   class="btn btn-success">Result VR Room</button>';
 			}else {
                 return '<button onclick="seeresultreverse('.$data->id.','.$data->brandID.')"  class="btn btn-success">Result VR Room</button>';
 			}
