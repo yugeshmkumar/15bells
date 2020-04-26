@@ -370,7 +370,7 @@ $result = $command->query();
 union
 select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' group by buyer_id";
 */
-$sql="select max(bid_amount) as bidder,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' and product_id=$pid group by buyer_id";   
+$sql="select max(bid_amount) as bidder,t.product_id,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where (t.status='Approved' or t.status='Winner') and product_id=$pid group by t.buyer_id";   
 
 $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
 
@@ -865,6 +865,7 @@ public function actionDynamicrev() {
 
             if($vr_setup){
             $product = $vr_setup->brandID;
+            $reserved_price = $vr_setup->reserved_price;
             } else {
             $product =  1;
             }
@@ -921,14 +922,15 @@ public function actionDynamicrev() {
 
 
             $stat = $model->getuserstatusrev($product,$id);
-            if($stat==""){
+
+            if($stat=="" && $amt < $reserved_price){
             if($model->save())
             {
             return  "Bid Placed Successfully";
             }
             else
             {
-            return "Add Higher Bid";
+            return "Add Lower Bid";
             }
             }
 
@@ -939,7 +941,7 @@ public function actionDynamicrev() {
             $stat = $model->getuserstatusrev($product,$id);
             return "Bid Placed Successfully";
             } else {
-            return "Please add Higher Bid";
+            return "Please add Lower Bid";
             }
             } 
 

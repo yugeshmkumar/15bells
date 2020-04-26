@@ -91,11 +91,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $script = <<< JS
-$(document).ready(function() {
-    setInterval(function() {     
-     $.pjax.reload({container:'#m1'});
-    }, 2000); 
-});
+// $(document).ready(function() {
+//     setInterval(function() {     
+//      $.pjax.reload({container:'#m1'});
+//     }, 2000); 
+// });
 JS;
 $this->registerJs($script);
 ?>
