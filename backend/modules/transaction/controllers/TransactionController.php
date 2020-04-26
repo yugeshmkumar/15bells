@@ -474,8 +474,9 @@ $result = $command->query();
 }
 
     }
+    $sql = "select max(bid_amount) as bidder,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where  t.product_id=$pid group by t.buyer_id";   
 
- $sql = "select * from  (select * from ( select * from transaction order by bid_amount desc) as pub group by buyer_id order by bid_amount desc ) as tub   where product_id='$pid'";   
+//  $sql = "select * from  (select * from ( select * from transaction order by bid_amount desc) as pub group by buyer_id order by bid_amount desc ) as tub   where product_id='$pid'";   
 // $sql="select max(bid_amount) as bidder ,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";     
 //$sql="select max(t.bid_amount) as bidder,u.username,t.status from transaction t inner join user u on u.id=t.buyer_id where t.status='Winner' group by buyer_id
 //union
