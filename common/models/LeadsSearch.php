@@ -203,7 +203,7 @@ class LeadsSearch extends Leads
 
     $query = Leads::find()->join('LEFT OUTER JOIN','leadcurrentstatus','leadcurrentstatus.leadid = leads.id')
     ->join('LEFT OUTER JOIN','leadassignment','leadassignment.leadid = leads.id')
-    ->where('leadcurrentstatus.statusid =:sid and leadcurrentstatus.isactive =:actv and leadassignment.assigned_toID =:loginuserid and leads.move_to_alloted =:move and leads.role_id =:land or leads.role_id =:sell' ,array(':sid'=>$statusid ,':actv'=>1,':loginuserid'=>$emp->id,':move'=>2,':land'=>5,':sell'=>6))
+    ->where('leadcurrentstatus.statusid =:sid and leadcurrentstatus.isactive =:actv and leadassignment.assigned_toID =:loginuserid and leads.move_to_alloted =:move and (leads.role_id =:land or leads.role_id =:sell)' ,array(':sid'=>$statusid ,':actv'=>1,':loginuserid'=>$emp->id,':move'=>2,':land'=>5,':sell'=>6))
     ->orderBy([
         'id' => SORT_DESC        
       ]);
@@ -212,7 +212,7 @@ class LeadsSearch extends Leads
 
         $query = Leads::find()->join('LEFT OUTER JOIN','leadcurrentstatus','leadcurrentstatus.leadid = leads.id')
         ->join('LEFT OUTER JOIN','leadassignment','leadassignment.leadid = leads.id')
-        ->where('leadcurrentstatus.statusid =:sid and leadcurrentstatus.isactive =:actv and leadassignment.assigned_toID =:loginuserid and leads.move_to_alloted =:move and leads.role_id =:less or leads.role_id =:buy' ,array(':sid'=>$statusid ,':actv'=>1,':loginuserid'=>$emp->id,':move'=>2,':less'=>4,':buy'=>7))
+        ->where('leadcurrentstatus.statusid =:sid and leadcurrentstatus.isactive =:actv and leadassignment.assigned_toID =:loginuserid and leads.move_to_alloted =:move and (leads.role_id =:less or leads.role_id =:buy)' ,array(':sid'=>$statusid ,':actv'=>1,':loginuserid'=>$emp->id,':move'=>2,':less'=>4,':buy'=>7))
         ->orderBy([
             'id' => SORT_DESC        
           ]);
