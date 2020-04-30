@@ -483,7 +483,7 @@ label{color:#ffffff;font-weight:400;}
 			
 				<div class="row no_margn">
 					<div class="reserved_price text-center">
-						<p class="reserve_hed">Reserved Price</p>
+						<p class="reserve_hed">Starting Price</p>
 						<p id="current_price" class="reserv_price"> <?php $model->getMaxprice($pid);?></p>
 					</div>
 				</div>		

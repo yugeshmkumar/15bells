@@ -248,7 +248,9 @@ return $result['cid'];
         $command_get1 = $connection->createCommand($sql2);
         $result_chk1 = $command_get1->queryOne();
 
+        
         if($result_chk1['property_for'] == 'sale'){
+
                 $r_res1 = $result_chk1['expected_price'];
 
           }else{
@@ -256,10 +258,14 @@ return $result['cid'];
                 $r_res1 = $result_chk1['asking_rental_price'];
              }
 
+                $taxRate=20;
+                $tax=$r_res1*$taxRate/100;
+                $total=$r_res1-$tax;
+
 
         // $r_res1 = $result_chk1['bid_amount'];
 		
-		if($bid>$r_res1)
+		if($bid>$total)
 		{
        // return $r="Current Bid-".$bid;
             $data['text'] =  'Current Bid';
@@ -269,8 +275,8 @@ return $result['cid'];
 		}
 		else
 		{
-            $data['text'] =  'Reserved Price';
-            $data['price'] =  $r_res1;
+            $data['text'] =  'Starting Price';
+            $data['price'] =  $total;
             header('Content-Type: application/json');
             return json_encode($data,JSON_PRETTY_PRINT);
 
@@ -761,7 +767,8 @@ public function actionDynamicrev() {
     public function actionInsertajax() {
 
         $connection = Yii::$app->getDb();
-        $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+     
+        $vr_setup = \common\models\VrSetup::find()->where(['propertyID'=>$_GET['id']])->one();
         date_default_timezone_set("Asia/Calcutta");
         $date = date('Y-m-d H:i:s');
         
@@ -773,9 +780,11 @@ public function actionDynamicrev() {
         $model = new Transaction();
         //New Added
         $id=$_GET['id'];
+
         $last_approved_buyer= $model->Checkcontionousbid($product);
         $current=Yii::$app->user->identity->id;
-        if($last_approved_buyer==$current){
+
+        if($last_approved_buyer == $current){
         
         echo "You are the latest bidder";die;
         return false;
@@ -813,7 +822,11 @@ public function actionDynamicrev() {
         
         
         $stat = $model->getuserstatus($id);
+        
         if($stat==""){
+
+        $model->status = 'Approved';
+        $model->bid_date = $date;
         if($model->save())
         {
         return  "Bid Placed Successfully";
@@ -827,8 +840,12 @@ public function actionDynamicrev() {
         
         if ($stat == "Approved") {
         
+            $model->status = 'Approved';
+            $model->bid_date = $date;
         if ($model->save()) {
+
         $stat = $model->getuserstatus($id);
+
         return "Bid Placed Successfully";
         } else {
         return "Please add Higher Bid";
@@ -842,8 +859,12 @@ public function actionDynamicrev() {
         }
         
         
+        
         else {
         if ($amt > $max_db_bid) {
+
+            $model->status = 'Approved';
+            $model->bid_date = $date;
         $model->save();
         return "Bid Placed";
         }
