@@ -100,7 +100,7 @@ from
 
 select max(bid_amount) as bid_amount from transaction where product_id=$str and status='Approved'
 union all
-select max(expected_price) as bid_amount from addproperty where id=$str
+select max(reserved_price) as bid_amount from product_details where product_id=$str
 ) as p";
 
 }else{
@@ -110,7 +110,7 @@ from
 
 select max(bid_amount) as bid_amount from transaction where product_id=$str and status='Approved'
 union all
-select max(asking_rental_price) as bid_amount from addproperty where id=$str
+select max(reserved_price) as bid_amount from product_details where product_id=$str
 ) as p";
 }
 
