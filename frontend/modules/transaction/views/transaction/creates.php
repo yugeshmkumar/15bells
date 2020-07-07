@@ -32,7 +32,7 @@ if($vr_setup){
         die;
         }
 
-       echo  $pid = $vr_setup->propertyID;die;
+        $pid = $vr_setup->propertyID;
         $useridget = \common\models\Addproperty::find()->where(['id'=>$pid,'status'=>"approved"])->one();
        
 
