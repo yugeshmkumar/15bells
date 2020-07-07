@@ -87,7 +87,6 @@ if( $this->$attribute<=$r_res)
 
 	public function getMaxprice($str)
 	{
-      
 $connection = Yii::$app->getDb();
 $property_type = "select id,property_for from addproperty where id=$str";
 $command_get1 = $connection->createCommand($property_type);
@@ -114,7 +113,7 @@ union all
 select max(reserved_price) as bid_amount from product_details where product_id=$str
 ) as p";
 }
-echo $amt;die;
+
 $command_get = $connection->createCommand($amt);
 $result_chk = $command_get->queryOne();
 return $r_res=$result_chk['bid_amount'];

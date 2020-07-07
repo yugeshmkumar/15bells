@@ -230,7 +230,7 @@ return $result['cid'];
          $connection = Yii::$app->getDb();
 
         $time = date("Y-m-d H:i:s");
-     $vr_setup = \common\models\VrSetup::find()->where(['id'=>$_GET['id']])->one();
+     $vr_setup = \common\models\VrSetup::find()->where(['propertyID'=>$_GET['id']])->one();
 		 if($vr_setup){
            //$product = $vr_setup->propertyID;
              
