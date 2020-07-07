@@ -265,7 +265,7 @@ return $result['cid'];
 
         // $r_res1 = $result_chk1['bid_amount'];
 		
-		if($bid>$total)
+		if($bid>$r_res1)
 		{
        // return $r="Current Bid-".$bid;
             $data['text'] =  'Current Bid';
@@ -276,7 +276,7 @@ return $result['cid'];
 		else
 		{
             $data['text'] =  'Starting Price';
-            $data['price'] =  $total;
+            $data['price'] =  $r_res1;
             header('Content-Type: application/json');
             return json_encode($data,JSON_PRETTY_PRINT);
 
