@@ -87,6 +87,7 @@ if( $this->$attribute<=$r_res)
 
 	public function getMaxprice($str)
 	{
+        alert($str);
 $connection = Yii::$app->getDb();
 $property_type = "select id,property_for from addproperty where id=$str";
 $command_get1 = $connection->createCommand($property_type);
