@@ -24,7 +24,12 @@ use kartik\widgets\Growl;
 		$VrSetuptest->secret_code = rand(0100,9999);
 		$VrSetuptest->save();
 		$checkproperty = \common\models\Addpropertyforbid::find()->where(['id'=>$VrSetuptest->propertyID])->one();
-	$ProductDetails = new \backend\modules\transaction\models\ProductDetails();
+    $ProductDetails = new \backend\modules\transaction\models\ProductDetails();
+    $owner_id = $checkproperty->user_id;
+    $link  =     Yii::getAlias('@frontendUrl').'/common/bid';
+    date_default_timezone_set("Asia/Calcutta");
+                $date = date('Y-m-d H:i:s');
+
 	if($checkproperty->property_for == "rent"){
 		$ProductDetails->reserved_price=$checkproperty->asking_rental_price;
 	
@@ -33,7 +38,12 @@ use kartik\widgets\Growl;
 	
 	}
 	$ProductDetails->product_id=$VrSetuptest->propertyID;
-	$ProductDetails->save();
+    $ProductDetails->save();
+
+    $trendingadd = \Yii::$app->db->createCommand()->insert('notifications', ['item_name' => 'Auction Link', 'item_id' => $owner_id, 'link' => $link, 'description'=>'Your Link to enter into the Auction room','date' => $date])->execute();
+
+    
+
 
 echo Growl::widget([
     'type' => Growl::TYPE_SUCCESS,

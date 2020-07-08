@@ -118,7 +118,7 @@ class CommercialofficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces','1333','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -176,7 +176,7 @@ class CommercialofficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-delhi','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-delhi','1333','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -312,7 +312,7 @@ class CommercialofficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-noida','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-noida','1333','',$description,'$date')")->execute();
            
                 if($payments){
 
@@ -446,7 +446,7 @@ class CommercialofficespacesController extends \yii\web\Controller
             if($model->save()){
 
                 
-                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-gurugram','1061','',$description,'$date')")->execute();
+                $payments = \Yii::$app->db->createCommand("Insert into notifications (item_name,item_id,link,description,date) values ('office-spaces-gurugram','1333','',$description,'$date')")->execute();
            
                 if($payments){
 
