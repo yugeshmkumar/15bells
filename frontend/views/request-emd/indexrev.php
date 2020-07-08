@@ -800,8 +800,8 @@ required
 $("#emd_details-utr_date").datepicker({
     changeMonth: true,
     changeYear: true,
-    dateFormat: 'yy-mm-dd',
-     minDate: 1 // set the minDate to the today's date
+    dateFormat: 'yy-mm-dd'
+     //minDate: 1 // set the minDate to the today's date
     // you can add other options here
 });
 
