@@ -791,7 +791,20 @@ required
 
     </div>
     </div>
+
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
 <script>
+
+$("#emd_details-utr_date").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd',
+     minDate: 1 // set the minDate to the today's date
+    // you can add other options here
+});
+
 var updateemdid = '';
 
   function emd_process(id,propid){
