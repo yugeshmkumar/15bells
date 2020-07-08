@@ -132,7 +132,7 @@ if($assigndash->item_name == "sales_supply_lessor"){
 			$insertparticipants->assigned_time=$VrSetuptest->fromdatetime;
 			$insertparticipants->unassigned_time=$VrSetuptest->todatetime;
 			$insertparticipants->partcipantID = $buyers;
-			$insertparticipants->checkotp= rand(111,2333);
+			$insertparticipants->checkotp= rand(1111,2333);
 			$insertparticipants->save();
 			}
 		}
