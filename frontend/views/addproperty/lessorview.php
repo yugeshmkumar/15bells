@@ -383,7 +383,9 @@ $.ajax({
 
 $('.buyproperty').click(function(){
 
+
 var buttonid =  $(this).attr('id');
+alert(buttonid);
 if(buttonid == 'useryes' || buttonid == 'userno'){
 
           $.ajax({
