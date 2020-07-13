@@ -115,6 +115,140 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 
 	</section>
 
+<!--  What makes us Different  -->
+
+<div class="container-fluid no_pad hidden-xs hidden-sm">
+	
+		<div class="row difference_steps">
+			<div class="col-md-6 no_pad">
+				<div class="row difrnt_clr padd_h">
+					<h6 class="trans_head_b">What makes us<br>Different</h6>
+					<div class="col-md-10 differnt_nam">
+						<ul class="diffrnt_hed">
+							<li class="trst_act active"><a class="trst_trns trust_clck" href="javascript:void(0)">Trust</a></li>
+							<li class="trans_act"><a class="trst_trns trans_clck" href="javascript:void(0)">Transparency</a></li>
+						</ul>
+					</div>
+					<div class="col-md-2 text-right no_pad">
+					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dot.png';  ?>">
+					</div>
+				</div>
+				<div class="row padd_h">
+					<div class="col-md-10">
+						<ul class="diffrnt_hed time_hed">
+							<li class="time_act"><a class="trst_trns tim_clck" href="javascript:void(0)">Time</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 no_pad steps_aa">
+				<div class="row">
+					<div class="col-md-12 greeen_bg trust_contnt div_time animated slideInUp">
+						<ul class="steps_list">
+							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial properties in India.</li>
+							<li class="trans_steps">At 15 bells all the property owners and buyers are trusted and 100% verified.</li>
+							<li class="trans_steps">The listings on our commercial real estate platform , undergoes "in-person verification" by the team.</li>
+						</ul>
+					</div>
+					<div class="col-md-12 greeen_bg div_trnsp animated slideInUp" style="display:none;">
+						<ul class="steps_list">
+							<li class="trans_steps">At 15 Bells it takes only 15 Hours to close your Commercial Real Estate Transaction through it's online and real-time trading technology.</li>
+							<li class="trans_steps">Be it a commercial building, commercial rentals, or any commercial real estate project - 15 Bells helps you locate properties of interest which are world-class properties and a Right Match for you.  </li>
+							<li class="trans_steps">15 Bells is in charge of the Digital revolution in bringing the real-time conventional real estate space. Assuring the most-trusted & convenient Digital Platform where the Real Estate property trading is taken to a next revolution </li>
+						</ul>
+					</div>
+					<div class="col-md-12 greeen_bg contn_time animated slideInUp" style="display:none;">
+						<ul class="steps_list">
+							<li class="trans_steps">We are not just a property listing portal, but a real-time commercial properties platform where buyers meet sellers.     </li>
+							<li class="trans_steps">Creating the largest marketplace where you can find the Best commercial properties in India.  </li>
+							<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	
+	
+</div>
+
+<div class="container-fluid no_pad hidden-lg hidden-md">
+	<div class="row difference_steps">
+		<div class="col-md-12">
+			<div class="row">
+				<h5 class="trans_head_b">What makes us<br>Different</h5>
+			</div>
+			<div class="row different_steps">
+				<div class="panel-group our_plus" id="accordion" role="tablist" aria-multiselectable="true">
+
+					<div class="panel panel-default plus_points">
+						<div class="panel-heading color_change" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									<i class="more-less glyphicon glyphicon-plus"></i>
+									Trust
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								  <ul class="steps_list">
+									<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial property in Gurgaon.</li>
+									<li class="trans_steps">At 15 bells all the property owners are trusted and 100% verified with authorized users.</li>
+									<li class="trans_steps">The properties listed on our commercial property site, undergo "in-person verification" by the team.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default plus_points">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									<i class="more-less glyphicon glyphicon-plus"></i>
+									Transparency
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+							<div class="panel-body">
+								<ul class="steps_list">
+									<li class="trans_steps">At 15 Bells it takes only 15 Hours to close your Commercial Real Estate Transaction through it's online and real-time trading technology.</li>
+									<li class="trans_steps">Be it a commercial building, commercial rentals, or any commercial real estate project - 15 Bells helps you locate properties of interest which are world-class properties and a Right Match for you.  </li>
+									<li class="trans_steps">15 Bells is in charge of the Digital revolution in bringing the real-time conventional real estate space. Assuring the most-trusted & convenient Digital Platform where the Real Estate property trading is taken to a next revolution </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default plus_points">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									<i class="more-less glyphicon glyphicon-plus"></i>
+									Time
+								</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+							<div class="panel-body">
+								<ul class="steps_list">
+									<li class="trans_steps">We are not just a property listing portal, but a real-time virtual platform where buyers meet sellers.     </li>
+									<li class="trans_steps">Creating the largest marketplace where you can get the Best commercial properties for sale in Gurgaon.  </li>
+									<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div><!-- panel-group -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Section Ends -->
+
 <!--Transaction types Section-->
 <div class="container-fluid transac_banner">
 	<div class="container">
@@ -666,135 +800,6 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 </div>
 </div>
 
-<div class="container-fluid no_pad hidden-xs hidden-sm">
-	
-		<div class="row difference_steps">
-			<div class="col-md-6 no_pad">
-				<div class="row difrnt_clr padd_h">
-					<h6 class="trans_head_b">What makes us<br>Different</h6>
-					<div class="col-md-10 differnt_nam">
-						<ul class="diffrnt_hed">
-							<li class="trst_act active"><a class="trst_trns trust_clck" href="javascript:void(0)">Trust</a></li>
-							<li class="trans_act"><a class="trst_trns trans_clck" href="javascript:void(0)">Transparency</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 text-right no_pad">
-					<img alt="" src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dot.png';  ?>">
-					</div>
-				</div>
-				<div class="row padd_h">
-					<div class="col-md-10">
-						<ul class="diffrnt_hed time_hed">
-							<li class="time_act"><a class="trst_trns tim_clck" href="javascript:void(0)">Time</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 no_pad steps_aa">
-				<div class="row">
-					<div class="col-md-12 greeen_bg trust_contnt div_time animated slideInUp">
-						<ul class="steps_list">
-							<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial properties in India.</li>
-							<li class="trans_steps">At 15 bells all the property owners and buyers are trusted and 100% verified.</li>
-							<li class="trans_steps">The listings on our commercial real estate platform , undergoes "in-person verification" by the team.</li>
-						</ul>
-					</div>
-					<div class="col-md-12 greeen_bg div_trnsp animated slideInUp" style="display:none;">
-						<ul class="steps_list">
-							<li class="trans_steps">At 15 Bells it takes only 15 Hours to close your Commercial Real Estate Transaction through it's online and real-time trading technology.</li>
-							<li class="trans_steps">Be it a commercial building, commercial rentals, or any commercial real estate project - 15 Bells helps you locate properties of interest which are world-class properties and a Right Match for you.  </li>
-							<li class="trans_steps">15 Bells is in charge of the Digital revolution in bringing the real-time conventional real estate space. Assuring the most-trusted & convenient Digital Platform where the Real Estate property trading is taken to a next revolution </li>
-						</ul>
-					</div>
-					<div class="col-md-12 greeen_bg contn_time animated slideInUp" style="display:none;">
-						<ul class="steps_list">
-							<li class="trans_steps">We are not just a property listing portal, but a real-time commercial properties platform where buyers meet sellers.     </li>
-							<li class="trans_steps">Creating the largest marketplace where you can find the Best commercial properties in India.  </li>
-							<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	
-	
-</div>
-
-<div class="container-fluid no_pad hidden-lg hidden-md">
-	<div class="row difference_steps">
-		<div class="col-md-12">
-			<div class="row">
-				<h5 class="trans_head_b">What makes us<br>Different</h5>
-			</div>
-			<div class="row different_steps">
-				<div class="panel-group our_plus" id="accordion" role="tablist" aria-multiselectable="true">
-
-					<div class="panel panel-default plus_points">
-						<div class="panel-heading color_change" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									<i class="more-less glyphicon glyphicon-plus"></i>
-									Trust
-								</a>
-							</h4>
-						</div>
-						<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">
-								  <ul class="steps_list">
-									<li class="trans_steps">Creating the largest marketplace with a trusted platform for commercial property in Gurgaon.</li>
-									<li class="trans_steps">At 15 bells all the property owners are trusted and 100% verified with authorized users.</li>
-									<li class="trans_steps">The properties listed on our commercial property site, undergo "in-person verification" by the team.</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="panel panel-default plus_points">
-						<div class="panel-heading" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									<i class="more-less glyphicon glyphicon-plus"></i>
-									Transparency
-								</a>
-							</h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body">
-								<ul class="steps_list">
-									<li class="trans_steps">At 15 Bells it takes only 15 Hours to close your Commercial Real Estate Transaction through it's online and real-time trading technology.</li>
-									<li class="trans_steps">Be it a commercial building, commercial rentals, or any commercial real estate project - 15 Bells helps you locate properties of interest which are world-class properties and a Right Match for you.  </li>
-									<li class="trans_steps">15 Bells is in charge of the Digital revolution in bringing the real-time conventional real estate space. Assuring the most-trusted & convenient Digital Platform where the Real Estate property trading is taken to a next revolution </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="panel panel-default plus_points">
-						<div class="panel-heading" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									<i class="more-less glyphicon glyphicon-plus"></i>
-									Time
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body">
-								<ul class="steps_list">
-									<li class="trans_steps">We are not just a property listing portal, but a real-time virtual platform where buyers meet sellers.     </li>
-									<li class="trans_steps">Creating the largest marketplace where you can get the Best commercial properties for sale in Gurgaon.  </li>
-									<li class="trans_steps">15 Bells with it’s patented technology bring innovation at every getting Buyers, Sellers, lessor, and Lessee on one portal with the most transparent proptech company ever.  </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div><!-- panel-group -->
-			</div>
-		</div>
-	</div>
-</div>
 
 
 <div class="container-fluid featured_section">
