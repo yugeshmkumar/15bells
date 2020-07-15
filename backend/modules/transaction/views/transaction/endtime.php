@@ -59,9 +59,21 @@ CrudAsset::register($this);
 
 <script>
 
-function mybidfunct(str){
-	var win = window.open('<?php echo yii::$app->urlManager->createUrl(['transaction/transaction/']) ?>?id='+str+'&t_id=na', '_blank');
-  win.focus();
+function mybidfunct(str,trans){
+   
+    $.ajax({
+               type: "POST",
+               url: 'dealclose',
+               data: {prod_id:str,trans_id: trans},
+               success: function (data) {  
+                                                             
+                if(data == '1'){
+                   toastr.success('Successfully saved visit type', 'success'); 
+                 }else{
+                   toastr.error('Some Internal Error', 'error'); 
+                 }
+               }
+   });
 }
 
 
