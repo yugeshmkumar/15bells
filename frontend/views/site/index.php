@@ -122,7 +122,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 		<div class="row difference_steps">
 			<div class="col-md-6 no_pad">
 				<div class="row difrnt_clr padd_h">
-					<h6 class="trans_head_b">What makes us<br>Different</h6>
+					<h6 class="trans_head_b">Our Core<br>Values</h6>
 					<div class="col-md-10 differnt_nam">
 						<ul class="diffrnt_hed">
 							<li class="trst_act active"><a class="trst_trns trust_clck" href="javascript:void(0)">Trust</a></li>
@@ -176,7 +176,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => 'https://www.15bells.com
 	<div class="row difference_steps">
 		<div class="col-md-12">
 			<div class="row">
-				<h5 class="trans_head_b">What makes us<br>Different</h5>
+				<h5 class="trans_head_b">Our Core<br>Values</h5>
 			</div>
 			<div class="row different_steps">
 				<div class="panel-group our_plus" id="accordion" role="tablist" aria-multiselectable="true">
