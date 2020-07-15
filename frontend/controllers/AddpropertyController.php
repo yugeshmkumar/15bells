@@ -46,7 +46,7 @@ class AddpropertyController extends Controller
                     [
                         'actions' => ['sitevisit','index','creategrouplessor','deleteimage','getpropstatus','lessor','view','sellor','sellorview','lesview','viewsearch','viewmy','views','searchview','getuserids','emdpay',
 'getbiduserids','getsiteuserids','getexpectationdata','showpropdetails','create','creates','additional','additionals','fileupload',
-'fileuploads','documents','documentss','upload_avatar','update','savelessor','requestaccess','setforauction','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
+'fileuploads','documents','closesellor','closelessor','documentss','upload_avatar','update','savelessor','requestaccess','setforauction','unpublish','updatenew','savepropertydetails','saveseller','sitemapview','updateinsellor','getexpectationdatalessor','setbrandcount','setbrandcountb','transaction','updateinlessor','updateb','showdocuments','showdocumentsl','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -140,6 +140,33 @@ class AddpropertyController extends Controller
         ]);
     }
 
+    public function actionClosesellor()
+    {
+
+        
+        $this->layout = "dashboard";
+        $searchModel = new AddpropertySearch();
+        $dataProvider = $searchModel->searchs(Yii::$app->request->queryParams);
+
+        return $this->render('closeseller', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionCloselessor()
+    {
+
+        
+        $this->layout = "dashboard";
+        $searchModel = new AddpropertySearch();
+        $dataProvider = $searchModel->searchs(Yii::$app->request->queryParams);
+
+        return $this->render('closelessor', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     /**
      * Displays a single Addproperty model.
      * @param integer $id
