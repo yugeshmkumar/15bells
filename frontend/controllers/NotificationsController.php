@@ -63,7 +63,7 @@ class NotificationsController extends \yii\web\Controller
     // $message = urlencode("Your Verification Code is ".$activation."");
 
         //Define route 
-        $route = 4;
+        $route = 1;
 
         $curl = curl_init();
 
