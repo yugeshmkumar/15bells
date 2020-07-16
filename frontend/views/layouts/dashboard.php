@@ -158,9 +158,11 @@ $myprofile = \common\models\Myprofile::find()->where(['userID' => $userid])->one
 <li class="seller"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/sellor']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17"> Manage Properties</a></li>
 <li  class="seller"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/sellorview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 
+<li class="seller"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/closesellor']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17"> Closed Properties</a></li>
 
 
 <li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lessor']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17"> Manage Properties</a></li>
+<li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/closelessor']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Manage Properties.svg';  ?>" width="17"> Closed Lessor</a></li>
 					<li  class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['addproperty/lesview']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Site Visit.svg';  ?>" width="17"> Site Visits</a></li>
 					<li class="lessor"><a href="<?php echo Yii::$app->urlManager->createUrl(['request-emd/indexrev']) ?>"><img src="<?= Yii::getAlias('@frontendUrl').'/newimg/img/dash/Invoice_Icon.svg';  ?>" width="17" >Auction</a></li>
 
