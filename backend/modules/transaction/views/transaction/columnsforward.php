@@ -1,6 +1,8 @@
 
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
+
 use kartik\grid\GridView;
 $arrlist = ['forward_auction','reverse_auction','instant']; 
 
@@ -15,6 +17,11 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'end_rank',
     ],
+
+
+   
+
+    
  
 //    [
 
@@ -82,6 +89,33 @@ return [
             'class'=>'\kartik\grid\DataColumn',
             'attribute'=>'status',
      ],
+
+     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id',
+		'format'=>'raw',
+		'filter'=>false,
+		'label'=>'Close deal',
+		'value'=>function($model){
+			$prodid = $model['product_id'];
+			$transid = $model['id'];
+			return '<a id="pulsate-regular" onclick=mybidfunct('.$prodid.','.$transid.');> <button class="btn btn-info">Close Deal</button></a>';
+
+		}
+    ]
+
+    // [
+    //         'label' => 'Remarks',
+    //         'attribute' => 'id',
+    //         'filter' => false,
+    //         'options' => ['style' => 'width:100px;'],
+    //         'format' => 'raw',
+    //         'value' => function($model) {
+    
+    //             return Html::a('<button class="btn btn-success" style="border-color:#0fd8da !important;border:1px solid;" onclick="viewdocs('.$model->id.')" >Remarks</button>', $url = 'javascript:void(0)', []);
+    
+    //           }
+    //     ]
 
 ];
 // return [

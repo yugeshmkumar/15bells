@@ -38,7 +38,7 @@ class TransactionController extends Controller {
                     [
                         'actions' => ['logout', 'update', 'index','indexrev', 'create', 'view', 'delete', 'virtual', 
                             'bid','bidrev', 'insertajax', 'grid', 'endbid', 'endbidrev','changestatus', 'time', 'showamount', 
-                            'checkstatus', 'showamount1', 'seller', 'maxbidders','maxbiddersrev', 'minraise', 'starttime','ajaxtime','test','test1','test1rev','getactiveuser','getactiveuserrev','chat','chatrev','dynamic','dynamicrev','winnerscreen','notificationtime','notificationtimerev','deltrans','customsoundgrid','deleteuser'],
+                            'checkstatus', 'showamount1', 'dealclose','seller', 'maxbidders','maxbiddersrev', 'minraise', 'starttime','ajaxtime','test','test1','test1rev','getactiveuser','getactiveuserrev','chat','chatrev','dynamic','dynamicrev','winnerscreen','notificationtime','notificationtimerev','deltrans','customsoundgrid','deleteuser'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -474,7 +474,7 @@ $result = $command->query();
 }
 
     }
-    $sql = "select max(bid_amount) as bidder,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where  t.product_id=$pid group by t.buyer_id";   
+    $sql = "select max(bid_amount) as bidder,t.id,t.product_id,t.end_rank,t.buyer_id,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where  t.product_id=$pid group by t.buyer_id";   
 
 //  $sql = "select * from  (select * from ( select * from transaction order by bid_amount desc) as pub group by buyer_id order by bid_amount desc ) as tub   where product_id='$pid'";   
 // $sql="select max(bid_amount) as bidder ,t.status,t.bid_date,u.username from transaction t inner join user u on u.id=t.buyer_id where t.status='Approved' or t.status='Winner' group by buyer_id";     
@@ -488,6 +488,37 @@ $dataProvider = new SqlDataProvider([ 'sql' => $sql]);
   return $this->render('endtime', [
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function actionDealclose(){
+       
+        $prod_id =  $_POST['prod_id'];
+        $trans_id =  $_POST['trans_id'];
+
+        $user_id = Yii::$app->user->identity->id;
+        date_default_timezone_set("Asia/Calcutta");
+        $date = date('Y-m-d H:i:s');
+
+        $getvrid = Transaction::find()->where(['id'=>$trans_id])->one();       
+        $finduser = \common\models\VrSetup::find()->where(['propertyID' => $prod_id])->one();
+        $findowner = \common\models\Addpropertypm::find()->where(['id' => $prod_id])->one();
+
+       $findownerid     =       $findowner->user_id;
+       $lessee_buyer_id =       $getvrid->buyer_id;
+       $vr_id           =       $finduser->id;
+       $auction_type    =       $finduser->auction_type;
+
+       if($findownerid && $lessee_buyer_id && $vr_id){
+
+       $trendingadd = \Yii::$app->db->createCommand()->insert('VR_Win', ['vr_id' => $vr_id, 'prop_id' => $prod_id, 'lesse_buyer_id' => $lessee_buyer_id,'lessor_seller_id'=> $findownerid, 'auction_type'=>$auction_type,'created_date' => $date])->execute();
+
+       if($trendingadd){
+           return 1;
+       }
+    }
+
+
     }
 
 
