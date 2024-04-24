@@ -94,7 +94,7 @@ class CompanyEmpbController extends Controller
 		    $user = new \common\models\User();
 			$user->username = $model->employee_number;
 			$user->fullname = $model->name;
-            $user->email = $model->email;
+            $user->email = $model->employee_email;
 			$user->countrycode = '91';
             $user->setPassword($model->employee_number);
             $user->status = 1;

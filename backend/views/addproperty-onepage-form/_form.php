@@ -256,8 +256,16 @@ label{
                 <div class="col-md-3">
                 <?= $form->field($model, 'security_negotiable')->textInput(['class' => 'form-control'])?>
                 </div>
-               
-                
+
+            <div class="col-md-3">
+                <?= $form->field($model, 'customer_interested')->dropDownList([ 'yes' => 'Yes', 'no' => 'No',], [ 'class' => 'one_inpt form-control'])?>
+            </div>
+            <div class="col-md-3">
+                <?= $form->field($model, 'bought_from')->textInput(['class' => 'form-control'])?>
+            </div>
+            <div class="col-md-3">
+                <?= $form->field($model, 'bought_year')->textInput(['class' => 'form-control'])?>
+            </div>
              
                
                

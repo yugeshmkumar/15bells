@@ -515,11 +515,16 @@ class AddpropertyOnepageFormSearch extends AddpropertyOnepageForm
     {
 
         $user_id = Yii::$app->user->identity->id;
-        $querys = CompanyEmp::find()->where(['userid'=>$user_id])->one();
-        $assigned_id = $querys->id;
-        $query = AddpropertyOnepageForm::find()->Where(['isactive'=>2]);
+        $query = AddpropertyOnepageForm::find()
+            ->select([
+                'addproperty_onepage_form.*',
+                'company_emp.role_id',
+            ])
+            ->leftJoin('company_emp', 'addproperty_onepage_form.company_employee_id = company_emp.id')
+            ->where(['addproperty_onepage_form.isactive' => [0, 1, 2, 3, 4]])
+            ->andWhere(['company_emp.userid' => $user_id]);
 
-        //echo '<pre>';print_r($query);die;
+//        echo '<pre>';print_r($query);die;
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

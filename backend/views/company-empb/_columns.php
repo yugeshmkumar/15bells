@@ -45,7 +45,7 @@ return [
      [
          'class'=>'\kartik\grid\DataColumn',
 		 'width'=>'250px',
-         'attribute'=>'email',
+         'attribute'=>'employee_email',
      ],
     [
         'class'=>'\kartik\grid\DataColumn',

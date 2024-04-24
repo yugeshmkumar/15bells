@@ -15,7 +15,7 @@ use Yii;
  * @property integer $role_id
  * @property integer $employee_typeID
  * @property integer $department_ID
- * @property string $email
+ * @property string $employee_email
  * @property string $employee_number
  * @property string $designation
  * @property integer $managerID
@@ -39,10 +39,10 @@ class CompanyEmpb extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'designation','email','employee_number'], 'required'],
+            [['name', 'designation','employee_email','employee_number'], 'required'],
             [['userid', 'companyid', 'userprofile_exID', 'userprofileID', 'employee_typeID', 'department_ID', 'managerID', 'isactive'], 'integer'],
             [['designation','location'], 'string'],
-			 ['email', 'unique',
+			 ['employee_email', 'unique',
                 'targetClass'=> '\common\models\User',
                 'message' => Yii::t('frontend', 'This email address has already been taken.')
             ],
@@ -67,7 +67,7 @@ class CompanyEmpb extends \yii\db\ActiveRecord
 			'location'=>'location',
             'employee_typeID' => 'Employee Type',
             'department_ID' => 'Department',
-            'email' => 'Employee Email',
+            'employee_email' => 'Employee Email',
             'employee_number' => 'Employee Number',
             'designation' => 'Designation',
             'managerID' => 'Manager',
