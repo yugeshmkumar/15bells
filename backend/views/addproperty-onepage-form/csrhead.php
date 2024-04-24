@@ -234,7 +234,6 @@ CrudAsset::register($this);
 
 function assigncsr(id){
 
-
     var crmid = id;
 
      $.ajax({
@@ -257,7 +256,51 @@ function assigncsr(id){
 
 
 }
-    
+
+function assigntl(id){
+    alert('hello');
+    var crmid = id;
+
+    $.ajax({
+        type: "POST",
+        url: 'reassign-tl',
+        data: {crmid:crmid},
+        //dataType: 'json',
+        success: function (data) {
+
+            if(data == '1'){
+                toastr.success('Successfully sent', 'success');
+            }else{
+                toastr.error('Some Internal Error', 'error');
+            }
+
+            $.pjax({container: '#crud-datatable-pjax'})
+        }
+    });
+}
+
+function assignagent(id, agentid){
+    // alert(id);
+    // alert(agentid);
+    var crmid = id;
+
+    $.ajax({
+        type: "POST",
+        url: 'reassign-agent',
+        data: {crmid:crmid, agentid: agentid},
+        //dataType: 'json',
+        success: function (data) {
+
+            if(data == '1'){
+                toastr.success('Successfully sent', 'success');
+            }else{
+                toastr.error('Some Internal Error', 'error');
+            }
+
+            $.pjax({container: '#crud-datatable-pjax'})
+        }
+    });
+}
     function viewdocs(date,id,comment) {
 
       //  alert(date);alert(id);

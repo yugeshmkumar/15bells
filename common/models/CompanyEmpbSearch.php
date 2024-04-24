@@ -19,7 +19,7 @@ class CompanyEmpbSearch extends CompanyEmpb
     {
         return [
             [['id', 'userid', 'companyid', 'userprofile_exID', 'userprofileID', 'role_id', 'employee_typeID', 'department_ID', 'managerID', 'isactive'], 'integer'],
-            [['email', 'employee_number', 'designation', 'created_at', 'updated_at','name'], 'safe'],
+            [['employee_email', 'employee_number', 'designation', 'created_at', 'updated_at','name'], 'safe'],
         ];
     }
 
@@ -71,7 +71,7 @@ class CompanyEmpbSearch extends CompanyEmpb
             'isactive' => $this->isactive,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
+        $query->andFilterWhere(['like', 'employee_email', $this->employee_email])
 		    ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'employee_number', $this->employee_number])
             ->andFilterWhere(['like', 'designation', $this->designation]);

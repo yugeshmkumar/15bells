@@ -128,8 +128,21 @@ return [
                             'format' => 'raw',
             'value' => function($data) {
     
+//echo '<pre>';
+//print_r($data);
+//die;
+                if($data->role_id == 23){
+                    return Html::a('<button class="btn btn-default" onclick="assigntl(' . $data->id . ')" style="border-color:#0fd8da !important;border:1px solid ;" >Reassign to TL</button>', $url = 'javascript:void(0)', []);
+                } else if ($data->role_id == 24){
+                    $employeeOptions = \common\models\CompanyEmp::find()->where(['role_id'=>23])->all();
 
-                 return Html::a('<button class="btn btn-default" onclick="assigncsr(' . $data->id . ')" style="border-color:#0fd8da !important;border:1px solid ;" >Reassign to CSR</button>', $url = 'javascript:void(0)', []);
+                    // Build dropdown options array
+                    $dropdownOptions = yii\helpers\ArrayHelper::map($employeeOptions, 'id', 'name');
+                    return Html::dropDownList('dropdown', null, $dropdownOptions, ['prompt' => 'Select employee', 'onchange' => 'assignagent(' . $data->id . ', this.value)']);
+//                    return Html::a('<button class="btn btn-default" onclick="assignagent(' . $data->id . ')" style="border-color:#0fd8da !important;border:1px solid ;" >Reassign to Agent</button>', $url = 'javascript:void(0)', []);
+                } else {
+                    return Html::a('<button class="btn btn-default" onclick="assigncsr(' . $data->id . ')" style="border-color:#0fd8da !important;border:1px solid ;" >Reassign to CSR</button>', $url = 'javascript:void(0)', []);
+                }
 
               }
         ],

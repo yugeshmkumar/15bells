@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
      <div style="display:none;"><?= $form->field($model, 'employee_typeID')->textInput() ?></div>
 
  
-    <?= $form->field($model, 'email')->textInput(['type' => 'email']) ?>
+    <?= $form->field($model, 'employee_email')->textInput(['type' => 'email']) ?>
 
     <?= $form->field($model, 'employee_number')->textInput(['type' => 'number']) ?>
 	

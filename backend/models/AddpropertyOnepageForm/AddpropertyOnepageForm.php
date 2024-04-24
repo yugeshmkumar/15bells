@@ -10,6 +10,10 @@ use Yii;
  * @property int $id
  * @property int $company_employee_id
  * @property int $property_for
+ * @property int $role_id
+ * @property int $bought_year
+ * @property string $customer_interested
+ * @property string $bought_from
  * @property string $city
  * @property string $locality
  * @property string $town_name
@@ -51,6 +55,7 @@ use Yii;
  * @property int $security_deposit
  * @property string $security_negotiable
  * @property int $lock_in_period
+ * @property int $role
  * @property string $lock_in_negotiable
  * @property string $lease_period_restriction
  * @property int $max_period_lease
@@ -76,9 +81,10 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     public $efficiency;
     public $ownership_title;
     public $ID_proof;
-   
+    public $role_id;
 
-   
+
+
 
     /**
      * {@inheritdoc}
@@ -95,14 +101,14 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'total_no_of_floors', 'ceiling_height', 'floor_plate_area',  'asking_lease_rate','total_lease_rate', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive'], 'integer'],
-            [['locality', 'address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'property_status', 'followup_comment','property_scomment'], 'string'],
+            [['company_employee_id', 'property_type_id', 'primary_contact_no', 'secondary_contact_no', 'super_area', 'carpet_area', 'role_id', 'total_no_of_floors', 'ceiling_height', 'floor_plate_area',  'asking_lease_rate','total_lease_rate', 'security_deposit', 'lock_in_period', 'max_period_lease', 'max_rentfree_period', 'Asking_property_price', 'completion_in_percentage', 'isactive', 'role_id', 'bought_year'], 'integer'],
+            [['locality', 'address', 'backup_power', 'building_security', 'maintenance_agency', 'type_of_space', 'rate_negotiable', 'security_negotiable', 'lock_in_negotiable', 'lease_period_restriction', 'open_rentfree_period', 'price_negotiable', 'property_with_saledeed', 'property_power_attorney', 'property_status', 'followup_comment','property_scomment', 'bought_from'], 'string'],
             [['longitude', 'latitude'], 'number'],
     //               ['property_on_floor', 'compare','compareValue'=>'total_no_of_floors','operator'=>'<',
     // 'message'=>'Property on floor should be smaller than total no. of floors'],
             //[['total_no_of_floors'], 'required'],
             [['followup_date_time', 'created_date','maintenance_charge','reassign_date','landline_no', 'email_id','owner_address'], 'safe'],
-            [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number'], 'string', 'max' => 20],
+            [['city', 'property_on_floor', 'unit_block','property_for', 'passenger_lift','unit_number', 'customer_interested'], 'string', 'max' => 20],
             [['town_name', 'sector_name'], 'string', 'max' => 200],
             [['building_name', 'project_name', 'Owner_name', 'pan_card', 'adhar_card', 'covered_parking','property_tax_id'], 'string', 'max' => 50],
             //[['landline_no', 'email_id'], 'string', 'max' => 30],
@@ -125,6 +131,10 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'locality' => 'Locality',
             'town_name' => 'Town Name',
             'sector_name' => 'Sector Name',
+            'role_id' => 'Role ID',
+            'customer_interested' => 'Customer Interest Or Not',
+            'bought_from' => 'Bought From',
+            'bought_year' => 'Bought Year',
             'address' => 'Address',
             'longitude' => 'Longitude',
             'latitude' => 'Latitude',
@@ -181,7 +191,6 @@ class AddpropertyOnepageForm extends \yii\db\ActiveRecord
             'property_status' => 'Property Status',
             'property_scomment' => 'Property Status Comment',
             'lead_source' => 'Lead Source',
-            'site_visit' => 'Site Visit',
             'site_visit' => 'Site Visit',
             'remarks' => 'Remarks',
             'followup_comment' => 'Followup Comment',

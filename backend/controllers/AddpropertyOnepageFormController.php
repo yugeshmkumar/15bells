@@ -153,8 +153,8 @@ class AddpropertyOnepageFormController extends Controller
 
         $crmid = $_POST['crmid'];
         $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
-      
-        $rbac->isactive = 4;        
+
+        $rbac->isactive = 4;
         $rbac->save(false);
 	if($rbac){
 	return 1;die;
@@ -165,6 +165,35 @@ class AddpropertyOnepageFormController extends Controller
      }
 
 
+    public function actionReassignTl(){
+        $crmid = $_POST['crmid'];
+        $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
+
+        $rbac->company_employee_id = 24;
+//        $rbac->isactive = 4;
+        $rbac->save(false);
+        if($rbac){
+            return 1;die;
+        }else{
+            return 2;die;
+        }
+
+    }
+
+    public function actionReassignAgent(){
+        $crmid = $_POST['crmid'];
+        $agentid = $_POST['agentid'];
+        $rbac =  AddpropertyOnepageForm::find()->where(['id'=>$crmid])->one();
+
+        $rbac->company_employee_id = $agentid;
+        $rbac->save(false);
+        if($rbac){
+            return 1;die;
+        }else{
+            return 2;die;
+        }
+
+    }
      public function actionAssigncsrhead(){
 
         $crmid = $_POST['crmid'];
@@ -277,8 +306,6 @@ class AddpropertyOnepageFormController extends Controller
         $finduser = AddpropertyOnepageForm::find()->where(['id' => $visittypeid])->one();
 
         if ($finduser) {
-            
-           
             $finduser->remarks = $remarks_comment;
             $finduser->save(false);
 
