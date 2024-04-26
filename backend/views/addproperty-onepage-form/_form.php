@@ -367,6 +367,7 @@ label{
                 <?php if (!Yii::$app->request->isAjax){ ?>
                     <div class="form-group">
                         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Approve', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        <?= Html::submitButton( 'Update', ['class' => 'btn btn-primary']) ?>
                     </div>
                 <?php } ?>
 
