@@ -9,7 +9,6 @@ use yii\base\view;
 use kartik\datetime\DateTimePicker;
 
 
-
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AddpropertyOnepageForm\AddpropertyOnepageFormSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,6 +17,7 @@ $this->title = 'Addproperty Onepage Forms';
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
+$csrfToken = Yii::$app->request->getCsrfToken();
 
 ?>
  <?php //echo $this->render('import', ['model' => $blog]); ?>
@@ -260,11 +260,12 @@ function assigncsr(id){
 function assigntl(id){
     alert('hello');
     var crmid = id;
+    var csrfToken = '<?php echo $csrfToken; ?>';
 
     $.ajax({
         type: "POST",
         url: 'reassign-tl',
-        data: {crmid:crmid},
+        data: {crmid:crmid, _csrf: csrfToken,},
         //dataType: 'json',
         success: function (data) {
 
@@ -283,11 +284,12 @@ function assignagent(id, agentid){
     // alert(id);
     // alert(agentid);
     var crmid = id;
+    var csrfToken = '<?php echo $csrfToken; ?>';
 
     $.ajax({
         type: "POST",
         url: 'reassign-agent',
-        data: {crmid:crmid, agentid: agentid},
+        data: {crmid:crmid, agentid: agentid,  _csrf: csrfToken,},
         //dataType: 'json',
         success: function (data) {
 
