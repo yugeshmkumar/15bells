@@ -37,6 +37,28 @@ $this->params['body-class'] = array_key_exists('body-class', $this->params) ?
     <?php $this->beginBody() ?>
         <?php echo $content ?>
     <?php $this->endBody() ?>
+
 <?php echo Html::endTag('body') ?>
+<script>
+    (function (doc, tag, src, id) {
+    let body = doc.getElementsByTagName("body");
+    let el = doc.createElement(tag);
+    el.setAttribute("src", src);
+    el.setAttribute("id", id);
+    el.onload = setConfig;
+    body[0].append(el);
+    })(document,
+    "script", "https://konnect.knowlarity.com/external/embed/widget.js",
+    "knw-widget-sdk");
+    function setConfig() {
+        let config = {
+        height: "400px",
+        width: "300px",
+        src: "https://konnect.knowlarity.com/external/#",
+        };
+        KNW_WIDGET.setUserConfig(config);
+    }
+ </script>
 </html>
+
 <?php $this->endPage() ?>
